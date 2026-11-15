@@ -4,29 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Equinox: Equilux</title>
-<!-- DESIGN MOCKUP ONLY (Nov 15 2026). Direction 5, "Equilux": Kat's mix of Halfway and The Well.
-     From Halfway: the day / night clock (it's now the game's signature: the title's split is a clock hand that
-     sweeps, the field HUD is a clock, time passing is a clock wipe). Dropped: the fixed pink seam.
-     From The Well: the eerie dark half (crimson caustics, ripples, words that sink in), and the depth gauge, which now
-     appears ONLY in the dungeon. Dropped: depth numbers everywhere, the full-width dialogue box.
-     Persona side: kinetic slanted blades, letters that kick in, big off-edge type, halftone, a command dial.
-     Pink / crimson / black / bone only (Kat's palette rule); no blue, purple, green; no gold. -->
+<!-- DESIGN MOCKUP ONLY. Direction 5, "Equilux": Kat's mix of Halfway and The Well (Nov 15 2026).
+     Pass 2 (Kat's notes, Nov 15): one palette (Solstice's pink and black, no red), Solstice's font (Avenir Next Condensed
+     Heavy Italic; Barlow Condensed where Avenir isn't installed), the title clock TICKS, and touching / moving / pressing a key
+     brings the dark side over the whole screen (dusk) until the player rests; louder, creepier selection (paper bar fitted
+     under the word, slash, offset outline, a pink echo that twitches); dialogue back to Solstice's sizes and placement
+     (portraits, box, name tag, choice buttons) with Equinox motion on top.
+     From Halfway: the day / night clock. From The Well: the eerie dark half, words that sink in, the depth gauge (dungeon only). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow+Condensed:ital,wght@0,700;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="equinox.css?v=3">
 <style>
 @property --hand { syntax: '<angle>'; inherits: true; initial-value: 30deg; }
 @property --sweep { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@property --r { syntax: '<length>'; inherits: false; initial-value: 0px; }
 :root {
-  --ink: #0a0306; --ink-2: #1a070c; --blood: #2a0509; --crim: #c8102e; --rose: #ff3b7a; --rose-2: #ff8fb4;
-  --foam: #ffe3ea; --bone: #f4ede8; --ash: #8a6a72;
-  --tall: "Big Shoulders Display", "Oswald", "Arial Narrow", sans-serif;
-  --cond: "Barlow Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
-  --body: "Barlow Semi Condensed", "Avenir Next", "Helvetica Neue", sans-serif;
+  /* Solstice's own pink and black, one family: no red */
+  --ink: #0d0408; --deep: #14070f; --blood: #2a0f22; --plum: #4a1838; --crim: #c4155e; --rose: #ff4f9e; --rose-2: #ff8cc0;
+  --foam: #fff4f9; --bone: #fff4f9; --ash: #a08592;
+  --loud: "Avenir Next Condensed", "Barlow Condensed", "Arial Narrow", sans-serif;
+  --tall: var(--loud); --cond: var(--loud);
+  --body: "Avenir Next", "Barlow Semi Condensed", "Helvetica Neue", sans-serif;
   --pg-bg: var(--ink); --pg-ink: var(--foam); --pg-acc: var(--rose);
-  --pg-h1: italic 900 clamp(36px, 5.4vw, 64px)/.9 var(--cond); --pg-letter: 900 30px/1 var(--tall);
-  --spring: cubic-bezier(.2, 1.4, .4, 1); --swing: cubic-bezier(.6, 0, .2, 1);
+  --pg-h1: italic 900 clamp(36px, 5.4vw, 64px)/.9 var(--loud); --pg-letter: italic 900 30px/1 var(--loud);
+  --spring: cubic-bezier(.2, 1.4, .4, 1); --swing: cubic-bezier(.6, 0, .2, 1); --tickE: cubic-bezier(.3, 1.9, .45, 1);
 }
 .pg-top h1 { text-transform: uppercase; } .pg-top h1 span { color: var(--rose); }
 .scr-h b { color: var(--rose); }
@@ -36,183 +38,238 @@
 .note { max-width: 1312px; margin: 0 auto; padding: 14px 16px 0; color: var(--rose-2); font-size: 15px; }
 .note b { color: var(--foam); }
 
-/* ── Shared: the blade list (Persona slashes that spring in behind the chosen row) ── */
-.bl .it { padding: .04em .15em; }
-.bl .tx { display: inline-block; transition: color .15s; }
-.bl .it .fx { inset: -.02em -.55em -.06em -.4em; z-index: 1; background: var(--crim); clip-path: polygon(3% 0, 100% 9%, 97% 100%, 0 90%);
-  transform: scaleX(0); transform-origin: left; transition: transform .26s var(--spring); }
-.bl .it::before { content: ""; position: absolute; z-index: 0; inset: .16em -.85em -.24em -.15em; background: var(--rose); clip-path: polygon(0 12%, 100% 0, 97% 88%, 2% 100%);
-  transform: scaleX(0); transform-origin: left; transition: transform .32s .05s var(--spring); }
-.bl li.sel .it .fx, .bl li.sel .it::before { transform: scaleX(1); }
-.bl li.sel .tx { color: var(--bone); animation: kick .36s var(--spring) both; }
-@keyframes kick { 0% { transform: translateX(-.4em) skewX(-16deg); opacity: .3; filter: blur(2px); } 55% { transform: translateX(.45em) rotate(-3deg) scale(1.13); } 100% { transform: translateX(.3em) rotate(-2deg) scale(1.07); } }
-li.pick .it { animation: pickit .42s ease-out; }
-@keyframes pickit { 25% { transform: scale(1.1) rotate(-1deg); filter: brightness(1.5); } }
+/* Film grain and a slow breathing vignette: the creepy layer every dark screen shares */
+.grain { position: absolute; z-index: 6; inset: -50%; pointer-events: none; opacity: .1; mix-blend-mode: overlay;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain .5s steps(4) infinite; }
+@keyframes grain { 25% { transform: translate(-3%, 2%); } 50% { transform: translate(2%, -3%); } 75% { transform: translate(-2%, -1%); } }
+.vig { position: absolute; z-index: 5; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(13, 4, 8, .75)); animation: breathe2 7s ease-in-out infinite; }
+@keyframes breathe2 { 50% { opacity: .65; } }
+.scan { position: absolute; z-index: 5; left: 0; right: 0; top: -10cqw; height: 7cqw; pointer-events: none; background: linear-gradient(transparent, rgba(255, 79, 158, .07), transparent); animation: scan 9s linear infinite; }
+@keyframes scan { 70%, 100% { transform: translateY(75cqw); } }
 
-/* ── Clocks (svg built by the page script) ── */
+/* ── The selection (title and field lists): a paper bar fitted under the word, a pink slash behind it, an offset pink
+      outline, a shine, and a pink echo of the word that twitches. Everything moves together, so it stays centred. ── */
+.bl .it { padding: .07em .34em .03em .28em; transform-origin: 15% 55%; transition: transform .24s var(--tickE); }
+.bl li.sel .it { transform: translateX(.32em) rotate(-2.5deg) scale(1.08); }
+.bl .tx { display: inline-block; z-index: 3; transition: color .1s; }
+.bl .it .fx { inset: 0; z-index: 2; overflow: hidden; background: var(--foam);
+  clip-path: polygon(1.5% 6%, 22% 0, 47% 5%, 74% 0, 100% 3%, 98.5% 94%, 77% 100%, 52% 95%, 26% 100%, 0 97%);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform .2s var(--tickE); }
+.bl .it .fx::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(255, 79, 158, .45) 48%, transparent 64%); transform: translateX(-110%); }
+.bl .sl { position: absolute; z-index: 0; inset: -.32em -1em -.36em -.7em; pointer-events: none; opacity: 0;
+  background: linear-gradient(100deg, var(--rose) 0%, var(--rose-2) 55%, var(--rose) 100%); clip-path: polygon(0 62%, 100% 0, 100% 34%, 4% 100%); }
+.bl .ol { position: absolute; z-index: 1; inset: 0; pointer-events: none; opacity: 0; box-shadow: inset 0 0 0 .055em var(--rose); clip-path: polygon(1% 0, 100% 0, 99% 100%, 0 100%); }
+.bl .tx::before { content: attr(data-t); position: absolute; z-index: -1; left: 0; top: 0; color: transparent; -webkit-text-stroke: .03em var(--rose); opacity: 0; pointer-events: none; }
+.bl li.sel .it .fx { transform: scaleX(1); }
+.bl li.sel .it .fx::after { animation: shine .7s .18s ease-out both; }
+@keyframes shine { to { transform: translateX(110%); } }
+.bl li.sel .sl { opacity: 1; animation: slashIn .32s cubic-bezier(.2, .9, .2, 1) both; }
+@keyframes slashIn { from { clip-path: polygon(0 62%, 0 58%, 0 92%, 0 100%); } }
+.bl li.sel .ol { opacity: 1; animation: olIn .34s .06s var(--tickE) both; }
+@keyframes olIn { from { transform: translate(0, 0); opacity: 0; } to { transform: translate(.16em, .14em); opacity: 1; } }
+.bl li.sel .tx { color: var(--deep); animation: stamp .3s steps(6, end) both, twitch 3.4s 1s steps(1) infinite; }
+@keyframes stamp { 0% { transform: scale(1.4) skewX(-12deg); filter: blur(3px); opacity: 0; } 34% { opacity: 1; } 50% { opacity: .35; } 67% { opacity: 1; } 100% { transform: none; filter: none; } }
+@keyframes twitch { 0%, 90% { transform: none; } 91% { transform: translate(.05em, -.02em) skewX(-7deg); } 93% { transform: translate(-.04em, .03em); } 95% { transform: skewX(4deg); } 96% { transform: none; } }
+.bl li.sel .tx::before { animation: echo 3.4s 1s steps(1) infinite; opacity: .9; transform: translate(-.07em, -.025em); }
+@keyframes echo { 0%, 89% { transform: translate(-.07em, -.025em); } 90% { transform: translate(-.3em, .05em); opacity: 1; } 92% { transform: translate(.18em, -.12em); } 94% { transform: translate(-.07em, -.025em); } }
+li.pick .it { animation: pickit .42s ease-out; }
+@keyframes pickit { 20% { filter: brightness(1.6) drop-shadow(0 0 .3em var(--rose)); } }
+
+/* ── Clocks (svg built by the page script): every one has a ticking second hand ── */
 .dial svg { display: block; width: 100%; height: auto; overflow: visible; }
-.dial { --dd: var(--bone); --dn: var(--ink); --dr: var(--rose); --dt: var(--ink); --dtn: var(--foam); }
+.dial { --dd: var(--bone); --dn: var(--deep); --dr: var(--rose); --dt: var(--deep); --dtn: var(--foam); }
 .dial .dd { fill: var(--dd); transition: fill .6s; } .dial .dn { fill: var(--dn); transition: fill .6s; }
 .dial .rim { fill: none; stroke: var(--dr); stroke-width: 2.4; }
 .dial .tk { stroke: var(--dr); stroke-width: 1; opacity: .55; } .dial .tk.M { stroke-width: 2.4; opacity: 1; }
-.dial .lb { font: italic 800 13px var(--cond); text-anchor: middle; dominant-baseline: central; }
+.dial .lb { font: italic 900 13px var(--loud); text-anchor: middle; dominant-baseline: central; }
 .dial .lb.d { fill: var(--dt); } .dial .lb.n { fill: var(--dtn); } .dial .lb.s { fill: var(--rose); }
 .dial .slot { fill: var(--rose); }
 .dial .hand { transform-origin: 100px 100px; transform: rotate(var(--ang, 0deg)); transition: transform 1.1s var(--swing); }
-.dial .hand polygon { fill: var(--rose); filter: drop-shadow(0 0 3px rgba(255, 59, 122, .8)); }
-.dial .hand circle { fill: var(--ink); stroke: var(--rose); stroke-width: 3; }
-.dial .wob { transform-origin: 100px 100px; animation: tick 2s steps(1) infinite; }
-@keyframes tick { 0% { transform: rotate(0); } 50% { transform: rotate(1.6deg); } }
-.dial .spin { transform-origin: 100px 100px; animation: spin 40s linear infinite; }
+.dial .hand polygon { fill: var(--rose); filter: drop-shadow(0 0 3px rgba(255, 79, 158, .8)); }
+.dial .hand circle { fill: var(--deep); stroke: var(--rose); stroke-width: 3; }
+.dial .sec { stroke: var(--rose-2); stroke-width: 1.4; transform-origin: 100px 100px; animation: spin 60s steps(60) infinite; }
+.dial .sec + circle { fill: var(--rose-2); }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ════ A · Title: the hand is the split ════ */
-.f-title { --f-bg: var(--bone); }
-.f-title.in { animation: handIntro 2s cubic-bezier(.16, .84, .24, 1) both, handRun 120s linear 2s infinite; }
-@keyframes handIntro { from { --hand: -330deg; } to { --hand: 30deg; } }
-@keyframes handRun { from { --hand: 30deg; } to { --hand: 390deg; } }
+/* ════ A · Title: a ticking clock hand splits day and night; any touch brings the night over everything ════ */
+.f-title { --f-bg: var(--bone); transition: --hand .34s var(--tickE); }
 .lay { position: absolute; inset: 0; overflow: hidden; }
-.lay.day { background: var(--bone); color: var(--ink); }
-.lay.night { background: radial-gradient(ellipse at 30% 50%, var(--blood), var(--ink) 70%); color: var(--foam);
-  -webkit-mask: conic-gradient(from var(--hand) at 30% 66%, transparent 0deg 177deg, #000 183deg 357deg, transparent 360deg);
-          mask: conic-gradient(from var(--hand) at 30% 66%, transparent 0deg 177deg, #000 183deg 357deg, transparent 360deg); }
-.lay.day .tone { position: absolute; inset: 0; background: radial-gradient(circle, rgba(10, 3, 6, .13) 18%, transparent 20%) 0 0 / 1.1cqw 1.1cqw;
-  -webkit-mask: linear-gradient(115deg, transparent 45%, #000 90%); mask: linear-gradient(115deg, transparent 45%, #000 90%); }
-.lay.day .rays { position: absolute; left: 30%; top: 66%; width: 140cqw; height: 140cqw; translate: -50% -50%;
-  background: repeating-conic-gradient(from 0deg, rgba(255, 59, 122, .055) 0 4deg, transparent 4deg 15deg); animation: spin 90s linear infinite reverse; }
+.lay.day { background: var(--bone); color: var(--deep); }
+.lay.day .rings { position: absolute; left: 30%; top: 66%; width: 150cqw; height: 150cqw; translate: -50% -50%; border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 3.2cqw, rgba(255, 79, 158, .1) 3.2cqw 3.32cqw); }
+.lay.day .tone { position: absolute; inset: 0; background: radial-gradient(circle, rgba(74, 24, 56, .14) 18%, transparent 20%) 0 0 / 1.1cqw 1.1cqw;
+  -webkit-mask: linear-gradient(115deg, transparent 50%, #000 95%); mask: linear-gradient(115deg, transparent 50%, #000 95%); }
+.lay.night { background: radial-gradient(ellipse at 30% 50%, var(--plum), var(--deep) 55%, var(--ink)); color: var(--foam);
+  -webkit-mask: radial-gradient(circle at 30% 66%, #000 calc(var(--r) - 5cqw), transparent var(--r)), conic-gradient(from var(--hand) at 30% 66%, transparent 0deg 177deg, #000 183deg 357deg, transparent 360deg);
+  -webkit-mask-composite: source-over;
+          mask: radial-gradient(circle at 30% 66%, #000 calc(var(--r) - 5cqw), transparent var(--r)) add, conic-gradient(from var(--hand) at 30% 66%, transparent 0deg 177deg, #000 183deg 357deg, transparent 360deg);
+  transition: --r 1.4s var(--swing); }
+.f-title.dusk .lay.night { --r: 150cqw; transition-duration: 1.1s; }
 .caus { position: absolute; inset: 0; }
-.caus i { position: absolute; width: 46cqw; height: 46cqw; border-radius: 50%; background: radial-gradient(circle, rgba(255, 59, 122, .22), transparent 62%); filter: blur(1.5cqw); animation: drift 16s ease-in-out infinite alternate; }
+.caus i { position: absolute; width: 46cqw; height: 46cqw; border-radius: 50%; background: radial-gradient(circle, rgba(255, 79, 158, .2), transparent 62%); filter: blur(1.5cqw); animation: drift 16s ease-in-out infinite alternate; }
 .caus i:nth-child(1) { left: 2cqw; top: -10cqw; } .caus i:nth-child(2) { left: 40cqw; top: 14cqw; animation-duration: 21s; animation-delay: -6s; }
-.caus i:nth-child(3) { left: 66cqw; top: -14cqw; animation-duration: 18s; animation-delay: -11s; background: radial-gradient(circle, rgba(200, 16, 46, .3), transparent 62%); }
+.caus i:nth-child(3) { left: 66cqw; top: -14cqw; animation-duration: 18s; animation-delay: -11s; background: radial-gradient(circle, rgba(196, 21, 94, .26), transparent 62%); }
 @keyframes drift { 50% { transform: translate(6cqw, 4cqw) scale(1.2); } 100% { transform: translate(-4cqw, 8cqw) scale(.9); } }
 .specks i { position: absolute; bottom: -2cqw; width: .45cqw; height: .45cqw; border-radius: 50%; background: var(--rose-2); opacity: 0; animation: rise 9s linear infinite; }
 @keyframes rise { 10% { opacity: .7; } 100% { transform: translate(2cqw, -60cqw); opacity: 0; } }
-.face12 { position: absolute; left: 7cqw; top: 14.1cqw; width: 46cqw; height: 46cqw; }
+.face12 { position: absolute; left: 7cqw; top: 14.1cqw; width: 46cqw; height: 46cqw; transition: transform 1.2s var(--swing), color .8s; }
 .face12 svg { width: 100%; height: 100%; overflow: visible; }
 .face12 .r1 { fill: none; stroke: currentColor; stroke-width: .6; opacity: .45; } .face12 .r2 { fill: none; stroke: currentColor; stroke-width: .3; opacity: .35; }
-.face12 .dash { fill: none; stroke: var(--rose); stroke-width: .5; stroke-dasharray: 1 3; opacity: .8; }
+.face12 .dash { fill: none; stroke: var(--rose); stroke-width: .5; stroke-dasharray: 1 3; opacity: .8; transform-origin: 100px 100px; animation: spin 60s steps(60) infinite; }
 .face12 .m { stroke: currentColor; stroke-width: .3; opacity: .4; } .face12 .m.M { stroke-width: .9; opacity: .9; }
-.face12 text { font: italic 800 7px var(--cond); fill: currentColor; text-anchor: middle; dominant-baseline: central; opacity: .8; }
-.night .face12 { color: var(--rose-2); }
-.logo { position: absolute; left: 9.5cqw; top: 17.5cqw; }
-.logo .kick { display: block; font: italic 800 2cqw/1 var(--cond); letter-spacing: .5em; text-transform: uppercase; }
-.logo .eq { display: flex; font: 900 11.5cqw/.82 var(--tall); letter-spacing: .01em; }
+.face12 text { font: italic 900 7px var(--loud); fill: currentColor; text-anchor: middle; dominant-baseline: central; opacity: .8; }
+.day .face12 { color: var(--plum); } .night .face12 { color: var(--rose-2); }
+.f-title.tock .face12 { transform: scale(1.004); transition-duration: .05s; }
+.f-title.dusk .night .face12 { color: var(--rose); transform: rotate(-12deg) scale(1.06); }
+.logo { position: absolute; left: 9cqw; top: 11.4cqw; }
+.logo .kick { display: block; margin: 0 0 .9cqw .3cqw; font: italic 900 1.9cqw/1 var(--loud); letter-spacing: .42em; text-transform: uppercase; }
+.logo .eq { display: flex; gap: .12cqw; font: italic 900 11cqw/.86 var(--loud); letter-spacing: -.01em; }
 .logo .eq span { display: inline-block; }
 .in .logo .eq span { animation: drop .8s calc(var(--k) * .07s + .5s) var(--spring) both; }
 @keyframes drop { from { transform: translateY(-.7em) rotate(-10deg); opacity: 0; filter: blur(8px); } }
-.logo .tag { display: block; margin-top: 1.2cqw; font: italic 600 1.7cqw/1 var(--body); letter-spacing: .45em; text-transform: uppercase; }
-.day .logo .eq { color: var(--ink); text-shadow: .045em .045em 0 var(--rose); }
-.day .logo .kick, .day .logo .tag { color: var(--crim); }
-.night .logo .eq { color: var(--bone); animation: glow 3.4s ease-in-out infinite alternate; }
-@keyframes glow { from { text-shadow: 0 0 .1em rgba(255, 59, 122, .5); } to { text-shadow: 0 0 .45em rgba(255, 59, 122, .9), 0 0 .05em var(--rose); } }
-.night .logo .kick, .night .logo .tag { color: var(--rose); }
-.night .refl { position: absolute; left: 9.5cqw; top: 31.6cqw; font: 900 11.5cqw/.82 var(--tall); color: var(--rose); opacity: .22; transform: scaleY(-.75); transform-origin: top;
-  -webkit-mask: linear-gradient(to top, #000, transparent 70%); mask: linear-gradient(to top, #000, transparent 70%); filter: blur(.12cqw); animation: waver 3s ease-in-out infinite alternate; }
-@keyframes waver { from { transform: scaleY(-.75) skewX(-4deg); } to { transform: scaleY(-.7) skewX(4deg) translateX(.6cqw); } }
+.logo .tag { display: block; margin: 1.5cqw 0 0 .4cqw; font: italic 700 1.6cqw/1 var(--loud); letter-spacing: .42em; text-transform: uppercase; }
+.day .logo .eq { color: var(--deep); text-shadow: .045em .045em 0 var(--rose); }
+.day .logo .kick, .day .logo .tag { color: var(--plum); }
+.night .logo .eq { color: var(--foam); text-shadow: .045em .045em 0 var(--plum), 0 0 .35em rgba(255, 79, 158, .55); }
+.night .logo .kick, .night .logo .tag { color: var(--rose-2); }
+.f-title.dusk .night .logo .eq { animation: haunt 5s 1.1s steps(1) infinite; }
+@keyframes haunt { 0%, 86% { text-shadow: .045em .045em 0 var(--plum), 0 0 .35em rgba(255, 79, 158, .55); transform: none; }
+  87% { text-shadow: -.06em 0 0 var(--rose), .06em 0 0 var(--plum), 0 0 .6em var(--rose); transform: translateX(.3cqw) skewX(-6deg); }
+  90% { text-shadow: .08em 0 0 var(--rose), -.05em 0 0 var(--foam); transform: translateX(-.2cqw); } 93% { transform: none; } }
 .seam { position: absolute; z-index: 2; left: 30%; top: 66%; width: 160cqw; height: .18cqw; margin: -.09cqw 0 0 -80cqw; transform: rotate(calc(var(--hand) + 90deg));
-  background: linear-gradient(90deg, transparent 20%, rgba(255, 143, 180, .0) 32%, rgba(255, 227, 234, .85) 50%, rgba(255, 143, 180, 0) 68%, transparent 80%); pointer-events: none; }
+  background: linear-gradient(90deg, transparent 22%, rgba(255, 140, 192, 0) 34%, rgba(255, 244, 249, .8) 50%, rgba(255, 140, 192, 0) 66%, transparent 78%); pointer-events: none; transition: opacity .8s; }
 .hptr { position: absolute; z-index: 3; left: 30%; top: 66%; width: 21cqw; height: 1cqw; margin-top: -.5cqw; transform-origin: 0 50%; transform: rotate(calc(var(--hand) - 90deg));
-  background: linear-gradient(90deg, var(--crim), var(--rose)); clip-path: polygon(0 25%, 100% 50%, 0 75%); filter: drop-shadow(0 0 .5cqw var(--rose)); pointer-events: none; }
-.pivot { position: absolute; z-index: 3; left: 30%; top: 66%; width: 2cqw; height: 2cqw; translate: -50% -50%; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 .35cqw var(--rose), 0 0 1.4cqw var(--rose); pointer-events: none; }
-.t-band { position: absolute; z-index: 3; right: -4cqw; bottom: 2cqw; width: 52cqw; height: 24cqw; pointer-events: none;
-  background: repeating-linear-gradient(-62deg, rgba(255, 59, 122, .3) 0 .35cqw, transparent .35cqw 1.5cqw); clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
-  animation: stripes 6s linear infinite; }
-@keyframes stripes { to { background-position: 10cqw 0; } }
-.t-plate { right: 3.5cqw; bottom: 5.5cqw; width: 37cqw; padding: 2.2cqw 2.4cqw 2.4cqw 8cqw; background: var(--ink); color: var(--foam);
-  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%); }
-.t-plate::before { content: ""; position: absolute; left: 7%; right: 0; top: 0; height: .5cqw; background: var(--crim); }
+  background: linear-gradient(90deg, var(--plum), var(--rose)); clip-path: polygon(0 25%, 100% 50%, 0 75%); filter: drop-shadow(0 0 .5cqw var(--rose)); pointer-events: none; transition: filter .6s, opacity .6s; }
+.pivot { position: absolute; z-index: 3; left: 30%; top: 66%; width: 2cqw; height: 2cqw; translate: -50% -50%; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 .35cqw var(--rose), 0 0 1.4cqw var(--rose); pointer-events: none; }
+.f-title.tock .pivot { box-shadow: 0 0 0 .5cqw var(--rose-2), 0 0 2.2cqw var(--rose); }
+.f-title.dusk .seam { opacity: 0; }
+.f-title.dusk .hptr { filter: drop-shadow(0 0 1.2cqw var(--rose)) brightness(1.3); }
+.dring { position: absolute; z-index: 3; left: 30%; top: 66%; width: 10cqw; height: 10cqw; margin: -5cqw 0 0 -5cqw; border-radius: 50%; border: .2cqw solid var(--rose-2); opacity: 0; pointer-events: none; }
+.dring.go { animation: dring 1.8s cubic-bezier(.2, .7, .3, 1) forwards; } .dring.b.go { animation-delay: .25s; }
+@keyframes dring { 0% { opacity: .9; transform: scale(.4); } 100% { opacity: 0; transform: scale(9); } }
+.f-title .vig { opacity: 0; animation: none; transition: opacity 1.2s; }
+.f-title.dusk .vig { opacity: 1; }
+.f-title .grain { opacity: 0; transition: opacity 1s; } .f-title.dusk .grain { opacity: .1; }
+.t-plate { right: 3.5cqw; bottom: 6cqw; width: 37cqw; padding: 2.4cqw 2.4cqw 2.6cqw 8cqw; background: var(--deep); color: var(--foam);
+  clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%); transition: background .8s; }
+.t-plate::before { content: ""; position: absolute; left: 7%; right: 0; top: 0; height: .45cqw; background: linear-gradient(90deg, var(--rose), var(--rose-2) 50%, var(--rose)); background-size: 200% 100%; transition: height .6s; }
+.f-title.dusk .t-plate { background: rgba(20, 7, 15, .82); }
+.f-title.dusk .t-plate::before { height: .7cqw; animation: shimmer 2.4s linear infinite; }
 .in .t-plate { animation: plateIn .7s 1.1s var(--spring) both; }
 @keyframes plateIn { from { transform: translateX(40cqw) skewX(-10deg); } }
-.t-plate li { font: italic 900 3cqw/1.2 var(--cond); text-transform: uppercase; color: rgba(255, 227, 234, .7); margin-left: calc(var(--i) * .7cqw); }
-.t-mini { position: absolute; left: 2cqw; top: 2.4cqw; width: 4.6cqw; height: 4.6cqw; border-radius: 50%; border: .25cqw solid var(--rose); }
+.t-plate li { font: italic 900 2.9cqw/1.34 var(--loud); text-transform: uppercase; letter-spacing: .005em; color: rgba(255, 244, 249, .78); margin-left: calc(var(--i) * .7cqw); text-shadow: .06em .06em 0 var(--blood); }
+.t-mini { position: absolute; left: 2cqw; top: 2.6cqw; width: 4.6cqw; height: 4.6cqw; border-radius: 50%; border: .25cqw solid var(--rose); }
 .t-mini i { position: absolute; left: 50%; top: 50%; width: 2cqw; height: .35cqw; margin-top: -.175cqw; background: var(--rose); transform-origin: 0 50%;
-  transform: rotate(calc(var(--s, 0) * 32deg - 30deg)); transition: transform .4s var(--spring); }
+  transform: rotate(calc(var(--s, 0) * 32deg - 30deg)); transition: transform .3s var(--tickE); }
 .t-mini::after { content: ""; position: absolute; left: 50%; top: 50%; width: .8cqw; height: .8cqw; translate: -50% -50%; border-radius: 50%; background: var(--rose); }
-.t-foot { left: 3cqw; bottom: 2.6cqw; z-index: 5; color: #fff; mix-blend-mode: difference; font: 600 1.05cqw/1.4 var(--body); letter-spacing: .3em; text-transform: uppercase; pointer-events: none; }
-.t-foot b { display: block; font: italic 800 1.6cqw/1 var(--cond); letter-spacing: .35em; animation: blink 1.6s steps(2) infinite; }
-@keyframes blink { 50% { opacity: .25; } }
+.t-foot { left: 3cqw; bottom: 2.6cqw; z-index: 5; padding: .8cqw 1.6cqw .8cqw 1.2cqw; background: var(--deep); color: var(--foam); clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+  font: 600 .95cqw/1.5 var(--body); letter-spacing: .26em; text-transform: uppercase; pointer-events: none; }
+.t-foot b { display: block; font: italic 900 1.6cqw/1.1 var(--loud); letter-spacing: .3em; color: var(--rose); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .3; } }
+.t-hint { right: 3.5cqw; bottom: 2.4cqw; font: 600 .9cqw/1 var(--body); letter-spacing: .24em; text-transform: uppercase; color: var(--plum); transition: color .8s; pointer-events: none; }
+.f-title.dusk .t-hint { color: var(--rose-2); }
 
-/* ════ B · Field menu ════ */
-.f-field .bg { filter: saturate(.5) brightness(.5); transform: scale(1.04); }
-.f-field .tint { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10, 3, 6, .1), rgba(42, 5, 9, .72) 55%, rgba(10, 3, 6, .94)); }
-.f-field .mul { position: absolute; inset: 0; background: var(--crim); mix-blend-mode: multiply; opacity: .4; }
-.f-field .caus i { background: radial-gradient(circle, rgba(255, 59, 122, .16), transparent 62%); }
-.band { position: absolute; left: 21cqw; top: -12cqw; width: 21cqw; height: 84cqw; transform: rotate(16deg); background: linear-gradient(var(--crim), var(--blood) 70%); opacity: .55; }
-.band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(255, 143, 180, .4) 20%, transparent 22%) 0 0 / .9cqw .9cqw;
+/* ════ B · Field menu: louder, creepier ════ */
+.f-field .bg { filter: saturate(.45) brightness(.48); transform: scale(1.04); }
+.f-field .tint { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(13, 4, 8, .05), rgba(42, 15, 34, .72) 52%, rgba(13, 4, 8, .95)); }
+.f-field .mul { position: absolute; inset: 0; background: var(--plum); mix-blend-mode: multiply; opacity: .55; }
+.band { position: absolute; left: 21cqw; top: -12cqw; width: 21cqw; height: 84cqw; transform: rotate(16deg); background: linear-gradient(var(--plum), var(--blood) 70%); opacity: .7; }
+.band::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, rgba(255, 140, 192, .45) 20%, transparent 22%) 0 0 / .9cqw .9cqw;
   -webkit-mask: linear-gradient(transparent 30%, #000); mask: linear-gradient(transparent 30%, #000); }
 .in .band { animation: bandIn .6s .1s cubic-bezier(.2, .9, .3, 1) both; }
 @keyframes bandIn { from { transform: rotate(16deg) translateY(-90cqw); } }
-.ghost { position: absolute; right: -1cqw; bottom: -2.4cqw; font: 900 19cqw/.8 var(--tall); color: transparent; -webkit-text-stroke: .1cqw rgba(255, 59, 122, .42); text-transform: uppercase; white-space: nowrap; }
-.ghost.go { animation: sink .8s cubic-bezier(.2, 1, .3, 1); }
+.ghost { position: absolute; right: -1cqw; bottom: -3.2cqw; font: italic 900 21cqw/.8 var(--loud); color: rgba(255, 79, 158, .05); -webkit-text-stroke: .1cqw rgba(255, 79, 158, .5); text-transform: uppercase; white-space: nowrap;
+  animation: gslice 6s 1.2s steps(1) infinite; }
+.ghost.go { animation: sink .8s cubic-bezier(.2, 1, .3, 1), gslice 6s 1.2s steps(1) infinite; }
 @keyframes sink { from { transform: translateY(-.3em); opacity: 0; filter: blur(10px); } }
-.solar { position: absolute; left: 2cqw; top: 2.6cqw; height: 68cqw; width: auto; z-index: 2; filter: drop-shadow(1.1cqw .3cqw 0 rgba(200, 16, 46, .7)); }
+@keyframes gslice { 0%, 88% { clip-path: none; transform: none; } 89% { clip-path: inset(18% 0 52% 0); transform: translateX(1.6cqw); } 91% { clip-path: inset(58% 0 12% 0); transform: translateX(-1.2cqw); } 93% { clip-path: none; transform: translateX(.4cqw); } 94% { transform: none; } }
+.solar { position: absolute; left: 2cqw; top: 2.6cqw; height: 68cqw; width: auto; z-index: 2; filter: drop-shadow(1.1cqw .3cqw 0 rgba(255, 79, 158, .5)) drop-shadow(-.5cqw 0 0 var(--blood)); }
 .in .solar { animation: solarIn .7s .15s var(--spring) both, breathe 4.5s 1s ease-in-out infinite; }
 @keyframes solarIn { from { transform: translateX(-24cqw) skewX(8deg); opacity: 0; } }
 @keyframes breathe { 50% { transform: translateY(-.3cqw) scale(1.006); } }
-.f-list { left: 31cqw; top: 6.2cqw; }
-.f-list li { font: italic 900 3.9cqw/1.08 var(--cond); text-transform: uppercase; color: rgba(255, 227, 234, .78); margin-left: calc(var(--i) * 1.25cqw); }
-.f-list .sub { font: 700 1cqw/1 var(--body); letter-spacing: .22em; color: var(--rose-2); opacity: 0; transform: translateX(-1em); transition: opacity .2s, transform .3s var(--spring); }
-.f-list li.sel .sub { opacity: 1; transform: none; color: var(--foam); }
-.in .f-list li { animation: rowIn .45s calc(var(--i) * .045s + .35s) var(--spring) both; }
+.f-list { left: 30cqw; top: 3.4cqw; }
+.f-list li { margin: .12cqw 0 .12cqw calc(var(--i) * 1.3cqw); font: italic 900 4.2cqw/1.04 var(--loud); text-transform: uppercase; letter-spacing: -.01em; color: var(--foam); text-shadow: .07em .07em 0 var(--deep); }
+.f-list li.sel { text-shadow: none; }
+.f-list .sub { position: absolute; z-index: 3; left: calc(100% + 1em); top: 50%; margin-top: -.5em; white-space: nowrap; font: italic 800 1.1cqw/1 var(--loud); letter-spacing: .14em; color: var(--rose-2); opacity: 0; transform: translateX(-1em); transition: opacity .2s, transform .3s var(--spring); vertical-align: middle; }
+.f-list li.sel .sub { opacity: 1; transform: none; color: var(--rose-2); text-shadow: .1em .1em 0 var(--deep); }
+.in .f-list li { animation: rowIn .45s calc(var(--i) * .05s + .35s) var(--tickE) both; }
 @keyframes rowIn { from { transform: translateX(-6cqw) skewX(-20deg); opacity: 0; } }
 .hud { right: 2.4cqw; top: 2cqw; display: flex; align-items: center; gap: 1.4cqw; }
 .in .hud { animation: hudIn .6s .3s var(--spring) both; }
 @keyframes hudIn { from { transform: translateY(-10cqw) rotate(6deg); } }
 .hud .dt { text-align: right; }
-.hud .md { display: block; font: 900 6.4cqw/.78 var(--tall); color: var(--bone); }
-.hud .wd { display: inline-block; margin-top: .5cqw; padding: .1em .55em; font: italic 900 1.8cqw/1 var(--cond); background: var(--rose); color: var(--ink); transform: rotate(-5deg); clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
-.hud .sl { display: block; margin-top: .6cqw; font: italic 800 1.9cqw/1 var(--cond); letter-spacing: .14em; color: var(--rose-2); text-transform: uppercase; }
-.hud .mn { display: block; margin-top: .35cqw; font: 600 .95cqw/1 var(--body); letter-spacing: .24em; color: var(--foam); opacity: .7; text-transform: uppercase; }
+.hud .md { display: block; font: italic 900 6.4cqw/.8 var(--loud); color: var(--foam); text-shadow: .05em .05em 0 var(--plum); }
+.hud .wd { display: inline-block; margin-top: .5cqw; padding: .1em .55em; font: italic 900 1.8cqw/1 var(--loud); background: var(--rose); color: var(--deep); transform: rotate(-5deg); clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
+.hud .sl { display: block; margin-top: .6cqw; font: italic 900 1.9cqw/1 var(--loud); letter-spacing: .14em; color: var(--rose-2); text-transform: uppercase; }
+.hud .mn { display: block; margin-top: .35cqw; font: 600 .95cqw/1 var(--body); letter-spacing: .24em; color: var(--foam); opacity: .75; text-transform: uppercase; }
 .hud .dial { width: 11.5cqw; }
-.f-tip { left: 31cqw; bottom: 2.8cqw; max-width: 38cqw; padding-left: 1cqw; border-left: .3cqw solid var(--rose); font: 500 1.35cqw/1.35 var(--body); color: var(--foam); }
+.f-tip { left: 32cqw; bottom: 2.8cqw; max-width: 36cqw; padding-left: 1cqw; border-left: .3cqw solid var(--rose); font: 500 1.3cqw/1.35 var(--body); color: var(--foam); }
 .f-tip.go { animation: tipIn .35s ease-out; }
 @keyframes tipIn { from { opacity: 0; transform: translateY(.6cqw); } }
-.wal { right: 2.6cqw; bottom: 2.6cqw; padding: .45em 1.1em .4em 1.4em; background: var(--ink); color: var(--foam); font: italic 800 1.7cqw/1 var(--cond); letter-spacing: .06em; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%); border-top: .25cqw solid var(--crim); }
+.wal { right: 2.6cqw; bottom: 2.6cqw; padding: .45em 1.1em .4em 1.4em; background: var(--deep); color: var(--foam); font: italic 900 1.7cqw/1 var(--loud); letter-spacing: .04em; clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%); border-top: .25cqw solid var(--rose); }
 .wal b { color: var(--rose); }
 .rip { position: absolute; z-index: 3; width: 2.4cqw; height: 2.4cqw; margin: -1.2cqw 0 0 -1.2cqw; border: .16cqw solid var(--rose); border-radius: 50%; pointer-events: none; animation: rip 1s ease-out forwards; }
 @keyframes rip { to { transform: scale(10, 2.6); opacity: 0; } }
 
-/* ════ C · Dialogue: a narrow box between the two faces ════ */
-.f-talk .bg { filter: saturate(.55) brightness(.55); }
-.f-talk .mul { position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(42, 5, 9, .8)); }
-.por { position: absolute; z-index: 2; bottom: 0; height: 50cqw; width: auto; transition: filter .35s, transform .45s var(--spring); }
-.por.l { left: 1cqw; } .por.r { right: 0; }
-.por.dim { filter: brightness(.42) saturate(.5); transform: translateY(1.4cqw) scale(.98); }
-.por.on { filter: drop-shadow(0 0 1.6cqw rgba(255, 59, 122, .35)); }
+/* ════ C · Dialogue: Solstice's sizes and placement (portraits 78vh × each one's size, faces 17% in from each side,
+        the box a little left of centre, the paper name tag, the choice buttons above it), with Equinox motion ════ */
+.f-talk .bg { filter: saturate(.55) brightness(.6); }
+.f-talk .mul { position: absolute; inset: 0; background: linear-gradient(rgba(42, 15, 34, .1), rgba(20, 7, 15, .45)); }
+.por { position: absolute; z-index: 2; width: auto; transition: filter .3s, translate .3s; }
+/* in a 16:9 frame 1vh = .5625cqw: Yukari 78vh × 1.04 × .98, face centre .39, nudge (-2, 3.5); Solar 78vh × .97 × 1.08, face .46 mirrored, nudge (-2.5, 3) */
+.por.l { height: 44.7cqw; left: -.4cqw; bottom: -2cqw; filter: drop-shadow(-.83cqw .28cqw 0 var(--blood)) drop-shadow(.5cqw 0 0 var(--rose)); }
+.por.r { height: 46cqw; right: -5.6cqw; bottom: -1.7cqw; filter: drop-shadow(-.83cqw .28cqw 0 var(--blood)) drop-shadow(.5cqw 0 0 var(--rose)); }
+.por.dim { filter: brightness(.55) saturate(.7) drop-shadow(-.83cqw .28cqw 0 var(--blood)); }
+.por.r.dim { translate: 2cqw 0; }
 .in .por.l { animation: porL .6s .1s var(--spring) both; } .in .por.r { animation: porR .6s .2s var(--spring) both; }
-@keyframes porL { from { translate: -12cqw 0; opacity: 0; } } @keyframes porR { from { translate: 12cqw 0; opacity: 0; } }
-.box { left: 50%; bottom: 2.4cqw; width: 46cqw; min-height: 11.6cqw; margin-left: -23cqw; padding: 2.5cqw 2.8cqw 2.2cqw 3cqw; cursor: pointer;
-  background: rgba(10, 3, 6, .9); clip-path: polygon(2.5% 0, 100% 0, 97.5% 100%, 0 100%); }
-.in .box { animation: boxIn .55s .35s var(--spring) both; }
-@keyframes boxIn { from { transform: translateY(14cqw) skewX(-8deg); } }
-.box .wave { position: absolute; left: 0; right: 0; top: 0; height: 1cqw; overflow: hidden; }
-.box .wave svg { width: 200%; height: 100%; animation: wave 3.2s linear infinite; }
-.box .wave path { fill: var(--crim); }
-@keyframes wave { to { transform: translateX(-50%); } }
-.box .line { margin: 0; font: 500 1.75cqw/1.5 var(--body); color: var(--foam); }
-.box .line.act { font-style: italic; color: var(--rose-2); }
+@keyframes porL { from { transform: translateX(-12cqw); opacity: 0; } } @keyframes porR { from { transform: translateX(12cqw); opacity: 0; } }
+.por.shiver { animation: shiver .32s steps(4); }
+@keyframes shiver { 25% { transform: translateX(.25cqw); } 50% { transform: translateX(-.2cqw) skewX(-1deg); } 75% { transform: translateX(.1cqw); } }
+.box { left: 49.5%; bottom: 2.8cqw; width: 54cqw; translate: -46% 0; cursor: pointer; }
+.in .box { animation: boxIn .5s .3s var(--tickE) both; }
+@keyframes boxIn { from { transform: translateY(5cqw); opacity: 0; } }
+.box .nm { position: relative; z-index: 2; display: inline-block; margin: 0 0 -1cqw -2.1cqw; padding: .55cqw 2.4cqw .6cqw 2.8cqw; background: var(--foam); color: var(--deep);
+  font: italic 900 1.9cqw/1 var(--loud); letter-spacing: .015em; transform-origin: 0 100%;
+  clip-path: polygon(0 50%, 1.7cqw 0, 100% 0, calc(100% - .85cqw) 100%, 1.7cqw 100%); }
+.box .nm::after { content: ""; position: absolute; left: 1.7cqw; right: 0; bottom: 0; height: .22cqw; background: var(--rose); transform-origin: 0 50%; animation: tickbar 1s steps(1) infinite; }
+@keyframes tickbar { 0% { transform: scaleX(.92); } 50% { transform: scaleX(1); } }
+.box .nm.hide { visibility: hidden; }
+.box .nm.swing { animation: swing .5s var(--tickE); }
+@keyframes swing { 0% { transform: rotate(-70deg); opacity: 0; } 60% { opacity: 1; } 100% { transform: none; } }
+.box .txt { position: relative; min-height: 6.4em; padding: 2.2cqw 3.75cqw 1.95cqw 4.2cqw; overflow: hidden;
+  background: linear-gradient(100deg, rgba(20, 7, 15, .95), rgba(42, 15, 34, .9) 70%, rgba(74, 24, 56, .86));
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); font: 500 1.55cqw/1.42 var(--body); color: var(--foam); }
+.box .txt::before { content: ""; position: absolute; inset: 0 0 auto 3%; height: .22cqw; background: linear-gradient(90deg, var(--rose), var(--rose-2) 40%, transparent); }
+/* a bright tick that steps along the top edge, like a second hand */
+.box .tk2 { position: absolute; left: 3%; top: 0; width: 3.4cqw; height: .22cqw; background: var(--foam); box-shadow: 0 0 .6cqw var(--rose); animation: stepAlong 6s steps(12) infinite; }
+@keyframes stepAlong { from { transform: translateX(0); } to { transform: translateX(48cqw); } }
+.box .txt::after { content: ""; position: absolute; right: 7%; bottom: 1cqw; width: 1.5cqw; height: .9cqw; background: var(--rose); clip-path: polygon(0 0, 100% 0, 50% 100%); animation: nudge 1s steps(2) infinite; }
+@keyframes nudge { 50% { transform: translateY(.35cqw); } }
+.box .glow { position: absolute; inset: auto 3% 0 0; height: 40%; background: radial-gradient(ellipse at 30% 100%, rgba(255, 79, 158, .28), transparent 70%); opacity: 0; pointer-events: none; }
+.box .glow.go { animation: glow2 1.2s ease-out; }
+@keyframes glow2 { 20% { opacity: 1; } }
+.box .line { position: relative; margin: 0; }
+.box .line.act { font-style: italic; color: #f5d9e7; }
 .w { display: inline-block; animation: wsink .55s calc(var(--k) * .04s) cubic-bezier(.2, 1, .3, 1) both; }
 @keyframes wsink { from { opacity: 0; transform: translateY(-.7em); filter: blur(5px); } }
-.box .nx { position: absolute; right: 2.4cqw; bottom: 1.2cqw; width: 1.6cqw; height: 1.6cqw; border-radius: 50%; border: .18cqw solid var(--rose); }
-.box .nx::after { content: ""; position: absolute; left: 50%; top: 50%; width: .62cqw; height: .16cqw; margin-top: -.08cqw; background: var(--rose); transform-origin: 0 50%; animation: spin 2s steps(8) infinite; }
-.nm { left: calc(50% - 25cqw); bottom: 12.9cqw; z-index: 5; padding: .14em .8em .08em .55em; font: italic 900 2.6cqw/1 var(--cond); letter-spacing: .07em; text-transform: uppercase;
-  background: var(--rose); color: var(--ink); transform: rotate(-5deg); clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); }
-.nm.hide { visibility: hidden; }
-.nm.pop { animation: pop .5s var(--spring); }
-@keyframes pop { from { transform: rotate(-25deg) scale(0); } }
-.ch { left: 50%; bottom: 16.4cqw; width: 38cqw; margin-left: -17cqw; }
-.ch li { margin-top: .6cqw; font: italic 800 1.85cqw/1.1 var(--cond); color: var(--foam); }
-.ch .it { display: flex; width: 100%; white-space: normal; padding: .55em 1.3em .5em 1.6em; background: rgba(10, 3, 6, .86); clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); }
-.ch .it .fx { inset: 0; z-index: 1; background: linear-gradient(100deg, var(--crim), var(--rose) 140%); clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); transform: scaleX(0); transform-origin: left; transition: transform .28s var(--spring); }
-.ch li.sel .it .fx { transform: scaleX(1); }
-.ch li.sel .tx { animation: kick2 .32s var(--spring) both; }
-@keyframes kick2 { from { transform: translateX(-.6em); opacity: .4; } }
-.ch li:nth-child(2) { margin-left: 2cqw; }
-.in .ch li { animation: chIn .5s calc(var(--i) * .1s + .9s) var(--spring) both; }
-@keyframes chIn { from { transform: translateX(30cqw) skewX(-14deg); opacity: 0; } }
+.ch { right: 30cqw; display: grid; gap: .75cqw; justify-items: end; max-width: 40cqw; }
+.ch ol { display: grid; gap: .75cqw; justify-items: end; }
+.ch li { position: relative; }
+.ch .it { display: block; white-space: normal; padding: .8cqw 1.9cqw; background: rgba(20, 7, 15, .94); color: #fff; font: italic 800 1.3cqw/1.25 var(--loud); letter-spacing: .02em; text-align: left;
+  transform: skewX(-14deg); box-shadow: .35cqw .35cqw 0 rgba(255, 79, 158, .5); transition: background .12s, color .12s, box-shadow .2s var(--tickE), transform .2s var(--tickE); }
+.ch .it .fx { display: none; }
+.ch .it .tx { display: inline-block; transform: skewX(14deg); }
+.ch li.sel .it { background: var(--foam); color: var(--deep); box-shadow: .5cqw .5cqw 0 var(--rose); transform: skewX(-14deg) translateX(-.6cqw); }
+/* the chosen choice gets a clock hand that ticks in from the left */
+.ch li::before { content: ""; position: absolute; right: calc(100% + .8cqw); top: 50%; width: 2.6cqw; height: .45cqw; margin-top: -.225cqw; background: var(--rose); clip-path: polygon(0 50%, 22% 0, 100% 30%, 100% 70%, 22% 100%);
+  transform-origin: 100% 50%; transform: rotate(-90deg) scaleX(0); transition: transform .3s var(--tickE); filter: drop-shadow(0 0 .3cqw var(--rose)); }
+.ch li.sel::before { transform: rotate(180deg) scaleX(1); }
+.in .ch li { animation: chIn .35s calc(var(--i) * .12s + .8s) steps(5, end) both; }
+@keyframes chIn { from { transform: translateX(6cqw) skewX(-14deg); opacity: 0; } }
 .ch.gone { visibility: hidden; }
-.chip { right: 2cqw; top: 2cqw; display: flex; align-items: center; gap: .9cqw; font: italic 800 1.5cqw/1 var(--cond); letter-spacing: .14em; color: var(--rose-2); text-transform: uppercase; }
-.chip .dial { width: 5.6cqw; }
+.chip { right: 2cqw; top: 2cqw; display: flex; align-items: center; gap: .9cqw; padding: .5cqw 1.2cqw .5cqw .6cqw; background: rgba(20, 7, 15, .8); font: italic 900 1.5cqw/1 var(--loud); letter-spacing: .14em; color: var(--rose-2); text-transform: uppercase; clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%); }
+.chip .dial { width: 5.4cqw; }
 
 /* ════ D · The Well (dungeon): command dial, ring gauges, the depth gauge lives here only ════ */
 .f-battle .bg { filter: saturate(.35) brightness(.38) contrast(1.1); }
@@ -229,7 +286,7 @@ li.pick .it { animation: pickit .42s ease-out; }
 .feet i:nth-child(2) { animation-delay: 1s; } .feet i:nth-child(3) { animation-delay: 2s; }
 @keyframes ring { 10% { opacity: .8; } to { transform: scale(3.2); opacity: 0; } }
 .tg { left: 41cqw; top: 2cqw; }
-.tg b { display: block; font: 900 3cqw/.9 var(--tall); color: var(--bone); letter-spacing: .04em; text-transform: uppercase; }
+.tg b { display: block; font: italic 900 3cqw/.9 var(--tall); color: var(--bone); letter-spacing: .04em; text-transform: uppercase; }
 .tg b small { font: italic 800 1.5cqw var(--cond); color: var(--rose); margin-left: .6cqw; letter-spacing: .06em; }
 .tg ul { display: flex; gap: .3cqw; margin-top: .6cqw; }
 .tg li { display: grid; place-items: center; min-width: 2.9cqw; padding: .3cqw .35cqw; font: 700 .82cqw/1 var(--body); letter-spacing: .06em; text-transform: uppercase; background: rgba(255, 227, 234, .1); color: var(--foam); clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%); }
@@ -264,17 +321,17 @@ li.pick .it { animation: pickit .42s ease-out; }
 @keyframes fillRing { from { --v: 0; } }
 .fc { position: absolute; inset: 18%; border-radius: 50%; overflow: hidden; background: var(--blood); }
 .fc img { position: absolute; width: 190%; max-width: none; left: -46%; top: -12%; }
-.lead .hpn { position: absolute; left: 50%; bottom: -1.2cqw; translate: -50% 0; padding: .1em .45em; font: 900 1.6cqw/1 var(--tall); background: var(--ink); color: var(--bone); white-space: nowrap; }
+.lead .hpn { position: absolute; left: 50%; bottom: -1.2cqw; translate: -50% 0; padding: .1em .45em; font: italic 900 1.6cqw/1 var(--tall); background: var(--ink); color: var(--bone); white-space: nowrap; }
 .lead .hpn small { font-size: .65em; color: var(--rose-2); }
 .pty { right: 13.5cqw; bottom: 2cqw; display: flex; gap: 2.4cqw; }
 .mb { display: grid; grid-template-columns: 5.4cqw auto; gap: 0 .8cqw; align-items: center; }
 .mb .ring { position: relative; width: 5.4cqw; height: 5.4cqw; grid-row: span 3; }
 .mb b { font: italic 900 1.7cqw/1 var(--cond); color: var(--bone); text-transform: uppercase; }
-.mb span { font: 900 1.9cqw/1 var(--tall); color: var(--foam); } .mb span small { font-size: .55em; color: var(--rose-2); margin-left: .3em; }
+.mb span { font: italic 900 1.9cqw/1 var(--tall); color: var(--foam); } .mb span small { font-size: .55em; color: var(--rose-2); margin-left: .3em; }
 .mb em { font: 600 .9cqw/1 var(--body); font-style: normal; letter-spacing: .14em; color: var(--ash); }
 .in .mb { animation: rowIn .5s calc(var(--n) * .08s + .5s) var(--spring) both; }
 .depth { right: 2cqw; top: 2.4cqw; bottom: 2.4cqw; width: 9.6cqw; color: var(--foam); }
-.depth .hd { display: block; text-align: right; font: 800 1.15cqw/1 var(--tall); letter-spacing: .3em; color: var(--rose-2); }
+.depth .hd { display: block; text-align: right; font: italic 800 1.15cqw/1 var(--tall); letter-spacing: .3em; color: var(--rose-2); }
 .shaft { position: absolute; right: .2cqw; top: 3cqw; bottom: 4.4cqw; width: 1.3cqw; background: rgba(255, 227, 234, .06); box-shadow: inset 0 0 0 1px rgba(255, 59, 122, .4); overflow: hidden; }
 .shaft .fill { position: absolute; left: 0; right: 0; top: 0; height: calc(var(--f) * 100%); background: linear-gradient(var(--blood), var(--crim)); transform-origin: top; }
 .in .shaft .fill { animation: fillDown 1.4s .3s var(--swing) both; }
@@ -288,7 +345,7 @@ li.pick .it { animation: pickit .42s ease-out; }
 .in .mark { animation: markDown 1.4s .3s var(--swing) both; }
 @keyframes markDown { from { top: 3cqw; } }
 .mark .lv { text-align: right; padding: .3cqw .6cqw; background: var(--ink); box-shadow: inset 0 0 0 1px var(--rose); }
-.mark .lv b { display: block; font: 900 2.2cqw/.9 var(--tall); color: var(--bone); }
+.mark .lv b { display: block; font: italic 900 2.2cqw/.9 var(--tall); color: var(--bone); }
 .mark .lv small { display: block; font: 700 .85cqw/1 var(--body); letter-spacing: .12em; color: var(--rose-2); }
 .mark .wl { width: 2.2cqw; height: .2cqw; background: var(--rose); box-shadow: 0 0 .8cqw var(--rose); animation: blink 1.2s ease-in-out infinite; }
 .depth .ft { position: absolute; right: 0; bottom: 0; text-align: right; font: 600 .82cqw/1.35 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--ash); }
@@ -310,11 +367,11 @@ li.pick .it { animation: pickit .42s ease-out; }
 @keyframes whand { 0% { opacity: 1; transform: rotate(calc(var(--from) - 90deg)); } 90% { opacity: 1; } 100% { opacity: 0; transform: rotate(calc(var(--from) + 270deg)); } }
 .f-time .big { left: 50%; top: 46%; width: 27cqw; translate: -50% -50%; }
 .f-time .big svg { filter: drop-shadow(0 1cqw 2cqw rgba(0, 0, 0, .5)); }
-.f-time .word { left: 0; right: 0; bottom: 7.2cqw; text-align: center; font: 900 6.4cqw/.85 var(--tall); color: var(--bone); letter-spacing: .04em; text-transform: uppercase; text-shadow: 0 .06em .3em rgba(0, 0, 0, .6); pointer-events: none; }
+.f-time .word { left: 0; right: 0; bottom: 7.2cqw; text-align: center; font: italic 900 6.4cqw/.85 var(--tall); color: var(--bone); letter-spacing: .04em; text-transform: uppercase; text-shadow: 0 .06em .3em rgba(0, 0, 0, .6); pointer-events: none; }
 .f-time .word.go { animation: wordIn .6s .55s var(--spring) both; }
 @keyframes wordIn { from { transform: translateY(-.5em) scale(1.3); opacity: 0; filter: blur(10px); } }
 .f-time .date { left: 3cqw; top: 2.6cqw; font: italic 800 2cqw/1 var(--cond); color: var(--bone); letter-spacing: .1em; text-transform: uppercase; text-shadow: 0 .1em .4em rgba(0, 0, 0, .6); }
-.f-time .date b { display: block; font: 900 5cqw/.85 var(--tall); }
+.f-time .date b { display: block; font: italic 900 5cqw/.85 var(--tall); }
 .pips { left: 3cqw; bottom: 2.6cqw; display: flex; gap: .6cqw; }
 .pips li { padding: .35em .8em; font: italic 800 1.3cqw/1 var(--cond); letter-spacing: .1em; text-transform: uppercase; color: var(--foam); background: rgba(10, 3, 6, .7); clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); transition: background .3s, color .3s; }
 .pips li.on { background: var(--rose); color: var(--ink); }
@@ -348,30 +405,31 @@ li.pick .it { animation: pickit .42s ease-out; }
   <div>
     <a class="back" href="index.html">← All directions</a>
     <h1>5 · <span>Equilux</span></h1>
-    <p>Halfway × The Well. The clock is the game's signature now: the title's split is a clock hand that sweeps, the HUD is a clock, and time passing wipes the screen around it. The Well's eerie dark half stays; its depth gauge lives in the dungeon only. More motion everywhere.</p>
+    <p>Halfway × The Well, pass 2. Solstice's pink and black and its font, louder and creepier. The clock is the signature: it ticks on the title (touch it and the night takes over), sits in the HUD, and wipes the screen when time passes. The depth gauge lives in the dungeon only.</p>
   </div>
-  <div class="pg-sw"><i style="--c:#0a0306" data-h="ink"></i><i style="--c:#2a0509" data-h="blood"></i><i style="--c:#c8102e" data-h="crimson"></i><i style="--c:#ff3b7a" data-h="rose"></i><i style="--c:#ffe3ea" data-h="foam"></i><i style="--c:#f4ede8" data-h="bone"></i></div>
+  <div class="pg-sw"><i style="--c:#0d0408" data-h="ink"></i><i style="--c:#14070f" data-h="deep"></i><i style="--c:#2a0f22" data-h="wine"></i><i style="--c:#4a1838" data-h="plum"></i><i style="--c:#ff4f9e" data-h="pink"></i><i style="--c:#ff8cc0" data-h="pink 2"></i><i style="--c:#fff4f9" data-h="paper"></i></div>
 </header>
 <nav class="pg-jump"><a href="#a">A Title</a><a href="#b">B Field menu</a><a href="#c">C Dialogue</a><a href="#d">D The Well (battle)</a><a href="#e">E Time passes</a></nav>
 <p class="pg-keys"><kbd>↑</kbd> <kbd>↓</kbd> move · <kbd>Enter</kbd> pick, on whichever screen is in the middle of the window. Every screen replays its entrance when you scroll back to it.</p>
 
 <!-- A · Title -->
 <section class="scr" id="a">
-  <h2 class="scr-h"><b>A</b> Title <small>the split is a clock hand: day and night trade places as it turns</small></h2>
+  <h2 class="scr-h"><b>A</b> Title <small>the clock ticks · move, touch or press a key and the night takes the whole screen; rest and the day comes back</small></h2>
   <p class="rot-note">Turn your phone sideways, or scroll the screen →</p>
   <div class="rot"><div class="frame keep f-title">
-    <div class="lay day"><div class="rays"></div><div class="tone"></div><div class="face12"></div><div class="logo" data-logo></div></div>
-    <div class="lay night"><div class="caus"><i></i><i></i><i></i></div><div class="specks"></div><div class="face12"></div><div class="logo" data-logo></div><div class="refl">EQUINOX</div></div>
-    <div class="seam"></div><div class="hptr"></div><div class="pivot"></div>
-    <div class="t-band"></div>
+    <div class="lay day"><div class="rings"></div><div class="tone"></div><div class="face12"></div><div class="logo" data-logo></div></div>
+    <div class="lay night"><div class="caus"><i></i><i></i><i></i></div><div class="specks"></div><div class="face12"></div><div class="logo" data-logo></div></div>
+    <div class="seam"></div><div class="hptr"></div><span class="dring"></span><span class="dring b"></span><div class="pivot"></div>
+    <div class="vig"></div><div class="grain"></div>
     <div class="k t-plate"><span class="t-mini"><i></i></span><ol class="bl" data-fill="title" data-nav aria-label="Title menu"></ol></div>
     <div class="k t-foot"><b>Press Enter</b>Persona 3: Equinox · fan game · mockup</div>
+    <span class="k t-hint">Rest a few seconds to see the day come back</span>
   </div></div>
 </section>
 
 <!-- B · Field menu -->
 <section class="scr" id="b">
-  <h2 class="scr-h"><b>B</b> Field menu <small>the HUD is a clock · blades kick in · the chosen word sinks into the background</small></h2>
+  <h2 class="scr-h"><b>B</b> Field menu <small>Solstice's font, louder · paper bar fitted under the word · the echo twitches · grain, scanline, glitching ghost word</small></h2>
   <p class="rot-note">Turn your phone sideways, or scroll the screen →</p>
   <div class="rot"><div class="frame keep f-field">
     <img class="cover bg" src="../../assets/femc/bg/iwatodaidorm-livingroom-night.webp" alt="">
@@ -383,25 +441,26 @@ li.pick .it { animation: pickit .42s ease-out; }
     <div class="k hud"><div class="dt"><b class="md">4/21</b><span class="wd">Wed</span><span class="sl">Evening</span><span class="mn">Moon · waxing ¾</span></div><div class="dial" data-dial="19.5"></div></div>
     <p class="k f-tip">Who walks into the Well with you tonight.</p>
     <div class="k wal">¥48,200 · <b>✦ 12</b> Plumes</div>
+    <div class="scan"></div><div class="vig"></div><div class="grain"></div>
   </div></div>
 </section>
 
 <!-- C · Dialogue -->
 <section class="scr" id="c">
-  <h2 class="scr-h"><b>C</b> Dialogue <small>a narrow box between the two faces · words sink in · pick a choice and Solar answers</small></h2>
+  <h2 class="scr-h"><b>C</b> Dialogue <small>Solstice's sizes and placement · the name tag swings in like a hand · a tick walks the top edge · words sink in</small></h2>
   <p class="rot-note">Turn your phone sideways, or scroll the screen →</p>
   <div class="rot"><div class="frame keep f-talk">
     <img class="cover bg" src="../../assets/femc/bg/iwatodaidorm-livingroom-night.webp" alt="">
     <div class="mul"></div>
-    <img class="por l on" src="../../assets/femc/portraits/yukari/neutral.webp" alt="">
+    <img class="por l" src="../../assets/femc/portraits/yukari/neutral.webp" alt="">
     <img class="por r dim" src="../../assets/femc/portraits/solar/neutral.webp" alt="">
     <div class="k chip"><div class="dial" data-dial="19.5"></div>Evening</div>
     <div class="k ch"><ol data-fill="choice" data-nav aria-label="Choices"></ol></div>
-    <span class="k nm">Yukari</span>
     <div class="k box" data-talk title="Click to replay">
-      <div class="wave"><svg viewBox="0 0 200 10" preserveAspectRatio="none"><path d="M0 0H200V4Q187.5 9 175 4T150 4T125 4T100 4T75 4T50 4T25 4T0 4Z"/></svg></div>
-      <p class="line"></p><span class="nx"></span>
+      <span class="nm">Yukari</span>
+      <div class="txt"><span class="tk2"></span><span class="glow"></span><p class="line"></p></div>
     </div>
+    <div class="grain"></div>
   </div></div>
 </section>
 
@@ -458,7 +517,7 @@ li.pick .it { animation: pickit .42s ease-out; }
   </div></div>
 </section>
 
-<p class="note"><b>What changed from your notes:</b> Halfway's pink line is gone; the split is now a soft edge that turns like a clock hand. The clock is everywhere (title, HUD, dialogue corner, time passing). The Well's depth numbers only appear in the dungeon. The dialogue box is about half as wide, so it sits between the two portraits instead of over them. Selections kick in with springy blades, rows slide in, ghost words sink, ripples spread.</p>
+<p class="note"><b>Pass 2, from your notes:</b> one palette (Solstice's pink and black, no red), Solstice's font, the title clock ticks, and touching or moving brings the night over everything until you rest. The selection is louder and creepier and sits right under the word. Dialogue is back to Solstice's sizes and placement, with Equinox motion on top.</p>
 <div style="height:60px"></div>
 
 <script>window.EQ_OPTS = { sub: { field: ['4 in the field', '12 held', 'Trees', 'Cards ×6', '63 items', 'Boutique open', '33 links', 'Charm 4', 'Journal · Album'] } };</script>
@@ -467,9 +526,15 @@ li.pick .it { animation: pickit .42s ease-out; }
 (function () {
   'use strict';
   var B = '../../assets/femc/';
+  var REDUCED = window.EQ && EQ.reduced;
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function retrigger(el, cls) { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
   var SIN = function (d) { return Math.sin(d * Math.PI / 180); }, COS = function (d) { return Math.cos(d * Math.PI / 180); };
+
+  // the selection's extra layers (slash, offset outline) go into every blade-list row
+  [].forEach.call(document.querySelectorAll('.bl .it'), function (it) {
+    it.insertAdjacentHTML('afterbegin', '<i class="sl" aria-hidden="true"></i><i class="ol" aria-hidden="true"></i>');
+  });
 
   // ── the 24-hour dial: 18:00 at the top, the day half on the left (noon), the night half on the right (midnight) ──
   var SLOTS = [7.5, 15.5, 19.5, 24];
@@ -485,7 +550,8 @@ li.pick .it { animation: pickit .42s ease-out; }
       s += '<text class="lb s" x="100" y="62">18</text><text class="lb n" x="138" y="100">24</text><text class="lb s" x="100" y="138">06</text><text class="lb d" x="62" y="100">12</text>';
       SLOTS.forEach(function (h) { var a = angOf(h); s += '<circle class="slot" cx="' + (100 + 104 * SIN(a)).toFixed(1) + '" cy="' + (100 - 104 * COS(a)).toFixed(1) + '" r="3.2"/>'; });
     }
-    return s + '<g class="hand"><g class="wob"><polygon points="96,104 100,' + (big ? 18 : 14) + ' 104,104"/><circle cx="100" cy="100" r="' + (big ? 7 : 9) + '"/></g></g></svg>';
+    return s + '<g class="hand"><g class="wob"><polygon points="96,104 100,' + (big ? 18 : 14) + ' 104,104"/></g></g>' +
+      '<line class="sec" x1="100" y1="114" x2="100" y2="' + (big ? 12 : 10) + '"/><circle cx="100" cy="100" r="' + (big ? 6 : 8) + '"/></svg>';
   }
   [].forEach.call(document.querySelectorAll('[data-dial]'), function (d) {
     d.innerHTML = dial24(d.hasAttribute('data-big'));
@@ -508,7 +574,7 @@ li.pick .it { animation: pickit .42s ease-out; }
   [].forEach.call(T.querySelectorAll('[data-logo]'), function (l) {
     l.innerHTML = '<span class="kick">Persona 3</span><span class="eq">' + 'EQUINOX'.split('').map(function (c, k) { return '<span style="--k:' + k + '">' + c + '</span>'; }).join('') + '</span><span class="tag">Day equals night</span>';
   });
-  var f12 = '<svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="98"/><circle class="r2" cx="100" cy="100" r="88"/><g class="spin"><circle class="dash" cx="100" cy="100" r="70"/></g>';
+  var f12 = '<svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="98"/><circle class="r2" cx="100" cy="100" r="88"/><circle class="dash" cx="100" cy="100" r="70"/>';
   for (var m = 0; m < 60; m++) { var r1 = m % 5 ? 93 : 89; f12 += '<line class="m' + (m % 15 ? '' : ' M') + '" x1="' + (100 + r1 * SIN(m * 6)).toFixed(1) + '" y1="' + (100 - r1 * COS(m * 6)).toFixed(1) + '" x2="' + (100 + 97 * SIN(m * 6)).toFixed(1) + '" y2="' + (100 - 97 * COS(m * 6)).toFixed(1) + '"/>'; }
   f12 += '<text x="100" y="80">XII</text><text x="120" y="100">III</text><text x="100" y="120">VI</text><text x="80" y="100">IX</text></svg>';
   [].forEach.call(T.querySelectorAll('.face12'), function (f) { f.innerHTML = f12; });
@@ -517,12 +583,40 @@ li.pick .it { animation: pickit .42s ease-out; }
   var plate = T.querySelector('.t-plate');
   plate.addEventListener('eq:select', function (e) { plate.style.setProperty('--s', e.detail.i); });
 
+  // The clock ticks: the hand jumps 6° each second with a little overshoot (a full turn a minute). On entry it sweeps in.
+  var hand = 30, tickT = null;
+  function setHand(v, how) { T.style.transition = how || ''; T.style.setProperty('--hand', v + 'deg'); }
+  function sweepIn() {
+    setHand(hand - 330, 'none'); void T.offsetWidth;
+    setHand(hand, '--hand 1.8s cubic-bezier(.16, .84, .24, 1)');
+    setTimeout(function () { T.style.transition = ''; }, 1850);
+  }
+  onIn.push(function (f) { if (f === T) { dusk(false); sweepIn(); } });
+  tickT = setInterval(function () {
+    if (!T.classList.contains('in') || T.classList.contains('dusk') || document.hidden || REDUCED) return;
+    hand += 6; setHand(hand);
+    T.classList.add('tock'); setTimeout(function () { T.classList.remove('tock'); }, 120);
+  }, 1000);
+
+  // Dusk: any movement, touch or key while the title is up lets the night spread from the clock over the whole screen;
+  // the clock stops, two rings go out, the logo starts to haunt. Six seconds of rest and the day comes back.
+  var idle = null;
+  function dusk(on) {
+    if (on && !T.classList.contains('dusk')) { T.classList.add('dusk'); [].forEach.call(T.querySelectorAll('.dring'), function (r) { retrigger(r, 'go'); }); }
+    if (!on) T.classList.remove('dusk');
+    clearTimeout(idle);
+    if (on) idle = setTimeout(function () { dusk(false); }, 6000);
+  }
+  ['pointermove', 'pointerdown', 'touchstart'].forEach(function (ev) { T.addEventListener(ev, function () { dusk(true); }, { passive: true }); });
+  plate.addEventListener('eq:select', function () { if (T.classList.contains('in')) dusk(true); });
+  plate.addEventListener('eq:pick', function () { dusk(true); });
+
   // ════ B · field ════
   var F = document.querySelector('.f-field'), ghost = F.querySelector('.ghost'), tip = F.querySelector('.f-tip');
   var TIPS = ['Who walks into the Well with you tonight.', 'Your Personas: fuse, shuffle, rename.', 'The skill trees: yours and everyone else\'s.', 'Weapons, armour, accessories and cards.',
     'Items, keys, and things people gave you.', 'Outfits, and the Boutique.', 'Social Links and bonds.', 'Stats, the calendar, the moon.', 'Journal, album, theater, compendium.'];
   F.addEventListener('eq:select', function (e) {
-    ghost.textContent = e.detail.li.textContent.replace(e.detail.li.querySelector('.sub') ? e.detail.li.querySelector('.sub').textContent : '', '');
+    ghost.textContent = e.detail.li.querySelector('.tx').textContent;
     retrigger(ghost, 'go');
     tip.textContent = TIPS[e.detail.i] || ''; retrigger(tip, 'go');
     var fr = F.getBoundingClientRect(), r = e.detail.li.querySelector('.tx').getBoundingClientRect();
@@ -532,25 +626,30 @@ li.pick .it { animation: pickit .42s ease-out; }
   });
 
   // ════ C · dialogue ════
-  var C = document.querySelector('.f-talk'), box = C.querySelector('.box'), line = box.querySelector('.line'), nm = C.querySelector('.nm');
+  var C = document.querySelector('.f-talk'), box = C.querySelector('.box'), line = box.querySelector('.line'), nm = box.querySelector('.nm'), glow = box.querySelector('.glow');
   var porL = C.querySelector('.por.l'), porR = C.querySelector('.por.r'), ch = C.querySelector('.ch');
-  var FIRST = 'Placeholder line. The box sits between us now, so it never covers anyone\'s face, and the words sink in one at a time.';
+  var FIRST = 'Placeholder line. Solstice\'s box, Solstice\'s sizes: the words still sink in one at a time, and a tick keeps walking the top edge.';
+  function placeChoices() { ch.style.bottom = (C.clientHeight - box.offsetTop + C.clientWidth * .011) + 'px'; }
   function say(who, text, act) {
     line.classList.toggle('act', !!act);
     line.innerHTML = text.split(' ').map(function (w, k) { return '<span class="w" style="--k:' + k + '">' + esc(w) + '</span>'; }).join(' ');
     nm.classList.toggle('hide', !!act);
-    if (!act) { nm.textContent = who; retrigger(nm, 'pop'); }
+    if (!act) { nm.textContent = who; retrigger(nm, 'swing'); }
+    retrigger(glow, 'go');
     var solar = who === 'Solar';
-    porL.classList.toggle('dim', solar); porL.classList.toggle('on', !solar);
-    porR.classList.toggle('dim', !solar); porR.classList.toggle('on', solar);
+    porL.classList.toggle('dim', solar); porR.classList.toggle('dim', !solar);
+    retrigger(solar ? porR : porL, 'shiver');
+    placeChoices();
   }
   function reset() { ch.classList.remove('gone'); say('Yukari', FIRST); }
   onIn.push(function (f) { if (f === C) reset(); });
+  addEventListener('resize', placeChoices);
   box.addEventListener('click', reset);
   ch.addEventListener('eq:pick', function (e) {
-    var t = e.detail.li.textContent.trim(), act = /^\(.*\)$/.test(t);
+    var t = e.detail.li.querySelector('.tx').textContent.trim(), act = /^\(.*\)$/.test(t);
     setTimeout(function () { ch.classList.add('gone'); say('Solar', act ? t.slice(1, -1) : t, act); }, 260);
   });
+  reset();
 
   // ════ D · battle ════
   var D = document.querySelector('.f-battle'), cmds = D.querySelector('.cmds'), slam = D.querySelector('.slam');
