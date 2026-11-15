@@ -1375,12 +1375,22 @@
     });
     persist();
     if (nowTired.length) tip('fatigue');
-    await results({ title, out, rew, bonus, nowTired, op, reaper, back, notes, shuffle });
+    if (out.skipped) {
+      const g = gainExp(rew.exp); persist(); if (g.any) mark('levelup');
+      quickWin(`+${rew.exp} EXP · ¥${rew.yen.toLocaleString('en-US')}${Object.keys(rew.drops).length ? ' · ' + Object.entries(rew.drops).map(([k, n]) => `${(D.materials[k] || D.items[k] || { name: k }).name} ×${n}`).join(', ') : ''}${g.any ? ' · Level up!' : ''}`);
+    } else await results({ title, out, rew, bonus, nowTired, op, reaper, back, notes, shuffle });
     await resolvePending();   // a ninth skill from a level-up: forget which?
     await pendingEvolutions();
     await resolvePending();   // an evolved Persona's new skills
     const forms = checkForms();
     for (const f of forms) await formUnlocked(f);
+  }
+  /* The note for a skipped easy fight (easySkip): over the map, gone in ~2.6 s, never takes focus. */
+  function quickWin(text) {
+    const n = document.createElement('div'); n.className = 'bt-quickwin'; n.setAttribute('role', 'status');
+    n.innerHTML = `<b>TOO EASY</b><span>Fight skipped · ${esc(text)}</span>`;
+    (root || document.body).appendChild(n); sfx('ok');
+    setTimeout(() => { n.classList.add('out'); setTimeout(() => n.remove(), 400); }, 2600);
   }
   /* Tartarus-side bond perks (build.js battlePerks): story nights only; practice has no links. */
   const TP = () => (BLD && HO ? BLD.battlePerks(save, hoAvail()) : {});
@@ -2079,27 +2089,28 @@
     if (RL && RL.epi) epiSetup(spec);
     navSaid = new Set(); summoned = new Set(); thSeen = new Set(); barkN = new Map(); barkAt = 0; barkQ = []; barkRun = 0;
     curSpec = spec; blog = []; lastTgt = {}; focusId = null;
+    // Skip easy fights (Nov 15 2026, Kat; setting easySkip): a plain Tartarus room where every party member is 10+ levels over
+    // every Shadow never opens the battle screen: it's won on the map with the usual EXP, yen and drops (no Shuffle Time,
+    // no results screen; afterWin shows a small note instead). Never strong rooms, rare Shadows, guardians, full moons, the
+    // Reaper, story fights or any fight with rules.
+    if (easySkip(spec)) {
+      B.foes().forEach(f => { f.dead = true; f.hp = 0; });
+      if (tallyOn()) HS.tally.kills += B.foes().length;
+      if (run) run.carry = Object.fromEntries(B.party().map(p => [p.mid, { hp: p.hp, sp: p.sp, th: p.th }]));
+      lastBattleEnd = Date.now(); persist(); mark('easy-skip');
+      const fh = curPerks.freshHarvest;
+      return { result: 'win', rew: E.rewards(B, rand, fh ? { drop: fh.v } : {}), boss: false, rating: null, skipped: true };
+    }
     blogAdd(`${spec.label} · ${spec.block}${spec.boss && !spec.reaper ? ' · Full Moon' : spec.reaper ? ' · The Reaper' : spec.strong ? ' · Strong Shadows' : ''} · ${diff().name}`, 'sys');
     buildBattle(spec);
     root.classList.add('bt-in-battle');
     music.play(spec.music || 'battle', { restart: true });
-    // Skip easy fights (Nov 15 2026, Kat; setting easySkip): a plain Tartarus room where every party member is 10+ levels over
-    // every Shadow is won at once, with the usual rewards (EXP, yen, loot, a possible Shuffle Time). Never strong rooms, rare
-    // Shadows, guardians, full moons, the Reaper or any fight with rules.
-    const easy = easySkip(spec);
-    if (!easy) {
-      await stills(theurgyStills());
-      await intro(spec, kinds);
-      await entranceCard(spec);
-    } else {
-      B.foes().forEach(f => { f.dead = true; f.hp = 0; }); B.S.round = 3;
-      blogAdd('Too easy: the Shadows scatter before the fight starts.', 'sys'); mark('easy-skip');
-      banner('TOO EASY', { sub: 'Fight skipped' });
-      syncAll(); await sleep(900);
-    }
+    await stills(theurgyStills());
+    await intro(spec, kinds);
+    await entranceCard(spec);
     if (RL && RL.epi) epiOpen(spec);
-    if (!easy && fx.openBuff) await play(B.openBuff(fx.openBuff));
-    if (!easy && B.start) await play(B.start());
+    if (fx.openBuff) await play(B.openBuff(fx.openBuff));
+    if (B.start) await play(B.start());
     nav(spec.nav, spec.navVars || {});
     // A boss on the field: someone in the party says so.
     if (spec.boss || spec.reaper) { const who = B.party().filter(p => !p.dead && p !== B.leader()); bark(who.length ? who[Math.floor(Math.random() * who.length)] : B.leader(), 'boss', {}, { force: true }); }
