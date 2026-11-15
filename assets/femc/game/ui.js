@@ -897,7 +897,7 @@
   }
   function endPrologue() {
     const s = S();
-    s.phase = 'play'; s.day = G.dayOf(G.D.cal.firstFree); s.slot = G.CFG.prologueSlot || 'lunch'; s.pending = null; // Equinox: 'early' (its 4/8 starts in the morning)
+    s.phase = 'play'; s.day = G.dayOf(G.D.cal.firstFree); s.slot = G.CFG.prologueSlot || 'lunch'; s.pending = null; G.knownTick(); // Equinox: 'early' (its 4/8 starts in the morning)
     cardDay = s.day;
     G.save();
     run();

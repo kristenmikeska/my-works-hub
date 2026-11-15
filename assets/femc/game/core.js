@@ -2795,6 +2795,16 @@ window.FemcGame = (() => {
     if (i >= 0 && i < list.length - 1) { S.slot = list[i + 1]; expireInvite(); deliverTexts(); save(); return { newDay: false }; }
     return sleep();
   }
+  // People Solar already knows when a game starts (FEMC_GAME_CONFIG.knownFrom = { linkId: 'M/D' }: Equinox, where everyone
+  // remembers her): counted as met and in the Compendium from that date, quietly, so their names aren't "???" before rank 1.
+  function knownTick() {
+    const K = CFG.knownFrom; if (!K || !S) return;
+    Object.entries(K).forEach(([id, md]) => {
+      if (!LINKS[id] || S.day < dayOf(md)) return;
+      if (!S.met.includes(id)) S.met.push(id);
+      if (!S.registered.includes(id)) S.registered.push(id);
+    });
+  }
   function sleep() {
     lifeOvernight();
     // Overnight: Tartarus tires her out; resting clears it.
@@ -2806,7 +2816,7 @@ window.FemcGame = (() => {
     S.tonight = null;
     if (S.day >= END()) { S.slot = 'late'; save(); return { newDay: false, end: true }; }
     S.day += 1; S.slot = 'early';
-    weeklyBonds();
+    weeklyBonds(); knownTick();
     // Don't let old spent markers pile up forever.
     Object.keys(S.spent).forEach(k => { if (+k.split('-')[0] < S.day - 1) delete S.spent[k]; });
     expireInvite(); deliverTexts(); save();
@@ -3083,7 +3093,7 @@ window.FemcGame = (() => {
 
   indexLinks();
   return {
-    KEY, CFG, HANDOFF_KEY, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
+    KEY, CFG, HANDOFF_KEY, knownTick, base, D, get S() { return S; }, save, saveQuiet, newGame, onChange, settings, setSetting, setSettings, DEFAULTS, textDelay, sfx,
     dayOf, dateOf, mdOf, dayInfo, seasonal, dressed, slotsFor, slotName, weather, wx, forecast, wxIn, wet, rainSale, moon, END, SLOT_ORDER,
     statRank, statRankName, statProgress, statId, statReward, statRewards, statPerkList, statJobBonus, jobStatOf, examBonus, knowsAnswer, sumStats, gainText, addStat, addStats, lacking, addYen, takeToasts, toast, migrateStats,
     LINKS, progress, isMet, linkStatus, linkScene, finishLink, linksAt, linkPlace, linkName, need, written, areaById, isHome,

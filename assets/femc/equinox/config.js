@@ -22,6 +22,11 @@ window.FEMC_GAME_CONFIG = {
   titleKey: 'kg-femc-equinox-title-theme',
   title: { name: 'Persona 3: Equinox', tagline: 'Day Equals Night', ghost: 'Equinox' },
   prologueSlot: 'early',
+  // Everyone who woke on 4/6 already knows Solar: met from the first school day (core.js knownTick), not "???" before rank 1.
+  // Later arrivals are met in their own first scenes.
+  knownFrom: { akihiko: '4/8', mitsuru: '4/8', yukari: '4/8', junpei: '4/8', aigis: '4/8', 'ken-koromaru': '4/8', shinjiro: '4/8',
+    haechan: '4/8', hanni: '4/8', hyein: '4/8', yunjin: '4/8', jungwon: '4/8', jihoon: '4/8', cherry: '4/8', minji: '4/8', jaehyun: '4/8',
+    elizabeth: '4/8', mrsoka: '4/10' },
   titlePage: 'femc-equinox.html',
   startKey: 'kg-femc-equinox-start',
   titleScreen() {
