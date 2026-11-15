@@ -66,3 +66,10 @@ Not loaded on `femc-equinox.html`: `epilogue.js`, `episim.js`, `stamps.js`, `scr
 - Exams on the same term weeks as Solstice. Summer and winter breaks as Solstice's.
 - Real JST full moons (4/28 … 2/18): 9/23 falls on Autumnal Equinox Day, and 12/21 is the eclipse.
 - No ops, trips or floor caps yet. The end date may move with the plot but must stay well before 3/11/2011.
+
+## Build batch 1: the title page (built Nov 15 2026)
+
+- `femc-equinox.html` + `assets/femc/equinox/title.css` / `title.js`: the Equilux title in blood red (the approved mockup's screen A, letterboxed 16:9, all drawn in code), the ticking clock, dusk on any input, and a menu: New Game · Import from Solstice · Continue · Back to Solstice. Keyboard and controller (pad.js) both work: ↑↓ move, ✕ / Enter press, ○ / Esc back.
+- No engine yet, so nothing of core.js is loaded and none of the hooks above is made. New Game and Import only set the save's **starting point**: localStorage `kg-femc-equinox-start` = `{ v: 1, at, fresh: true }` or `{ v: 1, at, from, import: <FemcEquinoxImport.read() result> }`. The engine batch reads it at New Game, calls `FemcEquinoxImport.apply(G.S, start.import)` and then deletes or keeps it (decide then).
+- Continue shows the starting point (what came over) and says the year itself is still being built.
+- Checked in the built-in pane (1440 × 900): title, New Game → Ready, Import list (unfinished saves greyed), a finished test save's preview and import, Esc back. The pane's test keys were removed afterwards.

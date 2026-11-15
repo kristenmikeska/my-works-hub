@@ -190,4 +190,6 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 
 ## Still open
 
-Nothing right now. Next: the look tests (art list section 1), then the first build batch when you say go.
+Nothing right now. Next: the look tests (art list section 1).
+
+**Built so far:** Equinox's own page, `localhost:8000/femc-equinox.html`: the blood-red ticking-clock title, New Game, and Import from Solstice (pick a finished save, see what comes over, import it). The year itself isn't built yet, so the page saves your starting point and waits.
