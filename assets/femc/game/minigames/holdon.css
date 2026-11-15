@@ -353,3 +353,4 @@
 .mg-ho.still .ho-shaft i { translate: none !important; transition: none; } .mg-ho.still .ho-room { transform: none !important; }
 .mg-ho.still .hp-refl svg { transform: none; transition: none; } .mg-ho.still .ho-dots { opacity: .4; }
 .mg-ho.still .ho-anchor.lured svg { animation: none; } .mg-ho.still .mg-end .mg-grade { animation-name: ho-tt-in; }
+.mg-ho .ho-anchor.padsel { outline: 2px dashed #ff9ac8; outline-offset: 6px; } /* the controller's pick (Nov 15 2026) */

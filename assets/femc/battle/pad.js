@@ -8,7 +8,13 @@
    prompt bar reads the screen from the DOM (lifePrompts; Nov 15 2026, Kat: play the whole game on a DualSense).
    While a controller is the last thing used, <html> gets .bt-pad (and .bt-pad-ps for PlayStation glyphs) and a prompt bar
    shows the buttons for the current screen. Any real key press, click or touch switches back.
-   Settings → Controller buttons: auto (from the pad's name) / xbox / ps. Polls only while a pad is connected. */
+   Settings → Controller buttons: auto (from the pad's name) / xbox / ps. Polls only while a pad is connected.
+   Nov 15 2026 (minigames): a release sends a matching keyup, and a held direction's repeats carry repeat: true (like a held key),
+   so hold-to-act games and rhythm lanes see a real press / release and can ignore repeats. FemcPad.remap = fn(key) -> key | null
+   lets the minigame on screen translate a button while it plays (e.g. ✕ → Space); the keyup uses the key the press was sent as.
+   Inside a minigame or the tutorial ([data-padnav], .ftut), an ✕ nobody handled clicks the focused button (what a real Enter
+   does) and an unhandled direction moves focus to the nearest button that way in the same menu. Battle and the life sim never
+   carry data-padnav, so they're unchanged. */
 (() => {
   const root = document.documentElement;
   const MAP = { 0: 'Enter', 1: 'Escape', 2: 'l', 3: 'y', 4: '[', 5: ']', 6: 'Tab', 7: 'r', 8: 'h', 9: 'p', 12: 'ArrowUp', 13: 'ArrowDown', 14: 'ArrowLeft', 15: 'ArrowRight' };
@@ -17,7 +23,11 @@
     xbox: { a: 'A', b: 'B', x: 'X', y: 'Y', lb: 'LB', rb: 'RB', lt: 'LT', rt: 'RT', start: '☰', select: '⧉', dpad: '✥' },
     ps: { a: '✕', b: '○', x: '□', y: '△', lb: 'L1', rb: 'R1', lt: 'L2', rt: 'R2', start: 'OPTIONS', select: 'SHARE', dpad: '✥' }
   };
-  let padId = '', active = false, bar = null, sig = '', timer = 0, watch = 0;
+  let padId = '', active = false, bar = null, sig = '', timer = 0, watch = 0, remap = null;
+  const remapped = key => { // the tutorial's info steps and its skip question always get the plain keys
+    if (typeof remap !== 'function') return key;
+    const T = window.FemcTutorial; if (T && T.open && T.open() && (T.blocking() || document.querySelector('.ftut.asking'))) return key;
+    try { const k = remap(key); return k === undefined ? key : k; } catch (e) { return key; } };
   const held = {}; // key → { t0, next }
 
   const getPads = () => { try { return [...(navigator.getGamepads ? navigator.getGamepads() : [])].filter(Boolean); } catch (e) { return []; } };
@@ -29,13 +39,48 @@
     if (/xbox|045e|xinput/i.test(padId)) return 'xbox';
     return /054c|playstation|dualsense|dualshock|sony|^wireless controller/i.test(padId) ? 'ps' : 'xbox';
   };
-  function send(key) {
-    const ev = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true });
-    ev.fromPad = true;
+  function send(key, type = 'keydown', repeat = false) {
     const t = document.activeElement && document.activeElement !== document.body ? document.activeElement : document;
+    const ev = new KeyboardEvent(type, { key, bubbles: true, cancelable: true, repeat });
+    ev.fromPad = true;
     t.dispatchEvent(ev);
+    if (type === 'keydown' && !ev.defaultPrevented) fallback(key, t);
+  }
+  /* Minigames and the tutorial only: what a real Enter / Space does on a focused button, and arrow focus between buttons. */
+  const BTN = 'button, [role="button"], a[href], summary, input[type="range"], input[type="checkbox"], input[type="radio"]';
+  const shown = b => !b.disabled && !b.closest('[hidden]') && b.getClientRects().length > 0 && getComputedStyle(b).visibility !== 'hidden';
+  function fallback(key, t) {
+    if (!t || t === document || !t.closest) return;
     // The life sim (no battle page): a ✕ nobody took presses the focused button, as a real Enter would (Nov 15 2026).
-    if (key === 'Enter' && !ev.defaultPrevented && !window.FemcBattle && t !== document && t.matches('button:not(:disabled), a[href], summary')) t.click();
+    if (!t.closest('[data-padnav], .ftut')) { if (key === 'Enter' && !window.FemcBattle && t.matches('button:not(:disabled), a[href], summary')) t.click(); return; }
+    if ((key === 'Enter' || key === ' ') && t.matches(BTN) && t.type !== 'range') { t.click(); return; }
+    if (!DIRS.has(key) || !t.matches(BTN)) return;
+    if (t.type === 'range' && (key === 'ArrowLeft' || key === 'ArrowRight')) { // a slider: ←→ change it, like a real arrow key
+      try { key === 'ArrowLeft' ? t.stepDown() : t.stepUp(); } catch (e) { return; }
+      t.dispatchEvent(new Event('input', { bubbles: true })); t.dispatchEvent(new Event('change', { bubbles: true })); return;
+    }
+    // the nearest one that way inside the smallest box around the focused button; none there, the next box out, up to the
+    // menu itself (a pause menu, an end card, a dialog) or the game's own root, so focus never leaves the menu it's in
+    for (let box = t.parentElement; box && box !== document.body; box = box.parentElement) {
+      const best = nearest(t, key, [...box.querySelectorAll(BTN)].filter(b => b !== t && shown(b)));
+      if (best) { best.focus({ preventScroll: false }); return; }
+      if (box.matches('[data-padnav], .ftut, .mg-pause, .mg-end, [role="dialog"]')) return;
+    }
+  }
+  function nearest(t, key, list) {
+    // edge to edge, a control inside a <label> measured as its whole row; the gap that way first, then how far off to the side
+    const geo = e => (e.closest('label') || e).getBoundingClientRect(), r = geo(t);
+    let best = null, bs = Infinity;
+    list.forEach(b => {
+      const q = geo(b);
+      const along = key === 'ArrowDown' ? q.top - r.bottom : key === 'ArrowUp' ? r.top - q.bottom : key === 'ArrowRight' ? q.left - r.right : r.left - q.right;
+      const ahead = key === 'ArrowDown' ? q.top + q.height / 2 > r.top + r.height / 2 : key === 'ArrowUp' ? q.top + q.height / 2 < r.top + r.height / 2 : key === 'ArrowRight' ? q.left + q.width / 2 > r.left + r.width / 2 : q.left + q.width / 2 < r.left + r.width / 2;
+      if (!ahead || along < -Math.min(r.height, r.width) / 2) return;
+      const v = key === 'ArrowDown' || key === 'ArrowUp', across = v ? Math.max(0, q.left - r.right, r.left - q.right) : Math.max(0, q.top - r.bottom, r.top - q.bottom);
+      const sc = Math.max(0, along) + across * 3;
+      if (sc < bs) { bs = sc; best = b; }
+    });
+    return best;
   }
   function usePad(on) {
     if (active === on) return;
@@ -145,17 +190,17 @@
     if (ax[0] < -0.55) down.add('ArrowLeft'); if (ax[0] > 0.55) down.add('ArrowRight');
     if (ax[1] < -0.55) down.add('ArrowUp'); if (ax[1] > 0.55) down.add('ArrowDown');
     const ry = ax.length > 3 ? ax[3] : 0;
-    if (Math.abs(ry) > 0.3) { const b = scrollBox(); if (b) { b.scrollTop += Math.sign(ry) * (Math.abs(ry) - 0.25) * 34; usePad(true); } }
+    if (Math.abs(ry) > 0.3 && !document.querySelector('[data-padnav]')) { const b = scrollBox(); /* not under a minigame (regionals aims with it) */ if (b) { b.scrollTop += Math.sign(ry) * (Math.abs(ry) - 0.25) * 34; usePad(true); } }
     down.forEach(key => {
       const h = held[key];
-      if (!h) { held[key] = { next: now + 380 }; usePad(true); send(key); }
-      else if (DIRS.has(key) && now >= h.next) { h.next = now + 110; send(key); }
+      if (!h) { const as = remapped(key); held[key] = { next: now + 380, as }; usePad(true); if (as) send(as); }
+      else if (DIRS.has(key) && now >= h.next) { h.next = now + 110; if (h.as) send(h.as, 'keydown', true); }
     });
-    Object.keys(held).forEach(key => { if (!down.has(key)) delete held[key]; });
+    Object.keys(held).forEach(key => { if (!down.has(key)) { const as = held[key].as; delete held[key]; if (as) send(as, 'keyup'); } });
     paintBar();
   }
-  function startPolling() { if (!timer) timer = setInterval(poll, 33); }
-  function stopPolling() { clearInterval(timer); timer = 0; Object.keys(held).forEach(k => delete held[k]); usePad(false); }
+  function startPolling() { if (!timer) timer = setInterval(poll, 16); } // 16 ms: rhythm lanes feel the press within a frame
+  function stopPolling() { clearInterval(timer); timer = 0; Object.keys(held).forEach(k => { const as = held[k].as; delete held[k]; if (as) send(as, 'keyup'); }); usePad(false); }
   addEventListener('gamepadconnected', startPolling);
   addEventListener('gamepaddisconnected', () => { if (!getPads().length) stopPolling(); });
   // Some browsers only report a pad after a button press; check now and then without a connect event.
@@ -165,5 +210,5 @@
   // Real keyboard, mouse or touch input hands the prompts back to the keyboard hints.
   addEventListener('keydown', e => { if (!e.fromPad) usePad(false); }, true);
   addEventListener('pointerdown', () => usePad(false), true);
-  window.FemcPad = { get active() { return active; }, layout, poll, prompts };
+  window.FemcPad = { get active() { return active; }, layout, poll, prompts, get remap() { return remap; }, set remap(fn) { remap = fn || null; } };
 })();

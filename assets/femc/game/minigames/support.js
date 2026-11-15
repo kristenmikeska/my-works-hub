@@ -14,6 +14,8 @@
      Protection Suzu  Space or the bell button: +25 HP to everyone, cleanses (removes anti-heal), 0.9 s of invulnerability.
                     10 s cooldown. A Suzu that lands inside a big hit's window counts as a save.
      Kitsune Rush   Q once the meter is full (it fills as she heals): 5 s where the team takes half damage and heals land double.
+     Controller (Nov 15 2026, battle/pad.js, through FemcPad.remap): D-pad ← ↓ ↑ → = ofuda to teammates 1-4 (left to right),
+                    ✕ Suzu, △ Kitsune Rush, R2 reload, ○ pauses (D-pad + ✕ in the pause menu). A held direction doesn't repeat.
    The other side: steady chip damage, plus telegraphed plays called out over comms ~1.4 s before they land:
      Ana nade  (anti-heal on one teammate for 3 s: heals do nothing until a Suzu cleanses it)
      Dragonblade (a big burst on one DPS)   Graviton (heavy damage to everyone at once)   Dive (two quick hits on one target)
@@ -48,7 +50,7 @@ window.FemcSupport = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -92,7 +94,7 @@ window.FemcSupport = (() => {
       const GS0 = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
       const still = reduced.matches, calm = o.calm ?? !!GS0.calm, perf = o.perf ?? !!GS0.perf;
       const el = document.createElement('div');
-      el.className = 'mg-sup' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-sup' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application');
       const mapPic = `map-${o.map || (Math.random() < 0.5 ? 'lijiang' : 'busan')}-${1 + Math.floor(Math.random() * 3)}`;
       const petals = Array.from({ length: perf ? 6 : 16 }, () => `<i style="left:${rnd(0, 100).toFixed(1)}%;--dur:${rnd(9, 17).toFixed(1)}s;--del:${(-rnd(0, 17)).toFixed(1)}s;--sx:${rnd(-60, 60).toFixed(0)}px;--sz:${rnd(5, 10).toFixed(1)}px"></i>`).join('');
@@ -108,8 +110,8 @@ window.FemcSupport = (() => {
           <span class="mg-hp"><u></u><i></i><em></em></span><span class="mg-tag"></span></li>`).join('')}</ol>
         <div class="mg-kit">
           <span class="mg-ammo"><b>10</b>/10 <small>ofuda</small><span class="mg-pips" aria-hidden="true"></span></span>
-          <button class="mg-suzu" type="button">Suzu <small>Space</small></button>
-          <button class="mg-rush" type="button" disabled>Kitsune Rush <small>Q</small></button>
+          <button class="mg-suzu" type="button">Suzu <small>Space / ✕</small></button>
+          <button class="mg-rush" type="button" disabled>Kitsune Rush <small>Q / △</small></button>
         </div>
         <p class="mg-help">Tap a teammate (or 1–4) to heal. Space: Suzu. Q: Rush. Esc: pause.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
@@ -330,14 +332,17 @@ window.FemcSupport = (() => {
       const key = e => {
         if (st.over) return;
         const T = TUT(); if (T && T.open() && (e.key === 'Escape' || T.blocking())) return; // the tutorial has the keys
-        if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; el.classList.toggle('paused', st.paused); return; }
+        if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; el.classList.toggle('paused', st.paused); if (st.paused) $('.mg-pause button').focus(); return; }
         if (st.paused) return;
-        if (/^[1-4]$/.test(e.key)) { e.preventDefault(); throwOfuda(+e.key - 1); }
+        if (/^[1-4]$/.test(e.key)) { e.preventDefault(); if (!e.repeat) throwOfuda(+e.key - 1); }
         else if (e.key === ' ') { e.preventDefault(); suzu(); }
         else if (e.key === 'q' || e.key === 'Q') rush();
         else if (e.key === 'r' || e.key === 'R') { if (st.ammo < 10 && !st.reload) st.reload = 1200; }
       };
-      const cleanup = () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear(); window.removeEventListener('keydown', key, true); el.remove(); };
+      // the controller (battle/pad.js reads this at each press): ← ↓ ↑ → = 1-4, ✕ = Space, △ = Q
+      const padMap = k => { if (st.over || st.paused || !el.isConnected) return; return { ArrowLeft: '1', ArrowDown: '2', ArrowUp: '3', ArrowRight: '4', Enter: ' ', y: 'q' }[k]; };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
+      const cleanup = () => { if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null; cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear(); window.removeEventListener('keydown', key, true); el.remove(); };
       lis.forEach((li, i) => li.addEventListener('pointerdown', e => { e.preventDefault(); if (TUT()?.blocking()) return; throwOfuda(i); }));
       $('.mg-suzu').onclick = suzu; $('.mg-rush').onclick = rush;
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { st.paused = false; $('.mg-pause').hidden = true; el.classList.remove('paused'); } if (b === 'howto') howTo(); if (b === 'quit') finish(true); };
@@ -349,15 +354,15 @@ window.FemcSupport = (() => {
       const until = kind => ctx => new Promise(ok => { const prev = st.act; st.act = (k, i) => { prev?.(k, i); if (k === kind && (kind !== 'heal' || i === 2)) { st.act = prev; ok(); } }; });
       const steps = live => [
         { target: '.mg-team', say: 'Practice round, Sol. The clock\'s stopped. Four of us, one of you: keep these bars full.', face: FACE('happy') },
-        { target: () => lis[2], say: 'Olivia\'s low. <b>Tap her</b> (or press <b>3</b>) to throw a healing ofuda.', wait: live ? until('heal') : 'click', face: FACE('serious'),
+        { target: () => lis[2], say: 'Olivia\'s low. <b>Tap her</b> (or press <b>3</b>; on a controller the D-pad is the four of us, ← ↓ ↑ →, so <b>↑</b>) to throw a healing ofuda.', wait: live ? until('heal') : 'click', face: FACE('serious'),
           before: () => { if (live) { team[2].hp = 50; paint(); } } },
-        { target: '.mg-ammo', say: 'Ten ofuda, then a quick reload. <b>R</b> reloads early.', face: FACE('neutral') },
-        { target: '.mg-suzu', say: 'I\'m naded: heals bounce off me. Ring the <b>Suzu</b> (Space or this bell) to cleanse it.', wait: live ? until('suzu') : 'click', face: FACE('surprised'),
+        { target: '.mg-ammo', say: 'Ten ofuda, then a quick reload. <b>R</b> (<b>R2</b>) reloads early.', face: FACE('neutral') },
+        { target: '.mg-suzu', say: 'I\'m naded: heals bounce off me. Ring the <b>Suzu</b> (Space / <b>✕</b> or this bell) to cleanse it.', wait: live ? until('suzu') : 'click', face: FACE('surprised'),
           before: () => { if (live) { team[1].hp = 110; team[1].anti = 1e9; st.suzu = 0; paint(); } } },
         { target: '.mg-call', say: 'Big plays get called out here first. A Suzu right as one lands blocks it: that\'s a save.', face: FACE('serious') },
-        { target: '.mg-rush', say: 'Healing fills <b>Kitsune Rush</b>. It\'s full: press <b>Q</b> (or tap it). Less damage, double heals.', wait: live ? until('rush') : 'click', face: FACE('happy'),
+        { target: '.mg-rush', say: 'Healing fills <b>Kitsune Rush</b>. It\'s full: press <b>Q</b> (<b>△</b>, or tap it). Less damage, double heals.', wait: live ? until('rush') : 'click', face: FACE('happy'),
           before: () => { if (live) { st.rush = 100; paint(); } } },
-        { target: null, say: 'That\'s it. Seventy seconds, nobody goes down. Esc pauses. Ready?', face: FACE('happy') },
+        { target: null, say: 'That\'s it. Seventy seconds, nobody goes down. Esc (○) pauses. Ready?', face: FACE('happy') },
       ];
       const tutOpts = T => { const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; return { who: 'Minji', calm: o.calm ?? !!GS.calm, perf: o.perf ?? !!GS.perf }; };
       const howTo = () => {

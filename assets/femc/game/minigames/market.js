@@ -28,6 +28,9 @@
    Part 1, read the tide: Mrs. Bang's tide table (low and high water), the morning's tide chart (4:00-10:00) and the radio's word
      on the Haesong-ho (off the breakwater at a time; it draws so many metres, so it ties up only once the water at the quay
      reaches its line). Drag the pin on the chart (or ← →, 5 min; Shift 15) to when you'll be on the quay; Set out (Enter).
+   Controller (Nov 15 2026, battle/pad.js): tide ← → 5 min, L1 / R1 15 min, ✕ set out; stall ← → pick one, □ gills (clams: tap),
+     △ press (clams: tap), ✕ haggle, R2 leave it; haggle ← → 500 won, L1 / R1 2,000, ✕ offer, □ pay his price, △ ask Mrs. Bang,
+     SHARE / Create another one, R2 leave it. ○ or OPTIONS pauses (D-pad + ✕ in the pause menu).
      The morning plays out over the quay (the water climbing the ruler on the wall, the small boat, the Haesong, the other
      buyers, you). In the window (landing −5 … +window) = first pick. Early = safe but cold (tide 55-100). Late = the restaurant
      buyers got there first: the Haesong's fish (flounder, croaker, bream) lose their best specimens and ask more.
@@ -79,7 +82,7 @@ window.FemcMarket = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const mix = (a, b, k) => { const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)), A = p(a), B = p(b); return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * clamp(k, 0, 1)).toString(16).padStart(2, '0')).join(''); };
 
@@ -357,7 +360,7 @@ window.FemcMarket = (() => {
       const R = { phase: 'title', paused: false, over: false, arrive: 60, tide: null, purse: o.budget || D.budget, budget: o.budget || D.budget, bought: [], whispers: D.whispers, used: 0, stall: null, at: 0, h: null, sel: 0, T };
       cur = R;
       const el = document.createElement('div');
-      el.className = 'mg-mk' + (still ? ' still' : '');
+      el.dataset.padnav = ''; el.className = 'mg-mk' + (still ? ' still' : '');
       el.innerHTML = `
         <div class="mk-bg"><img class="mk-bgimg" alt=""><i class="mk-drawn"></i></div>
         <div class="mk-top"><b>Incheon · the fish market</b><span class="mk-step"></span><ol class="mk-list" aria-label="Mrs. Bang's list"></ol><span class="mk-purse"></span></div>
@@ -495,7 +498,7 @@ window.FemcMarket = (() => {
             <div class="mk-look"><svg class="mk-big" viewBox="0 0 240 130" aria-label="The one you're looking at"></svg>
               <div class="mk-tools">${kind === 'clams' ? '<button type="button" data-tool="tap">Tap the bowl <kbd>T</kbd></button>' : `${kind === 'fish' ? '<button type="button" data-tool="gill">Lift the gills <kbd>G</kbd></button>' : ''}<button type="button" data-tool="press">Press the flesh <kbd>P</kbd></button>`}
                 <button type="button" class="mk-buy">Haggle for this one <kbd>Enter</kbd></button><button type="button" class="mk-leave">Leave it</button></div>
-              <p class="mk-tip">${TIP[kind]}</p></div>
+              <p class="mk-tip">${TIP[kind]}<br><small>Controller: ← → pick · ${kind === 'clams' ? '□ / △ tap' : kind === 'squid' ? '△ press' : '□ gills · △ press'} · ✕ haggle · R2 leave it</small></p></div>
             <div class="mk-hag" hidden></div></div></div>`;
         const fig = () => { $('.mk-figsvg').innerHTML = sellerSvg(S, R.h ? 1 - R.h.patience / R.h.max : 0); $('.mk-temper').innerHTML = R.h ? Array.from({ length: R.h.max }, (_, i) => `<li class="${i < R.h.patience ? 'on' : ''}"></li>`).join('') : ''; };
         const sellerSay = t => { const s = $('.mk-say'); s.querySelector('span').textContent = t; s.classList.remove('pop'); void s.offsetWidth; s.classList.add('pop'); };
@@ -665,13 +668,29 @@ window.FemcMarket = (() => {
       const pause = on => { if (R.over || R.phase === 'title') return; R.paused = on; $('.mg-pause').hidden = !on; if (on) $('.mg-pause button').focus(); };
       const key = e => {
         if (R.over || R.phase === 'title') return; e.stopPropagation();
-        if (tutOpen()) { if (R.prac && e.key !== 'Escape' && !window.FemcTutorial.blocking() && R.prac.onKey(e)) e.preventDefault(); return; } // Esc and Next belong to the tutorial
+        if (tutOpen()) { // Esc and Next belong to the tutorial
+          const pe = e.fromPad ? padEv(e) : e; // the controller's □ △ L1 R1 as the practice's keys
+          if (R.prac && pe && e.key !== 'Escape' && !window.FemcTutorial.blocking() && R.prac.onKey(pe)) e.preventDefault(); return;
+        }
         if (e.key === 'Escape') { e.preventDefault(); pause(!R.paused); return; }
         if (R.paused) return;
+        if (e.fromPad && e.key !== 'Enter' && !e.key.startsWith('Arrow')) { e.preventDefault(); padKey(e.key); return; }
         const onBtn = e.target && e.target.tagName === 'BUTTON';
         if (onBtn && (e.key === 'Enter' || e.key === ' ')) return; // the focused button does it
         if (e.repeat && e.key === 'Enter') return;
         if (R.onKey && R.onKey(e)) e.preventDefault();
+      };
+      /* the controller's buttons (battle/pad.js): fed to the screen's own keys, or straight to its buttons */
+      const fakeKey = (key, shiftKey) => ({ key, shiftKey: !!shiftKey, preventDefault() {} });
+      const padEv = e => ({ l: fakeKey('g'), y: fakeKey('p'), '[': fakeKey('ArrowLeft', true), ']': fakeKey('ArrowRight', true) })[e.key] || (e.key === 'Enter' || e.key.startsWith('Arrow') ? e : null);
+      const padKey = k => {
+        if (k === 'p') return pause(true);
+        if (k === '[' || k === ']') return R.onKey && R.onKey(fakeKey(k === '[' ? 'ArrowLeft' : 'ArrowRight', true));
+        if (R.phase !== 'stall' || !R.stall) return;
+        if (R.h) { const a = { l: 'pay', y: 'bang', r: 'leave', h: 'back' }[k], b = a && el.querySelector(`.mk-hag [data-h="${a}"]`); if (b && !b.disabled && !b.hidden) hAct(a); return; }
+        const kind = R.stall.item.kind;
+        if (k === 'r') return leave();
+        if (k === 'l' || k === 'y') R.onKey && R.onKey(fakeKey(kind === 'clams' ? 't' : k === 'l' && kind !== 'squid' ? 'g' : 'p'));
       };
       const cleanup = () => { cancelAnimationFrame(raf); R.stopAnim?.(); clearTimeout(talkT); window.removeEventListener('keydown', key, true); window.removeEventListener('keydown', skipT, true); K.close(); el.remove(); cur = null; };
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish(true); } };
@@ -775,14 +794,14 @@ window.FemcMarket = (() => {
         drawT(); drawF(); paintH();
         return { node: P, steps: [
           { target: ch, say: 'The tide chart. The Haesong ties up once the water reaches its <b>pink line</b>, and not before it’s in off the breakwater.', before: () => show('tide') },
-          { target: q('.mk-pr-tide'), say: 'Drag the pin (or ← →) to when we’re on the quay. Right after it can tie up is <b>first pick</b>.', before: () => show('tide'), wait: until('tide', () => tideOk),
+          { target: q('.mk-pr-tide'), say: 'Drag the pin (or ← →; the <b>D-pad</b> on a controller) to when we’re on the quay. Right after it can tie up is <b>first pick</b>.', before: () => show('tide'), wait: until('tide', () => tideOk),
             after: () => { if (!tideOk) { arrive = clamp(Math.round((PT.land + 10) / 5) * 5, 30, 360); tideOk = true; drawT(); } } },
           { target: fishEl, say: 'At the stalls we judge before we pay. <b>Eyes</b> first: clear and full is fresh. These are cloudy.', before: () => show('fish') },
-          { target: q('.mk-pr-fish'), say: 'Lift the <b>gills</b> (G, or tap them). Bright red is fresh. Brown is old.', before: () => show('fish'), wait: until('gill', () => sp.looked.gill) },
-          { target: q('.mk-pr-fish'), say: 'Now <b>press the flesh</b> (P, or tap the body). Fresh springs back. See if this dent stays.', before: () => show('fish'), wait: until('firm', () => sp.looked.firm) },
+          { target: q('.mk-pr-fish'), say: 'Lift the <b>gills</b> (G, or tap them; <b>□</b> on a controller). Bright red is fresh. Brown is old.', before: () => show('fish'), wait: until('gill', () => sp.looked.gill) },
+          { target: q('.mk-pr-fish'), say: 'Now <b>press the flesh</b> (P, or tap the body; <b>△</b> on a controller). Fresh springs back. See if this dent stays.', before: () => show('fish'), wait: until('firm', () => sp.looked.firm) },
           { target: fishEl, say: 'Cloudy, brown, soft. That one’s old. A stall puts three on the ice: pick the best of them.', before: () => { show('fish'); if (!sp.looked.firm) tool('press'); } },
-          { target: hagEl, say: 'Then we talk money. Slide your <b>offer</b> (drag, or ← →), then Offer (Enter). Too low costs his <b>patience</b>: the pips.', before: () => show('hag'), wait: until('offer', () => offered) },
-          { target: null, say: 'That’s the morning: be on the quay in time, pick well, don’t overpay. Esc pauses; How to play is in there.', next: 'Let’s go', before: () => show('hag') },
+          { target: hagEl, say: 'Then we talk money. Slide your <b>offer</b> (drag, or ← →), then Offer (Enter; <b>✕</b> on a controller). Too low costs his <b>patience</b>: the pips.', before: () => show('hag'), wait: until('offer', () => offered) },
+          { target: null, say: 'That’s the morning: be on the quay in time, pick well, don’t overpay. Esc (○) pauses; How to play is in there.', next: 'Let’s go', before: () => show('hag') },
         ] };
       };
       const tutor = async replay => {

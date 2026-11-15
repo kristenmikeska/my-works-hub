@@ -27,6 +27,7 @@
    light, the kitchen with the radio, the koi bucket and its radiator, the gate outside) beside the dark stairwell.
      Step        Space / Enter / ↓ / ↑ / S / W, or the Step button: one careful step (0.42 s). Held keys don't repeat.
      Long step   Shift + Step, L, or the Long step button, on the stairs: over the next stair (0.75 s, a little louder).
+     Controller  (Nov 15 2026, battle/pad.js, no remap needed) ✕ or D-pad ↑ / ↓ steps, □ long-steps, ○ pauses.
      The house   sounds come and go (the radiator knocking, the koi bucket, the old radio drifting into "Molihua", Mr. Oh's
                  engine idling at the gate, wind at the stair window), with silence between. The House meter shows how much
                  they cover where she is (nearer is louder); the notch is how loud her next step will be. Under the notch =
@@ -120,7 +121,7 @@ window.FemcStair = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   /* the house map (viewBox 0 0 330 400). Nov 14 2026 (art batch 158): Kat's house.webp is an <image> under it; once it loads the
@@ -200,7 +201,7 @@ window.FemcStair = (() => {
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
-      el.className = 'mg-st' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-st' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application');
       el.setAttribute('aria-label', 'The seventh stair');
       el.innerHTML = `
@@ -224,7 +225,7 @@ window.FemcStair = (() => {
         <p class="st-ghost" aria-hidden="true"></p>
         <p class="st-say" aria-live="polite"></p>
         <div class="st-btns"><button type="button" class="st-step" tabindex="-1">Step</button><button type="button" class="st-long" tabindex="-1">Long step</button></div>
-        <p class="st-help">Step (Space, ↓ / ↑ or the button) only while the house is louder than the notch. Freeze in the quiet. Shift + Step or L steps over a stair. Nothing real comes from upstairs. Esc pauses.</p>
+        <p class="st-help">Step (Space, ↓ / ↑ or the button) only while the house is louder than the notch. Freeze in the quiet. Shift + Step or L steps over a stair. Nothing real comes from upstairs. Esc pauses. Controller: ✕ or ↓ / ↑ steps, □ long-steps, ○ pauses.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
@@ -731,14 +732,14 @@ window.FemcStair = (() => {
       const tutSteps = replay => [
         { target: null, say: 'Down to the kitchen for a glass of water, then back up to bed, without the house hearing. Let’s practise with the lights on.' },
         { target: '.st-housem', say: 'The <b>House</b> meter is how loud the house is where you stand. The notch is how loud your next step will be.' },
-        { target: '.st-btns', before: () => { if (!replay) tutEv('radiator'); }, say: 'The radiator is knocking: the meter is past the notch. <b>Take one step</b> now (Space, ↓ or Step).', wait: replay ? 'click' : () => practice('step') },
+        { target: '.st-btns', before: () => { if (!replay) tutEv('radiator'); }, say: 'The radiator is knocking: the meter is past the notch. <b>Take one step</b> now (Space, ↓ or Step; <b>✕</b> on a controller).', wait: replay ? 'click' : () => practice('step') },
         { target: '.st-phase', say: 'Now it’s quiet. <b>Freeze</b>: don’t step. Wait until the house is loud again.', wait: replay ? 'click' : () => practice('freeze') },
         { target: '.st-listenm', say: '<b>Listening</b> fills when the house hears a step it didn’t cover. Stay still and it drains. Full means you’re heard.' },
         { target: '.st-map', before: () => { if (!replay) { st.pos = at(CREAK - 1); tutEv('engine'); paint(); } },
-          say: 'The <b>seventh stair</b> creaks (the worn tread). Only Mr. Oh’s engine covers it, and it’s idling now: step on it, or <b>long-step</b> over it (Shift + Step, L).', wait: replay ? 'click' : () => practice('creak', { past: at(CREAK) }) },
+          say: 'The <b>seventh stair</b> creaks (the worn tread). Only Mr. Oh’s engine covers it, and it’s idling now: step on it, or <b>long-step</b> over it (Shift + Step, L; <b>□</b> on a controller).', wait: replay ? 'click' : () => practice('creak', { past: at(CREAK) }) },
         { target: '.st-caps', before: () => { if (!replay) tutEv('radio', { wrong: true, tells: ['dark', 'up', 'text', 'colour'], len: 4500 }); },
           say: 'Some sounds aren’t the house: its place stays dark, it comes from upstairs, the caption is wrong, the meter goes bone. <b>Freeze</b> until it passes.', wait: replay ? 'click' : () => practice('wrong') },
-        { target: null, say: 'If you hear steps that aren’t yours, freeze until they stop. Esc pauses, and How to play shows this again. Lights off now.' },
+        { target: null, say: 'If you hear steps that aren’t yours, freeze until they stop. Esc (○) pauses, and How to play shows this again. Lights off now.' },
       ];
       const howTo = () => {
         tutLib().then(T => {

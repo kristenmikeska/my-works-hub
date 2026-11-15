@@ -45,7 +45,9 @@
    Grade: S all six, no crash, accuracy 88+, love 70+; A five or more, at most one crash, accuracy 75+; B made it to 5 a.m.;
    C crashed out or quit.
    Title card ~1.8 s (click / any key skips). Esc pauses (Resume / How to play / Quit); the game also pauses when the window loses
-   focus. Settings: reduced motion = no slides, shakes or trails, lanes swap half as often and snap, half the wobble, steady
+   focus. Controller (Nov 15 2026, battle/pad.js, through FemcPad.remap while dancing): the D-pad, or □ ✕ △ ○ (left / down / up /
+   right, same as D F J K) for the lanes; L1 / R1 hug, R2 water; finding someone: ← → then ✕; OPTIONS pauses (○ is a lane),
+   ○ resumes. Held D-pad repeats are ignored like held keys. Settings: reduced motion = no slides, shakes or trails, lanes swap half as often and snap, half the wobble, steady
    lights; Reduce flashes (calm) = no strobe or hit flashes, slow colour drift instead of the wild cycle; Performance = fewer
    beams, no trails / blur / haze. The UI chrome is pink and black; only the club lights change colour.
 
@@ -77,7 +79,7 @@ window.FemcRave = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   /* the crew: side / slot = where they stand on the strip (−1 left, 1 right; 1 nearest) */
@@ -232,7 +234,7 @@ window.FemcRave = (() => {
 
       /* the room */
       const el = document.createElement('div');
-      el.className = 'mg-rv' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-rv' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'Peak');
       const beams = Array.from({ length: perf ? 3 : 7 }, (_, i) => `<i style="--i:${i}"></i>`).join('');
       const crowd = Array.from({ length: perf ? 10 : 16 }, (_, i) => `<span style="left:${(i * 6.4 + (i % 3) * 1.3).toFixed(1)}%;--d:${((i * .37) % 1).toFixed(2)}s;--s:${(.8 + (i % 4) * .1).toFixed(2)}">${figSvg(i, (i * 47) % 360)}</span>`).join('');
@@ -256,7 +258,7 @@ window.FemcRave = (() => {
         <div class="rv-chip" hidden></div>
         <ul class="rv-caps" aria-live="polite"></ul>
         <div class="rv-find" hidden></div>
-        <p class="rv-help">Hit the arrows on the beat: D F J K, the arrow keys, or tap a lane. Space hugs, W for water, Esc pauses.</p>
+        <p class="rv-help">Hit the arrows on the beat: D F J K, the arrow keys, or tap a lane. Space hugs, W for water, Esc pauses. Controller: D-pad or □ ✕ △ ○, L1 / R1 hug, R2 water, OPTIONS pauses.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
@@ -691,6 +693,7 @@ window.FemcRave = (() => {
       const blur = () => { if (st.begun && !st.over && !st.tut) pause(true); };
       const vis = () => { if (document.hidden) blur(); };
       const cleanup = () => {
+        if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null;
         if (raf) cancelAnimationFrame(raf); if (sched) clearInterval(sched); timers.forEach(clearTimeout); timers.clear(); clearTimeout(chipT);
         window.removeEventListener('keydown', key, true); window.removeEventListener('blur', blur); window.removeEventListener('resize', measure);
         document.removeEventListener('visibilitychange', vis);
@@ -698,6 +701,15 @@ window.FemcRave = (() => {
         if (cur === st) cur = null;
       };
       $('.mg-pause').onclick = e => { const b = e.target.dataset && e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish('quit'); } };
+      // the controller (battle/pad.js reads this at each press): □ ✕ △ ○ = D F J K, L1 / R1 = hug, R2 = water, OPTIONS = Esc
+      const padMap = k => {
+        if (!alive() || st.over || !st.begun) return;
+        if (k === 'p') return 'Escape';
+        if (st.paused) return;
+        if (st.find && !st.off) return; // finding someone: ← → and ✕ as they are
+        return { l: 'd', Enter: 'f', y: 'j', Escape: 'k', '[': 'h', ']': 'h', r: 'w' }[k];
+      };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
       window.addEventListener('keydown', key, true); window.addEventListener('blur', blur); window.addEventListener('resize', measure);
       document.addEventListener('visibilitychange', vis);
 
@@ -708,17 +720,17 @@ window.FemcRave = (() => {
       const practice = kind => new Promise(ok => { tp = { kind, n: 0, ok: () => { tp = null; ok(); } }; });
       const tutSteps = replay => [
         { target: null, say: 'Okay. Rules for tonight: you dance, you stay where I can see you, you drink water. Practice first. Nothing counts yet.' },
-        { target: '.rv-lanes', say: 'Arrows fall to the lit line. Hit each one <b>as it lands, on the beat</b>: D F J K, the arrow keys, or tap its lane. Hit three.', wait: replay ? 'click' : () => practice('hit') },
+        { target: '.rv-lanes', say: 'Arrows fall to the lit line. Hit each one <b>as it lands, on the beat</b>: D F J K, the arrow keys, or tap its lane (controller: the <b>D-pad</b> or <b>□ ✕ △ ○</b>). Hit three.', wait: replay ? 'click' : () => practice('hit') },
         { target: '.rv-love', say: 'Hits and streaks fill <b>Love everyone</b>. Hugs fill it most. Get it high and the whole room glows.' },
         { target: replay ? '.rv-lanes' : () => hugEl, before: () => { if (!replay) spawnHug({ who: 'junkyu', forever: true }, st.t); },
-          say: 'When someone dances up to you, <b>hug them</b>: Space, or tap the bubble. On the beat is a perfect hug.', wait: replay ? 'click' : () => practice('hug') },
+          say: 'When someone dances up to you, <b>hug them</b>: Space (<b>L1</b> / <b>R1</b>), or tap the bubble. On the beat is a perfect hug.', wait: replay ? 'click' : () => practice('hug') },
         { target: '.rv-crew', say: 'That’s us. While you dance, people <b>drift</b> to the edges, then into the crowd. A hug from a drifting friend brings them right back.' },
         { target: replay ? '.rv-crew' : () => findEl, before: () => { if (!replay) { st.crew.asahi.lost = true; st.crew.asahi.drift = 1; openFind(true); } },
-          say: 'Between songs the crowd opens up. <b>Find whoever’s lost</b> and pull them back: click them, or ← → and Space. Find Asahi.', wait: replay ? 'click' : () => practice('find') },
+          say: 'Between songs the crowd opens up. <b>Find whoever’s lost</b> and pull them back: click them, or ← → and Space (<b>✕</b>). Find Asahi.', wait: replay ? 'click' : () => practice('find') },
         { target: '.rv-water', before: () => { if (!replay) st.thirst = 80; },
-          say: '<b>Thirst</b> climbs while you dance. Step off for water (W, or this button), best when the music breathes and it glows. Let it fill up and you crash.', wait: replay ? 'click' : () => practice('water') },
+          say: '<b>Thirst</b> climbs while you dance. Step off for water (W / <b>R2</b>, or this button), best when the music breathes and it glows. Let it fill up and you crash.', wait: replay ? 'click' : () => practice('water') },
         { target: null, say: 'At the peak the lights go wild and the floor bends: <b>lanes swap places, arrows trail, the timing wobbles</b>. Follow the arrows, not the spots.' },
-        { target: '.rv-clock', say: 'The lights come up at 5. I want all six of us standing there when they do. Esc pauses, and How to play shows this again.' },
+        { target: '.rv-clock', say: 'The lights come up at 5. I want all six of us standing there when they do. Esc (OPTIONS) pauses, and How to play shows this again.' },
       ];
       const howTo = () => {
         tutLib().then(T => {

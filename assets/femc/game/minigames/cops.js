@@ -44,7 +44,9 @@
       to hurry (the crew can't keep up: stragglers), hold ← / A to slow (they catch up). Torch beams sweep the lanes at
       cross streets: being in one fills Spotted. A patrol car's sweep is called two seconds early ("Headlights!"): get into
       a doorway (top lane) or behind the bins (bottom lane) and hold Shift / H / Space to hide; friends close behind hide
-      with you. A fence gap now and then is a shortcut (E when you're in its lane: timing; it skips ahead). Spotted full =
+      with you. A fence gap now and then is a shortcut (E when you're in its lane: timing; it skips ahead).
+      Controller (Nov 15 2026, battle/pad.js): D-pad / stick moves (lanes, hurry, slow), ✕ acts (E), hold □ or R2 to hide
+      (through FemcPad.remap), choices: ↑ ↓ then ✕; ○ pauses (D-pad + ✕ in the pause menu). Spotted full =
       caught. A friend too far back for ~3 s is lost (a funny line on the end card). Reach the car: everyone piles in and
       Jihoon peels out (if Jihoon didn't make it, Jaehyuk drives, at the speed limit).
    Esc pauses (Resume / How to play / Quit). Touch: tap to walk, the pad's buttons for the rest.
@@ -84,7 +86,7 @@ window.FemcCops = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   const DIFF = {
@@ -520,7 +522,7 @@ window.FemcCops = (() => {
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
-      el.className = 'mg-cp' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-cp' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'Somebody Yelled Cops');
       el.innerHTML = `
         <canvas class="cp-cv"></canvas>
@@ -815,8 +817,8 @@ window.FemcCops = (() => {
         const crewEl = $('.cp-crew'); if (crewEl.dataset.h !== chips) { crewEl.innerHTML = chips; crewEl.dataset.h = chips; }
         const b = g.bag, bc = $('.cp-bagchip');
         bc.hidden = !house; bc.textContent = !b.got ? 'The bag: on the couch' : b.i < b.items.length ? `The bag: ${b.items.length - b.i} to deal with` : `Bag sorted · ${g.flushed.length} flushed · ${g.stashed.length} stashed · ${g.kept.length} on you`;
-        $('.cp-help').textContent = house ? (touch ? 'Tap to walk · tap someone to help · Act to use · Esc pauses' : 'Move: WASD / arrows or click · E / Space: act · 1-4: choose · Esc: pause')
-          : (touch ? '▲▼ lanes · hold Hurry / Slow · hold Hide in a doorway or behind bins · Act: shortcut' : '↑↓ / W S: lane · hold → / D: hurry · hold ← / A: slow · hold Shift / H / Space: hide · E: shortcut · Esc');
+        $('.cp-help').textContent = house ? (touch ? 'Tap to walk · tap someone to help · Act to use · Esc pauses' : (window.FemcPad && window.FemcPad.active ? 'Move: D-pad / stick · ✕: act · choices: ↑ ↓ then ✕ · ○: pause' : 'Move: WASD / arrows or click · E / Space: act · 1-4: choose · Esc: pause'))
+          : (touch ? '▲▼ lanes · hold Hurry / Slow · hold Hide in a doorway or behind bins · Act: shortcut' : (window.FemcPad && window.FemcPad.active ? '↑↓: lane · hold →: hurry · hold ←: slow · hold □ / R2: hide · ✕: shortcut · ○: pause' : '↑↓ / W S: lane · hold → / D: hurry · hold ← / A: slow · hold Shift / H / Space: hide · E: shortcut · Esc'));
       };
       const paintCard = () => {
         const box = $('.cp-card'), c = g && g.card;
@@ -879,6 +881,11 @@ window.FemcCops = (() => {
         if (st.paused || st.builtinTut) return;
         touch = false;
         if (/^[1-4]$/.test(e.key) && g.card) { e.preventDefault(); g.choose(+e.key - 1); return; }
+        if (e.fromPad && g.card) { // the controller on a choice card: ↑ ↓ (← →) move between the options, ✕ picks
+          const bs = [...el.querySelectorAll('.cp-card button[data-o]:not(:disabled)')], i = bs.indexOf(document.activeElement);
+          if (e.key.startsWith('Arrow') && bs.length) { e.preventDefault(); bs[i < 0 ? 0 : (i + (e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? bs.length - 1 : 1)) % bs.length].focus(); return; }
+          if (e.key === 'Enter') { e.preventDefault(); if (i >= 0) g.choose(+bs[i].dataset.o); else if (bs[0]) bs[0].focus(); return; }
+        }
         const k = KEYMAP[e.key];
         if (k) { e.preventDefault(); if (!e.repeat && g.phase !== 'house' && (k === 'up' || k === 'down')) g.input[k] = true; keys.add(k); return; }
         if (e.key === 'e' || e.key === 'E' || e.key === 'Enter') { e.preventDefault(); if (!e.repeat) g.input.act = true; return; }
@@ -919,6 +926,9 @@ window.FemcCops = (() => {
       const onResize = () => fit();
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); quit(); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true); window.addEventListener('blur', blur); window.addEventListener('resize', onResize);
+      // the controller (battle/pad.js reads this at each press): □ / R2 = H (hold to hide)
+      const padMap = k => { if (!st.begun || st.paused || st.over || !el.isConnected) return; return { l: 'h', r: 'h' }[k]; };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
 
       /* between the phases */
       const overWall = () => {
@@ -961,6 +971,7 @@ window.FemcCops = (() => {
         r.quit ? show() : later(show, still ? 400 : 1200);
       };
       const cleanup = () => {
+        if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null;
         cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear();
         window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', blur); window.removeEventListener('resize', onResize);
         window.removeEventListener('keydown', skipT, true);
@@ -978,14 +989,14 @@ window.FemcCops = (() => {
       const placeMark = () => { const m = $('.cp-mark'), p = st.mark; if (!p) { m.style.display = 'none'; return; } m.style.display = 'block'; m.style.left = sx(p.x) - cs * 1.2 + 'px'; m.style.top = sy(p.y) - cs * 1.2 + 'px'; m.style.width = m.style.height = cs * 2.4 + 'px'; };
       const tutSteps = replay => [
         { target: null, say: 'Somebody yelled cops. Don’t panic. I already did the panicking, quietly. Practice first: the sirens wait for us.' },
-        { target: () => markAt(g.me.x, g.me.y), say: 'That’s you. Move with <b>WASD / the arrows</b>, or tap / click where to go. Walk around a little.', wait: replay ? 'click' : () => practice('move'), after: () => { st.mark = null; placeMark(); } },
+        { target: () => markAt(g.me.x, g.me.y), say: 'That’s you. Move with <b>WASD / the arrows</b> (the <b>D-pad</b> or stick on a controller), or tap / click where to go. Walk around a little.', wait: replay ? 'click' : () => practice('move'), after: () => { st.mark = null; placeMark(); } },
         { target: () => markAt(8.5, 12.5), before: () => { if (!replay) g.practiceBag(); },
-          say: 'The bag on the couch. Walk to it and press <b>E / Space</b> (or tap it). For each thing inside: <b>Flush</b> (safe, costs seconds), <b>Stash</b> (a risk the cops find it) or <b>Keep</b> (slows you later). Try it.', wait: replay ? 'click' : () => practice('bag'), after: () => { st.mark = null; placeMark(); } },
+          say: 'The bag on the couch. Walk to it and press <b>E / Space</b> (<b>✕</b>; or tap it). For each thing inside: <b>Flush</b> (safe, costs seconds), <b>Stash</b> (a risk the cops find it) or <b>Keep</b> (slows you later). Pick with 1-3 (or ↑ ↓ and ✕). Try it.', wait: replay ? 'click' : () => practice('bag'), after: () => { st.mark = null; placeMark(); } },
         { target: '.cp-sirenm', say: 'The <b>sirens</b> are the clock. The windows go red and blue as they get close. At zero, a cop comes in after you.' },
-        { target: '.cp-crew', say: 'Everyone has a problem. Walk up to them and press <b>E</b> to sort it out; then they follow you in a line. I’m at the back wall already. Obviously.' },
+        { target: '.cp-crew', say: 'Everyone has a problem. Walk up to them and press <b>E</b> (<b>✕</b>) to sort it out; then they follow you in a line. I’m at the back wall already. Obviously.' },
         { target: '.cp-bar', before: () => { if (!replay) g.practiceBoost(); else { $('.cp-bar').hidden = false; } }, after: () => { if (replay) paintBar(); },
-          say: 'At the back wall you boost them over: press <b>Act</b> (E / Space / tap) when the marker is in the pink. The bright middle is a perfect boost. Try it.', wait: replay ? 'click' : () => practice('boost') },
-        { target: null, say: 'Then the alleys to Jihoon’s car: <b>↑↓</b> lanes, hold <b>→</b> to hurry (they fall behind), <b>←</b> to slow. When headlights come, get in a doorway or behind the bins and hold <b>Shift</b> to hide. <b>Esc</b> pauses. Go.' },
+          say: 'At the back wall you boost them over: press <b>Act</b> (E / Space / <b>✕</b> / tap) when the marker is in the pink. The bright middle is a perfect boost. Try it.', wait: replay ? 'click' : () => practice('boost') },
+        { target: null, say: 'Then the alleys to Jihoon’s car: <b>↑↓</b> lanes, hold <b>→</b> to hurry (they fall behind), <b>←</b> to slow. When headlights come, get in a doorway or behind the bins and hold <b>Shift</b> (<b>□</b> on a controller) to hide. <b>Esc</b> (○) pauses. Go.' },
       ];
       const BUILTIN_KEY = 'kg-femc-tutorials';
       const seenLocal = () => { try { return !!(JSON.parse(localStorage.getItem(BUILTIN_KEY) || '{}') || {}).cops; } catch (e) { return false; } };

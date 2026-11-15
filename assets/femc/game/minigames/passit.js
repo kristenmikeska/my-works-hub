@@ -40,6 +40,9 @@
      Nana           Nana bounds in and knocks something off the table: tap it (or ↓ / C) when its ring closes, on the beat.
      Chips          a bag of chips goes round the other way at the same time. Pass the chips with F (or the CHIPS pad), the
                     joint with Space / J. Mixing them up (the wrong control while only the other one is at her seat) = a miss.
+   Controller (Nov 15 2026, battle/pad.js, through FemcPad.remap while the circle runs): ✕ passes / hold to take a hit (Space),
+     □ passes the chips (F), ↓ catches Nana's thing, ← nod / → derail, who has it: ← ↑ → (1 / 2 / 3); ○ pauses. A held D-pad's
+     repeats are ignored like a held key's.
    The haze: it thickens as the session runs and with every smooth hit; the beat drifts with it (tempo wanders and sags) and the
    timing window wobbles (narrower, wider). Reduced motion / Reduce flashes / Performance cut drift and wobble to 40-60 %.
    Friends get drowsy (faster with misses, slower with good moments); asleep, they're skipped (never the last two awake).
@@ -161,7 +164,7 @@ window.FemcPassit = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const OWN_TUT = 'kg-femc-passit-tutorial';
   const ownSeen = () => { try { return localStorage.getItem(OWN_TUT) === '1'; } catch (e) { return false; } };
@@ -195,7 +198,7 @@ window.FemcPassit = (() => {
       const seatPos = i => { const a = (90 + i * 360 / N) * Math.PI / 180; return { x: 50 + 41 * Math.cos(a), y: 50 + 39 * Math.sin(a) }; };
       const tokPos = (i, side = 0) => { const p = seatPos(i), a = (90 + i * 360 / N + side) * Math.PI / 180; return { x: 50 + 27 * Math.cos(a), y: 50 + 25 * Math.sin(a) }; };
       const el = document.createElement('div');
-      el.className = 'mg-pi' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-pi' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'Pass It');
       el.innerHTML = `
         <div class="pi-room"><i class="pi-room-drawn"></i>${img(ART('room'), 'pi-bg pi-bg-art')}${img(BG(o.bg || 'epi-h-jihoon-house'), 'pi-bg')}</div>
@@ -218,9 +221,9 @@ window.FemcPassit = (() => {
           <span class="pi-tpips"><i></i><i></i><i></i><i></i></span></div></div>
         <div class="pi-shell" hidden><p class="pi-shq">Watch it…</p><div class="pi-cards"></div></div>
         <div class="pi-nana" hidden><span class="pi-dog">${SVG_NANA}${img(FACE('nana', 'happy'), 'pi-dimg')}</span><button type="button" class="pi-item"><i class="pi-iring"></i><span></span></button></div>
-        <div class="pi-pads"><button type="button" class="pi-pad pi-pad-j"><b>PASS</b><small>tap · hold to hit · Space / J</small></button>
-          <button type="button" class="pi-pad pi-pad-s"><b>CHIPS</b><small>F</small></button></div>
-        <p class="pi-help">The joint goes round on the beat. On your turn, tap on the beat to pass, or hold to take a hit and let go in the pink band. Chips go the other way: F. Esc pauses.</p>
+        <div class="pi-pads"><button type="button" class="pi-pad pi-pad-j"><b>PASS</b><small>tap · hold to hit · Space / J / ✕</small></button>
+          <button type="button" class="pi-pad pi-pad-s"><b>CHIPS</b><small>F / □</small></button></div>
+        <p class="pi-help">The joint goes round on the beat. On your turn, tap on the beat to pass, or hold to take a hit and let go in the pink band. Chips go the other way: F. Esc pauses. Controller: ✕ pass / hold, □ chips, ↓ Nana, ← → answer, ← ↑ → who has it, ○ pauses.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="pi-howto" hidden></div>
         <div class="mg-end" hidden></div>`;
@@ -774,6 +777,7 @@ window.FemcPassit = (() => {
       const vis = () => { if (document.hidden && st.run && !st.paused && !st.over && !st.tut) pause(true); };
       const blur = () => { if (st.press) releaseJ(); spaceDown = false; };
       const cleanup = () => {
+        if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null;
         cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear();
         window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('keydown', skipT, true);
         window.removeEventListener('pointerup', up); window.removeEventListener('pointercancel', up); window.removeEventListener('blur', blur);
@@ -783,6 +787,13 @@ window.FemcPassit = (() => {
       $('.mg-pause').onclick = e => { const b = e.target.closest('[data-mg]'); if (!b) return; const m = b.dataset.mg; if (m === 'resume') pause(false); if (m === 'howto') howTo(); if (m === 'quit') { pause(false); finish(true); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true); window.addEventListener('blur', blur);
       document.addEventListener('visibilitychange', vis);
+      // the controller (battle/pad.js reads this at each press): ✕ = Space, □ = F; who has it: ← ↑ → = 1 2 3
+      const padMap = k => {
+        if (!st.run || st.paused || st.over || !el.isConnected || !$('.pi-howto').hidden) return;
+        if (st.shell && st.shell.phase === 'ask') { const n = { ArrowLeft: '1', ArrowUp: '2', ArrowRight: '3' }[k]; if (n) return n; }
+        return { Enter: ' ', l: 'f' }[k];
+      };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
 
       /* the first-time tutorial: Jihoon hosts a practice circle (st.tut: no interruptions, no roasts, no timer) */
       const HOST_FACE = FACE('jihoon', 'happy');
@@ -790,11 +801,11 @@ window.FemcPassit = (() => {
       const tutSteps = replay => [
         { target: null, say: 'Welcome to my humble home. House rules: it goes around the circle, <b>on the beat</b>. Nobody holds it forever.' },
         { target: '.pi-ring', say: 'Everyone passes on the beat. When it lands on you, the <b>ring around your face</b> closes in on every beat. That’s your cue.' },
-        { target: '.pi-pad-j', say: '<b>Tap on the beat</b> to pass it clean: Space, J, a click, or this pad. It’s coming round. Try it.', wait: replay ? 'click' : () => practice('pass') },
+        { target: '.pi-pad-j', say: '<b>Tap on the beat</b> to pass it clean: Space, J, a click, this pad, or <b>✕</b> on a controller. It’s coming round. Try it.', wait: replay ? 'click' : () => practice('pass') },
         { target: '.pi-seat.me', say: 'Or <b>hold</b> to take a hit. Your lungs fill up. Let go <b>inside the pink band</b>, or you’re coughing in front of everyone. Try it next time it’s yours.', wait: replay ? 'click' : () => practice('hit') },
-        { target: '.pi-pad-s', say: 'Snacks go <b>the other way</b>. Chips are <b>F</b> or this pad. Mix them up and Cherry will never let it go.' },
-        { target: null, say: 'Stuff happens. Someone gets deep: a heart means <b>nod along</b> (←), a spiral means <b>derail</b> (→). Someone hides it: watch the fists, pick who has it (1-3). Nana knocks something over: tap it (or ↓) as its ring closes.' },
-        { target: '.pi-haze', say: 'The room gets hazy and the beat gets lazy. Keep up, and keep us awake. Esc pauses. Let’s go.' },
+        { target: '.pi-pad-s', say: 'Snacks go <b>the other way</b>. Chips are <b>F</b> (<b>□</b>) or this pad. Mix them up and Cherry will never let it go.' },
+        { target: null, say: 'Stuff happens. Someone gets deep: a heart means <b>nod along</b> (←), a spiral means <b>derail</b> (→). Someone hides it: watch the fists, pick who has it (1-3, or ← ↑ → on a controller). Nana knocks something over: tap it (or ↓) as its ring closes.' },
+        { target: '.pi-haze', say: 'The room gets hazy and the beat gets lazy. Keep up, and keep us awake. Esc (○) pauses. Let’s go.' },
       ];
       const ownCard = (replay, then) => { // the built-in fallback when tutorial.js isn't there
         const h = $('.pi-howto'); h.hidden = false;

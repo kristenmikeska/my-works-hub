@@ -37,6 +37,8 @@
      Controls: click / tap a hand card (cards with a match on the felt glow pink; hovering one lights its match), or ← → and
        Enter / Space. When there are two to pick from, click one (or ← → Enter). Go / Stop: buttons, or G / S. Esc pauses
        (Resume / Quit); the II button too. Rules: the Rules button (or R).
+     Controller (Nov 15 2026, battle/pad.js): ← → pick a card, ✕ plays it; Go / Stop: ← → then ✕; △ rules; ○ pauses / closes
+       the rules (D-pad + ✕ in the pause menu).
    Eomma (DIFF): easy plays loose (often a random card, Goes on a whim); normal takes the best capture, blocks your sets, avoids
      feeding you, Goes only when you're nowhere close; hard also counts the cards she has seen and reads your near sets before a Go.
    Feel: cards slap onto the felt (a soft thwack), flip from the pile, sort into piles at each player's side; points pop.
@@ -70,7 +72,7 @@ window.FemcHwatu = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   /* ── the deck ── */
@@ -359,7 +361,7 @@ window.FemcHwatu = (() => {
       const wait = async ms => { await raw(still ? Math.min(ms, 160) : ms); await gate(); };
 
       const el = document.createElement('div');
-      el.className = 'mg-hw' + (still ? ' still' : '') + (N === 3 ? ' three' : '');
+      el.dataset.padnav = ''; el.className = 'mg-hw' + (still ? ' still' : '') + (N === 3 ? ' three' : '');
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'Hwatu (Go-Stop)');
       const seatHTML = i => `<section class="hw-seat ${i ? 'opp' : 'me'}" data-s="${i}">
           <div class="hw-who"><div class="hw-pic"><img src="${ART(WHO[i])}" alt="" onerror="this.remove()">${FACE[WHO[i]]}</div>
@@ -388,7 +390,7 @@ window.FemcHwatu = (() => {
             <tr><th>띠 Ribbons</th><td>5 = 1, +1 each more · red with writing (Jan-Mar) +3 · blue (Jun, Sep, Oct) +3 · plain red (Apr, May, Jul) +3</td></tr>
             <tr><th>피 Junk</th><td>10 = 1, +1 each more (a double junk, 쌍피, counts 2)</td></tr></table>
           <p><b>${G.target} points:</b> Stop to win, or Go for more (+1 a Go; three Gos double). If you Go and someone else then reaches ${G.target} and stops, they score double.</p>
-          <p class="hw-keys">Keys: ← → Enter · G / S · R rules · Esc pause</p></aside>
+          <p class="hw-keys">Keys: ← → Enter · G / S · R rules · Esc pause<br>Controller: ← → ✕ · △ rules · ○ pause</p></aside>
         <div class="hw-ask" hidden></div>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
@@ -772,7 +774,7 @@ window.FemcHwatu = (() => {
         if (e.key === 'Escape') { e.preventDefault(); if (!$('.hw-rules').hidden && !st.paused) toggleRules(); else pause(!st.paused); return; }
         if (st.paused) return;
         const k = e.key.toLowerCase();
-        if (k === 'r') { e.preventDefault(); toggleRules(); return; }
+        if (k === 'r' || (e.fromPad && k === 'y')) { e.preventDefault(); toggleRules(); return; }
         if (st.mode === 'ask' && (k === 'g' || k === 's')) { e.preventDefault(); st.resolve(k === 'g'); return; }
         if (st.mode === 'hand') {
           const n = G.seats[0].hand.length;
@@ -844,16 +846,18 @@ window.FemcHwatu = (() => {
           else if (pr.step === 'hand' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); tryCard(hand[pr.sel]); }
           else if (pr.step === 'pile' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pileN.onclick(); }
           else if (pr.step === 'ask' && (k === 'g' || k === 's')) { e.preventDefault(); pickGo(k === 'g'); }
+          else if (pr.step === 'ask' && e.key.startsWith('Arrow')) { e.preventDefault(); (document.activeElement === goB ? stopB : goB).focus(); } // controller: ← → then ✕
+          else if (pr.step === 'ask' && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pickGo(document.activeElement !== stopB); }
         };
         const until = (name, ready) => ctx => new Promise(ok => { pr.step = name; pr.say = ctx.say; markSel(); waiter = ok; if (ready && ready()) resolve(); });
         const steps = [
           { target: feltR, say: 'Every card belongs to a <b>month</b>: the number in its corner. Same month, same flower.' },
-          { target: handR, say: 'Play a card onto one of the <b>same month</b> on the felt. A card with a match glows. Go on.', wait: until('hand', () => played), before: () => { pr.step = 'hand'; markSel(); } },
-          { target: pileN, say: 'Then the <b>pile</b> flips its top card, and it matches the same way. Tap the pile.', wait: until('pile', () => flipped), before: () => { doPlay(); pr.step = 'pile'; } },
+          { target: handR, say: 'Play a card onto one of the <b>same month</b> on the felt. A card with a match glows. Go on (← → and Enter, or <b>✕</b> on a controller).', wait: until('hand', () => played), before: () => { pr.step = 'hand'; markSel(); } },
+          { target: pileN, say: 'Then the <b>pile</b> flips its top card, and it matches the same way. Tap the pile (Enter / <b>✕</b>).', wait: until('pile', () => flipped), before: () => { doPlay(); pr.step = 'pile'; } },
           { target: capsR, say: 'Both pairs are yours. They sort by type: <b>광</b> brights, <b>열</b> animals, <b>띠</b> ribbons, <b>피</b> junk.', before: () => { pr.step = null; doSort(); } },
-          { target: capsR, say: 'Points come from sets: <b>three brights</b>, five animals or five ribbons, <b>ten junk</b>, and a few special trios. The Rules button (R) lists them.' },
-          { target: ask, say: 'Reach the target and you choose. <b>Stop</b> wins now. <b>Go</b> plays on for more, but if I stop after that, I score double. Pick one (G / S).', wait: until('ask', () => choice != null),
-            before: () => { doSort(); ask.hidden = false; }, after: () => { ask.hidden = true; pr.step = null; } },
+          { target: capsR, say: 'Points come from sets: <b>three brights</b>, five animals or five ribbons, <b>ten junk</b>, and a few special trios. The Rules button (R, or <b>△</b>) lists them.' },
+          { target: ask, say: 'Reach the target and you choose. <b>Stop</b> wins now. <b>Go</b> plays on for more, but if I stop after that, I score double. Pick one (G / S; on a controller ← → then <b>✕</b>).', wait: until('ask', () => choice != null),
+            before: () => { doSort(); ask.hidden = false; goB.focus({ preventScroll: true }); }, after: () => { ask.hidden = true; pr.step = null; } },
           { target: null, say: `First to ${G.target} points. Esc pauses; How to play is in there. You lead.`, next: 'Deal', before: ctx => ctx.say(choice === true ? 'Bold. We’ll see. First to ' + G.target + ' points. Esc pauses; How to play is in there. You lead.' : 'Sensible. First to ' + G.target + ' points. Esc pauses; How to play is in there. You lead.') },
         ];
         return { node: P, steps };

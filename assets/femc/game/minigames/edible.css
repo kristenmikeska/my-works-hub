@@ -236,3 +236,4 @@
   .ed-trig[data-at] { left: 50%; right: auto; top: 40%; transform: translateX(-50%) skewX(-8deg); }
   .ed-warpcap { white-space: normal; width: 86vw; text-align: center; top: 13%; }
 }
+.mg-ed .ed-opts button.sel { outline: 3px solid #ff4f9e; outline-offset: 2px; } /* the answer the controller / arrows ring (Nov 15 2026) */

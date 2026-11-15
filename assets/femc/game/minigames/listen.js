@@ -12,6 +12,7 @@
    name; click the one making his sound. Right: it lights up, a soundwave rings out, its sticker goes into the notebook at the
    top and he says something about it. Wrong: it shakes and he nudges ("Lower." / "Closer to the ground."). Fewer wrong
    guesses = better grade. Keyboard: Tab / arrows move between things, Enter picks, Space replays, Esc pauses.
+   Controller (Nov 15 2026, battle/pad.js): D-pad / stick moves between things, ✕ picks, △ (or □) replays, ○ pauses.
    Art (FEMC-ART-TODO 47, art/minigames/listen/): street.webp (the avenue, 16:9, no objects needed), obj-<id>.webp (each
    thing, transparent), sticker-<id>.webp (the notebook stickers), haechan.webp (his figure, bottom left). Until then: the
    background epi-r-nyc-street-night, drawn objects and his portrait. Reduced motion: no shakes, no drifting snow.
@@ -41,7 +42,7 @@ window.FemcListen = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const tutBusy = e => { const T = window.FemcTutorial; return !!(T && T.open() && (e.key === 'Escape' || T.blocking())); };
   // the things in the street; x / y = where they stand (% of the scene), w = width (% of the scene)
@@ -90,7 +91,7 @@ window.FemcListen = (() => {
       const el = document.createElement('div');
       const GS0 = (() => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } })();
       const CALM = o.calm ?? !!GS0.calm, PERF = o.perf ?? !!GS0.perf, STILL = reduced.matches;
-      el.className = 'mg-lis' + (STILL ? ' still' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-lis' + (STILL ? ' still' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '');
       const B = base();
       // the street's own lights, on Kat's street.webp (Nov 14): the wall lanterns, the far lanterns, the lit trees, the park trees, the lobby and an upper window
       const HALOS = [[6.5, 31, 9], [23.3, 42, 7], [42.7, 46.5, 4], [45.4, 49, 3.5], [41, 30, 12, 'tree'], [50, 38, 10, 'tree'], [75, 46, 8, 'tree'], [93, 37, 9, 'tree'], [15, 52, 8, 'win'], [28.5, 4, 5, 'win']];
@@ -214,10 +215,10 @@ window.FemcListen = (() => {
         return [
           { target: '.ls-talk', face: hcFace('neutral'), say: 'The city never really goes quiet. I play you one sound, and you find what\'s making it.',
             before: () => { if (!replay) { face('neutral'); say(PRACTICE.ask[0], o.mute ? `(the sound: ${PRACTICE.cap})` : ''); } } },
-          { target: '.ls-again', face: hcFace('neutral'), say: o.mute ? 'Sound\'s off, so the sound is written under my line. Press <b>▶ Hear it again</b> (or Space) anyway.' : 'Hear it once more: press <b>▶ Hear it again</b> (or Space).', ...doIt('again') },
-          { target: '.ls-scene', face: hcFace('happy'), say: 'The glowing things are what could be making it. Hover one (or tap it, or Tab to it) to hear it quietly and see its name.', pos: 'center', ...doIt('hover') },
-          { target: '.ls-scene', face: hcFace('neutral'), say: 'Now click the one making my sound: a soft, steady hiss. Wrong ones shake and I give you a hint.', pos: 'center', ...doIt('pick') },
-          { target: '.ls-book', face: hcFace('happy'), say: 'Every sound you find goes in the notebook. Fewer wrong guesses, better grade. Esc pauses.' },
+          { target: '.ls-again', face: hcFace('neutral'), say: o.mute ? 'Sound\'s off, so the sound is written under my line. Press <b>▶ Hear it again</b> (or Space; <b>△</b> on a controller) anyway.' : 'Hear it once more: press <b>▶ Hear it again</b> (or Space; <b>△</b> on a controller).', ...doIt('again') },
+          { target: '.ls-scene', face: hcFace('happy'), say: 'The glowing things are what could be making it. Hover one (or tap it, or Tab to it; the <b>D-pad</b> on a controller) to hear it quietly and see its name.', pos: 'center', ...doIt('hover') },
+          { target: '.ls-scene', face: hcFace('neutral'), say: 'Now click the one making my sound (<b>✕</b> on a controller): a soft, steady hiss. Wrong ones shake and I give you a hint.', pos: 'center', ...doIt('pick') },
+          { target: '.ls-book', face: hcFace('happy'), say: 'Every sound you find goes in the notebook. Fewer wrong guesses, better grade. Esc (○) pauses.' },
         ];
       };
       const settings = () => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } };
@@ -247,7 +248,7 @@ window.FemcListen = (() => {
         if ($('.ls-intro')) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); start(); } return; }
         if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; if (st.paused) $('.mg-pause button').focus(); return; }
         if (st.paused) return;
-        if (e.key === ' ') { e.preventDefault(); $('.ls-again').click(); return; }
+        if (e.key === ' ' || (e.fromPad && (e.key === 'y' || e.key === 'l'))) { e.preventDefault(); $('.ls-again').click(); return; }
         if (e.key.startsWith('Arrow')) { e.preventDefault(); const i = Math.max(0, things.indexOf(document.activeElement)); const n = (i + (e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : -1) + things.length) % things.length; things[n].focus(); }
       };
       const cleanup = () => { window.removeEventListener('keydown', key, true); try { ac && ac.close(); } catch (e) {} el.remove(); };

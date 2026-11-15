@@ -51,6 +51,9 @@
      Curdle      under 35 the palette drains, the night turns cold blue, light closes in, the music echoes and goes out of tune,
                  and a figure stands at the edge of the light (only ever at the edge; no face, no harm).
      Sunrise     the sun on the top bar rises with the timer; the park turns dawn pink in the last quarter.
+   Controller (Nov 15 2026, battle/pad.js): D-pad / left stick walks; ✕ coaxes, stomps, holds (Jihoon) and picks an answer;
+   ↑ ↓ move between answers (Junkyu's bench, Jaehyuk); ← → braid; □ pets Nana, △ barks, R1 drinks water, L1 walks away from a
+   task, ○ pauses (D-pad + ✕ in the pause menu).
    Esc pauses (Resume / How to play / Quit). Title card ~1.8 s (click / any key skips). The finale (~13 s; click / key skips)
    ends on the end card: grade, counts and the scrapbook (a drawn polaroid per good moment found).
 
@@ -552,7 +555,7 @@ window.FemcTrip = (() => {
   const tutLib = () => (window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }))).then(T => T || MINI);
   const tutNow = () => window.FemcTutorial || MINI;
 
@@ -600,7 +603,7 @@ window.FemcTrip = (() => {
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
 
       const el = document.createElement('div');
-      el.className = 'mg-tr' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-tr' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'The Trip');
       el.innerHTML = `
         <img class="tr-bg" src="${BG(o.bg || 'epi-h-park-night')}" alt="" onerror="this.remove()">
@@ -618,12 +621,12 @@ window.FemcTrip = (() => {
         <div class="tr-say" aria-live="polite" hidden><img alt="" hidden><p></p></div>
         <div class="tr-task" hidden></div>
         <div class="tr-acts">
-          <button type="button" class="tr-coax" data-a="coax" hidden>Coax <kbd>E</kbd></button>
-          <button type="button" class="tr-bark" data-a="bark">Bark <kbd>B</kbd><i></i></button>
-          <button type="button" class="tr-pet" data-a="pet">Pet Nana <kbd>N</kbd><i></i></button>
-          <button type="button" class="tr-drink" data-a="drink" disabled>Water <b>0</b> <kbd>Q</kbd></button>
+          <button type="button" class="tr-coax" data-a="coax" hidden>Coax <kbd>E</kbd> <kbd>✕</kbd></button>
+          <button type="button" class="tr-bark" data-a="bark">Bark <kbd>B</kbd> <kbd>△</kbd><i></i></button>
+          <button type="button" class="tr-pet" data-a="pet">Pet Nana <kbd>N</kbd> <kbd>□</kbd><i></i></button>
+          <button type="button" class="tr-drink" data-a="drink" disabled>Water <b>0</b> <kbd>Q</kbd> <kbd>R1</kbd></button>
         </div>
-        <p class="tr-help">Walk: arrows / WASD, or hold the mouse or a finger where you want to go. E / Space near a friend. B: Nana barks shadows away. Esc pauses.</p>
+        <p class="tr-help">Walk: arrows / WASD, or hold the mouse or a finger where you want to go. E / Space near a friend. B: Nana barks shadows away. Esc pauses. Controller: D-pad / stick walks, ✕ near a friend, □ pet, △ bark, R1 water, ○ pauses.</p>
         <p class="tr-finskip" hidden>Click or press any key to skip</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
@@ -978,7 +981,7 @@ window.FemcTrip = (() => {
             else { T.n = Math.max(0, T.n - 1); vibeAdd(-2); sfx('wrong'); T.msg = pick(BRAID_BAD); react('cherry', 'bang', 700); }
             paintTask();
           };
-          T.key = e => { const d = KEYDIR[e.key]; if (d === 'l' || d === 'r') { T.input(d); return true; } return false; };
+          T.key = e => { const d = KEYDIR[e.key]; if (d === 'l' || d === 'r') { if (!e.repeat) T.input(d); return true; } return false; }; // a held key doesn't repeat (a pad's held D-pad either)
           T.click = b => { if (b.dataset.side) { T.input(b.dataset.side); return true; } return false; };
           T.html = () => `<p class="tr-tq">${esc(T.msg)}</p><div class="tr-sway" data-next="${T.next}"><span class="l"></span><span class="r"></span><b></b></div>
             <div class="tr-braid">${Array.from({ length: D.braid }, (_, i) => `<i class="${i < T.n ? (i % 2 ? 'r' : 'l') : ''}"></i>`).join('')}</div>
@@ -1875,6 +1878,16 @@ window.FemcTrip = (() => {
         if (e.key === 'Escape') { e.preventDefault(); pause(!st.paused); return; }
         if (st.paused) return;
         if (st.fin) { e.preventDefault(); skipFinale(); return; }
+        if (e.fromPad) { // the controller: □ pet, △ bark, R1 water, L1 walk away; ↑ ↓ / ✕ pick an answer
+          const k = e.key, opts = st.task ? [...taskEl.querySelectorAll('.tr-opts button')] : [];
+          if (opts.length && (k === 'ArrowUp' || k === 'ArrowDown' || (k === 'Enter' && !opts.includes(document.activeElement)))) {
+            e.preventDefault(); const i = opts.indexOf(document.activeElement); opts[i < 0 ? 0 : (i + (k === 'ArrowUp' ? opts.length - 1 : 1)) % opts.length].focus(); return;
+          }
+          if (k === 'l') { e.preventDefault(); pet(); return; }
+          if (k === 'y') { e.preventDefault(); bark(); return; }
+          if (k === ']') { e.preventDefault(); drink(); return; }
+          if (k === '[') { e.preventDefault(); if (st.task) cancelTask(); return; }
+        }
         if (st.task && st.task.key && st.task.key(e, false)) { e.preventDefault(); return; }
         if (KEYDIR[e.key]) { e.preventDefault(); st.keys.add(KEYDIR[e.key]); return; }
         if (e.key === 'e' || e.key === 'E' || e.key === ' ' || e.key === 'Enter') { if (e.target && e.target.closest && e.target.closest('button') && e.key !== 'e' && e.key !== 'E') return; e.preventDefault(); interact(); return; }
@@ -1907,17 +1920,17 @@ window.FemcTrip = (() => {
       const practice = kind => new Promise(ok => { tp = { kind, ok: () => { tp = null; ok(); } }; });
       const tutSteps = replay => [
         { target: null, say: 'Hanlim Park, way past midnight. Everything is breathing. That’s fine. That’s normal tonight.' },
-        { target: '.tr-mark', before: () => mark(st.p, -40), say: 'This is me. Walk with the <b>arrows / WASD</b>, or hold the mouse or a finger where you want to go. Try it.', wait: replay ? 'click' : () => practice('walk') },
+        { target: '.tr-mark', before: () => mark(st.p, -40), say: 'This is me. Walk with the <b>arrows / WASD</b> (the <b>D-pad</b> or stick on a controller), or hold the mouse or a finger where you want to go. Try it.', wait: replay ? 'click' : () => practice('walk') },
         { target: '.tr-vibe', before: () => mark(st.p, -40), say: 'The <b>vibe</b>. It slips on its own. If it sits at nothing for too long, the night turns. Keep it up.' },
         { target: '.tr-mark', before: () => mark(L.lamps[0], -80), say: 'What helps: the <b>blanket’s music</b> (stand near it), and the streetlights hum when I walk past. Three different ones in a row make a chord. Walk past this one.', wait: replay ? 'click' : () => practice('lamp') },
-        { target: '.tr-mark', before: () => mark(st.nana, -50), say: 'And <b>Nana</b>. He’s talking tonight, apparently. Pet him: <b>N</b>, the Pet button, or tap him.', wait: replay ? 'click' : () => practice('nana') },
+        { target: '.tr-mark', before: () => mark(st.nana, -50), say: 'And <b>Nana</b>. He’s talking tonight, apparently. Pet him: <b>N</b> (<b>□</b>), the Pet button, or tap him.', wait: replay ? 'click' : () => practice('nana') },
         { target: '.tr-bark', before: () => { if (!replay) { st.shades = []; spawnShade(true); st.barkAt = -1e9; } st.markAt = null; positionMark(); },
-          say: 'When the vibe slips, the dark grows <b>shadow-things</b>. They drift at me and whoever holds my hand: a touch costs vibe, and a friend lets go and runs. <b>Lamp light</b> melts them. So does Nana: <b>B</b> or Bark. Bark now.', wait: replay ? 'click' : () => practice('bark') },
+          say: 'When the vibe slips, the dark grows <b>shadow-things</b>. They drift at me and whoever holds my hand: a touch costs vibe, and a friend lets go and runs. <b>Lamp light</b> melts them. So does Nana: <b>B</b> (<b>△</b>) or Bark. Bark now.', wait: replay ? 'click' : () => practice('bark') },
         { target: '.tr-sun', say: 'Later a <b>torch</b> sweeps the ring path: a night guard. Stay out of the beam, or the last friend in my chain lets go. The beam melts shadows too.' },
         { target: '.tr-mom', say: '<b>Good moments</b> glow like little polaroids. Walk through them: they fill the vibe, and they go in the scrapbook at the end.' },
-        { target: '.tr-acts', say: 'Water bottles glow where they fell: walk over one, then drink (<b>Q</b> or Water). Standing still at the pond’s edge helps too.' },
-        { target: '.tr-crew', say: 'Everyone wandered off. Pink pins at the edge point to them. Get close and press <b>E / Space</b>: catch Asahi’s falling notes, stomp on the beat with Hyunsuk, tag Junkyu, breathe with Jihoon, answer Jaehyuk, braid with Cherry. Then they hold my hand: walk them back to the blanket.' },
-        { target: '.tr-sun', say: 'All six on the blanket before the sun’s up. Esc pauses, and How to play shows this again.' },
+        { target: '.tr-acts', say: 'Water bottles glow where they fell: walk over one, then drink (<b>Q</b> / <b>R1</b> or Water). Standing still at the pond’s edge helps too.' },
+        { target: '.tr-crew', say: 'Everyone wandered off. Pink pins at the edge point to them. Get close and press <b>E / Space</b> (<b>✕</b>): catch Asahi’s falling notes, stomp on the beat with Hyunsuk, tag Junkyu, breathe with Jihoon, answer Jaehyuk, braid with Cherry. Then they hold my hand: walk them back to the blanket.' },
+        { target: '.tr-sun', say: 'All six on the blanket before the sun’s up. Esc (○) pauses, and How to play shows this again.' },
       ];
       const tutEnd = () => {
         st.tut = false; tp = null; st.markAt = null; positionMark(); el.classList.remove('tut');

@@ -55,6 +55,8 @@
    force (it beats and detunes as it grows), candle gutters, whispers panned to the side of its letter, a knock under the board
    when it takes a letter, silence before a jerk, the candles going out and catching. Mute = silent; every one has a caption.
    Controls never lie: Esc (pause: Resume / Quit), Space, arrows, L and the pointer always do what they say.
+   Controller (Nov 15 2026, battle/pad.js): D-pad / left stick steers (the arrows), hold ✕ to hold it steady (Space, through
+   FemcPad.remap), □ lets it spell (L), ○ pauses (D-pad + ✕ in the pause menu).
    Title card ~1.8 s (click / any key skips; Esc skips and pauses), content note under it. End: GOODBYE = warm light, the
    planchette slides off the board; the board wins = it finishes its word by itself and the candles gutter down, a quiet card.
    Settings: reduced motion = no shake, no flicker or shimmer (dims instead), crossfades; Reduce flashes (calm) = the blackout is
@@ -163,7 +165,7 @@ window.FemcPlanchette = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   let cur = null;
@@ -190,7 +192,7 @@ window.FemcPlanchette = (() => {
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
-      el.className = 'mg-pl' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-pl' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application');
       el.setAttribute('aria-label', 'The planchette');
       el.innerHTML = `
@@ -209,8 +211,8 @@ window.FemcPlanchette = (() => {
         <ul class="pl-caps" aria-live="polite"></ul>
         <p class="pl-ghost" aria-hidden="true"></p>
         <p class="pl-say" aria-live="polite"></p>
-        <button type="button" class="pl-let" hidden>Let it spell <kbd>L</kbd><i></i></button>
-        <p class="pl-help">Hold and drag (mouse or finger), or arrows / WASD, to steer the planchette. Keep the glass on a letter until its ring fills. Space holds it steady. Esc pauses.</p>
+        <button type="button" class="pl-let" hidden>Let it spell <kbd>L</kbd> <kbd>□</kbd><i></i></button>
+        <p class="pl-help">Hold and drag (mouse or finger), or arrows / WASD, to steer the planchette. Keep the glass on a letter until its ring fills. Space holds it steady. Esc pauses. Controller: D-pad / stick steers, hold ✕ steady, □ lets it spell, ○ pauses.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
@@ -704,6 +706,7 @@ window.FemcPlanchette = (() => {
         if (DIRS[e.key]) { st.keys.delete(DIRS[e.key]); if (!st.keys.size) { st.aim = { x: st.p.x, y: st.p.y }; st.lastIn = st.t; } }
       };
       const cleanup = () => {
+        if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null;
         cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear();
         window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', blur);
         try { ac && ac.close(); } catch (e) {} el.remove();
@@ -711,6 +714,9 @@ window.FemcPlanchette = (() => {
       $('.mg-pause').onclick = e => { const b = e.target.dataset && e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish('quit'); } };
       $('.pl-let').onclick = e => { e.stopPropagation(); letIt(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
+      // the controller (battle/pad.js reads this at each press): ✕ = Space (hold it steady) once the board is up
+      const padMap = k => { if (!st.begun || st.over || st.paused || !el.isConnected) return; return { Enter: ' ' }[k]; };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
 
       /* the first-time tutorial: a warm, lit practice board (st.tut), each action done once */
       const FACE = `${base()}assets/femc/portraits/cherry-hoax/neutral.webp`;
@@ -769,13 +775,13 @@ window.FemcPlanchette = (() => {
       };
       const tutSteps = replay => [
         { target: null, say: 'Okay. Fingers on it, lightly. Let me show you how to steer before everyone starts asking it things.' },
-        { target: '.pl-stage', say: 'Hold and drag (or arrows / WASD). It follows a little behind your hand. Take the glass to <b>YES</b>, top left.', wait: replay ? 'click' : () => practice('move', 'YES') },
-        { target: '.pl-stage', say: 'Now rest there until the <b>ring</b> fills: that letter counts. Space holds it steady.', wait: replay ? 'click' : () => practice('dwell', 'YES') },
+        { target: '.pl-stage', say: 'Hold and drag (or arrows / WASD; the <b>D-pad</b> or stick on a controller). It follows a little behind your hand. Take the glass to <b>YES</b>, top left.', wait: replay ? 'click' : () => practice('move', 'YES') },
+        { target: '.pl-stage', say: 'Now rest there until the <b>ring</b> fills: that letter counts. Space (<b>✕</b>) holds it steady.', wait: replay ? 'click' : () => practice('dwell', 'YES') },
         { target: '.pl-stage', say: 'Last thing every night: <b>GOODBYE</b>, at the bottom. It needs a longer hold. Try it.', wait: replay ? 'click' : () => practice('dwell', 'GOODBYE') },
         { target: '.pl-stage', say: 'Something else pushes too: it drifts, and it <b>shoves you away</b> from the right letter. Hold on and take it to <b>NO</b>.', wait: replay ? 'click' : () => practice('push', 'NO') },
         { target: '.pl-let', before: () => { if (!replay) { st.its = 'HI'; st.bi = 0; st.offer = { end: Infinity }; const b = $('.pl-let'); b.hidden = false; b.classList.add('on'); } },
-          say: 'Sometimes it starts a word, and you could <b>let it spell</b> (L or this button). It finishes by itself, but you lose the question, and the best grades. Try it once.', wait: replay ? 'click' : () => practice('let') },
-        { target: '.pl-meter', say: 'Letters it takes for itself fill <b>the board</b>. If it fills, it wins. Esc pauses, and How to play shows this again. Ready?' },
+          say: 'Sometimes it starts a word, and you could <b>let it spell</b> (L, <b>□</b> or this button). It finishes by itself, but you lose the question, and the best grades. Try it once.', wait: replay ? 'click' : () => practice('let') },
+        { target: '.pl-meter', say: 'Letters it takes for itself fill <b>the board</b>. If it fills, it wins. Esc (○) pauses, and How to play shows this again. Ready?' },
       ];
       const howTo = () => {
         tutLib().then(T => {

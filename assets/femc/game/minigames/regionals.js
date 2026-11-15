@@ -16,6 +16,9 @@
      1-4  ofuda to that teammate   Space  Protection Suzu (cleanse, a moment of invulnerability, a little heal; 12 s)
      Shift  Swift Step (teleport to a teammate: dodges a dive on Solar; 7 s)   Q  Kitsune Rush (ult, fills as she heals and hits)
      Esc  pause. Touch: tap an enemy to throw kunai, tap a teammate to heal, buttons for the rest.
+     Controller (Nov 15 2026, battle/pad.js): right stick (smooth) or D-pad / left stick aims, ✕ or R2 kunai, □ ofuda to the
+     teammate under the crosshair (else the most hurt one), △ Suzu, L1 Swift Step, R1 Kitsune Rush, SHARE / Create reload, ○ pause
+     (D-pad + ✕ in the pause menu). The ability buttons show the pad's buttons while a pad is in use.
    The round: a control point (the bar at the top). The side with more players up takes it; first to 100% wins the round.
    The other team's plays are called out over comms before they land: Ana's sleep on Chenle, Ana's nade (anti-heal), Genji diving
    Solar (Swift Step or kill him), Dragonblade, Graviton Surge, Lúcio's Sound Barrier. A Suzu inside a big hit's window is a save.
@@ -67,7 +70,7 @@ window.FemcRegionals = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const MAPS = [{ id: 'lijiang', name: 'Lijiang Tower · Night Market', sky: ['#1b1440', '#4a1b3d'], pics: 3 }, { id: 'busan', name: 'Busan · Downtown', sky: ['#ff8a6b', '#5a2a6b'], pics: 3 }];
   // Kat's picks (Nov 10): Chenle tank, Minji and Olivia DPS, Haerin and Solar support. x / y / h: % of the stage (feet at y).
@@ -132,7 +135,7 @@ window.FemcRegionals = (() => {
       const el = document.createElement('div');
       const GS0 = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {};
       const still = reduced.matches, calm = o.calm ?? !!GS0.calm, perf = o.perf ?? !!GS0.perf;
-      el.className = 'mg-ow' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-ow' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.innerHTML = `
         <div class="ow-stage"><div class="ow-map"></div><div class="ow-amb" aria-hidden="true"></div><div class="ow-torii" aria-hidden="true">${[0, 1, 2, 3, 4, 5].map(k => `<i style="--k:${k}"></i>`).join('')}</div><div class="ow-foes"></div><div class="ow-team"></div><div class="ow-fx"></div><div class="ow-hands"></div>
           <div class="ow-cross" aria-hidden="true"><i></i></div></div>
@@ -458,9 +461,9 @@ window.FemcRegionals = (() => {
         });
         $('.ow-mehp i').style.width = `${(R.me.hp / R.me.max) * 100}%`; $('.ow-mehp em').textContent = R.me.down ? `${Math.ceil(R.me.down / 1000)}` : Math.ceil(R.me.hp);
         $('.ow-ammo b').textContent = R.kReload > 0 ? '…' : R.kAmmo; $('.ow-ammo.heal b').textContent = R.hReload > 0 ? '…' : R.hAmmo;
-        const ab = (k, cd, max) => { const b = el.querySelector(`[data-ab="${k}"]`); b.disabled = cd > 0 || !!R.me.down; b.style.setProperty('--cd', cd / max); b.querySelector('small').textContent = cd > 0 ? `${Math.ceil(cd / 1000)}s` : { step: 'Shift', suzu: 'Space' }[k]; };
+        const ab = (k, cd, max) => { const b = el.querySelector(`[data-ab="${k}"]`); b.disabled = cd > 0 || !!R.me.down; b.style.setProperty('--cd', cd / max); b.querySelector('small').textContent = cd > 0 ? `${Math.ceil(cd / 1000)}s` : (padOn() ? { step: 'L1', suzu: '△' } : { step: 'Shift', suzu: 'Space' })[k]; };
         ab('step', R.step, 7000); ab('suzu', R.suzu, 12000);
-        const rb = el.querySelector('[data-ab="rush"]'); rb.disabled = R.rush < 100 || !!R.me.down; rb.style.setProperty('--fill', R.rush / 100);
+        const rb = el.querySelector('[data-ab="rush"]'); rb.querySelector('small').textContent = padOn() ? 'R1' : 'Q'; rb.disabled = R.rush < 100 || !!R.me.down; rb.style.setProperty('--fill', R.rush / 100);
         $('.ow-obj .u').style.width = `${R.us / 2}%`; $('.ow-obj .t').style.width = `${R.them / 2}%`;
         const c = $('.ow-cross'); c.style.left = mouse.x + '%'; c.style.top = mouse.y + '%';
         // drawn: parallax, the point bar's glow, her low-HP edge, the dive edge, ult ready
@@ -474,6 +477,7 @@ window.FemcRegionals = (() => {
         const dt = Math.min(80, now - (last || now)); last = now;
         if (R && !paused && !R.over) {
           R.t += dt;
+          aimPad(dt);
           if (R.kReload > 0 && (R.kReload -= dt) <= 0) { R.kReload = 0; R.kAmmo = 15; }
           if (R.hReload > 0 && (R.hReload -= dt) <= 0) { R.hReload = 0; R.hAmmo = 10; }
           R.kCd = Math.max(0, R.kCd - dt); R.suzu = Math.max(0, R.suzu - dt); R.step = Math.max(0, R.step - dt);
@@ -516,6 +520,24 @@ window.FemcRegionals = (() => {
       };
 
       // input
+      /* the controller (Nov 15 2026): held arrows (D-pad / left stick) and the right stick move the crosshair */
+      const padOn = () => !!(window.FemcPad && window.FemcPad.active);
+      const held = new Set();
+      const aimPad = dt => {
+        let x = 0, y = 0;
+        if (held.has('ArrowLeft')) x -= 1; if (held.has('ArrowRight')) x += 1; if (held.has('ArrowUp')) y -= 1; if (held.has('ArrowDown')) y += 1;
+        if (x || y) { aimPad.t = (aimPad.t || 0) + dt; const v = (aimPad.t > 350 ? 95 : 50) * dt / 1000, n = Math.hypot(x, y); x = x / n * v; y = y / n * v; } else aimPad.t = 0;
+        try { const p = [...(navigator.getGamepads ? navigator.getGamepads() : [])].find(Boolean), ax = p && p.axes || [];
+          const rx = Math.abs(ax[2]) > 0.18 ? ax[2] : 0, ry = Math.abs(ax[3]) > 0.18 ? ax[3] : 0;
+          if (rx || ry) { const m = Math.min(1, Math.hypot(rx, ry)), v = (35 + 85 * m * m) * dt / 1000 / Math.hypot(rx, ry); x += rx * v; y += ry * v; } } catch (e) {}
+        if (x || y) mouse = { x: Math.max(1, Math.min(99, mouse.x + x)), y: Math.max(2, Math.min(97, mouse.y + y)) };
+      };
+      const healPad = () => { // □: the teammate under the crosshair, else the most hurt one standing
+        const m = mateAt(mouse); if (m != null) return ofuda(m);
+        const up = R ? R.team.map((t, i) => i).filter(i => !R.team[i].down) : [];
+        if (up.length) ofuda(up.sort((a, b) => R.team[a].hp / R.team[a].max - R.team[b].hp / R.team[b].max)[0]);
+      };
+      const keyUp = e => { held.delete(e.key); };
       stage.addEventListener('pointermove', e => { const r = stage.getBoundingClientRect(); mouse = { x: (e.clientX - r.left) / r.width * 100, y: (e.clientY - r.top) / r.height * 100 }; });
       stage.addEventListener('contextmenu', e => e.preventDefault());
       stage.addEventListener('pointerdown', e => {
@@ -529,8 +551,19 @@ window.FemcRegionals = (() => {
         if (over) return;
         e.stopPropagation(); // the scene underneath never sees the match's keys
         const T = TUT(); if (T && T.open() && (e.key === 'Escape' || T.blocking())) return; // the tutorial has the keys
-        if (e.key === 'Escape') { e.preventDefault(); paused = !paused; $('.mg-pause').hidden = !paused; el.classList.toggle('paused', paused); return; }
+        if (e.key === 'Escape') { e.preventDefault(); paused = !paused; $('.mg-pause').hidden = !paused; el.classList.toggle('paused', paused); held.clear(); if (paused) $('.mg-pause [data-mg=resume]').focus(); return; }
         if (paused) return;
+        if (e.key.startsWith('Arrow')) { e.preventDefault(); held.add(e.key); return; }
+        if (e.fromPad) { // the controller's buttons
+          const k = e.key;
+          if (k === 'Enter' || k === 'r') { e.preventDefault(); if (!e.repeat) kunai(); }
+          else if (k === 'l') { e.preventDefault(); healPad(); }
+          else if (k === 'y') { e.preventDefault(); suzu(); }
+          else if (k === '[') { e.preventDefault(); step(); }
+          else if (k === ']') { e.preventDefault(); rush(); }
+          else if (k === 'h') { e.preventDefault(); if (R && R.kAmmo < 15 && !R.kReload) R.kReload = 1500; }
+          return;
+        }
         if (/^[1-4]$/.test(e.key)) { e.preventDefault(); ofuda(+e.key - 1); }
         else if (e.key === ' ') { e.preventDefault(); suzu(); }
         else if (e.key === 'Shift') step();
@@ -538,8 +571,8 @@ window.FemcRegionals = (() => {
         else if (e.key === 'r' || e.key === 'R') { if (R && R.kAmmo < 15 && !R.kReload) R.kReload = 1500; }
       };
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') { paused = false; $('.mg-pause').hidden = true; el.classList.remove('paused'); } if (b === 'howto') howTo(); if (b === 'quit') { paused = false; $('.mg-pause').hidden = true; finish(true); } };
-      const cleanup = () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear(); window.removeEventListener('keydown', key, true); S.close(); el.remove(); };
-      window.addEventListener('keydown', key, true);
+      const cleanup = () => { cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear(); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); S.close(); el.remove(); };
+      window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
 
       /* the tutorial: a practice round with Minji (nothing shoots back, the point holds still); live = it sets up each moment
          (the first time), else a walkthrough over the paused match (How to play) */
@@ -548,18 +581,18 @@ window.FemcRegionals = (() => {
       const fj = id => FOES.findIndex(f => f.id === id);
       const steps = live => [
         { target: '.ow-obj', say: 'Practice round, Sol. Nobody\'s shooting yet. The point: whoever has more players up takes it.', face: FACE('happy') },
-        { target: () => foeEls()[fj('cassidy')], say: 'Cassidy peeked. <b>Aim and left click</b> (tap on a phone) to throw kunai. Headshots crit.', wait: live ? until('kill', fj('cassidy')) : 'click', face: FACE('serious'),
+        { target: () => foeEls()[fj('cassidy')], say: 'Cassidy peeked. <b>Aim and left click</b> (tap on a phone; controller: aim with a stick, <b>✕</b> or <b>R2</b>) to throw kunai. Headshots crit.', wait: live ? until('kill', fj('cassidy')) : 'click', face: FACE('serious'),
           before: () => { if (!live) return; const j = fj('cassidy'), f = R.foes[j]; Object.assign(f, { state: 'up', spot: 2, t: 1e9, hp: 70, down: 0 }); paint(); } },
-        { target: () => mates()[2], say: 'Olivia\'s hurt. <b>Right click</b> her, or press <b>3</b>, for a healing ofuda.', wait: live ? until('heal', 2) : 'click', face: FACE('neutral'),
+        { target: () => mates()[2], say: 'Olivia\'s hurt. <b>Right click</b> her, or press <b>3</b> (controller: <b>□</b>), for a healing ofuda.', wait: live ? until('heal', 2) : 'click', face: FACE('neutral'),
           before: () => { if (live) { R.team[2].hp = 50; paint(); } } },
-        { target: '[data-ab="suzu"]', say: 'Nade on me: no heals land. <b>Space</b> rings the Suzu: it cleanses, and right before a big hit it\'s a save.', wait: live ? until('suzu') : 'click', face: FACE('surprised'),
+        { target: '[data-ab="suzu"]', say: 'Nade on me: no heals land. <b>Space</b> (<b>△</b>) rings the Suzu: it cleanses, and right before a big hit it\'s a save.', wait: live ? until('suzu') : 'click', face: FACE('surprised'),
           before: () => { if (live) { R.team[1].hp = 140; R.team[1].anti = 1e9; R.suzu = 0; paint(); } } },
-        { target: '[data-ab="step"]', say: 'Genji\'s diving you! <b>Shift</b> for Swift Step: you blink to us and he misses.', wait: live ? until('step') : 'click', face: FACE('serious'),
+        { target: '[data-ab="step"]', say: 'Genji\'s diving you! <b>Shift</b> (<b>L1</b>) for Swift Step: you blink to us and he misses.', wait: live ? until('step') : 'click', face: FACE('serious'),
           before: () => { if (!live) return; const j = fj('genji'), f = R.foes[j]; Object.assign(f, { state: 'dive', spot: 5, t: 1e9, down: 0 }); R.me.dove = j; R.step = 0; paint(); },
           after: () => { if (live && R) { const f = R.foes[fj('genji')]; Object.assign(f, { state: 'hid', spot: -1 }); R.me.dove = null; } } },
-        { target: '[data-ab="rush"]', say: 'Healing and hits fill <b>Kitsune Rush</b>. It\'s full: press <b>Q</b>.', wait: live ? until('rush') : 'click', face: FACE('happy'),
+        { target: '[data-ab="rush"]', say: 'Healing and hits fill <b>Kitsune Rush</b>. It\'s full: press <b>Q</b> (<b>R1</b>).', wait: live ? until('rush') : 'click', face: FACE('happy'),
           before: () => { if (live) { R.rush = 100; paint(); } } },
-        { target: '.ow-call', say: 'Calls come in up here before their big plays. Best of three. Esc pauses. Let\'s go.', face: FACE('happy') },
+        { target: '.ow-call', say: 'Calls come in up here before their big plays. Best of three. Esc (○) pauses. Let\'s go.', face: FACE('happy') },
       ];
       const tutOpts = () => { const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; return { who: 'Minji', calm: o.calm ?? !!GS.calm, perf: o.perf ?? !!GS.perf }; };
       const howTo = () => {

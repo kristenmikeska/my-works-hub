@@ -10,7 +10,8 @@
    Press Play back: the meters bounce (Web Audio: a soft synth loop per track at the fader's level, quiet; muted if the page says
    so) and Haechan says the one thing that's most wrong ("Vocal's buried." / "Too much low end." / "Drums are in the way.").
    Get every fader within reach of his mix and he says "...Yeah. That." Fewer playbacks = a better grade. Keys: 1-4 pick a fader,
-   ↑ / ↓ move it, Space plays back, Esc pauses.
+   ↑ / ↓ move it, Space plays back, Esc pauses. Controller (Nov 15 2026, battle/pad.js): ← → or L1 / R1 pick a fader, ↑ ↓ move
+   it, ✕ plays back, ○ pauses (D-pad + ✕ in the pause menu).
 
    Tutorial (Nov 11 2026, Kat: every minigame gets one; tutorial.js FemcTutorial, loaded on demand from this folder):
      play({ tutorial: true | false })  true = always show it, false = never; default = only the first time (id 'studio').
@@ -39,7 +40,7 @@ window.FemcStudio = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const SART = id => `${base()}assets/femc/game/art/minigames/sing/${id}.webp`; // Haechan's talkback faces (the booth's art)
   const PFACE = { neutral: 'neutral', talking: 'neutral', happy: 'happy', impressed: 'surprised', wince: 'serious', soft: 'happy' };
@@ -57,7 +58,7 @@ window.FemcStudio = (() => {
       const GS0 = (() => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } })();
       const CALM = o.calm ?? !!GS0.calm, PERF = o.perf ?? !!GS0.perf, STILL = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
       const BARS = PERF ? 24 : 44;
-      el.className = 'mg-mix' + (CALM ? ' calm' : '') + (PERF ? ' perf' : '') + (STILL ? ' still' : '');
+      el.dataset.padnav = ''; el.className = 'mg-mix' + (CALM ? ' calm' : '') + (PERF ? ' perf' : '') + (STILL ? ' still' : '');
       el.innerHTML = `
         <div class="mg-mix-bg" aria-hidden="true"><i class="lamp l1"></i><i class="lamp l2"></i><i class="haze"></i></div>
         <div class="mg-mix-top"><b>Studio 4B · the mix</b><span class="mg-mix-onair" aria-hidden="true">ON AIR</span><span class="mg-mix-count"><span class="mg-mix-pips" aria-hidden="true">${Array.from({ length: TRIES }, () => '<i></i>').join('')}</span><span class="mg-mix-tries"></span></span></div>
@@ -65,8 +66,8 @@ window.FemcStudio = (() => {
         <div class="mg-mix-wave" aria-hidden="true"><i class="mg-reel"></i><div class="mg-mix-bars">${Array.from({ length: BARS }, (_, i) => `<i style="--i:${i}"></i>`).join('')}<u class="mg-mix-head"></u></div><i class="mg-reel"></i></div>
         <div class="mg-mix-desk">${tracks.map((t, i) => `<div class="mg-ch" data-i="${i}" style="--lv:.5"><span class="mg-meter"><i></i><u></u></span><span class="mg-glow" aria-hidden="true"></span>
           <i class="mg-knob" aria-hidden="true"></i><output class="mg-ch-val">50</output><input type="range" min="0" max="100" value="50" aria-label="${esc(t.name)}" data-id="${t.id}"><b>${esc(t.name)}</b><small>${i + 1}</small></div>`).join('')}</div>
-        <div class="mg-mix-go"><button type="button" class="mg-play">▶ Play back <small>Space</small></button></div>
-        <p class="mg-mix-help">Drag the faders (or 1–4 then ↑ ↓), then play it back. He'll say what's wrong. Esc pauses.</p>
+        <div class="mg-mix-go"><button type="button" class="mg-play">▶ Play back <small>Space / ✕</small></button></div>
+        <p class="mg-mix-help">Drag the faders (or 1–4 then ↑ ↓), then play it back. He'll say what's wrong. Esc pauses. Controller: ← → pick a fader, ↑ ↓ move it, ✕ plays back, ○ pauses.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
@@ -168,9 +169,13 @@ window.FemcStudio = (() => {
       };
       const key = e => {
         if (st.over || tutBusy(e)) return;
-        if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; return; }
+        if (e.key === 'Escape') { e.preventDefault(); st.paused = !st.paused; $('.mg-pause').hidden = !st.paused; if (st.paused) $('.mg-pause button').focus(); return; }
         if (st.paused) return;
         if (/^[1-4]$/.test(e.key)) { st.sel = +e.key - 1; mark(); }
+        else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && (e.fromPad || !(e.target.matches && e.target.matches('input[type="range"]'))) || (e.fromPad && (e.key === '[' || e.key === ']'))) {
+          e.preventDefault(); st.sel = (st.sel + (e.key === 'ArrowRight' || e.key === ']' ? 1 : chs.length - 1)) % chs.length; mark(); // the controller (and ← →): the next / previous fader
+        }
+        else if (e.key === 'Enter' && e.fromPad) { e.preventDefault(); playback(); }
         else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
           e.preventDefault(); const r = chs[st.sel].querySelector('input');
           r.value = Math.max(0, Math.min(100, +r.value + (e.key === 'ArrowUp' ? 4 : -4))); r.oninput();
@@ -184,10 +189,10 @@ window.FemcStudio = (() => {
         const doIt = (k, extra) => replay ? {} : { wait: () => new Promise(ok => { tutOn[k] = ok; }), ...extra };
         return [
           { target: '.mg-mix-desk', face: face('neutral'), say: 'Your song, four parts: vocal, piano, bass, drums. Each fader is how loud that part is.' },
-          { target: () => chs[0], face: face('neutral'), say: 'Move one. Drag a fader up or down, or press <b>1–4</b> to pick one and <b>↑ ↓</b> to move it.', ...doIt('moved') },
-          { target: '.mg-play', face: face('happy'), say: 'Now <b>Play back</b> (or Space). This one is practice: it doesn\'t count.', ...doIt('played') },
+          { target: () => chs[0], face: face('neutral'), say: 'Move one. Drag a fader up or down, or press <b>1–4</b> to pick one and <b>↑ ↓</b> to move it. Controller: <b>← →</b> picks one, <b>↑ ↓</b> moves it.', ...doIt('moved') },
+          { target: '.mg-play', face: face('happy'), say: 'Now <b>Play back</b> (or Space; <b>✕</b> on a controller). This one is practice: it doesn\'t count.', ...doIt('played') },
           { target: '.mg-mix-say', face: face('serious'), say: 'After every playback I tell you the one thing that\'s most wrong. Fix that, then play it again.' },
-          { target: '.mg-mix-tries', face: face('neutral'), say: 'You get four playbacks. The fewer you need, the better the grade. Esc pauses.' },
+          { target: '.mg-mix-tries', face: face('neutral'), say: 'You get four playbacks. The fewer you need, the better the grade. Esc (○) pauses.' },
         ];
       };
       const settings = () => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } };

@@ -41,6 +41,9 @@
    Endings: survived with grace / survived, but they "think you're interesting" / the giggle explodes (Composure 0).
 
    Title card ~1.8 s (click / a key skips). Esc pauses (Resume / How to play / Quit). Mouse, touch and keyboard each do everything.
+   Controller (Nov 15 2026, battle/pad.js): answers ↑ ↓ (a pink ring) then ✕; pass the dish ← → then ✕; hold □ or R2 for a
+   straight face (Space), △ looks at Jungwon (C), L1 / R1 take his foot tap (N), ✕ moves the talk on; ○ pauses (D-pad + ✕ in
+   the pause menu). The buttons go through FemcPad.remap while dinner runs.
    Settings: reduced motion = no melting, sliding warps or wobble (captions say it instead; dishes still move, slowly); Reduce flashes
    (calm) = no burst flash, softer haze, smaller melt; Performance = no haze, blur or wobble layers. UI chrome pink and black only.
    Sound (Web Audio, made here, no files): a dining-room hum that slowly detunes, the clock (backwards when it runs backwards), type
@@ -491,7 +494,7 @@ window.FemcEdible = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   // a tiny built-in tutorial if tutorial.js can't load: info steps only (dim + arrow + bubble), Skip, remembered
   const TKEY = 'kg-femc-tutorials';
@@ -536,7 +539,7 @@ window.FemcEdible = (() => {
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
-      el.className = 'mg-ed' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-ed' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application'); el.setAttribute('aria-label', 'Too Strong');
       el.innerHTML = `
         <div class="ed-scene">
@@ -558,8 +561,8 @@ window.FemcEdible = (() => {
           <button type="button" class="ed-pbtn" aria-label="Pause">II</button>
         </header>
         <aside class="ed-gig"><img class="ed-solar" src="${FACE('solar-hoax', 'neutral')}" alt="" onerror="this.remove()"><span class="ed-gigm" aria-label="Giggle"><i></i></span><small>Giggle</small>
-          <button type="button" class="ed-hold">Straight face <kbd>Space</kbd></button></aside>
-        <div class="ed-jwt"><button type="button" class="ed-nudge" hidden>His foot taps yours <kbd>N</kbd></button><button type="button" class="ed-cover">Look at Jungwon <kbd>C</kbd> <em></em></button></div>
+          <button type="button" class="ed-hold">Straight face <kbd>Space</kbd> <kbd>□</kbd></button></aside>
+        <div class="ed-jwt"><button type="button" class="ed-nudge" hidden>His foot taps yours <kbd>N</kbd> <kbd>R1</kbd></button><button type="button" class="ed-cover">Look at Jungwon <kbd>C</kbd> <kbd>△</kbd> <em></em></button></div>
         <div class="ed-box"><b class="ed-who"></b><p class="ed-say"></p><div class="ed-opts"></div><i class="ed-timer"><u></u></i></div>
         <div class="ed-flash"></div><p class="ed-warpcap" hidden></p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-p="resume">Resume</button><button type="button" data-p="howto">How to play</button><button type="button" data-p="quit">Quit</button></div>
@@ -572,16 +575,17 @@ window.FemcEdible = (() => {
       cur = { get M() { return M; }, act: (n, a) => act(n, a) };
 
       /* drawing */
-      let qKey = null, dKey = '';
+      let qKey = null, dKey = '', acur = 0, aKeyed = false; // acur: the answer the arrows ring (controller / keyboard)
       const paintOpts = () => {
         const b = M.beat;
         if (!b || b.stage !== 'pick' || b.k !== 'q') { if (qKey !== null) { optsEl.innerHTML = ''; qKey = null; } return; }
-        if (qKey !== b) { qKey = b; optsEl.innerHTML = b.slots.map((_, s) => `<button type="button" data-s="${s}"><kbd>${s + 1}</kbd><span></span></button>`).join(''); optsEl.dataset.n = b.slots.length; }
+        if (qKey !== b) { qKey = b; acur = 0; optsEl.innerHTML = b.slots.map((_, s) => `<button type="button" data-s="${s}"><kbd>${s + 1}</kbd><span></span></button>`).join(''); optsEl.dataset.n = b.slots.length; }
         optsEl.querySelectorAll('[data-s]').forEach(btn => {
           const sh = M.shown(+btn.dataset.s); if (!sh) return;
           set(btn.lastChild, 'text', sh.t);
           const c = (sh.think ? ' think' : '') + (sh.scr ? ' scr' : '') + (sh.hint ? ' hint' : '');
           if (btn._c !== c) { btn._c = c; btn.className = c.trim(); }
+          btn.classList.toggle('sel', +btn.dataset.s === acur && !!(window.FemcPad && window.FemcPad.active || aKeyed));
         });
       };
       const paintDishes = () => {
@@ -709,6 +713,12 @@ window.FemcEdible = (() => {
         const k = e.key;
         if (k === ' ' || e.code === 'Space') { e.preventDefault(); if (!e.repeat) act('hold', true); return; }
         if (/^[1-9]$/.test(k)) { e.preventDefault(); const i = +k - 1; if (M.beat && M.beat.k === 'pass') { const d = passOrder()[i]; if (d) act('pass', d.uid); } else act('answer', i); return; }
+        const qPick = M.beat && M.beat.stage === 'pick' && M.beat.k === 'q';
+        if (qPick && (k === 'ArrowUp' || k === 'ArrowDown' || (e.fromPad && (k === 'ArrowLeft' || k === 'ArrowRight')))) { // ring an answer
+          e.preventDefault(); aKeyed = true; const n = M.beat.slots.length; acur = (acur + (k === 'ArrowUp' || k === 'ArrowLeft' ? n - 1 : 1)) % n;
+          optsEl.querySelectorAll('[data-s]').forEach(b2 => b2.classList.toggle('sel', +b2.dataset.s === acur)); return;
+        }
+        if (qPick && k === 'Enter' && e.fromPad) { e.preventDefault(); act('answer', acur); return; } // ✕ answers the ringed one
         if (k === 'ArrowLeft' || k === 'ArrowRight') { e.preventDefault(); cursor += k === 'ArrowLeft' ? -1 : 1; return; }
         if (k === 'Enter') { e.preventDefault(); if (M.beat && M.beat.k === 'pass') { const d = passOrder()[cursor]; if (d) act('pass', d.uid); } else act('skip'); return; }
         if (k === 'c' || k === 'C') { act('cover'); return; }
@@ -731,6 +741,9 @@ window.FemcEdible = (() => {
       el.addEventListener('contextmenu', e => e.preventDefault());
       $('.mg-pause').addEventListener('click', e => { const p = e.target.closest('[data-p]'); if (!p) return; if (p.dataset.p === 'resume') pause(false); else if (p.dataset.p === 'howto') howTo(); else { pause(false); M.quit(); } });
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true); window.addEventListener('blur', blur);
+      // the controller (battle/pad.js reads this at each press): □ / R2 = Space (straight face), △ = C, L1 / R1 = N
+      const padMap = k => { if (!begun || paused || ended || !el.isConnected) return; return { l: ' ', r: ' ', y: 'c', '[': 'n', ']': 'n' }[k]; };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
 
       /* the end */
       const endGame = ending => {
@@ -762,6 +775,7 @@ window.FemcEdible = (() => {
         if (ending === 'quit') card(); else later(nextLine, 500);
       };
       const cleanup = () => {
+        if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null;
         ended = true; cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear();
         window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('blur', blur); window.removeEventListener('keydown', skipT, true);
         K.close(); el.remove(); if (cur && cur.M === M) cur = null;
@@ -777,16 +791,16 @@ window.FemcEdible = (() => {
         { target: null, say: 'Dinner at Jungwon’s. His parents. And the brownie from this afternoon has just decided to start working. Let’s practise first.' },
         { target: '.ed-meters', say: '<b>Composure</b> is you holding it together. <b>Suspicion</b> is his parents noticing. Keep the first up and the second down until the fruit.' },
         { target: '.ed-box', before: () => { if (!replay) { const n = M.done; M.force('q', TUTQ); tp = null; tutDone = () => M.done > n; } },
-          say: 'His mother asks things. Pick the <b>sane</b> answer (click it, or 1-3). Later the answers move, swap letters, and sometimes say what you’re actually thinking. Read before you click.',
+          say: 'His mother asks things. Pick the <b>sane</b> answer (click it, or 1-3; on a controller ↑ ↓ then <b>✕</b>). Later the answers move, swap letters, and sometimes say what you’re actually thinking. Read before you click.',
           wait: replay ? 'click' : () => practice('answer', () => tutDone()) },
         { target: '.ed-gig', before: () => { if (!replay) M.force('trig', 'fish'); },
-          say: 'Uh oh. The fish. <b>Hold Space</b> (or hold Straight face) until the Giggle meter is down. Not forever, though: a strained face looks strange too.',
+          say: 'Uh oh. The fish. <b>Hold Space</b> (<b>□</b> on a controller, or hold Straight face) until the Giggle meter is down. Not forever, though: a strained face looks strange too.',
           wait: replay ? 'click' : () => practice('hold', () => !M.trig) },
         { target: '.ed-table', before: () => { if (!replay) { const n = M.done; M.force('pass', 'kimchi'); tutDone = () => M.done > n; } },
-          say: '“Would you pass the kimchi?” Click the real dish (or ← / → and Enter, or its number). Copies that shimmer aren’t there.',
+          say: '“Would you pass the kimchi?” Click the real dish (or ← / → and Enter / <b>✕</b>, or its number). Copies that shimmer aren’t there.',
           wait: replay ? 'click' : () => practice('pass', () => tutDone()) },
-        { target: '.ed-jwt', say: 'Jungwon is on your side. When <b>his foot taps yours</b>, press N (or tap it): the sane answer glows and holds still. <b>Look at Jungwon</b> (C) and he covers for you, a few times a dinner.' },
-        { target: null, say: 'Esc pauses (How to play is in there). The pears come last. Get to the pears.' },
+        { target: '.ed-jwt', say: 'Jungwon is on your side. When <b>his foot taps yours</b>, press N (<b>R1</b>, or tap it): the sane answer glows and holds still. <b>Look at Jungwon</b> (C / <b>△</b>) and he covers for you, a few times a dinner.' },
+        { target: null, say: 'Esc (○) pauses (How to play is in there). The pears come last. Get to the pears.' },
       ];
       let tutDone = () => true;
       const runTut = (steps, extra) => tutLib().then(T => (T || lite).run(el, Object.assign({ steps, who: 'Solar', face: SOLAR, calm, perf }, extra)));

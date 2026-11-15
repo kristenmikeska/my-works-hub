@@ -65,7 +65,7 @@ window.FemcBaduk = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   /* ── the rules: a small Go engine (captures, liberties, suicide, simple ko) ──
@@ -377,7 +377,7 @@ window.FemcBaduk = (() => {
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); if (st.over && !fn.always) return; if (st.paused) later(fn, 200); else fn(); }, ms); timers.add(id); return id; };
 
       const el = document.createElement('div');
-      el.className = 'mg-bd' + (still ? ' still' : '');
+      el.dataset.padnav = ''; el.className = 'mg-bd' + (still ? ' still' : '');
       el.setAttribute('role', 'application');
       el.setAttribute('aria-label', 'Baduk puzzles');
       el.innerHTML = `
@@ -399,7 +399,7 @@ window.FemcBaduk = (() => {
               <figure class="bd-lid" data-lid="taken"><svg viewBox="0 0 120 70" aria-hidden="true"></svg><figcaption>Taken <b>0</b></figcaption></figure>
               <figure class="bd-lid" data-lid="lost"><svg viewBox="0 0 120 70" aria-hidden="true"></svg><figcaption>Lost <b>0</b></figcaption></figure>
             </div>
-            <p class="bd-help">Click a point to play. Touch: tap, then tap again. Keys: arrows and Enter. Esc pauses.</p>
+            <p class="bd-help">Click a point to play. Touch: tap, then tap again. Keys: arrows and Enter. Esc pauses. Controller: D-pad and ✕, □ passes, ○ pauses.</p>
           </aside>
         </div>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
@@ -719,6 +719,7 @@ window.FemcBaduk = (() => {
           return;
         }
         if ((e.key === 'Enter' || e.key === ' ') && st.cursor != null && st.mode === 'play' && !onBtn) { e.preventDefault(); place(st.cursor); }
+        if (e.fromPad && e.key === 'l' && !st.prac && !st.paused) { e.preventDefault(); skip(); } // controller □ = Pass
       };
       window.addEventListener('keydown', key, true);
       const cleanup = () => {
@@ -784,14 +785,14 @@ window.FemcBaduk = (() => {
         const board = $('.bd-board');
         return [
           { target: board, say: 'Black to play. Always. That’s you.' },
-          { target: board, say: 'Put a stone on the <b>ring</b>. Click it (or arrows, then Enter).', before: () => { st.ring = ring; draw(); }, wait: until('ring', () => !!st.pos.b[ring]), after: () => { phase = null; doRing(); draw(); } },
+          { target: board, say: 'Put a stone on the <b>ring</b>. Click it (or arrows, then Enter; the <b>D-pad</b>, then <b>✕</b> on a controller).', before: () => { st.ring = ring; draw(); }, wait: until('ring', () => !!st.pos.b[ring]), after: () => { phase = null; doRing(); draw(); } },
           { target: board, say: 'A stone breathes through the empty points beside it: its <b>liberties</b>. The white one has one left. The dot.', before: () => { doRing(); st.libs = [lib]; draw(); } },
           { target: board, say: 'Take it. Play on the <b>dot</b>.', before: () => { st.libs = [lib]; draw(); }, wait: until('cap', () => st.pos.b[W] !== 2), after: () => { phase = null; doCap(); } },
           { target: '.bd-lids', say: 'Captured. It goes in the lid. Each puzzle says what it wants under its title.', before: doCap },
           { target: board, say: 'Now a <b>wrong</b> move, on purpose. Anywhere. I’ll answer.', before: () => { doCap(); st.mode = 'play'; }, wait: until('wrong', () => st.mode === 'wrong'), after: () => { if (phase === 'wrong') phase = null; } },
-          { target: '[data-bd="again"]', say: 'Press <b>Again</b> (or Enter) to put it back and try again.', wait: until('again', () => st.mode !== 'wrong'),
+          { target: '[data-bd="again"]', say: 'Press <b>Again</b> (or Enter / <b>✕</b>) to put it back and try again.', wait: until('again', () => st.mode !== 'wrong'),
             before: () => { if (st.mode !== 'wrong') { st.mode = 'wrong'; $('[data-bd="again"]').hidden = false; } }, after: () => { if (st.mode === 'wrong') { phase = null; pr.reset(); } } },
-          { target: '[data-bd="skip"]', say: 'Stuck, you can <b>Pass</b>. It counts as unsolved. Esc pauses; How to play is in there.', next: 'Begin' },
+          { target: '[data-bd="skip"]', say: 'Stuck, you can <b>Pass</b> (<b>□</b> on a controller). It counts as unsolved. Esc (○) pauses; How to play is in there.', next: 'Begin' },
         ];
       };
       const tutor = async replay => {

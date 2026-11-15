@@ -41,6 +41,9 @@
    The interface lies: labels rewrite themselves (Slipping → Leaving, Hold on → Let go, HOLD → STAY), the timer jumps back or
    freezes, a caption types a sentence and deletes it, the HOLD pill drifts. Controls never lie: Esc, Space, numbers and the
    pause menu always work.
+   Controller (Nov 15 2026, battle/pad.js): hold ✕ (Space, through FemcPad.remap) to hold on; the D-pad / stick picks a glowing
+   thing (a dashed ring, .padsel) and holding ✕ rests on it until its ring fills, like the pointer; ○ pauses (D-pad + ✕ in the
+   pause menu). The arrow keys pick the same way with Space.
    Sound (Web Audio, made here, no files): a room tone that sinks and detunes, a clock that ticks (backwards when it runs
    backwards), whispers (filtered noise) panned left / right, a falling three-note chime far below that gets closer each wave,
    brakes at each surge, and silence right before it.
@@ -145,7 +148,7 @@ window.FemcHoldOn = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
   let cur = null; // test hook: FemcHoldOn.state()
@@ -164,7 +167,8 @@ window.FemcHoldOn = (() => {
       cur = st;
       const tutP = o.tutorial === false ? Promise.resolve(null) : tutLib(); // starts loading during the title card
       let tutRes = 'seen', tp = null; // tp = the practice the tutorial is waiting on
-      const pts = new Map(); let mouse = null, space = false;
+      const pts = new Map(); let mouse = null, space = false, padSel = null; // padSel: the anchor the D-pad picked (controller / arrows)
+      const padPt = () => { if (!padSel || padSel.state !== 'up' || !padSel.node || !padSel.node.isConnected) return null; const r = padSel.node.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; };
       const holding = () => !st.paused && (pts.size > 0 || space);
       const bg = BG(o.bg || 'epi-r-her-room-night');
       // dust in the lamp's light (Nov 11 visual pass): each mote its own slow path
@@ -172,7 +176,7 @@ window.FemcHoldOn = (() => {
       const timers = new Set();
       const later = (fn, ms) => { const id = setTimeout(() => { timers.delete(id); fn(); }, ms); timers.add(id); return id; };
       const el = document.createElement('div');
-      el.className = 'mg-ho' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-ho' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.setAttribute('role', 'application');
       el.setAttribute('aria-label', 'Hold on');
       el.innerHTML = `
@@ -197,7 +201,7 @@ window.FemcHoldOn = (() => {
         <div class="ho-grip" aria-hidden="true"><b data-t="HOLD">HOLD</b></div>
         <p class="ho-ghost" aria-hidden="true"></p>
         <p class="ho-say" aria-live="polite"></p>
-        <p class="ho-help">Hold (mouse, finger or Space) when it pulls. Let go in the quiet to breathe. While holding, rest on the glowing things (or 1–6). Not everything that glows is real. Esc pauses.</p>
+        <p class="ho-help">Hold (mouse, finger or Space) when it pulls. Let go in the quiet to breathe. While holding, rest on the glowing things (or 1–6). Not everything that glows is real. Esc pauses. Controller: hold ✕; the D-pad picks a glowing thing; ○ pauses.</p>
         <div class="mg-pause" hidden><b>Paused</b><button type="button" data-mg="resume">Resume</button><button type="button" data-mg="howto">How to play</button><button type="button" data-mg="quit">Quit</button></div>
         <div class="mg-end" hidden></div>`;
       host.appendChild(el);
@@ -481,7 +485,7 @@ window.FemcHoldOn = (() => {
         // anchors: spawn, dwell, gone at the peak
         if (w) {
           const peaked = st.phase === 'surge' && k >= 0.5;
-          const spotsNow = [...pts.values()]; if (space && mouse) spotsNow.push(mouse);
+          const spotsNow = [...pts.values()]; if (space && mouse) spotsNow.push(mouse); if (space && padPt()) spotsNow.push(padPt());
           w.list.forEach(a => {
             if (a.state === 'wait' && st.t >= a.at && !peaked) spawn(a);
             if (a.state !== 'up') return;
@@ -663,6 +667,16 @@ window.FemcHoldOn = (() => {
         if (e.key === 'Escape') { e.preventDefault(); pause(!st.paused); return; }
         if (st.paused) return;
         if (e.key === ' ') { e.preventDefault(); space = true; return; }
+        if (e.key.startsWith('Arrow')) { // pick a glowing thing (controller D-pad / arrows): the next one that way
+          e.preventDefault();
+          const up = st.wave ? st.wave.list.filter(a => a.state === 'up' && a.node) : []; if (!up.length) return;
+          const at = a => { const r = a.node.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; };
+          const fwd = e.key === 'ArrowRight' || e.key === 'ArrowDown', horiz = e.key === 'ArrowLeft' || e.key === 'ArrowRight';
+          up.sort((a, b) => at(a)[horiz ? 0 : 1] - at(b)[horiz ? 0 : 1]);
+          const i = up.indexOf(padSel), n = i < 0 ? (fwd ? 0 : up.length - 1) : (i + (fwd ? 1 : up.length - 1)) % up.length;
+          if (padSel && padSel.node) padSel.node.classList.remove('padsel');
+          padSel = up[n]; padSel.node.classList.add('padsel'); return;
+        }
         if (/^[1-6]$/.test(e.key) && st.wave) {
           e.preventDefault();
           const a = st.wave.list.find(x => x.key === +e.key && x.state === 'up');
@@ -672,6 +686,7 @@ window.FemcHoldOn = (() => {
       };
       const keyUp = e => { if (e.key === ' ') { space = false; if (el.isConnected) e.preventDefault(); } };
       const cleanup = () => {
+        if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null;
         cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers.clear();
         window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true);
         window.removeEventListener('blur', blur); window.removeEventListener('keydown', skipT, true);
@@ -679,6 +694,9 @@ window.FemcHoldOn = (() => {
       };
       $('.mg-pause').onclick = e => { const b = e.target.dataset.mg; if (b === 'resume') pause(false); if (b === 'howto') howTo(); if (b === 'quit') { pause(false); finish('quit'); } };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
+      // the controller (battle/pad.js reads this at each press): ✕ = Space (hold on) once the room is up
+      const padMap = k => { if (!st.begun || st.over || st.paused || !el.isConnected) return; return { Enter: ' ' }[k]; };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
 
       /* the first-time tutorial: a calm practice room (st.tut), each action done once */
       const FACE = `${base()}assets/femc/portraits/solar-runners/neutral.webp`;
@@ -699,7 +717,7 @@ window.FemcHoldOn = (() => {
         const w = st.wave;
         if (w) w.list.forEach(a => {
           if (a.state !== 'up') return;
-          const spots = [...pts.values()]; if (space && mouse) spots.push(mouse);
+          const spots = [...pts.values()]; if (space && mouse) spots.push(mouse); if (space && padPt()) spots.push(padPt());
           let on = false;
           if (h) { const r = a.node.getBoundingClientRect(), m = 12; on = spots.some(p => p.x >= r.left - m && p.x <= r.right + m && p.y >= r.top - m && p.y <= r.bottom + m); }
           a.dwell = on ? a.dwell + dt : Math.max(0, a.dwell - dt * 0.5);
@@ -714,14 +732,14 @@ window.FemcHoldOn = (() => {
       };
       const tutSteps = replay => [
         { target: null, say: 'Some nights the room starts to forget me. This is how I stay. Practice first: nothing happens in here.' },
-        { target: '.ho-grip', say: 'When it pulls, <b>hold on</b>: hold the mouse button, a finger, or Space. Try it now.', wait: replay ? 'click' : () => practice('hold') },
+        { target: '.ho-grip', say: 'When it pulls, <b>hold on</b>: hold the mouse button, a finger, or Space (<b>✕</b> on a controller). Try it now.', wait: replay ? 'click' : () => practice('hold') },
         { target: '.ho-meters', say: 'If the pull gets stronger than my grip, <b>Slipping</b> fills. Full = a slip. The diamonds are how many I can take.', before: () => { if (!replay) st.slip = 45; }, after: () => { if (!replay) st.slip = 0; } },
         { target: '.ho-breathm', say: 'Holding costs <b>breath</b>. In the quiet, let go and it comes back. Let go now and watch it fill.', before: () => { if (!replay) st.breath = Math.min(st.breath, 35); }, wait: replay ? 'click' : () => practice('breathe') },
         { target: replay ? null : () => st.wave && st.wave.list[0].node, before: () => { if (!replay) tutWave([{ id: 'lamp', slot: [62, 40] }]); },
-          say: 'When it pulls, real things glow. <b>While holding</b>, rest on one until its ring fills (or press its number).', wait: replay ? 'click' : () => practice('anchor') },
+          say: 'When it pulls, real things glow. <b>While holding</b>, rest on one until its ring fills (or press its number; on a controller, pick it with the <b>D-pad</b> while holding <b>✕</b>).', wait: replay ? 'click' : () => practice('anchor') },
         { target: null, before: () => { if (!replay) tutWave(shuffle([{ id: 'mug', slot: [32, 40] }, { id: 'photo', slot: [68, 40], lie: true }])); },
           say: 'Not all of them are real. A false one glows <b>bone-white</b>, has the wrong words, or pulses out of step. Take only the real one.', wait: replay ? 'click' : () => practice('anchor') },
-        { target: '.ho-clock', say: 'Make it to the end and I’m held. Esc pauses, and How to play shows this again. It starts quiet.' },
+        { target: '.ho-clock', say: 'Make it to the end and I’m held. Esc (○) pauses, and How to play shows this again. It starts quiet.' },
       ];
       const howTo = () => {
         tutLib().then(T => {

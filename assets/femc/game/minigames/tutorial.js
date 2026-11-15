@@ -31,13 +31,16 @@
    FemcTutorial.blocking()  true while an info step is showing (games: ignore play input then)
 
    Keys: Enter / Space = Next on info steps; Esc = skip → confirm ([Skip it] [Keep going]; Esc again = keep going).
+   Controller (Nov 15 2026, battle/pad.js): ✕ = Next, ○ = skip → confirm (← → between Skip it / Keep going, ✕ picks; pad.js moves
+   the focus inside .ftut and presses the focused button). Practice steps get the game's own pad keys (its FemcPad.remap); info
+   steps and the confirm always get the plain ones. Loader ?v=2 in every game (Nov 15).
    Palette: Kat's pink and black (no blue / purple / gold UI). Reduced motion: no pulse, no slide.
 
    The loader each game carries (base() is the game's own; keep the ?v in step with this file's TUTORIAL_V in the games):
      const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
        const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
        l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-       s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+       s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
      }));
    A game whose loader gets null just plays without a tutorial. */
 window.FemcTutorial = (() => {
@@ -69,7 +72,7 @@ window.FemcTutorial = (() => {
       el.innerHTML = `<div class="ftut-block"></div><div class="ftut-hole" hidden><i class="ftut-arrow"></i></div>
         <div class="ftut-bubble" aria-live="polite"><img class="ftut-face" alt="" hidden><div class="ftut-txt"><b class="ftut-who"></b><p class="ftut-say"></p>
           <div class="ftut-row"><span class="ftut-count"></span><span class="ftut-try" hidden>Your turn</span><button type="button" class="ftut-skip">Skip tutorial</button><button type="button" class="ftut-next">Next</button></div></div></div>
-        <div class="ftut-confirm" hidden><div><b>Skip the tutorial?</b><p>You can watch it again any time: Esc → How to play.</p><button type="button" data-t="skip">Skip it</button><button type="button" data-t="stay">Keep going</button></div></div>`;
+        <div class="ftut-confirm" hidden><div><b>Skip the tutorial?</b><p>You can watch it again any time: Esc (○ on a controller) → How to play.</p><button type="button" data-t="skip">Skip it</button><button type="button" data-t="stay">Keep going</button></div></div>`;
       document.body.appendChild(el);
       const $ = s => el.querySelector(s);
       const S = cur = { blocking: true, abort: () => end('skipped', true) };
@@ -131,6 +134,7 @@ window.FemcTutorial = (() => {
       const key = e => {
         if (over) return;
         if (e.key === 'Escape') { e.preventDefault(); e.stopImmediatePropagation(); return confirming ? confirm(false) : confirm(true); }
+        if (confirming && e.key.startsWith('Arrow')) { e.preventDefault(); e.stopImmediatePropagation(); const sk = $('[data-t=skip]'); (document.activeElement === sk ? $('[data-t=stay]') : sk).focus(); return; } // any arrow flips between the two
         if (confirming) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopImmediatePropagation(); const f = document.activeElement; (f && f.closest && f.closest('.ftut-confirm') ? f : $('[data-t=stay]')).click(); } return; }
         practiceKey(e);
         if (S.blocking && (e.key === 'Enter' || e.key === ' ')) {

@@ -760,3 +760,4 @@
 /* Nov 11: Kat's café picture already has its own window, clock and door, so the drawn ones doubled up on top of it. Hidden;
    the door bell still rings. (Seated customers at the back tables stay.) */
 .cf-win, .cf-rad, .cf-wclock, .cf-doorart { display: none !important; }
+.mg-cafe .cf-padsel { outline: 3px solid #ff4f9e; outline-offset: 3px; } /* the controller's ring (Nov 15 2026) */

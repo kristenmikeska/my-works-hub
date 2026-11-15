@@ -24,7 +24,8 @@
    result = { song, level, score, accuracy (0-100), perfect, good, ok, miss, maxCombo, fc, grade: 'S'|'A'|'B'|'C', failed, quit }
 
    Play: arrows rise to the four targets (downscroll: they fall); press D F J K (or ← ↓ ↑ →) as one covers its target, hold through
-   the trails. Ghost tapping is free. PERFECT ±45 ms, GOOD ±90, OK ±135, else MISS. Health (the bar under the strum, Solar's icon)
+   the trails. Controller (Nov 15 2026, battle/pad.js): the D-pad, or □ ✕ △ ○ (left / down / up / right, same as D F J K) through
+   FemcPad.remap while the take runs; OPTIONS pauses (○ is a lane), ○ resumes; held D-pad repeats are ignored (e.repeat). Ghost tapping is free. PERFECT ±45 ms, GOOD ±90, OK ±135, else MISS. Health (the bar under the strum, Solar's icon)
    +on hits, −on misses: empty = Haechan stops the take (Retry). A miss dips the track and Solar's pose cracks.
    Feel: "Ready? / Set. / Sing!" count-in on the beat, the stage bops every bar and the HUD every beat, Solar poses per arrow
    and holds it through a trail, Haechan bobs every beat (talkback lines between sections), PERFECT splash, rating + combo pop.
@@ -104,7 +105,7 @@ window.FemcSing = (() => {
   const tutLib = () => window.FemcTutorial ? Promise.resolve(window.FemcTutorial) : (window.FemcTutorialLoading ||= new Promise(ok => {
     const B = `${base()}assets/femc/game/minigames/tutorial`, l = document.createElement('link'), s = document.createElement('script');
     l.rel = 'stylesheet'; l.href = `${B}.css?v=1`; document.head.appendChild(l);
-    s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
+    s.src = `${B}.js?v=2`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
   const loadChart = id => new Promise(ok => { const s = document.createElement('script'); s.src = `${base()}assets/femc/game/minigames/charts/${id}.js?v=${CHART_V[id] || 1}`; s.onload = s.onerror = () => ok(); document.head.appendChild(s); });
   function play(o = {}) {
@@ -126,7 +127,7 @@ window.FemcSing = (() => {
       const el = document.createElement('div');
       const GS0 = (() => { try { return (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; } catch (e) { return {}; } })();
       const CALM = o.calm ?? !!GS0.calm, PERF = o.perf ?? !!GS0.perf, STILL = reduced.matches; // polish: Reduce flashes / Performance / reduced motion
-      el.className = 'mg-sing' + (STILL ? ' still' : '') + (O.down ? ' down' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '') + (GS0.shake === false ? ' noshake' : '');
+      el.dataset.padnav = ''; el.className = 'mg-sing' + (STILL ? ' still' : '') + (O.down ? ' down' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '') + (GS0.shake === false ? ' noshake' : '');
       el.dataset.heat = 0;
       const img = (cls, id, alt = '') => `<img class="${cls}" src="${ART(id)}" alt="${alt}" onerror="this.remove()">`;
       el.innerHTML = `
@@ -402,6 +403,7 @@ window.FemcSing = (() => {
         if (!el.isConnected || (st.over && !st.paused)) return;
         e.stopPropagation();
         const TT = TUT(); if (TT && TT.open() && (e.key === 'Escape' || e.key === 'Enter' || TT.blocking())) return; // the tutorial has the keys
+        if (e.key === 'Enter' && st.paused && e.target.closest && e.target.closest('.mg-pause')) return; // Enter on a pause button presses it
         if (e.key === 'Escape' || e.key === 'Enter') { e.preventDefault(); setPause(!st.paused); return; }
         if (st.paused) return;
         if (REC && started && ['1', '2', '3'].includes(e.key)) { const who = { 1: 'solar', 2: 'haechan', 3: 'both' }[e.key], t = now(); for (const x of sing) if (x.pass === pass && Math.abs(x.t - t) < 0.3) x.dead = true; sing.push({ t: +Math.max(0, t).toFixed(3), who, pass }); sing.sort((a, b) => a.t - b.t); say(`${NAME[who] || 'Both'} from here.`); return; }
@@ -426,7 +428,10 @@ window.FemcSing = (() => {
         if (REC && b === 'resume') return seekTo(at); if (b === 'back5') return seekTo(at - 5); if (b === 'back10') return seekTo(at - 10); if (b === 'back0') return seekTo(0); if (b === 'save') { st.paused = false; $('.mg-pause').hidden = true; return finish(true); }
         if (b === 'howto') return howTo();
         if (b === 'resume') setPause(false); if (b === 'restart') restart(); if (b === 'quit') { st.paused = false; $('.mg-pause').hidden = true; finish(true); } };
-      const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); try { audio && audio.pause(); ac && ac.close(); } catch (e) {} el.remove(); };
+      // the controller: □ ✕ △ ○ are the four lanes while the take runs, OPTIONS pauses (battle/pad.js reads this at each press)
+      const padMap = k => { if (!el.isConnected || st.over) return; if (k === 'p') return 'Escape'; if (st.paused) return; return { l: 'd', Enter: 'f', y: 'j', Escape: 'k' }[k]; };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
+      const cleanup = () => { if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null; cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); try { audio && audio.pause(); ac && ac.close(); } catch (e) {} el.remove(); };
       window.addEventListener('keydown', key, true); window.addEventListener('keyup', keyUp, true);
       const recCount = () => { if (REC) $('.sg-stats').textContent = `Recording · ${notes.filter(n => !n.done).length} notes · Esc to go back or save`; };
       const recMode = () => { if (!REC) return; el.classList.add('rec'); recCount(); $('.sg-health').style.display = 'none'; };
@@ -434,7 +439,7 @@ window.FemcSing = (() => {
       /* the tutorial: a practice take on its own clock (no song); live = practice notes come and must be played (the first
          time), else a walkthrough over the paused song (How to play) */
       const tutP = o.tutorial === true || (o.tutorial !== false && !REC && !FROM) ? tutLib() : Promise.resolve(null);
-      const LANE_KEY = ['D (←)', 'F (↓)', 'J (↑)', 'K (→)'];
+      const LANE_KEY = ['D (← / □)', 'F (↓ / ✕)', 'J (↑ / △)', 'K (→ / ○)'];
       const spawn = list => list.forEach(x => { const n = { t: prac.t + x.t, lane: x.lane, len: x.len || 0, hit: null, held: false, done: false, pass: -1 }; notes.push(n); mkEl(n); });
       const practice = (list, isOk) => () => new Promise(ok => { // spawn the notes; a missed one comes round again
         spawn(list); const want = notes.slice(-list.length);
@@ -445,11 +450,11 @@ window.FemcSing = (() => {
       });
       const FACE_T = f => FACE(talker, f);
       const steps = live => [
-        { target: '.sg-strum', say: `Quick run first, no song. Arrows ${O.down ? 'fall onto' : 'rise to'} these targets: <b>D F J K</b>, or the arrow keys.`, face: FACE_T('neutral') },
+        { target: '.sg-strum', say: `Quick run first, no song. Arrows ${O.down ? 'fall onto' : 'rise to'} these targets: <b>D F J K</b>, or the arrow keys. Controller: the <b>D-pad</b>, or <b>□ ✕ △ ○</b>.`, face: FACE_T('neutral') },
         { target: '.sg-strum', say: 'Four slow ones. Hit each key as its arrow covers the target.', wait: live ? practice([0, 1, 2, 3].map(l => ({ lane: l, t: 2 + l * 1.3 })), n => n.hit && n.hit !== 'miss') : 'click', face: FACE_T('happy'), pos: 'right' },
         { target: '.sg-strum', say: `This one has a tail. Press <b>${LANE_KEY[2]}</b> and hold it until the tail's gone.`, wait: live ? practice([{ lane: 2, t: 2.2, len: 1.6 }], n => !!n.ok) : 'click', face: FACE_T('neutral'), pos: 'right' },
         { target: '.sg-health', say: 'Hits fill this bar, misses drain it. Run it dry and the take stops. Extra taps are free.', face: FACE_T('serious') },
-        { target: null, say: 'Esc pauses. Scroll speed, downscroll and timing offset are in there. Okay. On my count.', face: FACE_T('happy') },
+        { target: null, say: 'Esc (OPTIONS on a controller) pauses. Scroll speed, downscroll and timing offset are in there. Okay. On my count.', face: FACE_T('happy') },
       ];
       const tutOpts = () => { const GS = (window.FemcGame && window.FemcGame.settings && window.FemcGame.settings()) || {}; return { who: NAME[talker], calm: o.calm ?? !!GS.calm, perf: o.perf ?? !!GS.perf }; };
       const howTo = () => {

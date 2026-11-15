@@ -113,6 +113,11 @@
    Keys: 1-4 / Tab views · Space the main action of the view (take the order, hold to pour, roll / cut) · Enter serve / Done /
    Plate · Z X C V add-ins / flip / toppings · A S D F take off · Backspace bin · T Sunoo's station · G hurry · M music ·
    Esc pause (Resume / How to play / Quit). Mouse and touch do everything.
+   Controller (Nov 15 2026, battle/pad.js): the D-pad / stick moves a pink ring over the buttons on screen (chips, cups, add-ins,
+   flip / off, toppings, fillings, tickets, tabs, Sunoo; the shop and the practice bubble too) and □ presses it (a topping goes on
+   its next spot, like Z X C V); ✕ = Space (hold to pour, take the order, the griddle's next job, roll / cut) and △ = Enter (serve
+   / Done / Plate) through FemcPad.remap; L1 / R1 the previous / next station; R2 bin (Backspace); SHARE / Create hurry Sunoo;
+   ○ or OPTIONS pauses. Between rushes and in menus ✕ presses the ringed / focused button.
 
    ── The model (FemcCafe.shift(o): no DOM) ─────────────────────────────────────────────────────────────────────────────
    { S, tick(dt), startRush(), takeOrder(), drinkStart(tid, li), drinkCup('S'|'L'), pour(on), drinkAdd(id), drinkDone(),
@@ -907,7 +912,7 @@ window.FemcCafe = (() => {
 
       const wantTut = o.tutorial === true || (o.tutorial !== false && !tutSeen());
       const el = document.createElement('div');
-      el.className = 'mg-cafe' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
+      el.dataset.padnav = ''; el.className = 'mg-cafe' + (still ? ' still' : '') + (calm ? ' calm' : '') + (perf ? ' perf' : '');
       el.innerHTML = `
         <header class="cf-hud"></header>
         <div class="cf-rail" aria-label="Tickets"></div>
@@ -1386,10 +1391,51 @@ window.FemcCafe = (() => {
         const sp = TOPS[top].spots, used = p.drops.filter(d => d.top === top).length, s = sp[used % sp.length];
         M.topDrop(top, s[0] + (Math.random() - 0.5) * 0.06, s[1] + (Math.random() - 0.5) * 0.06);
       };
+      /* the controller's ring (Nov 15 2026): the D-pad picks a button on screen, □ presses it. The views re-render all the
+         time, so the pick is kept as the button's data-* and found again (class cf-padsel) every frame. */
+      let padSig = '';
+      const sigOf = b => JSON.stringify(b.dataset);
+      const padBtns = () => {
+        const brk = $('.cf-break'), root = brk && !brk.hidden ? brk : el, R0 = el.getBoundingClientRect();
+        return [...root.querySelectorAll('[data-a], .cf-coach [data-c]')].filter(b => {
+          if (b.disabled || b.closest('[hidden], .mg-pause, .mg-end, .cf-view:not(.on)')) return false;
+          const r = b.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.right > R0.left && r.left < R0.right && r.bottom > R0.top && r.top < R0.bottom;
+        });
+      };
+      const padFind = () => padSig ? padBtns().find(b => sigOf(b) === padSig) || null : null;
+      const padMark = () => { const b = padFind(); el.querySelectorAll('.cf-padsel').forEach(n => { if (n !== b) n.classList.remove('cf-padsel'); }); if (b) b.classList.add('cf-padsel'); };
+      const padMove = k => {
+        const list = padBtns(); if (!list.length) return;
+        const cur = padFind() || (document.activeElement && list.includes(document.activeElement) ? document.activeElement : null);
+        let best = null;
+        if (!cur) best = list.find(b => b.closest('.cf-view.on')) || list[0];
+        else {
+          const r = cur.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2, [dx, dy] = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[k];
+          let bs = Infinity;
+          list.forEach(b => { if (b === cur) return; const q = b.getBoundingClientRect(), x = q.left + q.width / 2 - cx, y = q.top + q.height / 2 - cy, along = x * dx + y * dy; if (along <= 2) return; const sc = along + Math.abs(dx ? y : x) * 2; if (sc < bs) { bs = sc; best = b; } });
+        }
+        if (best) { padSig = sigOf(best); if (best.closest('.cf-break')) best.focus({ preventScroll: true }); padMark(); K.blip?.(); }
+      };
+      const padPress = () => {
+        const b = padFind() || (document.activeElement && el.contains(document.activeElement) && document.activeElement.matches('[data-a], [data-c]') ? document.activeElement : null);
+        if (!b || b.disabled) return;
+        if (b.dataset.c) return coachBtn(b.dataset.c);
+        if (b.closest('.cf-break')) { act(b.dataset.a, b.dataset); return; }
+        if (paused || S.phase !== 'rush') return;
+        if (b.dataset.a === 'pickTop') keyTop(b.dataset.top); else act(b.dataset.a, b.dataset);
+        handle(M.drain()); dirty = true;
+      };
       const key = e => {
         const k = e.key;
         if (over) return;
         if (tut && !paused && (tut.key === 'hello' || tut.key === 'end') && (k === 'Enter' || k === ' ')) { e.preventDefault(); e.stopPropagation(); coachBtn('next'); return; }
+        if (e.fromPad && !paused && (k.startsWith('Arrow') || k === 'l' || k === '[' || k === ']')) { // the controller: the ring, □, L1 / R1
+          e.preventDefault(); e.stopPropagation();
+          if (k === 'l') padPress();
+          else if (k === '[' || k === ']') { if (S.phase === 'rush' && $('.cf-break').hidden) { const vs = ['order', 'drinks', 'griddle', 'build']; setView(vs[(vs.indexOf(view) + (k === '[' ? 3 : 1)) % 4]); padSig = ''; dirty = true; } }
+          else padMove(k);
+          return;
+        }
         if (!$('.cf-break').hidden) {
           if (k === 'Enter' || k === ' ') { e.preventDefault(); e.stopPropagation(); const f = document.activeElement, b = f && f.closest && f.closest('.cf-break [data-a]'); if (b && !b.disabled) act(b.dataset.a, b.dataset); else if (k === 'Enter') openDoors(); }
           return;
@@ -1440,6 +1486,14 @@ window.FemcCafe = (() => {
       const keyUp = e => { if (e.key === ' ' && S.drink && S.drink.pouring) { M.pour(false); handle(M.drain()); } };
       window.addEventListener('keydown', key, true);
       window.addEventListener('keyup', keyUp, true);
+      // the controller (battle/pad.js reads this at each press): ✕ = Space, △ = Enter, R2 = Backspace, Create = G, OPTIONS = Esc in a rush
+      const padMap = k => {
+        if (over || !el.isConnected) return;
+        if (k === 'p') return S.phase === 'rush' || paused ? 'Escape' : null;
+        if (paused || S.phase !== 'rush' || !$('.cf-break').hidden || (tut && (tut.key === 'hello' || tut.key === 'end'))) return;
+        return { Enter: ' ', y: 'Enter', r: 'Backspace', h: 'g' }[k];
+      };
+      if (window.FemcPad) window.FemcPad.remap = padMap;
 
       /* ── pause, breaks, the end ── */
       function setPause(on) {
@@ -1480,7 +1534,7 @@ window.FemcCafe = (() => {
         const btn = end.querySelector('button'); btn.focus();
         btn.onclick = () => { cleanup(); o.onDone?.(res); resolve(res); };
       }
-      const cleanup = () => { cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('keydown', skipT, true); window.removeEventListener('pointermove', onMove); window.removeEventListener('pointerup', onUp); window.removeEventListener('pointercancel', onUp); K.close(); el.remove(); };
+      const cleanup = () => { if (window.FemcPad && window.FemcPad.remap === padMap) window.FemcPad.remap = null; cancelAnimationFrame(raf); window.removeEventListener('keydown', key, true); window.removeEventListener('keyup', keyUp, true); window.removeEventListener('keydown', skipT, true); window.removeEventListener('pointermove', onMove); window.removeEventListener('pointerup', onUp); window.removeEventListener('pointercancel', onUp); K.close(); el.remove(); };
 
       /* ── the practice shift (the tutorial) ── a model of its own (shift({ tut: true }): one slow customer, Sunoo off, no
          walk-outs, a slower griddle), drawn by the same views; the coach (above) says what to do next and the ring points at it */
@@ -1553,6 +1607,7 @@ window.FemcCafe = (() => {
           if (dirty || (renderT -= dt) <= 0) { render(); renderT = 0.15; }
           live();
           if (tut) coachLive();
+          if (padSig) padMark();
         }
         raf = requestAnimationFrame(frame);
       };

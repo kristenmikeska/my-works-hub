@@ -481,7 +481,7 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 12; // 12: Nov 14 art batch 158 (listen street placements, the seventh stair house / icons / endings)
+    const MINIGAME_V = 13; // 13: Nov 15 controller (DualSense) support in every minigame (pad.js remap / keyup / focus); 12: Nov 14 art batch 158
     const MG_GLOB = { holdon: 'FemcHoldOn' }; // ids whose global isn't Femc + Capitalised id
     function giftAsk(line) {
       const who = line.giftAsk;
