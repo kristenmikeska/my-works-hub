@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Equinox UI · Halfway</title>
+<!-- DESIGN MOCKUP ONLY (not wired to the game). Persona 3: Equinox, direction 1: Halfway (day = night).
+     README.md in this folder has the palette, type, shapes and motion. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,700;1,600;1,800;1,900&family=Barlow+Semi+Condensed:wght@500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="equinox.css?v=4">
+<style>
+:root {
+  --bone: #f4ede8; --bone-2: #e6dcd6; --ink: #0e0709; --ink-2: #1c1014; --seam: #ff4f9e; --seam-2: #ff8cc0; --ash: #8c7f86; --sun: #ffc96b;
+  --cond: "Barlow Condensed", "Avenir Next Condensed", "Arial Narrow", sans-serif;
+  --body: "Barlow Semi Condensed", "Avenir Next", "Helvetica Neue", sans-serif;
+  --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --pg-bg: var(--ink); --pg-ink: var(--bone); --pg-acc: var(--seam);
+  --pg-h1: italic 900 44px/.9 var(--cond); --pg-letter: italic 900 26px/1 var(--cond);
+  --f-acc: var(--seam);
+}
+body { background: linear-gradient(90deg, var(--ink) 0 50%, #120a0d 50%); }
+.pg-top h1 { background: linear-gradient(90deg, var(--bone) 50%, var(--seam) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; display: table; }
+.scr-h b { color: var(--seam); }
+
+/* ── The split: bone left, black right, a hot-pink seam down the middle ── */
+.frame { --f-bg: var(--ink); background: linear-gradient(90deg, var(--bone) 0 50%, var(--ink) 50% 100%); }
+.frame::before { content: ""; position: absolute; z-index: 2; left: 50%; top: 0; bottom: 0; width: max(3px, .32cqw); translate: -50% 0; background: linear-gradient(180deg, var(--seam-2), var(--seam) 30%, var(--seam) 70%, var(--seam-2)); box-shadow: 0 0 1.4cqw rgba(255, 79, 158, .55); }
+.frame::after { content: ""; position: absolute; z-index: 1; inset: 0; pointer-events: none; background:
+  repeating-linear-gradient(90deg, transparent 0 3.9cqw, rgba(14, 7, 9, .05) 3.9cqw calc(3.9cqw + 1px)) left / 50% 100% no-repeat,
+  repeating-linear-gradient(90deg, transparent 0 3.9cqw, rgba(244, 237, 232, .045) 3.9cqw calc(3.9cqw + 1px)) right / 50% 100% no-repeat; }
+.ghost { position: absolute; z-index: 1; font: italic 900 22cqw/.78 var(--cond); letter-spacing: -.02em; white-space: nowrap; pointer-events: none; user-select: none; }
+.ghost.day { right: 50.6%; color: rgba(14, 7, 9, .06); }
+.ghost.night { left: 50.6%; color: rgba(244, 237, 232, .055); }
+.ghost.top { top: -2cqw; } .ghost.bot { bottom: -3cqw; }
+/* two-tone words: a gradient clipped to the letters, ink on the bone half, bone on the black half */
+.duo { background: linear-gradient(90deg, var(--ink) 50%, var(--bone) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.duo-inv { background: linear-gradient(90deg, var(--bone) 50%, var(--ink) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kick { font: 600 max(10px, .9cqw)/1 var(--body); letter-spacing: .32em; text-transform: uppercase; }
+
+/* the sun-and-moon half-disc mark */
+.mark { width: 7cqw; min-width: 64px; aspect-ratio: 1; }
+.mark .rays { transform-origin: 50px 50px; animation: hwRays 26s linear infinite; }
+@keyframes hwRays { to { transform: rotate(-360deg); } }
+
+/* ── A · Title ── */
+.f-title .logo { left: 0; right: 0; top: 5.4cqw; text-align: center; }
+.f-title .logo .mark { margin: 0 auto 1.2cqw; }
+.f-title .logo .p3 { display: block; font: italic 800 3.1cqw/1 var(--cond); letter-spacing: .36em; padding-left: .36em; }
+.f-title .logo .eq { display: block; font: italic 900 13.4cqw/.8 var(--cond); letter-spacing: -.01em; margin-top: .3cqw; padding-right: .06em; }
+.f-title .logo .tag { display: block; margin-top: 1.4cqw; font: italic 500 1.9cqw/1 var(--serif); letter-spacing: .04em; }
+.f-title .logo .eq { animation: hwSplitIn 1.1s cubic-bezier(.15, .9, .25, 1) both; }
+@keyframes hwSplitIn { from { letter-spacing: .3em; opacity: 0; } }
+.tmenu { left: 0; right: 0; bottom: 4.6cqw; text-align: center; }
+.tmenu li { display: block; margin: .25cqw 0; }
+.tmenu .it { font: italic 800 max(20px, 2.5cqw)/1.05 var(--cond); text-transform: uppercase; letter-spacing: .04em; padding: .1em .9em; }
+.tmenu .tx { background: linear-gradient(90deg, var(--ink) 50%, var(--bone) 50%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tmenu .fx { inset: 0 -.4em; background: var(--seam); clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%); transform: scaleX(0); transition: transform .2s cubic-bezier(.2, .9, .2, 1); }
+.tmenu li.sel .fx { transform: none; }
+.tmenu li.sel .tx { background: var(--ink); -webkit-background-clip: text; background-clip: text; }
+.f-title .foot { left: 2.4cqw; right: 2.4cqw; bottom: 1.6cqw; display: flex; justify-content: space-between; color: var(--ash); }
+
+/* ── B · Field menu: two mirrored columns that lean toward the seam ── */
+.f-field .date { left: 0; right: 0; top: 2.6cqw; text-align: center; }
+.f-field .date .d { display: block; font: italic 900 5.6cqw/.9 var(--cond); }
+.f-field .date .sides { display: flex; justify-content: center; gap: 4cqw; margin-top: .6cqw; font: italic 500 1.6cqw/1 var(--serif); }
+.f-field .date .sides span:first-child { color: var(--ink); } .f-field .date .sides span:last-child { color: var(--bone); }
+.fmenu { left: 6cqw; right: 6cqw; top: 13cqw; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, auto); grid-auto-flow: column; column-gap: 5.6cqw; row-gap: .3cqw; }
+.fmenu li { display: flex; }
+.fmenu li:nth-child(-n+5) { justify-content: flex-end; }
+.fmenu li:nth-child(n+6) { justify-content: flex-start; }
+.fmenu .it { font: italic 900 4.5cqw/.95 var(--cond); text-transform: uppercase; letter-spacing: -.005em; padding: .06em .3em; transition: transform .18s cubic-bezier(.2, .9, .3, 1.3); }
+.fmenu .it .sub { font: italic 500 1.25cqw/1 var(--serif); letter-spacing: .02em; text-transform: none; opacity: .65; }
+.fmenu li:nth-child(-n+5) .it { color: var(--ink); flex-direction: row-reverse; }
+.fmenu li:nth-child(n+6) .it { color: var(--bone); }
+.fmenu li:nth-child(1) { margin-right: 3cqw; } .fmenu li:nth-child(2) { margin-right: 1.8cqw; } .fmenu li:nth-child(3) { margin-right: .8cqw; } .fmenu li:nth-child(4) { margin-right: 1.8cqw; } .fmenu li:nth-child(5) { margin-right: 3cqw; }
+.fmenu li:nth-child(6) { margin-left: 2.6cqw; } .fmenu li:nth-child(7) { margin-left: 1.2cqw; } .fmenu li:nth-child(8) { margin-left: 1.2cqw; } .fmenu li:nth-child(9) { margin-left: 2.6cqw; }
+.fmenu .fx { inset: -.04em -.5em; background: var(--seam); opacity: 0; transition: opacity .12s; }
+.fmenu li:nth-child(-n+5) .fx { clip-path: polygon(0 18%, 100% 0, 100% 100%, 3% 86%); }
+.fmenu li:nth-child(n+6) .fx { clip-path: polygon(0 0, 100% 18%, 97% 86%, 0 100%); }
+.fmenu li.sel .fx { opacity: 1; animation: hwBar .22s cubic-bezier(.2, .9, .2, 1) both; }
+.fmenu li:nth-child(-n+5).sel .fx { transform-origin: 100% 50%; }
+.fmenu li:nth-child(n+6).sel .fx { transform-origin: 0 50%; }
+@keyframes hwBar { from { transform: scaleX(.1); } }
+.fmenu li.sel .it { color: var(--ink); }
+.fmenu li:nth-child(-n+5).sel .it { transform: translateX(-.6cqw) scale(1.08); transform-origin: 100% 50%; }
+.fmenu li:nth-child(n+6).sel .it { transform: translateX(.6cqw) scale(1.08); transform-origin: 0 50%; }
+/* the knot on the seam that points at the chosen side */
+.f-field .pointer { left: 50%; top: 13cqw; width: 2.2cqw; height: 2.2cqw; translate: -50% 0; background: var(--seam); z-index: 4; rotate: 45deg; transition: top .2s cubic-bezier(.2, .9, .2, 1); box-shadow: 0 0 0 .3cqw var(--ink); }
+.f-field .party { left: 2.4cqw; right: 2.4cqw; bottom: 2cqw; grid-template-columns: repeat(4, 1fr); column-gap: 1.6cqw; font: italic 600 1.7cqw/1 var(--cond); --face: 4cqw; }
+.f-field .party .pm:nth-child(-n+2) { color: var(--ink); }
+.f-field .party .pm:nth-child(n+3) { color: var(--bone); }
+.f-field .party .pm:nth-child(-n+2) .g i { background: rgba(14, 7, 9, .15); }
+.f-field .party .pm:nth-child(n+3) .g i { background: rgba(244, 237, 232, .16); }
+.pm .face { clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); background: var(--seam-2); }
+.pm .g i { transform: skewX(-20deg); }
+.pm .hp i::after { background: var(--seam); } .pm .sp i::after { background: var(--ash); }
+.pm .nm { font: italic 800 1.7cqw/1 var(--cond); text-transform: uppercase; letter-spacing: .02em; }
+.f-field .tip { left: 0; right: 0; bottom: 8.4cqw; text-align: center; font: italic 500 1.5cqw/1 var(--serif); }
+
+/* ── C · Dialogue: one black band across both halves, two answers mirrored ── */
+.f-dlg .portrait { left: 3cqw; bottom: 0; width: 34cqw; }
+.f-dlg .portrait img { width: 100%; filter: drop-shadow(-1cqw .4cqw 0 var(--seam)); }
+.f-dlg .ghost.day { top: 2cqw; }
+.f-dlg .box { left: 3cqw; right: 3cqw; bottom: 2.4cqw; background: var(--ink); color: var(--bone); padding: 3.2cqw 4.4cqw 2.6cqw; clip-path: polygon(1.4% 0, 98.6% 0, 100% 50%, 98.6% 100%, 1.4% 100%, 0 50%); box-shadow: inset 0 0 0 1px rgba(244, 237, 232, .14); cursor: pointer; }
+.f-dlg .box::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--seam), transparent 70%); opacity: .6; }
+.f-dlg .line { margin: 0; font: 500 max(16px, 1.9cqw)/1.42 var(--body); min-height: 2.84em; }
+.f-dlg .tag { left: 50%; bottom: calc(2.4cqw + 10.4cqw); translate: -50% 0; z-index: 5; display: flex; align-items: center; gap: 0; }
+.f-dlg .tag b { font: italic 900 2.5cqw/1 var(--cond); text-transform: uppercase; letter-spacing: .06em; padding: .3em .7em; background: var(--bone); color: var(--ink); clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%); }
+.f-dlg .tag small { font: 600 max(9px, .8cqw)/1 var(--body); letter-spacing: .3em; padding: 1.05em 1em 1.05em .8em; background: var(--seam); color: var(--ink); clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%); }
+.chs { left: 8cqw; right: 8cqw; top: 15cqw; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.chs li { display: flex; }
+.chs li:first-child { justify-content: flex-end; } .chs li:last-child { justify-content: flex-start; }
+.chs .it { white-space: normal; font: italic 600 max(15px, 1.7cqw)/1.2 var(--body); padding: 1.1cqw 2cqw; width: 100%; max-width: 30cqw; }
+.chs li:first-child .it { text-align: right; justify-content: flex-end; color: var(--ink); background: rgba(14, 7, 9, .06); clip-path: polygon(0 0, 92% 0, 100% 50%, 92% 100%, 0 100%); padding-right: 3.6cqw; }
+.chs li:last-child .it { color: var(--bone); background: rgba(244, 237, 232, .07); clip-path: polygon(8% 0, 100% 0, 100% 100%, 8% 100%, 0 50%); padding-left: 3.6cqw; }
+.chs li.sel .it { background: var(--seam); color: var(--ink); }
+.f-dlg .portrait.night { left: auto; right: 3cqw; transform: scaleX(-1); }
+.f-dlg .portrait.night img { filter: brightness(.16) contrast(1.2) drop-shadow(-1cqw .4cqw 0 rgba(255, 79, 158, .55)); opacity: .9; }
+.f-dlg .portrait.night { animation-name: hwFromRight; }
+@keyframes hwFromRight { from { translate: 6cqw 0; opacity: 0; } }
+.f-dlg .portrait { animation: hwFromLeft .6s cubic-bezier(.15, .9, .25, 1) both; }
+@keyframes hwFromLeft { from { translate: -6cqw 0; opacity: 0; } }
+
+/* ── D · Battle ── */
+.f-bat .enemy { left: 56cqw; top: 4cqw; width: 30cqw; text-align: center; }
+.f-bat .enemy svg { width: 100%; height: auto; }
+.f-bat .enemy .nm { font: italic 800 2cqw/1 var(--cond); letter-spacing: .2em; color: var(--bone); text-transform: uppercase; }
+.f-bat .enemy .bar { height: .7cqw; margin: .6cqw auto 0; width: 70%; background: rgba(244, 237, 232, .15); transform: skewX(-20deg); position: relative; }
+.f-bat .enemy .bar::after { content: ""; position: absolute; inset: 0; width: 72%; background: var(--seam); }
+.cmd { left: 0; right: 0; bottom: 11.6cqw; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 4cqw; }
+.cmd li { display: flex; }
+.cmd li:nth-child(-n+3) { justify-content: flex-end; } .cmd li:nth-child(n+4) { justify-content: flex-start; }
+.cmd .it { font: italic 900 3.7cqw/.98 var(--cond); text-transform: uppercase; padding: .04em .35em; transition: transform .16s cubic-bezier(.2, .9, .3, 1.3); }
+.cmd li:nth-child(-n+3) .it { color: var(--ink); } .cmd li:nth-child(n+4) .it { color: var(--bone); }
+.cmd li:nth-child(2) { margin-right: 1.6cqw; } .cmd li:nth-child(5) { margin-left: 1.6cqw; }
+.cmd .fx { inset: 0 -.3em; background: var(--seam); opacity: 0; clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%); }
+.cmd li.sel .fx { opacity: 1; animation: hwBar .2s cubic-bezier(.2, .9, .2, 1) both; }
+.cmd li.sel .it { color: var(--ink); transform: scale(1.12); }
+.cmd li:nth-child(-n+3).sel .it { transform-origin: 100% 50%; } .cmd li:nth-child(n+4).sel .it { transform-origin: 0 50%; }
+.f-bat .party { left: 2.4cqw; right: 2.4cqw; bottom: 2cqw; grid-template-columns: repeat(4, 1fr); column-gap: 1.6cqw; font: italic 600 1.7cqw/1 var(--cond); --face: 4cqw; }
+.f-bat .party .pm:nth-child(-n+2) { color: var(--ink); } .f-bat .party .pm:nth-child(n+3) { color: var(--bone); }
+.f-bat .party .pm:nth-child(-n+2) .g i { background: rgba(14, 7, 9, .15); } .f-bat .party .pm:nth-child(n+3) .g i { background: rgba(244, 237, 232, .16); }
+.f-bat .party .pm.lead::before { content: ""; position: absolute; left: -.8cqw; top: -.6cqw; bottom: -.6cqw; width: .4cqw; background: var(--seam); }
+.f-bat .bigmark { left: 14cqw; top: 9cqw; width: 26cqw; height: 26cqw; opacity: .14; z-index: 1; }
+.f-bat .turn { left: 3cqw; top: 3cqw; color: var(--ink); }
+.f-bat .turn b { display: block; font: italic 900 4.2cqw/.9 var(--cond); text-transform: uppercase; }
+.f-bat .turn span { font: italic 500 1.6cqw/1 var(--serif); }
+
+/* ── E · Day/night clock ── */
+.f-clock .dial { left: 50%; top: 50%; width: 30cqw; translate: -50% -54%; z-index: 3; }
+.f-clock .dial svg { width: 100%; height: auto; overflow: visible; }
+.f-clock .hand { transform-origin: 100px 100px; transition: transform .25s cubic-bezier(.2, .9, .3, 1.1); }
+.f-clock .read-l { right: 68cqw; top: 19cqw; text-align: right; color: var(--ink); }
+.f-clock .read-r { left: 68cqw; top: 19cqw; color: var(--bone); }
+.f-clock .read-l b, .f-clock .read-r b { display: block; font: italic 900 5.4cqw/.9 var(--cond); text-transform: uppercase; }
+.f-clock .read-l span, .f-clock .read-r span { display: block; margin-top: .5cqw; font: italic 500 1.7cqw/1.2 var(--serif); }
+.f-clock .read-l i, .f-clock .read-r i { display: block; margin-top: 1cqw; font: italic 800 2.4cqw/1 var(--cond); font-style: italic; }
+.f-clock .now { left: 0; right: 0; top: 2.8cqw; text-align: center; font: italic 900 3.4cqw/1 var(--cond); letter-spacing: .04em; }
+.f-clock .ctrl { left: 50%; bottom: 3cqw; translate: -50% 0; width: 40cqw; display: grid; gap: .6cqw; text-align: center; }
+.f-clock input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 1.1cqw; min-height: 10px; background: linear-gradient(90deg, var(--ink) 50%, var(--bone) 50%); outline-offset: 6px; clip-path: polygon(1% 0, 100% 0, 99% 100%, 0 100%); }
+.f-clock input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: var(--seam); border: 0; transform: rotate(45deg); }
+.f-clock input[type=range]::-moz-range-thumb { width: 18px; height: 18px; background: var(--seam); border: 0; border-radius: 0; transform: rotate(45deg); }
+.f-clock label { font: 600 max(10px, .9cqw)/1 var(--body); letter-spacing: .3em; text-transform: uppercase; }
+.f-clock .play { justify-self: center; font: italic 800 max(13px, 1.3cqw)/1 var(--cond); letter-spacing: .14em; text-transform: uppercase; padding: .5em 1.2em; background: var(--seam); color: var(--ink); clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%); }
+
+/* ── Phones: the seam turns sideways (bone on top, black below) and every list stacks, still mirrored per row ── */
+@media (max-width: 720px) {
+  .frame { background: linear-gradient(180deg, var(--bone) 0 50%, var(--ink) 50% 100%); }
+  .frame::before { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 3px; translate: 0 -50%; }
+  .frame::after { display: none; }
+  .ghost { font-size: 34cqw; }
+  .ghost.day { right: auto; left: -2cqw; top: -2cqw; } .ghost.night { left: auto; right: -2cqw; top: auto; bottom: -4cqw; }
+  .duo, .tmenu .tx { background-image: linear-gradient(90deg, var(--ink) 50%, var(--ink) 50%); }
+  .f-title { min-height: 640px; justify-content: space-between; }
+  .f-title .logo .p3 { font-size: 15px; } .f-title .logo .eq { font-size: 20cqw; } .f-title .logo .tag { font-size: 16px; }
+  .f-title .logo .mark { width: 80px; }
+  .tmenu { background: var(--ink); padding: 10px 0; }
+  .tmenu .tx { background-image: none; -webkit-background-clip: border-box; background-clip: border-box; color: var(--bone); }
+  .tmenu li.sel .tx { color: var(--ink); background: none; }
+  .f-title .foot { font-size: 10px; flex-direction: column; gap: 6px; align-items: center; }
+  .f-field .date .d { font-size: 30px; } .f-field .date .sides { font-size: 14px; } .f-field .date .sides span:last-child { color: var(--ink); }
+  .f-field .pointer { display: none; }
+  .fmenu { display: grid; grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; gap: 2px; background: var(--ink); padding: 8px 0; }
+  .fmenu li, .fmenu li:nth-child(n) { justify-content: center !important; margin: 0 !important; }
+  .fmenu li:nth-child(n) .it { font-size: 26px; color: var(--bone); flex-direction: row; }
+  .fmenu .it .sub { font-size: 12px; }
+  .fmenu li.sel .it { color: var(--ink) !important; }
+  .fmenu li.sel .it, .fmenu li:nth-child(n).sel .it { transform: scale(1.06); transform-origin: 50% 50%; }
+  .f-field .tip { font-size: 14px; color: var(--bone); text-align: center; }
+  .party { grid-template-columns: 1fr 1fr !important; gap: 12px !important; font-size: 14px !important; --face: 40px !important; }
+  .party .pm:nth-child(n) { color: var(--bone) !important; }
+  .party .pm .nm { font-size: 14px; }
+  .party .pm:nth-child(n) .g i { background: rgba(244, 237, 232, .16) !important; }
+  .f-dlg { min-height: 620px; justify-content: flex-end; }
+  .f-dlg .portrait { position: absolute !important; left: auto !important; right: -6%; top: 20px; width: 78%; z-index: 0; }
+  .f-dlg .portrait.night { display: none; }
+  .chs { grid-template-columns: 1fr; gap: 8px; }
+  .chs li:nth-child(n) { justify-content: stretch; }
+  .chs .it { max-width: none; font-size: 16px; padding: 12px 18px !important; }
+  .chs li:first-child .it { background: var(--bone); }
+  .chs li:last-child .it { background: var(--ink-2); }
+  .chs li.sel .it { background: var(--seam) !important; }
+  .f-dlg .tag { align-self: flex-start; } .f-dlg .tag b { font-size: 20px; } .f-dlg .tag small { font-size: 9px; }
+  .f-dlg .box { padding: 18px 20px; }
+  .f-bat .bigmark { display: none; }
+  .f-bat .turn b { font-size: 26px; } .f-bat .turn span { font-size: 14px; }
+  .f-bat .enemy { width: 70% !important; align-self: center; } .f-bat .enemy .nm { font-size: 14px; } .f-bat .enemy .bar { height: 6px; }
+  .cmd { grid-template-columns: 1fr 1fr; background: var(--ink); padding: 10px 0; }
+  .cmd li:nth-child(n) .it { font-size: 26px; color: var(--bone); }
+  .cmd li.sel .it { color: var(--ink) !important; }
+  .f-clock .now { font-size: 22px; }
+  .f-clock .dial { width: 74% !important; align-self: center; }
+  .f-clock .read-l, .f-clock .read-r { text-align: center; color: var(--ink); }
+  .f-clock .read-r { color: var(--bone); }
+  .f-clock .read-l b, .f-clock .read-r b { font-size: 30px; } .f-clock .read-l span, .f-clock .read-r span { font-size: 14px; } .f-clock .read-l i, .f-clock .read-r i { font-size: 18px; }
+  .f-clock .read-l { order: 1; } .f-clock .dial { order: 2; } .f-clock .read-r { order: 3; } .f-clock .ctrl { order: 4; }
+}
+</style>
+</head>
+<body>
+<header class="pg-top">
+  <div>
+    <a class="back" href="./">← All four directions</a>
+    <h1>1 · Halfway</h1>
+    <p>The equinox as balance: day equals night. Every screen is split down the middle, bone on the left, black on the right, with Solstice's hot pink as the seam. Menus mirror across it.</p>
+  </div>
+  <div class="pg-sw" aria-label="Palette">
+    <i style="--c:#f4ede8" data-h="#f4ede8"></i><i style="--c:#0e0709" data-h="#0e0709"></i><i style="--c:#ff4f9e" data-h="#ff4f9e"></i><i style="--c:#ff8cc0" data-h="#ff8cc0"></i><i style="--c:#8c7f86" data-h="#8c7f86"></i>
+  </div>
+</header>
+<nav class="pg-jump"><a href="#a">A Title</a><a href="#b">B Field menu</a><a href="#c">C Dialogue</a><a href="#d">D Battle</a><a href="#e">E Day / night clock</a></nav>
+<p class="pg-keys"><kbd>↑</kbd> <kbd>↓</kbd> move in the screen you're looking at · <kbd>Enter</kbd> pick · hover or click works too</p>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="hw-mark" viewBox="0 0 100 100">
+    <g class="rays" fill="#0e0709">
+      <polygon points="50,2 47,11 53,11" transform="rotate(-150 50 50)"/><polygon points="50,2 47,11 53,11" transform="rotate(-120 50 50)"/>
+      <polygon points="50,2 47,11 53,11" transform="rotate(-90 50 50)"/><polygon points="50,2 47,11 53,11" transform="rotate(-60 50 50)"/>
+      <polygon points="50,2 47,11 53,11" transform="rotate(-30 50 50)"/><polygon points="50,2 47,11 53,11" transform="rotate(-180 50 50)"/>
+    </g>
+    <path d="M50 16 A34 34 0 0 0 50 84 Z" fill="#0e0709"/>
+    <path d="M50 16 A34 34 0 0 1 50 84 Z" fill="#f4ede8"/>
+    <path d="M50 26 A24 24 0 0 1 50 74 A18 24 0 0 0 50 26 Z" fill="#0e0709"/>
+    <circle cx="70" cy="34" r="1.6" fill="#f4ede8"/><circle cx="78" cy="58" r="1.1" fill="#f4ede8"/>
+    <rect x="48.6" y="0" width="2.8" height="100" fill="#ff4f9e"/>
+  </symbol>
+</svg>
+
+<!-- A · Title -->
+<section class="scr" id="a">
+  <h2 class="scr-h"><b>A</b> Title screen <small>16:9 · ↑↓ Enter</small></h2>
+  <div class="frame f-title">
+    <span class="ghost day top abs">DAY</span><span class="ghost night bot abs">NIGHT</span>
+    <div class="logo c" aria-label="Persona 3 Equinox">
+      <svg class="mark" aria-hidden="true"><use href="#hw-mark"/></svg>
+      <span class="p3 duo">PERSONA 3</span>
+      <span class="eq duo">EQUINOX</span>
+      <span class="tag duo">Twelve hours of light, twelve of dark</span>
+    </div>
+    <ol class="tmenu c" data-nav data-fill="title" aria-label="Title menu"></ol>
+    <div class="foot c kick"><span style="color:var(--ash)">Demo · Halfway</span><span>© Persona 3: Equinox</span></div>
+  </div>
+</section>
+
+<!-- B · Field menu -->
+<section class="scr" id="b">
+  <h2 class="scr-h"><b>B</b> Main field menu <small>16:9 · ↑↓ through both columns</small></h2>
+  <div class="frame f-field">
+    <span class="ghost day bot abs">MENU</span><span class="ghost night top abs">MENU</span>
+    <div class="date c"><span class="d duo">4/12 MON</span><span class="sides"><span>After School</span><span>Evening</span></span></div>
+    <i class="pointer abs" aria-hidden="true"></i>
+    <ol class="fmenu c" data-nav data-primary data-fill="field" aria-label="Field menu"></ol>
+    <p class="tip c duo">Who's beside you, and who's behind.</p>
+    <ol class="party c" data-fill="party" aria-label="Party"></ol>
+  </div>
+</section>
+
+<!-- C · Dialogue -->
+<section class="scr" id="c">
+  <h2 class="scr-h"><b>C</b> Dialogue with two choices <small>16:9 · ↑↓ or click · click the box to replay</small></h2>
+  <div class="frame f-dlg">
+    <span class="ghost night top abs">TALK</span>
+    <div class="portrait c pin"><img src="../../assets/femc/portraits/solar/neutral.webp" alt="Solar, neutral"></div>
+    <div class="portrait night abs"><img src="../../assets/femc/portraits/solar/neutral.webp" alt=""></div>
+    <ol class="chs c" data-nav data-horiz data-fill="choice" aria-label="Choices"></ol>
+    <div class="tag c"><b>Solar</b><small>DAY</small></div>
+    <div class="box c" data-replay><p class="line" data-type>This is a placeholder line of dialogue. It sits across both halves of the screen, so it reads the same in daylight and after dark.</p></div>
+  </div>
+</section>
+
+<!-- D · Battle -->
+<section class="scr" id="d">
+  <h2 class="scr-h"><b>D</b> Battle command menu <small>16:9 · ↑↓ down the left, then the right</small></h2>
+  <div class="frame f-bat">
+    <span class="ghost day top abs">TURN</span>
+    <svg class="bigmark abs" aria-hidden="true"><use href="#hw-mark"/></svg>
+    <div class="turn c"><b>Solar's turn</b><span>One More is waiting on the other side.</span></div>
+    <div class="enemy c" aria-hidden="true">
+      <svg viewBox="0 0 200 140"><path d="M100 10 C70 30 60 70 40 80 C60 84 70 110 64 130 L136 130 C130 110 140 84 160 80 C140 70 130 30 100 10Z" fill="#1c1014" stroke="#f4ede8" stroke-width="2"/><path d="M100 10 C110 40 112 90 100 130" stroke="#ff4f9e" stroke-width="2" fill="none"/><circle cx="88" cy="58" r="4" fill="#ff4f9e"/><circle cx="112" cy="58" r="4" fill="#f4ede8"/></svg>
+      <div class="nm">Shadow</div><div class="bar"></div>
+    </div>
+    <ol class="cmd c" data-nav data-fill="battle" aria-label="Battle commands"></ol>
+    <ol class="party c" data-fill="party" aria-label="Party"></ol>
+  </div>
+</section>
+
+<!-- E · Day / night clock -->
+<section class="scr" id="e">
+  <h2 class="scr-h"><b>E</b> Equinox widget: the day / night clock <small>16:9 · drag the slider, or let it run</small></h2>
+  <div class="frame f-clock">
+    <div class="now c duo" id="hw-now">14:00</div>
+    <div class="read-l c"><b>Day</b><span>06:00 to 18:00</span><i id="hw-dayleft">4h left</i></div>
+    <div class="dial c">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#ff4f9e" stroke-width="1.5" stroke-dasharray="2 6"/>
+        <path d="M100 18 A82 82 0 0 0 100 182 Z" fill="#0e0709"/>
+        <path d="M100 18 A82 82 0 0 1 100 182 Z" fill="#f4ede8"/>
+        <g font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="800" font-size="11" text-anchor="middle">
+          <text x="100" y="13" fill="#ff4f9e">18</text><text x="100" y="197" fill="#ff4f9e">06</text>
+          <text x="9" y="104" fill="#0e0709">12</text><text x="192" y="104" fill="#f4ede8">00</text>
+          <text x="52" y="104" fill="#f4ede8" font-size="14">DAY</text><text x="148" y="104" fill="#0e0709" font-size="14">NIGHT</text>
+        </g>
+        <g fill="#8c7f86"><rect x="99" y="20" width="2" height="8"/><rect x="99" y="172" width="2" height="8"/><rect x="20" y="99" width="8" height="2"/><rect x="172" y="99" width="8" height="2"/></g>
+        <g class="hand" id="hw-hand"><rect x="98.5" y="22" width="3" height="80" fill="#ff4f9e"/><circle cx="100" cy="24" r="7" fill="#ff4f9e"/><circle id="hw-glyph" cx="100" cy="24" r="3.4" fill="#f4ede8"/></g>
+        <circle cx="100" cy="100" r="6" fill="#ff4f9e" stroke="#0e0709" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="read-r c"><b>Night</b><span>18:00 to 06:00</span><i id="hw-nightin">in 4h</i></div>
+    <div class="ctrl c">
+      <label for="hw-time" class="duo">Time of day</label>
+      <input id="hw-time" type="range" min="0" max="1439" step="15" value="840" aria-valuetext="14:00, day">
+      <button class="play" type="button" id="hw-play" aria-pressed="true">Pause</button>
+    </div>
+  </div>
+</section>
+
+<script>window.EQ_OPTS = { sub: { field: ['', '', '', '', '', '', '', '', ''] } };</script>
+<script src="equinox.js?v=2"></script>
+<script>
+(function () {
+  // the knot on the seam follows the field menu's row
+  var fm = document.querySelector('.fmenu'), ptr = document.querySelector('.f-field .pointer');
+  function knot() {
+    var li = fm.querySelector('li.sel'); if (!li || !ptr) return;
+    var fr = fm.closest('.frame').getBoundingClientRect(), r = li.getBoundingClientRect();
+    ptr.style.top = (r.top - fr.top + r.height / 2 - ptr.offsetHeight / 2) + 'px';
+  }
+  fm.addEventListener('eq:select', knot); addEventListener('resize', knot); requestAnimationFrame(knot);
+  if (document.fonts) document.fonts.ready.then(knot);
+
+  // the day / night clock: 18:00 at the top, noon on the bone side, midnight on the black side
+  var input = document.getElementById('hw-time'), hand = document.getElementById('hw-hand'), glyph = document.getElementById('hw-glyph');
+  var now = document.getElementById('hw-now'), dl = document.getElementById('hw-dayleft'), ni = document.getElementById('hw-nightin');
+  var play = document.getElementById('hw-play'), running = !EQ.reduced, last = 0;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function hm(m) { return Math.floor(m / 60) + 'h' + (m % 60 ? ' ' + (m % 60) + 'm' : ''); }
+  function paint() {
+    var m = +input.value, h = m / 60, day = h >= 6 && h < 18;
+    hand.style.transform = 'rotate(' + (((h - 18 + 24) % 24) / 24 * 360) + 'deg)';
+    glyph.setAttribute('fill', day ? '#f4ede8' : '#0e0709');
+    var t = pad(Math.floor(h)) + ':' + pad(m % 60);
+    now.textContent = t + (day ? ' · DAY' : ' · NIGHT');
+    var toDusk = (18 * 60 - m + 1440) % 1440, toDawn = (6 * 60 - m + 1440) % 1440;
+    dl.textContent = day ? hm(toDusk) + ' left' : 'back in ' + hm(toDawn);
+    ni.textContent = day ? 'in ' + hm(toDusk) : hm(toDawn) + ' left';
+    input.setAttribute('aria-valuetext', t + ', ' + (day ? 'day' : 'night'));
+  }
+  input.addEventListener('input', function () { running = false; play.textContent = 'Play'; play.setAttribute('aria-pressed', 'false'); paint(); });
+  play.addEventListener('click', function () { running = !running; play.textContent = running ? 'Pause' : 'Play'; play.setAttribute('aria-pressed', String(running)); });
+  if (!running) { play.textContent = 'Play'; play.setAttribute('aria-pressed', 'false'); }
+  function tick(ts) {
+    if (running && ts - last > 120) { last = ts; input.value = (+input.value + 15) % 1440; paint(); }
+    requestAnimationFrame(tick);
+  }
+  paint(); requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* Persona 3: Equinox UI demos: the shared frame (DESIGN MOCKUP ONLY, not wired to the game).
+   Each direction page (halfway / well / thread / mirror) uses the same markup skeleton and this file for:
+   the page shell, the five 16:9 frames (container queries: sizes in cqw), the phone fallback (frames become
+   stacked columns under 720px), shared list / party / dialogue bones and reduced motion. Colour, type, shape
+   and motion live in each page's own <style>. No external scripts; fonts from Google Fonts per page. */
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; }
+body { background: var(--pg-bg); color: var(--pg-ink); font-family: var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: inherit; }
+ol, ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--pg-acc); outline-offset: 3px; }
+
+/* ── Page shell ── */
+.pg-top { max-width: 1312px; margin: 0 auto; padding: 22px 16px 8px; display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: end; justify-content: space-between; }
+.pg-top .back { font: 600 12px/1 var(--body); letter-spacing: .2em; text-transform: uppercase; text-decoration: none; opacity: .7; }
+.pg-top .back:hover { opacity: 1; }
+.pg-top h1 { margin: 6px 0 0; font: var(--pg-h1); letter-spacing: .01em; }
+.pg-top p { margin: 4px 0 0; max-width: 60ch; font-size: 15px; line-height: 1.4; opacity: .8; }
+.pg-sw { display: flex; gap: 6px; flex-wrap: wrap; }
+.pg-sw i { width: 34px; height: 34px; border-radius: 3px; background: var(--c); box-shadow: inset 0 0 0 1px rgba(128, 128, 128, .35); position: relative; }
+.pg-sw i::after { content: attr(data-h); position: absolute; left: 0; top: 38px; font: 600 9px/1 var(--body); font-style: normal; letter-spacing: .04em; opacity: .6; white-space: nowrap; }
+.pg-jump { max-width: 1312px; margin: 0 auto; padding: 22px 16px 0; display: flex; gap: 6px; flex-wrap: wrap; font: 600 12px/1 var(--body); letter-spacing: .12em; text-transform: uppercase; }
+.pg-jump a { text-decoration: none; padding: 7px 10px; border: 1px solid currentColor; opacity: .7; }
+.pg-jump a:hover { opacity: 1; }
+.pg-keys { max-width: 1312px; margin: 0 auto; padding: 10px 16px 0; font-size: 13px; opacity: .65; }
+.pg-keys kbd { font: 700 11px/1 var(--body); padding: 2px 6px; border: 1px solid currentColor; border-radius: 3px; }
+
+/* ── Screens ── */
+.scr { max-width: 1312px; margin: 0 auto; padding: 34px 16px 0; }
+.scr:last-of-type { padding-bottom: 60px; }
+.scr-h { display: flex; align-items: baseline; gap: 12px; margin: 0 0 10px; font: 600 13px/1.2 var(--body); letter-spacing: .16em; text-transform: uppercase; }
+.scr-h b { font: var(--pg-letter); letter-spacing: 0; }
+.scr-h small { margin-left: auto; font-size: 11px; letter-spacing: .1em; opacity: .55; text-transform: none; }
+.frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; container-type: inline-size; isolation: isolate; background: var(--f-bg, #000); color: var(--f-ink, #fff); }
+.frame .abs { position: absolute; pointer-events: none; }
+.frame .c { position: absolute; z-index: 3; }
+
+/* Lists filled by equinox.js: li > button.it > span.tx (+ small.sub, i.fx) */
+[data-nav] { outline: none; }
+[data-nav]:focus-visible { outline: none; }
+[data-nav]:focus-visible li.sel .it { outline: 2px dashed var(--f-acc, currentColor); outline-offset: 4px; }
+.it { position: relative; display: inline-flex; align-items: baseline; gap: .5em; white-space: nowrap; }
+.it .tx { position: relative; z-index: 2; }
+.it .sub { position: relative; z-index: 2; }
+.it .fx { position: absolute; pointer-events: none; }
+li.pick .it { animation: eqPick .38s ease-out; }
+@keyframes eqPick { 30% { transform: scale(1.06); filter: brightness(1.4); } }
+
+/* Party strip bones */
+.party { display: grid; gap: .5em; }
+.pm { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 0 .7em; align-items: center; }
+.pm .face { grid-row: span 3; width: var(--face, 3.4em); height: var(--face, 3.4em); overflow: hidden; position: relative; }
+.pm .face img { position: absolute; width: 185%; max-width: none; left: -42%; top: -14%; }
+.pm .nm { line-height: 1; }
+.pm .g { display: grid; grid-template-columns: 1.8em 1fr 2.6em; gap: .4em; align-items: center; font-size: .72em; }
+.pm .g i { height: .42em; position: relative; overflow: hidden; }
+.pm .g i::after { content: ""; position: absolute; inset: 0; width: var(--v); }
+.pm .g b { text-align: right; }
+.pm .g em { font-style: normal; }
+
+/* Dialogue bones */
+.line .cur { display: inline-block; width: .5em; }
+
+/* ── Phones: every frame becomes a column; content stops being absolutely placed ── */
+@media (max-width: 720px) {
+  .pg-top { padding-top: 16px; }
+  .pg-sw i { width: 28px; height: 28px; }
+  .pg-sw i::after { display: none; }
+  .scr { padding-top: 28px; }
+  .scr-h small { display: none; }
+  .frame { aspect-ratio: auto; display: flex; flex-direction: column; gap: 18px; padding: 48px 16px 22px; min-height: 0; }
+  .frame > :where(.c:not(.pin)) { position: relative !important; inset: auto !important; transform: none !important; translate: none !important; rotate: none !important;
+    width: auto !important; max-width: 100% !important; margin: 0 !important; }
+}
+
+/* ── Reduced motion: no movement, state changes still show ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

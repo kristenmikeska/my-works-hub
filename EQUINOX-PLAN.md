@@ -14,7 +14,7 @@ The sequel to *Persona 3: Solstice*. This is the shape of the game only: the cal
 
 ## When and where
 
-- **The year:** April 2010 to early March 2011 in game time, the year after Solstice.
+- **The year:** April 2010 to the first week of March 2011 in game time, the year after Solstice. It ends with graduation and the finale, like Solstice.
 - **The town:** mostly Iwatodai and Port Island again, so most of Solstice's backgrounds come back. There are a few new places in town, and a new dungeon.
 - **School:** Solar is back at Gekkoukan for the school year. Exams, festivals, holidays and a graduation at the end.
 - **The rhythm:** the same as Solstice. School days and days off, After School, Evening, Late Night, and the Dark Hour. A full moon every month with a big fight. Weather and seasons as before.
@@ -29,14 +29,16 @@ The sequel to *Persona 3: Solstice*. This is the shape of the game only: the cal
   - titles
   - wallpapers
   - the album (CGs, polaroids, photo booth strips)
-- **What doesn't come over:** levels, links, skills, Personas and Echoes, money, items, Velvet Plumes.
+  - leftover Velvet Plumes
+- It also reads which epilogue you finished, and which route, so a few lines in the opening match it. A fresh start gets neutral lines. The game is the same either way.
+- **What doesn't come over:** levels, links, skills, Personas and Echoes, money, items.
 - The Solstice save is only read, never changed.
 
 ---
 
 ## The cast
 
-Links are marked **link**. Fighters are marked **fights**. Everyone remembers Solstice.
+Links are marked **link**. Fighters are marked **fights**. Everyone remembers Solstice. Who becomes a full link, a duo or group link, a side story or a cameo is proposed in `EQUINOX-CAST-IDEAS.md`.
 
 **Iwatodai and S.E.E.S.**
 - Akihiko (link, fights)
@@ -47,28 +49,29 @@ Links are marked **link**. Fighters are marked **fights**. Everyone remembers So
 - Aigis (link, fights)
 - Ken (link, fights)
 - Koromaru (link, fights)
-- Shinjiro (link, fights)
+- Shinjiro (link, fights; awake from the start)
 - Elizabeth (Velvet Room)
-- Persona-world friends from Solstice, if you want them back: Rio, Saori, Kuromi, My Melody, Ann, Kasumi, Haru, Kat & Ethan
+- Any Persona 3 character can come back: classmates, town links, Theodore, Igor (see the cast ideas)
+- Persona-world friends from Solstice: Rio, Saori, Kuromi, My Melody, Ann, Kasumi, Haru, Kat & Ethan
 
 **Runners**
 - Haechan (link, fights; also strangers)
 - Minji (link, fights)
-- Hanni (link)
-- Hyein (link)
+- Hanni (link, fights)
+- Hyein (link, fights)
 - Jaehyun (link)
 - Mark (link)
 - Danielle (link)
 - Jaemin (link)
 - Chenle (link; helps Fuuka navigate)
-- **Parents:** Jaesang and Solji (links)
+- **Parents:** Jaesang and Solji (links, building on the epilogue)
 
 **strangers**
-- Yunjin (link)
+- Yunjin (link, fights)
 - Jungwon (link, fights; also HOAX)
 - Jay, Niki and Sunghoon (links; also HOAX)
 - Haechan (above)
-- **Parents:** Appa and Eomma (links)
+- **Parents:** Appa and Eomma (links, building on the epilogue)
 
 **HOAX**
 - Jihoon (link, fights)
@@ -78,18 +81,17 @@ Links are marked **link**. Fighters are marked **fights**. Everyone remembers So
 - Heeseung, Jake, Jaehyuk, Asahi and Hyunsuk (around town)
 - Nana and Maeumi (the dogs)
 - Jungwon and the trio (above)
-- **Parents:** Mom and Dad Kim (links)
+- **Parents:** Mom and Dad Kim, Han Soyeon and Kim Jaeseok (links)
 
 **LE SSERAFIM**
-- Chaewon, Sakura, Kazuha and Eunchae, with Yunjin
-- A group link, or four links (your pick)
+- Chaewon, Sakura, Kazuha and Eunchae: four full links, with Yunjin
 
 **New faces**
 - Two new characters in town (one is a link)
 
-**Romances:** the same canon romances as Solstice (Haechan, Jungwon, Jihoon, Minji, Akihiko, Shinjiro), plus side romances. Every romance starts over: everyone remembers what they were to Solar, and the year decides what they are now.
+**Romances:** to talk through once the cast is settled (questions in the cast ideas). The starting idea: the same canon romances as Solstice (Haechan, Jungwon, Jihoon, Minji, Akihiko, Shinjiro), plus side romances. Every romance starts over: everyone remembers what they were to Solar, and the year decides what they are now.
 
-**Fighters:** the 12 from Solstice. Two or three new ones are possible (you pick, and design their Personas with Claude).
+**Fighters:** the 12 from Solstice, plus Hanni, Yunjin and Hyein (their Personas get designed with you). Maybe more later.
 
 ---
 
@@ -109,7 +111,7 @@ Links are marked **link**. Fighters are marked **fights**. Everyone remembers So
 - **Minigames:** the ones already built, used in the story where they fit.
 - **Velvet Trials** (the boss rush).
 - **The Index, Theater, Tips, settings, save slots.**
-- **New Game+.**
+- **New Game+,** with a deeper climb past the bottom of the new dungeon.
 
 ## New systems
 
@@ -153,12 +155,13 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 
 - **Title:** 1 logo, 1 cover, 2 menu backdrops.
 - **Portraits (6 faces each):** 2 new characters; 1 new set for Solar's Equinox look. Everyone else already has faces. Seasonal sets optional.
-- **Full-body pictures (Social Link screen):** about 12 (the six parents, the four LE SSERAFIM girls, the two new characters).
+- **Full-body pictures (Social Link screen):** about 12 (the six parents, the four LE SSERAFIM girls, the two new characters), plus any Persona 3 side characters who get side stories.
 - **Tarot cards:** 2 to 3 new cards.
 - **Backgrounds:** about 8 for the Well (one per block) and about 6 new town places.
 - **Shadows:** about 11 full-moon bosses, 8 block guardians, about 24 regular Shadows (pose sheets, as before).
-- **Personas:** 1 new form for Haenim, 1 duo attack cut-in, and 2 to 3 new Personas if you add fighters.
-- **Battle art for new fighters:** the usual set each (pose sheets, entrance, "1 MORE!", Theurgy, finish).
+- **Personas:** 1 new form for Haenim, 1 duo attack cut-in, and 3 new Personas (Hanni, Yunjin, Hyein).
+- **Battle art for Hanni, Yunjin and Hyein:** the usual set each (pose sheets, entrance, "1 MORE!", Theurgy, finish).
+- **New Game+ climb:** bosses and backgrounds for the deeper floors.
 - **CGs:** about 40 to 50.
 - **Memory cards:** about 40.
 - **Echoes:** 1 new set of 12.
@@ -167,16 +170,23 @@ Each batch is tested lightly and reported spoiler-free. Features that need art w
 
 ---
 
-## Questions for you
+## Answered (Kat, Nov 15)
 
-1. Should an imported save also tell Equinox which epilogue you finished, so a few opening lines can match it? A fresh start would get neutral lines.
-2. The real March 2011 had the Tōhoku earthquake and tsunami (March 11). I suggest the year ends in the first week of March, like Solstice, and the game never mentions it. OK?
-3. Which of Solstice's game characters (Kiriko, Mercy, Widowmaker, Sebastian, Aphrodite, Judy, Rohan) and Persona-world friends (Rio, Saori, Kuromi, My Melody, Ann, Kasumi, Haru, Kat & Ethan) come back?
-4. LE SSERAFIM: one group link plus four friendships, or four full links? And should each girl come as one world's version, or as all her versions at once, the way Jungwon has two?
-5. Who else should fight? Ideas: Yunjin, Hanni, Jaehyun, Hyein, Cherry, Mark.
-6. Is Shinjiro awake from the start?
-7. Parents: full ten-rank links, or shorter ones? And the HOAX parents' first names?
-8. Same romance rules as Solstice? Any new romance options?
-9. About the same number of links as Solstice (around 40)?
-10. Should leftover Velvet Plumes come over in the import, or start at zero?
-11. New Game+: a deeper climb, like Solstice's?
+1. **The import reads your epilogue:** yes. A few opening lines match the epilogue and route you finished. A fresh start gets neutral lines.
+2. **The end of the year:** the year ends in the first week of March 2011, like Solstice: graduation on Friday 3/4, the finale on Saturday 3/5, the ending on Sunday 3/6.
+3. **Who comes back:** any Persona 3 character. Some are full links, some are side characters or cameos. Ideas in `EQUINOX-CAST-IDEAS.md`.
+4. **LE SSERAFIM:** four full links. "One version or all of them" is explained in the cast ideas.
+5. **New fighters:** Hanni, Yunjin and Hyein. Maybe more.
+6. **Shinjiro:** awake from the start.
+7. **Parents:** links that build on the epilogues. The HOAX parents are Han Soyeon (Mom) and Kim Jaeseok (Dad), the names the HOAX epilogue already uses.
+9. **Cast size:** proposal in the cast ideas (about 33 links).
+10. **Velvet Plumes:** they carry over.
+11. **New Game+:** yes, a deeper climb.
+
+## Still open
+
+1. **Romance rules:** to talk through once the cast is settled (the list is in the cast ideas).
+2. **The cast proposal:** which links, duos, side stories and cameos you like (cast ideas, sections A and B).
+3. **LE SSERAFIM versions:** one version each, or all of them in one (cast ideas, section D; I recommend all of them in one).
+4. **Parents:** one link per couple, or one per parent?
+5. **Solstice's game visitors** (Kiriko, Mercy, Widowmaker, Sebastian, Aphrodite, Judy, Rohan): a cameo night, or not at all?
