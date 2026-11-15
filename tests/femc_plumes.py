@@ -339,14 +339,15 @@ try:
         ok(made['bell4'][0] in left and made['kite5'][0] in left and made['kite5solo'][0] in left and made['bell4'][1] not in left and made['kite5'][1] not in left, 'only spares went')
         ok(p.eval("FemcBuild.wearerOf(FemcGame.S.battleSave,%d)" % made['bell4'][0]) == 'solar', 'the worn card is still worn')
         ok(p.eval("FemcGame.S.battleSave.mats.velvet_thread") == 8, 'four thread went')
-        # The weekly cap: 8 a week, then nothing until Sunday.
-        ok(p.eval(f"{RQ}.weekLeft()") == 2, p.eval(f"{RQ}.weekLeft()"))
-        ok(not p.eval(f"{RQ}.trade({{mats:{{shadow_ash:3}}}}).ok"), 'over the cap: refused')
-        ok(p.eval(f"{RQ}.trade({{mats:{{shadow_ash:2}}}}).ok") and p.eval(f"{RQ}.weekLeft()") == 0, 'up to the cap')
+        # The weekly cap: 20 a week (Kat, Nov 15 2026; was 8), then nothing until Sunday.
+        p.eval("FemcGame.S.battleSave.mats.shadow_ash=1000")
+        ok(p.eval(f"{RQ}.weekLeft()") == 14, p.eval(f"{RQ}.weekLeft()"))
+        ok(not p.eval(f"{RQ}.trade({{mats:{{shadow_ash:15}}}}).ok"), 'over the cap: refused')
+        ok(p.eval(f"{RQ}.trade({{mats:{{shadow_ash:14}}}}).ok") and p.eval(f"{RQ}.weekLeft()") == 0, 'up to the cap')
         ok(not p.eval(f"{RQ}.quote({{mats:{{shadow_ash:1}}}}).ok"), 'done for the week')
         p.eval("FemcGame.S.day+=7")
-        ok(p.eval(f"{RQ}.weekLeft()") == 8 and p.eval(f"{RQ}.trade({{mats:{{shadow_ash:1}}}}).ok"), 'a new week')
-        ok(p.eval("FemcGame.S.battleSave.mats.shadow_ash") == 300 - 90, 'three lots of ash in all')
+        ok(p.eval(f"{RQ}.weekLeft()") == 20 and p.eval(f"{RQ}.trade({{mats:{{shadow_ash:1}}}}).ok"), 'a new week')
+        ok(p.eval("FemcGame.S.battleSave.mats.shadow_ash") == 1000 - 15 * 30, 'fifteen lots of ash in all')
         # Through the UI: steppers, the confirm screen listing every card, then the trade.
         open_velvet(p)
         click(p, '.g-vel-ov [data-px-open]')
@@ -364,7 +365,7 @@ try:
         ok(p.eval("FemcGame.S.battleSave.cards.list.filter(c=>c.set==='bell'&&c.r===3).length") == 1, 'one bell crown stays')
         p.eval("document.querySelectorAll('.g-overlay').forEach(x=>x.remove())")
         clean(p, 'exchange')
-        results['exchange'] = '★3 3:1, ★4 1:1, ★5 1:3, materials by lot; worn / locked / levelled / refined / last copies kept; reserves; 8 a week; confirm UI'
+        results['exchange'] = '★3 3:1, ★4 1:1, ★5 1:3, materials by lot; worn / locked / levelled / refined / last copies kept; reserves; 20 a week; confirm UI'
         print('exchange OK', results['exchange'], flush=True)
 
     # ── Older and malformed saves ──
