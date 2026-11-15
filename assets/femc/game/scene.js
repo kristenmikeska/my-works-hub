@@ -479,7 +479,7 @@ window.FemcScene = (() => {
         });
       });
     }
-    const MINIGAME_V = 11;
+    const MINIGAME_V = 12; // 12: Nov 14 art batch 158 (listen street placements, the seventh stair house / icons / endings)
     const MG_GLOB = { holdon: 'FemcHoldOn' }; // ids whose global isn't Femc + Capitalised id
     function giftAsk(line) {
       const who = line.giftAsk;

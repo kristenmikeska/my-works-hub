@@ -45,23 +45,25 @@ window.FemcListen = (() => {
   }));
   const tutBusy = e => { const T = window.FemcTutorial; return !!(T && T.open() && (e.key === 'Escape' || T.blocking())); };
   // the things in the street; x / y = where they stand (% of the scene), w = width (% of the scene)
+  // (Nov 14, art batch 158: re-placed on Kat's street.webp: the window on the facade above the awning, the basement window at
+  // the building's foot behind the railing, steam grate and subway stairs on the sidewalk, the traffic light at the curb, the cab in the road)
   const THINGS = [
-    { id: 'heat', name: 'The lit window', cap: 'a low hum, everywhere at once', x: 30, y: 30, w: 9,
+    { id: 'heat', name: 'The lit window', cap: 'a low hum, everywhere at once', x: 28.5, y: 17, w: 8,
       ask: ["The building heat. Every building on the avenue, all at once. It's a low B.", 'Under everything. The note the whole street sits on.'],
       got: "Every radiator on Fifth, humming the same note. You'll hear it in your sleep now.", miss: 'Higher up. Inside somewhere.' },
-    { id: 'train', name: 'The subway stairs', cap: 'a rumble you feel in your feet first', x: 66, y: 74, w: 13,
+    { id: 'train', name: 'The subway stairs', cap: 'a rumble you feel in your feet first', x: 61, y: 78, w: 14,
       ask: ['Feel that? Before you hear it.', "Every four minutes. Under your feet."],
       got: 'The six train. You feel it in your teeth before your ears.', miss: 'Lower. Under the street.' },
-    { id: 'light', name: 'The traffic light', cap: 'a tiny electric tick and buzz', x: 88, y: 46, w: 6,
+    { id: 'light', name: 'The traffic light', cap: 'a tiny electric tick and buzz', x: 71.5, y: 69, w: 9,
       ask: ['Tiny. Tick. Hear it?', "It changes for nobody. Listen when it does."],
       got: 'It buzzes when it changes. For no one. All night.', miss: 'Smaller. Electric.' },
-    { id: 'cab', name: 'The cab', cap: 'tires hissing through slush', x: 44, y: 70, w: 18,
+    { id: 'cab', name: 'The cab', cap: 'tires hissing through slush', x: 84, y: 70, w: 14,
       ask: ['One car still out tonight. Hear it?', 'Wet. Going somewhere.'],
       got: 'The one cab on Fifth at two in the morning. Somebody\'s going home.', miss: "It's moving. Find what moves." },
-    { id: 'steam', name: 'The steam grate', cap: 'a soft, steady hiss', x: 18, y: 80, w: 11,
+    { id: 'steam', name: 'The steam grate', cap: 'a soft, steady hiss', x: 50, y: 69.5, w: 9,
       ask: ['Breathing. The street is breathing.', 'Soft. Steady. Like a held breath going out.'],
       got: "The street breathes. Con Ed's whole secret life, right there.", miss: 'Closer to the ground.' },
-    { id: 'rad', name: 'The basement window', cap: 'a metal knock behind a grate', x: 56, y: 46, w: 8,
+    { id: 'rad', name: 'The basement window', cap: 'a metal knock behind a grate', x: 35.5, y: 66, w: 6.5,
       ask: ['Somebody banging pipes. Hear it?', 'Knock. Knock. Somebody\'s warm.'],
       got: "An old radiator in a basement. Somebody's super is not sleeping.", miss: 'Metal. Knocking.' },
   ];
@@ -90,8 +92,8 @@ window.FemcListen = (() => {
       const CALM = o.calm ?? !!GS0.calm, PERF = o.perf ?? !!GS0.perf, STILL = reduced.matches;
       el.className = 'mg-lis' + (STILL ? ' still' : '') + (CALM ? ' calm' : '') + (PERF ? ' perf' : '');
       const B = base();
-      // the street's own lights (on the default picture: wall lanterns, the tree lights, the far lamps, wet reflections)
-      const HALOS = [[6, 33, 9], [24.6, 43, 7], [91, 50, 6], [46, 30, 12, 'tree'], [55, 44, 10, 'tree'], [60, 22, 8, 'tree'], [85, 32, 5, 'win'], [96, 38, 5, 'win']];
+      // the street's own lights, on Kat's street.webp (Nov 14): the wall lanterns, the far lanterns, the lit trees, the park trees, the lobby and an upper window
+      const HALOS = [[6.5, 31, 9], [23.3, 42, 7], [42.7, 46.5, 4], [45.4, 49, 3.5], [41, 30, 12, 'tree'], [50, 38, 10, 'tree'], [75, 46, 8, 'tree'], [93, 37, 9, 'tree'], [15, 52, 8, 'win'], [28.5, 4, 5, 'win']];
       el.innerHTML = `
         <div class="ls-scene">
           <img class="ls-bg" src="${ART('street')}" alt="" onerror="this.onerror=null;this.src='${B}assets/femc/bg/epi-r-nyc-street-night.webp'">

@@ -443,9 +443,10 @@ window.FemcGame = (() => {
   const examBonus = () => { const e = RW().examPts || {}; return Object.keys(D.stats.stats).reduce((a, k) => a + (statReward(k, 'exam') ? (e[k] ?? e.other ?? 0) : 0), 0); };
   const knowsAnswer = () => !S.epi && statReward('knowledge', 'exam'); // Knowledge 12, the story year only
   const statTitleItem = id => { const t = statDef(id)?.title, C = W.FemcCosmetics; return t && C && C.byId(t) ? C.byId(t) : null; };
+  const statWallItem = id => { const t = statDef(id)?.wall, C = W.FemcCosmetics; return t && C && C.byId(t) ? C.byId(t) : null; }; // Nov 14: the rank-5 wallpaper
   function statRewardText(id, kind) {
     const d = statDef(id), rw = RW();
-    if (kind === 'title') return `The "${statTitleItem(id)?.name || `${d.ranks[(rw.title || 5) - 1]} Title`}" title`;
+    if (kind === 'title') return `The "${statTitleItem(id)?.name || `${d.ranks[(rw.title || 5) - 1]} Title`}" title${statWallItem(id) ? ' and a wallpaper' : ''}`;
     if (kind === 'job') { const js = (D.jobs || []).filter(j => jobStatOf(j) === id).map(j => j.name); return `+${rw.jobPct || 0}% pay${js.length ? ` at ${js.join(', ')}` : ' at her jobs'}`; }
     if (kind === 'choices') return 'New choices in scenes';
     if (kind === 'exam') return id === 'knowledge' ? 'A big lift in exam rankings, and in class she just knows the answer' : 'A lift in exam rankings';
@@ -454,11 +455,11 @@ window.FemcGame = (() => {
   }
   // [{ kind, rank, text, got }] in rank order, for the Status screen.
   const statRewards = id => REWARD_KINDS.filter(k => RW()[k]).map(k => ({ kind: k, rank: RW()[k], text: statRewardText(id, k), got: statReward(id, k) })).sort((a, b) => a.rank - b.rank);
-  // Rank-5 titles land in the Wardrobe (cosmetics.js loads after this file, so on every save rather than at load). Idempotent.
+  // Rank-5 titles (and, since Nov 14, the stat's wallpaper) land in the Wardrobe (cosmetics.js loads after this file, so on every save rather than at load). Idempotent.
   function statTitles() {
     const C = W.FemcCosmetics; if (!C || !S || !S.started) return false;
     let got = false;
-    Object.keys(D.stats.stats).forEach(k => { const x = statReward(k, 'title') && statTitleItem(k); if (x && !C.owns(x.id)) { C.grantItem(x.id); got = true; } });
+    Object.keys(D.stats.stats).forEach(k => { if (!statReward(k, 'title')) return; [statTitleItem(k), statWallItem(k)].forEach(x => { if (x && !C.owns(x.id)) { C.grantItem(x.id); got = true; } }); });
     return got;
   }
   function statTierUp(id, after) {
@@ -467,7 +468,7 @@ window.FemcGame = (() => {
     REWARD_KINDS.forEach(k => {
       const r = RW()[k]; if (!r || r <= was || r > after) return;
       if (k === 'title') statTitles();
-      const say = { title: `${statRewardText(id, k)} is in your Wardrobe.`, job: `${statRewardText(id, k)}.`, choices: 'new choices open up in scenes.',
+      const say = { title: `${statRewardText(id, k)} ${statWallItem(id) ? 'are' : 'is'} in your Wardrobe.`, job: `${statRewardText(id, k)}.`, choices: 'new choices open up in scenes.',
         exam: id === 'knowledge' ? 'exam rankings tilt your way, and in class the right answer just jumps out.' : 'a lift in your exam rankings.', battle: `${d.battle || 'a battle perk'} in story fights.` }[k];
       toast('statperk', `${d.name} ${r}: ${say}`, { stat: id });
     });

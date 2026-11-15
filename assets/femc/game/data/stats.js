@@ -12,8 +12,8 @@
    roughly 200-300 a year, so rank 15 (1300; Knowledge 1540, about 1.2-1.33x the others since class feeds it every day) takes
    four or five playthroughs and can't be reached in one.
    Rewards (`rewards`: the rank each kind unlocks at; core.js statReward / statTiers, shown on the Status screen):
-     5   title: the stat's `title` (cosmetics.js tt-stat-<id>, pool: false) lands in the Wardrobe (granted on load too).
-         A wallpaper per stat is planned (wp-stat-<id>; FEMC-ART-TODO / FEMC-ART-WIRING) but not wired until its art exists.
+     5   title: the stat's `title` (cosmetics.js tt-stat-<id>, pool: false) lands in the Wardrobe (granted on load too), and
+         with it the stat's `wall`paper (cosmetics.js wp-stat-<id>, pool: false; Kat's art, Nov 14).
      8   job: +jobPct% pay at every job whose stat (`jobStat` below; else the job's first stat) is at rank 8 (core.js jobPay,
          listed as a perk in the Jobs app).
      10  choices: scene options with `needs: { <stat>: 10 }, hide: true` appear (hidden until then; scene.js), tagged with the stat.
@@ -28,19 +28,19 @@
    core.js migrateStats. Never edit them; they describe old saves. */
 window.FEMC_GAME_STATS = {
   stats: {
-    knowledge: { name: 'Knowledge', color: '#7fb6ff', title: 'tt-stat-knowledge', battle: 'Skills cost 10% less SP',
+    knowledge: { name: 'Knowledge', color: '#7fb6ff', title: 'tt-stat-knowledge', wall: 'wp-stat-knowledge', battle: 'Skills cost 10% less SP',
       ranks: ['Clueless', 'Bookish', 'Well-Read', 'Brilliant', 'Luminary', 'Polymath', 'Walking Encyclopedia', 'Prodigy', 'Mastermind', 'Valedictorian', 'Savant', 'Oracle', 'Sage', 'Omniscient', 'Galaxy Brain'],
       at: [0, 20, 65, 125, 200, 280, 380, 490, 610, 740, 880, 1030, 1190, 1360, 1540] },
-    courage: { name: 'Courage', color: '#ffd36b', title: 'tt-stat-courage', battle: '+5% critical chance for the party',
+    courage: { name: 'Courage', color: '#ffd36b', title: 'tt-stat-courage', wall: 'wp-stat-courage', battle: '+5% critical chance for the party',
       ranks: ['Skittish', 'Steady', 'Gutsy', 'Fearless', 'Unflinching', 'Daredevil', 'Lionhearted', 'Ironclad', 'Dauntless', 'Bulletproof', 'Unstoppable', 'Stormproof', 'Titan', 'Folk Hero', 'Fear Is Afraid of Her'],
       at: [0, 15, 45, 90, 150, 220, 300, 390, 490, 600, 720, 850, 990, 1140, 1300] },
-    proficiency: { name: 'Proficiency', color: '#7dffc0', title: 'tt-stat-proficiency', battle: 'Luckier Shuffle Time: higher cards, a better shot at a Major Arcana',
+    proficiency: { name: 'Proficiency', color: '#7dffc0', title: 'tt-stat-proficiency', wall: 'wp-stat-proficiency', battle: 'Luckier Shuffle Time: higher cards, a better shot at a Major Arcana',
       ranks: ['All Thumbs', 'Handy', 'Capable', 'Deft', 'Virtuoso', 'Jack of All Trades', 'Artisan', 'Golden Hands', 'Ace', 'Maestro', 'Wunderkind', 'Miracle Worker', 'Grandmaster', 'Living Legend', 'Can Fix Anything'],
       at: [0, 15, 45, 90, 150, 220, 300, 390, 490, 600, 720, 850, 990, 1140, 1300] },
-    charm: { name: 'Charm', color: '#ff8cc0', title: 'tt-stat-charm', battle: '10% off battle gear and items (Police Box, Aohige, Be Blue V, Mayoido)',
+    charm: { name: 'Charm', color: '#ff8cc0', title: 'tt-stat-charm', wall: 'wp-stat-charm', battle: '10% off battle gear and items (Police Box, Aohige, Be Blue V, Mayoido)',
       ranks: ['Wallflower', 'Noticed', 'Magnetic', 'Radiant', 'Main Character', 'It Girl', 'Trendsetter', 'Silver-Tongued', 'Heartthrob', 'Showstopper', 'Cover Star', 'Icon', 'Superstar', 'Phenomenon', 'The Whole Movie'],
       at: [0, 15, 45, 90, 150, 220, 300, 390, 490, 600, 720, 850, 990, 1140, 1300] },
-    kindness: { name: 'Kindness', color: '#c9a0ff', title: 'tt-stat-kindness', battle: 'The party heals 10% HP after every won fight in Tartarus',
+    kindness: { name: 'Kindness', color: '#c9a0ff', title: 'tt-stat-kindness', wall: 'wp-stat-kindness', battle: 'The party heals 10% HP after every won fight in Tartarus',
       ranks: ['Polite', 'Thoughtful', 'Warmhearted', 'Devoted', 'Heart of Gold', 'Kindred Spirit', 'Open Arms', 'Safe Harbor', 'Lifeline', 'Guardian Angel', "Everyone's Person", 'Ray of Sunshine', 'Saint', 'Beloved', 'Heart of the World'],
       at: [0, 15, 45, 90, 150, 220, 300, 390, 490, 600, 720, 850, 990, 1140, 1300] }
   },

@@ -53,6 +53,15 @@
   ],
   "sha256": "61e6baf2b41e2300315d08202748f4c848956e5ab71d3db2b179fd088a509422"
  },
+ "assets/femc/game/art/skins/sk-chapel-picnic/solar-onemore-v2.webp": {
+  "eyes": [
+   37.9,
+   88.6,
+   60.8,
+   88.1
+  ],
+  "sha256": "70b02b0d76c7e685aed5574673170405b726fc4f53b8ccf9f89e066e50754bba"
+ },
  "assets/femc/game/art/skins/sk-chapel-rose/solar-onemore-v2.webp": {
   "eyes": [
    39.5,
@@ -62,6 +71,15 @@
   ],
   "sha256": "065a328f166b60069b71dac1346ac862c5fd21aae2b772969e0e085605f226ec"
  },
+ "assets/femc/game/art/skins/sk-chapel-vampire/solar-onemore-v2.webp": {
+  "eyes": [
+   40.4,
+   88.3,
+   63.4,
+   88.3
+  ],
+  "sha256": "2ec2e010734e13073472d8e5a3613617b7c30232cd7b975621fe6947d182dc9f"
+ },
  "assets/femc/game/art/skins/sk-chapel-veil/solar-onemore-v2.webp": {
   "eyes": [
    37.3,
@@ -70,6 +88,42 @@
    61.7
   ],
   "sha256": "c600d817698287ed7a9d84590b001e25849db31c8565ed1002e088fe7e77cf1e"
+ },
+ "assets/femc/game/art/skins/sk-cottage-bakery/solar-onemore-v2.webp": {
+  "eyes": [
+   35.4,
+   73.9,
+   61.6,
+   72.8
+  ],
+  "sha256": "87a7bdf6023b3653aebc1a376d3261d75539050daba97246ddf1829bb6455f2c"
+ },
+ "assets/femc/game/art/skins/sk-cottage-greenhouse/solar-onemore-v2.webp": {
+  "eyes": [
+   36.1,
+   80.5,
+   63.3,
+   80.5
+  ],
+  "sha256": "aa02263fb4c61af00da55794279a656efe9bbd7534efbb01e3c1da83d175c8a8"
+ },
+ "assets/femc/game/art/skins/sk-cottage-harvest/solar-onemore-v2.webp": {
+  "eyes": [
+   37.6,
+   83.1,
+   63.0,
+   82.8
+  ],
+  "sha256": "cee8310b1b47b0a105faec2fd84d131c58a58f154be84110c0db5e860c1873fe"
+ },
+ "assets/femc/game/art/skins/sk-cottage-meadow/solar-onemore-v2.webp": {
+  "eyes": [
+   37.1,
+   70.8,
+   64.5,
+   70.3
+  ],
+  "sha256": "2c78cc000fab0ffd714c706bf42ef073e00fde1d3a1bec2a91fd673b107581f4"
  },
  "assets/femc/game/art/skins/sk-cp-afterhours/solar-onemore-v2.webp": {
   "eyes": [

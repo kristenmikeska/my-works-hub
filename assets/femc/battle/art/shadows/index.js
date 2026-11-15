@@ -1552,6 +1552,986 @@ window.FEMC_SHADOW_ART = {
   "small": false,
   "w": 491
  },
+ "sx-black-sun": {
+  "h": 530,
+  "poses": {
+   "frames": [
+    "sx-black-sun-pose-0",
+    "sx-black-sun-pose-1",
+    "sx-black-sun-pose-2",
+    "sx-black-sun-pose-3",
+    "sx-black-sun-pose-4",
+    "sx-black-sun-pose-5"
+   ],
+   "scale": 1.3384,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 738
+ },
+ "sx-candle-mass": {
+  "h": 524,
+  "poses": {
+   "frames": [
+    "sx-candle-mass-pose-0",
+    "sx-candle-mass-pose-1",
+    "sx-candle-mass-pose-2",
+    "sx-candle-mass-pose-3",
+    "sx-candle-mass-pose-4",
+    "sx-candle-mass-pose-5"
+   ],
+   "scale": 1.0849,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 572
+ },
+ "sx-coffin-moth": {
+  "h": 538,
+  "poses": {
+   "frames": [
+    "sx-coffin-moth-pose-0",
+    "sx-coffin-moth-pose-1",
+    "sx-coffin-moth-pose-2",
+    "sx-coffin-moth-pose-3",
+    "sx-coffin-moth-pose-4",
+    "sx-coffin-moth-pose-5"
+   ],
+   "scale": 1.3518,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 536
+ },
+ "sx-dawn-wisp": {
+  "h": 518,
+  "poses": {
+   "frames": [
+    "sx-dawn-wisp-pose-0",
+    "sx-dawn-wisp-pose-1",
+    "sx-dawn-wisp-pose-2",
+    "sx-dawn-wisp-pose-3",
+    "sx-dawn-wisp-pose-4",
+    "sx-dawn-wisp-pose-5"
+   ],
+   "scale": 1.2696,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 536
+ },
+ "sx-detention-desk": {
+  "h": 496,
+  "poses": {
+   "frames": [
+    "sx-detention-desk-pose-0",
+    "sx-detention-desk-pose-1",
+    "sx-detention-desk-pose-2",
+    "sx-detention-desk-pose-3",
+    "sx-detention-desk-pose-4",
+    "sx-detention-desk-pose-5"
+   ],
+   "scale": 1.2068,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 586
+ },
+ "sx-drift-jelly": {
+  "h": 508,
+  "poses": {
+   "frames": [
+    "sx-drift-jelly-pose-0",
+    "sx-drift-jelly-pose-1",
+    "sx-drift-jelly-pose-2",
+    "sx-drift-jelly-pose-3",
+    "sx-drift-jelly-pose-4",
+    "sx-drift-jelly-pose-5"
+   ],
+   "scale": 1.0672,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 638
+ },
+ "sx-eclipse-moth": {
+  "h": 506,
+  "poses": {
+   "frames": [
+    "sx-eclipse-moth-pose-0",
+    "sx-eclipse-moth-pose-1",
+    "sx-eclipse-moth-pose-2",
+    "sx-eclipse-moth-pose-3",
+    "sx-eclipse-moth-pose-4",
+    "sx-eclipse-moth-pose-5"
+   ],
+   "scale": 1.1991,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 564
+ },
+ "sx-festival-shishi": {
+  "h": 518,
+  "poses": {
+   "frames": [
+    "sx-festival-shishi-pose-0",
+    "sx-festival-shishi-pose-1",
+    "sx-festival-shishi-pose-2",
+    "sx-festival-shishi-pose-3",
+    "sx-festival-shishi-pose-4",
+    "sx-festival-shishi-pose-5"
+   ],
+   "scale": 1.3925,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 582
+ },
+ "sx-gilded-sundial": {
+  "h": 498,
+  "poses": {
+   "frames": [
+    "sx-gilded-sundial-pose-0",
+    "sx-gilded-sundial-pose-1",
+    "sx-gilded-sundial-pose-2",
+    "sx-gilded-sundial-pose-3",
+    "sx-gilded-sundial-pose-4",
+    "sx-gilded-sundial-pose-5"
+   ],
+   "scale": 1.1091,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 536
+ },
+ "sx-hall-monitor": {
+  "h": 528,
+  "poses": {
+   "frames": [
+    "sx-hall-monitor-pose-0",
+    "sx-hall-monitor-pose-1",
+    "sx-hall-monitor-pose-2",
+    "sx-hall-monitor-pose-3",
+    "sx-hall-monitor-pose-4",
+    "sx-hall-monitor-pose-5"
+   ],
+   "scale": 1.0497,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 532
+ },
+ "sx-insomnia-aquarium": {
+  "h": 520,
+  "poses": {
+   "frames": [
+    "sx-insomnia-aquarium-pose-0",
+    "sx-insomnia-aquarium-pose-1",
+    "sx-insomnia-aquarium-pose-2",
+    "sx-insomnia-aquarium-pose-3",
+    "sx-insomnia-aquarium-pose-4",
+    "sx-insomnia-aquarium-pose-5"
+   ],
+   "scale": 1.1954,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 556
+ },
+ "sx-joya-bell": {
+  "h": 566,
+  "poses": {
+   "frames": [
+    "sx-joya-bell-pose-0",
+    "sx-joya-bell-pose-1",
+    "sx-joya-bell-pose-2",
+    "sx-joya-bell-pose-3",
+    "sx-joya-bell-pose-4",
+    "sx-joya-bell-pose-5"
+   ],
+   "scale": 1.1252,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 590
+ },
+ "sx-kendo-husk": {
+  "h": 516,
+  "poses": {
+   "frames": [
+    "sx-kendo-husk-pose-0",
+    "sx-kendo-husk-pose-1",
+    "sx-kendo-husk-pose-2",
+    "sx-kendo-husk-pose-3",
+    "sx-kendo-husk-pose-4",
+    "sx-kendo-husk-pose-5"
+   ],
+   "scale": 1.0509,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 532
+ },
+ "sx-letter-locker": {
+  "h": 484,
+  "poses": {
+   "frames": [
+    "sx-letter-locker-pose-0",
+    "sx-letter-locker-pose-1",
+    "sx-letter-locker-pose-2",
+    "sx-letter-locker-pose-3",
+    "sx-letter-locker-pose-4",
+    "sx-letter-locker-pose-5"
+   ],
+   "scale": 1.1579,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 556
+ },
+ "sx-mirror-compact": {
+  "h": 502,
+  "poses": {
+   "frames": [
+    "sx-mirror-compact-pose-0",
+    "sx-mirror-compact-pose-1",
+    "sx-mirror-compact-pose-2",
+    "sx-mirror-compact-pose-3",
+    "sx-mirror-compact-pose-4",
+    "sx-mirror-compact-pose-5"
+   ],
+   "scale": 1.2741,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 580
+ },
+ "sx-moonglass-rabbit": {
+  "h": 526,
+  "poses": {
+   "frames": [
+    "sx-moonglass-rabbit-pose-0",
+    "sx-moonglass-rabbit-pose-1",
+    "sx-moonglass-rabbit-pose-2",
+    "sx-moonglass-rabbit-pose-3",
+    "sx-moonglass-rabbit-pose-4",
+    "sx-moonglass-rabbit-pose-5"
+   ],
+   "scale": 1.0669,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 516
+ },
+ "sx-overtime": {
+  "h": 530,
+  "poses": {
+   "frames": [
+    "sx-overtime-pose-0",
+    "sx-overtime-pose-1",
+    "sx-overtime-pose-2",
+    "sx-overtime-pose-3",
+    "sx-overtime-pose-4",
+    "sx-overtime-pose-5"
+   ],
+   "scale": 1.0621,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 572
+ },
+ "sx-paper-crane-choir": {
+  "h": 602,
+  "poses": {
+   "frames": [
+    "sx-paper-crane-choir-pose-0",
+    "sx-paper-crane-choir-pose-1",
+    "sx-paper-crane-choir-pose-2",
+    "sx-paper-crane-choir-pose-3",
+    "sx-paper-crane-choir-pose-4",
+    "sx-paper-crane-choir-pose-5"
+   ],
+   "scale": 1.72,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 640
+ },
+ "sx-petal-veil": {
+  "h": 522,
+  "poses": {
+   "frames": [
+    "sx-petal-veil-pose-0",
+    "sx-petal-veil-pose-1",
+    "sx-petal-veil-pose-2",
+    "sx-petal-veil-pose-3",
+    "sx-petal-veil-pose-4",
+    "sx-petal-veil-pose-5"
+   ],
+   "scale": 1.0653,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 560
+ },
+ "sx-red-ink-crow": {
+  "h": 540,
+  "poses": {
+   "frames": [
+    "sx-red-ink-crow-pose-0",
+    "sx-red-ink-crow-pose-1",
+    "sx-red-ink-crow-pose-2",
+    "sx-red-ink-crow-pose-3",
+    "sx-red-ink-crow-pose-4",
+    "sx-red-ink-crow-pose-5"
+   ],
+   "scale": 1.3953,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 556
+ },
+ "sx-sleepwalker": {
+  "h": 528,
+  "poses": {
+   "frames": [
+    "sx-sleepwalker-pose-0",
+    "sx-sleepwalker-pose-1",
+    "sx-sleepwalker-pose-2",
+    "sx-sleepwalker-pose-3",
+    "sx-sleepwalker-pose-4",
+    "sx-sleepwalker-pose-5"
+   ],
+   "scale": 1.0497,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 486
+ },
+ "sx-snow-globe": {
+  "h": 524,
+  "poses": {
+   "frames": [
+    "sx-snow-globe-pose-0",
+    "sx-snow-globe-pose-1",
+    "sx-snow-globe-pose-2",
+    "sx-snow-globe-pose-3",
+    "sx-snow-globe-pose-4",
+    "sx-snow-globe-pose-5"
+   ],
+   "scale": 1.1963,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 554
+ },
+ "sx-sodium-lamp": {
+  "h": 518,
+  "poses": {
+   "frames": [
+    "sx-sodium-lamp-pose-0",
+    "sx-sodium-lamp-pose-1",
+    "sx-sodium-lamp-pose-2",
+    "sx-sodium-lamp-pose-3",
+    "sx-sodium-lamp-pose-4",
+    "sx-sodium-lamp-pose-5"
+   ],
+   "scale": 1.0571,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 576
+ },
+ "sx-solstice-herald": {
+  "h": 560,
+  "poses": {
+   "frames": [
+    "sx-solstice-herald-pose-0",
+    "sx-solstice-herald-pose-1",
+    "sx-solstice-herald-pose-2",
+    "sx-solstice-herald-pose-3",
+    "sx-solstice-herald-pose-4",
+    "sx-solstice-herald-pose-5"
+   ],
+   "scale": 1.1691,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 620
+ },
+ "sx-static-set": {
+  "h": 516,
+  "poses": {
+   "frames": [
+    "sx-static-set-pose-0",
+    "sx-static-set-pose-1",
+    "sx-static-set-pose-2",
+    "sx-static-set-pose-3",
+    "sx-static-set-pose-4",
+    "sx-static-set-pose-5"
+   ],
+   "scale": 1.3543,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 538
+ },
+ "sx-torii-wyrm": {
+  "h": 488,
+  "poses": {
+   "frames": [
+    "sx-torii-wyrm-pose-0",
+    "sx-torii-wyrm-pose-1",
+    "sx-torii-wyrm-pose-2",
+    "sx-torii-wyrm-pose-3",
+    "sx-torii-wyrm-pose-4",
+    "sx-torii-wyrm-pose-5"
+   ],
+   "scale": 1.2386,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 522
+ },
+ "sx-twelve-oclock": {
+  "h": 498,
+  "poses": {
+   "frames": [
+    "sx-twelve-oclock-pose-0",
+    "sx-twelve-oclock-pose-1",
+    "sx-twelve-oclock-pose-2",
+    "sx-twelve-oclock-pose-3",
+    "sx-twelve-oclock-pose-4",
+    "sx-twelve-oclock-pose-5"
+   ],
+   "scale": 1.0573,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 548
+ },
+ "sx-vending-oni": {
+  "h": 528,
+  "poses": {
+   "frames": [
+    "sx-vending-oni-pose-0",
+    "sx-vending-oni-pose-1",
+    "sx-vending-oni-pose-2",
+    "sx-vending-oni-pose-3",
+    "sx-vending-oni-pose-4",
+    "sx-vending-oni-pose-5"
+   ],
+   "scale": 1.0932,
+   "states": {
+    "attack": [
+     1,
+     2
+    ],
+    "cast": [
+     1,
+     3
+    ],
+    "defeat": [
+     5
+    ],
+    "down": [
+     5
+    ],
+    "hurt": [
+     4
+    ]
+   }
+  },
+  "small": false,
+  "w": 530
+ },
  "trance-twins": {
   "h": 641,
   "small": true,

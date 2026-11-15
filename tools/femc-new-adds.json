@@ -45888,6 +45888,1014 @@
    "destination": "assets/femc/bg/epi-r-sigma-living-snow.webp",
    "conversion": "2752 x 1536 WebP q86",
    "placement": "Runners: the Sigma Chi living room on snow days (Nov 14: Kat's file was saved as the dorm's autumn lounge; it's the Sigma room)"
+  },
+  {
+   "batch": 158,
+   "source": "bakery-morning-onemore-strip-1.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "40e33c48d159fa2cf43bb1bfa804933de9d110149da84ea911b86f28964c8524",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "placement": "sk-cottage-bakery battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "listen-haechan.png",
+   "size": [
+    1199,
+    1312
+   ],
+   "sha256": "9a4e07fab119f413c9fa2d09fcfd1ba7bed9d74a68463a146ae8e26320d93689",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/listen/",
+   "placement": "Listen minigame (FEMC-ART-TODO 47)"
+  },
+  {
+   "batch": 158,
+   "source": "listen-stickers.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "ef309456e9e025ad8721c7c0dedf54f247da6160000bb5f804986b9c3a051775",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/listen/",
+   "placement": "Listen minigame (FEMC-ART-TODO 47)"
+  },
+  {
+   "batch": 158,
+   "source": "listen-street.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "9426b16266dc18f9770d7c533c2d16663725090b1a87ad551f07fe57d3aa5384",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/listen/",
+   "placement": "Listen minigame (FEMC-ART-TODO 47)"
+  },
+  {
+   "batch": 158,
+   "source": "listen-things.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d20a94a6c21dc8ab394a1ef9ddaae3c7b7215fd563917fda0f1674f8db91a18b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/listen/",
+   "placement": "Listen minigame (FEMC-ART-TODO 47)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-black-sun.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "5b8a1e8c581c9c3ec3bc011353da86b9f89b36c92c6de2e9233c0afd3e485297",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-joya-bell*.webp",
+   "placement": "Tartarus Shadow sx-joya-bell (FEMC-ART-TODO 60) — Kat's file names for Black Sun / Joya Bell were swapped; mapped by looking"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-candle-mass.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "6852c7d9e953711fa1e64ced5053e775920b92ab7f419162ead2cf0e8d3c29b3",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-candle-mass*.webp",
+   "placement": "Tartarus Shadow sx-candle-mass (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-coffin-moth.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "1825d276ccc9f785bc4cb011460a0f39655b650ba16a43e413917458e9890511",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-coffin-moth*.webp",
+   "placement": "Tartarus Shadow sx-coffin-moth (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-dawn-wisp.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "f81c72473785a20923d1c2a24048d5291714151db28fabe9f435c006287b63fa",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-dawn-wisp*.webp",
+   "placement": "Tartarus Shadow sx-dawn-wisp (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-detention-desk.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "69add972824c5a358fae9fced0e0f19231b06f021e236a391d189cbde5ef84d5",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-detention-desk*.webp",
+   "placement": "Tartarus Shadow sx-detention-desk (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-drift-jelly.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7edec9939afc3522d841156fb9da0334ec8bc4bb89170d8753f51ddd0f741fcc",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-drift-jelly*.webp",
+   "placement": "Tartarus Shadow sx-drift-jelly (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-eclipse-moth.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8b77b94e9393bb2eb87148129aa03c23290cc0e7299594d8a34ea38fd3c31071",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-eclipse-moth*.webp",
+   "placement": "Tartarus Shadow sx-eclipse-moth (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-festival-shishi.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "5fded2ce989cba5c04d46015f759017792c24717b324439e64b4082593f4b8d5",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-festival-shishi*.webp",
+   "placement": "Tartarus Shadow sx-festival-shishi (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-gilded-sundial.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "1eb6dee0ad6ce2127269c801df1ebad3e63fb0404172edc4721dac01fc1d3c8b",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-gilded-sundial*.webp",
+   "placement": "Tartarus Shadow sx-gilded-sundial (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-hall-monitor.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "f51e20541ba065f87e2c6937386f628d2e0562276fc10d8721dc8df5a31e003b",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-hall-monitor*.webp",
+   "placement": "Tartarus Shadow sx-hall-monitor (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-insomnia-aquarium.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "60232d5beb81fb54b62c0066883cb3796df49efc1ac77b5d7557b50d3fca9282",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-insomnia-aquarium*.webp",
+   "placement": "Tartarus Shadow sx-insomnia-aquarium (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-joya-bell.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "093148b47a249f45125ed84d8a6089742171a582cd46a612f45361ed19d3d8b1",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-black-sun*.webp",
+   "placement": "Tartarus Shadow sx-black-sun (FEMC-ART-TODO 60) — Kat's file names for Black Sun / Joya Bell were swapped; mapped by looking"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-kendo-husk.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "5c0e76977acf215380f13e12ac6342a38bd7b30a03c94987f00ec81117d67ab4",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-kendo-husk*.webp",
+   "placement": "Tartarus Shadow sx-kendo-husk (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-letter-locker.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "1ff887d70d57419cbc6b2e3d875abcd2ab72411b67e120db6ee8f597a50a27fa",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-letter-locker*.webp",
+   "placement": "Tartarus Shadow sx-letter-locker (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-mirror-compact.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8f7b48c1afd47b5337c709b40dff9dd40a26eed6554ef13422157c2f97160b4b",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-mirror-compact*.webp",
+   "placement": "Tartarus Shadow sx-mirror-compact (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-moonglass-rabbit.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "cc875f2844920bac0e599dbd67a5c7544139e27b5adf1e6d51b81a91bb26c509",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-moonglass-rabbit*.webp",
+   "placement": "Tartarus Shadow sx-moonglass-rabbit (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-overtime.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "4b69fb8e4934acd48f0cda189e035a29f30fe0e8f81e6d4d9d364acfc2482093",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-overtime*.webp",
+   "placement": "Tartarus Shadow sx-overtime (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-paper-crane-choir.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "e1ecf514137de6be4b52978edae0f6ec7720fb4e6cd5d3f2fedda97e8f37f97f",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-paper-crane-choir*.webp",
+   "placement": "Tartarus Shadow sx-paper-crane-choir (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-petal-veil.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "9a577259e4010747b730741ef4eb55eb44309a1279727cb7225b4c0755282902",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-petal-veil*.webp",
+   "placement": "Tartarus Shadow sx-petal-veil (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-red-ink-crow.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "fbf0ecbbfb2a56d781b09a3ca4c5b2efd072b3481364a5113618cfab49fee31b",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-red-ink-crow*.webp",
+   "placement": "Tartarus Shadow sx-red-ink-crow (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-sleepwalker.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d26ba89286b9c6f33160f4fb89916cb19d22c5f492816a54566704b5bbb82408",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-sleepwalker*.webp",
+   "placement": "Tartarus Shadow sx-sleepwalker (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-snow-globe.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d15bf801f8204402c78a57b6ef595b52e4a7387ed1f591ccd6460bc1fbce68f7",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-snow-globe*.webp",
+   "placement": "Tartarus Shadow sx-snow-globe (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-sodium-lamp.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "817f62a4760cb2d7ad63e6fe47a77b584198c117009536a8e6ddc381a878df8b",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-sodium-lamp*.webp",
+   "placement": "Tartarus Shadow sx-sodium-lamp (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-solstice-herald.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "2bc0f2cc2e0f62c1c2aaf5c4610f8f5a8e22c321dec1dfdff10bee1d758f2a51",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-solstice-herald*.webp",
+   "placement": "Tartarus Shadow sx-solstice-herald (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-static-set.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "a300eeb4f10c9601d6a800c048023ee0240fb286943336b2d4514f16f5626103",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-static-set*.webp",
+   "placement": "Tartarus Shadow sx-static-set (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-torii-worm.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "1f5eb25ee796ce1c419d5558abd6757d8aab793fed1138ffc860ebe59211020e",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-torii-wyrm*.webp",
+   "placement": "Tartarus Shadow sx-torii-wyrm (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-twelve-oclock.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "2e41e4b0f3d1ceb975c1b88fa8241383502b0a010983cf03f0b4bea7f80e1c46",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-twelve-oclock*.webp",
+   "placement": "Tartarus Shadow sx-twelve-oclock (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "shadow-vending-oni.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "1cd7eb7887f5966521f07fd52e020498d4807bb3b0be214dc46728e8da7b0742",
+   "status": "integrated",
+   "destination": "assets/femc/battle/art/shadows/sx-vending-oni*.webp",
+   "placement": "Tartarus Shadow sx-vending-oni (FEMC-ART-TODO 60)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-picnic-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "98f4f5438d535501e5a33f0392bbb685b0a5545242f6bc5715dcc14120fda815",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "placement": "sk-chapel-picnic battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-picnic-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "bf693594b3d5b5a7ac2f4d3c20233c2ab47132ce61ca8598d821345501eff0bf",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "placement": "sk-chapel-picnic battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-picnic-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "73570418532cf34cf00024c2a1cd76af7eb76656366d82c353121f9b0983bfd2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "placement": "sk-chapel-picnic battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-picnic-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "1e761876ca39aae2aa79d75b445b8c1e21f39778c384798ff7e11faef5181969",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "placement": "sk-chapel-picnic battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-picnic-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "f36595e268ecd6145cd82f0088645c3b7fd35487ac888cf14e5dd7d43398311b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "placement": "sk-chapel-picnic battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-picnic-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "59fefaff0a911cb8cdbcbfc2ba6bc446c951c04b2a7932d34f9b685a5da67744",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-picnic/",
+   "placement": "sk-chapel-picnic battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-rose-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "564950ac4aabd1d1b79e450a97281795a8f06f356ad6a0cbf5ab564021f78029",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-rose/",
+   "placement": "sk-chapel-rose battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-vampire-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "225d3ed58763ed5eae9e7087f43fb0d05c9555c32bfbdf35b13a62727d4eada7",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "placement": "sk-chapel-vampire battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-vampire-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "54c5fbb366d2ecb8604342dfc943894e3c43583c8c172162f17398804dd48f8b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "placement": "sk-chapel-vampire battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-vampire-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "cf7fa6e2557fbcc2180d53de43734dc9fff563305aa264cdc43d425b39392b8e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "placement": "sk-chapel-vampire battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-vampire-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "28f92904e19f9db2fe57200699901fc7fb4b9982ac0ba70327ffcbd01bc25288",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "placement": "sk-chapel-vampire battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-vampire-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "f7bd418d41d3720875090b60bf35ff5c12ecfb86102c803a04ff72107bfe348d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "placement": "sk-chapel-vampire battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-vampire-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "01c9ec0f41257f422f7450fe2dcece1eb38a34bf170230e80c7b22895f326f06",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-vampire/",
+   "placement": "sk-chapel-vampire battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-veil-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b1760812a7e2e0e11703d712fdea0f6bf113374a972a44c67f02e9b42e14294d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/",
+   "placement": "sk-chapel-veil battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-chapel-veil-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "0ed3063da0db658a2efb3977aa17086776c0036415224acefd8f3f6bf58afbfa",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-chapel-veil/",
+   "placement": "sk-chapel-veil battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-bakery-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "fc57ec26862302765ccf44de1f22d2fc00617b4c48aef60c86630141834e95c5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "placement": "sk-cottage-bakery battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-bakery-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "8d7b98340adc96c479df0558bd564e9cb1fec9ccc490cfc00fad54ea58b5c03c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "placement": "sk-cottage-bakery battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-bakery-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7ec7dce7ba942b1dc1985df5e8017c7faa253b4f3b2a79128eb173feb739ad05",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "placement": "sk-cottage-bakery battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-bakery-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "a19905d7e060cb4c8b3029a35516279c5d8b07c677ac406bab820638bb480119",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "placement": "sk-cottage-bakery battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-bakery-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ba071713a9814f7b54007b000f61e92d8f6e61bae553ec42c33dc3f3a4d73f06",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-bakery/",
+   "placement": "sk-cottage-bakery battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ba38bb14fed741df408a1d79d0c75c8e77a9c7a2748439b17efeee86d121fe2b",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b90e4ec15f9b6916a90049a5150cf1cb70d13c14e5055826f1278391ea6e4876",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "a101bf7bdad94a292ff88d99926b2453c77651e55305dd9c8a12388fd95c0440",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "b1803a9976f2a562bf30e7c86c43bab4532bba694b19b155ca6c6e689897c83a",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "c02f8d982e8b761e0cfb75fd73b2cc13961590fb41f47b1e680404b00629c89c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-posesheet-2.png",
+   "size": [
+    1538,
+    1022
+   ],
+   "sha256": "14ebff319a50cb9fd456f9d2d977d3d36f0bf5c06f62658bfb512d3b1c1fbd63",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-greenhouse-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "73ead151bc5bee9d527630b6b5fbd48786cbede12f40efc01bda2bef0d8a9059",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-greenhouse/",
+   "placement": "sk-cottage-greenhouse battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "718246dff491d27e04cb38e81ea200db0e337451e0da928555f8f2acb3ff0e2c",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "80730e0dbcb90c719e5ef65495e4511cdcc8db47fddaa4529170f4603c1689b3",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "09aaf7f0f392c8965e2e3711a89ad248e16d64e54d936cc5566aaff903fb5ed6",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "887c5eeef29f909f65b7c97581e30e57bf608e4c73b621d0161870017be784a2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "b580c47fb28dde909785aaab881d8a79f21424058b6079f576c43c27763919de",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-posesheet-2.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "91ce049cb42650b205cc0b129f2f3d5c5c5bcfa2220c14e1e78e6ddfaef878a5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-harvest-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c3fb7d945a2225b1a88f566740216b44dff7c7e7bc29a620af647c4ed6dae947",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-harvest/",
+   "placement": "sk-cottage-harvest battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-meadow-entrance.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "eda4f07781ad8ce8c5183c5bdf2b648934468a9e8917e342d3bed4fb63a92498",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "placement": "sk-cottage-meadow battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-meadow-finish.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b41ef11936917b137d5b6c4052dd3bd31571848784c13b30a9c2f27bb1b71e29",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "placement": "sk-cottage-meadow battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-meadow-fx.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "e63afb79c7e197c6931f82013c63eb76adbdfc1fb54892881541c9fac0748b95",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "placement": "sk-cottage-meadow battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-meadow-onemore-v2.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "d6f9cec07c743322ff5933c9bec0a69e5eab7f300e77b7d408411b957c88797e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "placement": "sk-cottage-meadow battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-meadow-onemore.png",
+   "size": [
+    2172,
+    724
+   ],
+   "sha256": "c0c6e64be6bd5553a348ca04cb816416098fce5723769ccfaeab38aa5dc10f1e",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "placement": "sk-cottage-meadow battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "skin-sk-cottage-meadow-theurgy.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3bd48705a53194854da60c0871684c561d4031223ee48cdd46ef76efe7df8bae",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/skins/sk-cottage-meadow/",
+   "placement": "sk-cottage-meadow battle piece (FEMC-BATTLE-ART)"
+  },
+  {
+   "batch": 158,
+   "source": "stair-end-heard.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3660d5417ed981e4d88e0826d45709a607677ede46f973fafd90a6e8d70cf9d5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/stair/",
+   "placement": "Seventh stair minigame (FEMC-ART-TODO 59)"
+  },
+  {
+   "batch": 158,
+   "source": "stair-end-home.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "33286520cf4ac3845395abc70f9444f70a9966c62169880ab69eda41142c39b4",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/stair/",
+   "placement": "Seventh stair minigame (FEMC-ART-TODO 59)"
+  },
+  {
+   "batch": 158,
+   "source": "stair-house.png",
+   "size": [
+    1139,
+    1381
+   ],
+   "sha256": "4def5465914e9a99b28d771a04de011acce8cc992605e1ef03dfca53c9769a3d",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/stair/",
+   "placement": "Seventh stair minigame (FEMC-ART-TODO 59)"
+  },
+  {
+   "batch": 158,
+   "source": "stair-icons.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "f262d0399b32fc7a15651f9bf4f1db886089c963cd24eef90bb930dea2e2b7e5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/stair/",
+   "placement": "Seventh stair minigame (FEMC-ART-TODO 59)"
+  },
+  {
+   "batch": 158,
+   "source": "stair-sit.png",
+   "size": [
+    1105,
+    1424
+   ],
+   "sha256": "d00fefc6f48b4b1df9f8546c097afbcbbd885448a9aa0bf5ac3bb4853b152af2",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/stair/",
+   "placement": "Seventh stair minigame (FEMC-ART-TODO 59)"
+  },
+  {
+   "batch": 158,
+   "source": "stair-title.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7689dd8e1c3519509ecf307933d533a03f5f4f916b2adbccad9eb95dfeaee679",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/minigames/stair/",
+   "placement": "Seventh stair minigame (FEMC-ART-TODO 59)"
+  },
+  {
+   "batch": 158,
+   "source": "wp-stat-charm.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3b3732d9b311da9dc788488fa3c07321d50a1634ea7f3f8e0cc9f6935458d115",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/wallpapers/wp-stat-charm.webp",
+   "placement": "Social stat rank-5 wallpaper (FEMC-ART-TODO 61)"
+  },
+  {
+   "batch": 158,
+   "source": "wp-stat-courage.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "6c4d902c4922b7dfec409cc8400b38818e781e5fe2108b50f44d2dd0321ef038",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/wallpapers/wp-stat-courage.webp",
+   "placement": "Social stat rank-5 wallpaper (FEMC-ART-TODO 61)"
+  },
+  {
+   "batch": 158,
+   "source": "wp-stat-kindness.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "aa2e2f53633f17836b1c9d6c3f505ae55f44210ad9da86292a78e51e0394a9f5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/wallpapers/wp-stat-kindness.webp",
+   "placement": "Social stat rank-5 wallpaper (FEMC-ART-TODO 61)"
+  },
+  {
+   "batch": 158,
+   "source": "wp-stat-knowledge.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "619a17dd7a43bfed5808269eb302f8a4f586a8675a05ecf0c18ff6c5bb0c0268",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/wallpapers/wp-stat-knowledge.webp",
+   "placement": "Social stat rank-5 wallpaper (FEMC-ART-TODO 61)"
+  },
+  {
+   "batch": 158,
+   "source": "wp-stat-proficiency.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "ecc89a356b9ee2eb7679fb74f23743ccc9bead9ce571505c9b27f718addd41e5",
+   "status": "integrated",
+   "destination": "assets/femc/game/art/wallpapers/wp-stat-proficiency.webp",
+   "placement": "Social stat rank-5 wallpaper (FEMC-ART-TODO 61)"
   }
  ],
  "batch1Validation": {
@@ -47377,5 +48385,10 @@
   "date": "2026-11-12",
   "checks": "jsc on the 7 scene files, places.js, epilogue.js; femc-check-scenes OK; every CG looked at against its scene",
   "note": "Nov 12 2026: epilogue CGs 51A-G, 52C-E, 53A, 54B, 55A-B, 57A-B, 58A/B/D. epi-h-jh-hallway.png showed the 54B closet scene (mother's shadow, Jihoon in the closet), so it went in as epi-h-jh-closet; 54C is still to make. epi-r-arrive-boys / -girls / -minji and epi-r-mark-lobby in New Adds are the same files as batch 151 (same sha256), skipped."
+ },
+ "batch158Validation": {
+  "date": "2026-11-14",
+  "checks": "jsc on every edited JS; femc-check-scenes OK; one muted pane check of the seventh stair (house, icon, heard ending)",
+  "note": "84 files: 28 Shadows (60A-AB), 41 battle pieces for 8 skin-series looks, listen 4, stair 6, stat wallpapers 5 (upscaled 1672 -> 1920). Listen and stair overlays re-measured onto Kat's pictures."
  }
 }

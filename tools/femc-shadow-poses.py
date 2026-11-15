@@ -408,6 +408,14 @@ ALPHA_GRIDS={'sleeper-car-poses.png':{'slug':'memory-sleeper-car','static':'memo
 for _src,_slug in (('guard-raqia-attack.png','climb-last-song'),('guard-zebul-attack.png','climb-spring-tide'),
   ('guard-araboth-attack.png','climb-landslide'),('super-tiger-attack.png','climb-horangi')):
  ALPHA_GRIDS[_src]={'slug':_slug,'static':None,'cols':3,'rows':2,'opaque':250/255,'states':BOSS_STATES}
+# Section 60 (batch 158, 2026-11-14): Kat's 28 new Tartarus regulars, transparent 3x2 sheets in BOSS_STATES order, cut like
+# the climb bosses. shadow-<name>.png -> sx-<name>, except: torii-worm is the spec's sx-torii-wyrm, and the black-sun and
+# joya-bell files hold each other's art (the bell is in shadow-black-sun.png), so they map crosswise. Sources aren't renamed.
+_SX={'torii-worm':'torii-wyrm','black-sun':'joya-bell','joya-bell':'black-sun'}
+for _n in ('black-sun candle-mass coffin-moth dawn-wisp detention-desk drift-jelly eclipse-moth festival-shishi gilded-sundial '
+  'hall-monitor insomnia-aquarium joya-bell kendo-husk letter-locker mirror-compact moonglass-rabbit overtime paper-crane-choir '
+  'petal-veil red-ink-crow sleepwalker snow-globe sodium-lamp solstice-herald static-set torii-worm twelve-oclock vending-oni').split():
+ ALPHA_GRIDS[f'shadow-{_n}.png']={'slug':'sx-'+_SX.get(_n,_n),'static':None,'cols':3,'rows':2,'opaque':250/255,'states':BOSS_STATES}
 # Wren's last phase (batch 51): Kat made two versions; ver2 (true-black hair, no green cast) is used, ver1 is the alternate.
 STATICS={'wren-shadow-phase3-ver2.png':'wren-shadow-phase3',
  'wren-shadow-phase1.png':'wren-shadow-phase1',  # batch 56: her phase 1 (the bench), real transparency

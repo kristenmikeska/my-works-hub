@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Kat's minigame art: Regionals (mg-ow-*, FEMC-ART-TODO 43), the dumpling game (cook-*, 44), the booth (sing-*, 45), the listen game (listen-*, 47: street, things sheet, stickers sheet, haechan),
-hwatu (hwatu-month-MM, 49), Yeobo's café (cafe-*, 50), The Trip (trip-*, 56).
+hwatu (hwatu-month-MM, 49), Yeobo's café (cafe-*, 50), The Trip (trip-*, 56), the seventh stair (stair-*, 59).
 
   python3 tools/femc-minigame-art.py        every New Adds/mg-ow-* | cook-* | sing-* (.png .jpg .jpeg .webp) that's there
                                              (re-run any time; it replaces). Kat's files are only read.
@@ -25,6 +25,9 @@ Café -> art/minigames/cafe/ (New Adds/cafe-<name>.*): bg-*, title RGB q86; shee
 The Trip -> art/minigames/trip/ (New Adds/trip-<name>.*): ground (RGB, <= 2400 wide), title / sky (RGB 1920) q86; props 2 x 2 (TRIP_SHEETS);
   playground, blanket alpha; trip-sprite-<id> -> sprite-<id>.webp: 16 frames cut, one scale per sheet, re-laid on an even 4 x 4 grid of
   256 px cells, feet on a baseline 4% above each cell's bottom.
+The seventh stair -> art/minigames/stair/ (New Adds/stair-<name>.*): title, end-home, end-heard (RGB, <= 1920 wide), house (RGB, native) q86;
+  sit (alpha, trimmed to the figure) q90; icons (3 x 2 on near-black, even grid, a centred square per cell, 192 px, RGB q88:
+  icon-radiator / koi / radio / engine / wind / creak; stair.css screens the black away).
 Each game loads its pictures by name and falls back to its drawn stand-in when a file isn't there.
 
 Sheets (SHEETS): cut at the emptiest line near each expected grid line (not equal division: Kat's sheets aren't evenly laid
@@ -72,6 +75,8 @@ COOK_SHEETS = {
     'icons': (3, 2, ['icon-perfect', 'icon-okay', 'icon-bag', 'icon-golden', 'icon-burnt', 'icon-steamed'], 'center', {}),
     'stamps': (2, 2, ['stamp-s', 'stamp-a', 'stamp-b', 'stamp-c'], 'center', {}),
 }
+
+STAIR_ICONS = ['radiator', 'koi', 'radio', 'engine', 'wind', 'creak']  # stair-icons reading order (checked by eye, Nov 14) = stair.js SRC keys + creak
 
 CAFE_SHEETS = {  # Yeobo's café (FEMC-ART-TODO 50; cafe.js names), cell order checked by eye on Kat's sheets
     'drinks': (2, 2, ['drink-cocoa', 'drink-yuzu', 'drink-americano', 'drink-sikhye'], 'base', {}),
@@ -327,6 +332,18 @@ def main():
         if name == 'ground': fit(im.convert('RGB'), 2400).save(TRIP / 'ground.webp', 'WEBP', quality=86)
         elif name in ('title', 'sky'): fit(im.convert('RGB')).save(TRIP / f'{name}.webp', 'WEBP', quality=86)
         else: fit(trim(alpha(im)), 1400).save(TRIP / f'{name}.webp', 'WEBP', quality=90, alpha_quality=100)  # playground, blanket
+        print(f.name, '->', name)
+    STAIR = ART / 'stair'; STAIR.mkdir(parents=True, exist_ok=True)
+    for f in files('stair-'):
+        name = f.stem[len('stair-'):]; im = Image.open(f)
+        if name == 'icons':
+            for (_, _, cell), n in zip(grid_cells(im.convert('RGB'), 3, 2), STAIR_ICONS):
+                sq = min(cell.size) * 0.92; l, t = (cell.width - sq) / 2, (cell.height - sq) / 2
+                cell.crop((round(l), round(t), round(l + sq), round(t + sq))).resize((192, 192), Image.LANCZOS).save(STAIR / f'icon-{n}.webp', 'WEBP', quality=88)
+            print(f.name, '-> icon-' + ' / '.join(STAIR_ICONS)); continue
+        if name == 'sit': trim(alpha(im)).save(STAIR / 'sit.webp', 'WEBP', quality=90, alpha_quality=100)
+        elif name in ('title', 'house', 'end-home', 'end-heard'): fit(im.convert('RGB')).save(STAIR / f'{name}.webp', 'WEBP', quality=86)
+        else: continue
         print(f.name, '->', name)
     for f in files('mg-ow-'):
         name = f.stem[len('mg-ow-'):]

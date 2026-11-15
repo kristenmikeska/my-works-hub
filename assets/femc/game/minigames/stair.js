@@ -64,7 +64,9 @@
    Title card: art title.webp if present, held 1.8 s (click / a key skips), content note under it.
    Test hooks: FemcStair.state() (the live state; state().peek() = { cover, shown, next, notch, long }).
    Optional art (assets/femc/game/art/minigames/stair/): title.webp (the title card), sit.webp (the sharp moment's figure; a
-   drawn silhouette otherwise). Nothing else is needed.
+   drawn silhouette otherwise); since Nov 14 (art batch 158) also house.webp (the map's picture: .st-map.art hides the drawn
+   bodies), icon-<radiator|koi|radio|engine|wind|creak>.webp (in each sound's caption chip and the uncovered-creak chip) and
+   end-home.webp / end-heard.webp (behind the end panel for a win / a heard loss). Each falls back to the drawn version.
    Settings: reduced motion = no shake, no bobbing, no typed captions moving, crossfades only; Reduce flashes (calm) = no hard
    cut to dark, the sit moment fades in and out slowly, no sting; Performance = no grain or flicker layers. Pink, near-black and
    bone only; the scene dark and drained of colour.
@@ -121,10 +123,14 @@ window.FemcStair = (() => {
     s.src = `${B}.js?v=1`; s.onload = s.onerror = () => ok(window.FemcTutorial || null); document.head.appendChild(s);
   }));
 
-  /* the house map (viewBox 0 0 330 400) */
-  const STX = 120, STY = 80, STW = 140, STH = 240; // the flight: from the landing's edge down to the hall floor
+  /* the house map (viewBox 0 0 330 400). Nov 14 2026 (art batch 158): Kat's house.webp is an <image> under it; once it loads the
+     map gets class .art and every drawn body (class "b": the outer box, walls, doors, window, radio, koi bucket, radiator,
+     stove, gate, clock face, the stairs' fill and outline, the pendulum) hides, leaving the glows, the life layer, her dot,
+     the prints, the sitter, the worn / odd treads, the bulb and its glow and the clock hands. Every coordinate below was
+     re-measured on Kat's picture (upstairs floor y 100, ground floor y 322, 13 game treads along her painted flight). */
+  const STX = 112, STY = 100, STW = 152, STH = 221; // the flight: from the landing's edge down to the hall floor
   const treadAt = (i, n) => ({ x: STX + (i - 0.5) * STW / n, y: STY + i * STH / n });
-  const SPOT = { bed: { x: 36, y: 80 }, landing: { x: 86, y: 80 }, hall: { x: 272, y: 320 }, kdoor: { x: 168, y: 320 }, sink: { x: 46, y: 320 } };
+  const SPOT = { bed: { x: 35, y: 100 }, landing: { x: 90, y: 100 }, hall: { x: 285, y: 322 }, kdoor: { x: 210, y: 322 }, sink: { x: 92, y: 322 } };
   const P = '#ff9ac8', PK = '#ff4f9e', B = '#e8ddd0', N = '#14070f', W = '#3a1a26';
   const stairsSvg = (n, odd) => {
     let d = `M${STX} ${STY}`, worn = '', pale = '';
@@ -134,39 +140,39 @@ window.FemcStair = (() => {
       if (i === CREAK) worn = `<path class="st-worn" d="M${(x0 + 2).toFixed(1)} ${(y - 1.5).toFixed(1)}H${(x1 - 2).toFixed(1)}" stroke="${B}" stroke-width="2.4" stroke-linecap="round"/>`;
       if (odd && i === odd) pale = `<path class="st-odd" d="M${x0.toFixed(1)} ${(y - STH / n).toFixed(1)}V${y.toFixed(1)}H${x1.toFixed(1)}" stroke="${B}" stroke-width="1.6" stroke-dasharray="2 2" fill="none"/>`;
     }
-    return `<path d="${d}V${STY + STH}H${STX}Z" fill="#1a0b12" opacity=".7"/><path d="${d}" stroke="${P}" stroke-width="1.8" fill="none" opacity=".75"/>${worn}${pale}`;
+    return `<path class="b" d="${d}V${STY + STH}H${STX}Z" fill="#1a0b12" opacity=".7"/><path class="b" d="${d}" stroke="${P}" stroke-width="1.8" fill="none" opacity=".75"/>${worn}${pale}`;
   };
   const MAP = `
-    <rect x="6" y="20" width="318" height="372" fill="${N}" opacity=".55" rx="3"/>
-    <path d="M10 80H120M200 80H322M10 320H322M10 200H110" stroke="${W}" stroke-width="3"/>
-    <path d="M10 20V392M322 20V392" stroke="${W}" stroke-width="2"/>
-    <g class="st-door" data-at="bed"><rect x="22" y="38" width="26" height="42" fill="#2a1018" stroke="${P}" stroke-width="1.2" opacity=".8"/><circle cx="43" cy="60" r="1.6" fill="${P}"/></g>
-    <g class="st-src st-up"><rect x="262" y="38" width="26" height="42" fill="#2a1018" stroke="#5a2a3c" stroke-width="1.2"/><rect class="st-glow" x="264" y="40" width="22" height="40" fill="${B}"/></g>
-    <g class="st-src" data-src="window"><rect x="72" y="30" width="22" height="30" fill="#12060c" stroke="#5a2a3c" stroke-width="2"/><path d="M83 30v30M72 45h22" stroke="#5a2a3c" stroke-width="1.5"/><rect class="st-glow" x="74" y="32" width="18" height="26" fill="${P}"/></g>
+    <rect class="b" x="6" y="20" width="318" height="372" fill="${N}" opacity=".55" rx="3"/>
+    <path class="b" d="M10 100H108M200 100H322M10 322H322M10 205H108" stroke="${W}" stroke-width="3"/>
+    <path class="b" d="M10 20V392M322 20V392" stroke="${W}" stroke-width="2"/>
+    <g class="st-door" data-at="bed"><rect class="b" x="21" y="41" width="27" height="59" fill="#2a1018" stroke="${P}" stroke-width="1.2" opacity=".8"/><circle class="b" cx="45" cy="71" r="1.6" fill="${P}"/></g>
+    <g class="st-src st-up"><rect class="b" x="262" y="42" width="27" height="58" fill="#2a1018" stroke="#5a2a3c" stroke-width="1.2"/><rect class="st-glow" x="264" y="44" width="23" height="55" fill="${B}"/></g>
+    <g class="st-src" data-src="window"><rect class="b" x="71" y="37" width="34" height="36" fill="#12060c" stroke="#5a2a3c" stroke-width="2"/><path class="b" d="M88 37v36M71 55h34" stroke="#5a2a3c" stroke-width="1.5"/><rect class="st-glow" x="73" y="39" width="30" height="32" fill="${P}"/></g>
     <g class="st-stairs"></g>
-    <g class="st-hall"><path d="M290 200v12" stroke="${W}" stroke-width="1.5"/><circle class="st-bulb" cx="290" cy="216" r="5" fill="#ffd8a8"/><circle class="st-bulbglow" cx="290" cy="240" r="46" fill="url(#st-warm)"/></g>
-    <g class="st-hclock"><circle cx="300" cy="262" r="11" fill="#1a0b12" stroke="${B}" stroke-width="1.4"/><path class="hh" d="M300 262v-6" stroke="${B}" stroke-width="2" stroke-linecap="round"/><path class="mh" d="M300 262v-9" stroke="${B}" stroke-width="1.2" stroke-linecap="round"/></g>
-    <g class="st-src" data-src="gate"><path d="M316 280v40M326 280v40M316 290h10M316 306h10" stroke="#5a2a3c" stroke-width="2"/><circle class="st-glow" cx="321" cy="298" r="9" fill="${P}"/></g>
-    <g class="st-src" data-src="radio"><rect x="58" y="262" width="34" height="20" rx="3" fill="#2a1018" stroke="#7a4a5c" stroke-width="1.2"/><circle cx="68" cy="272" r="5" fill="none" stroke="#7a4a5c"/><rect class="st-glow" x="77" y="267" width="11" height="4" fill="${P}"/><path d="M60 262l8-10" stroke="#7a4a5c"/></g>
-    <g class="st-src" data-src="koi"><path d="M100 300h22l-3 20h-16z" fill="#2a1018" stroke="#7a4a5c" stroke-width="1.2"/><ellipse class="st-glow" cx="111" cy="304" rx="9" ry="2.5" fill="${P}"/></g>
-    <g class="st-src" data-src="radiator"><rect x="128" y="290" width="22" height="24" fill="#2a1018" stroke="#7a4a5c" stroke-width="1.2"/><path d="M133 292v20M138 292v20M143 292v20" stroke="#7a4a5c"/><rect class="st-glow" x="128" y="290" width="22" height="24" fill="${P}"/></g>
-    <g class="st-stove"><rect x="14" y="290" width="20" height="30" fill="#2a1018" stroke="#5a2a3c"/><circle cx="24" cy="248" r="18" fill="url(#st-warm)" opacity=".5"/></g>
-    <g class="st-glass" data-at="sink"><path d="M40 296h12l-1.5 16h-9z" fill="none" stroke="${B}" stroke-width="1.2"/><rect class="st-water" x="42" y="304" width="8" height="7" fill="${P}" opacity="0"/></g>
-    <circle class="st-echo" cx="86" cy="76" r="6" fill="none" stroke="${P}" stroke-width="1.5" opacity="0"/>
-    <circle class="st-pip" cx="100" cy="76" r="4" fill="${B}" opacity="0"/>
+    <g class="st-hall"><path class="b" d="M269 155v28" stroke="${W}" stroke-width="1.5"/><circle class="st-bulb" cx="269" cy="188" r="5" fill="#ffd8a8"/><circle class="st-bulbglow" cx="269" cy="212" r="46" fill="url(#st-warm)"/></g>
+    <g class="st-hclock"><circle class="b" cx="285.4" cy="233.4" r="10.5" fill="#1a0b12" stroke="${B}" stroke-width="1.4"/><path class="hh" d="M285.4 233.4v-5.5" stroke="${B}" stroke-width="2" stroke-linecap="round"/><path class="mh" d="M285.4 233.4v-8.5" stroke="${B}" stroke-width="1.2" stroke-linecap="round"/></g>
+    <g class="st-src" data-src="gate"><path class="b" d="M309 212v110M321 212v110M309 240h12M309 290h12" stroke="#5a2a3c" stroke-width="2"/><circle class="st-glow" cx="315.5" cy="268" r="12" fill="${P}"/></g>
+    <g class="st-src" data-src="radio"><rect class="b" x="117" y="222" width="24" height="16" rx="3" fill="#2a1018" stroke="#7a4a5c" stroke-width="1.2"/><circle class="b" cx="122" cy="230" r="3.5" fill="none" stroke="#7a4a5c"/><rect class="st-glow" x="123" y="231" width="12" height="5" fill="${P}"/><path class="b" d="M119 222l7-9" stroke="#7a4a5c"/></g>
+    <g class="st-src" data-src="koi"><path class="b" d="M127 296h27l-3 26h-21z" fill="#2a1018" stroke="#7a4a5c" stroke-width="1.2"/><ellipse class="st-glow" cx="140.5" cy="300" rx="12" ry="3" fill="${P}"/></g>
+    <g class="st-src" data-src="radiator"><rect class="b" x="157" y="279" width="32" height="41" fill="#2a1018" stroke="#7a4a5c" stroke-width="1.2"/><path class="b" d="M164 281v37M171 281v37M178 281v37M185 281v37" stroke="#7a4a5c"/><rect class="st-glow" x="157" y="279" width="32" height="41" fill="${P}"/></g>
+    <g class="st-stove b"><rect x="12" y="280" width="38" height="42" fill="#2a1018" stroke="#5a2a3c"/><circle cx="31" cy="250" r="18" fill="url(#st-warm)" opacity=".5"/></g>
+    <g class="st-glass" data-at="sink"><path class="b" d="M104 272h6.5l-1 9h-4.5z" fill="none" stroke="${B}" stroke-width="1.2"/><rect class="st-water" x="105" y="276" width="4.5" height="4.5" fill="${P}" opacity="0"/></g>
+    <circle class="st-echo" cx="90" cy="96" r="6" fill="none" stroke="${P}" stroke-width="1.5" opacity="0"/>
+    <circle class="st-pip" cx="104" cy="96" r="4" fill="${B}" opacity="0"/>
     <g class="st-sitter" opacity="0"><path d="M0 -26c-6 0-9 4-9 9 0 4 2 7 3 9-6 2-9 7-9 14h30c0-7-3-12-9-14 1-2 3-5 3-9 0-5-3-9-9-9z" fill="${B}" opacity=".85"/></g>
     <g class="st-life" aria-hidden="true">
-      <rect class="st-moon" x="74" y="32" width="18" height="26" fill="${B}"/>
-      <path class="st-heat" d="M133 287q2-3 0-6t0-6t0-6M139 287q2-3 0-6t0-6t0-6M145 287q2-3 0-6t0-6t0-6" stroke="${P}" stroke-width=".9" fill="none"/>
-      <ellipse class="st-rip" cx="111" cy="304" rx="3" ry="1" fill="none" stroke="${B}" stroke-width=".6"/><ellipse class="st-rip two" cx="113" cy="304" rx="3" ry="1" fill="none" stroke="${B}" stroke-width=".6"/>
-      <path class="st-koi" d="M105 304q3-1.6 6 0q-3 1.6-6 0zM111 304l2-1.4v2.8z" fill="#c86a4a"/>
-      <rect class="st-dial" x="78" y="275" width="10" height="2" fill="#ffcf9a"/>
-      <g class="st-pend"><path d="M300 274v9" stroke="${B}" stroke-width=".9"/><circle cx="300" cy="284" r="2" fill="${B}"/></g>
-      <path class="st-draft" d="M76 62q4 6 0 12t0 12" stroke="${B}" stroke-width=".7" fill="none"/>
+      <rect class="st-moon" x="73" y="39" width="30" height="32" fill="${B}"/>
+      <path class="st-heat" d="M165 276q2-3 0-6t0-6t0-6M173 276q2-3 0-6t0-6t0-6M181 276q2-3 0-6t0-6t0-6" stroke="${P}" stroke-width=".9" fill="none"/>
+      <ellipse class="st-rip" cx="140" cy="302" rx="3" ry="1" fill="none" stroke="${B}" stroke-width=".6"/><ellipse class="st-rip two" cx="143" cy="302" rx="3" ry="1" fill="none" stroke="${B}" stroke-width=".6"/>
+      <path class="st-koi" d="M134 305q3-1.6 6 0q-3 1.6-6 0zM140 305l2-1.4v2.8z" fill="#c86a4a"/>
+      <rect class="st-dial" x="124" y="233" width="10" height="2" fill="#ffcf9a"/>
+      <g class="st-pend b"><path d="M285.4 244v9" stroke="${B}" stroke-width=".9"/><circle cx="285.4" cy="254" r="2" fill="${B}"/></g>
+      <path class="st-draft" d="M80 76q4 6 0 12t0 12" stroke="${B}" stroke-width=".7" fill="none"/>
     </g>
     <g class="st-prints"></g>
     <g class="st-me"><circle r="9" fill="${PK}" opacity=".22"/><circle r="4.5" fill="${PK}"/><circle r="4.5" fill="none" stroke="#fff" stroke-width="1" opacity=".7"/></g>
-    <text class="st-lbl" x="35" y="96">her room</text><text class="st-lbl" x="232" y="336">hall</text><text class="st-lbl" x="70" y="336">kitchen</text><text class="st-lbl" x="296" y="276">gate</text>
+    <text class="st-lbl" x="22" y="114">her room</text><text class="st-lbl" x="272" y="336">hall</text><text class="st-lbl" x="70" y="336">kitchen</text><text class="st-lbl" x="296" y="207">gate</text>
     <defs><radialGradient id="st-warm"><stop offset="0" stop-color="#ffcf9a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf9a" stop-opacity="0"/></radialGradient></defs>`;
   // the sharp moment's figure in the stairwell (a seated shape, from below; drawn until sit.webp)
   const SIT = `<svg viewBox="0 0 200 240" aria-hidden="true"><path d="M100 30c-20 0-31 15-31 33 0 13 5 23 8 30-22 8-36 26-38 52l-2 30h126l-2-30c-2-26-16-44-38-52 3-7 8-17 8-30 0-18-11-33-31-33z M30 175h140l14 50H16z" fill="#050103"/><path d="M100 30c-20 0-31 15-31 33 0 13 5 23 8 30-22 8-36 26-38 52l-2 30h126l-2-30c-2-26-16-44-38-52 3-7 8-17 8-30 0-18-11-33-31-33z" fill="none" stroke="rgba(232,221,208,.35)" stroke-width="2"/></svg>`;
@@ -207,7 +213,7 @@ window.FemcStair = (() => {
           <b class="st-num" aria-hidden="true"></b>
         </div>
         <div class="st-black"></div><div class="st-sting"></div>
-        <svg class="st-map" viewBox="0 0 330 400" aria-hidden="true">${MAP}</svg>
+        <svg class="st-map" viewBox="0 0 330 400" aria-hidden="true"><image class="st-house" href="${ART('house')}" x="0" y="0" width="330" height="400" preserveAspectRatio="none" onload="this.parentNode.classList.add('art')" onerror="this.remove()"/>${MAP}</svg>
         <div class="st-top"><b class="st-name" data-t="THE SEVENTH STAIR">THE SEVENTH STAIR</b><span class="st-phase" data-t="Freeze">Freeze</span><span class="st-clock">2:07 a.m.</span></div>
         <div class="st-meters">
           <div class="st-m st-housem"><small data-t="The house">The house</small><span><i></i><u title="your next step"></u></span></div>
@@ -226,9 +232,10 @@ window.FemcStair = (() => {
       const map = $('.st-map'), me = $('.st-me'), capsEl = $('.st-caps');
       const say = (txt, kind = '') => { const c = $('.st-say'); c.textContent = txt; c.className = 'st-say on ' + kind; clearTimeout(say.t); say.t = later(() => c.classList.remove('on'), 2600); };
       // a caption chip for a sound (every sound has one); returns it so an event can keep it up and remove it
-      const chip = (dir, txt, kind = '', ms = 1600) => {
+      // ico = an icon name (Kat's icon-<SRC key>.webp, or 'creak'); the text stays, the icon is dropped if it's missing
+      const chip = (dir, txt, kind = '', ms = 1600, ico = '') => {
         const li = document.createElement('li'); li.className = 'st-cap ' + kind;
-        li.innerHTML = `<b>${esc(dir)}</b><span>${esc(txt)}</span><i></i>`;
+        li.innerHTML = `<b>${esc(dir)}</b><span>${ico ? `<img class="st-ico" src="${ART('icon-' + ico)}" alt="" onerror="this.remove()">` : ''}${esc(txt)}</span><i></i>`;
         capsEl.appendChild(li);
         const all = capsEl.querySelectorAll('.st-cap:not(.ev)'); if (all.length > 3) all[0].remove();
         if (ms) later(() => li.remove(), ms);
@@ -419,7 +426,7 @@ window.FemcStair = (() => {
         st.ev = ev; st.lastSrc = key; if (wrong) st.wrong++;
         const T = tells, loc = ev.up ? 'up' : S.loc;
         const txt = T.includes('text') ? (D.subtle ? S.bad : S.off) : S.cap;
-        ev.chip = chip(DIR[loc], `${txt} · ${PLACE[loc]}`, 'ev' + (T.includes('colour') ? ' wc' : ''), 0);
+        ev.chip = chip(DIR[loc], `${txt} · ${PLACE[loc]}`, 'ev' + (T.includes('colour') ? ' wc' : ''), 0, key);
         // the map: a real sound lights its place; a wrong one may not, or lights the door upstairs
         if (!wrong || !(T.includes('dark') || ev.up)) map.querySelector(`[data-src="${S.loc === 'gate' ? 'gate' : S.loc === 'window' ? 'window' : key}"]`)?.classList.add('on');
         if (ev.up) map.querySelector('.st-up')?.classList.add('on');
@@ -463,7 +470,7 @@ window.FemcStair = (() => {
           st.lock = st.t + (long ? 750 : 420);
           const p = (spot(nd).x - 165) / 165;
           if (A) { K.step(p, long ? 1.3 : 1); if (creakI) K.creak(creakI, loud, p, long ? 1.2 : 1); }
-          if (loud) chip('●', 'CREAK. The seventh stair.', nz > cover ? 'bad' : '', 1800);
+          if (loud) chip('●', 'CREAK. The seventh stair.', nz > cover ? 'bad' : '', 1800, 'creak');
           else if (nd.odd) { chip('▼', 'A creak, under you', 'odd', 1800); if (A) K.creak(3, false, 0, 2.2, 0.3); }
           if (skipped && skipped.creaky) chip('●', 'Over the seventh stair', 'good', 1300);
           // polish (Nov 11 2026): a fading print where she set her foot, the counter ticking, a small weight in the view
@@ -617,7 +624,7 @@ window.FemcStair = (() => {
         const m = clockMins() + (st.clockLie ? 60 : 0);
         $('.st-clock').textContent = `${fmt(m)} a.m.`; $('.st-clock').classList.toggle('lie', !!st.clockLie);
         // the hall clock: an hour ahead
-        const hc = clockMins() + 60, rot = (n, a) => n && n.setAttribute('transform', `rotate(${a.toFixed(1)} 300 262)`);
+        const hc = clockMins() + 60, rot = (n, a) => n && n.setAttribute('transform', `rotate(${a.toFixed(1)} 285.4 233.4)`);
         rot(map.querySelector('.st-hclock .hh'), (hc / 60 % 12) * 30); rot(map.querySelector('.st-hclock .mh'), (hc % 60) * 6);
         hum();
       };
@@ -653,7 +660,9 @@ window.FemcStair = (() => {
             : quit ? 'You stand on the stair and wait. The stairs wait too.'
             : dawn ? 'Slippers on the landing. Somebody’s up early, and you’re still on the stairs.'
             : 'The landing light comes on. Nobody is standing at the switch.';
-          end.innerHTML = `<p class="st-end-head">${head}</p><b class="mg-grade">${grade}</b>
+          const pic = won ? 'end-home' : !quit && !dawn ? 'end-heard' : ''; // Kat's ending pictures; dawn and quit keep the plain screen
+          end.classList.toggle('pic', !!pic);
+          end.innerHTML = `${pic ? `<img class="st-end-art" src="${ART(pic)}" alt="" onerror="this.parentNode.classList.remove('pic');this.remove()">` : ''}<p class="st-end-head">${head}</p><b class="mg-grade">${grade}</b>
             <dl><dt>Listening, at worst</dt><dd>${res.heard}%</dd><dt>Wrong sounds followed</dt><dd>${st.lured} / ${st.wrong}</dd><dt>Uncovered creaks</dt><dd>${st.creaks}</dd><dt>Stairs counted</dt><dd>${st.glass ? st.n : 13}</dd><dt>Time</dt><dd>${res.secs}s</dd></dl>
             <p class="mg-end-say">${line}</p><button type="button">Continue</button>`;
           end.querySelector('button').focus();
