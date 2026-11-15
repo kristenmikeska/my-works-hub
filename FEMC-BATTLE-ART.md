@@ -27,7 +27,7 @@ If a transparent one comes back with a background anyway, that's fine: Claude cu
 | Eyes too small (eye strip) | "Zoom in much closer: only the eyes and eyebrows should fill the banner." |
 | Outfit changed (entrance card, Showtime) | "Keep the outfit exactly as in the first image." |
 | Words misspelled (finish card) | "Same picture; the words must read exactly …" (with the card's words) |
-| Grid lines, boxes or transparency (theme or signature effect sheet) | "Redo it on solid black with no grid lines or boxes." |
+| Grid lines, boxes, or a white or black fill (theme or signature effect sheet) | "Redo it on a fully transparent background with no grid lines or boxes." |
 
 Finish cards use the fighter's own finish line (listed at the top of each fighter). To give a look its own words, change the last sentence of its prompt.
 
@@ -3080,7 +3080,7 @@ Every look already has a theme (listed under each sheet). To move a look to anot
 
 ### Theme effect sheets (transparent background)
 
-One per theme. Attach `Added to Game/heal.jpeg` for format and spacing only. If it comes back with grid lines, boxes or a transparent background, say: "Redo it on solid black with no grid lines or boxes."
+One per theme. Attach `Added to Game/heal.jpeg` for format and spacing only. If it comes back with grid lines, boxes or a white or black fill, say: "Redo it on a fully transparent background with no grid lines or boxes."
 
 #### Foxfire effect sheet
 

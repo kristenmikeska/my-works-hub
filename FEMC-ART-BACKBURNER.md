@@ -39,7 +39,7 @@ So a summon also plays on the battlefield figure, like Solar's. One sheet each f
 Attach: the style image, that character  
 Save as: `<name>-evoke-sheet.png (e.g. akihiko-evoke-sheet.png)`
 ```
-A 3-panel horizontal sheet on a plain white background showing the same character from the second attached image in three moments of summoning their Persona: (1) raising an ornate silver Evoker to their temple, (2) the shot, hair and coat lifting in blue wind and glass shards, (3) lowering it. Same face, outfit, art style and scale in every panel, matching the FIRST attached image's style, clear white space between panels, nothing overlapping. Character only, no text.
+A 3-panel horizontal sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it) showing the same character from the second attached image in three moments of summoning their Persona: (1) raising an ornate silver Evoker to their temple, (2) the shot, hair and coat lifting in blue wind and glass shards, (3) lowering it. Same face, outfit, art style and scale in every panel, matching the FIRST attached image's style, clear white space between panels, nothing overlapping. Character only, no text.
 ```
 
 ### New expressions (ChatGPT)
@@ -121,7 +121,7 @@ Her own wind-up and strike for Haenim (it shares one sheet now).
 Attach: theurgy-solar-haenim.png  
 Save as: `solar-haenim-strikesheet.png`
 ```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
+A 3-panel horizontal sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it) showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
 ```
 
 **[ ] Sunna's strike sheet** *(optional)*  
@@ -129,7 +129,7 @@ Her own wind-up and strike for Sunna (it shares one sheet now).
 Attach: theurgy-solar-sunna.png  
 Save as: `solar-sunna-strikesheet.png`
 ```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
+A 3-panel horizontal sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it) showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
 ```
 
 **[ ] Mazu's strike sheet** *(optional)*  
@@ -137,7 +137,7 @@ Her own wind-up and strike for Mazu (it shares one sheet now).
 Attach: theurgy-solar-harbor.png  
 Save as: `solar-mazu-strikesheet.png`
 ```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
+A 3-panel horizontal sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it) showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
 ```
 
 **[ ] Unveiled's strike sheet** *(optional)*  
@@ -145,7 +145,7 @@ Her own wind-up and strike for Unveiled (it shares one sheet now).
 Attach: theurgy-solar-haenimunveiled.png  
 Save as: `solar-unveiled-strikesheet.png`
 ```
-A 3-panel horizontal sheet on a plain white background showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
+A 3-panel horizontal sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it) showing the same character from the attached image in three moments of their ultimate attack: (1) wind-up, (2) the strike or release, (3) the follow-through. Same face, outfit, art style and scale in every panel, clear white space between panels, nothing overlapping. Character only, no text.
 ```
 
 ## Runners outfits: done Oct 30 2026 (batch 102)
@@ -186,42 +186,42 @@ Heeseung's face on Christmas in the HOAX epilogue.
 Attach: Heeseung  
 Save as: `Heeseung-hoax-christmas-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a forest-green crewneck sweater over a white tee, a red knitted scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a forest-green crewneck sweater over a white tee, a red knitted scarf. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Sunoo: Christmas** *(optional)*  
 Sunoo's face on Christmas in the HOAX epilogue.  
 Attach: Sunoo  
 Save as: `Sunoo-hoax-christmas-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pastel pink sweater with a knitted cartoon snowman and a matching pom-pom beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pastel pink sweater with a knitted cartoon snowman and a matching pom-pom beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Sunghoon: Christmas** *(optional)*  
 Sunghoon's face on Christmas in the HOAX epilogue.  
 Attach: Sunghoon  
 Save as: `Sunghoon-hoax-christmas-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a grey ribbed turtleneck sweater under a long camel coat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a grey ribbed turtleneck sweater under a long camel coat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Jay: Christmas** *(optional)*  
 Jay's face on Christmas in the HOAX epilogue.  
 Attach: Jay  
 Save as: `Jay-hoax-christmas-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black-and-white fair-isle sweater with a small silver hoop earring. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black-and-white fair-isle sweater with a small silver hoop earring. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Jake: Christmas** *(optional)*  
 Jake's face on Christmas in the HOAX epilogue.  
 Attach: Jake  
 Save as: `Jake-hoax-christmas-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a red-and-green striped sweater with a reindeer on the front, a Santa hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a red-and-green striped sweater with a reindeer on the front, a Santa hat. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Niki: Christmas** *(optional)*  
 Niki's face on Christmas in the HOAX epilogue.  
 Attach: Niki  
 Save as: `Niki-hoax-christmas-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized cream hoodie with a knitted gingerbread-man patch, a red beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized cream hoodie with a knitted gingerbread-man patch, a red beanie. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
 ### HOAX: the winter-break party
@@ -230,42 +230,42 @@ Heeseung's face at the winter-break party in the HOAX epilogue.
 Attach: Heeseung  
 Save as: `Heeseung-hoax-party-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a white shirt with the sleeves rolled up under a black vest. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a white shirt with the sleeves rolled up under a black vest. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Sunoo: the winter-break party** *(optional)*  
 Sunoo's face at the winter-break party in the HOAX epilogue.  
 Attach: Sunoo  
 Save as: `Sunoo-hoax-party-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pink satin shirt with a sparkly brooch and a little glitter on his cheeks. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a pink satin shirt with a sparkly brooch and a little glitter on his cheeks. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Sunghoon: the winter-break party** *(optional)*  
 Sunghoon's face at the winter-break party in the HOAX epilogue.  
 Attach: Sunghoon  
 Save as: `Sunghoon-hoax-party-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black turtleneck under a sharp grey blazer. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a black turtleneck under a sharp grey blazer. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Jay: the winter-break party** *(optional)*  
 Jay's face at the winter-break party in the HOAX epilogue.  
 Attach: Jay  
 Save as: `Jay-hoax-party-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an open black shirt over a white tank top, silver rings and a chain. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an open black shirt over a white tank top, silver rings and a chain. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Jake: the winter-break party** *(optional)*  
 Jake's face at the winter-break party in the HOAX epilogue.  
 Attach: Jake  
 Save as: `Jake-hoax-party-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a denim jacket over a white tee, a paper party crown. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: a denim jacket over a white tee, a paper party crown. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 **[ ] Niki: the winter-break party** *(optional)*  
 Niki's face at the winter-break party in the HOAX epilogue.  
 Attach: Niki  
 Save as: `Niki-hoax-party-sheet.png`
 ```
-A 3 × 2 portrait sheet on a plain white background, clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized graphic tee under a black bomber jacket, a light-up party necklace. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
+A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: the same person as the attached image in six head-and-shoulders portraits, same face, same hair, same size and framing in every cell, same art style. Change only the clothes: an oversized graphic tee under a black bomber jacket, a light-up party necklace. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No text.
 ```
 
 ### HOAX: New Year (Seollal)
