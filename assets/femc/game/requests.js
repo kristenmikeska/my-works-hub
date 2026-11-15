@@ -365,7 +365,7 @@ window.FemcRequests = (() => {
 
   /* ── The Plume Exchange: rules ── */
   // cards: by rarity, `per` spare cards for `plumes`. mats: `per` for one plume, beyond `keep` (and beyond taken requests).
-  const EX = { week: 8, cards: { 3: { per: 3, plumes: 1 }, 4: { per: 1, plumes: 1 }, 5: { per: 1, plumes: 3 } },
+  const EX = { week: 20, cards: { 3: { per: 3, plumes: 1 }, 4: { per: 1, plumes: 1 }, 5: { per: 1, plumes: 3 } },
     mats: { shadow_ash: { per: 30 }, mask_shard: { per: 12 }, crimson_lacquer: { per: 8 }, mirror_shard: { per: 5 }, rusted_cog: { per: 3 }, stone_heart: { per: 2 }, moon_feather: { per: 2 },
       lantern_glass: { per: 8 }, echo_shell: { per: 3 }, gilded_scale: { per: 1 }, monad_sand: { per: 1 }, guardian_crest: { per: 1 },
       tarot_dust: { per: 50, keep: 150 }, velvet_thread: { per: 4, keep: 8 }, arcana_fragment: { per: 1, keep: 2 } } };
