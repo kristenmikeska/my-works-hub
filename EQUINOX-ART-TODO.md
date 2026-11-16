@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **new fighters' Personas** (section 7: 1 concept sheet) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **39 pictures in all.** More is coming later (section 10: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts.*
+**To make (Nov 15):** **new fighters' Personas** (section 7: 1 concept sheet) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **Solar's home-screen poses** (section 10: 17) · **56 pictures in all.** More is coming later (section 11: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts.*
 
 ---
 
@@ -343,7 +343,21 @@ A single full-body Persona illustration, portrait orientation 2:3, as large and 
 ```
 
 ---
-## 10. Later (no prompts yet)
+## 10. Solar's Equinox home-screen poses (ChatGPT)
+Her new look for the big figure on the home screen (the dorm in the evening). It rotates through these poses, and some actions pick a matching one (study, cook, the Evoker before the Dark Hour...). Arms crossed is already made (your menu pose). A set doesn't have to be complete: the game uses whichever exist.
+
+**[ ] 10A. Solar · Equinox: home-screen poses (17, one picture each)**  
+Attach: `Solar (Equinox) - pose sheet.png`, `Solar (Equinox) - menu pose.png`  
+Save as: `eq-solar-hd-<pose>.png` (the word before the colon below)
+```
+A single full-body character illustration, portrait orientation 2:3, 1024 × 1536, as large and sharp as possible: ONE figure only, head to toe, filling the height of the image with a little space above the head and below the feet, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). The SAME girl as the attached images, in exactly the Equinox outfit and hair of the FIRST attached image (her new look: the high ponytail with temple braids and the clock-face hairpin, the high-collared cropped black jacket with blood-red piping, the long black coat with a blood-red lining draped over her shoulders, fingerless gloves, the thigh holster, combat boots, the tiny nose stud), drawn with the size, finish and framing of the SECOND attached image. Pose: [THE POSE]. Persona 3 Reload official art style: clean crisp lineart, flat cel shading with hard-edged shadows, high detail on the face and hair. No pink, no blue, navy, indigo, purple, lilac or green. No text, no background, no other people.
+```
+**The 17 poses** (put one in the brackets): `thinking`: one finger on her chin, looking up, thinking · `wave`: a friendly wave, a small knowing smile · `peace`: a peace sign by her cheek, a wink · `hair`: one hand running back over her ponytail · `shy`: hands clasped behind her back, a shy smile, looking down a little · `study`: reading an open book held in both hands · `ramen`: holding a bowl of ramen and chopsticks, delighted · `watering`: watering a small potted plant with a little watering can · `evoker`: raising the Evoker to her temple, eyes closed, calm · `stretch`: stretching both arms over her head mid-yawn, the coat slipping off one shoulder · `phone`: looking down at her phone, smiling at a message · `cheer`: a fist pump, cheering · `jump`: a happy jump, both feet off the ground, the coat and ponytail flying · `tease`: a relaxed standing pose, one hand resting on her hip, a teasing smile · `heart`: making a heart with both hands in front of her chest, a soft smile · `lookback`: looking back over her shoulder at the viewer, a small smile · `sewing`: sitting cross-legged, mending a small rip in her coat with a needle and thread
+
+If it comes back with a different outfit or hair, say: "Same pose, but in exactly the outfit and ponytail of the first picture."
+
+---
+## 11. Later (no prompts yet)
 These come once the story parts that need them are written. Counts are rough.
 
 - **Story CGs:** about 40 to 50
