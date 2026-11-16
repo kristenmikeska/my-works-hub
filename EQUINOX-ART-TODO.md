@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **new fighters' Personas** (section 7: 1 concept sheet) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **83 pictures in all.** More is coming later (section 12: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts.*
+**To make (Nov 15):** **new fighters' Personas** (section 7: 1 concept sheet) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **83 pictures plus the face sets.** More is coming later (section 13: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts.*
 
 ---
 
@@ -580,7 +580,175 @@ If a CG comes back with the wrong number of people or a person who doesn't match
 
 ---
 
-## 12. Later (no prompts yet)
+## 12. Equinox face revamps: the main cast (ChatGPT)
+Everyone's faces refreshed for Equinox, the way Solar's and Haechan's were: the same people, a year older, darker and in Equinox's style. Two-world characters mix details from both lives. Each item's description is a starting idea: change anything.
+
+**How (the method that worked for Haechan):**
+1. **The approved portrait:** attach the item's files in order, paste its prompt, and redo until it really looks like them. If the face drifts, add a real photo of the person as one more attachment and say: "Fix only the face to match the last image: [what's off]" (brows, eyes, face length, nose, lips, hair).
+2. **The expressions, one at a time:** in the same chat, attach the APPROVED portrait (always the original, never the last result) and paste the expression prompt below with one expression from the item. Six are needed: neutral, happy, sad, serious, surprised, flustered. Add extras (smirk, angry, crying, laughing…) whenever you like.
+3. **Save** each as `eq-<id>-<face>-portrait.png` in the Equinox folder (like Haechan's) and tell Claude.
+
+**The expression prompt (for everyone):**
+```
+Edit the attached image. Change ONLY the facial expression to: [EXPRESSION]. Keep everything else exactly the same: the face shape, eyes, brows, nose, lips, every mark, the hair, the clothes, the art style, the framing and the size. Same picture, only the expression changes. Fully transparent background.
+```
+
+**Expressions** (put one in the brackets; each item adds how that person shows them): neutral · happy · sad · serious · surprised · flustered.
+
+**[ ] 12A. Akihiko · Equinox faces**  
+Their personality, for the expressions: earnest, intense and competitive, but soft with her.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Akihiko.png`  
+Save as: `eq-akihiko-neutral-portrait.png`, then `eq-akihiko-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: his silver hair grown a little longer and roughed up, messier strands falling over his forehead and the plaster on his brow; a faint fresh scrape on one cheekbone; a black fitted athletic jacket zipped half-open over his red vest, collar up; tired, intense eyes — the same boxer, a year rougher. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12B. Mitsuru · Equinox faces**  
+Their personality, for the expressions: composed, formal and commanding, warmth only in small doses.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Mitsuru.png`  
+Save as: `eq-mitsuru-neutral-portrait.png`, then `eq-mitsuru-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: she looks older now, a university student who runs a company: her long crimson hair swept to one side in a sleek, elegant wave, a few strands pinned back; small drop earrings; a tailored black coat with a high collar over a dark wine blouse, a tiny gold brooch at the throat; composed, sharp, more mature features in her expression. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12C. Yukari · Equinox faces**  
+Their personality, for the expressions: quick, honest and a little guarded, warm underneath.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Yukari.png`  
+Save as: `eq-yukari-neutral-portrait.png`, then `eq-yukari-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a little older and darker: her brown hair grown just past her jaw, slightly layered; a dusty, muted pink cardigan over a black top instead of bright pink; a thin black choker with a small silver heart; a faint guardedness around the eyes — matured, a little sharper. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12D. Junpei · Equinox faces**  
+Their personality, for the expressions: loud, joking and big-hearted, hiding worry behind jokes.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Junpei.png`  
+Save as: `eq-junpei-neutral-portrait.png`, then `eq-junpei-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: his own signature cap, a little more worn; a dark hoodie layered under his usual jacket; light stubble along his jaw; a red string bracelet just visible at the edge if it fits; the same goofy face, a touch more tired. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12E. Shinjiro · Equinox faces**  
+Their personality, for the expressions: gruff, few words, caring in actions not words.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Shinjiro.png`  
+Save as: `eq-shinjiro-neutral-portrait.png`, then `eq-shinjiro-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: his own beanie and long dark coat with the collar turned up; a little thinner in the face and paler, still recovering, faint shadows under his eyes; a few strands of hair loose from under the beanie. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12F. Aigis · Equinox faces**  
+Their personality, for the expressions: precise, literal and protective, learning to feel.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Aigis.png`  
+Save as: `eq-aigis-neutral-portrait.png`, then `eq-aigis-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: her blonde hair and headpiece; a slightly softer, more human expression than before; a thin dark hairline crack along one cheek panel; a small red ribbon tied at her collar. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12G. Fuuka · Equinox faces**  
+Their personality, for the expressions: gentle, shy and thoughtful, stronger than she looks.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Fuuka.png`  
+Save as: `eq-fuuka-neutral-portrait.png`, then `eq-fuuka-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: her teal hair grown a little longer; a dark charcoal cardigan over her school blouse; a slim navigator headset resting around her neck; tired, worried, kind eyes. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12H. Ken · Equinox faces**  
+Their personality, for the expressions: polite, serious, trying hard to be grown-up.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Ken.png`  
+Save as: `eq-ken-neutral-portrait.png`, then `eq-ken-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a year older and a little taller, his hair slightly longer and messier; a dark hoodie with the hood down; a serious look that's too old for his age. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12I. Koromaru · Equinox faces**  
+Their personality, for the expressions: loyal and alert; his feelings show in his ears and eyes.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Koromaru.png`  
+Save as: `eq-koromaru-neutral-portrait.png`, then `eq-koromaru-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image: keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: the same white Shiba with his red collar, a little scruffier, alert ears, a small healed nick in one ear. (A dog: keep him exactly himself.) Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12J. Jungwon · Equinox faces**  
+Their personality, for the expressions: polite and composed, more polite the angrier he gets.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Jungwon.png`, `CG - Jungwon (HOAX).png`, `CG - Jungwon (Strangers).png`  
+Save as: `eq-jungwon-neutral-portrait.png`, then `eq-jungwon-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the FOURTH and FIFTH show him in his two other lives): keep his face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: he carries both of his lives: from HOAX, his neat student-council-president look and a small council pin on his lapel; from strangers, the heir — a sharp charcoal blazer over a black turtleneck, a thin silver watch chain glint at his chest; his dark hair neat but with a few strands fallen loose; composed eyes with something tired under them. Use the FOURTH and FIFTH attached images for those two looks; keep his face from all of them. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12K. Jihoon · Equinox faces**  
+Their personality, for the expressions: charming, reckless and a bit dangerous, a flirt.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Jihoon.png`, `CG - Jihoon (HOAX).png`  
+Save as: `eq-jihoon-neutral-portrait.png`, then `eq-jihoon-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a rebel's edge: a black leather jacket over a dark hoodie, a silver ring on a chain; his hair a little longer and messier; a faint lazy smirk in his eyes. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12L. Minji · Equinox faces**  
+Their personality, for the expressions: calm, observant and quietly intense.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Minji.png`, `CG - Minji (Runners).png`  
+Save as: `eq-minji-neutral-portrait.png`, then `eq-minji-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a dark oversized jacket over a black top, a camera strap across her shoulder; her hair the same, a few loose strands; an observant, steady look. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12M. Hanni · Equinox faces**  
+Their personality, for the expressions: warm, grounding, quick to read people.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Hanni.png`, `CG - Hanni (Runners).png`  
+Save as: `eq-hanni-neutral-portrait.png`, then `eq-hanni-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: battle-ready now: a dark cropped jacket with a red S.E.E.S. armband over her usual style, her hair half-tied back; bright eyes with a little steel behind them. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12N. Hyein · Equinox faces**  
+Their personality, for the expressions: excitable, loud and loving, braver than she feels.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Hyein.png`, `CG - Hyein (Runners).png`  
+Save as: `eq-hyein-neutral-portrait.png`, then `eq-hyein-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: battle-ready now: a fashionable dark jacket she clearly styled herself, a red S.E.E.S. armband, her hair styled but a little undone; a brave face over nerves. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12O. Yunjin · Equinox faces**  
+Their personality, for the expressions: confident, teasing and fiercely loyal.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Yunjin.png`, `CG - Yunjin (Strangers).png`  
+Save as: `eq-yunjin-neutral-portrait.png`, then `eq-yunjin-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: from strangers and from the stage: a dark cropped leather jacket over a black top, small silver hoops, her hair loose; a red S.E.E.S. armband now that she fights; a confident half-smile. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12P. Jaehyun · Equinox faces**  
+Their personality, for the expressions: measured, calm and protective, already decided.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Jaehyun.png`, `CG - Jaehyun (Runners).png`  
+Save as: `eq-jaehyun-neutral-portrait.png`, then `eq-jaehyun-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a dark varsity-style jacket over a black shirt; his hair neat; a calm, measured, protective look; a faint bruise at his jaw like a football hit. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12Q. Cherry · Equinox faces**  
+Their personality, for the expressions: bold, blunt and loyal.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Cherry.png`, `CG - Cherry (HOAX).png`  
+Save as: `eq-cherry-neutral-portrait.png`, then `eq-cherry-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: her own style turned a shade darker: a black cardigan over her usual look, a thin red ribbon in her hair; sharp, loyal eyes. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12R. Mark · Equinox faces**  
+Their personality, for the expressions: warm on the surface, complicated underneath.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Mark.png`, `CG - Mark (Runners).png`  
+Save as: `eq-mark-neutral-portrait.png`, then `eq-mark-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a dark denim jacket over a black hoodie, a guitar pick on a thin chain; friendly eyes with something unreadable behind them. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+**[ ] 12S. Chenle · Equinox faces**  
+Their personality, for the expressions: bright, funny and quick.  
+Attach: `Style - Equinox portrait (Solar).png`, `Style - Equinox portrait (Haechan).png`, `Chenle.png`, `CG - Chenle (Runners).png`  
+Save as: `eq-chenle-neutral-portrait.png`, then `eq-chenle-<face>-portrait.png` for each expression
+```
+A single head-and-shoulders character portrait, square 1:1, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). Draw it in exactly the art style of the FIRST and SECOND attached images (Equinox portraits from the same game: bold clean lineart, flat cel shading with hard-edged shadows, the same level of detail, the same head-and-shoulders framing and head size). The person is the SAME person as the THIRD attached image (the later attachments show the same person in another life): keep their face exactly — face shape, eyes, brows, nose, lips, skin tone and any moles or marks — and change only the styling for a darker sequel: a navigator's slim headset around his neck, a dark bomber jacket; bright, sharp eyes. Neutral expression for now. Equinox's palette touches: blood red, oxblood and black accents; the character's own colours can stay. No text, no logos, no other people.
+```
+
+---
+## 13. Later (no prompts yet)
 These come once the story parts that need them are written. Counts are rough.
 
 - **Story CGs:** about 40 to 50
