@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp` (no game use). 7C still to make; same treatment.
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## 8. Later
+## 12. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -42,3 +42,35 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
 
 ## 10. Solar's Equinox home-screen poses
 - `eq-solar-hd-<pose>.png` (17; arms-crossed is `equinox/art/solar/arms-crossed.webp` already) → cut like Solstice's own HD set (`tools/femc-hd-poses.py` own-set logic: native size, feet on the bottom edge, WebP q92) into `assets/femc/equinox/art/solar/<pose>.webp` + a fig.json; ui.js `homePose` / `HOME_POSES` needs a config override (e.g. `FEMC_GAME_CONFIG.homePoses = { dir, v }`) so Equinox's evening figure uses them (Solstice unchanged).
+
+## 11. Act I and the first meetings
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V.
+- Item → file and comment:
+  - 11A `eqx-oka-front-room` ← `story-act1.js`, comment `// BG: oka-boarding-house-front-room`
+  - 11B `eqx-oka-veranda-evening` ← `story-act1.js`, comment `// BG: oka-boarding-house-veranda-evening`
+  - 11C `eqx-courtyard-well-evening` ← `links/yukari.js`, comment `// BG: gekkoukan-courtyard-well-evening`
+  - 11D `eqx-cafe-terrace-evening` ← `links/mitsuru.js`, comment `// BG: portisland-cafe-terrace-evening`
+  - 11E `eqx-port-island-bridge-night` ← `links/mitsuru.js`, comment `// BG: port-island-bridge-night`
+  - 11F `eqx-harbor-low-tide-evening` ← `links/yunjin.js`, comment `// BG: port-island-harbor-low-tide-evening`
+  - 11G `eqx-port-island-beach` ← `story-act1.js`, comment `// BG: port-island-beach-golden-week`
+  - 11H `eqx-wilduck-restroom` ← `links/cherry.js`, comment `// BG: wilduck-restroom`
+  - 11I `eqx-shrine-playground` ← `links/ken-koromaru.js`, comment `// BG: naganaki-shrine-playground`
+  - 11J `eqx-shrine-steps-day` ← `links/jaehyun.js`, comment `// BG: naganaki-shrine-steps-day`
+  - 11K `eqx-records` ← `story-act1.js`, comment `// CG: eqx-records`
+  - 11L `eqx-the-knock` ← `story-act1.js`, comment `// CG: eqx-the-knock`
+  - 11M `eqx-knock-shadow` ← `story-act1.js`, comment `// CG: eqx-knock-shadow`
+  - 11N `eqx-tanabe-room` ← `story-act1.js`, comment `// CG: eqx-tanabe-room`
+  - 11O `eqx-flour-handle` ← `story-act1.js`, comment `// CG: eqx-flour-handle`
+  - 11P `eqx-viral` ← `story-act1.js`, comment `// CG: eqx-viral`
+  - 11Q `eqx-first-hill` ← `story-act1.js`, comment `// CG: eqx-first-hill`
+  - 11R `eqx-door-r1` ← `story-act1.js`, comment `// CG: eqx-door-r1`
+  - 11S `eqx-yukari-arrow` ← `links/yukari.js`, comment `// CG: eqx-yukari-arrow`
+  - 11T `eqx-mitsuru-helmet` ← `links/mitsuru.js`, comment `// CG: eqx-mitsuru-helmet`
+  - 11U `eqx-aigis-reading` ← `links/aigis.js`, comment `// CG: eqx-aigis-reading`
+  - 11V `eqx-standing-tide` ← `links/yunjin.js`, comment `// CG: eqx-standing-tide`
+  - 11W `eqx-cherry-sleeve` ← `links/cherry.js`, comment `// CG: eqx-cherry-sleeve`
+  - 11X `eqx-koromaru-corner` ← `links/ken-koromaru.js`, comment `// CG: eqx-koromaru-corner`
+  - 11Y `eqx-jaehyun-procedure` ← `links/jaehyun.js`, comment `// CG: eqx-jaehyun-procedure`
+  - 11Z `eqx-rio-saori-bench` ← `links/rio-saori.js`, comment `// CG: eqx-rio-saori-bench`
+  - 11AA `eqx-tale-book` ← `links/rio-saori.js`, comment `// CG: eqx-tale-book`
+- All files are under `assets/femc/equinox/data/` (`links/` for the rank files). Album / Theater listing for these CGs is a later batch.
