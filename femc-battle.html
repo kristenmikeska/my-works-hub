@@ -30,6 +30,8 @@
   <script src="assets/femc/battle/bonds.js?v=9"></script>
   <script src="assets/femc/battle/tartarus.js?v=9"></script>
   <script src="assets/femc/battle/climb.js?v=3"></script>
+  <!-- Inside Equinox (the head script above set data-game): the Well replaces Tartarus's blocks, floors and full moons. -->
+  <script>if (document.documentElement.dataset.game === 'equinox') document.write('<script src="assets/femc/equinox/battle/well.js?v=2"><\/script>');</script>
   <script src="assets/femc/battle/art/echoes/index.js?v=26"></script>
   <script src="assets/femc/battle/echoes.js?v=2"></script>
   <script src="assets/femc/battle/shadows.js?v=3"></script>
@@ -42,7 +44,7 @@
   <script src="assets/femc/battle/fx.js?v=14"></script>
   <script src="assets/femc/battle/looks-art.js?v=1"></script>
   <script src="assets/femc/battle/trials-battle.js?v=1"></script>
-  <script src="assets/femc/battle/battle.js?v=118"></script>
+  <script src="assets/femc/battle/battle.js?v=120"></script>
   <script src="assets/femc/battle/pad.js?v=3"></script>
 </body>
 </html>

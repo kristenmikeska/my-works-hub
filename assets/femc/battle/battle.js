@@ -30,6 +30,9 @@
   const D = window.FEMC_BATTLE_DATA, E = window.FemcBattleEngine, ART = window.FemcBattleArt, FX = window.FemcFX, MAP = window.FemcTartarusMap, ICON = window.FemcIcons, BS = window.FemcBattleSave;
   const BLD = window.FemcBuild || null; // naginatas, Revelation cards, Shuffle Time, bond perks (build.js)
   const BDS = window.FemcBonds || null; // bond skills: Solar and a partner (bonds.js)
+  // Another game's dungeon (Persona 3: Equinox's Well: assets/femc/equinox/battle/well.js sets D.dungeon): its name, which way the
+  // stairs go and how floors are written, on the hub, the barrier, the stairs and the floor label. Unset: Tartarus, as always.
+  const DUN = Object.assign({ name: 'Tartarus', caps: 'TARTARUS', up: 'up', higher: 'higher', climb: 'Climb', top: 'Top', floor: n => `${n}F`, hint: 'Climb as far as you like', entrance: 'The Tartarus entrance', tonight: 'Tonight’s climb' }, D.dungeon || {});
   const TT = window.FemcTartarus || null; // Tartarus's newer rooms, puzzles, events, loot and chatter (tartarus.js)
   const PROTO_KEY = 'kg-femc-battle-proto', UNI_KEY = 'kg-femc-revamp-settings';
   // The old page-jump handoff: the life sim now runs the fight in its own page.
@@ -1046,10 +1049,10 @@
     root.classList.remove('bt-in-battle');
     const list = warpList(skip), topOf = f => { const fl = D.floors.filter(x => x.bi === f.bi), g = fl.filter(x => x.gate && x.gameFloor > f.gameFloor)[0]; return g ? fl[fl.indexOf(g) - 1] : fl[fl.length - 1]; };
     const el = show(`<div class="bt-hub-copy">
-        <p class="bt-kicker">The Tartarus entrance · ${esc(NAVI.name)} can send you up</p>
+        <p class="bt-kicker">${esc(DUN.entrance)} · ${esc(NAVI.name)} can send you ${DUN.up}</p>
         <h1>TELEPORT<small>To the start of a block</small></h1>
         <div class="bt-hub-menu">
-          ${list.map(f => `<button type="button" class="bt-btn" data-warp="${esc(f.id)}"><span>${esc(f.label)} · ${esc(f.block)}</span><small>${esc(`${f.ngp ? 'New Game+ · ' : f.secret ? 'A date section · ' : ''}up to ${topOf(f).label}${(save.tt.guardians || []).some(id => { const g = D.floors.find(x => x.id === id); return g && g.bi === f.bi; }) ? ' · guardian beaten' : ''}`)}</small></button>`).join('')}
+          ${list.map(f => `<button type="button" class="bt-btn" data-warp="${esc(f.id)}"><span>${esc(f.label)} · ${esc(f.block)}</span><small>${esc(`${f.ngp ? 'New Game+ · ' : f.secret ? 'A date section · ' : ''}${DUN.up} to ${topOf(f).label}${(save.tt.guardians || []).some(id => { const g = D.floors.find(x => x.id === id); return g && g.bi === f.bi; }) ? ' · guardian beaten' : ''}`)}</small></button>`).join('')}
           <button type="button" class="bt-btn" data-warp=""><span>Back</span><small>To the entrance</small></button>
         </div>
         <p class="bt-hub-hint">Blocks you’ve reached, from their first floor. Access points still save where you got to.</p>
@@ -1766,7 +1769,7 @@
     const gl = TT ? TT.goal(map) : null;
     return `<div class="bt-map-bg" style="background-image:url('${floor.bg}')"></div><div class="bt-map-shade${floor.hiddenFloor ? ' tt-hidden' : ''}" style="--bc:${floor.color};--bc2:${floor.tint || floor.color}"></div>
       <header class="bt-top bt-map-top">
-        <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.hiddenFloor ? 'Hidden floor' : floor.block)}<em><br>Tartarus${floor.top ? ' · block top' : ''}${floor.hiddenFloor ? ` · ${esc(floor.block)}` : ''}</em></span></div>
+        <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.hiddenFloor ? 'Hidden floor' : floor.block)}<em><br>${esc(DUN.name)}${floor.top ? ' · block top' : ''}${floor.hiddenFloor ? ` · ${esc(floor.block)}` : ''}</em></span></div>
         <div class="bt-steps${map.reaper ? ' hunted' : danger > 0.75 ? ' near' : ''}" title="Linger too long and the Reaper comes."><span>Steps <b>${steps}</b>${tp.timetable && !map.reaper && !map.reaperGone && !calmFloor ? ` / ${R + tp.timetable.v}` : ''}</span><i style="--p:${danger}"></i><em>${map.reaper ? (diff().reaper ? 'THE REAPER IS HERE' : 'The Reaper isn’t chasing') : map.reaperGone ? 'The Reaper is gone' : calmFloor ? 'Story · no Reaper' : danger > 0.75 ? 'Something is coming…' : 'Quiet'}</em></div>
         <div class="bt-tools"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span>${tools()}</div>
       </header>
@@ -1928,9 +1931,9 @@
       if (floor.top && HO) {
         // The life sim decides when blocks open: a full moon has to happen on its night, and higher blocks wait for their date.
         const op = D.ops.find(o => o.id === floor.op), done = opCleared(op.id), open = done && floor.bi < hoBlockCap();
-        const v = await roomPanel({ bg: op.arena, cls: 'barrier', kicker: `Top of ${floor.block}`, title: open ? 'THE BARRIER IS OPEN' : 'THE BARRIER', name: 'barrier',
-          body: `<p>${open ? 'The way up is open.' : done ? 'The way up is sealed. Tartarus hasn’t opened any higher yet.' : `The way up is sealed. Something waits on the other side for the full moon.`}</p>`,
-          buttons: open ? [{ v: 'up', label: 'Go up', pink: true }, { v: 'no', label: 'Not yet' }] : [{ v: 'leave', label: 'Leave Tartarus' }, { v: 'no', label: 'Back to the map', pink: true }],
+        const v = await roomPanel({ bg: op.arena, cls: 'barrier', kicker: `${DUN.top} of ${floor.block}`, title: open ? 'THE BARRIER IS OPEN' : 'THE BARRIER', name: 'barrier',
+          body: `<p>${open ? `The way ${DUN.up} is open.` : done ? `The way ${DUN.up} is sealed. ${DUN.name} hasn’t opened any ${DUN.higher} yet.` : `The way ${DUN.up} is sealed. Something waits on the other side for the full moon.`}</p>`,
+          buttons: open ? [{ v: 'up', label: `Go ${DUN.up}`, pink: true }, { v: 'no', label: 'Not yet' }] : [{ v: 'leave', label: `Leave ${DUN.name}` }, { v: 'no', label: 'Back to the map', pink: true }],
           fuuka: navLine(open ? 'barrierOpen' : 'barrier') });
         if (v === 'leave') { mark('leave'); return 'leave'; }
         return v === 'up' ? 'up' : null;
@@ -1948,8 +1951,8 @@
       // Landings above already mapped can be climbed straight past (tartarus.js skipTo).
       const sk = TT ? TT.skipTo(ttCtx(floor), run.fi) : -1, far = sk >= 0 ? D.floors[sk] : null, nskip = sk - run.fi - 1;
       const v = await roomPanel({ bg: floor.bg, cls: 'stairs', kicker: `${floor.label} · ${floor.block}`, title: 'STAIRS', name: 'stairs',
-        body: `<p>The stairs lead up to <b>${esc(next.label)}</b>${next.block !== floor.block ? `, into <b>${esc(next.block)}</b>` : ''}.</p>`,
-        buttons: [{ v: 'up', label: `Go up to ${next.label}`, pink: true }].concat(far ? [{ v: 'skip', label: `Climb on to ${far.label}`, small: `Past ${nskip} mapped landing${nskip === 1 ? '' : 's'}` }] : [], [{ v: 'no', label: 'Not yet' }]), fuuka: navLine(far ? 'skip' : 'stairs') });
+        body: `<p>The stairs lead ${DUN.up} to <b>${esc(next.label)}</b>${next.block !== floor.block ? `, into <b>${esc(next.block)}</b>` : ''}.</p>`,
+        buttons: [{ v: 'up', label: `Go ${DUN.up} to ${next.label}`, pink: true }].concat(far ? [{ v: 'skip', label: `${DUN.climb} on to ${far.label}`, small: `Past ${nskip} mapped landing${nskip === 1 ? '' : 's'}` }] : [], [{ v: 'no', label: 'Not yet' }]), fuuka: navLine(far ? 'skip' : 'stairs') });
       if (v === 'skip' && far) { run.skipTo = sk; mark('stairs-skip'); return 'up'; }
       return v === 'up' ? 'up' : null;
     }
@@ -2196,7 +2199,7 @@
     const el = show(`${ART.defs()}
       <div class="bt-bg" style="background-image:url('${floor.bg}')"></div>${floor.epi ? `<div class="bt-epi-over" style="background-image:url('${floor.over}')"></div><div class="bt-epi-tint"></div>` : ''}<div class="bt-floor"></div><div class="bt-shade"></div>
       <header class="bt-top">
-        <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>${floor.boss && !floor.reaper ? 'Full Moon Operation' : 'Tartarus'}</em></span></div>
+        <div class="bt-floorlabel"><b>${esc(floor.label)}</b><span>${esc(floor.block)}<em><br>${floor.boss && !floor.reaper ? 'Full Moon Operation' : esc(DUN.name)}</em></span></div>
         <ol class="bt-order" aria-label="Turn order"></ol>
         <div class="bt-tools">${tools('battle')}</div>
       </header>
@@ -5337,18 +5340,18 @@
     const mates = hoAvail().length > 1;
     const el = show(`<div class="bt-hub-copy">
         <p class="bt-kicker">${esc(HO.date ? `${HO.date.md} ${HO.date.weekday || ''}` : '')} · The Dark Hour<span class="bt-diff d-${esc(ST().difficulty)}" title="Difficulty (change it in Settings)">${esc(diff().name)}</span></p>
-        <h1>TARTARUS<small>${esc(R.title && R.title !== 'Tartarus' ? R.title : 'Tonight’s climb')}</small></h1>
+        <h1>${esc(DUN.caps)}<small>${esc(R.title && R.title !== 'Tartarus' && R.title !== DUN.name ? R.title : DUN.tonight)}</small></h1>
         <div class="bt-hub-menu">
           ${cont ? `<button type="button" class="bt-btn pink" data-go="cont"><span>Continue from ${esc(cont.label)}</span><small>Access point · ${esc(cont.block)}</small></button>` : ''}
-          <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? 'Enter Tartarus' : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
+          <button type="button" class="bt-btn${cont ? '' : ' pink'}" data-go="run"><span>${start.fi === 0 && start.bi === 0 ? `Enter ${DUN.name}` : `Enter at ${esc(start.label)}`}</span><small>${esc(start.block)} · open up to ${esc(top.label)}</small></button>
           ${warpBtn(start.id)}
           <button type="button" class="bt-btn bt-menu-btn" data-go="menu"><span>Menu</span><small>${mates ? `Party ${save.party.length + 1}/4 · ` : ''}Personas · Equipment · Items</small></button>
           <button type="button" class="bt-btn" data-go="tree"><span>Skills</span><small>Haenim · ${save.pts} SP</small></button>
         </div>
-        <p class="bt-hub-hint">${esc(NAVI.name)} is navigating. ${R.condition === 'tired' || R.condition === 'sick' ? 'Solar is already tired; she’ll fight below her best tonight.' : 'Climb as far as you like, then leave at an access point.'}</p>
+        <p class="bt-hub-hint">${esc(NAVI.name)} is navigating. ${R.condition === 'tired' || R.condition === 'sick' ? 'Solar is already tired; she’ll fight below her best tonight.' : `${DUN.hint}, then leave at an access point.`}</p>
       </div>
       <div class="bt-hub-fig" aria-hidden="true"><i class="band"></i><img src="${hubFig()}" alt=""></div>
-      ${hubSolar(`<p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · best ${esc(R.bestFloor ? `${R.bestFloor}F` : 'none yet')} · ${save.ops.cleared.length} full moon${save.ops.cleared.length === 1 ? '' : 's'} cleared</p>`)}
+      ${hubSolar(`<p class="bt-meta"><span class="bt-yen">${ICON.svg('yen')}${yen(save.yen)}</span> · best ${esc(R.bestFloor ? DUN.floor(R.bestFloor) : 'none yet')} · ${save.ops.cleared.length} full moon${save.ops.cleared.length === 1 ? '' : 's'} cleared</p>`)}
       <div class="bt-top" style="justify-content:flex-end"><button type="button" class="bt-tool" data-go="dorm"><span>‹ Return to the dorm</span></button><div class="bt-tools" style="margin-left:8px">${tools()}</div></div>`, 'bt-hub bt-hub-ho');
     wireTools(el);
     el.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => {

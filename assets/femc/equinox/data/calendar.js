@@ -1,7 +1,7 @@
 /* Persona 3: Equinox · the in-game year (femc-equinox.html): 4/6/2010 to the first week of March 2011.
    The same shape as Solstice's assets/femc/game/data/calendar.js (core.js reads it the same way; see EQUINOX-TECH.md).
    Dates are 'M/D' (April to December are 2010; January to March are 2011). Calendar only: no story events; operations as the story
-   batches write them (`ops`); no trips, no Tartarus floor caps yet.
+   batches write them (`ops`); no trips; the Well's floor caps since battle side 1.
    - The year mirrors Solstice's: day 0 is 4/6 (a Tuesday in 2010), the opening ceremony on 4/8, school Monday to Saturday,
      Sundays, `holidays` and `breaks` off, four exam weeks on the same weeks of the term, summer break 7/21-8/31, winter
      break 12/24-1/7, graduation in the first days of March.
@@ -15,8 +15,8 @@
    - `end`: in the first week of March 2011 and must stay well before 3/11/2011 (the Tohoku earthquake and tsunami: never in
      range, never mentioned). The end date, graduation and the final stretch may move once the plot writer decides (the
      private plot file decides; this file doesn't read it).
-   - `ops`: the full-moon operations written so far (Act I: 4/28, 5/28; Act II: 6/26, 7/26). `trips`, `floorCaps`, `ngpFloorCaps`: empty until
-     the story batches (the Well's floor caps will go here). */
+   - `ops`: the full-moon operations written so far (Act I: 4/28, 5/28; Act II: 6/26, 7/26). `trips`, `ngpFloorCaps`: empty until the story
+     batches. `floorCaps`: the Well's (battle side 1). */
 window.FEMC_GAME_CALENDAR = {
   // `year` + `start` are day 0 for core.js's date maths; a month before April is in the next year (2011).
   year: 2010, start: '4/6', firstFree: '4/8', end: '3/6',
@@ -71,7 +71,9 @@ window.FEMC_GAME_CALENDAR = {
     { date: '6/26', op: 'eqx-second-hill', name: 'The Second Hill', kind: 'operation', scripted: true },
     { date: '7/26', op: 'eqx-third-hill', name: 'The Third Hill', kind: 'operation', scripted: true }
   ],
-  floorCaps: [],
+  // The Well (battle side 1; assets/femc/equinox/battle/well.js): the deepest floor open from each date (a block opens when the
+  // cap reaches its last floor; going below a block also needs its full moon). The first date opens the Well at night at all.
+  floorCaps: [['5/29', 60], ['6/27', 95], ['7/27', 130], ['10/24', 165], ['11/23', 200], ['12/22', 232]],
   ngpFloorCaps: [],
   // Fixed weather: only the first days for now (the story batches add the days their scenes describe).
   weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear',

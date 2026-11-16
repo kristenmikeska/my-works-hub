@@ -68,7 +68,8 @@
     { s: 'shinjiro', f: 'neutral', t: "...You asking?" },
     { s: 'mitsuru', f: 'neutral', t: "I'm telling you it's here." },
     { n: "He picked it up with his left hand. He looked at it for a long time. Then he put it in his coat pocket, the same pocket as the folded goal sheet, and Solar, in the doorway, realised she'd been holding her breath, and that Akihiko beside her had been holding his, and that neither of them had noticed the other doing it." },
-    { flag: 'eqx-shinjiro-back' }
+    { flag: 'eqx-shinjiro-back' },
+    { join: 'shinjiro' }
   ] },
 
   { id: 'eqx-violinist', date: '6/3', slot: 'lunch', consumes: true, title: 'the violinist on the bridge', place: 'Gekkoukan High · Classroom 3-F', time: 'Lunchtime',

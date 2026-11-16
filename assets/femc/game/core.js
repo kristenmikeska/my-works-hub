@@ -905,7 +905,7 @@ window.FemcGame = (() => {
     if (line.register) { if (!S.registered.includes(line.register)) { S.registered.push(line.register); if (!line.quiet) toast('register', `Registered to the Compendium: ${CAST[line.register] || line.register}`); } did = true; }
     if (line.join) { if (!S.joined.includes(line.join)) { S.joined.push(line.join); S.flags[`joined-${line.join}`] = true; toast('join', `${CAST[line.join] || line.join} joined S.E.E.S.`); } did = true; }
     if (line.end) { S.flags['the-end'] = line.end; did = true; }
-    if (line.unlock) { S.unlocked[line.unlock] = true; if (line.unlock === 'tartarus') toast('unlock', 'Tartarus is open at night.'); did = true; }
+    if (line.unlock) { S.unlocked[line.unlock] = true; if (line.unlock === 'tartarus') toast('unlock', `${CFG.dungeon?.name || 'Tartarus'} is open at night.`); did = true; }
     if (did) save();
     return did;
   }
@@ -2828,14 +2828,19 @@ window.FemcGame = (() => {
   }
 
   /* ── Tartarus and the battle handoff (see FEMC-GAME-HANDOFF.md) ── */
-  const partyDef = () => D.stats.party;
+  /* Another game's roster (FEMC_GAME_CONFIG.party / .navigators, same shape as stats.js; Equinox: who fights from when). With
+     a config roster, Junpei needs no { join } line like everyone else; Solstice (unset) is unchanged. */
+  const partyDef = () => CFG.party || D.stats.party;
   function available(d = S.day) {
-    return partyDef().filter(m => d >= dayOf(m.joins) && (!m.leaves || d <= dayOf(m.leaves)) && (m.leader || S.joined.includes(m.id) || (!m.flag && m.id !== 'junpei') || (m.flag && flag(m.flag)))).map(m => m.id);
+    return partyDef().filter(m => d >= dayOf(m.joins) && (!m.leaves || d <= dayOf(m.leaves)) && (m.leader || S.joined.includes(m.id) || (!m.flag && (CFG.party || m.id !== 'junpei')) || (m.flag && flag(m.flag)))).map(m => m.id);
   }
-  const navigator = (d = S.day) => (D.stats.navigators.find(n => d >= dayOf(n.from) && (!n.to || d <= dayOf(n.to))) || {}).id || null;
+  // The dungeon is open at night: an { unlock: 'tartarus' } line, or (another game's dungeon, CFG.dungeon) once the calendar's
+  // floorCaps open its first floors (Equinox's Well).
+  const dungeonOpen = () => !!S.unlocked.tartarus || (!!CFG.dungeon && floorCap() > 0);
+  const navigator = (d = S.day) => ((CFG.navigators || D.stats.navigators).find(n => d >= dayOf(n.from) && (!n.to || d <= dayOf(n.to))) || {}).id || null;
   function tartarusOk() {
     const info = dayInfo();
-    if (!S.unlocked.tartarus) return { ok: false, why: 'Not yet' };
+    if (!dungeonOpen()) return { ok: false, why: 'Not yet' };
     if (info.moon.full) return { ok: false, why: 'Full moon tonight' };
     if (info.exam || examOn(S.day + 1)) return { ok: false, why: 'Exams. Mitsuru says no.' };
     if (S.condition === 'sick') return { ok: false, why: 'Too sick' };
@@ -3116,7 +3121,7 @@ window.FemcGame = (() => {
     rankHint, whoFree, goneLinks, contactCard, noteGift, giftItem, giftShop, giftBag, addGift, giftTier, giftFans, canGift, giftPoints, giveGift, keepsakes, GIFT_TIERS, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
-    available, navigator, tartarusOk, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
+    available, navigator, tartarusOk, dungeonOpen, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,
     setBattleSave, ensureBattleSave,
     SLOTS, saveSlot, readSlot, loadSlot, slotLabel, slotInfo, exportCode, importCode, hasSave, deleteSave, sandbox, sandboxed,
     setWorld, world, money, freshState, adoptState, noWorld, replayWorld, CLEARS_KEY

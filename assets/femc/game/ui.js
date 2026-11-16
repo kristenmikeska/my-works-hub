@@ -20,6 +20,9 @@
   // keep a frame's page in their cache and don't check it again on a reload (python's http.server sends no Cache-Control,
   // GitHub Pages caches for ten minutes), so without it an old femc-battle.html, with its old ?v= scripts and styles,
   // could run inside the game after an update. The page is small; its scripts and styles still cache by their own ?v=.
+  // The dungeon's words (FEMC_GAME_CONFIG.dungeon: Equinox's Well); unset = Tartarus's, exactly as before.
+  const DG = Object.assign({ name: 'Tartarus', from: 'Tartarus', go: 'Climb tonight.', ask: 'Climb tonight?', enter: 'Enter Tartarus',
+    explore: 'Climb, fight, find what\'s in the chests, come home before the hour ends.', floor: n => `${n}F` }, (window.FEMC_GAME_CONFIG || {}).dungeon || {});
   const battleSrc = () => { const p = new URLSearchParams(location.search), q = ['seed', 'speed'].filter(k => p.has(k)).map(k => `&${k}=${encodeURIComponent(p.get(k))}`).join(''); return `${G.base}femc-battle.html?embed=1${q}&fresh=${Date.now().toString(36)}`; };
   // ?debug=1 keeps the Simulate buttons on fight cards (remembered for this tab's session, so it survives the round trip).
   const DEBUG = (() => { try { if (/[?&]debug=1\b/.test(location.search)) sessionStorage.setItem('kg-femc-debug', '1'); if (/[?&]debug=0\b/.test(location.search)) sessionStorage.removeItem('kg-femc-debug'); return sessionStorage.getItem('kg-femc-debug') === '1'; } catch (e) { return /[?&]debug=1\b/.test(location.search); } })();
@@ -432,7 +435,7 @@
   }
   function battleCard(battle, resumeInfo, cont, kind) {
     kind = kind || battle.kind || (battle.script ? 'scripted' : battle.op ? 'operation' : 'tartarus');
-    const title = battle.title || (kind === 'tartarus' ? 'Tartarus' : battle.op ? 'Full Moon Operation' : 'Battle');
+    const title = battle.title || (kind === 'tartarus' ? DG.name : battle.op ? 'Full Moon Operation' : 'Battle');
     const req = { op: battle.op, ops: battle.ops, script: battle.script, segment: battle.segment, title, desc: battle.desc, notes: battle.notes || null, forced: battle.forced !== false && kind !== 'tartarus', party: battle.party, epi: battle.epi || null, trial: battle.trial || null };
     const seg1 = battle.script && battle.segment === 1;
     // The Dark Hour transition carries the fight's title.
@@ -492,7 +495,7 @@
     if (!h || dh) return;
     const R = h.request || {}, kind = h.kind;
     const kicker = kind === 'trial' ? 'The Velvet Room · Velvet Trial' : kind === 'operation' || (R.op && kind !== 'tartarus') ? 'Full Moon · The Dark Hour' : 'The Dark Hour';
-    const title = R.title || (kind === 'tartarus' ? 'Tartarus' : 'Battle');
+    const title = R.title || (kind === 'tartarus' ? DG.name : 'Battle');
     // Loading stills by fight type (batch 66): a Tartarus night shows Tartarus over the gate (loading-1); every other fight
     // (full-moon operations and story fights) shows the dorm lounge at midnight (loading-2). An epilogue world's fights show
     // that world at midnight (Kat's loading-<world> stills, Oct 31 2026).
@@ -602,7 +605,7 @@
     const opName = id => G.D.battle.ops?.find(o => o.id === id)?.name || G.D.cal.ops.find(o => o.op === id)?.name || id;
     const word = sum.outcome === 'win' ? (h.kind === 'tartarus' ? 'Back safe' : 'Victory') : sum.outcome === 'interrupt' ? 'Interrupted' : sum.outcome === 'lose' ? 'Defeated' : 'Retreated';
     const o = overlay(`<div class="g-results">
-      <p class="g-kicker">${esc(h.date?.md || '')} · ${h.kind === 'tartarus' ? 'Back from Tartarus' : 'The Dark Hour'}${sum.simulated ? ' · simulated' : ''}</p>
+      <p class="g-kicker">${esc(h.date?.md || '')} · ${h.kind === 'tartarus' ? `Back from ${DG.from}` : 'The Dark Hour'}${sum.simulated ? ' · simulated' : ''}</p>
       <h2 class="g-res-word">${esc(word)}<small>Results</small></h2>
       ${exp.length ? `<ul class="g-exp">${exp.map(([m, x]) => `<li><b>${esc(G.name(m))}${lv[m] ? `<small>Lv ${lv[m]}</small>` : ''}</b><span>+${x} EXP</span></li>`).join('')}</ul>` : ''}
       <ul class="g-gains">${sum.yen ? `<li class="yen">${sum.yen > 0 ? '+' : '−'}¥${Math.abs(sum.yen).toLocaleString()}</li>` : ''}${sum.items.map(([k, n]) => `<li>${esc(G.D.battle.items?.[k]?.name || k)} ${n > 0 ? `×${n}` : `used ×${-n}`}</li>`).join('')}${sum.bosses.length ? `<li class="boss">Cleared: ${sum.bosses.map(b => esc(opName(b))).join(', ')}</li>` : ''}${sum.fragments.map(f => `<li class="frag">Memory fragment: ${esc(G.fragmentInfo(f).title)}</li>`).join('')}${h.kind === 'tartarus' && S().tartarus.maxFloor ? `<li>Best floor: ${S().tartarus.maxFloor}F</li>` : ''}</ul>
@@ -1624,7 +1627,7 @@
     show(`${fig}<section class="g-dorm"><div class="g-map-head" data-ghost="Evening"><p class="g-kicker">Evening · Iwatodai Dorm</p><h1>Tonight</h1>
       <p class="g-map-sub">${info.moon.days != null && info.moon.days <= 3 && !info.moon.full ? `The moon is almost full. ${info.moon.days} day${info.moon.days === 1 ? '' : 's'} to go.` : esc(G.crushLine('evening.sub') || 'The lounge smells like instant ramen. What now?')}</p></div>
       <div class="g-nights">
-        ${s.unlocked.tartarus ? opt('tartarus', 'Tartarus', tt.ok ? `Climb tonight. Solar will be tired tomorrow.${s.condition === 'tired' ? ' She’s already tired.' : ''}` : tt.why, tt.ok, 'tt') : ''}
+        ${G.dungeonOpen() ? opt('tartarus', DG.name, tt.ok ? `${DG.go} Solar will be tired tomorrow.${s.condition === 'tired' ? ' She’s already tired.' : ''}` : tt.why, tt.ok, 'tt') : ''}
         ${opt('study', 'Study', G.studyInfo(), true)}
         ${book ? opt('read', 'Read', G.bookById(book)?.name || 'A book') : ''}
         ${dorm.filter(a => !a.desk).map(a => { const ok = G.dormOk(a), pv = G.dormInfo(a); return opt(`dorm:${a.id}`, esc(a.name), ok.ok ? `${pv.benefit}${a.cost ? ` · ¥${a.cost.toLocaleString()}` : ''}` : ok.why, ok.ok, a.perk ? 'perk' : ''); }).join('')}
@@ -1781,11 +1784,11 @@
     // Only suggest companions before the first selection; an empty saved team is intentional.
     let party = Array.isArray(s.tartarus.lastParty) ? s.tartarus.lastParty.filter(x => av.includes(x)) : av.slice(0, 3);
     const nav = G.navigator();
-    const o = overlay(`<div class="g-tt"><p class="g-kicker">The Dark Hour · Tartarus</p><h2>Climb tonight?<small>Floors open up to ${G.floorCap()}F · best ${s.tartarus.maxFloor || 0}F</small></h2>
+    const o = overlay(`<div class="g-tt"><p class="g-kicker">The Dark Hour · ${esc(DG.name)}</p><h2>${esc(DG.ask)}<small>Floors open up to ${DG.floor(G.floorCap())} · best ${DG.floor(s.tartarus.maxFloor || 0)}</small></h2>
       <p>Pick up to three to go in with Solar.${nav ? ` ${esc(G.name(nav))} will navigate.` : ''}</p>
       <div class="g-party"><span class="g-chip on lock">Solar</span>${av.map(m => `<button type="button" class="g-chip${party.includes(m) ? ' on' : ''}" data-m="${m}" aria-pressed="${party.includes(m)}">${esc(G.name(m))}</button>`).join('')}</div>
       ${s.condition === 'tired' ? '<p class="g-warn">Solar is already Tired. Going again will make her Sick.</p>' : ''}
-      <div class="g-row"><button type="button" class="g-btn pink" data-go>Enter Tartarus</button><button type="button" class="g-btn" data-menu>Party &amp; equipment</button><button type="button" class="g-btn" data-close>Not tonight</button></div></div>`, 'g-tt-ov');
+      <div class="g-row"><button type="button" class="g-btn pink" data-go>${esc(DG.enter)}</button><button type="button" class="g-btn" data-menu>Party &amp; equipment</button><button type="button" class="g-btn" data-close>Not tonight</button></div></div>`, 'g-tt-ov');
     // The field menu (party, tactics, equipment) on top; the chips here follow what it changed.
     o.el.querySelector('[data-menu]').addEventListener('click', () => {
       s.tartarus.lastParty = [...party];
@@ -1805,7 +1808,7 @@
       s.tartarus.lastParty = [...party];
       G.save();
       o.close();
-      battleCard({ title: 'Tartarus', desc: `Explore Tartarus with ${['Solar', ...party.map(G.name)].join(', ')}. Climb, fight, find what's in the chests, come home before the hour ends.`, party: ['solar', ...party], forced: false }, null, () => {
+      battleCard({ title: DG.name, desc: `Explore ${DG.from} with ${['Solar', ...party.map(G.name)].join(', ')}. ${DG.explore}`, party: ['solar', ...party], forced: false }, null, () => {
         s.spent[`${s.day}-evening`] = 'tartarus';
         G.save();
         advance();

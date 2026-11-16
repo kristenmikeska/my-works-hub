@@ -59,6 +59,30 @@ window.FEMC_GAME_CONFIG = {
     const well = kind === 'tartarus' || /^eqx-(well|first-hill|second-hill|third-hill)/.test(String(id)); // the Well's own fights (the Hills' full moons: 5/28, 6/26, 7/26)
     return `assets/femc/equinox/art/loading-${well ? 'well' : 'between'}.webp?v=1`;
   },
+  /* Battle side 1 (Nov 15; EQUINOX-TECH.md "Battle side 1: party and the Well"):
+     party / navigators  who can fight, and from when (core.js available / navigator; stats.js's shape). Everyone S.E.E.S. had on
+                         4/8 plus the four who came back with Personas; Shinjiro once his { join } line plays (story-act2.js, 5/29).
+     dungeon             the Well's words in the life sim (ui.js DG, core.js unlock toast) and its opening: the evening option
+                         shows once calendar.js floorCaps opens a floor (core.js dungeonOpen). The battle frame's blocks are
+                         assets/femc/equinox/battle/well.js. */
+  party: [
+    { id: 'solar', name: 'Solar', joins: '4/6', leader: true },
+    { id: 'haechan', name: 'Haechan', joins: '4/8' },
+    { id: 'akihiko', name: 'Akihiko', joins: '4/8' },
+    { id: 'mitsuru', name: 'Mitsuru', joins: '4/8' },
+    { id: 'yukari', name: 'Yukari', joins: '4/8' },
+    { id: 'junpei', name: 'Junpei', joins: '4/8' },
+    { id: 'aigis', name: 'Aigis', joins: '4/8' },
+    { id: 'ken', name: 'Ken', joins: '4/8' },
+    { id: 'koromaru', name: 'Koromaru', joins: '4/8' },
+    { id: 'jungwon', name: 'Jungwon', joins: '4/8' },
+    { id: 'jihoon', name: 'Jihoon', joins: '4/8' },
+    { id: 'minji', name: 'Minji', joins: '4/8' },
+    { id: 'shinjiro', name: 'Shinjiro', joins: '5/29', flag: 'joined-shinjiro' }
+  ],
+  navigators: [{ id: 'fuuka', from: '4/6' }],
+  dungeon: { name: 'The Well', from: 'the Well', go: 'Go down tonight.', ask: 'Go down tonight?', enter: 'Go down the Well',
+    explore: 'Go down, fight, find what\'s in the chests, come back up before the hour ends.', floor: n => (n ? `B${n}F` : 'none yet') },
   // Go Out map pins for Equinox's own areas (data/places-extra.js), in % of the map art.
   mapPins: { okahouse: { x: 24, y: 24, l: 1 } },
   titlePage: 'femc-equinox.html',
