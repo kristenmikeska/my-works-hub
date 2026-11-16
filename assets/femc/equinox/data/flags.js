@@ -2,8 +2,8 @@
    Saved with the game, never shown. What they mean is in the private plan, not here.
    - counters: numbers scene choices add to with { tally: { name: n } }.
    - choices: one-off answers recorded with { tally: { name: 'value' } }.
-   - hooks / cosmetic: flags reserved for later scenes (set with { flag: 'id' }). Act I (data/story-act1.js) and Act II (story-act2.js) set the ones
-     listed; nothing reads them yet.
+   - hooks / cosmetic: flags reserved for later scenes (set with { flag: 'id' }). Act I (data/story-act1.js), Act II (story-act2.js) and Act III
+     (story-act3.js) set the ones listed; nothing reads them yet (Act III reads a few of its own and the romance ranks' kiss flags).
    endingName(flags): the name written into Equinox's clears list ('kg-femc-equinox-clears') at the end; core.js calls it in
    place of Solstice's route-* names. */
 window.FEMC_GAME_FLAGS = {
@@ -18,7 +18,11 @@ window.FEMC_GAME_FLAGS = {
   counters: ['cakes', 'choose', 'asked', 'doors.R', 'doors.S', 'doors.H'],
   choices: ['asks.solar.supper', 'asks.solar.smile', 'asks.solar.tide', 'asks.solar.vp',
     // Romance rank 3s (data/links/<id>.js): each link's own ask, 'yes' / 'no' / 'choose'.
-    'asks.akihiko', 'asks.shinjiro', 'asks.jungwon', 'asks.jihoon', 'asks.minji'],
+    'asks.akihiko', 'asks.shinjiro', 'asks.jungwon', 'asks.jihoon', 'asks.minji',
+    // Act III (data/story-act3.js): Solar's own asks on the trip and for the moon.
+    'asks.solar.ferry', 'asks.solar.moon',
+    // Non-romance rank 3s (links/junpei, ken-koromaru, yunjin, jaehyun, cherry, rio-saori): each link's own ask.
+    'asks.junpei', 'asks.ken-koromaru', 'asks.yunjin', 'asks.jaehyun', 'asks.cherry', 'asks.rio-saori'],
   hooks: ['eqx-supper-stayed', 'eqx-supper-mine', 'eqx-asked-hyein', 'eqx-choose-hyein', 'eqx-hill1-smiled', 'eqx-hill1-mine',
     'eqx-door-R1', 'eqx-home-R1', 'eqx-away-R1', 'eqx-watch-R1',
     // Act II (data/story-act2.js): the owed Act I doors (S1, H1), Act II's doors (S2, R2, H2), the hills' asks, the ghost
@@ -29,11 +33,21 @@ window.FEMC_GAME_FLAGS = {
     'eqx-hill2-sat', 'eqx-hill2-mine', 'eqx-hill3-signed', 'eqx-hill3-mine', 'eqx-asked-house', 'eqx-choose-house',
     'eqx-ghost-junpei', 'eqx-ghost-minji', 'eqx-ghost-ken', 'eqx-bridge-name', 'eqx-shinjiro-back', 'eqx-lsrfm-here',
     // Romance rank 3s.
-    'eqx-asked-akihiko', 'eqx-hc-stayed-night'],
+    'eqx-asked-akihiko', 'eqx-hc-stayed-night',
+    // Act III (data/story-act3.js).
+    'eqx-aigis-exception', 'eqx-jaehyun-told', 'eqx-asked-jaehyun', 'eqx-choose-jaehyun', 'eqx-ferry-stayed', 'eqx-ferry-mine',
+    'eqx-hanne-told', 'eqx-parents-here', 'eqx-moon-stayed', 'eqx-moon-mine', 'eqx-aigis-forty', 'eqx-mothers-taken', 'eqx-saw-face',
+    'eqx-face-told', 'eqx-face-kept', 'eqx-hanne-hand'],
   cosmetic: ['eqx-flour-wiped', 'eqx-flour-shown', 'eqx-gw-ate', 'eqx-gw-left', 'eqx-gw-dog', 'eqx-tale-tiger',
     'eqx-shin-tin', 'eqx-mark-fifth', 'eqx-wish-home', 'eqx-wish-here', 'eqx-wish-blank', 'eqx-jihoon-roof',
     // Romance rank 3s.
     'eqx-hc-note-kept', 'eqx-aki-gate-kiss', 'eqx-shinji-pan', 'eqx-shinji-sink-kiss', 'eqx-jw-locked-door', 'eqx-jihoon-canal-kiss',
-    'eqx-minji-on-tape', 'eqx-minji-turned'],
+    'eqx-minji-on-tape', 'eqx-minji-turned',
+    // Act III.
+    'eqx-danced-left', 'eqx-wake-box', 'eqx-wheel-jungwon', 'eqx-fireworks-haechan', 'eqx-fireworks-jungwon', 'eqx-fireworks-jihoon',
+    'eqx-fireworks-akihiko', 'eqx-fireworks-minji', 'eqx-fireworks-shinjiro', 'eqx-fireworks-girls', 'eqx-tin-parents', 'eqx-box-empty',
+    'eqx-songpyeon-ate',
+    // Non-romance rank 3s.
+    'eqx-yunjin-dark'],
   endingName: () => 'here'
 };

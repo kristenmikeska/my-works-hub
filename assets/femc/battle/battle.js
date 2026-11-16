@@ -5451,6 +5451,15 @@
     'eqx-third-hill': () => [{ group: ['ballot_box@24', 'group_chat@21', 'group_chat@21'], bg: BGP + 'eq-well-5.webp', label: 'Full Moon', block: 'The Well · The Third Hill', boss: true, music: 'boss',
       op: { id: 'eqx-third-hill', name: 'The Third Hill', arcana: 'Full Moon · July' }, title: 'Full Moon · The Third Hill',
       rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'ballot_box' ? 'The Third Hill' : 'Faceless Voter'; }) } }],
+    // Act III (assets/femc/equinox/data/story-act3.js): two town operations under the red filter, neither in the Well. 8/25: a
+    // dining room in the red (the boarding house; the dorm lounge's Dark Hour art stands in); 9/23: Moonlight Bridge. Levels step
+    // up from 7/26 (~24): 8/25 ~29, 9/23 ~33.
+    'eqx-table-op': () => [{ group: ['fortune@29', 'maiden@26', 'maiden@26'], bg: BGP + 'darkhour-dorm-lounge.webp', label: 'Full Moon', block: 'Iwatodai · The Red Hour', boss: true, music: 'boss',
+      op: { id: 'eqx-table-op', name: 'The Long Table', arcana: 'Full Moon · August' }, title: 'Full Moon · The Long Table',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'fortune' ? 'The Long Table' : 'Empty Chair'; }) } }],
+    'eqx-equinox': () => [{ group: ['justice@33', 'effigy@30', 'effigy@30', 'effigy@30'], bg: BGP + 'darkhour-moonlight-bridge.webp', label: 'Full Moon', block: 'Moonlight Bridge · The Red Hour', boss: true, music: 'boss',
+      op: { id: 'eqx-equinox', name: 'The Equinox', arcana: 'Full Moon · September' }, title: 'Full Moon · The Equinox',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'justice' ? 'The Equinox' : 'Worn Detail'; }) } }],
     // 4/9: the first fight on purpose, on the dorm roof.
     magician: () => [{ group: ['magician'], bg: BGP + 'iwatodaidorm-roof-night.webp', label: 'Full Moon', block: 'Iwatodai Dorm · Roof', boss: true, music: 'boss',
       op: { id: 'magician', name: 'The Magician', arcana: 'I · Magician' }, title: 'Full Moon · The Magician', rules: { noEscape: true } }],
