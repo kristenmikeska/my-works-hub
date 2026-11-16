@@ -48564,6 +48564,258 @@
    "status": "integrated",
    "destination": "assets/femc/equinox/art/personas/hyein-concept.webp",
    "placement": "Equinox 7C: Hyein Persona concept (reference only)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/angry.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "47ee7a5e00cd03d4019822ef30ed794189a1a9805db66755421514f3ddc2cef6",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/angry.webp",
+   "placement": "Equinox: Haechan's restyled angry face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/blushing.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "9a049ef468f16961de50746de363d6a2d0ecaef8c24c6ad43f0d9dc4ba939ef3",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/blushing.webp (+ flustered.webp)",
+   "placement": "Equinox: Haechan's restyled blushing face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/happy.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "da434753e748b19969fd77516e0a9f1a8b3de579ac4e3f020ebd9bef4d9ac123",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/happy.webp",
+   "placement": "Equinox: Haechan's restyled happy face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/neutral.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "4d50f785de1bd7922ef219a4a06baea60f9ff8bd26137af63650c12013b6f7ec",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/neutral.webp",
+   "placement": "Equinox: Haechan's restyled neutral face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/sad.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "5134c2437df332598620c7fec21ced8f9743c7ff8862cf99d2e1bfb2b51b8598",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/sad.webp",
+   "placement": "Equinox: Haechan's restyled sad face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/serious.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "2cf672f9bd1fefd71f276edfcaecee57dae47139608461becee2f736b8363559",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/serious.webp",
+   "placement": "Equinox: Haechan's restyled serious face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/smirk.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "d60759e4552ba54b72955f8bf70a8fbda15eb643298f37d81a298d292a244ca4",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/smirk.webp",
+   "placement": "Equinox: Haechan's restyled smirk face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/haechan revamp portraits - art style edit/surprised.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "658aa5511ad6cb393e1c8a3cc8353a618b8f734ba20a38c6c057de4001bf77fc",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/haechan-equinox/surprised.webp",
+   "placement": "Equinox: Haechan's restyled surprised face (replaces the Nov 15 single)"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-chaewon-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "40ab899f140e3b9461359d9b424e4df5f99b865c853bd089d06b79b1c689d9d5",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/chaewon/",
+   "placement": "Equinox 9A Chaewon faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-sakura-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "6226b7605e1a2d2f8f03a6362246fa0bf6adc2a31b6111c90437f73eb3175641",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/sakura/",
+   "placement": "Equinox 9B Sakura faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-kazuha-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "22a85b38b65d4ffa17d29c07176d0ac2ed341ee5dadd93f99910c85bd6cf469b",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/kazuha/",
+   "placement": "Equinox 9C Kazuha faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-eunchae-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "4d3c7a904ec65f3f630c3f2a51618da511fdf5e82cecbe4e91b979bd02e41d41",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/eunchae/",
+   "placement": "Equinox 9D Eunchae faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-jaesang-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "b951ad5e945272bba932ee7d1008637b577953e0393f44a5254772bc0ac5e59d",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jaesang-equinox/",
+   "placement": "Equinox 9E Jaesang (speaker jaesang-runners) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-solji-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "49b41fa0b836e80a42dae9a0441468d1899c98d2a944fc41c70a0599ef834915",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solji-equinox/",
+   "placement": "Equinox 9F Solji (speaker solji-runners) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-taejoon-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "952d9c392a0920df48e8ed7ea23856771b1ee70ce38e8469455f97c8b4f91284",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/taejoon-equinox/",
+   "placement": "Equinox 9G Taejoon (speaker taesang-strangers) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-miseon-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "4eb565a93c230cd43b01b10b57b3507aa7dc8023374df7de2f32181b34b54f1e",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/miseon-equinox/",
+   "placement": "Equinox 9H Miseon (speaker miyeon-strangers) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-kimdad-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "799b6224415f862c01edc9d18e38b41fa0599aad0103956081ae8fa6b284e028",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/kimdad-equinox/",
+   "placement": "Equinox 9I Mr. Kim (speaker kim-dad) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-kimmom-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "26d8cbd6c9bb2bf4ebe49685a04b6cdaf7e6de5cca7a596fca7cc964a7be942b",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/kimmom-equinox/",
+   "placement": "Equinox 9J Mrs. Kim (speaker kim-mom) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-theodore-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "a00d25b2ac51aef3e9ffe06f99c97b64a592a8adea6ec8e7ade0ab35059d09da",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/theodore/",
+   "placement": "Equinox 9K Theodore (RGB checkerboard sheet, Vision-lifted) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-elizabeth-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "01f7aa11447e848b3f02c0634acf9f287e3cb1a25211a5d5872dcb0b2fd97d43",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/elizabeth-equinox/",
+   "placement": "Equinox extra: Elizabeth Equinox faces (RGB checkerboard sheet, Vision-lifted; cell 6 = wink) faces"
+  },
+  {
+   "batch": 164,
+   "source": "../Equinox/eq-haenim-rework.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "f66f28c0ef777ce79306d9c2ea0c38ef9b41a59ebc21a1239dec92eb793b17b4",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/personas/haenim.webp",
+   "placement": "Equinox 9L: Haenim's Equinox look (config.js art: Personas tab, Forms, battle frame, { summon })"
   }
  ],
  "batch1Validation": {
@@ -50083,5 +50335,10 @@
   "date": "2026-11-15",
   "checks": "jsc (prologue, story-opening, story-act1, links/mrsoka, places-extra, scene.js, battle.js, portraits index/scale/place, placements-data.js); every Equinox bg/cg name exists; built-in pane: prologue CGs and Well bottom, courtyard night and day, 4/9 boarding house gate + kitchen with Mrs. Oka, CG focus, Go Out okahouse panel, eqx-well-1 fight backdrop; femc-game.html title loads",
   "note": "Equinox art batch 2: 14 files from Femc Mode Images/Equinox/ (sources stay there, unchanged; source paths are relative to New Adds). 7C and 8A-8M. Kat saved 8G as mrs-oka-portraits.png (list said eqx-mrsoka-portraits.png)."
+ },
+ "batch164Validation": {
+  "date": "2026-11-15",
+  "checks": "jsc (config.js, links.js, battle/data.js, scene.js parse, portraits index/scale/place, placements-data.js); jsc: Persona art swap on with config and off without; built-in pane 1440x900 muted: Haechan next to Solar in his 4/14 rank, LE SSERAFIM / Theodore / six parents in a test scene beside Solar, Elizabeth 4/13 Velvet Room rank, Social Link screen (Chaewon), Personas tab and a summon line with the new Haenim, battle frame inside Equinox swaps Haenim only; femc-game.html Solstice faces and Haenim unchanged, no errors; Equinox test keys removed",
+  "note": "Equinox art batch 3: 22 files from Femc Mode Images/Equinox/ (sources stay there, unchanged; source paths are relative to New Adds). 9A-9L, Haechan's restyle, Elizabeth's Equinox faces. The five newer-looking eqx CGs match batch 163's hashes (unchanged, not redone). Kat saved 9I/9J as eq-kimdad/eq-kimmom-portraits.png and 9L as eq-haenim-rework.png."
  }
 }

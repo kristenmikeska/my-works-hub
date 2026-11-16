@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **69 pictures plus the face sets.** More is coming later (section 13: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs.*
+**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **57 pictures plus the face sets.** More is coming later (section 13: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces.*
 
 ---
 
@@ -125,106 +125,6 @@ A wide 16:9 story CG illustration in Persona 3 Reload official art style, matchi
 ```
 
 If a CG comes back with the wrong number of people or a person who doesn't match, say: "Same picture, but [fix]. Keep everything else."
-
----
-## 9. Personaverse faces and Haenim's new look (ChatGPT)
-Face sheets for the people who only had faces from their own worlds (Equinox happens in the Personaverse, so everyone uses its art style), and a new look for Solar's Persona. Each face sheet copies your new full-body picture of that person.
-
-**[ ] 9A. Chaewon: scene portraits**  
-Chaewon's faces for Equinox scenes, in the game's own art style.  
-Attach: `Yukari.png`, `Body - Chaewon (Equinox).png`  
-Save as: `eq-chaewon-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Chaewon. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9B. Sakura: scene portraits**  
-Sakura's faces for Equinox scenes, in the game's own art style.  
-Attach: `Yukari.png`, `Body - Sakura (Equinox).png`  
-Save as: `eq-sakura-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Sakura. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9C. Kazuha: scene portraits**  
-Kazuha's faces for Equinox scenes, in the game's own art style.  
-Attach: `Yukari.png`, `Body - Kazuha (Equinox).png`  
-Save as: `eq-kazuha-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Kazuha. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9D. Eunchae: scene portraits**  
-Eunchae's faces for Equinox scenes, in the game's own art style.  
-Attach: `Yukari.png`, `Body - Eunchae (Equinox).png`  
-Save as: `eq-eunchae-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Eunchae. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9E. Jaesang (Runners): scene portraits**  
-Jaesang (Runners)'s faces for Equinox scenes, in the game's own art style.  
-Attach: `Akihiko.png`, `Body - Jaesang (Equinox).png`  
-Save as: `eq-jaesang-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Solar's father in Runners. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9F. Solji (Runners): scene portraits**  
-Solji (Runners)'s faces for Equinox scenes, in the game's own art style.  
-Attach: `Mitsuru.png`, `Body - Solji (Equinox).png`  
-Save as: `eq-solji-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Solar's mother in Runners. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9G. Taejoon (strangers): scene portraits**  
-Taejoon (strangers)'s faces for Equinox scenes, in the game's own art style.  
-Attach: `Akihiko.png`, `Body - Taejoon (Equinox).png`  
-Save as: `eq-taejoon-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Solar's father in strangers. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9H. Miseon (strangers): scene portraits**  
-Miseon (strangers)'s faces for Equinox scenes, in the game's own art style.  
-Attach: `Mitsuru.png`, `Body - Miseon (Equinox).png`  
-Save as: `eq-miseon-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Solar's mother in strangers. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9I. Mr. Kim (HOAX): scene portraits**  
-Mr. Kim (HOAX)'s faces for Equinox scenes, in the game's own art style.  
-Attach: `Akihiko.png`, `Body - Mr. Kim (Equinox).png`  
-Save as: `eq-hoaxdad-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Solar's father in HOAX. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9J. Mrs. Kim (HOAX): scene portraits**  
-Mrs. Kim (HOAX)'s faces for Equinox scenes, in the game's own art style.  
-Attach: `Mitsuru.png`, `Body - Mrs. Kim (Equinox).png`  
-Save as: `eq-hoaxmom-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one person in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and head-and-shoulders framing of the FIRST attached image (a portrait from the same game: copy its style and framing only, not the person). The person is the SAME person as the SECOND attached image (same face, hair and clothes): Solar's mother in HOAX. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green unless it's the person's own clothes. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9K. Theodore: scene portraits**  
-Elizabeth's brother, the other Velvet Room attendant.  
-Attach: `Elizabeth.png`  
-Save as: `eq-theodore-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one young man in six head-and-shoulders portraits, same face, same size and framing in every cell. Copy the art style, line weight and framing of the attached image exactly (his sister, from the same game: same uniform design). The person: Theodore from Persona 3 Portable, the Velvet Room attendant: a slim, polite young man with neat platinum-blond hair, pale golden eyes, a deep blue tailored attendant's uniform with a high collar and a black-and-gold tie, white gloves, a calm, slightly too-perfect courteous smile. Cells, in order: neutral, happy, sad, serious, surprised, flustered. No pink, no purple or green. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 9L. Haenim's Equinox look**  
-Solar's Persona, redesigned to match Equinox: the same Lady Sun, darker and in blood red. Change anything.  
-Attach: `Persona - Haenim.png`, `Persona - style (Theia).png`  
-Save as: `eq-persona-haenim.png`
-```
-A single full-body Persona illustration, portrait orientation 2:3, as large and sharp as possible, on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it). The SAME Persona as the FIRST attached image (Haenim, Lady Sun: same face, pose energy, long black hair, sun crown, veil over the eyes, white fox mask pushed to the side, porcelain doll joints at the wrists and ankles, the charms on her sash: a gold bell, a pale jade ring and a small star pin), redesigned for a darker sequel, rendered with the finish and glow of the SECOND attached image (copy its finish only). Change: her gown is now blood red and deep oxblood shading to near-black at the hem, layered and torn a little at the edges as if it has walked through something, with bone-white underlayers and fine gold sun embroidery gone dull; the veil over her eyes is dark red and sheer, lifted a finger's width at one side so a sliver of one eye shows; the sun crown's rays are sharper, longer and fewer, like clock hands, a few of them black; the ribbons become a long braided golden rope that winds around her arms and trails off out of the picture (the one bright gold thing); the fox mask has a hairline crack; a faint dark halo behind her like an eclipse ring. Beautiful, regal and a little frightening: the same sun, seen in a darker hour. Palette: blood red, oxblood, near-black and bone white, with the gold rope; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, high detail. No text, no labels.
-```
 
 ---
 ## 10. Solar's Equinox home-screen poses (ChatGPT)

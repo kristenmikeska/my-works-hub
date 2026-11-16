@@ -627,6 +627,8 @@ window.FemcScene = (() => {
       reveal();
     }
     // The Evoker: a white flash, glass breaking outward, and the Persona card whose name won't hold.
+    // Another game's own art for a path under assets/femc/ (FEMC_GAME_CONFIG.art; Equinox: Haenim's look). Unset: the path itself.
+    const artPath = p => ((window.FEMC_GAME_CONFIG || {}).art || {})[p] || p;
     function summon(line) {
       waiting = null; sil.hidden = true; img.hidden = true; currentFace = null;
       const fx = document.createElement('div');
@@ -637,7 +639,7 @@ window.FemcScene = (() => {
       const form = FORMS[line.summon] || FORMS.haenim, title = line.name || form[0], sub = line.sub || form[1];
       const names = line.glitch ? ['해—', 'HAE—', 'LADY S—', 'H̷A̵E̶N̸I̷M̵', title] : [title];
       fx.innerHTML = `<div class="gs-summon-flash"></div><div class="gs-shards">${shards}</div>
-        <img class="gs-summon-art" alt="" src="${G.base}assets/femc/battle/art/personas/${line.summon === 'haenim-mazu' ? 'haenim-harbor' : (line.summon && line.summon !== true ? line.summon : 'haenim')}.webp">
+        <img class="gs-summon-art" alt="" src="${G.base}assets/femc/${artPath(`battle/art/personas/${line.summon === 'haenim-mazu' ? 'haenim-harbor' : (line.summon && line.summon !== true ? line.summon : 'haenim')}.webp`)}">
         <div class="gs-summon-card"><small>Persona</small><b>${esc(names[0])}</b><span>${esc(sub)}</span></div><p class="gs-summon-hint">tap to continue</p>`;
       el.appendChild(fx);
       G.sfx('femc-rankup');

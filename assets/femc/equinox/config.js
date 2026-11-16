@@ -34,7 +34,16 @@ window.FEMC_GAME_CONFIG = {
                head-to-chin, head centre x]; a couple link lists two (both stand, heads the same size; game.css .pair).
      loading   the fight loading still (ui.js openBattle): the Well for a night in the Well and the Well's story fights,
                "in between" for everything else. */
-  faces: { solar: 'solar-equinox', haechan: 'haechan-equinox' },
+  /* faces (art batch 3, Nov 15): Elizabeth's Equinox look, and the parents. Equinox's parent speaker ids are the couple links'
+     member ids (data/links.js; the epilogues' generic dad / mom / appa / eomma would be ambiguous with all three couples here):
+     jaesang-runners, solji-runners, taesang-strangers (Taejoon), miyeon-strangers (Miseon), kim-dad, kim-mom. LE SSERAFIM and
+     Theodore need no entry: their plain ids (chaewon, sakura, kazuha, eunchae, theodore) are their Equinox folders. */
+  faces: { solar: 'solar-equinox', haechan: 'haechan-equinox', elizabeth: 'elizabeth-equinox',
+    'jaesang-runners': 'jaesang-equinox', 'solji-runners': 'solji-equinox', 'taesang-strangers': 'taejoon-equinox',
+    'miyeon-strangers': 'miseon-equinox', 'kim-dad': 'kimdad-equinox', 'kim-mom': 'kimmom-equinox' },
+  /* art (art batch 3): Equinox's own picture for a Solstice one, keyed by the path under assets/femc/. Read by battle/data.js
+     (the Personas' art: the menu's Personas tab and Forms, the battle frame's cards) and scene.js { summon } lines. */
+  art: { 'battle/art/personas/haenim.webp': 'equinox/art/personas/haenim.webp?v=1' },
   homeFig: { src: 'assets/femc/equinox/art/solar/arms-crossed.webp?v=1', ar: .424, ht: .02, hf: .14, hx: .47 },
   linkFig: {
     chaewon: ['equinox/art/bodies/chaewon.webp?v=1', .4, .033, .1, .41],

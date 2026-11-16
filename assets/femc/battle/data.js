@@ -406,6 +406,13 @@ window.FEMC_BATTLE_DATA = (() => {
       blurb: 'Lord Moon. In the old tale, Haenim and Dalnim are the sister and brother who became the sun and the moon. He keeps the sky she leaves.' },
     juno: { name: 'Juno', arcana: 'Priestess', art: A + 'juno.webp', aff: {}, user: 'fuuka', blurb: 'Fuuka’s awakened Persona. Her scans now map a whole Tartarus floor at once.' }
   };
+  /* Another game's own Persona art: FEMC_GAME_CONFIG.art = { 'battle/art/personas/<file>': '<path under assets/femc/>' } (Equinox:
+     Haenim's Equinox look, art batch 3). The game page has the config itself; the battle frame inside it reads its parent's.
+     Unset (Solstice, the practice page): nothing changes. */
+  try {
+    const CA = ((window.FEMC_GAME_CONFIG || (window.parent !== window && window.parent.FEMC_GAME_CONFIG) || {}).art) || {};
+    Object.values(personas).forEach(p => { const k = p.art && p.art.replace('assets/femc/', ''); if (k && CA[k]) p.art = 'assets/femc/' + CA[k]; });
+  } catch (e) {}
 
   /* Theurgy presentation (battle.js theurgyCut; art made with tools/femc-theurgy.py). Each `theurgy` can carry:
        img:    the full-screen cut-in still. Played P3R-style: a diagonal mask slides it in, it pans and zooms, light sweeps.

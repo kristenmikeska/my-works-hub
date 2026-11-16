@@ -198,6 +198,10 @@ window.FEMC_PORTRAIT_SCALE = {
   'haechan-equinox': 0.95, // Equinox: Kat's eight Equinox faces (Nov 15), face matched to his base portrait's size and height
   'solar-equinox': 0.97, // Equinox art batch 1: her Equinox look, cut onto Solar's own canvas (femc-skin-portraits.py)
   mrsoka: 1.08, // Equinox art batch 2: Mrs. Oka (speaker id mrsoka; Solstice's 'oka' is someone else), face height matched to the anime cast (Solar, Aigis, Oka)
+  // Equinox art batch 3 (Nov 15): Personaverse faces from Kat's sheets; scale x Vision face height (x Kat's size where one is
+  // inherited) ~0.40 for the women (Solar) and ~0.43 for the men (between Solar and Haechan)
+  chaewon: 1.13, sakura: 1.07, kazuha: 1.03, eunchae: 1.13, theodore: 1.08, 'elizabeth-equinox': 0.98,
+  'jaesang-equinox': 0.97, 'solji-equinox': 0.96, 'taejoon-equinox': 0.98, 'miseon-equinox': 0.93, 'kimdad-equinox': 1.0, 'kimmom-equinox': 0.95,
   'solar-summer': 0.96,
   'solar-winter': 0.99,
   'akihiko-summer': 1.05,
@@ -318,4 +322,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 35;
+window.FEMC_PORTRAIT_V = 36; // 36: Haechan's restyled Equinox faces (same file names)
