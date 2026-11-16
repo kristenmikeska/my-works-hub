@@ -5440,6 +5440,14 @@
     'eqx-first-hill': () => [{ group: ['flash_shadow@14', 'maiden@11', 'maiden@11'], bg: BGP + 'eq-well-3.webp', label: 'Full Moon', block: 'The Well · The First Hill', boss: true, music: 'boss',
       op: { id: 'eqx-first-hill', name: 'The First Hill', arcana: 'Full Moon · May' }, title: 'Full Moon · The First Hill',
       rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'flash_shadow' ? 'The First Hill' : 'Empty Seat'; }) } }],
+    // Act II (assets/femc/equinox/data/story-act2.js). 6/26: the Well's strangers block (the tide that stops); 7/26: the HOAX
+    // block (the halls in static). Levels step up from 4/28 (~9) and 5/28 (~14): 6/26 ~19, 7/26 ~24.
+    'eqx-second-hill': () => [{ group: ['tide_shadow@19', 'pesce@17', 'pesce@17'], bg: BGP + 'eq-well-4.webp', label: 'Full Moon', block: 'The Well · The Second Hill', boss: true, music: 'boss',
+      op: { id: 'eqx-second-hill', name: 'The Second Hill', arcana: 'Full Moon · June' }, title: 'Full Moon · The Second Hill',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'tide_shadow' ? 'The Second Hill' : 'Held Breath'; }) } }],
+    'eqx-third-hill': () => [{ group: ['ballot_box@24', 'group_chat@21', 'group_chat@21'], bg: BGP + 'eq-well-5.webp', label: 'Full Moon', block: 'The Well · The Third Hill', boss: true, music: 'boss',
+      op: { id: 'eqx-third-hill', name: 'The Third Hill', arcana: 'Full Moon · July' }, title: 'Full Moon · The Third Hill',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'ballot_box' ? 'The Third Hill' : 'Faceless Voter'; }) } }],
     // 4/9: the first fight on purpose, on the dorm roof.
     magician: () => [{ group: ['magician'], bg: BGP + 'iwatodaidorm-roof-night.webp', label: 'Full Moon', block: 'Iwatodai Dorm · Roof', boss: true, music: 'boss',
       op: { id: 'magician', name: 'The Magician', arcana: 'I · Magician' }, title: 'Full Moon · The Magician', rules: { noEscape: true } }],

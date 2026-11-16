@@ -1,11 +1,12 @@
 /* Persona 3: Equinox · Cherry Kim · Chariot. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13; her home is Wild-Duck Burger on Sunday, Monday, Wednesday, Friday and Saturday
-   afternoons, so 4/14 at the earliest). Ranks 2–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
+   Written: ranks 1–2 (from 4/13; her home is Wild-Duck Burger on Sunday, Monday, Wednesday, Friday and Saturday
+   afternoons, so 4/14 at the earliest). Ranks 3–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
    Solstice's Cherry link is shared memory ("who's really in first", the knockoff, the corner booth, "left wing lower", the
    pinned message, "i'd run"); nothing reads Solstice link standing. HOAX fences hold: the triangle stays open, Jihoon's
    drugs are named only as "clean" / "counting", nothing past the manuscript. Cursing sparing, in her voice.
-   Flags this file sets: eqx-cherry-mirror (rank 1: Solar looks back at the restroom mirror). Nothing reads it yet. */
+   Flags this file sets: eqx-cherry-mirror (rank 1: Solar looks back at the restroom mirror). Nothing reads it yet.
+   Rank 2 (after 4/23): reads eqx-cherry-mirror and ifAfter 4/29. Sets nothing. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'cherry', name: 'Cherry', short: 'Cherry', arcana: 'Chariot', numeral: '', from: 'Hoax', kind: 'searcher',
   world: 'H', romance: null, starts: '4/8', lodging: 'guesthouse',
@@ -142,6 +143,127 @@
       { s: 'cherry', f: 'neutral', t: "Wild-Duck. Same booth. I'll be there. I'm off duty. I've got nothing but time." },
       { n: "She went in. Jihoon lingered a second at the guesthouse door, looking after her, and then at Solar, and something passed over his face, quick, a question he didn't ask, and he went in too." },
       { n: "Walking home alone, Solar passed a shop window, dark, closed, the glass holding the whole Strip behind her in long smeared lights. She didn't look at it. She walked past it at an even pace, eyes front, and only when she was well past did she realize she'd been holding her breath the whole length of the glass, and that she hadn't, not once, wanted to know." }
+    ] },
+    { after: '4/23', title: '2: some girl', place: 'Iwatodai Strip · Wild-Duck Burger', time: 'After School', music: 'city', scene: [
+      { bg: 'wilduckburger' },
+      { n: "The soft-serve machine was still broken. The sign with the crying duck was still on it. Somebody had added a second duck, crying harder, in a different pen, and a speech bubble that said *same*. Cherry was in the corner booth on the right-hand side of the crack, and she didn't point at the seat this time. She was looking out of the window at the Strip with her chin in her hand, and she didn't see Solar until Solar was sitting down, which had never once happened before." },
+      { ifAfter: '4/29', then: [
+        { n: "She had a cup of coffee in front of her and nothing else. No tray. No stolen fries. Her nails were done, all ten, a dark red that hadn't been there on Monday, and Solar looked at them and understood the red was there to hide what was under it, because there were three bitten now instead of two." },
+        { s: 'cherry', f: 'neutral', t: "Don't look at my nails. I know. I know what they look like." },
+        { s: 'cherry', f: 'serious', t: "I cleaned the carpet. At the guesthouse. On the stairs, where Minji was sick. Somebody had to, and Jihoon was sitting there with a cold rice ball in his hands like a little kid, and Jungwon was on the phone, and Jaehyun had Minji. So I got a bucket." },
+        { s: 'cherry', f: 'serious', t: "I'm good at cleaning up after. It's literally my whole job. I just walked back into it. Like a coat." },
+        { s: 'cherry', f: 'sad', t: "...He still has the rice ball. In his hoodie pocket. It's gone hard as a rock. I can feel it when I hug him. I can't make him throw it away and I can't make myself ask." }
+      ], else: [
+        { n: "She had a tray. On the tray was a burger she'd eaten all of, the wrapper folded into a perfect small square, and beside it a coffee, and beside that a strawberry milkshake she was clearly drinking on purpose, defiantly, through a striped straw, like a girl in an advertisement." },
+        { s: 'cherry', f: 'happy', t: "Look at me. Off duty. I ate a whole burger. I'm drinking a pink drink. I'm some girl." },
+        { s: 'cherry', f: 'neutral', t: "Jihoon's at day sixteen. I'm not counting. I'm counting. I'm off duty and I'm counting. Both. Ken says you're allowed both." }
+      ] },
+      { choose: [
+        { t: "(Steal her coffee.)", notes: 3, then: [
+          { n: "She took Cherry's coffee and drank some. Cherry watched her do it with an expression of slow, deep betrayal, and then, almost against her will, a small pleased one under it." },
+          { s: 'cherry', f: 'happy-2', t: "...Oh, so it's like that. So that's who we are now. Fine. I'll steal yours forever." }
+        ] },
+        { t: "Cherry. You okay?", notes: 3, then: [
+          { s: 'cherry', f: 'serious', t: "Ask me in May." },
+          { s: 'cherry', f: 'neutral', t: "...It's almost May. Ugh. Ask me in June." }
+        ] },
+        { t: "Who drew the second duck?", notes: 2, then: [
+          { s: 'cherry', f: 'happy', t: "Me. Yesterday. With a pen I stole off the counter. That duck's been alone for a year. Nobody should be alone with a broken machine for a year." }
+        ] }
+      ] },
+      { s: 'cherry', f: 'neutral', t: "Okay. Get up. We're going shopping. I'm buying something I'd never wear at home." },
+      { s: 'solar', f: 'neutral', t: "Why?" },
+      { s: 'cherry', f: 'serious', t: "Because I can. Because nobody here's going to see it and think anything. Because I've been wearing black since middle school so nobody notices when I'm standing in a doorway. Come on. You're my witness." },
+      { place: 'Paulownia Mall · Clothing Store', time: 'After School', bg: 'clothing-store', soft: true },
+      { n: "The clothes shop on Paulownia's second floor played the same four pop songs on a loop and smelled of new cotton and the vanilla candle burning by the till, and Cherry went through the racks like a customs officer, fast, flicking hangers along the rail with two fingers, rejecting everything with a small sound in her throat, until she stopped." },
+      { n: "It was a sundress. Yellow. Not pale yellow, not tasteful yellow, a loud happy egg-yolk yellow, with thin straps and a skirt that would swing. The kind of dress a girl in a magazine wore on a bicycle with a basket of flowers. Cherry held it up by the hanger at arm's length and looked at it the way you'd look at a dog you'd found in the street, already knowing you were taking it home." },
+      { s: 'cherry', f: 'serious', t: "This. This is the stupidest thing in this whole mall." },
+      { s: 'cherry', f: 'happy', t: "I'm trying it on. Don't say anything. Don't say a single word. If you laugh I'll put you through a rack." },
+      { choose: [
+        { t: "It's perfect.", notes: 3, then: [
+          { s: 'cherry', f: 'surprised', t: "...You're not even being sarcastic. Oh my God. That's worse. That's so much worse." }
+        ] },
+        { t: "You'd look like a lemon.", notes: 2, then: [
+          { s: 'cherry', f: 'happy-2', t: "I'd look like a *gorgeous* lemon. The best lemon in Japan. Sit down outside the curtain and wait to be stunned." }
+        ] },
+        { t: "(Find her a hat to go with it.)", notes: 3, then: [
+          { n: "She found a hat. A straw one, wide, with a yellow ribbon, absurd. She held it out. Cherry looked at it, and at her, and her mouth twitched, and she took it without a word and went into the changing room with the dress over one arm and the hat on her head." }
+        ] }
+      ] },
+      { n: "The changing rooms were at the back, three cubicles with curtains, and at the end of the row a three-way mirror, the tall kind with two hinged side panels angled in, so that when you stood in front of it you saw yourself from three sides at once and also, in the angle between the panels, yourself reflected in yourself, again and again, smaller and greener and further off, a long corridor of girls going back into the glass forever." },
+      { n: "Cherry came out in the dress. She came out barefoot, scowling, the yellow so bright against her skin it seemed to hum, and stood in front of the three-way mirror with her arms folded, and looked." },
+      { n: "It was perfect. It was so completely, stupidly perfect that for a second she forgot to scowl, and Solar saw her face do something it never did, open, like a window somebody had pushed up for air. A girl in a yellow dress. Not a bouncer. Not anyone's anything. Some girl." },
+      { s: 'cherry', f: 'sad', t: "...Oh. Huh." },
+      { s: 'cherry', f: 'sad', t: "If I never went back. Like, hypothetically. Nobody'd need a bouncer. They'd figure it out. Jihoon would figure it out. Everybody's fine without me for like a day at a time. Maybe they'd be fine for longer." },
+      { n: "She said it to the mirror. Lightly. Turning a little to make the skirt swing. And it was such a reasonable thing to say, in a yellow dress, in a shop with the same four songs, that Solar almost didn't hear the shape of it, until she did, and felt it go down her back, cold." },
+      { choose: [
+        { t: "They wouldn't be fine. They'd miss you.", notes: 2, then: [
+          { s: 'cherry', f: 'serious', t: "Missing's not the same as needing. I know the difference. I've been needed since I was twelve. Missed sounds nice. Missed sounds like a vacation." }
+        ] },
+        { t: "You get to be some girl anywhere. Not only here.", notes: 3, then: [
+          { s: 'cherry', f: 'surprised', t: "...Anywhere?" },
+          { s: 'cherry', f: 'neutral', t: "Say that again at home. Say that to me on a Tuesday at home when somebody's texting me at two in the morning that he's at a guy's place. Say it then." },
+          { s: 'cherry', f: 'sad', t: "...No, keep saying it. I like hearing it. I just don't believe it yet." }
+        ] },
+        { t: "(Don't answer. Fix the strap on her shoulder.)", notes: 2, then: [
+          { n: "She didn't answer. She stepped up behind her and straightened the strap on her left shoulder, which had twisted, and smoothed it flat, the way Cherry had held her jaw for eyeliner. In the mirror, three Cherries watched her do it." }
+        ] }
+      ] },
+      { n: "Then Cherry did the thing she'd said she did. Every mirror. Every window. She turned her head, slowly, left, and right, and watched the reflections turn with her. The front one. The two side panels. And then she leaned in, a little, and looked down the corridor in the angle between them, the long green tunnel of girls in yellow going back and back, and started counting them under her breath, the way she'd count in the shower." },
+      { s: 'cherry', f: 'serious', t: "One. Two. Three. Four. Five. Six—" },
+      { n: "She stopped." },
+      { n: "Solar looked where she was looking. Far down the glass corridor, eight or nine reflections deep, where the girls were small and green and blurred at the edges, one of them was facing the wrong way." },
+      { n: "All the others faced out. Toward the shop. Toward them. Cherry's face, again and again, smaller and smaller, scowling at herself. And one, far back, small, in the yellow dress, had its back to them. As if it were facing further in. As if something was further in, down there in the green, and it had turned round to look." },
+      // CG: eqx-three-way-mirror — a girl in a bright yellow sundress and a straw hat standing barefoot before a shop's three-way mirror, the reflections running back in a long green corridor; far down the corridor, one small reflection of her has its back turned.
+      { n: "Then it hadn't. Then it was facing out like the others, small and green and scowling, and the corridor went back into the glass, perfectly in order, and the shop's speakers played the second of the four songs." },
+      { ifFlag: 'eqx-cherry-mirror', then: [
+        { s: 'solar', f: 'neutral', t: "I saw it. And at Wild-Duck. In the restroom. Mine. The hand on the sink." },
+        { s: 'cherry', f: 'surprised', t: "...You saw yours? You saw yours and you didn't tell me?" },
+        { s: 'cherry', f: 'serious', t: "I've been walking round for two weeks thinking it was just me. Thinking I was the only broken one. You let me." },
+        { s: 'cherry', f: 'sad', t: "...No. Okay. I wouldn't have told me either. I'd have wanted it to be nothing. Okay. Okay. So it's both of us. That's. Okay." }
+      ], else: [
+        { s: 'cherry', f: 'serious', t: "You saw it. Tell me you saw it. Don't be nice. Don't be careful. Just say it." },
+        { s: 'solar', f: 'neutral', t: "I saw it." },
+        { s: 'cherry', f: 'sad', t: "...Thank you. God. Thank you. I'm not crazy. I'm just haunted. That's so much better." }
+      ] },
+      { choose: [
+        { t: "(Fold the side panels shut.)", notes: 3, then: [
+          { n: "She took hold of the two hinged panels and folded them in, flat, against the middle mirror, so there was only one Cherry, front-on, in yellow, with her arms folded. The corridor was gone. Cherry looked at the single reflection for a long moment and let her breath out." },
+          { s: 'cherry', f: 'neutral', t: "...Good. One. One of me's plenty." }
+        ] },
+        { t: "Count them again. With me.", notes: 2, then: [
+          { n: "They counted together. Out loud, both of them, leaning in, all the way down the green, as far as you could see. Every one faced out. Every one, Cherry's scowl, smaller and smaller, perfectly on time. They got to fourteen and couldn't see any further." },
+          { s: 'cherry', f: 'serious', t: "...Fourteen. All right. All right. Fourteen good ones. I'll take fourteen." }
+        ] },
+        { t: "It's the angle. Mirrors do that.", notes: 1, then: [
+          { s: 'cherry', f: 'neutral', t: "Yeah. Sure. The angle. Mirrors turn round sometimes. Famous mirror fact." },
+          { s: 'cherry', f: 'serious', t: "You don't have to do that with me. I'm not Jihoon. I don't need it made into a joke so I can carry it." }
+        ] }
+      ] },
+      { n: "She bought the dress. She bought it out of spite, Solar thought, out of pure spite at the mirror, at the whole town, at whatever was down there in the green with its back turned. She paid at the till with her arms still folded and the bag over her wrist like a weapon, and the hat on her head, and didn't take the hat off." },
+      { s: 'cherry', f: 'neutral', t: "I'm wearing it somewhere stupid. A festival. A shrine thing. Somewhere with lanterns, where I can stand around with a candy apple like a girl in a drama." },
+      { s: 'cherry', f: 'serious', t: "And if anything turns round in a window while I'm doing it I'm going to turn round right back." },
+      { place: 'Iwatodai Strip', time: 'Evening', bg: 'iwatodai-strip-night', soft: true },
+      { n: "They walked back down the Strip as the lights came on, Cherry with the bag over her wrist and the absurd hat on, and at the crossing, waiting for the light, her hand went out to her left without looking, the way it always did, the finger and thumb already shaped for a cuff." },
+      { n: "There was nobody on her left. Jihoon wasn't there. Her fingers closed on the air beside her and held it a second, holding nothing, and then she noticed, and looked down at her own hand, and laughed, short, embarrassed." },
+      { s: 'cherry', f: 'neutral', t: "Habit. It's a crossing. My hand doesn't know he's at the arcade." },
+      { choose: [
+        { t: "(Give her your sleeve.)", notes: 3, then: [
+          { n: "She stepped round to Cherry's left and put her own cuff where Cherry's hand had been. Cherry looked at it. Then she took it, between finger and thumb, and held on, and they crossed like that, and on the far side she didn't let go for half a block, and then she did, and didn't say anything, and her ears had gone pink under the straw." }
+        ] },
+        { t: "You can stop holding on, you know. Sometimes.", notes: 2, then: [
+          { s: 'cherry', f: 'serious', t: "I know. I know I can. I just don't know what my hands are for if they're not holding somebody's sleeve." },
+          { s: 'cherry', f: 'neutral', t: "...Holding a candy apple, I guess. I'll practice." }
+        ] },
+        { t: "(Don't say anything.)", notes: 2, then: [
+          { n: "She didn't say anything. The light changed. Cherry put her hand in the pocket of her jacket, firmly, as if to keep it there, and they crossed side by side, not touching, and Solar could see her fingers moving in the pocket the whole way, rubbing finger and thumb together over nothing." }
+        ] }
+      ] },
+      { n: "At the guesthouse they went round to the kitchen door. Everyone did now. Cherry stopped with her hand on it and looked at the small square of glass in the top half of the door, where the kitchen light behind made a mirror of it, the two of them in it, her yellow hat and Solar's face." },
+      { n: "She looked for a long time. Then she turned her head, slowly, and watched the girl in the glass turn with her, and nodded, once, short, the way you'd nod to someone who'd done their job." },
+      { s: 'cherry', f: 'neutral', t: "On time. Good girl." },
+      { n: "She went in. Through the glass, before the door swung shut, Solar saw Jihoon at the kitchen table look up and see the hat, and his whole face crack open, and Cherry point at him, once, like a judge, before he could say a single word. Then the door closed, and the glass was just glass, with Solar in it, alone, under the yard light." },
+      { n: "She didn't look at it. She'd learned that much. She turned and went up the hill toward the dorm with her hands in her pockets, and only at the corner did she realize her own fingers were rubbing together in her pocket, finger and thumb, over nothing, the way Cherry's had." }
     ] }
   ]
 });

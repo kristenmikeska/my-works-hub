@@ -1,15 +1,16 @@
 /* Persona 3: Equinox · Ken & Koromaru · XI Strength (a duo link). Link data (femc-equinox-game.html). Format: link fields
    in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13; their home is the shrine playground on Sunday, Tuesday, Thursday and Saturday after
-   school, so 4/13 itself). Ranks 2–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js
+   Written: ranks 1–2 (from 4/13; their home is the shrine playground on Sunday, Tuesday, Thursday and Saturday after
+   school, so 4/13 itself). Ranks 3–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js
    (members / cast kept; this file wins over the stub). Both members are in every rank: Koromaru doesn't talk, but he's a
    full presence (his lines are barks and what he does).
    Solstice's Ken and Koromaru links are shared memory (Ken: the composition, the Featherman strap, "allowed both"; Koromaru:
    Solar's feeding note, the plum end, facing the door, two sets of tracks in the snow). Nothing reads Solstice link standing.
-   Flags this file sets: eqx-ken-hospital (rank 1: Solar offers to go with Ken to see Shinjiro). Nothing reads it yet. */
+   Flags this file sets: eqx-ken-hospital (rank 1: Solar offers to go with Ken to see Shinjiro). Nothing reads it yet.
+   Rank 2 (after 4/24): reads eqx-ken-hospital and ifEvent eqx-knock; cast adds the desk nurse. Sets nothing. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'ken-koromaru', name: 'Ken & Koromaru', short: 'Ken & Koromaru', arcana: 'Strength', numeral: 'XI', from: 'Persona 3', kind: 'group',
-  romance: null, starts: '4/8', lodging: 'dorm', members: ['ken', 'koromaru'], cast: { ken: 'Ken', koromaru: 'Koromaru' },
+  romance: null, starts: '4/8', lodging: 'dorm', members: ['ken', 'koromaru'], cast: { ken: 'Ken', koromaru: 'Koromaru', nurse: 'Nurse' },
   home: { area: 'shrine', spot: 'Playground', slot: 'after', days: [0, 2, 4, 6],
           hint: 'After school, or in the daytime on Sundays, at the Naganaki Shrine playground: one boy, one dog, one ball.' },
   approach: "In the little playground below Naganaki Shrine a boy in a sixth-grade uniform is throwing a tennis ball as far as he can, and a white dog is bringing it back faster than he can throw it, and neither of them has noticed yet that this isn't a fair fight.",
@@ -150,6 +151,121 @@
       { n: "In the kitchen, taped inside the cupboard door above the rice cooker, Solar saw a piece of paper she knew. Her own handwriting, from a cold night last winter, the corners curled and the tape gone yellow. *KOROMARU. Rice + egg, a little broth, in the small pan. NOT the bag. He eats it facing the door. Let him.* And under it, in a sixth-grader's careful pencil, a column of small ticks, one for every day, going down the page and onto a second sheet taped under the first." },
       { s: 'ken', f: 'neutral', t: "You wrote it down. So I did it. Every day. In case you checked." },
       { n: "He didn't wait to see what her face did. He took the small pan off the back burner, the one that was Koromaru's, and started the rice, and in the hall the dog lay across the door with his eyes open, facing it, and let them." }
+    ] },
+    { after: '4/24', title: '2: yet', place: 'Naganaki Shrine · Playground', time: 'After School', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-spring' },
+      { n: "Ken was already on the bench under the ginkgo when she came down the shrine path, sitting very straight with his backpack on his knees and both hands flat on top of it, the way you'd sit outside an office waiting to be called in. He wasn't throwing the ball. The ball was in Koromaru's mouth, and Koromaru was lying in front of the bench with it, not chewing it, just holding it, the way he'd hold something he'd been asked to keep." },
+      { n: "Ken stood up when he saw her. He actually stood, like a boy in a classroom when a teacher comes in, and then seemed to realize he'd done it, and didn't sit back down, out of what looked like principle." },
+      { ifFlag: 'eqx-ken-hospital', then: [
+        { s: 'ken', f: 'neutral', t: "Solar-san. It's yet." },
+        { s: 'ken', f: 'neutral', t: "I said I'd give you a day's notice. I wrote it yesterday. On a card. I had it in my pocket all day and I didn't give it to you because I thought, if I give it to her, then it's real, and it has to be tomorrow." },
+        { n: "He took the card out of his blazer pocket and held it out. It was a library index card, folded once. In his careful pencil it said *NOTICE: Tomorrow (Saturday) after school, Tatsumi Memorial. If convenient. — Amada K.*, and under it, smaller, crossed out and then uncrossed, *please*." },
+        { s: 'ken', f: 'neutral', t: "So it's late notice. It's zero days' notice. I'm sorry. That's not polite. I'd understand if you said no." }
+      ], else: [
+        { s: 'ken', f: 'neutral', t: "Solar-san. Would you come somewhere with me? Today? I'll explain on the way. It's not far. It's a bus." },
+        { s: 'ken', f: 'serious', t: "I'd like to go to the hospital. I haven't been since February. I don't want to go on my own and I don't want to go with anybody who'll talk about it the whole way." }
+      ] },
+      { choose: [
+        { t: "Yes. Right now.", notes: 3, then: [
+          { s: 'ken', f: 'happy', t: "...Okay. Okay. Good. I have bus fare for three. Koromaru doesn't pay, but I counted him anyway, in case." }
+        ] },
+        { t: "(Take the card. Put it in your pocket.)", notes: 3, then: [
+          { n: "She took the card and put it in the inside pocket of her blazer, carefully, the way you'd put away a ticket you'd need later, and Ken watched it go in, and something in his shoulders came down about a centimeter." },
+          { s: 'ken', f: 'neutral', t: "You kept it. You don't have to keep it. It's just a notice." },
+          { s: 'ken', f: 'happy', t: "...Thank you for keeping it." }
+        ] },
+        { t: "What changed, Ken?", notes: 2, then: [
+          { s: 'ken', f: 'neutral', t: "I'll tell you on the bus. I've got it worked out. It's in order. If I tell you here it'll come out in the wrong order." }
+        ] }
+      ] },
+      { place: 'Tatsumi · Bus', time: 'After School', bg: 'train-car-inside', soft: true },
+      // BG: tatsumi-bus — the inside of a half-empty city bus in the late afternoon, sun through the windows, a boy and a white dog on the floor by the seats.
+      { n: "The bus to Tatsumi was half empty and smelled of hot seats and somebody's lunch, and the driver had looked at Koromaru for a long moment at the door, and at Ken holding the lead in both hands like a contract, and at Solar, and decided it wasn't worth it. Koromaru sat on the floor between their knees with his chin on Ken's shoe and watched the doors every time they opened." },
+      { ifEvent: 'eqx-knock', then: [
+        { s: 'ken', f: 'neutral', t: "On the twenty-eighth. In the lounge. When everything knocked." },
+        { s: 'ken', f: 'neutral', t: "The kitchen door said my name. My name the way she said it. The short way. Nobody's said it that way since. I didn't think anybody knew it." },
+        { n: "He said it in his report voice, to the window, very correctly, and his hand on the lead had gone white at the knuckles, and Koromaru lifted his chin off Ken's shoe and put it on his knee instead." },
+        { s: 'ken', f: 'serious', t: "It was very good. That's the part I keep thinking about. It was better than her. She was always tired when she called me in. She never sounded that sure I'd come." },
+        { s: 'ken', f: 'sad', t: "I wanted to go so much. I wasn't even scared. I was in the sleeping bag and Yukari-san was holding me so tight it hurt and I wanted to get out of it and open the door more than I've ever wanted anything." },
+        { s: 'ken', f: 'neutral', t: "And afterward, when it was over, I thought, there's one other person who was there. The night she died. One other person in the whole world who knows what her voice was really like. Not the good version." },
+        { s: 'ken', f: 'serious', t: "I'm still angry at him. I'm allowed both. I'd just like to be angry at somebody who knows what she sounded like." }
+      ], else: [
+        { s: 'ken', f: 'neutral', t: "I counted. Since February. Seventy-one days I haven't been. That's more than I went, in the winter. I went sixty-four times. I'm now in deficit." },
+        { s: 'ken', f: 'serious', t: "And Koromaru sat in that parking lot for two days before Shinjiro-san woke up. Two days. He didn't eat. He knew." },
+        { s: 'ken', f: 'neutral', t: "Since the knocks started he's been looking at the front door like he's waiting for something again. The same way. So I thought, if he's waiting for something, I'd like to have done the things I should have done before it comes. Whatever it is. In order." }
+      ] },
+      { choose: [
+        { t: "(Put your arm round him. Just for the bus.)", notes: 3, then: [
+          { n: "She put her arm round his shoulders. He stiffened, and then didn't, and leaned, a sixth-grader on a public bus who'd have died before letting anyone from school see it, and they rode like that, past the canal and the warehouses, with Koromaru's chin on his knee and nobody saying anything." }
+        ] },
+        { t: "You don't have to go in, Ken. We can just go there.", notes: 3, then: [
+          { s: 'ken', f: 'neutral', t: "...Just there?" },
+          { s: 'solar', f: 'neutral', t: "Just there. Then you decide." },
+          { s: 'ken', f: 'neutral', t: "That's a good plan. That's a very good plan. I hadn't thought of the plan where I don't have to finish." }
+        ] },
+        { t: "He'll be glad you came.", notes: 2, then: [
+          { s: 'ken', f: 'serious', t: "You don't know that. He might not be. He might think I came to say something. I don't know what I came to say." },
+          { s: 'ken', f: 'neutral', t: "...I'm going to find out on the way, I think. I hope it's before the doors." }
+        ] }
+      ] },
+      { place: 'Tatsumi Memorial Hospital · Front', time: 'After School', bg: 'hospital-outside', soft: true },
+      { n: "Tatsumi Memorial was white and square and too big for the street it was on, with a ramp and a row of benches and a long low concrete planter full of azaleas going pink along the front. Koromaru went straight to the planter. He didn't sniff it. He walked to one particular place at the end of it, by the drain, and sat down there, in the sun, facing the doors, as if he'd sat there before and the place had kept his shape." },
+      { s: 'ken', f: 'neutral', t: "That's where he sat. Two days. The nurses brought him water in a kidney dish. One of them still says hello to him." },
+      { n: "Dogs weren't allowed past the doors. Koromaru didn't try. He sat at his place by the planter and looked at the glass, and Ken stood beside him with the lead slack in his hand and looked at the glass too, and for a while neither of them moved, the boy and the dog, side by side, facing the same door." },
+      { s: 'ken', f: 'neutral', t: "I'll go to the desk. Only the desk. I'll leave a note. Will you come to the desk?" },
+      { place: 'Tatsumi Memorial Hospital · Lobby', time: 'After School', bg: 'hospital-hallway-day', soft: true },
+      // BG: tatsumi-hospital-lobby — a hospital's ground-floor lobby in the afternoon: a long front desk, a row of plastic chairs, a potted rubber plant, automatic glass doors onto a sunny forecourt, a tin painted with cranes on the counter.
+      { n: "The lobby smelled of floor polish and hand gel and the faint sweetish smell every hospital had, under everything, that nobody ever named. The nurse at the desk was young and round-faced and tired, and she knew Ken. Her whole face changed when she saw him, softened, the way people's faces softened when they saw a child they'd watched sit on a bench for a winter." },
+      { s: 'nurse', t: "Amada-kun! Oh, look at you. You've grown. He's on the fourth floor still, you know that. Do you want me to call up?" },
+      { s: 'ken', f: 'neutral', t: "No. Thank you. Not today. I'd like to leave a note. If that's within regulations." },
+      { s: 'nurse', t: "It's within regulations. Here, have a card. And take one of these. Go on. Everybody does." },
+      { n: "She pushed a tin across the counter. Round, painted, a little dented. Cranes on the lid, flying in a ring." },
+      { n: "Solar knew the tin before she knew she knew it, the way you know a voice before the words. Her body knew it. Her stomach went to stone and her hands went cold, and the lid came off in the nurse's hand, and inside, in rows, on paper, were rice cakes. White. Round. Dusted." },
+      { s: 'nurse', t: "A lady brings them for the night staff. Every Saturday. Isn't that sweet? She never comes up. She leaves them at the desk at the end of the evening and she knows all our names, every one of us, I don't know how. Mr. Hata used to love them. The old man on four." },
+      { n: "Outside, through the glass doors, Koromaru had stood up." },
+      { n: "He hadn't barked. He was standing at his place by the planter with all four legs set, square, his head low, looking through the glass straight at the counter, straight at the tin, and even from here, even through the doors and the lobby's soft piped music, Solar could see his lips had come back off his teeth." },
+      { choose: [
+        { t: "No, thank you. We just ate.", notes: 3, then: [
+          { s: 'nurse', t: "Oh, you young people. Never hungry. Amada-kun?" },
+          { s: 'ken', f: 'neutral', t: "No, thank you very much. He wouldn't like it." },
+          { n: "He tipped his head at the glass, at Koromaru, and the nurse laughed and said what a funny dog, and put the lid back on the tin, and Ken's hand, Solar noticed, had gone very carefully into his pocket, as if to make sure it wouldn't go anywhere else." }
+        ] },
+        { t: "(Take one, to be polite. Close your hand on it.)", notes: 1, then: [
+          { n: "She took one. It was cool and soft and heavier than it looked, and it left a fine white dust on her fingers that she could feel, on the pads, like chalk. Through the glass Koromaru made a sound she heard through the doors, one bark, short and hard and flat, like a door slammed." },
+          { n: "On the way out she dropped it in the bin by the automatic doors without looking at it. Koromaru watched her hand the whole way to the bin and didn't sit down again until it was empty." }
+        ] },
+        { t: "Who is she? The lady.", notes: 2, then: [
+          { s: 'nurse', t: "Oh, I don't know her name. Isn't that awful? She's from the river side, I think. Wears gloves. Very old-fashioned. She always asks how we're sleeping." },
+          { n: "She said it fondly. She put the lid back on the tin and patted it, twice, with the flat of her hand, the way you'd pat a dog that had been good." }
+        ] }
+      ] },
+      { n: "Ken wrote his note at the end of the counter, standing, bent over the card with his tongue in the corner of his mouth the way he'd written his composition. Solar didn't read it. She saw how short it was. One line, and then a long time looking at the line, and then a second line, smaller, and he folded it twice and gave it to the nurse with both hands and a small stiff bow." },
+      { place: 'Tatsumi Memorial Hospital · Front', time: 'Evening', bg: 'hospital-outside', soft: true },
+      { n: "Outside the sun had gone round behind the building and the forecourt was in shade. Koromaru came to Ken at once and leaned, his whole weight, against Ken's legs, and Ken knelt and put his face in the dog's neck for a moment and stayed there." },
+      { n: "Then Solar looked up, because something made her, and on the fourth floor, in one of the long row of identical windows, there was somebody standing." },
+      { n: "Tall, in a gray hospital shirt, one shoulder lower than the other. He didn't wave. Shinjiro didn't wave at things. He lifted his right hand, slowly, the bad one, up into the window where they could see it, and it wasn't open. It was a fist. It was held there, shaking a little, the knuckles toward them." },
+      // CG: eqx-ken-window — a boy in a school uniform kneeling by a white dog in a hospital forecourt at dusk, looking up; far above, in one window of a long white building, a tall figure holding a closed fist up against the glass.
+      { n: "Ken saw. Ken stood up. He looked at the window for a long time with his face doing nothing at all. Then he lifted his own right hand, and made a fist of it, and held it up at the window, and they stood like that, the boy and the man four floors apart, two fists, until the man's arm couldn't hold it any longer and came down, slowly, out of sight." },
+      { choose: [
+        { t: "(Say nothing. Let him have it.)", notes: 3, then: [
+          { n: "She said nothing. Ken lowered his hand. He looked at it, the fist, and opened it, and closed it again, as if checking it still did both." }
+        ] },
+        { t: "Want to go up?", notes: 2, then: [
+          { s: 'ken', f: 'neutral', t: "No. Not today. That was enough. That was the right amount." },
+          { s: 'ken', f: 'happy', t: "...That was yet. Next time can be the rest of it." }
+        ] },
+        { t: "What did you write, Ken?", notes: 2, then: [
+          { s: 'ken', f: 'neutral', t: "The first line was *I heard her voice. It wasn't her.*" },
+          { s: 'ken', f: 'sad', t: "The second line was *I'll come back.* I wrote it small so it wouldn't be a promise yet. I think it's a promise anyway. I think small ones count." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Front Hall', time: 'Night', bg: 'iwatodaidorm-livingroom-night-spring', soft: true },
+      { n: "On the bus home Ken fell asleep against her shoulder with his mouth open, which he'd have denied to his grave, and woke at the Iwatodai stop and said he hadn't been asleep, he'd been resting his eyes for efficiency." },
+      { s: 'ken', f: 'neutral', t: "Solar-san. The dorm. Mitsuru-san said one more year. Last year. And then this year she said one more year again." },
+      { s: 'ken', f: 'neutral', t: "I counted. If it's one more year, it's three hundred and thirty-one days from today. I'd like it to be more. I'm not asking anybody. I'm just saying the number." },
+      { n: "He said it to the window, very correctly. Koromaru, on the floor between their knees, had lifted his head at the word *more*, and looked up at Ken, and kept looking." },
+      { n: "At the dorm Koromaru went to the front door without stopping for water and turned round twice and lay down along the bottom of it. Ken's futon was already there in the hall, made up, the corners square. He lay down on it in his uniform and was asleep almost at once, one arm flung out across the boards, his hand resting on the dog's back." },
+      { n: "Koromaru didn't sleep. He lay with his nose to the gap under the door and his eyes open, and every time a car went by on the hill outside his ears turned, and every time it didn't stop they turned back, and under Ken's hand, slow, steady, he breathed, and waited, and kept the door." }
     ] }
   ]
 });

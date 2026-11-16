@@ -1,10 +1,12 @@
 /* Persona 3: Equinox · Yukari Takeba · VI The Lovers. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13; her home days are Monday, Wednesday and Friday, so 4/14 at the earliest). Ranks 2–10 to write.
+   Written: ranks 1–2 (from 4/13; her home days are Monday, Wednesday and Friday, so 4/14 at the earliest). Ranks 3–10 to write.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Solstice's ranks are shared memory here (the range, "back, not arms", the photo-booth strip, "you pick"); nothing reads
    Solstice link standing. Yukari has no 'happy' portrait: her smiles are written in narration.
-   Flags this file sets: eqx-yukari-arrow (rank 1: Solar keeps last year's arrow). Nothing reads it yet. */
+   Flags this file sets: eqx-yukari-arrow (rank 1: Solar keeps last year's arrow). Nothing reads it yet.
+   Rank 2 (after 4/21): reads eqx-yukari-arrow and ifEvent eqx-knock; sets eqx-yukari-frame (Solar keeps the fourth frame).
+   Nothing reads the new flag yet. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'yukari', name: 'Yukari Takeba', short: 'Yukari', arcana: 'Lovers', numeral: 'VI', from: 'Persona 3', kind: 'sees',
   romance: null, starts: '4/8', lodging: 'dorm',
@@ -140,6 +142,134 @@
       { s: 'yukari', f: 'neutral', t: "Night." },
       { s: 'solar', f: 'neutral', t: "Night." },
       { n: "She went back along the hall to the stairs, up to her own floor. Solar heard her stop on the landing. Heard her not turn round. Heard her keep going, and her door, and then, through the ceiling a few minutes later, the radio come on low, a late-night talk show with somebody laughing too much, turned up just loud enough to cover whatever it was supposed to cover." }
+    ] },
+    { after: '4/21', title: '2: four frames', place: 'Gekkoukan High · Archery Range', time: 'After School', music: 'joy', scene: [
+      { bg: 'gekkoukan-archery-range' },
+      { n: "The cherry trees round the range had given up completely by the third week of April and gone to leaf, and the petals that had been pink in the gravel were brown now, and swept into a heap by the shed where somebody's broom had left them, and the whole place smelled of cut grass and straw and the linseed oil the club used on the bows. Yukari was shooting well. Solar could hear it from the gate: the clean flat *tock* of an arrow going into the middle of something, and then another, and then another, close enough together that they had to be in the same ring." },
+      { n: "She didn't turn round. She loosed one more, and lowered the bow, and only then looked over her shoulder, with the particular face of somebody who'd known exactly who was at the gate and had wanted to finish the set first so it would be seen." },
+      { s: 'yukari', f: 'neutral', t: "Did you see that? Tell me you saw that. Three in the gold. My back remembered." },
+      { choose: [
+        { t: "I saw. You're not mad anymore.", notes: 3, then: [
+          { s: 'yukari', f: 'serious', t: "I'm still mad. I'm just mad accurately now. It's a different skill." }
+        ] },
+        { t: "(Clap. Slowly. Like the captain does.)", notes: 2, then: [
+          { n: "She clapped, slowly, three times, the way the captain clapped at the end of practice to mean *adequate*. Yukari pointed the bow at her like a finger and said *don't*, and laughed, and the laugh went right up the range and startled a crow off the netting." }
+        ] },
+        { t: "Show-off.", notes: 2, then: [
+          { s: 'yukari', f: 'neutral', t: "Obviously. I've been waiting a week for somebody to show off to. Junpei doesn't count. He just says *nice* about everything. He said *nice* about my lunch." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-yukari-arrow', then: [
+        { s: 'yukari', f: 'neutral', t: "Is my arrow still in your bag? Don't lie. You look at the floor when you lie." },
+        { s: 'solar', f: 'neutral', t: "It's in my bag." },
+        { s: 'yukari', f: 'blushing', t: "...Okay. Good. Not that I was checking. Put your bag down somewhere I can see it, though." }
+      ] },
+      { s: 'yukari', f: 'neutral', t: "Okay. Get your stuff. We're going to Paulownia. I have a coupon." },
+      { s: 'solar', f: 'neutral', t: "For what?" },
+      { s: 'yukari', f: 'serious', t: "For a thing I need witnessed. It's not a big deal. It's a huge deal. Come on." },
+      { place: 'Paulownia Mall · Photo Booth', time: 'After School', bg: 'paulownia-photo-booth', soft: true },
+      { n: "The photo booth was where it had always been, in the corridor by the arcade between a capsule-toy machine and a fire door, with its candy-pink curtain and its sticker-covered screen and the cardboard cutout of a girl in a sailor uniform giving a peace sign that somebody had given a mustache in marker sometime in the last year. The mustache was new. Everything else was exactly the same, down to the smell, warm plastic and somebody's strawberry body spray and the dusty heat that came off the printer." },
+      { n: "Yukari took her phone out of her blazer and turned it over. On the back, tucked inside the clear case where other girls kept a receipt or a ticket stub, was a strip of four photos, faded at the edges where her thumb had worn it, two girls pulling faces in front of a pink curtain, a year old." },
+      { s: 'yukari', f: 'neutral', t: "This is the old one. It's going yellow. Look, your face is going yellow. You look like you have a disease." },
+      { s: 'yukari', f: 'serious', t: "So we're taking a new one. And I'm getting three prints. One for my phone. One for my wallet. One for my locker, taped up, inside the door, where nobody can take it down without me knowing." },
+      { s: 'yukari', f: 'neutral', t: "Mitsuru-senpai calls that redundancy. She does it with the Group's files. If one copy goes, there's two more. I'm doing it with you." },
+      { n: "She said it so briskly, so practically, the way you'd explain a plan to back up your homework, that it took Solar a second to hear what it was. A girl who'd walked past a door for a month without looking at it, making sure that this time there'd be three places to find a face, and at least one of them taped up where it couldn't fall." },
+      { choose: [
+        { t: "Get four. I want one too.", notes: 3, then: [
+          { s: 'yukari', f: 'surprised', t: "...Four's more than the coupon." },
+          { s: 'yukari', f: 'neutral', t: "Fine. Four. I'll pay. Don't say anything. Don't say a single thing." }
+        ] },
+        { t: "Yukari. I'm right here.", notes: 2, then: [
+          { s: 'yukari', f: 'serious', t: "Yeah. You were right here last year too. Get in the booth." }
+        ] },
+        { t: "(Get in the booth before she can see your face.)", notes: 2, then: [
+          { n: "She ducked in through the curtain before Yukari could see her face do whatever it was doing. Yukari came in after her, and sat, and bumped her over on the little bench with her hip, and didn't say anything about it, which meant she'd seen." }
+        ] }
+      ] },
+      { n: "Inside the booth it was bright and hot and close, the light coming off the white panel above the screen so flat it took the shadows out of everything. Yukari fed in the coins. The screen chimed and showed them their own two faces, and a cartoon rabbit, and a number. *4.*" },
+      { s: 'yukari', f: 'neutral', t: "Okay. First one normal. Second one stupid. Third one you pick. Fourth one I'm going to do something and you just have to deal with it." },
+      { n: "The first one was normal: two girls, shoulder to shoulder, smiling at a lens, the kind of smile you can do on command. The flash went off like a slap. The second one was stupid. Yukari pulled her cheeks out sideways with both fingers and Solar did the face she'd done in the old strip, the one that looked like a fish with opinions, and Yukari started laughing before the flash and was a blur in it." },
+      { n: "The third one was halfway through its countdown when Yukari's phone went off in her lap." },
+      { n: "It buzzed against her thigh, loud in the little box, and she looked down at it, and Solar looked down at it, and on the screen it said *Mom*, with no picture, just the word." },
+      { n: "Yukari pressed decline with her thumb without picking the phone up. She did it so fast and so smoothly that it was obviously something her thumb knew how to do by itself, a move it had practiced, and then she looked back up at the lens with her face already arranged, and the flash went, and caught her a quarter of a second late, still turning, with the arrangement not quite finished." },
+      { s: 'yukari', f: 'neutral', t: "Ugh. That one's ruined. Whatever. Last one. Hold still." },
+      { n: "On the last countdown she leaned over and put her head on Solar's shoulder, hard, her cheek against the side of Solar's neck, and shut her eyes, and didn't do anything else at all. *3.* Her hair smelled of the range, straw and oil. *2.* Her hand found Solar's on the bench between them and held it, tight, in a way that would not be in the picture. *1.*" },
+      { n: "The flash went off. Yukari didn't move for a second after it. Then she sat up and said *okay* in a perfectly normal voice and pushed the curtain open and went out to wait for the prints, and didn't look back to see if Solar was coming, and stood at the slot with her arms folded, watching it like it owed her money." },
+      { n: "The strips came out one at a time, warm, curling slightly, smelling of chemicals. Four of them. Yukari picked them up by the edges and laid them out in a row on top of the capsule machine, and they both bent over them." },
+      { n: "Normal. Stupid. Yukari a quarter-second late, still turning from her phone, her face caught halfway between one thing and another. And the last one, the two of them, Yukari's head on Solar's shoulder and her eyes shut and her mouth doing something small and private at the corner." },
+      { n: "And behind them, in the fourth frame, the curtain was open." },
+      { n: "Not much. A finger's width, at the edge, where it met the wall of the booth. A thin vertical slice of the corridor outside, dim after the white of the flash, the dark gray of the fire door, the floor. Nothing in it. Nobody. Just the gap, a straight dark line down the side of the picture, exactly the width you'd open a curtain to if you wanted to see in without being seen." },
+      // CG: eqx-yukari-strip — a photo-booth strip of four frames lying on top of a capsule-toy machine, two girls in school uniforms in each; in the last frame one girl's head on the other's shoulder, eyes shut, and at the edge of the frame the pink curtain behind them open a finger's width onto a dark corridor.
+      { s: 'yukari', f: 'serious', t: "...I shut that. I pulled it shut. I always pull it shut. I checked it when I sat down." },
+      { s: 'solar', f: 'neutral', t: "I know. I saw you." },
+      { n: "They looked at it. Four copies of it. In every one, the same gap, the same width, the same dark line. Yukari's eyes went from the photo to the booth, to the curtain, which hung shut now, flat and pink and ordinary against the wall, and back." },
+      { choose: [
+        { t: "It's the flash. It moves the curtain.", notes: 2, then: [
+          { s: 'yukari', f: 'neutral', t: "...Yeah. Heat. Air. The flash is hot. It's a, it's a thing." },
+          { s: 'yukari', f: 'serious', t: "It didn't move in the other three. But okay. It's the flash. That's what I'm going with. Thank you." }
+        ] },
+        { t: "(Look closer. Low down, in the gap.)", notes: 3, then: [
+          { n: "She bent closer. Low in the gap, at about the height of a hand on a curtain, there was a pale smudge. Small, soft-edged, a little whiter than the gray around it. A reflection of the flash off the fire door's bar, probably. That was what flashes did. They left white things on dark things." },
+          { n: "She didn't say it was a hand. She didn't say anything. She straightened up, and Yukari was watching her face instead of the photo, and whatever Yukari saw on it made her pick up all four strips at once and hold them against her chest." }
+        ] },
+        { t: "(Step back and look at the booth instead.)", notes: 2, then: [
+          { n: "She looked at the booth. The curtain. The corridor, empty both ways, the arcade noise spilling out of one end and the mall's piped music out of the other, a mother going past with a stroller, a boy in a cap at the capsule machines. Nobody who'd stood at a curtain. Nobody who looked like they'd ever stood anywhere." }
+        ] }
+      ] },
+      { s: 'yukari', f: 'serious', t: "Okay. Okay. I'm cutting it off." },
+      { n: "She tore the fourth frame off each strip, one after another, along the perforated line, careful, with her nails. Four little squares of the two of them with the dark line down the side. She stood with them in her hand over the bin by the fire door." },
+      { choose: [
+        { t: "Give me one. I'll keep it.", notes: 3, flag: 'eqx-yukari-frame', then: [
+          { s: 'yukari', f: 'surprised', t: "Why would you want that one?" },
+          { s: 'solar', f: 'neutral', t: "Because it's the good one. Look at your face." },
+          { n: "Yukari looked. At herself with her eyes shut on Solar's shoulder. She went pink, slowly, all the way, and put one square in Solar's hand without a word and threw the other three away, hard, like you'd throw something at a dog." }
+        ] },
+        { t: "Throw them out.", notes: 2, then: [
+          { n: "She threw them out. All four. Then stood there for a second looking down into the bin, at the little squares on top of somebody's cup and a crumpled receipt, and Solar watched her want, very badly, to take one of them back out, and not do it." }
+        ] },
+        { t: "Your call.", notes: 3, then: [
+          { s: 'yukari', f: 'neutral', t: "...Don't do that. That's my line." },
+          { n: "She kept one. Solar saw her. She threw away three and slid the fourth into the very back of her wallet, behind her student card, face in, where nobody would see it unless they were looking for it, and she didn't say why, and Solar didn't ask." }
+        ] }
+      ] },
+      { place: 'Paulownia Mall · Canal', time: 'Evening', bg: 'paulownia-canal', soft: true },
+      { n: "They sat on the low wall by the canal with two cans of melon soda from the machine, because it was what they'd done last year, because their bodies walked them there without discussing it. The water was green and still and full of the mall's lights. Somebody's paper boat was going round in a slow circle by the steps, too waterlogged to go anywhere." },
+      { n: "Yukari's phone buzzed once. Not a call. The small single buzz of a voicemail arriving. She looked at it on her knee for a long time." },
+      { s: 'yukari', f: 'neutral', t: "She doesn't call. My mom. She texts at New Year and on my birthday. Two texts a year. It's a system. It works." },
+      { s: 'yukari', f: 'serious', t: "She's called three times this week." },
+      { n: "She pressed play and held the phone between them, speaker on, low, as if the canal might overhear. A woman's voice, light, tired, a little too bright, the voice of someone who'd decided before dialing to sound fine." },
+      { n: "*Yuka-chan. It's Mom. I had the strangest dream about you. You were little, and I was at the door, and you wouldn't let me in. Isn't that silly. Call me back.*" },
+      { n: "Then a breath, as if she'd been about to say something else. Then the click." },
+      { s: 'yukari', f: 'sad', t: "...She never calls me that on the phone. Never. Only at the door. When I was little and she'd come home late and I'd be waiting up. She'd say it through the door so I'd know it was her." },
+      { s: 'yukari', f: 'serious', t: "It's her number. It's her voice. It's definitely her. I know it's her." },
+      { n: "She said it three times, in three slightly different ways, and Solar heard each one land a little less sure than the one before, the way you'd test a step on ice." },
+      { ifEvent: 'eqx-knock', then: [
+        { s: 'yukari', f: 'serious', t: "You know what's stupid? On the twenty-eighth. Everything knocked. Every door. Ken's mom. Akihiko-senpai's sister. Your three." },
+        { s: 'yukari', f: 'sad', t: "I asked Fuuka after. Every door had a voice behind it. Mine knocked twice, she said, and then nothing. No voice. It just waited. It didn't even try me." },
+        { s: 'yukari', f: 'serious', t: "I keep thinking it knew I wouldn't open. And then I keep thinking, or it's saving it." }
+      ] },
+      { choose: [
+        { t: "Call her back. I'll sit here.", notes: 2, then: [
+          { n: "Yukari looked at the phone. Her thumb went to the number. It stayed there. The paper boat went round once more by the steps, and sank a little further, and kept going round." },
+          { s: 'yukari', f: 'neutral', t: "...Not tonight. I will. Not tonight. I'll text her. Texting's the system." }
+        ] },
+        { t: "Don't call her back tonight.", notes: 2, then: [
+          { s: 'yukari', f: 'neutral', t: "Yeah. No. I wasn't going to. I've had years of practice not calling back." },
+          { s: 'yukari', f: 'sad', t: "...It's a lot easier when you're mad at somebody. I'm not even mad at her this week. That's what's weird." }
+        ] },
+        { t: "Whatever you want to do. It's yours.", notes: 3, then: [
+          { s: 'yukari', f: 'surprised', t: "...Huh." },
+          { s: 'yukari', f: 'neutral', t: "Nobody ever says that about my mom. Everybody's always got a take. Call her, don't call her, she's your mother, she's not your problem." },
+          { n: "She thought about it. Actually thought, with her chin on her knees, looking at the canal. Then she typed with one thumb, *got it. busy with school. night*, and sent it, and turned the phone face down on the wall, and left her hand on it." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Hallway', time: 'Night', bg: 'iwatodaidorm-hallway', soft: true },
+      { n: "She walked Solar up. She didn't pretend anymore that it was on the way. At the top of the stairs, outside Solar's door, she stopped and took a strip out of her wallet, one of the four, three frames long now, normal and stupid and late, and wedged it into the gap between Solar's door and its frame, at eye height, so it stuck out like a bookmark." },
+      { s: 'yukari', f: 'neutral', t: "Redundancy. Copy four. If I walk past this door without looking at it, that's going to poke me in the eye." },
+      { s: 'yukari', f: 'neutral', t: "Night." },
+      { s: 'solar', f: 'neutral', t: "Night." },
+      { n: "Later, in bed, Solar heard her phone through the ceiling. Not a buzz. The ring. It rang four times and stopped, unanswered, and the room above was very quiet for a long moment, and then it rang again. Four times. Stopped." },
+      { n: "Then the radio came on, the late-night talk show, somebody laughing too much, turned up a notch louder than last time, and stayed on, and Solar lay in the dark listening to a stranger laugh above her head until the red came up through the window and took the sound away." }
     ] }
   ]
 });

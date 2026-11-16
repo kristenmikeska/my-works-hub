@@ -1,9 +1,11 @@
 /* Persona 3: Equinox · Mitsuru Kirijo · III The Empress. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13; her home is Tuesday and Thursday evenings, so 4/13 itself). Ranks 2–10 still to write.
+   Written: ranks 1–2 (from 4/13; her home is Tuesday and Thursday evenings, so 4/13 itself). Ranks 3–10 still to write.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Solstice's ranks are shared memory here (the list, the spare helmet, the PENDING stamp); nothing reads Solstice link standing.
-   Flags this file sets: eqx-mitsuru-pending (rank 1: Solar stamps the blank form PENDING). Nothing reads it yet. */
+   Flags this file sets: eqx-mitsuru-pending (rank 1: Solar stamps the blank form PENDING). Nothing reads it yet.
+   Rank 2 (after 4/22): reads eqx-supper-stayed / eqx-supper-mine (story-act1 4/16) for Solar's figures; sets eqx-mitsuru-watch
+   (Solar wears the loaned watch); ifAfter 4/29 for Mr. Tanabe. Nothing reads the new flag yet. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'mitsuru', name: 'Mitsuru Kirijo', short: 'Mitsuru', arcana: 'Empress', numeral: 'III', from: 'Persona 3', kind: 'sees',
   romance: null, starts: '4/8', lodging: 'dorm',
@@ -157,6 +159,123 @@
       { s: 'mitsuru', f: 'neutral', t: "And Solar. If you're ever at that house, and you look at your watch, look at it again when you leave. Write both down. I'd like a second set of figures." },
       { n: "She went in ahead of her. In the lounge, under the whiteboard with its two halves, VISITORS on the left and ARRIVALS on the right with nothing under it but a gray thumb-smudge, Mitsuru stopped, and uncapped a marker, and stood there with it raised for a long moment, as if she'd been about to write something and had decided it wasn't true yet." },
       { n: "Then she capped it and went up to bed. Solar heard her door, and the lock, and then, a minute later, a drawer open and shut, softly, the way you'd check that something was where you'd left it." }
+    ] },
+    { after: '4/22', title: '2: a second set of figures', place: 'Port Island Station · Café Terrace', time: 'Evening', music: 'city', scene: [
+      { bg: 'portisland-station-night' },
+      // BG: portisland-cafe-terrace-evening (as rank 1) — the same terrace in a thin spring rain, the awning dripping, one patio heater glowing.
+      { n: "It was raining on Thursday, the thin cold rain that came in sideways off the bay in April and didn't seem to fall so much as hang, and the café had pulled its awning out over the terrace and left the tables where they were, wet, and the heater on, because Mitsuru had telephoned ahead. Solar knew she had. Nobody else was sitting out. The waiter brought the second cup before she'd finished sitting down, and didn't meet her eyes, and went back in as if he'd been told the terrace was a meeting room and the meeting had started." },
+      { n: "Mitsuru had a notebook open this time instead of the folders. A plain one, black, with a ribbon. She'd ruled two columns down the first page in pencil, and at the top of the left one she'd written *M.K.*, and at the top of the right one *S.*, and the right one was empty." },
+      { s: 'mitsuru', f: 'neutral', t: "Six forty-four. You're precise this time. So am I." },
+      { s: 'mitsuru', f: 'neutral', t: "I asked you for a second set of figures. You've been to the house since. I'd like them, please. Exactly as you remember them, not as you think they should have been." },
+      { n: "She uncapped her pen and held it over the empty column, and waited, and Solar realized she'd been waiting like that since six forty-four, and possibly since Tuesday." },
+      { ifFlag: 'eqx-supper-stayed', then: [
+        { s: 'solar', f: 'neutral', t: "I got there at ten past four. I looked." },
+        { s: 'mitsuru', f: 'neutral', t: "And you left?" },
+        { n: "She opened her mouth to say it and there was nothing there to say. A kitchen. The steam. A bowl being filled for her, and then filled again, and Mrs. Oka's voice going on low and warm about something, the river, her mother's mother, how you fold the edge of a dumpling so it holds. And then the dorm steps, and the cold, and Hanni sitting on them in her coat with her phone in both hands, standing up so fast she nearly fell." },
+        { s: 'solar', f: 'serious', t: "I don't know. Hanni says I came up the hill at eleven forty-one. I don't remember the hill." },
+        { n: "Mitsuru didn't write anything for a moment. Then she wrote *16:10* in the right-hand column, and under it *23:41*, and between them, very small, a dash, and looked at the dash as if it had said something rude to her." },
+        { s: 'mitsuru', f: 'serious', t: "Seven and a half hours. And supper." },
+        { s: 'mitsuru', f: 'sad', t: "...You don't have to tell me what you ate. I'd rather you didn't. I'd rather not have it in the notebook." }
+      ], else: [ { ifFlag: 'eqx-supper-mine', then: [
+        { s: 'solar', f: 'neutral', t: "Ten past four in. I left before supper. It was two minutes past five at the gate." },
+        { s: 'solar', f: 'neutral', t: "Then I walked home. It's twenty minutes, the long way. The dorm clock said quarter past six." },
+        { s: 'mitsuru', f: 'neutral', t: "Did you stop anywhere?" },
+        { s: 'solar', f: 'serious', t: "No. I had two rice cakes in a napkin and I didn't stop once. I wanted to get them out of my hands." },
+        { n: "Mitsuru wrote it down. *16:10. 17:02. 18:15.* She drew a small careful box round the last two figures, and then, after a moment, round the whole of the walk home." },
+        { s: 'mitsuru', f: 'serious', t: "So it isn't only the house. It's the road away from it." }
+      ], else: [
+        { s: 'solar', f: 'neutral', t: "I said no and I left. My phone said nine minutes." },
+        { s: 'mitsuru', f: 'neutral', t: "And it felt like?" },
+        { s: 'solar', f: 'serious', t: "Like an hour. Like I'd been standing in that kitchen being looked at for an hour." },
+        { n: "Mitsuru wrote *9 min.*, and next to it, after a visible hesitation, in brackets, *(1 hr)*, and Solar watched her dislike putting a feeling in a column, and do it anyway, because it was data." }
+      ] } ] },
+      { n: "She turned the notebook so Solar could see her own column. *M.K.* Four visits, each one two figures, in and out. Forty minutes that came out as two hours. Twenty that came out as fifty. A quarter of an hour on the doorstep, never past the doorstep, that her watch said was an hour and ten. All of them long. None of them short. Not one, in four, that had come out the right size." },
+      { choose: [
+        { t: "It's always long. Never short.", notes: 3, then: [
+          { s: 'mitsuru', f: 'serious', t: "Yes. Time doesn't go strangely there. It goes one way. It goes missing." },
+          { s: 'mitsuru', f: 'neutral', t: "It's being kept. That's the word I keep writing and crossing out. As if the house were keeping it for someone." }
+        ] },
+        { t: "You've been back four times? Alone?", notes: 2, then: [
+          { s: 'mitsuru', f: 'neutral', t: "The Group leases it. I'm the Group, in this town. Someone has to inspect the property." },
+          { s: 'mitsuru', f: 'sad', t: "...And she makes very good tea, and asks after my lectures, and I find I look forward to it. I've written that down too. Under a separate heading." }
+        ] },
+        { t: "(Take the pen. Underline your own figures.)", notes: 2, then: [
+          { n: "She took the pen out of Mitsuru's fingers, which let it go more easily than she'd expected, and drew a line under her own column, firm, the way Mitsuru underlined the things that mattered on the lounge whiteboard. Mitsuru looked at the line for a moment and then took the pen back and underlined it again, beside hers, so there were two." }
+        ] }
+      ] },
+      { n: "The rain thickened and thinned again. A train came in below them and its doors opened and closed on nobody. Mitsuru reached into her bag and took out a small box, old, leather gone soft at the corners, the kind a jeweler used to give you before jewelers gave you paper, and set it on the table between their cups with the same small precise click she'd used for the stamp." },
+      { s: 'mitsuru', f: 'neutral', t: "Your phone is a phone. It updates itself from a tower. Mine is a phone. My watch is a good watch, but it's battery, and I don't trust anything in that house that needs a signal or a battery to tell me the truth." },
+      { n: "She opened the box. A man's wristwatch, steel, plain, the face a little yellowed, the strap a dark worn leather that had taken the shape of somebody else's wrist and kept it." },
+      { s: 'mitsuru', f: 'neutral', t: "It's mechanical. You wind it. It doesn't take instructions from anything. It doesn't even take them from me." },
+      { s: 'mitsuru', f: 'sad', t: "It was my father's." },
+      { n: "She said it in exactly the voice she'd used for *beds*. Then she looked at the watch instead of Solar and her hand stayed flat on the table beside the box, near it, not touching it, the way you'd keep your hand near something hot." },
+      { s: 'mitsuru', f: 'neutral', t: "When you're at that house, wear it. In, out. Write both. That's all. I want one instrument in this town that nobody can talk to." },
+      { choose: [
+        { t: "(Hold out your wrist. Let her put it on you.)", notes: 3, flag: 'eqx-mitsuru-watch', then: [
+          { n: "She held out her wrist. Mitsuru looked at it for a second as if it were a form she hadn't expected to be handed, and then took the watch out of the box and put it on her, and did the buckle herself, the strap going three holes past where it had been worn, so the old crease sat loose and pale against Solar's skin like a line drawn round a missing thing." },
+          { s: 'mitsuru', f: 'neutral', t: "It's too big for you. He had very large hands. He used to rest one on my head when I did something correctly. It covered my whole head." },
+          { s: 'mitsuru', f: 'neutral', t: "...Wind it in the morning. Twenty turns. Not more. It doesn't like to be forced." }
+        ] },
+        { t: "I can't take your father's watch, Mitsuru.", notes: 2, then: [
+          { s: 'mitsuru', f: 'neutral', t: "You're not taking it. You're carrying it. It's a loan. It goes back in this box at the end of every visit." },
+          { s: 'mitsuru', f: 'serious', t: "I'd go myself, every time, with it on. I've tried. I come out and look at it and it's right and I don't believe it, because I'm the one who was in there. I need someone else's wrist." },
+          { n: "She pushed the box an inch toward Solar. Solar didn't take it, and didn't push it back, and they left it there between them in the middle of the wet table for the rest of the evening, open, ticking very faintly under the rain." }
+        ] },
+        { t: "What was he like? With the watch.", notes: 3, then: [
+          { s: 'mitsuru', f: 'surprised', t: "...With the watch?" },
+          { s: 'mitsuru', f: 'neutral', t: "He'd look at it at the dinner table. Not to check the time. He just looked at it, when he didn't want to say something. He'd wind it instead. I could tell how a board meeting had gone by how many turns." },
+          { s: 'mitsuru', f: 'sad', t: "I've been winding it every night since April. Twenty turns. I don't know what I'm not saying." }
+        ] }
+      ] },
+      { ifAfter: '4/29', then: [
+        { s: 'mitsuru', f: 'sad', t: "I told you I didn't read the notes. For Mr. Tanabe." },
+        { s: 'mitsuru', f: 'serious', t: "I went back on Monday and read them. I sat in the Group's car outside the coroner's office and read every line, because not reading them was worse, and I wanted to know which kind of worse I'd chosen." },
+        { s: 'mitsuru', f: 'serious', t: "The attending weighed him. Out of habit, I think. Fourteen kilos, with the uniform. He wrote it and didn't cross it out this time. He wrote it and then he wrote *scale fault?* next to it with a question mark, and signed underneath." },
+        { n: "The rain ticked on the awning. Fourteen kilos. A grown man in a gray jacket at a little table with his crossword, and what was left of him in the uniform weighing what a child weighed, what a bag of rice weighed, and the rest of him gone somewhere, carried off, in the night, and somebody's tidy hand writing *scale fault* because it was the only thing in the world it could be." },
+        { s: 'mitsuru', f: 'sad', t: "I keep a list of what I'm responsible for. I've added a line. I don't have a word for it yet. It's just a dash." }
+      ] },
+      { n: "Her phone buzzed on the table. She looked at the name on it, and her face went into its Group shape, the one with no weather in it at all, and she said *excuse me* and answered, and Solar heard the other half of it in pieces: a man's voice, careful, apologetic, procurement, a delivery, an order on the account." },
+      { s: 'mitsuru', f: 'neutral', t: "...Eight." },
+      { s: 'mitsuru', f: 'neutral', t: "No. I didn't. Read it to me." },
+      { n: "She listened. She didn't write it down. That was the thing Solar would remember afterward: that Mitsuru, who wrote everything down, sat with the pen in her hand over the open notebook and didn't move it at all." },
+      { s: 'mitsuru', f: 'neutral', t: "Thank you. No. Let it go through. Thank you." },
+      { n: "She put the phone face down. She put her hand flat on top of it, the way she'd put it on the hospital folder, the way you'd keep a dog lying down." },
+      { s: 'mitsuru', f: 'serious', t: "The Group's supplier delivered eight cups this afternoon. Teacups. Good ones. To the boarding house, on the Kirijo account, signed for at the door." },
+      { s: 'mitsuru', f: 'serious', t: "Ordered by telephone on Tuesday. In my name. By a woman who knew my account number, and the delivery instructions, and that I take the cheaper porcelain because the good kind always breaks in the dorm." },
+      { s: 'mitsuru', f: 'sad', t: "The clerk wanted me to know she'd been lovely on the phone. He said she sounded so like my mother he'd assumed I'd asked her to call." },
+      { n: "She said the last word very carefully, as if it were heavy and she didn't want to drop it on the table." },
+      { s: 'mitsuru', f: 'neutral', t: "My mother doesn't telephone anyone. She hasn't for years. She isn't well enough to telephone me." },
+      { s: 'mitsuru', f: 'serious', t: "Eight upstairs. Eight cups on trays. And now eight more. Somebody isn't expecting more people, Solar. Somebody's setting the table for them." },
+      { choose: [
+        { t: "Cancel it. Send them back.", notes: 2, then: [
+          { s: 'mitsuru', f: 'neutral', t: "I thought of that. And then she has sixteen and I don't know where the second eight went." },
+          { s: 'mitsuru', f: 'serious', t: "I let it go through so I'd know where they are. I'd rather know where the cups are than have them nowhere." }
+        ] },
+        { t: "She used your mother's voice.", notes: 3, then: [
+          { n: "Mitsuru looked at her. It was the look she'd given the whiteboard with the marker raised, the look of somebody who'd thought a sentence all the way to the end and decided not to write it because it wasn't true yet." },
+          { s: 'mitsuru', f: 'sad', t: "...The clerk said a nice voice. A nice older woman. I'm the one who heard the rest of it. I don't know what I'd be accusing her of. Kindness. Good teacups." }
+        ] },
+        { t: "(Put your hand on hers. On the phone.)", notes: 3, then: [
+          { n: "She put her hand over Mitsuru's on the back of the phone. It was cold again, the way it had been on the folder, and this time it turned over under hers and held on, briefly, hard, the grip of someone checking a rail was there in the dark, and let go." },
+          { s: 'mitsuru', f: 'neutral', t: "Thank you. I'm going to say something I won't repeat." },
+          { s: 'mitsuru', f: 'sad', t: "I drafted the dorm's renewal this week. One more year, like last time. There's a box for the term. I wrote *one year*. Then I crossed it out. I haven't written anything in it since. It's been on my desk for four days with a line through it." }
+        ] }
+      ] },
+      { place: 'Port Island Station · Café Terrace', time: 'Evening', bg: 'portisland-station-night', soft: true },
+      { n: "She paid. She always paid. She stood under the awning buttoning her coat while the rain came down past the edge of it in a gray curtain, and the commuters went by with their umbrellas up, and the monorail went over with its windows lit, and she looked at her own watch, and then at the one Solar was wearing, or the one in the open box, and compared them, and they agreed to the minute, and she didn't look relieved." },
+      { s: 'mitsuru', f: 'neutral', t: "You'll tell me if you're asked anything there. Anything at all. Even something small. Especially something small." },
+      { s: 'mitsuru', f: 'neutral', t: "I'm not asking you not to go. I'd like to be very clear that I'm not asking that. I'm asking for figures." },
+      { n: "She turned up her collar and went down the steps to the staff lot, where the motorcycle stood with the spare helmet strapped to it and beads of rain all over the shell, and she didn't offer the long way, and Solar didn't ask for it, and they went home the short way, over the bridge, up the hill, and didn't look down the river road at all." },
+      { ifFlag: 'eqx-mitsuru-watch', then: [
+        { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+        { n: "At eleven fifty-nine she lay on her back in the dark with the watch on, too big, the steel cold on the inside of her wrist, and listened to it. It was loud in a quiet room. It was loud the way a heart is loud when you press your ear to a pillow." },
+        { n: "At midnight it stopped. Everything stopped, in the red, the clock on the desk and the phone on her chest and the fridge downstairs. She'd known it would. It was still strange to feel it stop on her own skin, the small steady thing on her wrist simply not there anymore, the way a pulse would feel if it went." },
+        { n: "When the red drained out of the window and the house came back, it started again by itself. She checked it against her phone in the gray light. One minute and four seconds behind. The hour had run over. The watch hadn't been told, and hadn't pretended. It had simply stopped for exactly as long as the hour had actually been, and kept the difference, like a receipt." },
+        { n: "Down the hall, very faintly, through the wall, she heard a drawer open and shut. And then, so quiet she might have dreamed it, the small dry ratchet of somebody else winding something, twenty turns, and stopping, and not saying anything at all." }
+      ], else: [
+        { n: "In the lounge Mitsuru stopped at the whiteboard again, under VISITORS and ARRIVALS, with a marker in her hand. This time she wrote something. Small, in the corner of the ARRIVALS side, in pencil-gray marker that would wipe off with a thumb. *Cups (16).*" },
+        { n: "Then she capped the marker and went up. Solar stood in the lounge a while looking at it, at the number in the corner of an empty column, and found that she'd started, without meaning to, counting the people asleep upstairs, and that she'd lost her place, and started again." }
+      ] }
     ] }
   ]
 });

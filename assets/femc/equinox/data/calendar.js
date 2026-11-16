@@ -15,7 +15,7 @@
    - `end`: in the first week of March 2011 and must stay well before 3/11/2011 (the Tohoku earthquake and tsunami: never in
      range, never mentioned). The end date, graduation and the final stretch may move once the plot writer decides (the
      private plot file decides; this file doesn't read it).
-   - `ops`: the full-moon operations written so far (Act I: 4/28, 5/28). `trips`, `floorCaps`, `ngpFloorCaps`: empty until
+   - `ops`: the full-moon operations written so far (Act I: 4/28, 5/28; Act II: 6/26, 7/26). `trips`, `floorCaps`, `ngpFloorCaps`: empty until
      the story batches (the Well's floor caps will go here). */
 window.FEMC_GAME_CALENDAR = {
   // `year` + `start` are day 0 for core.js's date maths; a month before April is in the next year (2011).
@@ -66,12 +66,17 @@ window.FEMC_GAME_CALENDAR = {
   // core.js plays the op from that event (no fallback scene); battle.js SCRIPTS holds the fights. Act I: data/story-act1.js.
   ops: [
     { date: '4/28', op: 'eqx-knock', name: 'The Knock', kind: 'operation', scripted: true },
-    { date: '5/28', op: 'eqx-first-hill', name: 'The First Hill', kind: 'operation', scripted: true }
+    { date: '5/28', op: 'eqx-first-hill', name: 'The First Hill', kind: 'operation', scripted: true },
+    // Act II: data/story-act2.js.
+    { date: '6/26', op: 'eqx-second-hill', name: 'The Second Hill', kind: 'operation', scripted: true },
+    { date: '7/26', op: 'eqx-third-hill', name: 'The Third Hill', kind: 'operation', scripted: true }
   ],
   floorCaps: [],
   ngpFloorCaps: [],
   // Fixed weather: only the first days for now (the story batches add the days their scenes describe).
-  weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear' },
+  weather: { '4/6': 'clear', '4/7': 'clear', '4/8': 'clear',
+    // Act II (story-act2.js): the days its scenes describe.
+    '6/9': 'rain', '6/19': 'rain', '6/26': 'clear', '7/7': 'cloudy', '7/18': 'clear', '7/26': 'clear', '7/27': 'clear' },
   weatherLevels: {},
   // Chance of each weather by month (the rest is clear), as Solstice's.
   climate: {

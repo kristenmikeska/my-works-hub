@@ -56,7 +56,7 @@ window.FEMC_GAME_CONFIG = {
   },
   loading(kind, req) {
     const id = (req && (req.script || (req.op && (req.op.id || req.op)))) || '';
-    const well = kind === 'tartarus' || /^eqx-(well|first-hill)/.test(String(id)); // the Well's own fights (5/28's First Hill is in it)
+    const well = kind === 'tartarus' || /^eqx-(well|first-hill|second-hill|third-hill)/.test(String(id)); // the Well's own fights (the Hills' full moons: 5/28, 6/26, 7/26)
     return `assets/femc/equinox/art/loading-${well ? 'well' : 'between'}.webp?v=1`;
   },
   // Go Out map pins for Equinox's own areas (data/places-extra.js), in % of the map art.

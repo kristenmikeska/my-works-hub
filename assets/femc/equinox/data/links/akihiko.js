@@ -1,11 +1,14 @@
 /* Persona 3: Equinox · Akihiko Sanada · XVII The Star. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13, the Port Island pier, after school). Ranks 2–15 still to write.
+   Written: ranks 1–2 (rank 1 from 4/13, rank 2 from 4/21, both the Port Island pier after school; rank 2 branches on
+   eqx-flour and eqx-golden-week). Ranks 3–15 still to write. Rank 2 flags (nothing reads them yet): eqx-aki-strip,
+   eqx-aki-lamp-kiss. Speaker without a portrait: fisherman.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Solstice's ranks are shared memory here; nothing reads Solstice link standing. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'akihiko', name: 'Akihiko Sanada', short: 'Akihiko', arcana: 'Star', numeral: 'XVII', from: 'Persona 3', kind: 'sees',
   romance: 'canon', maxRank: 15, starts: '4/8', lodging: 'dorm',
+  cast: { fisherman: 'Old Fisherman' },
   home: { area: 'port', spot: 'Pier', slot: 'after', days: [1, 3, 5, 6],
           hint: 'Afternoons on the pier at Port Island, running until the light goes.' },
   ranks: [
@@ -144,6 +147,130 @@
       { n: "That night she lay in her room with the lights out and her phone on her chest and watched the clock on it go to midnight, and the red came up through the window like a stain through a sheet, and she counted, because he'd made her into someone who counted." },
       { n: "She got to sixty minutes. She kept going. She got one second past the last strip on his roll before the lights came back on, all at once, street by street from the bay inward." },
       { n: "On the floor above her, someone set something down on a desk very carefully, the way you'd set down a pen after writing a number you didn't want to have written." }
+    ] },
+    { after: '4/21', title: '2: split times', place: 'Port Island · Pier', time: 'After School', music: 'tender', scene: [
+      { bg: 'port-island-pier' },
+      { n: "He was already running when she got there, which she'd known he would be, and he saw her at the gate from the far end of the pier, three hundred meters off, and didn't stop or wave or do anything at all except change, very slightly, the line he was running on, so that he'd finish at the gate instead of the bollard. She watched him come. She'd forgotten what it was like to watch him come toward her at a run. Last year she'd watched it so often it had stopped being anything, and now it was something again, all of it, the arms and the breathing and the gray shirt dark down the spine." },
+      { n: "He pulled up a meter from her with his hands on his hips and his chest going, and his face did the thing it did, the whole year of it at once, and then he made it stop." },
+      { s: 'akihiko', f: 'happy', t: "Fifty-eight. Gate to bollard and back. That's a second off Monday." },
+      { s: 'akihiko', f: 'neutral', t: "...You came on a Wednesday. Or a Friday. Whatever this is. I didn't ask you to. I want that noted." },
+      { choose: [
+        { t: "(Hold out the yellow stopwatch.)", notes: 3, then: [
+          { n: "She held it out on her palm. The cheap yellow konbini one, with its chipped corner and its beep. He looked at it and then at her, and didn't take it straight away; he looked at it the way he'd looked at the strip of tape with the first number on it, as if it were a result." },
+          { s: 'akihiko', f: 'blushing', t: "You brought it back." },
+          { s: 'solar', f: 'neutral', t: "You told me to." },
+          { s: 'akihiko', f: 'happy', t: "I told you to *if you were coming.* That's different. That's you deciding. I just supplied the stopwatch." }
+        ] },
+        { t: "Noted. Now time me.", notes: 3, then: [
+          { s: 'akihiko', f: 'happy', t: "Ha! Yeah? Okay. Okay. Gate to bollard, touch it, back. Don't pace yourself, it's three hundred meters, pacing's for cowards and people over thirty." }
+        ] },
+        { t: "You didn't ask. You just ran here three times a week until I showed up.", notes: 2, then: [
+          { s: 'akihiko', f: 'neutral', t: "I run here three times a week because it's three hundred and twelve meters and nobody's on it. You showing up is a separate statistic." },
+          { n: "He said it with great dignity and then ruined it by grinning, wide, at the ground." }
+        ] }
+      ] },
+      { n: "She ran it. She hadn't run properly since the Well; she found that out at about the eightieth meter, when her lungs filed a formal complaint and her legs started discussing it among themselves. The pier went by under her, gray boards and black gaps and the sea moving underneath, and the bollard at the end came up rusted and squat and huge, and she slapped it with her whole palm and turned and saw him at the gate, small, with the stopwatch up, not looking at it, looking at her." },
+      { n: "She came in wrecked. He caught her by the elbow when she pulled up, not hard, just enough, and let go the second she had her feet." },
+      { s: 'akihiko', f: 'happy', t: "One-oh-nine. That's good. That's actually good, for somebody who spent the winter at the bottom of a hole." },
+      { s: 'solar', f: 'flustered', t: "I spent the winter in three different countries." },
+      { s: 'akihiko', f: 'neutral', t: "Exactly. None of which had a pier. I'm making allowances." },
+      { n: "They walked it after, slowly, out to the end and back, the way he always walked a run off, with his hands laced on top of his head and his elbows out. The light was going gold on the water. At the far end, where the old men used to fish in a row on their upturned buckets, there was one old man, alone, with a blue cool box and a line in the water and a radio on low playing a baseball game." },
+      { n: "Last week there'd been five." },
+      { s: 'akihiko', f: 'neutral', t: "He's the last one. The others go home before four now. That one stays till five. I asked him why the others go. He said it gets cold. It doesn't get cold. It's April." },
+      { choose: [
+        { t: "(Go and ask him yourself.)", notes: 2, then: [
+          { n: "She went over. The old man looked up at her from under the brim of a cap so old its logo had worn back into the cloth, and turned his radio down, politely, and looked at Akihiko behind her, and nodded at him the way you'd nod at a weather report you'd come to rely on." }
+        ] },
+        { t: "Ask him again. Nicely this time.", notes: 2, then: [
+          { s: 'akihiko', f: 'neutral', t: "I asked nicely. I always ask nicely." },
+          { s: 'solar', f: 'neutral', t: "You asked like you were about to take his blood pressure." },
+          { s: 'akihiko', f: 'blushing', t: "...Fine. You ask him." }
+        ] }
+      ] },
+      { s: 'fisherman', t: "Hm? The others? Oh, there's a widow on the river side does supper now. Big house. Old one. You'd know it, it's got a persimmon tree you could hang a boat on." },
+      { s: 'fisherman', t: "Hayashi went first, the week before last. She asked him to stay for a bite, he said why not. Then he took Kondo. Now the lot of them are round there by four every day. Eating like boys. Hayashi's put on two kilos. Says it's the rice cakes." },
+      { n: "He laughed, short and dry, and reeled in a little, and let out again." },
+      { s: 'fisherman', t: "She asked me too. Stood at the end of the pier with a tin under her arm, nice as you please, asked if I wouldn't rather be somewhere warm. Sweet woman. Very sweet." },
+      { s: 'fisherman', t: "I told her no. I said I've been on this pier thirty years, the fish know my face. She said that was a shame. She said she'd keep asking." },
+      { n: "He said it as if it were a joke between him and the woman, a pleasant one, and turned his radio back up, and the crowd on it roared about something that had happened in the third inning, far away, in another city." },
+      { n: "On the walk back Akihiko didn't say anything for a long time. Then he said, to the gate, not to her," },
+      { s: 'akihiko', f: 'serious', t: "Every old man on this pier said yes but one, and the one who said no is the only one who's still here when I run." },
+      { s: 'akihiko', f: 'neutral', t: "That's not a thing. That's a coincidence. I'm just saying it out loud so I can hear how stupid it sounds." },
+      { s: 'akihiko', f: 'neutral', t: "...It sounds less stupid out loud. I hate that." },
+
+      { place: 'Port Island · Pier', time: 'Evening', bg: 'port-island-pier-night', soft: true },
+      { n: "They sat on the sea wall by the gate with their legs over the drop while the sky went from gold to the long blue that came before dark. He'd taken the roll of tape out of his bag, the white strips with the numbers on, and he was flattening it on his knee, not to show her, just to have his hands doing something." },
+      { ifEvent: 'eqx-flour', then: [
+        { n: "The strips ran on past where she'd seen them last. 60:16. 60:17. 60:20. And then, two nights later, in the same square capitals, pressed harder, 60:33, with a line drawn under it so heavy it had torn the tape." },
+        { s: 'akihiko', f: 'serious', t: "Thirteen seconds. In two nights. One a night for three weeks, like a clock, and then thirteen, the night that man died." },
+        { s: 'akihiko', f: 'serious', t: "Mitsuru wrote it down without saying anything, which is how I know she thinks the same thing I do. Something got fed, and it grew." },
+        { s: 'akihiko', f: 'neutral', t: "It's never gone back to one since. Some nights two. Some nights nothing. As if it's not hungry yet." }
+      ], else: [
+        { n: "The strips ran on past where she'd seen them last. 60:12. 60:13. 60:14. One a night, every night, in the same square capitals, as steady as a pulse." },
+        { s: 'akihiko', f: 'neutral', t: "It hasn't missed. Not once. One second a night, every night, since the seventh. Fuuka still can't feel it. Mitsuru writes it down without saying anything, which is how I know she's scared." },
+        { s: 'akihiko', f: 'serious', t: "Something that grows one second a night isn't weather. Weather doesn't keep time. Something's *keeping time*." }
+      ] },
+      { choose: [
+        { t: "What happens when it stops being one?", notes: 2, then: [
+          { s: 'akihiko', f: 'serious', t: "Then I'll know something changed. That's the whole point of counting. You don't count because you can stop it. You count so you'll know the minute it's different." },
+          { s: 'akihiko', f: 'neutral', t: "...Shinji says that's the most me thing I've ever said. He didn't mean it nicely. He's right anyway." }
+        ] },
+        { t: "(Take a strip and stick it to your own wrist. Count with him.)", notes: 3, flag: 'eqx-aki-strip', then: [
+          { n: "She tore a fresh strip off the roll and wrote tonight's date on it with his pen and stuck it round her own wrist like a hospital band. He watched her do it and his mouth went soft at one corner and stayed that way." },
+          { s: 'akihiko', f: 'blushing', t: "You'll have to fill the number in at one. Not before. Not a guess. A count." },
+          { s: 'solar', f: 'neutral', t: "I know how counting works, Akihiko." },
+          { s: 'akihiko', f: 'happy', t: "You know how *my* counting works. That's newer." }
+        ] }
+      ] },
+      { n: "He'd been working the end of the tape on his right hand with his thumb the whole time. The hand-tape. It was gray at the knuckles and coming up at one edge, and she watched him pick at the edge, and pick at it, and saw the fingers under it twitch, all four, very slightly, toward the palm, and stop." },
+      { s: 'solar', f: 'neutral', t: "Is it still doing it? At night?" },
+      { s: 'akihiko', f: 'neutral', t: "...Every night. I wake up and it's shut. Round nothing. Tight, like there's a wrist in it. Once I had to use the other hand to get it open." },
+      { s: 'akihiko', f: 'sad', t: "I dream about the mouth. The well. Your arm coming up out of it, and his hand on your other wrist, and both of us pulling. That's not the bad part. The bad part is in the dream I let go. Every night. I open my hand and you go back down." },
+      { s: 'akihiko', f: 'serious', t: "And I wake up with it shut so hard it hurts. So I don't know which of me is the one who's wrong. The one who lets go, or the one who won't." },
+      { choose: [
+        { t: "(Unwind the tape. Rewrap his hand yourself.)", notes: 3, then: [
+          { n: "She took his hand into her lap without asking and found the end of the tape and unwound it, round and round, and he let her, sitting very still on the sea wall with the dark coming down, and the hand came out of it pale and a little damp and creased from the wrapping, the knuckles still scabbed from the fire stairs." },
+          { n: "She wrapped it again from the roll in his bag. She'd learned how last year, sitting on a bench in the boxing club with his whole hand in her two, him teaching her, *over the knuckle, under, keep it flat, not too tight or it goes to sleep*. Her hands remembered. She did it slowly. He watched her do it and didn't breathe right, she could hear it, and when she pressed the last strip flat with her thumb across the back of his hand he turned it over in her lap, palm up, and closed it, gently, round two of her fingers. Not tight. Just enough." },
+          { s: 'akihiko', f: 'blushing', t: "...There. That's what it wants. That's all it wants. I just can't give it that at three in the morning." }
+        ] },
+        { t: "Neither one is wrong. They're both you.", notes: 3, then: [
+          { s: 'akihiko', f: 'surprised', t: "...Both of me." },
+          { s: 'akihiko', f: 'neutral', t: "Your other one talks like that. The one with two of himself. I thought it was a thing he did to annoy me." },
+          { s: 'akihiko', f: 'happy', t: "It's still annoying. It's a bit less stupid than I said it was." }
+        ] },
+        { t: "You could stop dreaming you let go. If you wanted.", notes: 1, then: [
+          { s: 'akihiko', f: 'serious', t: "No. I couldn't. And I wouldn't want to. That's the one part of the dream that's right." },
+          { s: 'akihiko', f: 'neutral', t: "You weren't mine to keep up there. You're not now. The dream knows that. It's my hand that doesn't." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-golden-week', then: [
+        { s: 'akihiko', f: 'neutral', t: "For the record, I won the frisbee thing at the beach. Whatever he's telling people." },
+        { s: 'solar', f: 'neutral', t: "He's telling people it was a draw." },
+        { s: 'akihiko', f: 'happy', t: "Ha! It was a draw. I'm still saying I won. He'd do the same. That's the only thing about him I respect, and I'm not saying which thing it is." }
+      ], else: [
+        { s: 'akihiko', f: 'neutral', t: "He goes down to the laundry room every night. Your other one. I hear him on the stairs at half eleven. I'd say something, but he'd only say something back, in two languages, and I'd lose in both." },
+        { s: 'akihiko', f: 'happy', t: "I'm not jealous. I want that on record too. I'm keeping a lot of records lately." }
+      ] },
+      { n: "It was dark now. Properly. The lights of the far shore had come on, the monorail going over the water like a lit thread, and the old man at the end of the pier had packed his cool box and gone, last, past them, and touched his cap to Akihiko on the way and said *same time Friday* as if it were a deal between them." },
+      { n: "Akihiko stood up and held out his good hand to pull her up off the wall, and she took it, and he pulled, and she came up a little too fast, and they were very close, at the gate, under the one working lamp, and his hand hadn't let go of hers and he'd noticed it hadn't and was visibly trying to work out whose decision that was." },
+      { s: 'akihiko', f: 'blushing', t: "...Your call. I'm saying that a lot this year. I'm practicing." },
+      { choose: [
+        { t: "(Kiss him under the lamp.)", notes: 3, flag: 'eqx-aki-lamp-kiss', then: [
+          { n: "She went up on her toes and kissed him, and he made a sound like a man taking a punch he'd seen coming and decided not to block, and then his hands came up, both of them, the taped one and the bare one, and held her face very carefully, as if it were a result he wanted to check twice." },
+          { n: "He kissed like he ran. All of it, at once, nothing held back for the second half, and she had to put her hand flat on his chest to keep her balance and felt his heart going under it like he'd done the pier three times. When he stopped he didn't step back. He put his forehead down against hers and laughed, once, helplessly, out of breath." },
+          { s: 'akihiko', f: 'blushing', t: "That's. Okay. That's a personal best. I'm not writing that one down." }
+        ] },
+        { t: "(Let go of his hand. Then take it back. Your call.)", notes: 3, then: [
+          { n: "She let go. His hand stayed out in the air where hers had been for one second, open, and he didn't close it, and didn't reach, and she saw how much that cost him in his jaw. Then she took it back. He looked down at their hands and then at her and his whole face went, all of it, the year, and he didn't make it stop this time." },
+          { s: 'akihiko', f: 'happy', t: "...Yeah. Like that. That's how it's supposed to go." }
+        ] },
+        { t: "Walk me to the station. Five tomorrow?", notes: 2, then: [
+          { s: 'akihiko', f: 'surprised', t: "You said five. Not me. You heard that. I didn't say five." },
+          { s: 'akihiko', f: 'happy', t: "Five. Don't stretch without me." }
+        ] }
+      ] },
+      { n: "He walked her to the station. At the gates he took the stopwatch out of his pocket, the yellow one, and pressed it once, to zero, and put it in her blazer pocket without asking, and walked away before she could give it back." },
+      { n: "On the train she put her hand in her pocket and found it there, and found that he'd stuck a strip of white tape across the back of it, and written on the tape in his square capitals, very small, not a time. A date. Tomorrow's." }
     ] }
   ]
 });

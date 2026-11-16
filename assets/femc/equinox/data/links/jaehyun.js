@@ -1,11 +1,12 @@
 /* Persona 3: Equinox · Jaehyun Lee · Emperor. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13; his home is the Naganaki Shrine steps on weekday and Saturday afternoons but Wednesday,
-   so 4/13 itself). Ranks 2–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
+   Written: ranks 1–2 (from 4/13; his home is the Naganaki Shrine steps on weekday and Saturday afternoons but Wednesday,
+   so 4/13 itself). Ranks 3–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
    Solstice's Jaehyun link is shared memory ("the offer stands", the three knocks on the dorm door last October, "big bro",
    thirty-one stairs and her saying thirty-two, the layers); nothing reads Solstice link standing. Runners fences hold: no
    home event past the page, nothing about what he knows of the boys; Father stays offstage.
-   Flags this file sets: eqx-jaehyun-knock (rank 1: Solar agrees to his three-knock rule). Nothing reads it yet. */
+   Flags this file sets: eqx-jaehyun-knock (rank 1: Solar agrees to his three-knock rule). Nothing reads it yet.
+   Rank 2 (after 4/23): reads eqx-jaehyun-knock, ifAfter 4/29, ifEvent eqx-read. Sets nothing. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'jaehyun', name: 'Jaehyun Lee', short: 'Jaehyun', arcana: 'Emperor', numeral: '', from: 'Runners', kind: 'searcher',
   world: 'R', romance: null, starts: '4/8', lodging: 'guesthouse',
@@ -143,6 +144,126 @@
       { n: "She went home the long way, up the hill. At the top, without meaning to, she stopped at the dorm gate and looked back down the street, toward the river, toward the third house at the bottom, where, on the night of the knocks, something had stood at a door in the red and knocked twice and waited, very politely, for someone to let it in." },
       { n: "There was nobody there. There was a lamp, and a gate, and a door. Under the lamp, on the doorstep of the third house, somebody had set a single rice cake on a paper napkin, neatly, the way you'd leave something for a neighbor." },
       { n: "She went inside and checked the latch twice, and then, without knowing why, a third time." }
+    ] },
+    { after: '4/23', title: '2: chalk', place: 'Naganaki Shrine · The Steps', time: 'After School', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-spring' },
+      { n: "He wasn't running. That was how she knew something was on his mind before she'd reached the bottom step. Jaehyun was sitting on the first stair with his elbows on his knees and a small cardboard box in his hands, the kind schoolteachers kept chalk in, turning it over and over, and his running jacket was zipped to the chin, and he'd been there, she guessed, a while." },
+      { s: 'jaehyun', f: 'neutral', t: "You're wearing enough layers. Good. Note that I noticed." },
+      { s: 'jaehyun', f: 'neutral', t: "I bought chalk. From the stationer by the station. The woman asked if I was a teacher and I said yes, because it was easier, and now I'm a teacher in this town. I don't know what of." },
+      { choose: [
+        { t: "Football. Obviously.", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "That's not a subject. That's a religion. You don't teach it. You get raised in it." }
+        ] },
+        { t: "What's the chalk for, Jae?", notes: 3, then: [
+          { s: 'jaehyun', f: 'neutral', t: "Procedure. I'll explain going up." }
+        ] },
+        { t: "(Sit down next to him on the step.)", notes: 3, then: [
+          { n: "She sat down beside him. He shifted over half a step without looking, the way he'd shifted over on the stairs at the house when she was small and had come and sat next to him uninvited, which had been always." }
+        ] }
+      ] },
+      { ifAfter: '4/29', then: [
+        { n: "He didn't explain going up. He sat there with the box in his hands a while longer, and the shrine bell rang once, far above, and he spoke to the bottom of the steps." },
+        { s: 'jaehyun', f: 'serious', t: "I said I wasn't going to talk about the twenty-eighth. I'm going to talk about it for one minute and then I'm going to run." },
+        { s: 'jaehyun', f: 'serious', t: "Minji kept the footage. Ten seconds. I asked her to delete it. I asked her three times. She said somebody's going to need to see it. She's right. I hate that she's right." },
+        { s: 'jaehyun', f: 'neutral', t: "I've been walking her to the kitchen door every night. Nobody uses the lobby. I wait till I hear the bolt. Then I walk back up the hill and do the stairs. It's on the way. It isn't on the way. Don't say it." },
+        { n: "That was the minute. She could hear him close it, the way he closed a film session, a small decisive nothing in the voice." }
+      ] },
+      { ifEvent: 'eqx-read', then: [
+        { s: 'jaehyun', f: 'neutral', t: "And Father read my message." },
+        { s: 'jaehyun', f: 'neutral', t: "It says *Read Thursday*. I sent it on a Saturday. There hasn't been a Thursday since. I've checked the calendar. I've checked it like a madman." },
+        { s: 'jaehyun', f: 'serious', t: "He hasn't replied. Of course he hasn't. That's the only part of it that feels completely normal." }
+      ] },
+      { s: 'jaehyun', f: 'neutral', t: "Okay. Up." },
+      { n: "The procedure was this. He would go up first, slowly, walking, and on the front edge of every step, at the left side, by the rail, he would write its number in chalk. One. Two. Three. All the way to the top. And she would come behind him and check every number was there and was right, the way you'd check a column of figures somebody else had added." },
+      { s: 'jaehyun', f: 'neutral', t: "Then at the top we'll know. If it's a hundred and twelve, I miscounted last week and I'll say so. In writing. You can frame it." },
+      { s: 'jaehyun', f: 'serious', t: "And if it's a hundred and thirteen, we'll know which one." },
+      { n: "So they went up. He bent at every step and wrote, quick and neat, his numbers square and upright like a scoreboard's, and she came after him and read them out, *fourteen, fifteen*, and he answered from above without turning, *sixteen*, and it went on like that, up through the trees, the petals gone brown in the corners of the treads, the evening coming down green-gold through the branches, the two of them counting, together, out loud, in turn, like the house." },
+      { n: "Somewhere around forty he started talking. Not stopping. Bending, writing, talking, the way he'd talked between reps all his life." },
+      { s: 'jaehyun', f: 'neutral', t: "I ran a forty yesterday. In the park by the river. On my own. Timed it on my phone. It was a good time. It was the best time I've run since high school." },
+      { s: 'jaehyun', f: 'neutral', t: "And then I deleted it. Stood there in the park with my hands on my knees and deleted it. Nobody was going to see it. So I didn't see it either." },
+      { s: 'jaehyun', f: 'serious', t: "I don't know who I am if nobody's writing it down, Solar. I've been finding out. On these stairs. It's like being let out of a room I didn't know was locked." },
+      { choose: [
+        { t: "You're Jae. You count stairs out loud. That's who.", notes: 3, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...Forty-six. That's a very small identity." },
+          { s: 'jaehyun', f: 'happy', t: "I'll take it. Forty-seven. It's more than I had in March." }
+        ] },
+        { t: "You could stay let out.", notes: 2, then: [
+          { n: "He stopped writing. For one step, the chalk held still on the stone, and she watched his back, the set of his shoulders under the jacket, a boy considering a door." },
+          { s: 'jaehyun', f: 'neutral', t: "...Hypothetically. If I never went back. The box. The film sessions. Seven-fifteen." },
+          { s: 'jaehyun', f: 'neutral', t: "I'm not going to finish that sentence on a staircase. Fifty-one." }
+        ] },
+        { t: "You didn't delete it. You looked first.", notes: 3, then: [
+          { s: 'jaehyun', f: 'surprised', t: "...How do you know that." },
+          { s: 'solar', f: 'neutral', t: "Because you're you." },
+          { s: 'jaehyun', f: 'flustered', t: "Four point five one. Don't tell anyone. Fifty-three. Don't tell anyone that I told you." }
+        ] }
+      ] },
+      { n: "He reached the top at a hundred and twelve. He wrote it under the torii, on the last stone before the gravel, and straightened, and looked at it, and she came up the last few steps reading the numbers aloud behind him, every one present, every one in order, *a hundred and ten, a hundred and eleven*, and stopped beside him." },
+      { s: 'jaehyun', f: 'neutral', t: "A hundred and twelve." },
+      { s: 'solar', f: 'neutral', t: "A hundred and twelve. You miscounted. Write it down. I want it framed." },
+      { s: 'jaehyun', f: 'happy', t: "Fine. I miscounted. I'm a fallible man. Witness it. I'll sign it." },
+      { n: "He looked relieved. He looked so relieved it embarrassed her to see it, and he turned away to hide it, and looked down the stairs, all hundred and twelve of them falling away into the trees in their neat white chalk numbers, and his face went still." },
+      { s: 'jaehyun', f: 'serious', t: "...Count them going down." },
+      { s: 'solar', f: 'neutral', t: "We just counted them." },
+      { s: 'jaehyun', f: 'serious', t: "Count them going down. Not the chalk. The steps. Your feet." },
+      { n: "They went down. Side by side, slow, not reading the numbers, just counting the steps under their feet, out loud, together, the way you'd count a heartbeat. *One. Two.* The chalk going past on the left in the opposite order, a hundred and twelve, a hundred and eleven, a hundred and ten, the two counts walking down toward each other. *Fifty-five,* their feet said, and the chalk said fifty-eight. *Fifty-six.* The chalk didn't say anything at all, and neither of them looked down. *Fifty-seven.* Fifty-seven, said the chalk. They'd met in the middle, the count and the numbers, and passed each other on the stairs like strangers, and gone on down." },
+      { n: "At the bottom they both stood on the gravel and neither of them said the number, because they both had it, and it was a hundred and thirteen." },
+      { n: "Jaehyun turned round. He went back up, two at a time, fast, and she went after him, and he stopped a third of the way up and crouched, and she saw it before he pointed. Between fifty-seven and fifty-eight. A step with no number on it. Plain, worn, old stone, cupped in the middle like all the others, petals in its corners like all the others. They had both, going up, stepped over it." },
+      { s: 'jaehyun', f: 'serious', t: "I wrote every one. I didn't skip. I'd know if I skipped." },
+      { s: 'solar', f: 'neutral', t: "I checked every one. It wasn't there." },
+      { n: "He put his hand flat on it. On the stone, the cupped middle, where a few hundred years of feet had worn it smooth. He took his hand off it fast, as if it had bitten him, and looked at his palm, and put it back, slowly, and kept it there." },
+      { s: 'jaehyun', f: 'serious', t: "It's warm." },
+      // CG: eqx-warm-step — a young man in a running jacket crouched on an old stone shrine staircase in the evening, his palm flat on one unnumbered step between two steps chalked 57 and 58, his sister a few steps above looking down at his hand.
+      { choose: [
+        { t: "(Put your hand on it too.)", notes: 3, then: [
+          { n: "She crouched and put her hand beside his. The stone was warm. Not sun-warm; the sun hadn't reached this part of the stairs in an hour. Warm like a seat on a train when someone's just got up from it. Warm like somebody had been sitting there, on that one step, between fifty-seven and fifty-eight, a long time, waiting for someone to come up, and had only that second stood and gone." },
+          { n: "Jaehyun's hand moved over and covered hers on the stone. Not to hold it. To keep it from being the one touching." }
+        ] },
+        { t: "Jae. Get up. We're going home.", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...Yes. Yes. Clean call." },
+          { n: "He got up. He wiped his hand on his jacket, twice, hard, and then once more, and took her by the elbow and walked her down the rest of the stairs fast, on the outside, on the side by the rail, between her and the step, and didn't look back at it, and didn't let her." }
+        ] },
+        { t: "(Write a number on it. 57 and a half.)", notes: 2, then: [
+          { n: "She took the chalk from him and wrote on it, neat, in his style, *57½*. He stared at her. Then he laughed, short, appalled, the laugh coming out of him like a cough." },
+          { s: 'jaehyun', f: 'happy', t: "You can't— that's not a number. That's not a number you put on a step." },
+          { s: 'solar', f: 'neutral', t: "It is now. Now it's counted." },
+          { n: "He looked at it for a long moment, the little white fraction on the old gray stone, and some of the color came back into his face. He took the chalk back. He underlined it." }
+        ] }
+      ] },
+      { place: 'Naganaki Shrine · The Steps', time: 'Evening', bg: 'naganaki-shrine-night', soft: true },
+      { n: "They sat on the bottom step, on the gravel, with their backs to the stairs. Neither of them suggested sitting the other way round. The lamps came on along the road below, and the shrine bell rang once, far up above them, rung by nobody they could see, and Jaehyun didn't look up at it." },
+      { s: 'jaehyun', f: 'neutral', t: "I'm adding a step to the procedure." },
+      { ifFlag: 'eqx-jaehyun-knock', then: [
+        { s: 'jaehyun', f: 'neutral', t: "Three knocks, your name, mine, the gate, the left hand. And now. If you're ever on any stairs in this town, anywhere, counting, and it comes out one more than it should, you stop. You don't go up the extra one. You turn round and come down, and you call me." },
+        { s: 'jaehyun', f: 'serious', t: "Say it back." },
+        { s: 'solar', f: 'neutral', t: "One more than it should, I stop, I come down, I call you." },
+        { s: 'jaehyun', f: 'neutral', t: "Good. Clean." }
+      ], else: [
+        { s: 'jaehyun', f: 'neutral', t: "You didn't want the last one. That's fine. I'm giving you this one anyway, because it's not a knock, it's stairs, and stairs are my department." },
+        { s: 'jaehyun', f: 'serious', t: "If you're ever counting stairs in this town and it comes out one more than it should, you stop. You don't take the extra one. You come down. You call me. That's all. That's the whole procedure." }
+      ] },
+      { s: 'jaehyun', f: 'neutral', t: "Thirty-one. At the house. You said thirty-two every time for ten years." },
+      { s: 'jaehyun', f: 'sad', t: "I used to think you did it to annoy me. I worked out in about tenth grade it was so I'd count them out loud. So we'd do it together. So you'd have a reason to sit on the stairs with me." },
+      { s: 'jaehyun', f: 'neutral', t: "I'd like us to stop coming out the same. I'd like you to say thirty-two again. I didn't know I'd miss being wrong." },
+      { choose: [
+        { t: "A hundred and fourteen.", notes: 3, then: [
+          { n: "He turned his head and looked at her. Then his whole face went, at once, the real laugh, the one from the dorm step in the red, and he put his arm round her neck and pulled her head against his shoulder in a rough sideways hug that knocked the breath out of her, and held it." },
+          { s: 'jaehyun', f: 'happy', t: "A hundred and fourteen. You little— a hundred and fourteen. Never change. That's not a request, it's a procedure." }
+        ] },
+        { t: "It'll be wrong again. I promise.", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "Don't promise. You look at the right when you promise." },
+          { s: 'jaehyun', f: 'happy', t: "...You looked at the left. Okay. Noted. I'm holding you to it." }
+        ] },
+        { t: "(Say nothing. Lean on his shoulder.)", notes: 3, then: [
+          { n: "She leaned on his shoulder. He went stiff, the way he always did, the brother who'd never once in their lives been the one to start a hug, and then didn't, and they sat on the gravel at the foot of a hundred and twelve stairs, or thirteen, until the lamps were all on and the road was blue." }
+        ] }
+      ] },
+      { n: "He walked her to the corner by the post office. Call if you need anything. You won't. But the offer stands. He said it all, the whole set, and then didn't go. He stood under the streetlight with his hands in his pockets and looked back up the hill toward the shrine, toward the stairs going up into the dark trees, with their little white numbers on them that the rain would take by morning." },
+      { n: "Then he went, at a jog, the even pace that didn't change, and she watched him all the way to the guesthouse corner, and he didn't look back, which meant he wanted to." },
+      { place: 'Iwatodai Dorm · Stairs', time: 'Night', bg: 'iwatodaidorm-stairs-night', soft: true },
+      { n: "She went up to bed at eleven. She didn't count the dorm stairs. She'd never counted them, in a year of going up and down them. She knew them the way you know your own teeth with your tongue." },
+      { n: "She was on the landing before she realized she'd been counting under her breath the whole way up, in Jaehyun's voice, the scoreboard voice, *eleven, twelve, thirteen*." },
+      { n: "She stopped. She stood on the landing in the dark with her hand on the banister and the number in her mouth, and the house quiet below her and above her, and she didn't finish. She didn't look back down to check. She went on up the last flight to her room without counting at all, fast, the way you'd walk past a window you didn't want to see into, and shut her door, and stood with her back against it until the red came." }
     ] }
   ]
 });

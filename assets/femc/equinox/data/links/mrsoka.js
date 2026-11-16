@@ -1,6 +1,8 @@
 /* Persona 3: Equinox · Mrs. Oka (Empress). Link data for femc-equinox-game.html; replaces her stub in ../links.js (same id).
    Format: link fields in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written so far: rank 1 (opens 4/13, after school, at her house). Ranks 2-10 to come.
+   Written so far: ranks 1-2 (rank 1 opens 4/13, rank 2 opens 4/20, both after school at her house; rank 2 reads the
+   4/16 supper flags and branches on eqx-tanabe, eqx-tale and Akihiko's / Jungwon's ranks). Ranks 3-10 to come.
+   Rank 2 holds no ask (she starts one and stops). Speaker without a portrait: hayashi.
    Her house isn't a Go Out area yet: `home` is the stub's stand-in on the Iwatodai Strip, and the scene uses stand-in
    backgrounds (BG comments mark the art it wants). No portrait art yet (speaker `mrsoka`, face 'neutral').
    Flags this file sets: none. */
@@ -10,7 +12,7 @@
   home: { area: 'okahouse', spot: 'The Kitchen', slot: 'after', days: [0, 1, 2, 3, 4, 5, 6],
           hint: 'Afternoons at the boarding house on the river side of Iwatodai, where the kettle is always on.' },
   approach: "Down on the river side, past the shrine, there's an old wooden house behind a low gate, and a woman in an apron and white cotton gloves kneeling under the persimmon tree in the garden, who looks up as you pass as if she'd been expecting you since lunch.",
-  cast: { mrsoka: 'Mrs. Oka' },
+  cast: { mrsoka: 'Mrs. Oka', hayashi: 'Mr. Hayashi' },
   ranks: [
     { after: '4/13', title: '1: loose thread', place: 'Iwatodai · The Oka Boarding House', time: 'After School', music: 'tender', scene: [
       { bg: 'eqx-oka-gate' },
@@ -181,6 +183,148 @@
       { n: "It was dark by the time she got to the dorm. Properly dark, streetlights on, the lounge windows lit gold, Junpei's voice coming through the glass. She stood on the step and looked at her phone and found it was a quarter to seven. She'd gone in at four. She'd have said an hour. She'd have sworn to it." },
       { n: "There hadn't been a clock anywhere in that house. She went back over every room in her head, on the step, and couldn't find one." },
       { n: "She unwrapped the second rice cake for Koromaru inside the door, where he was lying across the mat with his chin on his paws, and held it out on her palm. He sniffed it once. Then he got up, and went and lay down on the far side of the hall, facing her, and didn't take his eyes off her hand until she'd thrown it away." }
+    ] },
+    { after: '4/20', title: '2: darning', place: 'Iwatodai · The Oka Boarding House', time: 'After School', music: 'tender', scene: [
+      { bg: 'eqx-oka-gate' },
+      { n: "She lifted the latch from the street side without thinking about it this time, which she noticed only after, standing in the garden with the gate knocking softly shut behind her, the way you notice you've learned someone's phone number by heart." },
+      { n: "The garden was full of the smell of something frying. The persimmon tree had come all the way into leaf in a week, dense and glossy and dark, and still there wasn't a bird in it. Under it, the well, the moss, the four pale lines. She didn't look at them for long. She'd decided on the walk over that she wasn't going to look at them for long." },
+      { n: "There were shoes on the step. Not one pair. Five, six, lined up neatly at the edge of the boards, toes to the garden: men's shoes, old ones, black and brown and one pair of rubber boots with fish scales dried on the toes." },
+      { n: "Mrs. Oka opened the door before Solar reached it, as if she'd seen her from the window, and stood on the threshold, not past it, with a wooden spoon in one gloved hand and her face doing the slow lit thing, the lamp in the window." },
+      { s: 'mrsoka', f: 'happy', t: "There she is. And on a weekday, with homework, I can see it in your bag. Come in, come in. Mind the boots. Mr. Hayashi will leave them there." },
+      { ifFlag: 'eqx-supper-stayed', then: [
+        { s: 'mrsoka', f: 'happy', t: "You were such good company the other night, child. I haven't laughed like that in years. I don't think you've ever told a story so well in your life. You'll have to tell it again, you'll have forgotten half." },
+        { n: "Solar smiled and said something. She couldn't have said what story. She'd tried, all week, to remember anything at all about that supper past the first cup of tea, and every time she tried it was like reaching into a drawer and finding it smooth and empty and lined with paper." }
+      ] },
+      { ifFlag: 'eqx-supper-mine', then: [
+        { s: 'mrsoka', f: 'neutral', t: "*Up to me.* I've been thinking about that, you know, all week. I said it to myself at the sink. Up to me. Isn't it a lovely thing to be able to say." },
+        { s: 'mrsoka', f: 'happy', t: "Well, it's up to you whether you have tea, then. And I'll make it anyway, and you can decide when it's in front of you." }
+      ] },
+      { ifCount: { of: ['eqx-supper-stayed', 'eqx-supper-mine'], max: 0 }, then: [
+        { s: 'mrsoka', f: 'neutral', t: "Your place is still laid. At the end of the table. I said I'd keep it, and I have." },
+        { n: "She said it as if it were a kindness, and it was, probably, and the back of Solar's neck went tight anyway, all at once, the way it had on the stool when the needle came up past her collarbone." }
+      ] },
+
+      { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'eqx-oka-kitchen', soft: true },
+      { n: "The kitchen was full. That was what the shoes had meant. At the long table, on the cushions down both sides, there were six old men, in cardigans and work jackets and one in a fishing vest, eating. Bowls of rice, a plate of fried fish, pickles, the tin of rice cakes open in the middle of the table and half empty. They were eating the way boys eat, heads down, without talking, steadily, as if it were the first meal they'd had in a long time and they'd been told it might be taken away." },
+      { n: "They looked up when she came in. All six. At the same moment, the way people look up at a sound. Then they looked down again and went on eating." },
+      { s: 'mrsoka', f: 'happy', t: "My gentlemen from the pier. They come at four now, every day. Don't mind them. They don't mind you. Do you, gentlemen?" },
+      { n: "Nobody answered her. One of them, the one in the fishing vest, round-faced, with a little paunch pushing at the buttons of a vest that had clearly fit him a few weeks ago, lifted his bowl to her in a kind of salute, and she put another spoon of rice in it, and patted his shoulder twice with her gloved hand, and he smiled up at her with his mouth full like a child." },
+      { s: 'mrsoka', f: 'neutral', t: "More, Mr. Hayashi? You'll stay for more?" },
+      { s: 'hayashi', t: "...I'll stay a bit longer. If it's no trouble." },
+      { s: 'mrsoka', f: 'happy', t: "No trouble at all. It's never any trouble. That's what a kitchen's for." },
+      { ifRank: { akihiko: 2 }, then: [
+        { n: "Hayashi. The fisherman on the pier had said the name, chewing on it like a joke between him and someone else: *Hayashi went first. Hayashi's put on two kilos.* Solar looked at the round face over the bowl, and the vest straining, and the fork going up and down, and thought of one old man left alone on the end of a pier with a radio and a cool box, saying *I told her no*." }
+      ] },
+      { n: "Mrs. Oka didn't sit with them. She never sat, Solar realized; she moved round the table behind them, filling bowls, setting down cups, and each man's tea was different, green for one and barley for another and something dark and smoky for the one in the work jacket, and she never once asked which." },
+      { s: 'mrsoka', f: 'neutral', t: "Now. You. Not at the table, the table's for the gentlemen. Come and sit by me at the end of the counter. I've got a job for you, if you'll have it. Something for your hands." },
+
+      { n: "The job was darning. There was a basket on the end of the counter, a deep old one with a lid, full of mending: socks, a man's work shirt with the elbow out, a child's cardigan, a tea towel, all neatly folded with the holes facing up. And on top, a wooden darning egg, smooth and dark from years of hands, and a card of white cotton thread, and a needle already threaded." },
+      { s: 'mrsoka', f: 'neutral', t: "Do you darn? No. Nobody your age darns. You throw things away. I don't blame you. But it's a nice thing to know, child. Holes come for everybody." },
+      { s: 'mrsoka', f: 'neutral', t: "You put the egg inside, under the hole, so. And you go across, and across, and across, all the threads lying down side by side. And then you go *through* them, over and under, like weaving. And the hole's still there. It's just got something in it now." },
+      { choose: [
+        { t: "(Try it. Go slowly.)", notes: 3, then: [
+          { n: "She tried it. The sock was a man's, gray wool, gone through at the heel. She put the egg inside and stretched the wool over it and went across, and across, and Mrs. Oka watched her hands and said nothing, which was its own approval, and when she started going through, over and under, she felt her shoulders come down, the way they'd come down at the button. Her hands knew this. Some kitchen, some life, some woman beside her doing it faster." },
+          { s: 'mrsoka', f: 'happy', t: "There. Look at that. You've got the patience for it. Most people don't. Most people want it finished." }
+        ] },
+        { t: "Whose are all these?", notes: 2, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Oh, everybody's. The gentlemen's. The lady from the dry cleaner. That's a little boy's, from the house at the end. People leave them on the step." },
+          { s: 'mrsoka', f: 'neutral', t: "I don't charge. What would I charge for? I like to have something in my hands. And everybody comes back for their things, you see. Sooner or later. Everybody comes back." }
+        ] },
+        { t: "I'll make a mess of it.", notes: 1, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Then you'll make a mess of it, and I'll unpick it, and you'll do it again. That's all mending is. Doing it again." },
+          { n: "She said it so warmly that Solar picked up the needle before she'd decided to." }
+        ] }
+      ] },
+      { n: "Mrs. Oka took a mending of her own out from the bottom of the basket and sat down on the other stool, close, so their elbows nearly touched. A glove. One of her own, the thin white cotton, the spare of a pair. She put the darning egg into the fingers of it, one at a time, and turned it to the light." },
+      { n: "Solar watched her do it. She couldn't help it. The glove on the egg was empty, and the hand holding it was gloved, the same white cotton, and for a second there were two of them in the lamplight, the glove and the hand, one full and one not, and she found she was looking at the empty one more carefully than she'd ever looked at anything." },
+      { n: "All four fingertips were worn through. Not the way her own tights wore through, thin and then gone. Each one had a small neat hole right at the very tip, the same size, and round each hole the threads of the cotton weren't frayed in, the way they'd fray from rubbing on a table or a broom. They were pushed out. Splayed outward, all of them, in a little ring, like the edge of a hole in paper where something has been pressed through from the inside." },
+      // CG: eqx-darning — a woman's hands in thin white cotton gloves darning the fingertip of a spare white glove stretched over a dark wooden darning egg, close, lamplight, a teenage girl's hands beside them with a gray sock on another egg.
+      { s: 'mrsoka', f: 'neutral', t: "Rough hands. I told you. Long nails, my mother had them, I've got them. I wear through the ends faster than I can mend them." },
+      { s: 'mrsoka', f: 'happy', t: "I'd cut them, but then where would I be? A woman needs something to open jars with." },
+      { n: "She laughed, the short warm embarrassed laugh, and went across, and across, and through, over and under, very fast and very small, and closed the first hole in about the time it took Solar to breathe out." },
+      { choose: [
+        { t: "(Keep your eyes on your own sock.)", notes: 3, then: [
+          { n: "She looked at her own work. She made herself. Across, and through, over and under, and the gray wool closed over the wooden egg a thread at a time, and beside her the white thread went in and out of the white glove so fast it hissed, and she did not look, and did not look, and the tight place in the back of her neck went all the way down her spine and sat at the base of it like a stone." }
+        ] },
+        { t: "Don't you ever take them off? The gloves?", notes: 1, then: [
+          { s: 'mrsoka', f: 'neutral', t: "In the bath." },
+          { s: 'mrsoka', f: 'happy', t: "And not always then. Old habits. You'll laugh at me." },
+          { n: "Solar didn't laugh. Mrs. Oka didn't seem to need her to. She bit the thread off close to the glove with her front teeth, one clean snap, and started on the next finger." }
+        ] },
+        { t: "You're very quick.", notes: 2, then: [
+          { s: 'mrsoka', f: 'neutral', t: "I've had a lot of practice. A very, very long time of practice." },
+          { s: 'mrsoka', f: 'neutral', t: "When you've done a thing that many times your hands do it without you. You could put me to sleep and I'd go on darning." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-tanabe', then: [
+        { s: 'mrsoka', f: 'sad', t: "I heard about that poor man. At the guesthouse." },
+        { n: "She said it softly, to the glove. Behind them the old men went on eating; nobody at the table looked up." },
+        { s: 'mrsoka', f: 'sad', t: "Mr. Tanabe. He used to come by on his way to his shift, some evenings, for a rice cake. Just the one. The plain ones; he didn't like the sweet bean. Such a lonely man. He told me he still set out two cups at night. Out of habit." },
+        { s: 'mrsoka', f: 'worried', t: "I sent a box round, after. To the guesthouse. Grief wants feeding, child. It's the first thing it forgets, and the first thing it needs." },
+        { s: 'mrsoka', f: 'sad', t: "...I hope somebody ate them." },
+        { choose: [
+          { t: "I don't know if anyone did.", notes: 2, then: [
+            { s: 'mrsoka', f: 'neutral', t: "No. Well. It's the thought, they say." },
+            { n: "She smoothed the glove flat on her knee, twice, with the side of her hand, the way she'd smoothed the lapel." }
+          ] },
+          { t: "You knew him?", notes: 2, then: [
+            { s: 'mrsoka', f: 'neutral', t: "I know everybody on this side of the river, child. Everybody comes past my gate, sooner or later. He had his ring on the wrong hand. His wife's, he said. I always notice hands." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'mrsoka', f: 'neutral', t: "That night manager at the Kirijo place comes by, some evenings. On his way to his shift. For one rice cake, just the one, the plain kind, he doesn't like the sweet bean." },
+        { s: 'mrsoka', f: 'neutral', t: "A widower. Wears his ring on the wrong hand; his wife's, he says. He told me he still sets out two cups at night. Out of habit." },
+        { s: 'mrsoka', f: 'sad', t: "I told him that's what love is, child. Setting out the cup. Waiting up. I said she'd be glad to know somebody was still waiting up." },
+        { ifRank: { jungwon: 1 }, then: [
+          { n: "She said it kindly. She said it the way you'd say anything true and sad over a piece of mending, and Solar thought of Jungwon in the council room saying *one of these nights he's going to get up in time*, and didn't know why the two sentences wanted to stand next to each other, and didn't let them." }
+        ], else: [
+          { n: "She said it kindly. She said it the way you'd say anything true and sad over a piece of mending, and Solar thought of a man she'd never met setting out a cup for nobody in a little room at night, and waiting up, and the thought went through her cold, and she didn't know why, and put it down." }
+        ] }
+      ] },
+
+      { n: "The light went long in the window. The old men finished, one by one, and set down their chopsticks, and sat. They didn't get up. They sat at the table with their hands in their laps and their bowls empty in front of them, looking at nothing in particular, contented, like men on a bench in the sun, and Mrs. Oka went round behind them and filled their cups again, and none of them moved to go." },
+      { ifEvent: 'eqx-tale', then: [
+        { n: "She was humming. Solar heard it start somewhere behind her, at the stove, low, with her mouth closed, and she knew it before the third note. Three up. Two down. A long one. The tune from the veranda, from Ken's ears and the carp streamers. The tune from Haechan's tape. The tune from the water at the bottom of the Well." },
+        { n: "None of the old men turned round. One of them, the one in the work jacket, had closed his eyes, and was nodding very slightly, in time." }
+      ], else: [
+        { n: "She was humming at the stove, low, the nothing-tune, the one with no shape, the sound of someone who'd been alone in a kitchen long enough to forget anyone might hear. None of the old men turned round. One of them, the one in the work jacket, had closed his eyes, and was nodding very slightly, as if there were a beat in it only he could hear." }
+      ] },
+      { n: "Solar finished the heel. It wasn't good. It was lumpy at one edge and she'd pulled one row too tight, so the wool puckered. But the hole was gone. She held it up. Mrs. Oka came and looked at it over her shoulder, close, sugar and steamed rice and the cupboard smell, and made a small sound of real pleasure, as if she'd been given something." },
+      { s: 'mrsoka', f: 'happy', t: "Look at that. That'll hold. That'll hold for years. Mr. Kondo will never know a girl did that for him." },
+      { s: 'mrsoka', f: 'neutral', t: "You keep the egg. No, keep it, I've got three. Take it back to that dorm of yours. You've got a house full of children who go through their socks, I should think." },
+      { choose: [
+        { t: "Thank you. I'll use it.", notes: 3, then: [
+          { s: 'mrsoka', f: 'happy', t: "You will. I can tell. You've got mending hands." },
+          { n: "She put the darning egg into Solar's palm and closed Solar's fingers over it with her own gloved ones, and held them closed a moment, warm and heavy, and Solar felt, through the cotton, through the shape of the wood, something at the tips of the fingers holding hers that was harder than fingertips, and smaller, and pressed, very gently, four places at once, and was gone." }
+        ] },
+        { t: "I couldn't. It's yours.", notes: 1, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Everything in this house is mine. I can give away what I like. That's the one good thing about having nobody." },
+          { n: "She put it in Solar's blazer pocket herself, the way you'd put a sweet in a child's pocket at a door, and patted the pocket flat, twice." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai · The Oka Boarding House', time: 'Evening', bg: 'eqx-oka-gate', soft: true },
+      { n: "She walked Solar to the door and stopped on the threshold, as she always did, one hand on the frame. Behind her, down the hall, through the kitchen door, Solar could see the end of the long table and the old men still sitting at it in the lamplight, their backs to her, not talking, not moving to go." },
+      { n: "Her own place was laid at the far end of it. She saw that only now. A cushion. A bowl, upside down. A cup, upside down on a little tray." },
+      { s: 'mrsoka', f: 'neutral', t: "Next time—" },
+      { n: "She stopped. She smiled, at herself, the embarrassed one, and shook her head, and put the gloved hand flat against her own apron, as if she'd caught a word on its way out and was holding it in." },
+      { s: 'mrsoka', f: 'happy', t: "No. Never mind. I was going to say something. It'll keep." },
+      { s: 'mrsoka', f: 'neutral', t: "Things keep, in this house. You'd be surprised how long." },
+      { choose: [
+        { t: "Goodnight, Mrs. Oka.", notes: 2, then: [
+          { s: 'mrsoka', f: 'happy', t: "Goodnight, child. Mind the latch. It's on your side." }
+        ] },
+        { t: "What were you going to say?", notes: 2, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Oh, nothing. Something an old woman says. You'll hear it soon enough." },
+          { s: 'mrsoka', f: 'happy', t: "Go on. Before they count heads." }
+        ] },
+        { t: "(Wave from the gate.)", notes: 1, then: [
+          { n: "She waved from the gate. Mrs. Oka waved back, the small flutter at shoulder height, and didn't step out onto the step, and didn't close the door, and was still standing in it at the corner, a dark shape in a lit frame." }
+        ] }
+      ] },
+      { n: "The river came back two steps outside the gate, all at once, the hush and the cold and a dog barking somewhere upstream, frantic, on and on, as if it had been barking for an hour and nobody had listened." },
+      { n: "It was dark. Her phone said half past seven. She'd gone in at four. She stood on the river road and put her hand in her blazer pocket, round the smooth wooden egg, and held it, and it was warm, warmer than her hand, as if it had been held a long time by someone else, and she walked back to the dorm the long way, the bright way, past the shops, and didn't look at the river." },
+      { n: "On the dorm's front step, Koromaru was waiting for her. Not lying across the mat. Standing, in the middle of the step, legs set, his eyes on her blazer pocket. He didn't growl. He just stood there, and didn't let her past, until she took the darning egg out and put it down on the wall by the gate, and stepped away from it, and then he came and pushed his whole head into her stomach, hard, and stayed there." }
     ] }
   ]
 });

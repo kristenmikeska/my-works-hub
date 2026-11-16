@@ -1,6 +1,8 @@
 /* Persona 3: Equinox · Haechan · ∞ The Universe. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13, the dorm laundry room, in the evening). Ranks 2–15 still to write.
+   Written: ranks 1–2 (rank 1 from 4/13, the dorm laundry room, in the evening; rank 2 from 4/21, same home, moves to the
+   strip and the roof; branches on eqx-knock). Ranks 3–15 still to write. Rank 2 flags (nothing reads them yet):
+   eqx-hc-gap-sang, eqx-hc-roof-kiss.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Two lives (Runners + strangers): in private with Solar he talks about both openly. Solstice's ranks are shared memory. */
 (window.FEMC_GAME_LINKS ||= []).push({
@@ -144,6 +146,149 @@
       { s: 'haechan', f: 'neutral', t: "...If you hear anything at that door, you don't get up. Okay? You don't get up and you don't answer it." },
       { s: 'haechan', f: 'serious', t: "I'm not asking. I'm telling you. Different thing." },
       { n: "She didn't get up. Neither did he. They sat on the dryer in the red with their hands where they'd put them and listened to the room, and nothing knocked, all hour, not once, and the hour went on a little longer than an hour, and he was the one who noticed, and said nothing, and wrote the time on the back of his hand in pen when the lights came back." }
+    ] },
+    { after: '4/21', title: '2: two cans', place: 'Iwatodai Dorm · Laundry Room', time: 'Night', music: 'night', scene: [
+      { bg: 'iwatodaidorm-laundryroom-night' },
+      { n: "The H was still on the rota. Somebody had given the dryer in the drawing a face since last week, two dots and a flat line, which meant Junpei, and under it, in a third pen, very small, somebody else had written *he's fine*, which meant Hanni, who did not believe it." },
+      { n: "He wasn't on the dryer. He was standing at the back door with his hands in the pocket of his hoodie, looking at the chain, the way you'd look at a dog you weren't sure about, and when she came in he didn't turn round, he just said her name to the door, as if the door were the one he was telling." },
+      { s: 'haechan', f: 'neutral', t: "We're out of coffee." },
+      { s: 'solar', f: 'neutral', t: "We?" },
+      { s: 'haechan', f: 'smirk', t: "The dryer and me. It's a household. Get your shoes. It's ten past eleven, there's a machine at the bottom of the strip, I timed it, it's nineteen minutes there and back if nobody stops to look at the moon." },
+      { choose: [
+        { t: "Mitsuru's rule says nobody goes out after eleven.", notes: 2, then: [
+          { s: 'haechan', f: 'neutral', t: "Mitsuru's rule says nobody *opens a door* in the red. Hanni's says nobody goes anywhere alone. I've read them both. I've read them more times than Mitsuru has. It's not red yet and you're not alone." },
+          { s: 'haechan', f: 'smirk', t: "Look at that. Two rules, both kept. I'm a model resident." }
+        ] },
+        { t: "(Go and get your shoes.)", notes: 3, then: [
+          { n: "She went and got her shoes. He was waiting by the front door when she came down, already in his, holding hers out by the heels in one hand like a waiter with a tray, and she didn't ask how he'd known which pair." }
+        ] },
+        { t: "Is this a date?", notes: 3, then: [
+          { s: 'haechan', f: 'slight-surprise', t: "...It's a coffee run." },
+          { s: 'haechan', f: 'blushing', t: "It can be a date. I'm not going to *ask* you if it's a date. That's the whole thing. You decide what it is. I'll just walk next to it." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai · The Strip', time: 'Night', bg: 'iwatodai-strip-night', soft: true },
+      { n: "The strip at eleven was almost empty, the shutters down on the bookshop and the pharmacy, the karaoke sign at the far end buzzing pink at nobody. April had gone soft in the last week; the air smelled of wet pavement and someone's late dinner, and there was a moth throwing itself at every streetlight in turn as if it had been promised one of them would let it in." },
+      { n: "He walked on the road side. He'd always walked on the road side, in every world, without ever once saying why, and she'd stopped noticing it sometime last autumn and noticed it again tonight, all at once, the way you notice your own heartbeat in a quiet room." },
+      { n: "The vending machine stood by itself between a closed noodle shop and a gap in the buildings, lit from inside like an aquarium, humming. Rows of cans in red slots for hot and blue for cold. He fed it coins from his pocket without counting them and pressed the same button twice, and two cans dropped into the tray one after the other with two heavy, satisfied thunks, and he fished them out and held one out to her." },
+      { n: "Hot. That was the thing she'd forgotten about this country: the machines sold them hot, so hot you couldn't hold them at first, so hot you had to pass them hand to hand." },
+      // CG: eqx-two-cans — night, a lit vending machine on an empty shopping street, a boy in a black hoodie holding out a hot can of coffee to a girl in a cardigan, her hands already up to take it, the machine's light on both their faces.
+      { s: 'haechan', f: 'neutral', t: "Okay. New system. Here they come out hot. So you hold it till it isn't. Then you give it back and I drink it. Same thing as home, just backwards." },
+      { s: 'haechan', f: 'smirk', t: "Everything here's backwards. The sky's in the floor, the night's red, the vending machines are kettles. I'm adapting." },
+      { choose: [
+        { t: "(Hold it in both hands. Don't open it.)", notes: 3, then: [
+          { n: "She held it in both hands against the front of her cardigan, the way you'd hold a small animal, and the heat went into her palms and up her wrists, and she didn't open it, because that wasn't the system. He watched her hold it and didn't say anything, and opened his own with one thumb, and drank half of it in one go, and burned his mouth, and swore in two languages, quietly, one after the other." }
+        ] },
+        { t: "What if I want to drink it this time?", notes: 2, then: [
+          { s: 'haechan', f: 'slight-surprise', t: "...Then drink it. Obviously. It's yours. I'm not your coffee manager." },
+          { n: "She opened it and took one sip. It was terrible, sweet and thin and scalding, and she made a face, and he laughed out loud on an empty street at eleven at night, the real laugh, the one that went up at the end, and she handed it to him to hold till it wasn't hot." }
+        ] }
+      ] },
+      { n: "The machine printed nothing. But the konbini on the corner did, when he went in after for gum he didn't want, and he came out with the receipt held up between two fingers like he'd won it, and stopped under the streetlight, and took the other one out of his pocket, the soft folded one from the rope, and laid them on the flat of his palm side by side." },
+      { n: "Two receipts. One crisp and white, the date and the time printed sharp at the bottom, today's, eleven twenty-two at night. And one gray and soft as cloth, with a smear where a day should be." },
+      { s: 'haechan', f: 'neutral', t: "There. Now I know what day it is here." },
+      { s: 'haechan', f: 'sad', t: "Still don't know what day it is there. Either there. But at least I've got one I can read." },
+      { choose: [
+        { t: "Keep them together. Same pocket.", notes: 3, then: [
+          { s: 'haechan', f: 'neutral', t: "Yeah? Okay. Same pocket. So one can tell the other one what time it is." },
+          { n: "He folded the new one round the old one, carefully, so the soft one was inside, the way you'd put a coat round someone, and put them both in his pocket, and kept his hand on them." }
+        ] },
+        { t: "Throw the new one away. You don't need to know what day it is here.", notes: 2, then: [
+          { s: 'haechan', f: 'serious', t: "...No. I do, though." },
+          { s: 'haechan', f: 'neutral', t: "Somebody has to. Akihiko's counting seconds. Jungwon's writing dates in a diary. I'll do receipts. That way if this place starts lying about what day it is, at least three of us will catch it." }
+        ] }
+      ] },
+      { n: "They walked back slower than they'd come. Nineteen minutes became twenty-six. Neither of them mentioned it. At the corner by the shrine he tipped his head back and looked at the moon, which was a little past half and very white, and she looked at him looking at it, and he caught her, and looked down, and the corner of his mouth went." },
+
+      { place: 'Iwatodai Dorm · Roof', time: 'Night', bg: 'iwatodaidorm-roof-night', soft: true },
+      { n: "He didn't go back to the laundry room. He went up instead, all the way, past the second floor where Hanni's futon lay across the hall and Hanni on it, awake, who lifted her head as they went by and looked at the two of them and at the two cans and put her head down again without a word, which was its own sentence; up past the third, out onto the roof, where the planters were and the chairs and the whole of the town spread out under them in its sodium orange, and the black line of the river, and beyond it, low, the dark where the boarding house was." },
+      { n: "He sat down on the concrete with his back to the planters and took out the recorder, and a pair of headphones, and a battered little black box with a cable coming out of it that she didn't recognize." },
+      { s: 'haechan', f: 'neutral', t: "Junpei found it in a box in the command room. It's some kind of sampler. It's from about nineteen-ninety. It's the worst thing I've ever used. I love it." },
+      { s: 'haechan', f: 'neutral', t: "I took the room tone. The hum. Every night of it. I cut out everything that wasn't the note, and the note under the note, and I slowed it down, and I laid it under a beat. It's eight bars. It goes round." },
+      { s: 'haechan', f: 'blushing', t: "...It's not finished. It's a sketch. Don't make the face." },
+      { n: "He put the headphones on her himself, one hand on each side of her head, and settled them over her ears, carefully, the way he'd settle them on a stand, and for a second his hands stayed there, his palms flat over the headphones and her ears and her whole skull, and the world went soft and far away, and then he took them off her and pressed play." },
+      { n: "It was the red hour. She knew it at once, in her teeth before her ears. The hum, but slowed down and warmed up, gone round and deep like a cello, and under it the lower note turned into something you could almost lean on, and over it a beat that was barely a beat, a clap and a kick and the soft thump of a dryer turning, which he'd kept in, she realized, he'd kept the dryer in. It went round. Eight bars. It went round again. It sounded like the hour if the hour had loved somebody." },
+      { n: "It sounded like a room with a space in it the shape of a voice." },
+      { s: 'haechan', f: 'neutral', t: "There's a gap. Middle of the fourth bar. I left it." },
+      { s: 'haechan', f: 'serious', t: "I'm not asking you to sing on it. I want that clear. I'm just telling you there's a gap, and what shape it is." },
+      { choose: [
+        { t: "(Sing into the gap. Quietly. Just once.)", notes: 3, flag: 'eqx-hc-gap-sang', then: [
+          { n: "She didn't decide to. The fourth bar came round and the gap opened in it and she put four notes into it under her breath, nothing, a shape, the first thing that came, and the gap closed over them, and the loop went on." },
+          { n: "He'd stopped breathing. She saw it. He sat on the concrete with his elbows on his knees and his mouth slightly open and didn't breathe for the whole of the fifth bar, and then breathed out, all at once, and reached over and pressed the little red button on the recorder without taking his eyes off her." },
+          { s: 'haechan', f: 'blushing', t: "...Again. No. I'm not asking. I'm. The machine's running. That's all I'm saying. The machine's just running." }
+        ] },
+        { t: "(Hum along with the hum instead.)", notes: 2, then: [
+          { n: "She hummed under it, low, just following the note, the way you'd hum along with a fridge, and he laughed, and leaned his head back against the planter, and listened to her hum the red hour back at itself for two whole loops with his eyes shut." },
+          { s: 'haechan', f: 'happy', t: "That's worse. That's so much worse than singing. That's the best thing I've heard here." }
+        ] },
+        { t: "It's beautiful. I don't want to put anything in it yet.", notes: 2, then: [
+          { s: 'haechan', f: 'neutral', t: "Yeah. Okay. Yet's good. Yet's a word I can work with." },
+          { n: "He didn't sound disappointed. He sounded like a man who'd been handed a date on a receipt he could read." }
+        ] }
+      ] },
+      { n: "He stopped the loop. The roof was very quiet without it. Far below, a car went by on the river road, and then nothing, and she held the coffee, which had stopped being hot somewhere on the stairs, and gave it to him, and he drank it, which was the system." },
+      { s: 'haechan', f: 'serious', t: "There's a bit I cut out. Of the tape. Before I made that." },
+      { ifEvent: 'eqx-knock', then: [
+        { s: 'haechan', f: 'serious', t: "From the twenty-eighth. From my door. You know my door knocked. Everybody's knocked." },
+        { s: 'haechan', f: 'neutral', t: "Mine didn't say what yours said. Mine wasn't a mom. Mine wasn't anybody's mom." },
+        { s: 'solar', f: 'neutral', t: "Who was it?" },
+        { s: 'haechan', f: 'serious', t: "Someone I know. That's all you're getting. That's all *I'm* getting, and I was there." },
+        { n: "He turned the can round in his hands, a quarter turn and back, and she thought of Hanni doing that with a cup, and of every person she knew who had a thing they did with their hands when they were coming to the edge of something." },
+        { s: 'haechan', f: 'serious', t: "It asked me for something. Same as the tape, before, the bit I couldn't hear. Only on the twenty-eighth I could hear it. Clear as you." },
+        { s: 'haechan', f: 'neutral', t: "I'm not telling you what. Not because it's bad. Because it was so *reasonable*, Sol. It was the most reasonable thing anyone's ever said to me. That's how I knew." }
+      ], else: [
+        { s: 'haechan', f: 'serious', t: "The humming. I said it's there every night. It is. But it's not the same every night." },
+        { s: 'haechan', f: 'neutral', t: "I laid them side by side. Every night since the sixth. It's closer every time. Not louder. Closer. You can hear the room change around it. First night it's past the wall. Last night it's the wall. Like someone coming down a corridor so slowly you'd never catch them moving." },
+        { s: 'haechan', f: 'serious', t: "And the favor. The bit under it, before it stops. Last night I got one word of it. Just the end. *Her.*" },
+        { n: "He said it flat, the way he'd said *I didn't hear that* last week, and looked out at the river, and didn't look at her." },
+        { s: 'haechan', f: 'neutral', t: "I cut it out. I didn't want it in the loop. I didn't want it in anything with you on it." }
+      ] },
+      { choose: [
+        { t: "You don't have to carry that by yourself.", notes: 3, then: [
+          { s: 'haechan', f: 'sad', t: "I know. I'm not. You're up here." },
+          { s: 'haechan', f: 'neutral', t: "That's not me asking you to carry it, by the way. That's just me noticing where you're sitting." }
+        ] },
+        { t: "Play it for me.", notes: 2, then: [
+          { s: 'haechan', f: 'angry', t: "No." },
+          { n: "It came out hard and fast and he heard it, and his face did the sideways thing with the jaw, and he put his hand flat on the recorder on the concrete beside him as if it might get up and play itself." },
+          { s: 'haechan', f: 'sad', t: "...Sorry. No. Not that one. Ask me for anything else. Ask me for the receipt." }
+        ] },
+        { t: "(Take his hand off the recorder and hold it.)", notes: 3, then: [
+          { n: "She took his hand off the little machine, the one with the pink line across the palm, and held it in her lap in both of hers. It was cold from the can. He let her. He looked down at it there for a long time, his hand in her lap, like a man looking at a photograph of somewhere he used to live." }
+        ] }
+      ] },
+      { n: "It was eleven fifty. She knew without looking; the whole town knew. The traffic on the far bridge had thinned to nothing, and the karaoke sign at the end of the strip had gone off, and a window on the third floor of the building opposite went dark, and then another, people going to bed early because nobody in Iwatodai liked to be awake at midnight lately and nobody could have told you why." },
+      { n: "He was very close. She didn't know when that had happened either. His shoulder against hers, his knee, the warmth of him all down one side and the cold of the concrete all down the other, and the smell of him, laundry and cheap coffee and the rubber of the headphones, and she turned her head to say something about going in and he was already looking at her." },
+      { s: 'haechan', f: 'neutral', t: "...After everything. I keep thinking I'm supposed to say something. What we are. What we were in March. What we were at the bottom of a well." },
+      { s: 'haechan', f: 'serious', t: "I'm not going to. You know why. But you can. Any time. Or not. Or do something instead of saying it. I'm told that's allowed." },
+      { choose: [
+        { t: "(Kiss him.)", notes: 3, flag: 'eqx-hc-roof-kiss', then: [
+          { n: "She kissed him. She didn't plan it and she didn't hurry it; she put her hand on his jaw, the way you'd turn a face toward a light, and kissed him on the roof of the dorm with the whole town going dark beneath them, and for a second he didn't move at all, as if he'd been waiting so long he'd forgotten what to do when it came." },
+          { n: "Then he remembered. He kissed her back slow and then not slow, one hand coming up into her hair and the other flat on the concrete behind her to hold them both up, and she felt the scar on his palm against the nape of her neck, raised and warm, and he made a small sound against her mouth that she would think about for the rest of the week at the worst possible moments." },
+          { n: "When he pulled back it was only an inch. His forehead stayed against hers. His breathing was a mess." },
+          { s: 'haechan', f: 'blushing', t: "...That's not an answer. Just so you know. I'm not counting that as an answer." },
+          { s: 'solar', f: 'flustered', t: "What are you counting it as?" },
+          { s: 'haechan', f: 'smirk', t: "Room tone." }
+        ] },
+        { t: "We're us. Same as every world. That's all I know yet.", notes: 3, then: [
+          { s: 'haechan', f: 'slight-surprise', t: "...Same as every world." },
+          { n: "He looked at her as if she'd handed him a third receipt, one with every date on it at once. Then he looked away at the river, fast, and his ears had gone red under his hair, and he said *okay* to the river, twice, quietly, like a man checking a latch." }
+        ] },
+        { t: "(Put your head on his shoulder and say nothing.)", notes: 2, then: [
+          { n: "She put her head on his shoulder and said nothing at all, and he let out a breath she felt all the way down his arm, and tipped his cheek onto her hair, and they sat like that, saying nothing, which with him had always been the loudest thing they did." }
+        ] }
+      ] },
+      { n: "They went in at eleven fifty-seven, because neither of them was stupid. He held the roof door for her and she went through and he came after and drew the bolt across, and checked it, and checked it again, and she watched him check it a third time with his fingers flat on the iron, and didn't say anything." },
+      { dark: true },
+      { music: 'mystery' },
+      { n: "The red came up while they were on the stairs. Between one step and the next the stairwell bulb went out and the color came in through the little window on the landing, slow, like something poured, and lay across the steps, and the hum came with it. Haechan stopped on the stair above her. She heard the small click of the recorder in his pocket being switched on by feel." },
+      { n: "They stood very still on the stairs in the red and listened." },
+      { n: "Under the hum, under the note under the note, there it was. She'd never heard it with her own ears before, only on the tape, and it was worse with her own ears, because there was no little machine between it and her. Humming. A woman's, with her mouth closed, slow, the tune you'd hum to a child who won't settle. It wasn't past the wall. It wasn't the wall." },
+      { n: "It was somewhere in the building. Far down. Patient. It went up and came down and went up again, and stopped, as if whoever it was had heard them stop." },
+      { n: "Haechan's hand found hers in the dark without looking, and closed, hard, the scar across her knuckles, and he didn't pull her and she didn't pull him; they went up the rest of the stairs side by side at exactly the same speed, not fast, because fast would have meant something, to the second floor, where Hanni was sitting bolt upright on her futon across Hyein's door in the red with her knees drawn up and her eyes wide and white, looking past them, at the stairs." },
+      { s: 'hanni', f: 'serious', t: "...You heard that." },
+      { n: "Nobody answered. Haechan sat down on the floor beside Hanni's futon with his back to the wall and pulled Solar down beside him, and the three of them sat in a row in the hall with their shoulders touching, facing the stairwell, until the hour was over, and the hour was a little longer than an hour, and the recorder in his pocket ran all the way through it, and in the morning he didn't play it back. She asked him at breakfast. He said he'd taped over it. She didn't believe him, and she didn't ask again." }
     ] }
   ]
 });

@@ -3,7 +3,10 @@
    A hidden frame link, as in Solstice (assets/femc/game/links/elizabeth.js): never on the map, no phone (invite: null), no
    hangouts. Every rank is forced, so each plays as story on its `after` date through core.js dueEvent (hidden: true doesn't
    stop a forced rank; linkStatus is never asked). Rank 1 plays on 4/13 in the late slot (rank `slot: 'late'`), in the
-   Velvet Room. Ranks 2-10 to come; a later rank needs its own `after` date and slot.
+   Velvet Room. Rank 2 is her personal request (a door that closes properly), forced on 4/20 in the after-school slot
+   (rank `slot: 'after'`), out in town; the same night's late slot is the eqx-records event, which rank 2 hands off to.
+   Ranks 3-10 to come; a later rank needs its own `after` date and slot. Rank 2 flag: eqx-eliz-door-shown (reads
+   eqx-aigis-log).
    Flags this file sets: eqx-eliz-form (rank 1: Solar tells her where else she has seen the handwriting). Nothing reads it yet. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'elizabeth', name: 'Elizabeth', short: 'Elizabeth', arcana: 'Velvet Room', numeral: '', from: 'Persona 3', kind: 'frame',
@@ -122,6 +125,139 @@
       { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
       { n: "She woke at four with her shoes still on and her hand closed on the blanket over her chest, holding something that wasn't there." },
       { n: "Out in the hall, through the door, someone was breathing on the floor. Slow and even, asleep. It took her a moment to remember: Hanni had dragged her futon out of her room on Monday night and laid it down across the corridor outside Hyein's door, and said it was because her room was cold." }
+    ] },
+    { after: '4/20', slot: 'after', title: '2: a door that closes properly', place: 'Iwatodai Dorm · Front', time: 'After School', music: 'velvet', scene: [
+      { bg: 'iwotodaidorm-outside' },
+      { n: "There was a card under her door when she got back from school. Blue paper, heavy, folded once, with a single line on it in a hand like copperplate that had been taught by someone very strict and then allowed to enjoy itself: *I am at your gate. I have been at your gate since a quarter to three. It's a very good gate. — E.*" },
+      { n: "She was. Standing on the pavement outside the dorm in the blue dress and the little blue cap, with the enormous book held flat against her chest in both arms, perfectly straight, regarding the street with polite, intense interest, as if the street were an exhibit and she'd paid for a ticket. A woman walking a dog had crossed to the other side to go round her. The dog had stopped and sat down and stared at her with its mouth open, and the woman was tugging the lead." },
+      { s: 'elizabeth', f: 'happy', t: "There you are. I've been watching your street. Do you know, a man went past on a bicycle with a ladder? Upright. Through the air. I've never been so frightened for anyone in my life. He didn't seem to mind." },
+      { s: 'elizabeth', f: 'neutral', t: "I've come about my request. The personal one. A door that closes properly. I thought, if I wait for you to bring one to the Room, it'll arrive blank, the way things do. So I've come to the doors instead." },
+      { choose: [
+        { t: "You can just come out? Into town?", notes: 2, then: [
+          { s: 'elizabeth', f: 'neutral', t: "For an afternoon. If I'm careful, and I keep my book shut, and nobody at home notices. Theodore notices everything. Theodore thinks I'm in the archive, alphabetizing." },
+          { s: 'elizabeth', f: 'happy', t: "I left him a note. It says *alphabetizing*. That's not a lie. I shall alphabetize something this afternoon if it kills me." }
+        ] },
+        { t: "(Hold out your arm for her, like an escort.)", notes: 3, then: [
+          { n: "She held out her arm, elbow crooked, the way people did in old films. Elizabeth looked at it for a long moment with enormous seriousness, and then shifted the book to one arm and put her gloved hand through Solar's elbow, very precisely, as if she were fitting a key into a lock she'd read about." },
+          { s: 'elizabeth', f: 'happy', t: "Oh, this is good. This is very good. I see why people do this. You can't get lost. You can't be carried off by a man with a ladder." }
+        ] },
+        { t: "I've got a few doors in mind.", notes: 2, then: [
+          { s: 'elizabeth', f: 'happy', t: "A *few*. A tour. Oh, I hoped it would be a tour. I've brought a pencil." }
+        ] }
+      ] },
+
+      { n: "The first door was the dorm's own. She'd thought it was the obvious place to start. Elizabeth stood in front of it on the step with her head on one side and examined it top to bottom the way a doctor examines a tongue: the frame, the hinges, the brass handle, the little window, the bolt, the chain, and the sheet of paper taped to the inside of the glass at eye level in Hanni's handwriting, in three languages, the third one Fuuka's careful Japanese, *NOBODY OPENS A DOOR IN THE RED. NOBODY. — Mgmt.*" },
+      { s: 'elizabeth', f: 'neutral', t: "That's a good door. A strong door. It's had a great many people come through it who loved each other, you can tell. Doors keep it in the wood." },
+      { s: 'elizabeth', f: 'serious', t: "But it's nervous. Look at it. Three locks and a sign. A door that closes properly doesn't need a sign. It just closes." },
+      { s: 'elizabeth', f: 'neutral', t: "...And somebody's going to put their hand on that handle one night soon, from the other side, and I don't think the sign will help. I don't say that to be gloomy. I say it as someone who's read a lot of signs." },
+      { n: "Solar looked at the handle. Brass, worn bright in the middle by every hand in the dorm. It looked like a handle. She didn't like that Elizabeth had said *soon*, and she didn't ask, and Elizabeth didn't offer, and they went down the steps." },
+
+      { place: 'Iwatodai · Konbini', time: 'After School', bg: 'shopping-street', soft: true },
+      // BG: iwatodai-konbini-day — the front of a small Japanese convenience store on a sunny shopping street in the afternoon, glass automatic doors, posters in the windows, a bicycle parked outside.
+      { n: "The second door was the konbini on the corner of the strip, because she wanted to see Elizabeth meet an automatic door, and she wasn't sorry." },
+      { n: "Elizabeth stopped a meter from it. It opened. She took a startled step back. It closed. She stepped forward. It opened. She stood very still, holding her book, and it stayed open, waiting, humming faintly to itself, with the cold breath of the shop's air coming out round her ankles, and her face went through astonishment and delight and a sort of slow dawning horror in about four seconds." },
+      { s: 'elizabeth', f: 'happy', t: "It's *waiting* for me. It knew I was coming. How marvelous. How polite." },
+      { s: 'elizabeth', f: 'serious', t: "...Does it do that for everyone?" },
+      { s: 'solar', f: 'neutral', t: "Everyone. Anyone who walks up to it." },
+      { s: 'elizabeth', f: 'serious', t: "Anyone at all. Without asking who they are. It simply sees something standing in front of it and opens." },
+      { n: "She looked at it for a long time. The door hummed, open. A schoolboy squeezed past her with a bag of crisps, and then a woman with a baby, and the door stayed open for all of them, and Elizabeth watched each of them go in with an expression Solar couldn't read." },
+      { s: 'elizabeth', f: 'neutral', t: "No. Not this one. This is the opposite of what I came for. This is a door that's forgotten what it's for. I find it rather tragic. I'm going to buy something from it anyway, out of pity." },
+      { choose: [
+        { t: "(Buy her a melon bread.)", notes: 3, then: [
+          { n: "She bought her a melon bread, the cheap kind with the crackled sugar top, and Elizabeth held it in its plastic in both hands on the pavement outside and looked at it the way she'd looked at the ladder man, and then opened it, very carefully along the seam, and took a bite, and closed her eyes." },
+          { s: 'elizabeth', f: 'happy', t: "...Oh. Oh, that's unreasonable. That's a cloud someone's baked. I'm going to have to sit down." },
+          { n: "She didn't sit down. She ate the whole thing standing on the pavement outside the konbini in tiny precise bites, and folded the plastic into a perfect small square afterwards, and put it in her book, between two pages, to keep." }
+        ] },
+        { t: "(Let her pick something.)", notes: 2, then: [
+          { n: "She chose for a very long time, up and down every aisle, and came to the counter in the end with a single box of matches, which she paid for with a coin Solar had never seen, gold and stamped with a door, that the clerk looked at and handed back and then let her have the matches anyway, for some reason, blinking." },
+          { s: 'elizabeth', f: 'happy', t: "For lighting. In case. One never knows what one will need to light." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai · Residential Street', time: 'After School', bg: 'outside-daytime-neighborhood', soft: true },
+      { n: "They took the long way back, down the dorm's own street toward the river, because Elizabeth wanted to see *a lot of doors in a row, like a library*. The street was quiet in the late afternoon. Tidy houses behind low walls, gates and steps and front doors in a row, a cat on a wall, someone's washing out." },
+      { n: "At the third house from the bottom Elizabeth stopped." },
+      { n: "It was nothing. An ordinary house. A little gray two-storey with a wooden door painted dark green, a mat, a plant in a pot going yellow at the edges. The curtains were drawn, upstairs and down, in the middle of the afternoon." },
+      { s: 'elizabeth', f: 'serious', t: "This one's been knocked on." },
+      { s: 'solar', f: 'neutral', t: "...How do you know?" },
+      { s: 'elizabeth', f: 'serious', t: "Doors keep it. I told you. In the wood." },
+      { s: 'elizabeth', f: 'serious', t: "Somebody stood here a long time. Very still. Being very polite. Knocking, and waiting, and knocking. Twice, and waiting, and twice. Not to get in. Just to be heard knocking." },
+      { s: 'elizabeth', f: 'neutral', t: "...Whoever lives here didn't answer. Good for them. But they heard. You can tell that too. Look at the curtains." },
+      { ifFlag: 'eqx-aigis-log', then: [
+        { n: "The third house at the bottom of the street. Aigis's eleven seconds on the night of the twelfth: one heartbeat not in a coffin, standing at a door, knocking twice, politely, resting heart rate forty. Solar looked at the green door and the drawn curtains and didn't say any of that out loud." }
+      ] },
+      { choose: [
+        { t: "(Take her arm. Walk on.)", notes: 3, then: [
+          { n: "She took Elizabeth's arm and walked on, not fast, because fast would have meant something. Elizabeth let herself be walked. At the bottom of the street she looked back over her shoulder at the green door, once, with an expression of grave sympathy, the way you'd look back at somebody sitting alone in a waiting room." }
+        ] },
+        { t: "Can you tell who it was?", notes: 2, then: [
+          { s: 'elizabeth', f: 'sad', t: "No. That's the part I can't. I can see almost everyone. I can't see that." },
+          { s: 'elizabeth', f: 'neutral', t: "It's the same hand, I think. The one on your page. Something that presses hard, and is very patient, and very polite, and doesn't sign its name." }
+        ] }
+      ] },
+
+      { place: 'Paulownia Mall · Café Door', time: 'After School', bg: 'paulownia-mall', soft: true },
+      { n: "It was at the mall that it happened, the thing Solar would think about later, in the red, with her hand on her chest." },
+      { n: "They'd gone in to look at the doors of the shops, which Elizabeth found disappointing, mostly glass, *a door you can see through is only a window that's lost its nerve*, and on the way out, at the café by the entrance, the one with the heavy wooden door and the brass push plate, an old woman was coming out with a stick, slowly, and Elizabeth stepped forward and held the door for her." },
+      { n: "That was all. Anyone would have. The old woman thanked her and went past. And then a man was coming out behind the old woman, so Elizabeth kept holding it. And then two schoolgirls, going in. And a mother with a pushchair. And a man in a suit, on his phone, who didn't look at her. And a boy. And another." },
+      { n: "She didn't let go. She stood in the doorway with the book under one arm and her gloved hand flat on the wood, holding it wide, smiling at each of them as they went through, in and out, and the door stayed open, and stayed open, a minute, two, and the café's warm air came out past her into the mall, and still she stood there, perfectly straight, with her hand on it, as if letting go were a thing she'd heard about and never been taught." },
+      { choose: [
+        { t: "Elizabeth. You can let go now.", notes: 3, then: [
+          { n: "She looked round at Solar's voice. For a second, just a second, her face had nothing on it at all, not delight, not curiosity, nothing, the face of someone woken suddenly and not sure yet where they are. Then she looked at her own hand on the door, and at the people still coming, and back at Solar." },
+          { s: 'elizabeth', f: 'sad', t: "...Can I? There's always someone else coming. I'd hate for it to shut on someone." }
+        ] },
+        { t: "(Go and put your hand over hers on the wood.)", notes: 3, then: [
+          { n: "She went over and put her hand over Elizabeth's on the push plate, and felt how hard she was pressing, how stiff the arm was all the way up, as if she'd been holding up something much heavier than a café door." },
+          { s: 'elizabeth', f: 'neutral', t: "...Oh. I'm pressing quite hard, aren't I. I hadn't noticed." }
+        ] }
+      ] },
+      { s: 'elizabeth', f: 'neutral', t: "I find it very difficult to let go of a door, once I've got hold of one. It feels rude. It feels like somebody might be just about to come through it, a step behind, and if I let go they'll walk into the wood." },
+      { s: 'elizabeth', f: 'sad', t: "...I suppose that's why I wanted to see one closed. Properly. By someone who knows how." },
+      { s: 'elizabeth', f: 'neutral', t: "Show me. Please. I'd like to see how it's done." },
+      { choose: [
+        { t: "(Show her. Look. Let go. Listen for the latch.)", notes: 3, flag: 'eqx-eliz-door-shown', then: [
+          { n: "She took Elizabeth's hand off the door, gently, one finger at a time, the way you'd unhook a child's hand from a railing, and then she looked out at the mall. Nobody coming. She looked the other way, into the café. Nobody coming." },
+          { s: 'solar', f: 'neutral', t: "You look. Both ways. If somebody's coming, you wait for them. If nobody is, you let go." },
+          { n: "She let go. The door swung slowly closed on its heavy hinge, and met the frame, and the latch went into the strike with a small clean click, the sound of something finished." },
+          { s: 'solar', f: 'neutral', t: "That's it. That's all it is. If somebody comes later, they knock, and you open it again. It's not forever. It's just closed." },
+          { n: "Elizabeth stood looking at the closed door with an expression of such complete attention that a man coming toward it with a tray of coffees stopped and went round to the other entrance." },
+          { s: 'elizabeth', f: 'neutral', t: "...*It's just closed.* Not forever. Just closed." },
+          { s: 'elizabeth', f: 'happy', t: "Again. Do it again. No, let me. I'll look both ways. I'm very good at looking." },
+          { n: "She opened the door. She looked both ways, enormously carefully, for much too long. Nobody coming. Her hand stayed on the plate for one breath, two, three, and Solar watched her arm go stiff again, and then, with visible effort, like a person stepping off a high diving board, she let go." },
+          { n: "The latch clicked. Elizabeth flinched at it, very slightly, and then laughed, out loud, astonished, and clapped once, the book pinned under her arm." }
+        ] },
+        { t: "(Close it with her. Both hands on the wood.)", notes: 3, flag: 'eqx-eliz-door-shown', then: [
+          { n: "She put her own hand flat on the door beside Elizabeth's, so there were two hands on the wood, and looked both ways, and said *now*, and they both let go at the same time." },
+          { n: "The door swung shut and the latch clicked, and Elizabeth's hand stayed in the air where the wood had been for a second, open, the fingers spread, and then she looked at it, and folded it carefully against her chest, as if it had done something brave without her." },
+          { s: 'elizabeth', f: 'happy', t: "Together. Yes. That's easier. That's much easier than I thought. I should have asked for help with it ages ago." },
+          { s: 'elizabeth', f: 'sad', t: "...I've never asked anyone to help me with a door. It never occurred to me there was anyone to ask." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Front', time: 'Evening', bg: 'iwotodaidorm-outside', soft: true },
+      { n: "She walked her back to the gate in the last of the light. Elizabeth had her book shut tight against her chest with something new pressed between its pages, and a pencil behind her ear that Solar hadn't seen her put there, and she'd written something on the inside of her wrist in very small letters that she covered with her glove when she saw Solar looking." },
+      { s: 'elizabeth', f: 'happy', t: "Thank you. That was a very good door. The best one I've ever seen. It was nothing special, which was the special thing about it." },
+      { s: 'elizabeth', f: 'neutral', t: "I'll practise. I have a great many doors where I am, and some of them could stand to be closed properly." },
+      { s: 'elizabeth', f: 'serious', t: "...One of them in particular." },
+      { n: "She didn't say which. She didn't need to. Solar thought of the line of gold under the door in the Room, and of Elizabeth standing in it with her back to her, perfectly straight, the hem of the blue dress across the light." },
+      { choose: [
+        { t: "When you close it, do you want someone there?", notes: 3, then: [
+          { s: 'elizabeth', f: 'neutral', t: "...I hadn't thought of that." },
+          { s: 'elizabeth', f: 'sad', t: "I'd assumed it would be me. On my own. It's my door. I'm the one who held it." },
+          { s: 'elizabeth', f: 'neutral', t: "But you made it look so much less frightening, standing beside it. I'll think about it. I'll think about it very seriously." }
+        ] },
+        { t: "It's just closed. Not forever.", notes: 2, then: [
+          { s: 'elizabeth', f: 'happy', t: "Not forever. Yes. I wrote it down. On my wrist. Don't tell Theodore, he thinks ink on skin is barbaric." }
+        ] },
+        { t: "(Hug her.)", notes: 2, then: [
+          { n: "She hugged her, over the book, which was in the way, and Elizabeth went rigid with surprise, and then, slowly, put one arm round Solar's back, the free one, and patted twice, very carefully, the way she'd seen people do it from the other side of a great many pages." },
+          { s: 'elizabeth', f: 'happy', t: "...Oh. That's like the melon bread. That's unreasonable too." }
+        ] }
+      ] },
+      { s: 'elizabeth', f: 'neutral', t: "Now. Come tonight. Late, when the red's gone. I've something to lay out for you, and it's taken me what you'd call all night, and I'd very much like you to see it before I lose my nerve and put it all back in the right order." },
+      { n: "She stepped back from the gate, and lifted one gloved hand in her small formal wave, the girl at the station, and turned, and walked away up the street in the dusk, very straight, with the book against her chest." },
+      { n: "At the corner she stopped. There was a door there, a little side door to the alley behind the bakery, standing open a hand's width, propped with a brick. Solar watched her look at it. Look both ways. And then, very deliberately, bend down, and move the brick, and let the door go, and wait, with her head on one side, until it clicked." },
+      { n: "Then she went round the corner, and when Solar got there a moment later the street was empty, all the way to the end, and the bakery door was shut, and there was nobody on it at all except, faintly, on the brass of the handle, the print of a small gloved hand." }
     ] }
   ]
 });

@@ -1,6 +1,7 @@
 /* Persona 3: Equinox · Park Jihoon · Hunger. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13, Game Panic at Paulownia Mall, after school or a day off). Ranks 2–15 still to write.
+   Written: ranks 1–2 (rank 1 from 4/13, rank 2 from 4/21, both Game Panic; rank 2 ends at the photo booth and branches on
+   eqx-tanabe and eqx-jihoon-plush). Ranks 3–15 still to write. Rank 2 flag (nothing reads it yet): eqx-jihoon-booth-kiss.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Flag: eqx-jihoon-plush (rank 1, Solar keeps the prize from the crane game). Nothing reads it yet.
    HOAX canon carries (the triangle stays open, his habits named and never shown). Solstice's ranks are shared memory. */
@@ -125,6 +126,154 @@
       { n: "He walked her to the monorail. He talked the whole way, about Cherry stealing his fries and Mr. Tanabe at the guesthouse giving him extra rice and the Hate Club, who weren't here, who he would never admit to missing, who he missed so loudly she could hear it in every sentence that wasn't about them. At the gates he stopped, and put his hands in his pockets, and rocked on his heels." },
       { s: 'jihoon', f: 'neutral', t: "Wednesday. I'll be there. Losing. You should come watch. It's very moving. People weep." },
       { n: "He grinned at her, the slow party grin, and turned, and walked off toward the guesthouse whistling something off-key, and didn't look back until the corner, where he did, the way he always did, every time, in every world, as if checking she was still where he'd left her." }
+    ] },
+    { after: '4/21', title: '2: better lighting', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'city', scene: [
+      { bg: 'gamepanic-inside' },
+      { n: "Game Panic at four was the same as Game Panic at any hour, which was to say it was the inside of a pinball machine with a carpet, every cabinet shouting at once and the light coming off the screens in colors that didn't exist outside, and she found him by the crane game, of course, in the same spot, with the same posture, both hands on the cabinet's glass and his forehead nearly on it, like a man at an aquarium trying to reason with a shark." },
+      { n: "The white dog was still in there. It had moved. It was nearer the chute now by maybe a hand's width, tipped over on its side with its paws in the air, looking, if anything, smug." },
+      { s: 'jihoon', f: 'neutral', t: "Hundred and twelve. Don't talk to me. I'm in a relationship with this machine and it's at a delicate stage." },
+      { choose: [
+        { t: "(Feed it a coin for him.)", notes: 3, then: [
+          { n: "She put a coin in without asking. He looked at the coin slot, and at her, and at the coin slot again, with the expression of a man watching someone else pay for his drinks at his own birthday." },
+          { s: 'jihoon', f: 'happy', t: "Oh, you're *invested* now. Okay. Okay. Pressure. I love pressure. Pressure's the only thing I'm good at." }
+        ] },
+        { t: "A hundred and twelve tries. You could have bought a real dog.", notes: 2, then: [
+          { s: 'jihoon', f: 'serious', t: "I *have* a real dog. He's in another world. This is his representative. Show some respect." }
+        ] },
+        { t: "(Stand behind him the way he stood behind you.)", notes: 3, then: [
+          { n: "She came up behind him and put her hands on the cabinet on either side of his, not touching him, just there, so that he was inside the shape of her arms, and he went very still with his hand on the joystick, and the claw hung over the dog, swaying a little." },
+          { s: 'jihoon', f: 'neutral', t: "...Oh, that's a dirty trick. That's my trick. You can't use my trick on me, I'm the one who invented it." }
+        ] }
+      ] },
+      { n: "He moved the claw. Left, forward, a hair back, and she watched his face while he did it, and his face did the thing it only did here, at a crane game or a pool table or a dart board, the thing she'd seen at the old mall when she was six and it was the only place on earth he'd ever been quiet: his whole self in his eyes and his hands, nothing left over for being anybody." },
+      { n: "The claw came down. It took the white dog round the middle, and lifted, and the dog came up, and swung, and hung there over the chute with its paws in the air, and the claw opened the way it always did, a fraction too early, the cheat built into the machine, and the dog dropped." },
+      { n: "Into the chute. Bounced once off the edge of the hole and went in." },
+      { n: "He didn't move. He stood with his hand still on the joystick and stared at the empty place in the pile where the dog had been. Then he crouched, slowly, like a much older man, and put his hand through the little flap, and brought it out holding the dog, and looked at it." },
+      { s: 'jihoon', f: 'surprised', t: "...Hundred and thirteen." },
+      { s: 'jihoon', f: 'happy-2', t: "HUNDRED AND THIRTEEN! Sol! SOL! Look at my son! He's home!" },
+      { n: "He held it up over his head with both hands like a cup at a final. Two boys at the drum game looked round. He didn't care. He turned in a full circle with it, and then put it under his chin, against his throat, the way you'd hold a puppy, and his eyes were wet, and he would deny it until he died, and she would let him." },
+      { choose: [
+        { t: "Congratulations. It looks just like him.", notes: 3, then: [
+          { s: 'jihoon', f: 'happy', t: "It looks *exactly* like him. Look at the face. That's a face that's never done anything wrong in its life. That's Nana's whole face." },
+          { s: 'jihoon', f: 'sad', t: "...He's going to be so mad at me. I left without saying bye. I always say bye to him. I say bye to him when I go to the bathroom." }
+        ] },
+        { t: "(Clap. Slowly. Like the end of a film.)", notes: 2, then: [
+          { n: "She clapped, slow and solemn, and he bowed to her, to the drum game boys, to the claw, deeply, from the waist, and the drum game boys, for some reason, clapped too." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-jihoon-plush', then: [
+        { s: 'jihoon', f: 'neutral', t: "You still got the other one? The rice cake?" },
+        { s: 'solar', f: 'neutral', t: "In my bag." },
+        { s: 'jihoon', f: 'neutral', t: "Huh. Does it still do the dust thing? Cherry says I'm imagining it. Cherry says it was a dirty claw machine and I should wash my hands." },
+        { n: "She didn't tell him the dust had gone through two textbooks now, and that it came up fresh on her fingers every time she touched the thing, as if it had been put back in the flour overnight." }
+      ] },
+
+      { n: "They sat on the bench outside after, in the mall's long glass afternoon, with the dog between them and two cans of something orange and a bag of the fried things from the stand by the fountain that he'd paid for with the last of his coins. He ate like he always ate, fast and talking. She watched his hands." },
+      { ifEvent: 'eqx-tanabe', then: [
+        { n: "He had his hoodie on, the gray one, though it was warm, and every so often he put his hand in the front pocket and left it there for a second, round something, and took it out again." },
+        { n: "She knew what it was. Everyone at the guesthouse knew. They didn't say. A rice ball in cling film, days old now, gone hard as a stone and gray at the edges, that he'd taken off the shelf under the lobby counter on Thursday morning and put in his pocket and not taken out since." },
+        { s: 'jihoon', f: 'neutral', t: "Don't. I know. It's disgusting. Cherry's already done the speech. Jungwon did a quieter one, which was worse." },
+        { s: 'jihoon', f: 'sad', t: "He made one every night at eight. For two weeks. For me. Not for the others. He didn't ask why I was there or what I'd done or if I was okay. He just put it on the counter like it was my mail." },
+        { s: 'jihoon', f: 'sad', t: "...Nobody's ever done that. At home. Not my dad, not anybody. I'm the guy people hide the good stuff from." },
+        { choose: [
+          { t: "Keep it as long as you need.", notes: 3, then: [
+            { s: 'jihoon', f: 'neutral', t: "Yeah? That's not the speech." },
+            { s: 'solar', f: 'neutral', t: "I don't have a speech." },
+            { n: "He looked at her, and then down at his pocket, and put his hand back in it, round the hard little thing in its wrapping, and left it there this time, and she saw his shoulders come down." }
+          ] },
+          { t: "Give it to me. I'll put it somewhere good.", notes: 2, then: [
+            { s: 'jihoon', f: 'serious', t: "Where's somewhere good. Name me one good place in this town." },
+            { s: 'solar', f: 'neutral', t: "The shrine. The little shelf where people leave things." },
+            { n: "He thought about it for a long time. Then he took it out and looked at it in his palm, the gray rice in the creased cling film, and didn't give it to her. He put it back. But he said *the shrine* under his breath, once, like a man memorizing an address." }
+          ] },
+          { t: "(Say nothing. Put your hand on his arm.)", notes: 3, then: [
+            { n: "She put her hand on his arm, just above the wrist, over the sleeve, and left it there. He didn't look at it. He went on eating fried things one-handed and talking about the dog, and his arm under her hand was perfectly still the whole time, the way you keep still when a bird lands on you." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'jihoon', f: 'neutral', t: "Guy at the guesthouse makes me a rice ball. Every night. At eight. The night manager. Old guy, gray jacket, does the crossword in pencil." },
+        { s: 'jihoon', f: 'neutral', t: "He doesn't ask me anything. Doesn't ask where I'm from, why I'm up, if I'm okay. He just puts it on the counter like it's my mail. Salted salmon. The good seaweed, the crispy kind, in the separate wrapper so it doesn't go soft." },
+        { s: 'jihoon', f: 'happy', t: "I bow at him. Like a grandson. Like, the full bow. Jungwon thinks it's hilarious. Jungwon's been doing it too now, which ruins it." },
+        { s: 'jihoon', f: 'sad', t: "...Nobody does that at home. Feeds me without a reason. I'm the guy people hide the good stuff from." }
+      ] },
+      { n: "He crumpled the empty bag and threw it at the bin and missed and went and put it in by hand, and sat down again closer than before." },
+      { s: 'jihoon', f: 'neutral', t: "Every day since the red, by the way. Clean. Cherry's counting, to the day. Cherry counts in the shower, she told me, like that's a normal thing for a person to say." },
+      { s: 'jihoon', f: 'neutral', t: "I'm not trying. That's the weird part. At home I'm always *trying*. Here I just don't, and then it's a day, and then it's another day." },
+      { s: 'jihoon', f: 'serious', t: "...There's a pharmacy on the strip. Little one. The old lady behind the counter doesn't look up from her TV. I walked past it twice on Tuesday. Didn't go in. Just walked past it. Twice." },
+      { s: 'jihoon', f: 'neutral', t: "And I thought, nobody here would ever know. If I did. Nobody's watching. No forum. No dad. No council. I could fall flat on my face in the middle of Paulownia Mall and the only person who'd write it down is Jungwon, in his little book, and he'd use a code." },
+      { s: 'jihoon', f: 'serious', t: "I could fall all I like here. That's what I keep thinking. That's the nicest thing anybody's ever said to me and it's a building saying it." },
+      { choose: [
+        { t: "I'd know.", notes: 3, then: [
+          { n: "He went still. Not his usual still, the poised one. The other kind." },
+          { s: 'jihoon', f: 'neutral', t: "...Yeah. You would." },
+          { s: 'jihoon', f: 'happy', t: "Ugh. That's so annoying. That's the most annoying thing you could've said. You've ruined the whole fantasy. Thanks." },
+          { n: "He said thanks like he meant it, and looked away fast, and kicked the bench leg, and didn't walk past the pharmacy that night. She knew because Cherry texted her at eleven: *he came straight home. what did you say to him.*" }
+        ] },
+        { t: "You walked past it. Twice. That's the part I heard.", notes: 3, then: [
+          { s: 'jihoon', f: 'surprised', t: "...Oh. Huh." },
+          { s: 'jihoon', f: 'neutral', t: "That's a very Jungwon way of hearing it. Has he been teaching you? Is there a manual?" },
+          { n: "But he was smiling, a little, at the floor, and he put his hand on the dog's head between them and rubbed one of its ears between his finger and thumb, the way you'd do to a real one." }
+        ] },
+        { t: "Do you want me to walk the strip with you? So you don't have to do it alone.", notes: 2, then: [
+          { s: 'jihoon', f: 'neutral', t: "No. Yes. No." },
+          { s: 'jihoon', f: 'serious', t: "Not because I'd go in. Because then it'd be a thing. Because then I'd be the guy who needs walking past a pharmacy. I'd rather be the guy who did it twice and lived." },
+          { s: 'jihoon', f: 'happy', t: "But ask me again next week. Maybe I'll be a worse guy by then." }
+        ] }
+      ] },
+
+      { n: "He stood up. He tucked the dog into the front of his jacket with its head poking out at the zip, which made him look like a kangaroo with a past, and held out his hand to pull her up, and when she took it he didn't let go." },
+      { s: 'jihoon', f: 'neutral', t: "Come on. I made a promise. I keep, like, a third of my promises. This one's in the third." },
+      { s: 'solar', f: 'neutral', t: "What promise?" },
+      { s: 'jihoon', f: 'happy', t: "Better lighting." },
+
+      { place: 'Paulownia Mall · Photo Booth', time: 'After School', bg: 'paulownia-photo-booth', soft: true },
+      { n: "The photo booth was at the far end of the arcade by the ticket counter, pink and white and plastered with stickers of girls making peace signs, with a curtain that only went most of the way across. He held it open for her with a bow. Inside it was the size of a phone box, with a little bench and a screen and a ring light that came on as they sat down and filled the whole box with a hard, flattering white, the kind of light that took ten years and every mistake off your face." },
+      { s: 'jihoon', f: 'happy-2', t: "See? Better lighting. Look at us. We look like we've never done anything." },
+      { n: "He fed it coins. The screen asked them to pick a frame and he picked the worst one, cartoon bunnies, without consulting her, and the countdown began, a cheerful recorded voice in Japanese counting down from three, and he put his arm round her shoulders for the first one like a dad at a graduation, and stuck his tongue out for the second, and the light flashed, and flashed." },
+      { s: 'jihoon', f: 'neutral', t: "...Two more." },
+      { n: "He'd stopped joking. The voice counted. He was looking at her, not at the screen, in the hard white light, from about four inches away, the way he'd looked at her in the arcade on the thirteenth with his hand over hers on the joystick and said *not here*." },
+      { s: 'jihoon', f: 'neutral', t: "You can ask me now. If you want. I said ask me again somewhere with better lighting. This is the best lighting in the building. I checked." },
+      { s: 'jihoon', f: 'serious', t: "...Your boyfriend's back at the guesthouse eating my egg sandwiches, by the way. I'm not forgetting that. I'm just saying the light's good." },
+      { choose: [
+        { t: "(Kiss him in the flash.)", notes: 3, flag: 'eqx-jihoon-booth-kiss', then: [
+          { n: "She kissed him on *two*. He'd been ready for *one*, and it threw him, and he made a startled sound against her mouth, and then his hand came up to the back of her neck, under her hair, and he kissed her back slow and deliberate, like a man who'd been told the clock was running and decided to ignore it on principle." },
+          { n: "The light flashed. Neither of them noticed. The voice said something cheerful about the last picture. He didn't stop for that one either." },
+          { n: "When he pulled back he was pink to the ears in the white light, and grinning, the real one, not the party one, and he pointed at her." },
+          { s: 'jihoon', f: 'happy', t: "*You* kissed *me*. Note that. For the record. I'm the victim here. I came in here for bunnies." }
+        ] },
+        { t: "(Put your forehead against his. Not the kiss. Not yet.)", notes: 3, then: [
+          { n: "She leaned in and put her forehead against his, and held it there, and didn't go the last inch. He let out a breath that shook a little. The light flashed. He didn't move. The voice counted down the last one, and the light flashed again, and they were still like that, foreheads together, eyes shut, in the best lighting in the building." },
+          { s: 'jihoon', f: 'neutral', t: "...Okay. Okay. That's fair. That's actually worse. I'm going to be thinking about that for a week." }
+        ] },
+        { t: "Not here either. Ask me somewhere with worse lighting.", notes: 2, then: [
+          { s: 'jihoon', f: 'surprised', t: "...*Worse* lighting." },
+          { s: 'jihoon', f: 'happy', t: "Oh, you're good. Oh, I hate you. Okay. Worse lighting. I'll find the worst-lit place in this whole town. I'll find a cupboard." },
+          { n: "The light flashed on him laughing with his head back against the booth wall, and on her watching him do it." }
+        ] }
+      ] },
+      { n: "The strip came out of the slot warm, still smelling of the chemical, four frames in a column with the bunnies round the edges. He held it up between them in the arcade light." },
+      { n: "One: his arm round her, both of them grinning like idiots. Two: his tongue out, her laughing. Three: whatever had happened in three, which she'd remember." },
+      { n: "Four." },
+      { n: "In four the curtain behind them wasn't shut. It was drawn back a hand's width at the edge, where it didn't quite meet the wall, and in the gap there was the dark of the arcade, and in the dark, at about the height of a hand on a curtain, there was something white. A blur. The ring light had caught it at the very edge of the frame and washed it out to almost nothing, a pale smudge with four soft points to it, like the fingers of a glove." },
+      // CG: eqx-booth-strip — a four-frame photo-booth strip with cartoon bunny borders held up in an arcade, a boy and a girl in the first three frames, and in the fourth, in the gap at the edge of the booth's curtain, a small washed-out white shape at hand height.
+      { s: 'jihoon', f: 'neutral', t: "...Cleaner. They wear the white gloves. They go round wiping the screens." },
+      { s: 'jihoon', f: 'neutral', t: "Must've been checking if it was free." },
+      { n: "He said it easily. He said it like it was nothing, and it was probably nothing, and he tore the strip in half down the middle with great care along the perforation, and gave her the half with the first two, and kept the half with three and four, and put it in the inside pocket of his jacket, behind the dog." },
+      { choose: [
+        { t: "Give me the other half.", notes: 2, then: [
+          { s: 'jihoon', f: 'neutral', t: "No. You've got the good ones. The tongue one is art." },
+          { n: "He didn't give it to her. He walked her out of the arcade with his hand on the small of her back, and on the way past the ticket counter she looked for a cleaner, and there wasn't one, not in the arcade or on the escalator or anywhere on the whole second floor. Only the screens, all shouting, and every one of them smeared." }
+        ] },
+        { t: "(Look back at the booth.)", notes: 2, then: [
+          { n: "She looked back. The curtain hung straight now, all the way across, and the little light inside had gone off, and there was nobody near it, and the screens on every cabinet in the arcade were greasy with fingerprints, the way they always were, the way they'd been all afternoon." }
+        ] },
+        { t: "(Keep your half. Say nothing.)", notes: 1, then: [
+          { n: "She put her half in her pocket. She didn't say anything. Neither did he, for longer than he'd been quiet all afternoon." }
+        ] }
+      ] },
+      { n: "He walked her to the monorail with the dog's head poking out of his jacket, and talked the whole way about what he'd name it, Nana Two, Nana Junior, Mr. Nana, and at the gates he stopped and put his hand flat on his jacket pocket, over the half of the strip, the way she'd seen him put it on the rice ball, and said goodbye to her in a voice that was almost serious." },
+      { s: 'jihoon', f: 'neutral', t: "Thanks for coming. To watch me win. Nobody ever comes to watch me win. They only come when I lose." },
+      { n: "At the corner he looked back, the way he always did, every time, in every world, to check she was still where he'd left her. She was. She stayed there until he'd gone, and then a while after." }
     ] }
   ]
 });

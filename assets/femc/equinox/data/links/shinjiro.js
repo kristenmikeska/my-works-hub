@@ -1,6 +1,7 @@
 /* Persona 3: Equinox · Shinjiro Aragaki · XVIII The Moon. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: rank 1 only (from 4/13, Tatsumi Memorial Hospital, his ward, after school). Ranks 2–15 still to write.
+   Written: ranks 1–2 (rank 1 from 4/13, rank 2 from 4/18, both Tatsumi Memorial Hospital after school; rank 2 branches
+   on eqx-knock and Mrs. Oka's rank). Ranks 3–15 still to write. Rank 2 flag (nothing reads it yet): eqx-shinji-egg.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Picks up the 4/11 visiting-hours event (story-opening.js eqx-shinjiro). Speakers without portraits: nurse, therapist.
    Solstice's ranks are shared memory (he woke on 2/27; the year before that is what he remembers, and the coma isn't). */
@@ -153,6 +154,125 @@
         { from: 'shinjiro', t: "nobody at the door" }
       ], contact: 'Shinjiro Aragaki' },
       { n: "She looked at it for a long time in the dark. Then she put the phone face down on her chest, and her hand flat on top of it, and lay awake until it was light." }
+    ] },
+    { after: '4/18', title: '2: one egg', place: 'Tatsumi Memorial Hospital · Ward', time: 'After School', music: 'tender', scene: [
+      { bg: 'hospital-room' },
+      { n: "He was out of bed. That was the first thing, and it went through her like a bell before she'd even got her shoes off at the ward door: the bed by the window empty, the blanket thrown back, and for one second her whole body knew exactly what an empty bed on this ward meant now, and then she saw him." },
+      { n: "He was standing at the window in the gap between his bed and the next one, the made-up one, Mr. Hata's, with one hand on the sill and the other, the bad one, held out in front of him at the height of his chest, palm up, and in the palm of it, wobbling, a plastic cup of water filled to the brim." },
+      { n: "He wasn't drinking it. He was holding it. His whole arm was shaking with it, from the shoulder down, a long fine tremor like a wire in wind, and his jaw was set, and the water was going over the lip in a slow drip onto the floor, and he was watching it go over with an expression of absolute hatred." },
+      { s: 'shinjiro', f: 'neutral', t: "...Don't say anything. Forty seconds. She wants forty." },
+      { choose: [
+        { t: "(Count it out loud for him.)", notes: 3, then: [
+          { n: "She counted. Out loud, not fast, from where he'd got to, which she guessed was about twenty-two, and he didn't tell her she was wrong, so she wasn't. On thirty the cup tipped and he caught it with the other hand without looking. On thirty-six he put it back in the bad one. On forty he set it down on the sill so hard half of what was left jumped out, and stood with both hands flat on the sill and his head down, breathing like he'd carried something up a hill." },
+          { s: 'shinjiro', f: 'neutral', t: "...Forty. Nobody tell her I cheated at thirty." }
+        ] },
+        { t: "(Stay at the door. Let him do it without an audience.)", notes: 2, then: [
+          { n: "She stayed where she was, half behind the curtain, and looked at the floor, and listened to the drip of the water and his breathing and nothing else, until she heard the cup go down on the sill." },
+          { s: 'shinjiro', f: 'neutral', t: "...You can come in. I know you're there. You breathe like you're trying not to." }
+        ] }
+      ] },
+      { n: "The therapist came by at the end of it, the woman with the cat lanyard, and wrote something on her clipboard, and looked at the wet floor and then at him and then at Solar, and said he'd held it for forty and it had been forty-one with the catch, and she'd count the catch, this once, because he had a visitor." },
+      { s: 'therapist', t: "Next week it's a bowl. Week after, something with a handle. You set the goal. I'm just the one with the clipboard." },
+      { s: 'therapist', t: "And I'll want that sheet turned over by Friday. I don't need to read it. You need to have said it." },
+      { n: "When she'd gone he sat down on the edge of his bed with his good hand round the wrist of his bad one, the way you'd hold the collar of a dog that wanted to go somewhere, and didn't look at the tray table, where the goal sheet was still lying face down under his water jug, exactly where it had been the week before, with a ring of water dried on the back of it." },
+      { choose: [
+        { t: "You haven't turned it over.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "It's turned over. It's just turned over the wrong way." },
+          { s: 'shinjiro', f: 'sad', t: "...I wrote it. That was the deal. Nobody said I had to look at it after." }
+        ] },
+        { t: "(Don't look at the sheet. Look at his hand.)", notes: 3, then: [
+          { n: "She didn't look at the sheet. She sat down on the chair by the bed and looked at his hand instead, the one he was holding, and he saw her not looking at the sheet, and something in his shoulders unlocked about a quarter of an inch." },
+          { s: 'shinjiro', f: 'neutral', t: "...It's better. It doesn't look better. It's better. Last week I couldn't do twenty." }
+        ] },
+        { t: "Did you eat today?", notes: 3, then: [
+          { n: "He looked up at her so fast she thought he'd hurt his neck. Then something went across his face that she'd never seen on it, not in a whole year of him, and it took her a second to place it: he'd been about to ask her the same thing, and she'd got there first." },
+          { s: 'shinjiro', f: 'surprised', t: "...That's my line." },
+          { s: 'solar', f: 'neutral', t: "Did you?" },
+          { s: 'shinjiro', f: 'neutral', t: "Half the rice. All the soup. The fish here's a crime. Did *you*." }
+        ] }
+      ] },
+      { n: "The made-up bed was between them and the window. She couldn't not look at it. White sheet, tight corners, the pillow plumped, the call button looped neatly over the rail. Nobody in it. The nurses had told her last week it would go to whoever came next. Nobody had come next." },
+      { s: 'shinjiro', f: 'neutral', t: "They tried. Tuesday. Old guy with a hip. They wheeled him in, he looked at the bed, he said he wanted the corridor. Sat in the corridor for six hours in a wheelchair till they found him somewhere else." },
+      { s: 'shinjiro', f: 'neutral', t: "He didn't say why. He didn't have to. Nobody on this ward sleeps before it anymore. You can feel them, at half eleven, lying there with their eyes open, waiting for twelve. Then they're coffins, all of them, and it's just me." },
+      { n: "He reached over with the good hand and took hold of the corner of the made-up bed's blanket, and folded it back, and she saw what he wanted her to see." },
+      { n: "Under the pillow, tucked in under the edge of it where the nurses wouldn't have looked when they made it up, there was a small tray. A hospital tray, the plastic kind. And on the tray a hospital teacup, the thick white kind with the green line round it, upside down. Waiting." },
+      { s: 'shinjiro', f: 'neutral', t: "Wasn't there Friday. Was there Saturday morning. I asked. The nurses didn't do it. Night staff didn't do it. Nobody came on the ward after ten." },
+      { s: 'shinjiro', f: 'neutral', t: "I left it. Felt like if I moved it, it'd be like moving a plate somebody set for a guest." },
+      { ifRank: { mrsoka: 1 }, then: [
+        { n: "Something in the back of Solar's neck went tight and stayed tight. A cup upside down on a tray by a pillow. She'd seen eight of them, in a row, in a house with no dust, in a corridor of beds made up for people nobody had named yet. She didn't say so. She didn't know how she'd have said it. She looked at the cup, and the cup sat there being a cup." }
+      ], else: [
+        { n: "Something in the back of Solar's neck went tight and stayed tight. It was only a cup. It was a cup on a tray, the way you'd leave one for someone who'd want tea when they woke up. It sat there being a cup, and she didn't want to touch it, and didn't, and couldn't have told anyone why." }
+      ] },
+      { choose: [
+        { t: "(Put the blanket back over it.)", notes: 2, then: [
+          { n: "She folded the blanket back over it, carefully, the corner tucked in the way it had been, so the bed looked made and empty again. He watched her do it and nodded, once, as if that were the right answer." }
+        ] },
+        { t: "Tell Mitsuru.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Told Aki. Aki'll tell Mitsuru. Mitsuru'll write it on that board of hers in red and nobody'll know what it means. Same as everything else." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-knock', then: [
+        { s: 'shinjiro', f: 'neutral', t: "On the full moon. Here too. Every door on this floor. One after another down the corridor, like somebody doing rounds." },
+        { s: 'shinjiro', f: 'sad', t: "Mine said Shinji." },
+        { n: "He said it to his hand. Nobody on the ward called him that. Nobody but one person in the world called him that, and that person had been across town on the floor of a dorm with his eyes red at the rims saying a dead girl's name back at a door." },
+        { s: 'shinjiro', f: 'neutral', t: "Wasn't him. I knew it wasn't him. It was a good impression, though. Right down to the way he says it like he's about to tell me off." },
+        { s: 'shinjiro', f: 'neutral', t: "...Didn't tell him. Don't you tell him either." }
+      ], else: [
+        { s: 'shinjiro', f: 'neutral', t: "I stay up for it. The red. Every night. Sit up in the bed with the light off and watch the door." },
+        { s: 'shinjiro', f: 'neutral', t: "Don't look at me like that. Somebody on this ward should be awake when it comes. Last time nobody was, except me with my eyes shut. I'm not doing that twice." }
+      ] },
+
+      { place: 'Tatsumi Memorial Hospital · Roof', time: 'After School', bg: 'hospital-rooftop', soft: true },
+      { n: "He took her up to the roof after. He wasn't supposed to. He walked the corridor to the fire stairs with his good hand on the rail and his bad one in his pocket, slow, not leaning on her, and she didn't offer, and he was glad she didn't, she could tell. The door at the top had a padlock on it and a sign about authorized personnel. The padlock was open. He said it had been open since the sixth. He said nobody had noticed. He said he'd been up here every afternoon since he could do the stairs." },
+      { n: "It was windy on the roof. The bay laid out below them, gray-blue and wrinkled, and the monorail going over it, and far off, on its island, the school. The wind got into her blazer and his hospital shirt and flattened his hair back off his face, which he hated; she watched him push it out of his eyes with the bad hand and not quite manage." },
+      { s: 'shinjiro', f: 'neutral', t: "Woke up there. Over by the vents. Six floors. Didn't climb. Didn't walk. Just there, on my back, in the red, with my hand shut, and it was hot, like a stove. Like I'd been holding something that burned." },
+      { s: 'shinjiro', f: 'neutral', t: "Told her I'd come get her. That's the last thing I said, before. At home. In the other place." },
+      { s: 'shinjiro', f: 'sad', t: "...And then you came up out of a hole on the other side of the bay and two other guys had you by the wrists. I was up here. Couldn't even get down the stairs." },
+      { choose: [
+        { t: "You got here. That's the coming to get me.", notes: 3, then: [
+          { s: 'shinjiro', f: 'neutral', t: "That's a stretch." },
+          { s: 'solar', f: 'neutral', t: "You held on. You came through on it. You're the only one who came all the way up the outside of a building." },
+          { n: "He looked at her for a long moment with the wind in his face. Then he snorted, quietly, and looked away at the bay, and his ears had gone red, which could have been the wind." }
+        ] },
+        { t: "(Take his bad hand out of his pocket and hold it.)", notes: 3, then: [
+          { n: "She took his hand out of his pocket. He let her, after a second in which she felt him decide to. It was warm, warmer than it should have been out here, and it didn't close on hers the way it would have last year; it lay in her palm with the fingers half curled, trying, and she felt them try, all four, a small stubborn pressure that came and went like a pulse." },
+          { s: 'shinjiro', f: 'neutral', t: "...That's all it's got. That's the whole grip." },
+          { s: 'solar', f: 'neutral', t: "It's enough." },
+          { s: 'shinjiro', f: 'sad', t: "It's not. But thanks." }
+        ] },
+        { t: "Next time I'm pulled, you can be first in line.", notes: 1, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Don't get pulled." },
+          { n: "He said it flat and fast, like slamming a drawer, and then didn't add anything, and didn't look at her, and she understood that it was the closest he was going to get to asking her for anything today." }
+        ] }
+      ] },
+      { n: "They stood by the rail and didn't say anything for a while. The wind went round them. Down on the street someone's radio was playing something old, and a bus pulled in at the stop, and pulled out, and the whole ordinary afternoon went on under them as if nothing had ever knocked on anything." },
+      { n: "Then he said, without looking at her, to the bay," },
+      { s: 'shinjiro', f: 'neutral', t: "The kitchen downstairs. The staff one. There's a gas ring. The cook on lates is from Osaka, she lets me sit in there. Says I look like a man who's been away from a stove." },
+      { s: 'shinjiro', f: 'neutral', t: "...Bring an egg. Next time. One egg." },
+      { n: "He said it like it cost him money. Like it was the first thing he'd asked anybody for since February, and maybe since a long time before February, and she understood, standing on the roof in the wind, that it was. Not *come back*. Not *stay*. Not anything about her at all. One egg, for him, so he could find out what his hand could do with it." },
+      { choose: [
+        { t: "One egg. I'll bring it.", notes: 3, flag: 'eqx-shinji-egg', then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah. Good. Brown, if they've got it. Don't tell Aki. He'll bring a dozen and stand there watching." },
+          { n: "The corner of his mouth went, very slightly, the way it went about four times a year, and he turned and went back to the stairs before she could see it finish." }
+        ] },
+        { t: "Two eggs. One for you, one for when you drop the first.", notes: 3, flag: 'eqx-shinji-egg', then: [
+          { s: 'shinjiro', f: 'happy', t: "...Hah." },
+          { n: "It was barely a sound. It was the first time she'd heard him laugh since he woke, and it came out of him short and rusty and surprised, like a door nobody had used in a long time, and he looked as if it had surprised him too." },
+          { s: 'shinjiro', f: 'neutral', t: "Fine. Two. If I drop the first one you don't say anything." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+      { n: "At twelve her phone buzzed on her chest. A dot. She lay in the dark with the red coming up through the window and her hand flat on the phone and waited for the hour to be over, the way she waited every night now." },
+      { n: "At one it buzzed again. Not a dot." },
+      { phone: [
+        { from: 'shinjiro', t: "you eat" }
+      ], contact: 'Shinjiro Aragaki' },
+      { n: "No question mark. He'd never in his life used one. She typed back *yes* and then, after a second, *did you*, and lay there with the phone on her chest until it buzzed again, a whole minute later, the slow hand." },
+      { phone: [
+        { from: 'shinjiro', t: "cup's still there" }
+      ], contact: 'Shinjiro Aragaki' },
+      { n: "She didn't ask which cup. She didn't need to. She lay awake until the window went gray, thinking about a tray under a pillow on a bed nobody would sleep in, and somebody who'd come onto a locked ward in the night just to make it up nicely, and leave a cup turned down by the pillow, the way you'd leave one for a guest you were sure was coming." }
     ] }
   ]
 });
