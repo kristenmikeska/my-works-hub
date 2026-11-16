@@ -22,7 +22,7 @@ Art for the opening, which is written and playable now. Until a picture exists t
 
 **[ ] 8N. CG: the sun and the moon**  
 The first fight together.  
-Attach: `CG - style (Solstice).png`, `Solar.png`, `Haechan.png`, `Persona - Haenim.png`, `Persona - Dalnim.png`  
+Attach: `CG - style (Solstice).png`, `Solar.png`, `Haechan.png`, `Persona - Haenim (Equinox).png`, `Persona - Dalnim.png`  
 Save as: `eqx-sun-and-moon.png`
 ```
 A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Dynamic battle CG at the bottom of a stone well: Solar (the SAME girl as the attached Solar picture: same face, eyes and long black hair, worn loose and wet) in a thin black party dress and black tights with a ladder up one shin and the young man from the THIRD attached image (soaked dark jacket) standing back to back in shallow black water, ready to fight. Above and behind her rises her Persona (the FOURTH attached image, same design, veiled), behind him his Persona (the FIFTH attached image, same design); her light is warm sunlight, his is cold silver moonlight, and where the two lights meet on the water between them it flares bright. Shadowy masked creatures closing in at the edges. Palette rule: blood reds, oxblood and near-black with bone-white light; gold at most as one tiny accent (the rope is the one gold thing); no pink; no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
@@ -54,10 +54,10 @@ A wide 16:9 story CG illustration in Persona 3 Reload official art style, matchi
 
 **[ ] 8R. CG: the page**  
 The Velvet Room, the next morning.  
-Attach: `CG - style (Solstice).png`, `Elizabeth.png`, `BG - Velvet Room.png`  
+Attach: `CG - style (Solstice).png`, `Elizabeth (Equinox).png`, `BG - Velvet Room.png`  
 Save as: `eqx-page-stay.png`
 ```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A close-up in the room of the THIRD attached image: an old blue leather-bound book held open in white-gloved hands (the woman in the SECOND attached image, only her gloved hands and the cuff of her blue uniform visible), one page crowded edge to edge with three different handwritings in different inks, and across the bottom a fourth hand, heavy, dark and pressed so hard it dents the paper, the same short word written over and over (illegible at this size). Soft blue Velvet Room light falling on the page. The Velvet Room's own blue is allowed here (it's always blue); the ink is near-black and blood red; no pink, purple or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A close-up in the room of the THIRD attached image: an old blue leather-bound book held open in white-gloved hands (the woman in the SECOND attached image, only her gloved hands and the cuff of her uniform visible), one page crowded edge to edge with three different handwritings in different inks, and across the bottom a fourth hand, heavy, dark and pressed so hard it dents the paper, the same short word written over and over (illegible at this size). Soft blue Velvet Room light falling on the page. The Velvet Room's own blue is allowed here (it's always blue); the ink is near-black and blood red; no pink, purple or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
 ```
 
 **[ ] 8S. CG: breakfast for too many**  
@@ -118,10 +118,10 @@ A wide 16:9 story CG illustration in Persona 3 Reload official art style, matchi
 
 **[ ] 8Z. CG: the threads**  
 The Velvet Room.  
-Attach: `CG - style (Solstice).png`, `Elizabeth.png`, `BG - Velvet Room.png`  
+Attach: `CG - style (Solstice).png`, `Elizabeth (Equinox).png`, `BG - Velvet Room.png`  
 Save as: `eqx-threads.png`
 ```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). In the room of the THIRD attached image: an old blue leather-bound book lying open across white-gloved hands (the woman in the SECOND attached image, only her hands and blue cuffs visible), its pages fanned so a dozen show at once, and a fine thread of gold sewn through the bottom edge of every page, each thread running off the paper and out of the frame, all pulled the same way, taut. The Velvet Room's own blue light is allowed here; the threads are the one gold thing; no pink, purple or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). In the room of the THIRD attached image: an old blue leather-bound book lying open across white-gloved hands (the woman in the SECOND attached image, only her hands and cuffs visible), its pages fanned so a dozen show at once, and a fine thread of gold sewn through the bottom edge of every page, each thread running off the paper and out of the frame, all pulled the same way, taut. The Velvet Room's own blue light is allowed here; the threads are the one gold thing; no pink, purple or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
 ```
 
 If a CG comes back with the wrong number of people or a person who doesn't match, say: "Same picture, but [fix]. Keep everything else."
@@ -226,7 +226,7 @@ A wide 16:9 video game background in the painted anime style of the FIRST attach
 
 **[ ] 11K. CG: a woman among rows of paper**  
 A new place in the Velvet Room.  
-Attach: `CG - style (Solstice).png`, `Elizabeth.png`, `BG - Velvet Room.png`  
+Attach: `CG - style (Solstice).png`, `Elizabeth (Equinox).png`, `BG - Velvet Room.png`  
 Save as: `eqx-records.png`
 ```
 A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). In the room of the THIRD attached image: Elizabeth (the SECOND attached person, same face, blue dress and white gloves) kneeling on the blue carpet between two long rows of paper sheets laid out like a game of solitaire, a heavy blue book open beside her, a thin line of gold light under a door behind her. Calm, absorbed, uncanny. The Velvet Room's own blue light is allowed here; the thin line of light is the one gold thing; no pink.  Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
