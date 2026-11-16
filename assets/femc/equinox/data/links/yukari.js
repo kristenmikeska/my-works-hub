@@ -1,6 +1,8 @@
 /* Persona 3: Equinox · Yukari Takeba · VI The Lovers. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–2 (from 4/13; her home days are Monday, Wednesday and Friday, so 4/14 at the earliest). Ranks 3–10 to write.
+   Written: ranks 1–2 (from 4/13; her home days are Monday, Wednesday and Friday, so 4/14 at the earliest). Rank 3 (from 6/7: the range,
+   the canal; branches on eqx-knock, eqx-hunted + eqx-asked-house / eqx-choose-house, eqx-yukari-arrow, eqx-yukari-frame) records
+   her ask: tally asks.yukari (+ cakes / choose). Ranks 4–10 to write.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Solstice's ranks are shared memory here (the range, "back, not arms", the photo-booth strip, "you pick"); nothing reads
    Solstice link standing. Yukari has no 'happy' portrait: her smiles are written in narration.
@@ -270,6 +272,112 @@
       { s: 'solar', f: 'neutral', t: "Night." },
       { n: "Later, in bed, Solar heard her phone through the ceiling. Not a buzz. The ring. It rang four times and stopped, unanswered, and the room above was very quiet for a long moment, and then it rang again. Four times. Stopped." },
       { n: "Then the radio came on, the late-night talk show, somebody laughing too much, turned up a notch louder than last time, and stayed on, and Solar lay in the dark listening to a stranger laugh above her head until the red came up through the window and took the sound away." }
+    ] },
+    { after: '6/7', title: '3: where I can see you', place: 'Gekkoukan High · Archery Range', time: 'After School', music: 'joy', scene: [
+      { bg: 'gekkoukan-archery-range' },
+      { n: "The practice match was against a girls' school from across the bay with navy hakama and a reputation, and it rained in the morning and stopped at noon, so that by four the range was steaming, the gravel dark and wet and the straw of the targets swollen and the whole place smelling of wet wood and linseed oil and the hydrangeas along the fence, which had gone a deep acid blue overnight as if somebody had poured something on them." },
+      { n: "Yukari had told her where to sit at breakfast. Not asked. Told, over the rice, in the voice she used for the order of a set: *Second row. Left side. The end seat, by the post. Not the middle, the middle's behind Mori-senpai and she's tall.* Then she'd gone back to eating as if she'd said something about the weather." },
+      { n: "So Solar was in the second row on the left at the end seat by the post, on a wet bench with her blazer under her, among a handful of parents and two boys from the kendo club who were there for reasons of their own. The captain walked past the bench with a clipboard and looked at her, politely, the way you'd look at somebody's cousin, and nodded, and walked on." },
+      { n: "Yukari came out with the team in her whites, her bow upright, her face set. She didn't look at the bench. She took her place on the line. She drew, held, and loosed, and the first arrow went into the outer ring with a flat, unhappy sound, and Solar watched her shoulders go up a centimeter, and her jaw." },
+      { n: "Then she turned her head. Just her head, a few degrees, between arrows, the way you'd glance at a clock. Second row. Left side. The end seat, by the post." },
+      { choose: [
+        { t: "(Don't wave. Just be there. Let her find you.)", notes: 3, then: [
+          { n: "She didn't wave. She sat very still and let Yukari find her, and Yukari found her, and something in her face came down, the jaw, the shoulders, all of it, like a held breath let go, and she turned back to the target." }
+        ] },
+        { t: "(Lift one hand off your knee. Small.)", notes: 3, then: [
+          { n: "She lifted one hand off her knee, barely, two fingers, the way you'd signal across a classroom. Yukari saw it. Her mouth did something at the corner that the visiting school would never know was a smile, and she turned back to the target." }
+        ] },
+        { t: "(Do the slow captain clap. Silently.)", notes: 2, then: [
+          { n: "She brought her hands together slowly, not quite touching, three times, the captain's *adequate*, silent. Yukari saw it and her nostrils flared, which was the most she could do in front of the visiting school without laughing, and she turned back to the target with her ears pink." }
+        ] }
+      ] },
+      { n: "The next arrow went into the gold. So did the one after it. So did four of the next five, with that clean flat *tock* that meant the middle of something, close enough together that they had to be pulled out one at a time so as not to split each other, and the visiting captain stopped writing on her clipboard to watch, and one of the kendo boys said *whoa* out loud and was hushed by a parent." },
+      { n: "Between every arrow Yukari turned her head. A few degrees. Second row, left side, end seat. She did it so fast and so smoothly that nobody else on the bench seemed to notice; it looked like a stretch of the neck. Solar noticed. Solar was the only one it was for." },
+      // CG: eqx-where-i-can-see — an archery range after rain, a girl in white archery dress at full draw on the shooting line, her head turned very slightly toward the camera, a few people on a wet bench behind her out of focus, blue hydrangeas along a fence.
+      { n: "Gekkoukan won by six points. The captain thanked the visiting school in a long formal speech, and the visiting captain thanked them back in a longer one, and while both of them were bowing Yukari walked straight across the wet gravel to the bench in her whites and stood in front of Solar with her bow and said, not quietly enough, *did you see that*." },
+      { s: 'yukari', f: 'blushing', t: "Don't answer. I know you saw. You were in the right seat. You were in the exact right seat." },
+
+      { place: 'Gekkoukan High · Archery Range', time: 'Evening', bg: 'gekkoukan-archery-range', soft: true },
+      { n: "They stayed after to pull the last arrows and take the targets in, because the club did that and because Yukari made a point of always doing it. The visiting school had gone. The light was going yellow and long across the wet range. Yukari pulled an arrow out of the straw and stood with it in her hand, and took her phone out of the sleeve of her whites, and showed Solar the screen." },
+      { n: "A text. At seven fifty that morning. *Mom.* *good luck today yuka-chan*" },
+      { s: 'yukari', f: 'serious', t: "I didn't tell her. I didn't tell her there was a match. I haven't told her anything about this year. She doesn't know I'm still in the club." },
+      { s: 'yukari', f: 'neutral', t: "And she sent it at seven fifty, which is when I leave the dorm, which she also doesn't know." },
+      { n: "She said it flatly, the way she'd say a score. Then she turned the phone face down against her chest." },
+      { s: 'yukari', f: 'sad', t: "...It's probably the school. Schools send emails. Fixtures. She's probably on a list. That's probably all." },
+      { choose: [
+        { t: "Did you text her back?", notes: 2, then: [
+          { s: 'yukari', f: 'neutral', t: "I sent *thanks*. With a period. That's the system. Two texts a year and a period." },
+          { s: 'yukari', f: 'sad', t: "...I typed *how did you know* and deleted it. Four times. I didn't want to know what she'd say. I didn't want her to say *I just knew*." }
+        ] },
+        { t: "It's nice, though. That she did.", notes: 3, then: [
+          { s: 'yukari', f: 'surprised', t: "...Yeah." },
+          { s: 'yukari', f: 'sad', t: "It is nice. That's what's wrong with it. It's the nicest thing she's done in three years and I've spent all day wanting to throw my phone in the river." }
+        ] },
+        { t: "(Take the arrow out of her hand. Hold it for her.)", notes: 2, then: [
+          { n: "She took the arrow out of Yukari's hand, because Yukari was holding it so tight her knuckles had gone white along the shaft. Yukari let it go without looking, and put the freed hand over her own mouth for a second, and then took it away and said *okay*, in a perfectly normal voice." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-knock', then: [
+        { s: 'yukari', f: 'serious', t: "My door knocked twice, that night. You know. And then nothing. I said it was saving it." },
+        { s: 'yukari', f: 'neutral', t: "And then three weeks later my mom starts calling me Yuka-chan on the phone and wishing me luck at things she doesn't know about. And she's real. It's her number. I've *checked*, Solar. I called the landline at her apartment and she picked up and we talked about her fern." },
+        { s: 'yukari', f: 'sad', t: "She's real and she's nicer and I don't trust it. What kind of person doesn't trust her mom being nicer." }
+      ] },
+      { ifEvent: 'eqx-hunted', then: [
+        { s: 'yukari', f: 'neutral', t: "I said we should go. That night. In the lounge. All of us, home, if any of those doors are real." },
+        { ifFlag: 'eqx-asked-house', then: [
+          { s: 'yukari', f: 'sad', t: "And you said stay. Please. And everybody breathed out, and so did I. I was so relieved, Solar. I was relieved for like a day. And then I was scared of how relieved I was." }
+        ] },
+        { ifFlag: 'eqx-choose-house', then: [
+          { s: 'yukari', f: 'neutral', t: "And you said it was ours to walk through. Nobody else's. Not even yours. I thought about that for a week. I'm still thinking about it. It's the most annoying thing anyone's ever said to me and I can't stop thinking about it." }
+        ] }
+      ] },
+
+      { place: 'Paulownia Mall · Canal', time: 'Evening', bg: 'paulownia-canal', soft: true },
+      { n: "The canal, the low wall, two cans of melon soda from the machine. Their bodies walked them there. The water was green and still and full of the mall's lights coming on one by one, and a new paper boat was going round by the steps, or the same one, rebuilt by somebody who couldn't let it go." },
+      { ifFlag: 'eqx-yukari-arrow', then: [
+        { s: 'yukari', f: 'neutral', t: "Is my arrow still in your bag." },
+        { s: 'solar', f: 'neutral', t: "It's still in my bag." },
+        { s: 'yukari', f: 'neutral', t: "Okay. I wasn't checking. I'm going to keep not checking, every few days, for the rest of the year." }
+      ] },
+      { ifFlag: 'eqx-yukari-frame', then: [
+        { n: "Solar had the frame in her wallet. The fourth one, the two of them, Yukari's eyes shut on her shoulder and the dark line of the curtain open at the edge. She'd looked at it more than she'd meant to. She hadn't looked at the edge." }
+      ] },
+      { n: "Yukari drank half her can in one go and set it on the wall and looked at the water. She had her bow case across her knees, both arms over it, the way you'd hold a dog that might run." },
+      { s: 'yukari', f: 'neutral', t: "I'm going to say a thing. It's going to sound stupid. Let me get to the end." },
+      { s: 'yukari', f: 'serious', t: "Today. On the line. I missed the first one because I couldn't feel you. Not see you, I knew where you were, I told you where to sit. *Feel* you. And then I looked and you were there and it was like my back remembered how to work. Every arrow. I looked, and you were there, and I could shoot." },
+      { s: 'yukari', f: 'sad', t: "That's not healthy. I know that's not healthy. Fuuka would say something nice and gentle about it and I'd want to throw her in the canal." },
+      { s: 'yukari', f: 'serious', t: "But last year I walked past your door for a month and didn't look at it. A month. Your *door*. I walked you up every night for a year and then I walked past your door like it was a wall." },
+      { s: 'yukari', f: 'neutral', t: "So I want you to promise me something. Not *I'll try*. A real one. Promise me you'll stay where I can see you. This year. The whole year. Stay where I can turn my head and you're there." },
+      { n: "She didn't look at Solar while she said it. She looked at the paper boat going round and round, too wet to go anywhere, and too stubborn to sink." },
+      { choose: [
+        { t: "I promise. I'll stay where you can see me.", notes: 3, tally: { cakes: 1, 'asks.yukari': 'yes' }, then: [
+          { n: "Yukari breathed out. All of it, the whole can's worth of held breath, and her arms loosened on the bow case, and she bumped Solar with her shoulder, hard, the way she bumped people when she couldn't say thank you." },
+          { s: 'yukari', f: 'blushing', t: "...Okay. Okay. Good. Second row, left side. For the whole year. I'm holding you to it. I'll know if you sit in the middle." },
+          { n: "She laughed, and Solar laughed, and it was easy, and Yukari's whole body was lighter beside her on the wall, and Solar sat in the lighter air and felt a small cold place open up somewhere under her ribs, the shape of a promise she wasn't sure she'd been the one to make, and drank her melon soda, and didn't look at it." }
+        ] },
+        { t: "I can't promise you that, Yukari. Not this year. Not any year.", notes: 2, tally: { 'asks.yukari': 'no' }, then: [
+          { n: "Yukari didn't move. Then she picked up her can and finished it, slowly, all of it, and crushed it in one hand, neatly, and set it back on the wall." },
+          { s: 'yukari', f: 'neutral', t: "...Right. No. That's fair. That's honest. You were always the honest one, in the end." },
+          { s: 'yukari', f: 'sad', t: "I'm just going to be mad for a bit. Accurately. Let me be mad." },
+          { n: "She was mad all the way home, walking half a step ahead. At the dorm door she held it open for Solar without looking at her, and kept holding it, and didn't let go till Solar was all the way inside." }
+        ] },
+        { t: "Watch me as much as you want. That's yours. Where I am is mine. But you'll never find out from a door again.", notes: 2, tally: { choose: 1, 'asks.yukari': 'choose' }, then: [
+          { n: "Yukari turned her head and looked at her. For a long time. Solar watched it not be the answer, and watched her look for the other half of it, and find there wasn't one, and have to sit there with it." },
+          { s: 'yukari', f: 'serious', t: "...That's not a promise." },
+          { s: 'solar', f: 'neutral', t: "No." },
+          { s: 'yukari', f: 'sad', t: "That's worse than a promise. A promise you can break. That I can be mad at you for. This I just have to *believe*." },
+          { n: "She looked back at the water. The paper boat went round once more by the steps, and tipped, slowly, and went under, and Yukari watched it go with her jaw tight, and then, very quietly, as if testing it, said *okay*. And then, a little louder: *okay, fine, yours*. And she put her head down on her own arms on the bow case and stayed like that, not crying, just resting, and let Solar's hand stay on her back." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Hallway', time: 'Night', bg: 'iwatodaidorm-hallway', soft: true },
+      { n: "She walked her up. The strip was still in Solar's doorframe, three frames long, normal and stupid and late, curling at the corner now from the damp. Yukari pressed it flat with her thumb, the way you'd press a stamp onto an envelope, and said *night*, and went on up the stairs." },
+      { n: "Later, through the ceiling, her phone rang. Four times. Solar lay in the dark and waited for it to stop the way it always stopped." },
+      { n: "It didn't. On the fourth ring it was picked up, and she heard Yukari's voice through the boards, too low for words, just the shape of a voice, careful, flat, polite. Then less flat. Then, once, unmistakably, a laugh, short and surprised, the sound of somebody caught off guard by being happy." },
+      { n: "It went on for eleven minutes. Solar didn't mean to count. Then the voice stopped, and the room above was very quiet, and the radio didn't come on." },
+      { n: "At breakfast Yukari sat down across from her with her rice and didn't look up, and said it to the rice, in the voice for scores, before anybody else had come down." },
+      { s: 'yukari', f: 'neutral', t: "She had the dream again. Me little, her at the door." },
+      { s: 'yukari', f: 'sad', t: "This time I let her in. She said it like it was a nice dream. She said, *you finally let me in, Yuka-chan, it was so lovely*." },
+      { n: "Then she ate her breakfast, all of it, very fast, and went to school early, and Solar sat at the table with her chopsticks in her hand and the dorm's ordinary morning going on round her, Junpei and the toast and Koromaru's bowl, and found she'd put her hand flat on the table, the way Mitsuru did, the way you'd keep a dog lying down." }
     ] }
   ]
 });

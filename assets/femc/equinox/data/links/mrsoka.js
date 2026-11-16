@@ -1,7 +1,9 @@
 /* Persona 3: Equinox · Mrs. Oka (Empress). Link data for femc-equinox-game.html; replaces her stub in ../links.js (same id).
    Format: link fields in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
    Written so far: ranks 1-2 (rank 1 opens 4/13, rank 2 opens 4/20, both after school at her house; rank 2 reads the
-   4/16 supper flags and branches on eqx-tanabe, eqx-tale and Akihiko's / Jungwon's ranks). Ranks 3-10 to come.
+   4/16 supper flags and branches on eqx-tanabe, eqx-tale and Akihiko's / Jungwon's ranks). Rank 3 (from 6/1, after school at her house; branches on eqx-last-grain, eqx-hunted, eqx-stage, eqx-mitsuru-watch,
+   Mitsuru's rank) holds her first link ask, to Solar: tally asks.solar.night (+ cakes / choose), flags eqx-oka-night-stayed,
+   eqx-oka-night-mine; cosmetic eqx-oka-ate-own. Speaker hanni appears (post-eqx-hunted, waiting at the gate). Ranks 4-10 to come.
    Rank 2 holds no ask (she starts one and stops). Speaker without a portrait: hayashi.
    Her house isn't a Go Out area yet: `home` is the stub's stand-in on the Iwatodai Strip, and the scene uses stand-in
    backgrounds (BG comments mark the art it wants). No portrait art yet (speaker `mrsoka`, face 'neutral').
@@ -325,6 +327,154 @@
       { n: "The river came back two steps outside the gate, all at once, the hush and the cold and a dog barking somewhere upstream, frantic, on and on, as if it had been barking for an hour and nobody had listened." },
       { n: "It was dark. Her phone said half past seven. She'd gone in at four. She stood on the river road and put her hand in her blazer pocket, round the smooth wooden egg, and held it, and it was warm, warmer than her hand, as if it had been held a long time by someone else, and she walked back to the dorm the long way, the bright way, past the shops, and didn't look at the river." },
       { n: "On the dorm's front step, Koromaru was waiting for her. Not lying across the mat. Standing, in the middle of the step, legs set, his eyes on her blazer pocket. He didn't growl. He just stood there, and didn't let her past, until she took the darning egg out and put it down on the wall by the gate, and stepped away from it, and then he came and pushed his whole head into her stomach, hard, and stayed there." }
+    ] },
+    { after: '6/1', title: '3: let it rest', place: 'Iwatodai · The Oka Boarding House', time: 'After School', music: 'tender', scene: [
+      { bg: 'eqx-oka-gate' },
+      // BG: oka-boarding-house-garden-rain — the same garden in the rainy season, the persimmon tree dense and dark with small hard green fruit, blue hydrangeas heavy with water round the old stone well, rain beaded on its moss-furred cap, a low wooden gate.
+      { n: "The rainy season had come in the way it always came, not as weather so much as a change in the air's whole idea of itself, and by the first week of June the river road smelled of wet stone and cut grass and the river, and everything on it had gone soft at the edges, the walls and the gates and the shop awnings, as if the town had been left out overnight and was slowly being absorbed." },
+      { ifEvent: 'eqx-hunted', then: [
+        { n: "Hanni had walked her down. That was the rule now, Mitsuru's, in red under the word on the whiteboard: twos, after dark, anywhere. It wasn't dark. Hanni had come anyway, with her umbrella and her arms folded, and she stopped at the gate as if the gate were the edge of a cliff, and wouldn't go one step past it." },
+        { s: 'hanni', f: 'serious', t: "I'm not coming in. I'm going to stand here. I'm going to stand right here, Sol, by this exact post, and if you're not out by dark I'm coming in after you, and I don't care whose house it is." },
+        { n: "She said it loud enough to carry to the house. Solar thought, briefly, that was the point." }
+      ] },
+      { n: "She lifted the latch from the street side. The persimmon tree had fruit on it now, small and hard and green, dozens of them, tucked up under the leaves like fists, and still not a bird, not one, though the tree next door over the wall was full of sparrows arguing. Round the well somebody had planted hydrangeas. Or they'd always been there and Solar hadn't seen them. They were blue, a deep, bruised, rainy blue, heavy with water, leaning in toward the stone cap from all sides as if listening at it." },
+      { n: "Mrs. Oka was on the step, just inside the door, never on the step, with a dish towel over her shoulder and flour to the wrists of her gloves." },
+      { ifEvent: 'eqx-last-grain', then: [
+        { n: "She looked smaller. That was the first thing. Not thinner; nothing about Mrs. Oka would ever be thin. Smaller, the way people look smaller in the week after a funeral, as if grief had taken a few centimeters off all the way round. Her eyes were red at the rims. She'd done her hair anyway, the gray plait pinned up neatly, and she smiled when she saw Solar, the whole slow lamp of it, and the lamp was only a little dimmer than before." },
+        { s: 'mrsoka', f: 'sad', t: "There she is. Oh, there she is. Come in, child. Come in out of the wet. I'm making them. I can't stop making them. My hands don't know he's gone, you see. They just go on." }
+      ], else: [
+        { s: 'mrsoka', f: 'happy', t: "There she is. Oh, good, you've come on a tin day. I'm doing the tin for Monday. Come and do it with me, I'll teach you. It's time somebody learned it who isn't me." }
+      ] },
+      { ifEvent: 'eqx-hunted', then: [
+        { s: 'mrsoka', f: 'neutral', t: "And your friend won't come in. No, I can see she won't. Twos, I hear. Very sensible. I'll send her out a cup." },
+        { n: "She did. She sent it out on a tray with a rice cake beside it, and Solar watched from the kitchen window as Hanni took the cup politely, both hands, with a little bow, and waited until the door had shut, and poured the whole thing into the gutter, and put the rice cake in the pocket of her raincoat without looking at it, the way you'd pocket something to throw away somewhere it couldn't follow you home." }
+      ] },
+
+      { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'eqx-oka-kitchen', soft: true },
+      { n: "The kitchen was warm and close and full of the sound of rain on the tiles, and it smelled the way it always smelled, sugar and steamed rice and, under them, faint, the cupboard. On the long counter there was a board, a big one, pale wood scrubbed almost white, and beside it a wooden bowl, and beside that a bin." },
+      { ifEvent: 'eqx-shoes', then: [
+        { n: "The fathers were upstairs. They'd been upstairs all day, Mrs. Oka said, softly, the three of them in one room with the door shut, and she'd taken trays up and brought them down again full. She said it the way you'd say it about anyone's grief. She said it fondly." }
+      ], else: [ { ifEvent: 'eqx-table-op', then: [
+        { n: "The parents were out. Mitsuru's men had taken all six of them into town for the afternoon, and the house had the particular hush of a house whose family has just gone out, still warm from them, a cardigan on a hook, a pair of reading glasses folded on the windowsill." }
+      ] } ] },
+      { n: "She'd never noticed the bin. It stood at the end of the counter by the wall, a tall wooden thing with a lid, old, dark, the kind of bin a farmhouse kept rice in for a whole winter, with a scoop hung on a nail beside it. No label. No shop's name. Mrs. Oka lifted the lid and dipped the scoop in, and it came up white." },
+      { s: 'mrsoka', f: 'neutral', t: "Rice flour. I do my own. The shop kind's coarse, you can feel it on your tongue. This is how my mother did it, and hers before her. Fine as fine. Put your hand in. Go on. Feel it." },
+      { choose: [
+        { t: "(Put your hand in the bin.)", notes: 3, then: [
+          { n: "She put her hand in. It was softer than flour should be, softer than anything, finer than talc, so fine it seemed to go into the creases of her knuckles before she'd touched it, and it was warm. Not warm from the kitchen. Warm the way a bed is warm when someone's only just got out of it." },
+          { s: 'mrsoka', f: 'happy', t: "There. You see? Like silk. Nobody believes me till they've had their hands in it." }
+        ] },
+        { t: "Where do you grind it?", notes: 2, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Oh, out the back. At night, mostly. It's slow work and the nights are long, and I don't sleep much. Never have. My mother used to say I'd sleep when I was dead." },
+          { n: "She laughed, the short warm embarrassed one, and held the scoop out, and Solar took it, because there was no way not to." }
+        ] },
+        { t: "(Let her pour it. Keep your hands at your sides.)", notes: 2, then: [
+          { n: "She kept her hands where they were. Mrs. Oka didn't seem to notice; she poured the flour into the bowl herself, a soft white heap, and it went on settling after she'd stopped, slowly, the way snow settles on a sill, and a breath of it hung in the warm air between them and didn't come down." }
+        ] }
+      ] },
+      { n: "Water from the kettle, not quite boiling. A pinch of sugar. Mrs. Oka worked it with a wooden paddle until it came together, shaggy, steaming, and then she tipped it out onto the board, and stood back, and looked at Solar, and waited." },
+      { s: 'mrsoka', f: 'neutral', t: "Now your hands. The heel of them. Push it away from you, so. Fold it back. Turn it a little. Push. Fold. Turn. And again. Don't be gentle, child. It doesn't want gentle. It wants to be worked till it gives in." },
+      { n: "The dough was hot on her palms. It was soft and heavy and a little damp and it gave under the heel of her hand and then came back, slowly, against it, the way a cheek gives under a thumb. Push. Fold. Turn. Her hands found the shape of it before she did. Some kitchen, some life. Rain on the roof, a radio, a woman's hip against her shoulder, the board knocking softly on the counter with every push." },
+      { n: "Mrs. Oka stood beside her and didn't help, and started to hum." },
+      { ifEvent: 'eqx-hunted', then: [
+        { n: "And Solar's hands stopped." },
+        { n: "Not all at once. They went on for one more push, one more fold, and then the rhythm of it reached her, the sound of it, which she hadn't been listening to because she'd been making it: the soft wet slap and push of something heavy and pale being worked on a wooden board, over and over, patient, under a woman humming, three up, two down, a long one." },
+        { n: "She'd heard it on a coffee table in the lounge with forty people round her. She'd heard Hyein get up and go out of the room very fast. She'd heard Haechan say *I thought it was the river*." },
+        { n: "Her hands were in it. Her hands were in the dough to the wrist, warm, and her heart was going so hard she could feel it in the dough, and Mrs. Oka was humming beside her at the counter, cheerful, unhurried, the way you'd hum in your own kitchen on a wet afternoon with nobody listening." },
+        { choose: [
+          { t: "(Keep going. Push. Fold. Turn.)", notes: 3, then: [
+            { n: "She kept going. She made her hands do it. Push, fold, turn, and her own rhythm on the board under the humming, the exact sound from the tape, so that if anyone had been taping this kitchen from a laundry room across town tonight they'd have heard it, and she didn't stop, because stopping would have meant something, and she didn't want Mrs. Oka to look round and ask her what." }
+          ] },
+          { t: "(Take your hands out. Go to the sink.)", notes: 2, then: [
+            { n: "She took her hands out of it and went to the sink and ran the tap, hot, and held her hands under it, and the dough came off her fingers in soft white strings and went down the drain, and the humming behind her didn't stop and didn't change and didn't miss a note." },
+            { s: 'mrsoka', f: 'neutral', t: "That's right. Rest it. It needs to rest, and so do you. You're not used to work like that, are you. City hands." }
+          ] }
+        ] }
+      ], else: [
+        { n: "Three up. Two down. A long one. Solar knew it now; she'd known it since May, since the veranda and the carp streamers. She found her hands were keeping time with it, push on the third note, fold on the long one, and she didn't know how long they'd been doing that, and she couldn't make them stop without stopping altogether." },
+        { s: 'mrsoka', f: 'happy', t: "There. Hear that? You've got the beat of it. That's the whole trick. It's not strength. It's keeping time." }
+      ] },
+      { n: "They let it rest under a damp cloth on the board, a soft white mound, and Mrs. Oka made tea, and it rained, and the cloth over the dough rose and fell very slightly in the warm kitchen, the way dough does, the way a sheet does over somebody asleep." },
+      { ifFlag: 'eqx-mitsuru-watch', then: [
+        { n: "Solar looked at the watch on her wrist. Mitsuru's father's, too big, the crease of somebody else's wrist pale against hers. Twenty past four. She'd come in at ten to four. She would have sworn on anything that an hour had gone. She looked at it again a minute later, and it said twenty past four, and the second hand was going round, steadily, and she put her hand over the face and didn't look again." }
+      ] },
+      { n: "Then the shaping. Mrs. Oka pinched off a piece no bigger than a walnut and flattened it on her gloved palm and put a spoon of red bean in the middle and drew the edges up round it, quick, with her fingertips, and pinched it shut and rolled it once and set it down on the tray, round and white and perfect, as if it had always been that shape." },
+      { s: 'mrsoka', f: 'neutral', t: "You close it all the way, so nothing gets out. Nothing in, nothing out. If you leave a gap it splits when it steams." },
+      { s: 'mrsoka', f: 'neutral', t: "Everybody's come out a little different, you know. I could tell you whose hands made every one in that tin, if I had a mind to. Everybody leaves something of themselves in it." },
+      { ifEvent: 'eqx-last-grain', then: [
+        { n: "In the front room, through the screens, Solar could see the long table. Every cushion straight. Every place cleared. Except the end one, nearest the kitchen, where a cushion had been left and a cloth folded square on top of it, white, the way you'd fold a napkin, and a bowl turned upside down beside the cloth." },
+        { s: 'mrsoka', f: 'sad', t: "I can't bring myself to clear his place. Isn't that foolish. He'll not be wanting it." },
+        { s: 'mrsoka', f: 'sad', t: "...He never once said no to me. Not once, in four months. You don't know how rare that is, child. How rare and how dear." }
+      ] },
+      { n: "Solar made twelve. The first four were lumpy and one split on the tray. By the ninth they were nearly round. Mrs. Oka made sixty in the same time and didn't seem to be hurrying, and when the tray was full she took the twelfth one of Solar's off the end, the best one, and set it on a saucer by itself, and slid the saucer down the counter to her." },
+      { s: 'mrsoka', f: 'happy', t: "That one's yours. Your own. Eat it here, where I can see your face. I always like to see the face when somebody eats the first one they made." },
+      { choose: [
+        { t: "(Eat it.)", notes: 3, flag: 'eqx-oka-ate-own', then: [
+          { n: "She ate it. It was still warm. It was the best thing she'd ever eaten in her life, in any of her lives, soft and sweet and faintly salt, the red bean dark and smooth, and the skin of it so fine it seemed to melt before her teeth were through it, and under the sweetness, at the very back, very faint, something she couldn't name, that made her want another one so badly her hands ached." },
+          { n: "She didn't like that. She noticed she didn't like it. She smiled at Mrs. Oka with her mouth full, and Mrs. Oka watched her face with an expression of such complete and tender satisfaction that Solar looked down at the saucer and didn't look up for a while." }
+        ] },
+        { t: "Can I take it home? For later.", notes: 2, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Of course you can. Things are better the second day, some things. Here." },
+          { n: "She wrapped it in a square of white paper and twisted the ends, like a sweet, and put it in Solar's blazer pocket herself, and patted the pocket flat, twice." }
+        ] },
+        { t: "You have it. You've been on your feet all afternoon.", notes: 2, then: [
+          { s: 'mrsoka', f: 'neutral', t: "Me? Oh, I never eat my own. Never have. You lose the taste for it, making it. I just like to see it go." },
+          { n: "She put it in the tin with the others, on the top, in the corner, where it would be the first one anyone took." }
+        ] }
+      ] },
+
+      { place: 'The Oka Boarding House · Upstairs', time: 'Evening', bg: 'iwatodaidorm-hallway', soft: true },
+      // BG: oka-boarding-house-upstairs (as rank 1) — the same dark upstairs corridor, rain on the end window, a lamp lit low in the passage.
+      { n: "She asked for help carrying the clean sheets up. That was all. A basket of them, folded and still warm from the iron, and Solar took one handle and Mrs. Oka the other, and they went up the stairs together, and the stairs didn't creak, any of them, which Solar noticed now that she knew what a house that creaked sounded like." },
+      { n: "Eight doors. Eight rooms down the one side of the dark corridor, the rain loud on the window at the far end. Mrs. Oka knocked once on each frame with one knuckle as she passed, soft, the way you'd touch a child's head going by." },
+      { ifEvent: 'eqx-stage', then: [
+        { n: "Four of them had shoes outside now. Sneakers, a pair of slippers with ears, a pair of ballet flats lined up toe to the wall with a dancer's neatness. The girls' rooms. Music coming faintly through one door, and someone laughing at something on a phone, and Solar felt her shoulders come down a centimeter, as if a house could only be so frightening with a girl laughing in it." }
+      ] },
+      { n: "The end room was open." },
+      { n: "It was the only door in the corridor standing open, slid back a hand's width, and inside there was the same futon turned down, the same tray by the pillow, the same cup upside down on the tray, the same nothing, no dust. And laid across the foot of the futon, folded, a cotton yukata, indigo, with a pattern of small white cranes. It was her size. She could see it was her size from the door." },
+      { ifRank: { mitsuru: 1 }, then: [
+        { n: "The end room. Mitsuru on the motorcycle in April, the long way past this house at nine at night, and a light coming on behind one of the upstairs screens as they passed, the end one, and nobody at the window." }
+      ] },
+      { n: "The window looked down into the garden, onto the persimmon tree, and the well under it, and the blue hydrangeas leaning in round the cap with the rain beading on the moss." },
+      // CG: eqx-end-room — an upstairs room in an old Japanese house on a rainy evening, a futon turned down, a cup upside down on a tray by the pillow, an indigo cotton yukata with small white cranes folded at its foot, a window onto a garden with a persimmon tree.
+      { s: 'mrsoka', f: 'neutral', t: "This one's yours. It's been yours since April. I knew the minute I made it up which of you it was for." },
+      { s: 'mrsoka', f: 'happy', t: "Feel the futon. Go on. Proper cotton, not like those dorm things. I air it every day. You'd sleep like a baby in it. Like you've never slept." },
+      { n: "Solar didn't feel the futon. She stood in the doorway with the basket handle still in one hand and looked at the yukata with the cranes, folded, waiting, and Mrs. Oka stood just behind her, close, not touching, sugar and rice and the cupboard, and the rain came down on the window at the end of the corridor, and down on the well, and down." },
+      { s: 'mrsoka', f: 'neutral', t: "Stay tonight." },
+      { s: 'mrsoka', f: 'neutral', t: "Just the one night, child. The rain's set in. I'll do you a breakfast you'll tell your grandchildren about. You've been carrying that whole dorm on your back since April, I see it on you, I see it every time you come up my path. One night where nobody needs anything from you. Just one." },
+      { n: "It was the kindest thing anyone had said to her in weeks. She felt it go into her, warm, under the ribs, and sit down there, the way the dough had sat under its cloth, and rise." },
+      { choose: [
+        { t: "(Stay.)", notes: 3, tally: { cakes: 1, 'asks.solar.night': 'yes' }, flag: 'eqx-oka-night-stayed', then: [
+          { n: "She said yes. She heard herself say it, and it was easy, it was the easiest thing she'd said all year, and Mrs. Oka made a small sound of real pleasure, as if she'd been given something, and put a gloved hand on her back between the shoulder blades, warm and heavy, and left it there a moment." },
+          { n: "She remembered the yukata. The cotton cool on her arms, the cranes. She remembered the futon, which was everything Mrs. Oka had said it would be. She remembered a soft knock on the doorframe, once, with one knuckle, and a voice saying *goodnight, child*, and the rain." },
+          { n: "Then it was morning." },
+          { n: "Gray light through the paper screen. The rain stopped. A smell of grilled fish and rice coming up the stairs. She lay on her back and looked at the ceiling and tried to find the night, the red, the hour that had stood in the middle of every night of her life since she was seventeen, and there was nothing. Not a dream. Not waking. Not the red. She'd been awake for every Dark Hour since the first one. She had slept through this one like a child, like a stone, and she didn't know where she'd been while she did it." },
+          { n: "The cup on the tray by her pillow was the right way up. It was full of tea, gone cold, with a skin on it. She hadn't poured it. She hadn't turned it over." },
+          { ifFlag: 'eqx-mitsuru-watch', then: [
+            { n: "The watch on her wrist said seven minutes past six. Her phone said ten past twelve. She stared at them both until she understood. It had stopped at midnight, the way it stopped in the red. And it hadn't started again until six. As if the hour had been six hours long, in this room. As if, in this room, it had only just ended." }
+          ] },
+          { ifEvent: 'eqx-hunted', then: [
+            { n: "Hanni was on the step outside the gate. Sitting on it, in Mitsuru's yellow raincoat, with her knees up and her arms round them and Koromaru lying across her feet, and her phone in her hand with the screen gone dark. She'd been there since nine. She didn't say anything when Solar came out. She stood up and looked at her face for a long time, and then put her arms round her, hard, raincoat and all, and didn't let go until Koromaru started to whine." }
+          ], else: [
+            { n: "Her phone had thirty-one missed calls. Twenty-six of them were Hanni. When she got up the hill at a quarter to seven Hanni was on the dorm steps in a blanket, asleep sitting up against the door, and woke when Solar touched her shoulder, and looked at her, and burst into tears, and was furious, and then made her eat a second breakfast in the dorm kitchen, watching every bite, as if the first one didn't count." }
+          ] }
+        ] },
+        { t: "I can't. They count heads at the dorm.", notes: 2, tally: { 'asks.solar.night': 'no' }, then: [
+          { n: "Something went over Mrs. Oka's face, so fast Solar wasn't sure she'd seen it. Not anger. A flicker, the way a lamp flickers when somebody opens a door in another room. Then it was gone, and she was smiling, and the corridor felt, very slightly, a degree colder than it had." },
+          { s: 'mrsoka', f: 'neutral', t: "Of course. Of course they do. Somebody has to count you." },
+          { s: 'mrsoka', f: 'happy', t: "The room'll keep. I'll keep it made up. Take an umbrella, at least. Bring it back another day, and then you'll have to come back, won't you." },
+          { n: "The umbrella was oiled paper on bamboo, old, the handle worn smooth and dark by hands. Solar walked home under it in the rain. At the dorm gate Koromaru stood up on the step and showed his teeth at it, not at her, at the umbrella, until she folded it and leaned it in the rack outside the gate and went in without it. In the morning, the rack was empty." }
+        ] },
+        { t: "That's mine to decide. And not tonight.", notes: 2, tally: { choose: 1, 'asks.solar.night': 'choose' }, flag: 'eqx-oka-night-mine', then: [
+          { n: "Mrs. Oka went still. The way she'd gone still at the gate in April, at the end of the table, like a cat at a window when something moves outside it, perfectly still and perfectly attentive, and for one second Solar couldn't hear the rain at all." },
+          { s: 'mrsoka', f: 'neutral', t: "Yours to decide." },
+          { s: 'mrsoka', f: 'happy', t: "Well. Then you'll decide. And the room will be here, whenever you do. Rooms are patient. They're the most patient things in a house." },
+          { n: "She went down the stairs ahead of Solar, humming, and at the bottom she handed Solar her bag, and her blazer, and didn't offer an umbrella, and Solar walked home in the rain with her hair plastered to her face and was glad of it, of the cold, of every drop. At the corner she looked back. There was a light on upstairs in the boarding house. The end room. She hadn't seen anybody go up." }
+        ] }
+      ] },
+      { ifCount: { of: ['eqx-oka-night-stayed'], max: 0 }, then: [
+        { n: "On the dorm's front step Koromaru was waiting. He came to her and smelled her hands, both of them, very thoroughly, the palms and between the fingers and the creases of the knuckles, where the flour had got in and the tap hadn't got it out. Then he sat down in front of her and looked up at her face and made a small sound, high, in his throat, that she'd never heard him make. Not a growl. The sound a dog makes at a door that won't open." }
+      ] }
     ] }
   ]
 });

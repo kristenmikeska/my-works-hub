@@ -22,7 +22,9 @@ window.FEMC_GAME_FLAGS = {
     // Act III (data/story-act3.js): Solar's own asks on the trip and for the moon.
     'asks.solar.ferry', 'asks.solar.moon',
     // Non-romance rank 3s (links/junpei, ken-koromaru, yunjin, jaehyun, cherry, rio-saori): each link's own ask.
-    'asks.junpei', 'asks.ken-koromaru', 'asks.yunjin', 'asks.jaehyun', 'asks.cherry', 'asks.rio-saori'],
+    'asks.junpei', 'asks.ken-koromaru', 'asks.yunjin', 'asks.jaehyun', 'asks.cherry', 'asks.rio-saori',
+    // Rank 3s (links/mrsoka, hanni, hyein, elizabeth, mitsuru, yukari, aigis): Mrs. Oka's is Solar's own ask (asks.solar.*).
+    'asks.solar.night', 'asks.hanni', 'asks.hyein', 'asks.elizabeth', 'asks.mitsuru', 'asks.yukari', 'asks.aigis'],
   hooks: ['eqx-supper-stayed', 'eqx-supper-mine', 'eqx-asked-hyein', 'eqx-choose-hyein', 'eqx-hill1-smiled', 'eqx-hill1-mine',
     'eqx-door-R1', 'eqx-home-R1', 'eqx-away-R1', 'eqx-watch-R1',
     // Act II (data/story-act2.js): the owed Act I doors (S1, H1), Act II's doors (S2, R2, H2), the hills' asks, the ghost
@@ -37,7 +39,9 @@ window.FEMC_GAME_FLAGS = {
     // Act III (data/story-act3.js).
     'eqx-aigis-exception', 'eqx-jaehyun-told', 'eqx-asked-jaehyun', 'eqx-choose-jaehyun', 'eqx-ferry-stayed', 'eqx-ferry-mine',
     'eqx-hanne-told', 'eqx-parents-here', 'eqx-moon-stayed', 'eqx-moon-mine', 'eqx-aigis-forty', 'eqx-mothers-taken', 'eqx-saw-face',
-    'eqx-face-told', 'eqx-face-kept', 'eqx-hanne-hand'],
+    'eqx-face-told', 'eqx-face-kept', 'eqx-hanne-hand',
+    // Rank 3s (Mrs. Oka, Hanni).
+    'eqx-oka-night-stayed', 'eqx-oka-night-mine', 'eqx-asked-hanni'],
   cosmetic: ['eqx-flour-wiped', 'eqx-flour-shown', 'eqx-gw-ate', 'eqx-gw-left', 'eqx-gw-dog', 'eqx-tale-tiger',
     'eqx-shin-tin', 'eqx-mark-fifth', 'eqx-wish-home', 'eqx-wish-here', 'eqx-wish-blank', 'eqx-jihoon-roof',
     // Romance rank 3s.
@@ -48,6 +52,8 @@ window.FEMC_GAME_FLAGS = {
     'eqx-fireworks-akihiko', 'eqx-fireworks-minji', 'eqx-fireworks-shinjiro', 'eqx-fireworks-girls', 'eqx-tin-parents', 'eqx-box-empty',
     'eqx-songpyeon-ate',
     // Non-romance rank 3s.
-    'eqx-yunjin-dark'],
+    'eqx-yunjin-dark',
+    // Rank 3s (Mrs. Oka, Hanni).
+    'eqx-oka-ate-own', 'eqx-hanni-slept'],
   endingName: () => 'here'
 };

@@ -1,7 +1,8 @@
 /* Persona 3: Equinox · Aigis · Aeon. Link data (femc-equinox-game.html). Format: link fields in assets/femc/game/core.js
    ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–2 (from 4/13; her home is the dorm roof on Sunday, Tuesday, Thursday and Saturday evenings). Ranks 3–10
-   still to write. Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub).
+   Written: ranks 1–2 (from 4/13; her home is the dorm roof on Sunday, Tuesday, Thursday and Saturday evenings). Rank 3 (from 6/5: the roof, then the census through
+   the red from the roof; branches on eqx-aigis-exception, eqx-last-grain, Hyein's rank 3) keeps the forty unassigned (Act III's
+   9/22 songpyeon owns that reading) and records her ask: tally asks.aigis (+ cakes / choose). Ranks 4–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub).
    Solstice's ranks are shared memory here (the roof at sunset, "I have been looking for someone", the butterfly, the third
    item on her list, "Solar" without the honorific); nothing reads Solstice link standing.
    Writers: her readings are a clue source. Rank 1 logs one reading from the 4/12 knocks, unassigned on purpose; keep it
@@ -266,6 +267,98 @@
       { n: "She went to the window instead of to bed. She didn't know why. From her room you could just see the bottom of the street, if you leaned, the lamp at the third house and the dark step under it." },
       { n: "The saucer was still there. She could see it, a small pale circle. And on it, a small pale shape." },
       { n: "Then the red came up, through the glass, over the street, the lamps going out all the way down the hill in a single breath, and she lost it, and she stood at the window in the red with her hand flat on the sill and couldn't see the bottom of the street at all, and somewhere below her, level and soft, a voice began to count, and got to eleven, and stopped, and started again." }
+    ] },
+    { after: '6/5', title: '3: standing orders', place: 'Iwatodai Dorm · Rooftop', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-roof-evening' },
+      { n: "June evenings on the roof smelled of wet concrete drying, and of Fuuka's planters, which had finally decided what they were and turned out to be tomatoes, a whole row of them staked up on chopsticks and string, small and green and furred, and the laundry line was full of things that would never be dry before the next rain and had been left out anyway, out of a kind of collective optimism." },
+      { n: "Aigis was at the rail. She turned when the door opened, the way she'd started turning now instead of letting you arrive, and Solar saw the notebook in her hand, Junpei's, *for her FILES*, held against her chest in both hands." },
+      { ifRank: { hyein: 3 }, then: [
+        { n: "The white ribbon. Hyein's. Tied at the back of her hair in a bow so exact it might have been pinned, plain cotton, the edges hemmed so fine you couldn't see the stitches, lifting a little in the wind off the bay. Aigis touched it when she saw Solar look, with two fingers, very lightly, the way you'd check that something was still where you'd put it." },
+        { s: 'aigis', f: 'happy', t: "Hyein-san says it is so she can find me in a crowd. I have told her that I will always be the one standing still. She says that is not the point." }
+      ] },
+      { s: 'aigis', f: 'neutral', t: "Good evening, Solar. Sunset is at eighteen fifty-seven. There will be one today. I checked." },
+      { s: 'aigis', f: 'neutral', t: "I have brought the file. I would like to report that it is the same, and that the same is not good news." },
+      { n: "She opened it to the first page. The twelfth of April, midnight, the third house: *Large. Warm-blooded. Standing still at a door, knocking. Resting heart rate, forty.* The line under it was still empty. She'd ruled it, very faintly, in pencil, so that whatever went there would go in straight." },
+      { ifEvent: 'eqx-aigis-exception', then: [
+        { s: 'aigis', f: 'neutral', t: "Mitsuru-san gave me my exception. Outside the funeral hall. Any reading of anyone, anywhere. I said I would be careful." },
+        { s: 'aigis', f: 'sad', t: "I have been to the boarding house four times since, with my exception in my pocket. It is always full. The girls, the old men from the pier, the long table, the kettle. Forty hearts and a kettle. I stand in the door and I cannot find hers among them. It is like listening for one violin in an orchestra that is all violins." }
+      ], else: [ { ifEvent: 'eqx-last-grain', then: [
+        { s: 'aigis', f: 'neutral', t: "I was interrupted. You were there. I had a cup put in my hands and I held it, because that is what you do with a cup somebody puts in your hands, and I lost my count." },
+        { s: 'aigis', f: 'serious', t: "I have not yet asked Mitsuru-san for my exception. I am waiting until my cause sounds like a reason. It is beginning to. I can hear it beginning to." }
+      ], else: [
+        { s: 'aigis', f: 'neutral', t: "Pending. I have still not found the words for my cause. I have drafted them nine times. Every draft sounds like a girl who does not like somebody's tea." }
+      ] } ] },
+      { n: "She turned the page. On the next one there was a column, long, in her typed-looking hand, small, running all the way down and onto the back and onto the page after that: numbers. Just numbers. Seventy-one. Sixty-eight. Eighty-four. Ninety, with a note, *running*. Fifty-five, with a note, *asleep, Ken-san*." },
+      { s: 'aigis', f: 'neutral', t: "Every person in this town I have stood near since April. At rest, where I could. Two thousand and eleven." },
+      { s: 'aigis', f: 'serious', t: "Not one of them is forty. Not one of them is large. I have been looking for a second forty for two months the way you look for a second shoe. I would like it to be an athlete. I would like it to be an old man who swims." },
+      { choose: [
+        { t: "You'll find it. And then we'll know.", notes: 2, then: [
+          { s: 'aigis', f: 'neutral', t: "Yes. And then we will know. I have noticed that I would prefer to keep not knowing for a little longer. That is a new preference. I have put it in the file, at the back, under *new*." }
+        ] },
+        { t: "(Run your finger down the column. All of them alive.)", notes: 3, then: [
+          { n: "She ran her finger down the column. Two thousand and eleven people in this town, standing still long enough for Aigis to count them. A whole town of hearts going, in a notebook a boy had given her with a magnifying glass drawn on the cover." },
+          { s: 'aigis', f: 'happy', t: "Yes. That is the right way to read it. I had been reading it the other way. Looking for the one that is wrong. You read it for the ones that are right." }
+        ] },
+        { t: "Maybe there isn't a second one.", notes: 2, then: [
+          { s: 'aigis', f: 'neutral', t: "Then there is only one. Somewhere in this town. Standing still at a door." },
+          { s: 'aigis', f: 'serious', t: "...I find I do not like that sentence either. I have stopped writing sentences in the file. I only write numbers now. Numbers do not have endings." }
+        ] }
+      ] },
+      { s: 'aigis', f: 'neutral', t: "It is my night tonight. On the rota. The roof, through the red. I take the census from here; you can hear the whole hill from the roof if you are me." },
+      { s: 'aigis', f: 'neutral', t: "Hanni-san wrote your initial beside mine. I did not ask her to. I believe she did it because I did not ask her to." },
+
+      { place: 'Iwatodai Dorm · Rooftop', time: 'Late Night', bg: 'iwatodaidorm-roof-night', soft: true },
+      { n: "They sat on the low wall at the edge of the roof with a blanket Aigis didn't need and Solar did, and the town below them clean from the rain, every light sharp, the bridge strung across the black water, the shrine on its hill. The tomatoes rustled on their chopsticks. Somewhere down the hill, the river." },
+      { n: "At eleven fifty-nine Aigis began to count. Out loud, under her breath, the dorm first. Room by room, the way she must have done it every night since April, and Solar had never heard it, and found she was holding her own breath so as not to be counted wrong." },
+      { s: 'aigis', f: 'neutral', t: "Mitsuru-san, sixty. Akihiko-san, fifty-two; he is asleep, he will deny it. Junpei-san, seventy, the radio is on. Hanni-san, on the floor, in the hall, sixty-eight. Hyein-san…" },
+      { n: "She stopped. Not the stop at the top of a stair. A smaller one. Listening." },
+      { s: 'aigis', f: 'happy', t: "Hyein-san, sixty-one. Asleep. Properly asleep. Not pretending." },
+      { s: 'aigis', f: 'neutral', t: "Eleven. And Koromaru-san, across the door, ninety. He is always ninety. Dogs are faster than people. I find it very reassuring to have one thing in the building that is faster than everything else." },
+      { n: "Then the town went red." },
+      { n: "From the roof you could see it come. Up from the river first, the lights going out street by street up the hill in a single long breath, the bridge going dark lamp by lamp from the far end, the hum coming up through the soles of Solar's feet and the wall and the blanket, and the coffins standing up in every lit window and then every dark one, and the wind stopping mid-gust so that the laundry on the line hung where it was, lifted, like a held breath." },
+      { n: "Aigis didn't move. She was looking down the hill now, the dorm's own street, and she began again, lower, going down it house by house the way you'd go down a flight of stairs in the dark, one hand on the wall." },
+      { s: 'aigis', f: 'neutral', t: "First house. Two. Sixty-six, seventy. Second house, one. Fifty-eight. The cat on the wall, I do not count cats, Junpei-san says I should." },
+      { s: 'aigis', f: 'neutral', t: "Third house. One. Seventy-four. A little fast. She is dreaming." },
+      { n: "Mrs. Arai. In her coffin in the red, in her own bed, at the bottom of the street, dreaming, a little fast. And on her step, Solar knew without being able to see it, a saucer." },
+      { s: 'aigis', f: 'neutral', t: "Fourth. Fifth, three, a family, the baby is very fast. The shrine. Nobody. The post office. The man who sleeps behind the counter, sixty." },
+      { n: "She stopped." },
+      { n: "Solar waited. The red lay over everything, the hum went on, the town stood in its coffins. Aigis's head had tipped a little to one side, the way it did, listening, and stayed there, and her eyes didn't move." },
+      { s: 'aigis', f: 'neutral', t: "…I cannot hear past the corner." },
+      { s: 'aigis', f: 'serious', t: "The river side. From the post office to the water. I can hear the post office and I can hear the other side of the river, the warehouses, the men asleep in the guard hut. In between there is nothing. Not quiet. Nothing." },
+      { s: 'aigis', f: 'neutral', t: "It is not distance. The warehouses are further. It is the way Fuuka-san says the bridge is. A room where somebody has put a hand over your mouth." },
+      { n: "She said it in the voice for sunset times. Then she went back to the top of the street and began again, from one, from the dorm, Mitsuru-san sixty, Akihiko-san fifty-two, and Solar sat beside her on the wall in the red with the blanket round her and listened to her count the whole hill down to the corner, and stop, and go back up to the top, and begin again, all hour, the way you'd walk a perimeter, the way you'd check a latch three times, and didn't ask her to stop." },
+      // CG: eqx-census — a dormitory rooftop in the red Dark Hour, the town below drained of light, a straight-backed blonde girl with a ribbon in her hair sitting on the low wall with her head tilted, listening, another girl beside her wrapped in a blanket, the laundry on the line hanging lifted and motionless.
+      { n: "At the end of the hour the lights came back, street by street, from the river outward, and the wind finished its gust, and the laundry fell, and Aigis stopped counting in the middle of a number and turned to Solar on the wall as if she'd only just noticed she was there." },
+      { s: 'aigis', f: 'neutral', t: "May I ask you something that is not for the file." },
+      { s: 'aigis', f: 'neutral', t: "Last year I had a purpose. It was given to me. I was made for a thing and then I was given a thing to do and the two were the same, and that was very restful, Solar. I did not know until it was gone how restful it was." },
+      { s: 'aigis', f: 'sad', t: "This year nobody has given me anything. I keep a census. I check a latch. I stand in doorways. I have given myself small purposes, like Junpei-san gives himself small jobs in the kitchen so that no one will ask him how he is." },
+      { s: 'aigis', f: 'neutral', t: "I would like an order. From you. I would like you to tell me to stay beside you. This year. Wherever you go in it. Then I will know what I am for, and I will not have to keep deciding it every night at twenty-three fifty-nine." },
+      { n: "She said it the way she said a sunset time. Perfectly level. And she stood very straight at the rail with her hands folded in front of her and her hair lifting at the back in the wind off the bay, and waited to be told." },
+      { choose: [
+        { t: "Stay beside me, Aigis. That's an order.", notes: 3, tally: { cakes: 1, 'asks.aigis': 'yes' }, then: [
+          { n: "Something in Aigis went still in a new way. Not the waiting stillness. The other one: the stillness of something that has been set down in the place it was made to fit, and fits." },
+          { s: 'aigis', f: 'happy', t: "Yes. Understood. Thank you." },
+          { s: 'aigis', f: 'happy', t: "...That was very restful. I am going to remember the exact time you said it. Zero one oh six and nine seconds. You will notice it was after the red. I would like to note that I did not need the red to be over. I only wanted it to be." },
+          { n: "She moved, a step, so that she was standing at Solar's left shoulder instead of in front of her, and stayed there, looking out at the town, at exactly the distance Solar would have stood from someone she was guarding, and Solar felt the order settle on both of them like a coat, warm, heavy, a little too big, and wished, without knowing why, that she could take it back off one of them." }
+        ] },
+        { t: "I'm not giving you orders, Aigis. Not this year. Not ever again.", notes: 2, tally: { 'asks.aigis': 'no' }, then: [
+          { s: 'aigis', f: 'sad', t: "...I see." },
+          { s: 'aigis', f: 'neutral', t: "That is kind. I can tell it is meant kindly. I find it is very difficult to hold, kindness with no instructions in it. It has no handle." },
+          { n: "She went back to looking at the town. She didn't move closer and she didn't move away. After a while Solar heard her start the census again, quietly, under her breath, though the red was over and there was nothing to count for: the whole dorm, eleven and the dog, and then again from one, as if she'd lost her place." }
+        ] },
+        { t: "You don't need an order. Where you stand is yours to choose. If it's next to me, I'd like that. But it's yours.", notes: 2, tally: { choose: 1, 'asks.aigis': 'choose' }, then: [
+          { n: "Aigis didn't say anything for a long time. Long enough that the last train's lights went over the bridge and were gone, and the tomatoes rustled, and down in the street someone's door slid shut." },
+          { s: 'aigis', f: 'neutral', t: "...Mine." },
+          { s: 'aigis', f: 'neutral', t: "That is much less restful. I want to be very clear that it is much less restful. Nobody has ever given me a thing that was mine before. Not a purpose. Not a place to stand." },
+          { s: 'aigis', f: 'neutral', t: "I will have to choose it. Every time. I do not know how often a person has to choose where to stand. I would like a figure." },
+          { s: 'solar', f: 'neutral', t: "As often as you want." },
+          { n: "Aigis thought about that. Then she took one step, deliberately, the way you'd step onto ice to test it, and stood at Solar's left shoulder, and looked at her sideways." },
+          { s: 'aigis', f: 'happy', t: "Here. I choose here. Tonight. I will choose again tomorrow. It is very inefficient. I find I do not mind." }
+        ] }
+      ] },
+      { n: "They went down at half past one. On the landing Aigis stopped at the window, the one that looked down the hill, and Solar stopped behind her." },
+      { n: "You couldn't see the river from there. Only the street going down in its row of lamps to the post office, and the corner, and past the corner the dark, where the lamps were on and lit nothing, as if the light stopped at the edge of something and wouldn't go in." },
+      { n: "Aigis looked at it for a long moment, the way you'd look at a door you'd just heard something behind. Then she put her hand up, with two fingers, very lightly, to the back of her head, the way you'd check that something was still where you'd put it, and left it there, and went on down the stairs to the front hall, where she checked the latch, once, after everybody, and Koromaru thumped his tail on the boards, and she nodded to him as if he'd signed something." }
     ] }
   ]
 });

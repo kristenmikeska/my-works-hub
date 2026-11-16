@@ -5,7 +5,9 @@
    stop a forced rank; linkStatus is never asked). Rank 1 plays on 4/13 in the late slot (rank `slot: 'late'`), in the
    Velvet Room. Rank 2 is her personal request (a door that closes properly), forced on 4/20 in the after-school slot
    (rank `slot: 'after'`), out in town; the same night's late slot is the eqx-records event, which rank 2 hands off to.
-   Ranks 3-10 to come; a later rank needs its own `after` date and slot. Rank 2 flag: eqx-eliz-door-shown (reads
+   Rank 3 is her supper at the boarding house, forced on Sunday 6/13 in the evening slot (rank `slot:
+   'evening'`); it records her ask: tally asks.elizabeth (+ cakes / choose). Speaker mrsoka appears. Ranks 4-10 to come; a later
+   rank needs its own `after` date and slot. Rank 2 flag: eqx-eliz-door-shown (reads
    eqx-aigis-log).
    Flags this file sets: eqx-eliz-form (rank 1: Solar tells her where else she has seen the handwriting). Nothing reads it yet. */
 (window.FEMC_GAME_LINKS ||= []).push({
@@ -258,6 +260,117 @@
       { n: "She stepped back from the gate, and lifted one gloved hand in her small formal wave, the girl at the station, and turned, and walked away up the street in the dusk, very straight, with the book against her chest." },
       { n: "At the corner she stopped. There was a door there, a little side door to the alley behind the bakery, standing open a hand's width, propped with a brick. Solar watched her look at it. Look both ways. And then, very deliberately, bend down, and move the brick, and let the door go, and wait, with her head on one side, until it clicked." },
       { n: "Then she went round the corner, and when Solar got there a moment later the street was empty, all the way to the end, and the bakery door was shut, and there was nobody on it at all except, faintly, on the brass of the handle, the print of a small gloved hand." }
+    ] },
+    { after: '6/13', slot: 'evening', title: '3: a house where everyone is fed', place: 'Iwatodai · The Oka Boarding House', time: 'Evening', music: 'velvet', scene: [
+      { bg: 'iwotodaidorm-outside' },
+      { n: "The blue card was under her door on Sunday morning, folded once, the copperplate hand gone a little wild at the ends of its letters, the way handwriting goes when somebody's written something they're excited about and tried to be calm: *I have been invited to supper. I have never been invited to anything. I don't know what one does with one's hands. Please come and show me. Six o'clock. Your gate. — E.*" },
+      { n: "And under that, smaller, added after, in a different pressure of the pen: *It is the lady with the gloves. By the river. She asked me at her gate on Thursday whether I'd eaten. Nobody has ever asked me that.*" },
+      { n: "Solar read it twice standing in the doorway in her socks. Then she sat down on the edge of her bed with the card in her lap and read it a third time, and the rain went on outside, and something in her stomach went slowly and carefully cold, the way a glass goes cold when you fill it from the tap." },
+      { n: "At six Elizabeth was at the gate. She'd brought the book, of course. She'd also brought a gift, wrapped in blue paper so neatly the corners looked machined, held out in front of her in both hands like a tray, and she'd put on gloves, white ones, different from her usual, and Solar looked at the gloves and didn't say anything." },
+      { s: 'elizabeth', f: 'happy', t: "I've read that one brings something. To a house. So I've brought something. It's a box of matches, wrapped. I hope she lights things." },
+      { s: 'elizabeth', f: 'neutral', t: "And I've read that one wears gloves to supper, in some books. Older books. She wears gloves. I thought it would be polite to match." },
+      { choose: [
+        { t: "You don't have to match her. Wear what you like.", notes: 3, then: [
+          { s: 'elizabeth', f: 'neutral', t: "Oh. Don't I?" },
+          { n: "She looked down at her hands, considering, and then took the white gloves off, finger by finger, and put them inside the cover of her book, and held out her bare hand in front of her face and looked at it with interest, as if she hadn't seen it in some time." },
+          { s: 'elizabeth', f: 'happy', t: "There. My own hands. They'll have to do." }
+        ] },
+        { t: "(Take her arm. Like last time.)", notes: 3, then: [
+          { n: "She crooked her elbow. Elizabeth fitted her gloved hand through it with great precision, the key into the lock, and sighed with satisfaction, and they set off down the hill toward the river with the matches held out in front of them like an offering." }
+        ] },
+        { t: "Elizabeth. Are you sure about this?", notes: 2, then: [
+          { s: 'elizabeth', f: 'happy', t: "Not at all. That's what's so exciting. I'm never not sure about anything. I can't remember the last time." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai · The Oka Boarding House', time: 'Evening', bg: 'eqx-oka-gate', soft: true },
+      { n: "At the gate Elizabeth stopped, the way she'd stopped at the dorm door and the konbini and the third house from the bottom, and looked at it top to bottom. The low wooden gate. The plain iron hook in the iron eye. The street side." },
+      { s: 'elizabeth', f: 'happy', t: "Oh, look. It only opens from out here. Somebody wants visitors very, very much. That's rather sweet." },
+      { n: "She lifted the latch herself, delighted, before Solar could, and went in, and stopped again on the path under the persimmon tree, and looked at the house, the door, the lamp lit in the hall, and her head went a little on one side. Solar waited for it. *This one's been knocked on.* *Doors keep it.*" },
+      { n: "Elizabeth looked at the boarding house door for a long time. Then she looked at Solar, and her face had something on it Solar had never seen there: not delight, not curiosity. A small, polite puzzlement, like someone who's opened a book to the page they wanted and found the page blank." },
+      { s: 'elizabeth', f: 'neutral', t: "I can't read it." },
+      { s: 'elizabeth', f: 'neutral', t: "Every door I've ever met keeps something. Who's been through it. Who's waited. This one's just… a door. As if nobody had ever come or gone through it at all." },
+      { s: 'elizabeth', f: 'happy', t: "Isn't that refreshing? I'm going to enjoy myself enormously. I'm not going to read anything all evening." },
+      { n: "She went up the path. At the side of it, under the persimmon tree, she passed the well with its heavy stone cap and its blue hydrangeas and didn't look at it at all, not once, which Solar noticed only afterward, on the walk home, because Elizabeth looked at everything." },
+
+      { place: 'The Oka Boarding House · Front Room', time: 'Evening', bg: 'eqx-oka-kitchen', soft: true },
+      // BG: oka-dining-room — the long low dining table set for many with mismatched bowls, a lamp hanging low, rain on the garden window at the end.
+      { n: "The long table was full. Sunday, so the guesthouse had come early: Jaehyun at his usual place, Cherry by the door, Minji with her camera in her lap, and at the end nearest the kitchen Nozomi, already on his second bowl, who looked up at Elizabeth coming in and stopped chewing for the first time Solar had ever seen him stop chewing." },
+      { n: "Mrs. Oka was at the door of the front room, just inside it, her apron on, her gloves floured, and her whole face lit when she saw them, slowly and completely, the lamp in the window." },
+      { s: 'mrsoka', f: 'happy', t: "There she is. And she's brought her friend. Oh, look at you, in all that blue. Come in, come in, both of you. Mind the step, it's higher than you think." },
+      { s: 'elizabeth', f: 'happy', t: "Good evening. Thank you for having me. I've brought matches." },
+      { n: "She held out the box in its perfect blue paper. Mrs. Oka took it in both gloved hands and looked down at it, and then up at Elizabeth, and laughed, the short warm embarrassed laugh, and said she'd never been given a nicer thing, and put it on the shelf over the stove where everybody could see it, beside the tin with the cranes." },
+      { n: "She'd laid Elizabeth a place. Of course she had. In the middle of the table, across from Solar, with a cushion a little thicker than the others and a cup already there, and the tea in the cup was a color Solar had never seen tea be, a clear pale blue, like light through a bottle." },
+      { s: 'mrsoka', f: 'neutral', t: "Butterfly pea. With a little lemon in. I had a feeling." },
+      { n: "Elizabeth picked it up. She looked at it. She drank, and put it down, and looked at it again, and then at Mrs. Oka, who had already gone round behind Nozomi with the rice pot." },
+      { s: 'elizabeth', f: 'neutral', t: "...She knew how I take my tea." },
+      { s: 'elizabeth', f: 'neutral', t: "I didn't know how I take my tea. I've never taken it anywhere." },
+
+      { n: "Halfway through the soup Jaehyun got up to carry the empty rice pot to the kitchen for her, the way he did now, and a minute later Mrs. Oka followed him with the kettle, and stopped at the kitchen door, her own kitchen door, with somebody in it, and knocked on the frame. Twice. Two small polite knocks with one knuckle. And waited, until Jaehyun said *yes?* from inside, before she went in." },
+      { n: "Elizabeth ate supper the way she'd eaten the melon bread: with absolute seriousness and enormous joy, tiny precise bites, her eyes closing at every new thing. Grilled fish. Pickled radish. Rice. A clear soup with a single slice of something floating in it like a moon. She asked the name of each dish, and repeated it, and wrote it in pencil on the inside of her wrist where she'd written *not forever*, until her wrist ran out and she started on the other." },
+      { n: "The table loved her. It couldn't help it. Cherry asked her where she was from and she said *a room*, and Cherry said *same*, and they shook hands across the soy sauce. Minji lifted her camera, once, toward the blue dress, and then put it down again without filming, and frowned at it, as if it had refused. Jaehyun explained the pickles. Nozomi offered her his last piece of fish, which nobody at that table had ever seen him do, and she took it with a small formal bow, and he went pink to his ears." },
+      { choose: [
+        { t: "(Show her how to hold the chopsticks properly.)", notes: 3, then: [
+          { n: "She leaned across the table and fixed Elizabeth's fingers on the chopsticks, the bottom one still, the top one moving, and Elizabeth watched her own hand as if it belonged to someone she was very fond of, and picked up a single grain of rice, and held it up to the lamp, and the whole table clapped." },
+          { s: 'elizabeth', f: 'happy', t: "One grain. I'm going to remember this grain for the rest of my life." }
+        ] },
+        { t: "(Watch Mrs. Oka watching her.)", notes: 2, then: [
+          { n: "Mrs. Oka didn't sit. She never sat. She went round behind them with the pot and the kettle, filling, setting down, and every time she passed behind Elizabeth she slowed, very slightly, and looked down at the top of the little blue cap, and once she put out a gloved hand as if to touch it, the way she'd pat Nozomi's head, and stopped a centimeter short, and went on." },
+          { n: "Elizabeth didn't notice. Or she did, and went on eating. With Elizabeth you could never tell which was the polite one." }
+        ] },
+        { t: "(Eat. Let her have the table.)", notes: 2, then: [
+          { n: "She ate, and let Elizabeth have the table, and watched her have it, and thought that she'd never once seen Elizabeth in a room with more than two people in it, in any life, and that she looked, for the first time, exactly like what she'd asked to be, in the very first year: someone out in the world." }
+        ] }
+      ] },
+      { n: "The tin came round at the end, the one with the cranes, open, the rice cakes white and round in their paper cases. Elizabeth took one. She held it on her palm and looked at it the way she'd looked at the melon bread, and then bit, carefully, and chewed, and stopped." },
+      { n: "Her face didn't change. Her face was exactly as delighted as before. But she held the rest of the rice cake on her palm without lifting it again, and after a moment she said, quite softly, to nobody, the way she'd read a fact out of her book." },
+      { s: 'elizabeth', f: 'neutral', t: "...It tastes sad. Isn't that odd? It's lovely, and it tastes like a coat that's been in a cupboard all winter." },
+      { n: "Nobody heard her but Solar. Mrs. Oka was at the stove with her back to them, humming. Elizabeth wrapped the rest of the rice cake in a paper napkin, very neatly, and put it between two pages of her book, beside the melon-bread wrapper, to keep." },
+
+      { place: 'The Oka Boarding House · Hall', time: 'Evening', bg: 'eqx-oka-kitchen', soft: true },
+      { n: "At the door, when the guesthouse had gone off down the wet street in a clump under three umbrellas, Mrs. Oka took Elizabeth's hand in both of hers. Gloved on gloved, or gloved on bare, depending on what Solar had told her at the gate, and either way Solar watched it the way she'd watched the darning, and couldn't look away." },
+      { s: 'mrsoka', f: 'happy', t: "You'll come again. You'll come every Sunday. And you'll stay, won't you, one of these nights? There's a room. There's always a room. You'd like it here, I think. You'd never have to go back to wherever it is you keep yourself." },
+      { s: 'mrsoka', f: 'neutral', t: "Stay, child. You've been on your own a very long time. I can always tell." },
+      { n: "Elizabeth looked at her. At the lit, kind, lamp-in-the-window face, close, and the gloved hands round hers. And she smiled, the whole smile, brighter than Solar had ever seen it, and said it as if it were the most delightful thing in the world." },
+      // CG: eqx-not-allowed — the lamplit doorway of an old Japanese house at night, a woman in an apron and white cotton gloves holding both hands of a smiling woman in a blue dress and cap who holds a large book under one arm, rain beyond the door.
+      { s: 'elizabeth', f: 'happy', t: "I'm not allowed. Isn't that a shame?" },
+      { n: "Mrs. Oka's face didn't change. It stayed lit, warm, the lamp. But her hands, round Elizabeth's, went still. Completely still, the way a cat goes still, and stayed that way for exactly as long as it took the rain to sound loud in the hall, and then patted, twice, and let go." },
+      { s: 'mrsoka', f: 'neutral', t: "Well. Rules are rules. I'll keep your place anyway." },
+
+      { place: 'Iwatodai · River Road', time: 'Night', bg: 'iwatodai-riverside-night', soft: true },
+      { n: "They walked back along the river because Elizabeth wanted to see the water at night, and the rain had thinned to almost nothing, a fine cold mist that hung in the lamp light and made halos round everything. Elizabeth had her book shut against her chest. She'd been quiet since the gate, which wasn't like her." },
+      { s: 'elizabeth', f: 'neutral', t: "She asked me to stay. Did you hear? Nobody has ever asked me to stay anywhere. People ask me to leave, mostly. Politely. Igor asks me to *return*, which is different." },
+      { s: 'elizabeth', f: 'sad', t: "...I said I'm not allowed, and it was true, and I felt it come out of my mouth like a door shutting. And it was lovely. It was the loveliest thing I've ever said no to." },
+      { n: "They walked. The river went past on their left, black and fast with the rain, and Elizabeth watched it the whole way, the way you'd watch something you'd read about in a great many books and never been sure was real." },
+      { s: 'elizabeth', f: 'serious', t: "I'd like your opinion on something. A door. You know the one. Or you know there's one." },
+      { s: 'elizabeth', f: 'serious', t: "I've been practising. Every evening, on the small ones. Look both ways, let go, listen for the latch. I'm quite good now. I can do a cupboard in under a minute." },
+      { s: 'elizabeth', f: 'sad', t: "But that one. Every time I go to it, I think, somebody might be just about to come through. A step behind. And if I let go now, they'll walk into the wood. And I don't know who it would be, and I don't know if they're coming, and I hold it." },
+      { s: 'elizabeth', f: 'neutral', t: "So. Should I keep holding it? You're the person I'd ask, if I were the sort of person who asked. I'm trying it. Asking. Tell me." },
+      { choose: [
+        { t: "Keep holding it. As long as it takes. Somebody might need it.", notes: 3, tally: { cakes: 1, 'asks.elizabeth': 'yes' }, then: [
+          { n: "Elizabeth let out a breath. She hadn't known she was holding it, Solar thought, and then thought, no, she always knows." },
+          { s: 'elizabeth', f: 'happy', t: "Yes. Yes, that's what I said I'd do. Last year. *As long as it takes.* I said it to you in March and I meant it, and I'm glad to be told I was right to mean it." },
+          { s: 'elizabeth', f: 'neutral', t: "It's heavy. It's terribly heavy. But it's mine to be heavy. Thank you." },
+          { n: "She said it brightly, and squeezed Solar's arm, and they walked on, and Solar felt the mist settle on her face and her hair and her hands, cold, and somewhere very far off, down the river, past the bridge, so faint it might have been a boat, two knocks on wood, and then nothing." }
+        ] },
+        { t: "Close it. Like the café door. Look both ways and let go.", notes: 2, tally: { 'asks.elizabeth': 'no' }, then: [
+          { n: "Elizabeth stopped walking. She stood on the river road in the mist with the book against her chest and looked at Solar, and for a second her face was the face from the café, woken suddenly, nothing on it at all." },
+          { s: 'elizabeth', f: 'sad', t: "...I'm not sure I can. Not that one. You don't know who might be on the other side of it." },
+          { s: 'elizabeth', f: 'neutral', t: "But I asked. And you answered. I'll think about it. I'll think about it very hard. I may not like you for a day or two." },
+          { n: "She walked on. She didn't take Solar's arm again until the bridge, and then she did, very lightly, without looking." }
+        ] },
+        { t: "It's your door. You held it; you decide when it closes. I'll stand next to you whatever you do.", notes: 2, tally: { choose: 1, 'asks.elizabeth': 'choose' }, then: [
+          { n: "Elizabeth was quiet for a long time. They walked a whole lamp to the next, and the next, through the halos, and the river went past, and she didn't say anything at all, and when she did her voice was smaller than Solar had ever heard it." },
+          { s: 'elizabeth', f: 'sad', t: "...That isn't an answer. I wanted an answer. I've never wanted one before. It's very uncomfortable." },
+          { s: 'elizabeth', f: 'neutral', t: "*Mine.* You're the second person tonight to hand me something and call it mine. She did it with a room. You did it with a door. I liked yours better, and I don't know why, and it made me want to cry." },
+          { s: 'elizabeth', f: 'neutral', t: "Thank you. I think. I'll tell you which, later. It may take me some time. I don't usually have to decide things. I usually have to keep them." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Front', time: 'Night', bg: 'iwotodaidorm-outside', soft: true },
+      { n: "At the dorm gate she stopped, and lifted her free hand in the small formal wave, and then didn't go. She stood looking up at the dorm door, three locks and the sign in three languages, as if she'd remembered something on the way and was deciding whether to say it." },
+      { s: 'elizabeth', f: 'neutral', t: "She knocks twice. Before she goes into a room. Did you notice? Even her own kitchen, when there's someone in it. Twice, and waits." },
+      { s: 'elizabeth', f: 'happy', t: "I knock once. Theodore knocks three times, because he's anxious. Everyone has a knock. It's how you can tell people apart in the dark." },
+      { n: "She said it lightly, the way she'd say a fact about doors. Then she turned and went up the street in the mist, very straight, with the book against her chest and the rice cake pressed between its pages, and at the corner she was gone, and the street was empty all the way to the end, and Solar stood at the gate with her hand on the cold iron for a long time, counting, without meaning to, two." }
     ] }
   ]
 });

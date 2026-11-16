@@ -1,7 +1,10 @@
 /* Persona 3: Equinox · Hanni Pham (Councillor). Link data for femc-equinox-game.html; replaces her stub in ../links.js (same id).
    Format: link fields in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
    Written so far: ranks 1-2 (rank 1 opens 4/13, her home days put it on 4/14 at the earliest; rank 2 opens 4/30, after
-   The Knock, and moves to the shrine's amulet stall and the dorm's second floor). Ranks 3-10 to come.
+   The Knock, and moves to the shrine's amulet stall and the dorm's second floor). Rank 3 (from 6/6, Chagall
+   Café then the dorm roof; branches on eqx-first-hill, eqx-snow-again, eqx-hunted and her rank-2 flags) records her ask:
+   tally asks.hanni (+ cakes / choose / asked), flags eqx-asked-hanni (hidden "Stay. Please."), eqx-hanni-slept (cosmetic).
+   Ranks 4-10 to come.
    Rank 2 flags: eqx-hanni-two-bells, eqx-hanni-floor | eqx-hanni-split. Nothing reads them yet. Speaker without a
    portrait: stallkeeper.
    Solstice's Hanni (assets/femc/game/links/hanni.js) is shared memory here: everyone remembers that year.
@@ -264,6 +267,118 @@
       { n: "Once. Very small. A single bright note in the red, the sound of a fingertip touching it, and then nothing, and the cord swinging, slowly, and stopping." },
       { n: "The door hadn't opened. Neither of them had moved. Hyein was behind the door, on her futon, where she'd been all hour; they'd heard her breathing through the wood the whole time. Nobody was in the corridor. The windows were shut. There was no draught. There was no air in the red at all; everything was stopped, the way everything stopped; there was nothing in the whole building that could move a bell." },
       { n: "Hanni's hand found Solar's on the blanket and closed on it so hard the bruise on her own wrist must have screamed. Neither of them said anything. They sat with their backs against the door until the lights came on, and then for a long while after, and in the morning, when Hyein came out of her room yawning in Fuuka's cardigan and stepped over them both and said *oh my God, are you two having a sleepover without me*, Hanni laughed so hard she had to lie down." }
+    ] },
+    { after: '6/6', title: '3: something heavy', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
+      { bg: 'chagall-cafe-inside' },
+      { n: "Hanni was asleep." },
+      { n: "Solar saw it through the glass before she'd got to the door: the window table, the two iced coffees sweating their rings onto the wood, one straw in, one in its paper laid at its careful angle, and Hanni with her head down on her folded arms between them, her hair fallen over her face, one hand still curled round her cup as if she'd only meant to rest her eyes for a second between sips and the second had got away from her." },
+      // CG: eqx-forty-minutes — a café window table on a rainy afternoon, a girl asleep with her head on her folded arms between two iced coffees, one straw still in its paper, a stamp card under her elbow, rain on the glass.
+      { n: "The owner was behind the counter. He saw Solar come in and lifted one finger to his lips, without a word, and reached up and turned the little television on the shelf all the way down, until the baseball was only men running in silence, and went back to drying cups." },
+      { n: "He'd done that last September. For a girl he didn't remember now, at a table she didn't remember either. He was doing it again." },
+      { choose: [
+        { t: "(Sit down quietly. Let her sleep.)", notes: 3, flag: 'eqx-hanni-slept', then: [
+          { n: "She sat down without pulling the chair, lifting it instead, and put her bag on the floor, and didn't touch the coffee, and let her sleep. The rain ran down the window beside them. The baseball went on in silence. Hanni breathed slow and deep with her mouth a little open, the way she used to sleep on the couch at home with one leg hanging off the cushions and the television still talking to her, the last way Solar could remember her sleeping like she meant it." }
+        ] },
+        { t: "(Take off your blazer. Put it round her shoulders.)", notes: 3, flag: 'eqx-hanni-slept', then: [
+          { n: "She took off her blazer and put it round Hanni's shoulders, carefully, the way you'd put a coat on a sleeping child on a train. Hanni didn't wake. She made a small sound and pulled the blazer closer with the hand that wasn't on the cup, and turned her face further into her own arm, and went on sleeping." }
+        ] },
+        { t: "(Touch her shoulder.)", notes: 1, then: [
+          { n: "She touched her shoulder, lightly. Hanni came up out of it all at once, the way she came up every time now, eyes open before she was awake, already half out of the chair, her hand going to the place on her wrist where the bruise had been, saying *what, what is it, is it Hyein*, and then seeing where she was, and the café, and Solar, and sitting back down very slowly with her hand on her chest." },
+          { s: 'hanni', f: 'flustered', t: "...God. Sorry. Hi. I'm fine. That was a nap. I took a nap. I'm a person who naps now." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-hanni-slept', then: [
+        { n: "She slept forty minutes. Solar watched the clock over the counter. When she woke it was slowly, from the bottom up, the way people wake when they've been allowed to, and she lifted her head off her arms with a red crease across her cheek from her sleeve and looked at Solar for a long moment as if trying to place her in a dream, and then smiled, all of it, nothing on top." },
+        { s: 'hanni', f: 'happy', t: "...How long?" },
+        { s: 'solar', f: 'neutral', t: "Forty minutes." },
+        { s: 'hanni', f: 'surprised', t: "*Forty?* That's my record. That's my record since April. Sol. I slept *forty minutes in a row*. In public. In a café. With my mouth open, I bet. Don't tell me." },
+        { n: "The owner came over with the cloth and wiped the next table, and on his way back, without looking at her, set down a saucer with two crooked biscuits on it, and went away again." }
+      ] },
+      { n: "The stamp card was on the table under her elbow. Seven red coffee cups now, crooked, in seven of the ten circles. She pushed it across to show Solar without saying anything, the way you'd show someone a report card." },
+      { s: 'hanni', f: 'neutral', t: "Three more and I get a free one. I've been doing the math. If I come every Sunday and Wednesday I'll have it by the end of the month. And then I'll start a new card. And then I'll fill that one." },
+      { s: 'hanni', f: 'neutral', t: "...You know what I realized? I've never filled a stamp card in my life. Not one. At home I've got nine in my wallet with like, two stamps on each. Because I never went anywhere twice. There was always somewhere new to be seen at." },
+      { ifFlag: 'eqx-hanni-two-bells', then: [
+        { n: "She had a red cord round her wrist. Solar saw it when she reached for the card: the second bell, from the shrine, the one Hanni had said nobody would knock on. She'd tied it to herself instead of her own door. It lay against the place where the bruise had been, and when she moved her hand it rang, small and furious, and she put her other hand over it to keep it quiet." },
+        { s: 'hanni', f: 'flustered', t: "Don't look at it. It's so if I go anywhere in my sleep, I hear myself go. Same principle. Shut up." }
+      ] },
+      { ifEvent: 'eqx-first-hill', then: [
+        { s: 'hanni', f: 'neutral', t: "Yunjin told me something. I made her tell me. About the night you all went down. The twenty-eighth." },
+        { s: 'hanni', f: 'sad', t: "I was at the top of the well. Against orders. I know. I couldn't not be. And while I was there, at twelve-forty, Yunjin heard the bell on Hyein's door. Twice. She was in the hall getting water and she heard it ring twice and she stood there in the red and the door didn't open, and Hyein was asleep, and nobody was there." },
+        { s: 'hanni', f: 'sad', t: "Nobody was there. I wasn't there. I was at the well, holding on to the wrong thing." }
+      ] },
+
+      { place: 'Paulownia Mall · Chagall Café', time: 'Evening', bg: 'chagall-cafe-inside', soft: true },
+      { n: "They stayed till seven because it was raining and because neither of them wanted to be the one to say let's go. At seven the phones came back." },
+      { n: "They'd been doing it since May: one bar, seven till half past eleven, every night, the arrivals' phones from home waking up in their pockets like something remembering it was alive. Hanni's buzzed on the table between them. Once. She looked at it." },
+      { n: "A notification. The preview of it, on the lock screen, under the frozen clock that still said a minute past midnight on New Year's. An account Solar knew, because everybody at Syracuse knew it, the anonymous one that knew everything first and said it worst. Five words and a cut, the rest of the sentence hidden behind the little gray dots." },
+      { n: "*still no word on the two*" },
+      { n: "Hanni didn't touch it. She didn't open it. She sat and looked at the five words while the screen stayed lit, and then the screen went dark by itself, and she went on looking at the dark screen as if the words were still on it." },
+      { s: 'hanni', f: 'neutral', t: "...The two. That's us. That's Hyein and me. We're *the two* now." },
+      { s: 'hanni', f: 'neutral', t: "I knew it. I told you, I knew they'd be talking. I just didn't know it would be so, like. Short. Five words. That's what I am at home. Half a sentence and a dot dot dot." },
+      { choose: [
+        { t: "You don't know what the rest of it says.", notes: 2, then: [
+          { s: 'hanni', f: 'serious', t: "I know exactly what it says. I've read that account every day for two years, Sol. I could write the rest of it. I could write the comments. I could tell you which girl from my floor says she always knew something was off about us." },
+          { s: 'hanni', f: 'neutral', t: "...Somebody's going to say it was a cry for help. Somebody's going to post the photo from the formal where I've got my eyes shut." }
+        ] },
+        { t: "(Turn her phone face down.)", notes: 3, then: [
+          { n: "She reached over and turned it face down on the table. Hanni watched her hand do it. She didn't turn it back. She put her own hand flat on top of Solar's, on the back of the phone, and they sat like that, two hands on a phone, while the rain came down the glass." },
+          { s: 'hanni', f: 'sad', t: "Thanks. I wasn't going to open it. I just needed somebody else to be the one who didn't." }
+        ] },
+        { t: "Let them talk. You're here.", notes: 3, then: [
+          { s: 'hanni', f: 'neutral', t: "I'm here." },
+          { s: 'hanni', f: 'sad', t: "That's the thing, though. That's the thing I can't say to anyone but you. I'm *so* here. I've never been so here. I'm filling a stamp card." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-snow-again', then: [
+        { s: 'hanni', f: 'neutral', t: "Akihiko-senpai told me about the door. The one you saw. With our whiteboard on it. KNOCK FIRST." },
+        { s: 'hanni', f: 'sad', t: "He said you could hear us laughing behind it. Both of us. Me laughing the real way." },
+        { s: 'hanni', f: 'neutral', t: "...I keep thinking, what were we laughing at? In that room. Without you. Because that's the room. That's the room we go back to. And I can't think of anything in it funny enough." }
+      ] },
+
+      { place: 'Iwatodai Dorm · Roof', time: 'Late Night', bg: 'iwatodaidorm-roof-night', soft: true },
+      { ifEvent: 'eqx-hunted', then: [
+        { n: "The roof at a quarter to twelve. The rota said *H + S*, two names in every box now, Mitsuru's rule, and Hanni had written them both herself, and then underlined the S." },
+        { s: 'hanni', f: 'sad', t: "She threw up for an hour, that night. The tape night. I held her hair. She couldn't tell me why. She said it was the sound, and she didn't know what about the sound, and then she said sorry, sorry, sorry, like I was mad at her. Like I've ever been mad at her once in my life." }
+      ], else: [
+        { n: "The roof at a quarter to twelve. The rota said *H* in the box, and Solar had come up anyway, and Hanni had pretended to be annoyed about it for exactly as long as it took to hand her half the blanket." }
+      ] },
+      { n: "The rain had stopped. The town below them was washed and dripping and every light in it looked new, the bridge strung out across the black water, the station, the shrine on its hill, and down the hill the river, which you couldn't see from here, only the place where the lights stopped." },
+      { n: "Hanni had her knees up under the blanket and her chin on them. She'd been quiet for a long time, which on Hanni was a weather event." },
+      { s: 'hanni', f: 'neutral', t: "Can I tell you a thing I've never said. Out loud. To anybody. Even Hyein." },
+      { s: 'hanni', f: 'neutral', t: "I hate it. Home. Not home home. Not my mom. I mean being looked at. I've hated it since I was fourteen. Every party, every class, every time I walk into the dining hall I'm doing the math of who's looking and what they'll say and what the picture will look like. I'm so good at it. I'm the best at it. I can make a room love me in four minutes flat." },
+      { s: 'hanni', f: 'sad', t: "And I've been doing it for you, too. For years. Watching the account so I'd know what they were saying about you before you did. Getting there first." },
+      { s: 'hanni', f: 'sad', t: "...Here nobody's looking. Here I fell asleep in a café with my mouth open and a man turned the TV down for me. Nobody took a picture. Nobody's ever going to know." },
+      { n: "She turned her head on her knees and looked at Solar. In the light from the stairwell her face was very young and very tired and completely bare, nothing arranged on it at all, and she looked at Solar the way you look at the one person who can sign a form for you." },
+      { s: 'hanni', f: 'neutral', t: "Tell me I don't have to go back to it. Just say it. *You don't have to go back.* You're the only one I'd believe. If you say it, I'll believe it, and I'll put it down, and I'll sleep." },
+      { choose: [
+        { t: "You don't have to go back. Stay. Here, with all of us.", notes: 3, tally: { cakes: 1, 'asks.hanni': 'yes' }, then: [
+          { n: "She said it. It was easy. It was what Hanni needed, exactly, and she watched it land: Hanni's shoulders came down under the blanket, all the way down, the way they hadn't come down since the first night of April, and her eyes shut, and she let out a breath that seemed to go on for a whole minute." },
+          { s: 'hanni', f: 'happy', t: "...Okay. Okay. I don't have to go back." },
+          { n: "She put her head on Solar's shoulder and was asleep before the red. Solar sat very still with her shoulder going numb and watched the town go red at twelve, the lights going out in a single breath from the river up the hill, and she felt something she couldn't name sit down heavy in her chest, warm, like a meal she hadn't been hungry for, and she didn't know why it was there, and Hanni slept through the whole hour against her, smiling a little, as if somebody had told her a secret." }
+        ] },
+        { t: "Stay. Please. I need you here.", notes: 3, tally: { asked: 1, cakes: 1, 'asks.hanni': 'yes' }, flag: 'eqx-asked-hanni', then: [
+          { n: "It came out of her before she'd decided to say it, and it wasn't the thing Hanni had asked for. It was bigger. It was hers. Hanni lifted her head off her knees and looked at her, startled, and then her whole face did everything at once." },
+          { s: 'hanni', f: 'sad', t: "...You need me?" },
+          { s: 'hanni', f: 'happy', t: "Oh my God. Okay. Okay, then that's that. That's decided. I'm staying. Try and get rid of me." },
+          { n: "She said it laughing, and crying a little, and wrapped both arms round Solar's arm under the blanket and held on, and Solar felt the grip close, warm and certain, the way it had closed at New Year's a minute after midnight, and she felt something else too, something small that went out of her as Hanni's arms came round, and didn't come back, and she told herself it was only the cold." }
+        ] },
+        { t: "We go back, Hanni. We always go back. That's what we do.", notes: 2, tally: { 'asks.hanni': 'no' }, then: [
+          { n: "Hanni looked at her. Then she nodded, slowly, and turned her face back to the town, and put her chin back on her knees." },
+          { s: 'hanni', f: 'neutral', t: "...Yeah. I know. I know we do. I just wanted to hear what it sounded like if you said the other thing." },
+          { s: 'hanni', f: 'sad', t: "It's fine. I'm fine. I'll pick it up. I always pick it up." },
+          { n: "She didn't sleep. She sat up all hour, through the red, very straight, with the blanket round her shoulders and her eyes on the stairwell door, and when the lights came back she said *okay* to nobody and went down to check Hyein's bell." }
+        ] },
+        { t: "That's yours to put down, or pick back up. Not mine to tell you.", notes: 2, tally: { choose: 1, 'asks.hanni': 'choose' }, then: [
+          { n: "Hanni didn't say anything for a long time. Solar watched the words go in, and not be what she'd wanted, and watched her turn them over anyway, the way she'd turned over *mine* in the corridor in April." },
+          { s: 'hanni', f: 'neutral', t: "...You keep doing that. You keep handing me things and saying they're mine. I don't know where to put them all. I've never had this many things that were mine." },
+          { s: 'hanni', f: 'sad', t: "It's so much harder than if you'd just said it. You know that, right? It would've been so easy if you'd just said it." },
+          { s: 'solar', f: 'neutral', t: "I know." },
+          { n: "Hanni laughed, wet, and wiped her nose on the blanket, and leaned over until her shoulder was against Solar's, not her head, her shoulder, and stayed there, awake, through the red, and at some point in the hour, very quietly, so quietly Solar wasn't sure it was meant to be heard, she said *mine*, once, to the town, the way you'd try a word in a new language." }
+        ] }
+      ] },
+      { n: "At forty minutes past, down through the roof and the floor and the stairwell, from the second floor, small and bright and very far away, a bell rang. Once." },
+      { n: "Neither of them moved. Then Hanni was up, blanket and all, and down the stairs, and Solar after her, and in the corridor the little brass bell hung on its red cord on the inside of Hyein's door, still, the cord not swinging, and behind the door Hyein was asleep. They could hear her. Deep and slow and real, the breathing of somebody actually asleep, for the first time in weeks." },
+      { n: "Hanni sat down on her futon across the doorway without a word. Solar sat down next to her. They didn't talk about it. In the morning Hyein stepped over them both and said *again?* and Hanni, for once, didn't laugh." }
     ] }
   ]
 });

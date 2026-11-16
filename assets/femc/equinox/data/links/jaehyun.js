@@ -1,12 +1,15 @@
 /* Persona 3: Equinox · Jaehyun Lee · Emperor. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–2 (from 4/13; his home is the Naganaki Shrine steps on weekday and Saturday afternoons but Wednesday,
-   so 4/13 itself). Ranks 3–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
+   Written: ranks 1–3 (from 4/13; his home is the Naganaki Shrine steps on weekday and Saturday afternoons but Wednesday,
+   so 4/13 itself). Ranks 4–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
    Solstice's Jaehyun link is shared memory ("the offer stands", the three knocks on the dorm door last October, "big bro",
    thirty-one stairs and her saying thirty-two, the layers); nothing reads Solstice link standing. Runners fences hold: no
    home event past the page, nothing about what he knows of the boys; Father stays offstage.
    Flags this file sets: eqx-jaehyun-knock (rank 1: Solar agrees to his three-knock rule). Nothing reads it yet.
-   Rank 2 (after 4/23): reads eqx-jaehyun-knock, ifAfter 4/29, ifEvent eqx-read. Sets nothing. */
+   Rank 2 (after 4/23): reads eqx-jaehyun-knock, ifAfter 4/29, ifEvent eqx-read. Sets nothing.
+   Rank 3 (after 6/14, after the 6/9 long table; the steps in the rain, the dorm gate; branches on eqx-last-grain,
+   eqx-hunted, eqx-owed, eqx-table-op) records his own ask: tally asks.jaehyun (+ cakes / choose). The owed ask from the long table
+   stays story-act3.js eqx-owed's (8/6); rank 3 only shows him still carrying it. Sets nothing else. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'jaehyun', name: 'Jaehyun Lee', short: 'Jaehyun', arcana: 'Emperor', numeral: '', from: 'Runners', kind: 'searcher',
   world: 'R', romance: null, starts: '4/8', lodging: 'guesthouse',
@@ -264,6 +267,117 @@
       { n: "She went up to bed at eleven. She didn't count the dorm stairs. She'd never counted them, in a year of going up and down them. She knew them the way you know your own teeth with your tongue." },
       { n: "She was on the landing before she realized she'd been counting under her breath the whole way up, in Jaehyun's voice, the scoreboard voice, *eleven, twelve, thirteen*." },
       { n: "She stopped. She stood on the landing in the dark with her hand on the banister and the number in her mouth, and the house quiet below her and above her, and she didn't finish. She didn't look back down to check. She went on up the last flight to her room without counting at all, fast, the way you'd walk past a window you didn't want to see into, and shut her door, and stood with her back against it until the red came." }
+    ] },
+    { after: '6/14', title: '3: pace', place: 'Naganaki Shrine · The Steps', time: 'After School', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-summer' },
+      // BG: naganaki-shrine-steps-rain — the long stone stairs up to Naganaki Shrine in a summer drizzle, wet and dark, moss in the joins, the trees closed over them like a tunnel, the torii small at the top.
+      { n: "It was raining the thin, warm, endless rain of the rainy season, the kind that didn't so much fall as hang in the air and wait for you to walk into it, and the shrine steps were dark with it from top to bottom, every stone slick and shining, moss coming up green and fat in the joins. The chalk was gone. Of course it was gone. The rain had taken every little white number weeks ago." },
+      { n: "Jaehyun was running them anyway. Up, at the even pace that didn't change, turn at the torii, down. He wore a running jacket with the hood down so the rain went straight into his hair, and he didn't seem to notice. He didn't seem to be counting either, and that was new; his lips weren't moving." },
+      { n: "He saw her at the bottom on his way down and didn't stop. He did one more. Up, turn, down. Then he stopped on the last step, breathing hard, hands on his hips, the rain running off his chin, and looked at her umbrella as if it were a personal remark." },
+      { s: 'jaehyun', f: 'neutral', t: "You came out in this." },
+      { s: 'solar', f: 'neutral', t: "You're running in this." },
+      { s: 'jaehyun', f: 'neutral', t: "That's different. I'm already wet. You had a choice." },
+      { choose: [
+        { t: "(Hold the umbrella over him.)", notes: 3, then: [
+          { n: "She held it over him. She had to hold it up high, he'd always been taller, and he looked up at it, and down at her arm stretched up holding it, and made a sound through his nose that in anyone else would have been a laugh." },
+          { s: 'jaehyun', f: 'happy', t: "That's useless. I'm soaked. You're getting wet now. Now we're both wet. Excellent work." },
+          { n: "He didn't step out from under it, though." }
+        ] },
+        { t: "You're not counting.", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...No. I noticed that too. Around the third week." }
+        ] },
+        { t: "Nobody's timing you.", notes: 2, then: [
+          { s: 'jaehyun', f: 'serious', t: "No. That's the idea. That's been the whole idea, every day, since April." }
+        ] }
+      ] },
+      { s: 'jaehyun', f: 'serious', t: "It's gone, by the way. The step." },
+      { n: "He said it as if he were telling her the time. He sat down on the bottom stair, in the wet, without asking, and after a second she sat down beside him under the umbrella, the stone cold through her skirt, and he held his hand out for the umbrella and she gave it to him, because he'd always been the one who held the umbrella, and it was easier than arguing." },
+      { s: 'jaehyun', f: 'neutral', t: "A hundred and twelve going up. A hundred and twelve going down. Every day. I counted every day since the rain took the chalk, to be sure, and then I counted again to be sure I was sure. It's not there. Fifty-seven goes straight to fifty-eight. No warm step." },
+      { s: 'jaehyun', f: 'neutral', t: "I should be pleased. It's the correct number. It's the number on the sign." },
+      { choose: [
+        { t: "When did it go?", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...The tenth. I came up on the tenth and it was gone. I remember because it was the day after the rain started. The first big one." },
+          { n: "The day after the long table, she thought. The day after the rain that stopped at eleven forty, exactly, like a tap. She didn't say it. He didn't either. He looked up the stairs at the place where fifty-seven met fifty-eight, under the dark wet trees, and then looked away from it, deliberately, the way you'd stop pressing on a bruise." }
+        ] },
+        { t: "That's good, isn't it?", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "It's the right number. Right isn't always good. I learned that from our father." }
+        ] },
+        { t: "(Look up the steps to where it was.)", notes: 3, then: [
+          { n: "She looked up. Fifty-seven, fifty-eight. Two stones, dark and wet and ordinary, and nothing between them, and the trees dripping over them, and for one second she could have sworn the rain falling on that place fell slower than the rain around it, the way rain falls in the red. Then it didn't. Then it was rain." }
+        ] }
+      ] },
+      { n: "They sat. The rain hung in the air in front of them like a bead curtain nobody had parted. Somewhere above them at the shrine a bell rope knocked against its post in the wind, softly, a dull wooden sound, and Jaehyun's knee was jogging, very slightly, up and down, the way it had jogged under the table at every Foundation Dinner they'd ever sat through side by side." },
+      { s: 'jaehyun', f: 'neutral', t: "I need to show you something. It isn't a procedure." },
+      { n: "He shifted the umbrella to his other hand and reached into the pocket of his running jacket and took out a watch. A running watch, black, heavy, with a wide rubber strap and a face the size of a matchbox, the kind with buttons all round the edge. She knew it. Their father had given it to him in its box, two birthdays ago, with the app already installed on Jaehyun's phone and his own account already linked to it, so that every run Jaehyun did, every split, every heart rate, went up into the air somewhere and came down again on a screen in an office Jaehyun had never once been invited into." },
+      { s: 'jaehyun', f: 'neutral', t: "I was wearing it. When I came through. When I was holding the door frame. I'd been for a run that morning. I'd uploaded it." },
+      { s: 'jaehyun', f: 'serious', t: "It died on the eighth of April. The battery. I've got the charger. It's in my bag. I've had it in my bag every day since and I've never once plugged it in." },
+      { n: "He turned it over in his wet fingers. The face was blank. Not black, quite; a dull gray, like a pond with nothing in it. On the back, the steel was scratched where the clasp had rubbed it for two years, and engraved, small, in their father's preferred font, his initials, and a date, and a word she couldn't read in the rain." },
+      { choose: [
+        { t: "Dad's watch.", notes: 3, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...My watch. His account. Yes." },
+          { s: 'jaehyun', f: 'sad', t: "When he gave it to me I thought it meant he wanted to know how I was doing. I've been rethinking that." }
+        ] },
+        { t: "What does it say on the back?", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "*Pace.* That's all. One word. He had it engraved. I used to think it was advice." }
+        ] },
+        { t: "(Don't say anything. Look at the blank face.)", notes: 2, then: [
+          { n: "She looked at it. He looked at her looking at it. Neither of them said anything, and the rain hung, and it was the most they'd said to each other about their father in a year." }
+        ] }
+      ] },
+      { s: 'jaehyun', f: 'neutral', t: "Last night I nearly plugged it in. I had the cable in my hand. I sat on the bed for twenty minutes with the cable in one hand and the watch in the other, like a man defusing something." },
+      { s: 'jaehyun', f: 'serious', t: "Because it's been two months. And I've run every day. And I don't know a single number. Not one. I don't know if I'm faster. I don't know if I'm slower. I ran a forty in May and timed it on my phone and saw the number for one second and deleted it. And the not knowing is— it's the best I've felt in my life. And it's driving me insane. Both. At once." },
+      { ifEvent: 'eqx-last-grain', then: [
+        { s: 'jaehyun', f: 'sad', t: "And then Suemitsu. I sat across from him at that table. Most nights in June. He called her Mother. I laughed. Everybody laughed." },
+        { s: 'jaehyun', f: 'serious', t: "I stopped Minji filming him. In the morning. On the step. She had the camera up and I put my hand on it. It's the first time she's ever let me. I keep thinking about that more than I think about him. I don't know what that says about me." },
+        { s: 'jaehyun', f: 'neutral', t: "Somebody died here. Somebody I ate dinner with. And I still don't want to put this back on. That's how bad it is. That's how much I don't want to go back to being a number on his screen." }
+      ] },
+      { n: "He turned the watch over again, face up, blank, and held it on his open palm between them, under the umbrella, the way you'd hold out something you'd found on the beach to ask what it was." },
+      { s: 'jaehyun', f: 'serious', t: "At home I'm a set of splits. I'm a profile. I'm the son at the Foundation Dinner who did the thing on the right track and the right time. Everybody there knows how I did before I've finished doing it. Here nobody knows. Nobody's waiting. Nobody's going to read about me on Monday." },
+      { ifEvent: 'eqx-table-op', then: [
+        { s: 'jaehyun', f: 'neutral', t: "And now he's here. At the long table. Eating egg whites with his sleeves rolled up, being polite to a landlady. And he hasn't asked me once how fast I am. Not once. I keep waiting for it like the alarm." },
+        { s: 'jaehyun', f: 'sad', t: "I don't know if that's because he doesn't need to know here, or because he never actually wanted to. I can't ask him. It would be the first thing I've ever asked him." }
+      ] },
+      { s: 'jaehyun', f: 'sad', t: "So tell me I don't have to put it back on. That's it. That's all I want. Tell me I can just stay somewhere nobody's waiting to hear how I did. If you say it, I'll throw it in the sea off the pier. I'll do it tonight. I'll take Akihiko as a witness." },
+      // CG: eqx-pace — the bottom of long wet stone shrine stairs in a summer drizzle; a young man in a soaked running jacket holding an umbrella over a girl beside him, a dead black running watch lying face up on his open palm between them.
+      { n: "The rain hung. The bell rope knocked. She sat beside him on the wet stone with his arm holding the umbrella over both of them and the watch on his palm, its blank gray face full of the sky, and her heart had gone very quiet, the way it went quiet in the red, as if it were listening for something on the other side of a door." },
+      { choose: [
+        { t: "Whether you put it back on is yours. Whether you stay is yours. Run because you want to.", notes: 2, tally: { choose: 1, 'asks.jaehyun': 'choose' }, then: [
+          { n: "He was quiet for so long that she thought he hadn't heard. The rain hung. Then he let out a breath through his nose, the not-laugh, and it shook a little at the end." },
+          { s: 'jaehyun', f: 'sad', t: "...That's a terrible answer. That's the worst answer anybody's ever given me. I hold it out to you and you put it back in my hand." },
+          { s: 'solar', f: 'neutral', t: "It was always in your hand." },
+          { s: 'jaehyun', f: 'neutral', t: "...Yes. Fine. I know. That's what makes it terrible." },
+          { n: "He closed his fingers on the watch. He didn't put it on. He didn't throw it anywhere. He put it back in his jacket pocket and zipped the pocket shut, slowly, all the way to the top, and kept his hand flat over it." },
+          { s: 'jaehyun', f: 'neutral', t: "In the pocket, then. Till I decide. Nobody gets to decide but me. That's new. I'm going to be terrible at it." }
+        ] },
+        { t: "Leave it off. Stay. Nobody's waiting to hear how you did.", notes: 3, tally: { cakes: 1, 'asks.jaehyun': 'yes' }, then: [
+          { n: "He didn't look at her. For a moment he didn't do anything at all. Then he closed his hand on the watch and put his other hand over his eyes, umbrella and all, so that the rain came in on both of them, and pressed, hard, the way you'd press on a cut, and his shoulders went down, and stayed down." },
+          { s: 'jaehyun', f: 'sad', t: "...Okay. Okay. Noted." },
+          { n: "He held the watch out to her. She took it. It was cold and heavier than it looked and wet from his hand." },
+          { s: 'jaehyun', f: 'neutral', t: "Not the sea. I changed my mind. You keep it. Somewhere I can't find it. I don't want to know where. That's the point." },
+          { n: "She put it in her bag. He watched it go in. Then he stood up out from under the umbrella and ran the stairs once more, up, turn, down, in the rain, and his lips weren't moving, and his pace changed, for the first time she'd ever seen, halfway up, for no reason, just because." }
+        ] },
+        { t: "You'll have to put it back on someday, Jaehyun.", notes: 2, tally: { 'asks.jaehyun': 'no' }, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...Noted." },
+          { n: "He said it in the scoreboard voice. He looked at the watch for a long moment. Then he put it on. He buckled the wide rubber strap round his left wrist, the clasp going into the old scratches on the steel as if it had never been away, and the dead gray face sat there on his arm like a stone in a ring." },
+          { s: 'jaehyun', f: 'serious', t: "That's the answer I'd have given. That's the answer I'd have given if somebody asked me. I don't know why it feels like somebody kicked me." },
+          { n: "He ran the stairs. Up, turn, down. She sat at the bottom with the umbrella and watched him do it twice, three times, at the pace that didn't change, and the third time, at the top, under the torii, he stopped, and stood there in the rain for a long time with his back to her, and she could see his lips moving. Counting." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Front Gate', time: 'Evening', bg: 'iwotodaidorm-outside', soft: true },
+      { n: "He walked her home. He always did. The rain had thinned to almost nothing by the time they reached the dorm, a fine wet dust in the light of the gate lamp, and he stopped where he always stopped, under the lamp, where she'd be able to see him from her window." },
+      { ifEvent: 'eqx-hunted', then: [
+        { s: 'jaehyun', f: 'neutral', t: "I'm going to Minji's door after this. Twos. Then the guesthouse. Then I'm going to lie awake and think about every single thing I've said today, in order, like a man reading his own medical file." }
+      ] },
+      { n: "He knocked on the gatepost. Three times. Then her name, then his, the whole procedure, though she was standing right there next to him and could see him perfectly well, and then he lifted his left hand and waved it, once, Hanni's addition, solemnly, at a distance of thirty centimeters." },
+      { ifEvent: 'eqx-owed', then: [
+        { n: "He stood there a second longer than the procedure needed, the way he had at this gate on another night, with his hands on the bars, giving something back. That one was given. This one was his. She could see on his face that it weighed differently." }
+      ], else: [
+        { s: 'jaehyun', f: 'neutral', t: "There's something else. Something I've been carrying. It's not mine. I'm not going to give it to you today." },
+        { n: "He put his hand flat on the zipped pocket of his jacket as he said it, then took it away, as if he'd noticed. She didn't ask. She knew what he was carrying. She'd been in the hall that night, with her hand on the wall, and seen him nod." }
+      ] },
+      { s: 'jaehyun', f: 'neutral', t: "Call if you need anything. You won't. But the offer stands." },
+      { n: "He went. He jogged, the even pace, down the hill toward the guesthouse, and at the corner by the post office he did something he'd never done in all the weeks of walking her to this gate. He looked back." },
+      { n: "She went inside. On the stairs she counted, without meaning to, *one, two, three*, in his voice, and this time she let herself finish, all the way up to the landing, and it came out exactly right. It came out exactly the number it should have been. She stood on the landing with her hand on the rail and didn't know why that was the thing that made her cold." }
     ] }
   ]
 });
