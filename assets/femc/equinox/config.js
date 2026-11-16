@@ -34,7 +34,7 @@ window.FEMC_GAME_CONFIG = {
                head-to-chin, head centre x]; a couple link lists two (both stand, heads the same size; game.css .pair).
      loading   the fight loading still (ui.js openBattle): the Well for a night in the Well and the Well's story fights,
                "in between" for everything else. */
-  faces: { solar: 'solar-equinox' },
+  faces: { solar: 'solar-equinox', haechan: 'haechan-equinox' },
   homeFig: { src: 'assets/femc/equinox/art/solar/arms-crossed.webp?v=1', ar: .424, ht: .02, hf: .14, hx: .47 },
   linkFig: {
     chaewon: ['equinox/art/bodies/chaewon.webp?v=1', .4, .033, .1, .41],

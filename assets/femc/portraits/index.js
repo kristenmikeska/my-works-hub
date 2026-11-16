@@ -2062,6 +2062,18 @@ window.FEMC_PORTRAITS = {
   "serious",
   "surprised"
  ],
+ "haechan-equinox": [
+  "angry",
+  "blushing",
+  "flustered",
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "slight-surprise",
+  "smirk",
+  "surprised"
+ ],
  "solar-equinox": [
   "flustered",
   "happy",

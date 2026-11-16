@@ -74,3 +74,7 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
   - 11Z `eqx-rio-saori-bench` ← `links/rio-saori.js`, comment `// CG: eqx-rio-saori-bench`
   - 11AA `eqx-tale-book` ← `links/rio-saori.js`, comment `// CG: eqx-tale-book`
 - All files are under `assets/femc/equinox/data/` (`links/` for the rank files). Album / Theater listing for these CGs is a later batch.
+
+## Haechan's Equinox faces (Nov 15, in)
+- Kat's eight singles `Equinox/eq-haechan-<face>-portrait.png` (1254², transparent) → `assets/femc/portraits/haechan-equinox/` on an 880 × 822 canvas: one shared scale (0.702, Vision face height matched to his base neutral), each face centred on the neutral's position, his face height level with his base portraits'. Faces: neutral, smirk, happy, sad, angry (also saved as `serious`), blushing (also `flustered`), surprised, slight-surprise. `config.js faces.haechan`, scale.js 0.95, placements-data.js face centre 0.435 (place.js regenerated; it borrows his base nudge). Kat can fine-tune on the placements review page.
+- The same method (one approved portrait, then each expression as a separate edit) is how the other main characters' Equinox faces should be made.

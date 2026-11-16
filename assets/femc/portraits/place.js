@@ -76,6 +76,7 @@ window.FEMC_PORTRAIT_PLACE = {
   "genji": [0.476, -2.5, 7.5, 1.08, 1],
   "grace-runners": [0.516, -1.5, 5, 0.98, 0],
   "haechan": [0.564, 1, 0.5, 1.06, 1],
+  "haechan-equinox": [0.435, 1, 0.5, 1.06, 1],
   "haechan-runners": [0.564, -1, 0.5, 1.22, 0],
   "haechan-runners-holiday": [0.562, -2, 3, 1.14, 0],
   "haechan-strangers": [0.507, -2.5, 1, 1.26, 0],

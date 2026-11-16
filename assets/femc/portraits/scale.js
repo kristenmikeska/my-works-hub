@@ -195,6 +195,7 @@ window.FEMC_PORTRAIT_SCALE = {
   'mitsuru-stay-hanami': 0.96,
   'fuuka-stay-hanami': 1.08,
   // Nov 1 2026 (art batch 129): seasonal S.E.E.S. faces, each matched to its year face's head (core.js seasonFace)
+  'haechan-equinox': 0.95, // Equinox: Kat's eight Equinox faces (Nov 15), face matched to his base portrait's size and height
   'solar-equinox': 0.97, // Equinox art batch 1: her Equinox look, cut onto Solar's own canvas (femc-skin-portraits.py)
   'solar-summer': 0.96,
   'solar-winter': 0.99,
