@@ -2081,5 +2081,13 @@ window.FEMC_PORTRAITS = {
   "sad",
   "serious",
   "surprised"
+ ],
+ "mrsoka": [
+  "happy",
+  "neutral",
+  "sad",
+  "serious",
+  "surprised",
+  "worried"
  ]
 };

@@ -48396,6 +48396,174 @@
    "status": "integrated",
    "destination": "assets/femc/equinox/art/bodies/hoax-dad.webp",
    "placement": "Equinox Social Link full body, link parents-hoax (config.js linkFig)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-well-bottom.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "6c60462d59a9fa67d13ea7b9fbc6c241896f70409955dd141b79c6aa49577c25",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-well-bottom.webp",
+   "placement": "Equinox 8A: the Well bottom backdrop (prologue; eqx-well fights, ART_HAS_WELL)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-well-shaft.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4acb812fbfde956bf2f02892709a44a5cbf703c17b2b653db31187f94d0f178d",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-well-shaft.webp",
+   "placement": "Equinox 8B: halfway down the Well (prologue)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-courtyard-well-night.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "502dd194cf23e2328199215b83a80a6585e0bce2a7d7b34e2df8c41f66ed41de",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-courtyard-well-night.webp",
+   "placement": "Equinox 8C: the courtyard in the Dark Hour (prologue, story-act1)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-courtyard-well-day.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "dccd70ddd9bd277e642a8a0fefa3eb0e73bb1eefeb3602b99215e8e363e3e6e7",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-courtyard-well-day.webp",
+   "placement": "Equinox 8D: the courtyard by day (story-opening eqx-register)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-oka-gate.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "1d9a5358ce0b3b2b4a76535ae9d98b7336f66627e47a1cb48146d2a0a81e1730",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-oka-gate.webp",
+   "placement": "Equinox 8E: the Oka boarding house gate (story-opening, story-act1, links/mrsoka, places-extra okahouse)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-oka-kitchen.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d708cbe06a7dcbdac751e2a86c6be51f0b479a3902653885406de0038f218f9b",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-oka-kitchen.webp",
+   "placement": "Equinox 8F: the Oka kitchen (story-opening, story-act1, links/mrsoka)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/mrs-oka-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "48a3729b339d223ee1b61fc4fe8af710763c6450576c3d89764e39f11f675ea6",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mrsoka/",
+   "placement": "Equinox 8G: Mrs. Oka faces (neutral, happy, sad, serious, surprised, worried), speaker mrsoka"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-room-light.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "59c7135645a7ab1e3cb5226b946ca7d1e470eddd90a30785e9f1bb8664d7d880",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-room-light.webp",
+   "placement": "Equinox 8H CG (prologue)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-ribbon-glove.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d5b8ccb7b4894b99031d9d3f2d60f518f201b87bd27b85de8825bf6ecf555433",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-ribbon-glove.webp",
+   "placement": "Equinox 8I CG (prologue, one opening branch)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-well-waking.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "17dba273efd343012e357d700c314d56d7c0eaff7c7f243fe275cb9e8f771af1",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-well-waking.webp",
+   "placement": "Equinox 8J CG (prologue)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-holders-wake.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "3ea80a32ef3ee618ea612d895ab63348bb3ba5c07705eaa2ec66403eca30fd06",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-holders-wake.webp",
+   "placement": "Equinox 8K CG (prologue)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-minji-frame.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "35cf7056ae7749e261e299ab994d232cf89c43cc262f5ac3fc957fe71d89b29e",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-minji-frame.webp",
+   "placement": "Equinox 8L CG (prologue, one opening branch)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eqx-there-you-are.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "b8bfefea8554e8a7edbd9c095d83ec92ce668f5dbe985db4ca0710236b735c1a",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-there-you-are.webp",
+   "placement": "Equinox 8M CG (prologue)"
+  },
+  {
+   "batch": 163,
+   "source": "../Equinox/eq-persona-hyein-concept.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "9303470121977fb7c64aa4b515ac405c6bf0e5cf53727b29a54017b35f7d1db4",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/personas/hyein-concept.webp",
+   "placement": "Equinox 7C: Hyein Persona concept (reference only)"
   }
  ],
  "batch1Validation": {
@@ -49910,5 +50078,10 @@
   "date": "2026-11-15",
   "checks": "jsc (core.js, menu.js, ui.js, config.js, title.js, portraits index/scale/place, placements-data.js); config.loading run in jsc; built-in pane: Equinox title (desktop 16:10 and 390x844, day and dusk, ?art=0), a scene with solar-equinox faces, the menu screen, the Social Link screen (couple pair and Chaewon), a Well fight loading still; femc-game.html title, Solstice portrait unchanged, no errors",
   "note": "Equinox art batch 1: 33 files from Femc Mode Images/Equinox/ (sources stay there, unchanged; source paths are relative to New Adds). Title covers + clock face, menu backdrops, loading stills, Solar Equinox faces and menu figure, LE SSERAFIM and parents full bodies wired; Well backdrops converted (none is the opening 8A/8B); pose sheet, look tests and Persona concepts kept for later."
+ },
+ "batch163Validation": {
+  "date": "2026-11-15",
+  "checks": "jsc (prologue, story-opening, story-act1, links/mrsoka, places-extra, scene.js, battle.js, portraits index/scale/place, placements-data.js); every Equinox bg/cg name exists; built-in pane: prologue CGs and Well bottom, courtyard night and day, 4/9 boarding house gate + kitchen with Mrs. Oka, CG focus, Go Out okahouse panel, eqx-well-1 fight backdrop; femc-game.html title loads",
+  "note": "Equinox art batch 2: 14 files from Femc Mode Images/Equinox/ (sources stay there, unchanged; source paths are relative to New Adds). 7C and 8A-8M. Kat saved 8G as mrs-oka-portraits.png (list said eqx-mrsoka-portraits.png)."
  }
 }

@@ -27,13 +27,19 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 5A-5D, 6A-6F: config.js `linkFig` (couple links show both figures). Kat's files are named for the Equinox cast (`taejoon`, `miseon` = 6C / 6D).
 
 ## 7. Persona concepts (7A-7C)
-- 7A / 7B wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp` (no game use). 7C still to make; same treatment.
+- 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
 ## 12. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
+
+**Wired in art batch 2 (Nov 15; details in EQUINOX-TECH.md "Art batch 2"): 8A-8M.**
+- 8A-8F: `bg/eqx-*.webp` at every `// BG:` comment (prologue, story-opening, story-act1, links/mrsoka.js), plus the same places without a comment (the Well bottom's second visit, the courtyard's Dark Hour lines in prologue and story-act1). places-extra.js okahouse `bg` / `bgEvening` = `eqx-oka-gate`. Still on `eqx-oka-gate` as stand-ins (comments kept, swap when the art exists): mrsoka.js rank 1 / back step (8W garden) and story-act1's Children's Day veranda (11B). `ART_HAS_WELL = true`.
+- 8G: Kat's file is `mrs-oka-portraits.png` (not the list's `eqx-mrsoka-portraits.png`) → `portraits/mrsoka/` (neutral, happy, sad, serious, surprised, worried), scale.js 1.08, face centre 0.696; Kat to fine-tune on the placements review page.
+- 8H-8M: `cg/eqx-*.webp`, `{ cg }` / `{ cg: null }` pairs at each comment; cgFocus in places-extra.js. Album / Theater listing still to do.
+
 
 - **Backgrounds 8A–8F** → `assets/femc/bg/<save name>.webp` (q86, native size). In `assets/femc/equinox/data/prologue.js` / `story-opening.js` each place has a `// BG: <slug> — …` comment above the line using its stand-in; swap that line's `bg` to the new name (8A `eqx-well-bottom` ↔ comment `well-bottom`, 8B `eqx-well-shaft` ↔ `well-shaft`, 8C `eqx-courtyard-well-night` ↔ `gekkoukan-courtyard-well-night`, 8D `eqx-courtyard-well-day` ↔ `gekkoukan-courtyard-well-day`, 8E `eqx-oka-gate` ↔ `oka-boarding-house-gate`, 8F `eqx-oka-kitchen` ↔ `oka-boarding-house-kitchen`). 8A also: `battle.js ART_HAS_WELL = true` (the Well fights' backdrop) and bump ART_V.
 - **8G Mrs. Oka's faces** → `tools/femc-sheet-alpha.py` / `femc-portraits.py` into `assets/femc/portraits/mrsoka/` (speaker id `mrsoka`; `oka` is Solstice's "Old Oka" job character, don't reuse it), scale.js + placements as any new face. Cell 6 is `worried` (the scenes use `neutral` only so far).

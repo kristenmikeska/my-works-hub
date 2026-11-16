@@ -12,8 +12,8 @@
 .gs-bg[style*="/tartarus-"], .g-bg[style*="/tartarus-"],
 .gs-bg.darkhour, .g-bg.darkhour { filter: var(--eqx-dh-filter); }
 /* Any scene set in the Dark Hour (scene.js .gs-darkhour, from its place or time) on an ordinary night picture: drained to
-   red-black, as if the colour has been bled out of the town. */
-.gs.gs-darkhour .gs-bg:not([style*="/darkhour-"]):not([style*="/tartarus-"]):not(.darkhour) { filter: var(--eqx-dh-filter); }
+   red-black, as if the colour has been bled out of the town. Equinox's own eqx-* art is painted red already: left alone. */
+.gs.gs-darkhour .gs-bg:not([style*="/darkhour-"]):not([style*="/tartarus-"]):not([style*="/eqx-"]):not(.darkhour) { filter: var(--eqx-dh-filter); }
 
 /* The dread layer: while a scene is in the Dark Hour, or a Dark Hour / Tartarus backdrop is up. */
 .gs::after {

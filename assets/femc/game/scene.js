@@ -680,7 +680,8 @@ window.FemcScene = (() => {
       // { match }: the esports broadcast overlay (match.js); a line that is only that goes straight on.
       if (line.match !== undefined) { window.FemcMatch?.apply(el, line.match); if (Object.keys(line).length === 1) return next(); }
       if (line.place !== undefined && line.n === undefined && line.t === undefined) return sceneBreak(line);
-      if (line.music) { Music.set(line.music); picked = true; return next(); }
+      // A music line can carry the backdrop too ({ bg, music }: Equinox's scene openers); without this the bg was dropped.
+      if (line.music) { Music.set(line.music); picked = true; if (line.bg !== undefined) { vis.bg = line.bg; paintVis(); } return next(); }
       if (line.bg !== undefined && Object.keys(line).length === 1) { vis.bg = line.bg; paintVis(); return next(); }
       if ('cg' in line) {
         vis.cg = line.cg;

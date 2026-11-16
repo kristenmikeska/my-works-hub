@@ -197,6 +197,7 @@ window.FEMC_PORTRAIT_SCALE = {
   // Nov 1 2026 (art batch 129): seasonal S.E.E.S. faces, each matched to its year face's head (core.js seasonFace)
   'haechan-equinox': 0.95, // Equinox: Kat's eight Equinox faces (Nov 15), face matched to his base portrait's size and height
   'solar-equinox': 0.97, // Equinox art batch 1: her Equinox look, cut onto Solar's own canvas (femc-skin-portraits.py)
+  mrsoka: 1.08, // Equinox art batch 2: Mrs. Oka (speaker id mrsoka; Solstice's 'oka' is someone else), face height matched to the anime cast (Solar, Aigis, Oka)
   'solar-summer': 0.96,
   'solar-winter': 0.99,
   'akihiko-summer': 1.05,

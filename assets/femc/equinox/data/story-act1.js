@@ -10,7 +10,7 @@
   { id: 'eqx-supper', date: '4/16', slot: 'after', consumes: true, title: 'stay for supper', place: 'Iwatodai · The Oka Boarding House', time: 'After School',
     cast: { solar: 'Solar', hyein: 'Hyein', hanni: 'Hanni', mrsoka: 'Mrs. Oka' },
     scene: [
-    { bg: 'outside-daytime-neighborhood', music: 'tender' },
+    { bg: 'eqx-oka-gate', music: 'tender' },
     // BG: oka-boarding-house-gate — an old two-storey wooden Japanese house behind a low gate on a quiet riverside street in late afternoon, a persimmon tree, an old stone well with a heavy round cap beside it.
     { n: "Mrs. Oka had telephoned the dorm on Thursday night and asked for *the girl with the tea*, and Fuuka, who'd answered, had stood in the hall with the receiver against her chest for a long moment trying to work out which girl that was, and then had come and found Solar, and hadn't been able to say why she was so sure." },
     { n: "The message was that there was a box. Spare bedding, a whole cupboard of it, futons and covers and a quilted thing nobody had slept under in years, and wouldn't the young people at the guesthouse want some of it, with the nights still cold. Somebody would need to come and fetch it. Somebody strong, she'd said, and then, laughing, *or two somebodies*." },
@@ -19,7 +19,7 @@
     { s: 'solar', f: 'neutral', t: "I know." },
     { s: 'hyein', f: 'neutral', t: "That's so polite. That's the politest gate I've ever seen. It's like it's saying *you first*." },
     { n: "She said it like a compliment. She lifted the hook herself, before Solar could, and went in, and the gate swung shut behind them both with the small wooden knock it always made, and in the persimmon tree, which had a full head of new leaves now and should have been loud with sparrows at four in the afternoon, nothing moved at all." },
-    { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'iwatodaidorm-kitchen', soft: true },
+    { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'eqx-oka-kitchen', soft: true },
     // BG: oka-boarding-house-kitchen — a warm old-fashioned Japanese kitchen with a long worn wooden counter, steam from pots, a tin painted with cranes on the counter, a window onto a garden and a persimmon tree.
     { n: "The box was in the hall already, tied with string, waiting. That should have been the whole visit. It was never the whole visit, here; Solar had worked that out the first time, the way you work out a current by stepping into it." },
     { n: "The kitchen was hot and close and smelled of soy and ginger and rice just off the boil, and something slow in a heavy pot that had been going since morning, and Mrs. Oka was at the stove in her pine-tree apron with her white gloves on, stirring, and she turned round when they came to the doorway and lit up the way she always did, from the mouth upward, as if somebody had walked in carrying good news." },
@@ -566,7 +566,7 @@
   { id: 'eqx-tale', date: '5/5', slot: 'evening', consumes: true, title: "it isn't that sort of night", place: 'The Oka Boarding House · Veranda', time: 'Evening',
     cast: { solar: 'Solar', ken: 'Ken', koromaru: 'Koromaru', yunjin: 'Yunjin', mrsoka: 'Mrs. Oka' },
     scene: [
-    { bg: 'outside-daytime-neighborhood', music: 'tender' },
+    { bg: 'eqx-oka-gate', music: 'tender' },
     // BG: oka-boarding-house-veranda-evening — the wooden veranda of an old Japanese house at dusk, paper lanterns lit along the eaves, a persimmon tree and a capped stone well in the garden beyond, carp streamers hanging limp on a pole.
     { n: "It was Children's Day, and Mrs. Oka had made kashiwa-mochi, and she had telephoned the dorm specially to ask for Ken." },
     { n: "Ken had wanted to go. That was the trouble. Ken was eleven and grieving and polite, and an old lady had made the special Children's Day rice cakes, the ones wrapped in oak leaves, just for him, and was going to put up carp streamers on her pole because she had no children of her own to put them up for, and nothing in Ken knew how to say no to that. So he went, and Koromaru went because Ken went, and Solar went because she couldn't not, and Yunjin went because Solar did." },
@@ -710,7 +710,7 @@
     { s: 'hyein', f: 'neutral', t: "...Hanni." },
     { s: 'hanni', f: 'serious', t: "I'm just saying. If there's a door in the bottom of a well and it's got the porch on the other side of it. With the swing. You don't go in. You come home." },
     { n: "She went back to the dishes. Hyein looked at the back of her for a long time, and then at Solar, and Solar didn't know what her own face did, but Hyein saw it, whatever it was, and looked away." },
-    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'darkhour-gekkoukan-gate', music: 'fullmoon' },
+    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'eqx-courtyard-well-night', music: 'fullmoon' },
     { dark: true },
     { n: "At twelve the school went red, and the courtyard was a stage." },
     { n: "That was how it looked. The moon full and swollen and the color of an old bruise, sitting directly over the courtyard like a light hung on a rig, and the red pouring down from it onto the paving, and the well in the middle of it, the low ring of mossy stone, lit from above as if somebody had trained a spot on it and was waiting for a performance to begin." },
@@ -815,7 +815,7 @@
     { s: 'fuuka', f: 'surprised', t: "*—lar? Solar? Can you hear me? I lost you, I lost all four of you, I couldn't— please say something—*" },
     { s: 'solar', f: 'neutral', t: "We're here. We're coming up." },
     { n: "They climbed. It took a long time. Hand under hand up the gold rope, Akihiko first this time, then Minji, then Solar, then Haechan last, right below her, so close his hand on the rope kept brushing her heel, on purpose, she thought, so she'd know he was there in the dark without having to say so." },
-    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'darkhour-gekkoukan-gate', soft: true },
+    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'eqx-courtyard-well-night', soft: true },
     { n: "Hanni was at the top. Hanni wasn't supposed to be at the top; Hanni was supposed to be in the dorm lounge with the others, and she was kneeling on the lip of the well in the red with both hands down the shaft, reaching, and when Solar's hand came up out of the dark she grabbed it by the wrist with both of hers and pulled, hard, harder than she needed to, and didn't let go even when Solar was out and sitting on the paving." },
     { s: 'hanni', f: 'serious', t: "...Did you see it?" },
     { n: "Solar didn't ask what. Hanni didn't say. They sat on the stone in the red with Hanni's hands locked round her wrist and Hyein coming across the courtyard toward them at a run in her socks, and Haechan coming up out of the well behind them, and the moon hanging over all of it like a spotlight with nobody left to light." },

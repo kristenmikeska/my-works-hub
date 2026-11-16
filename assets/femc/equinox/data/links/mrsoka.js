@@ -13,7 +13,7 @@
   cast: { mrsoka: 'Mrs. Oka' },
   ranks: [
     { after: '4/13', title: '1: loose thread', place: 'Iwatodai · The Oka Boarding House', time: 'After School', music: 'tender', scene: [
-      { bg: 'outside-daytime-neighborhood' },
+      { bg: 'eqx-oka-gate' },
       // BG: oka-boarding-house-garden — the garden of an old wooden Japanese house in spring afternoon light, a persimmon tree in new leaf, an old stone well beside it with a heavy round stone cap furred with moss, a low wooden gate.
       { n: "She hadn't meant to go back. She'd come out of the school gates meaning the long way round to the dorm, along the river, because the river was in the sun at that hour, and she'd turned left past the shrine instead of right, and walked the street with the dry cleaner on it, and stopped at a low wooden gate, and stood there with her bag on her shoulder, and only then thought, *oh*." },
       { n: "The persimmon tree had more leaves than on Friday, small and new and so green they looked wet. Under it, on a folded cushion on the grass, there was a woman on her knees, pulling weeds out of the bed round its roots and dropping them into a basket, and humming to herself without any particular tune, the way you hum when you've been alone in a garden long enough to forget anyone might hear." },
@@ -58,7 +58,7 @@
       { s: 'mrsoka', f: 'neutral', t: "It's a good tree. It fruits like you wouldn't believe. Too much for one old woman, every autumn, and the birds won't touch them. They go soft on the branch and drop." },
       { s: 'mrsoka', f: 'neutral', t: "Come inside, now. You've been at school all day and you've had nothing, I can see it on you. I'll put the kettle on." },
 
-      { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'iwatodaidorm-kitchen', soft: true },
+      { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'eqx-oka-kitchen', soft: true },
       // BG: oka-boarding-house-kitchen — a warm old-fashioned Japanese farmhouse kitchen with a long wooden counter, steam from a pot, a tin of rice cakes on the counter, a window onto a garden with a persimmon tree.
       { n: "She took her gardening gloves off at the back step. Underneath were the others. The thin white cotton ones, clean, buttoned at the wrist. She put the green-tipped pair over the edge of a bucket to dry and went in ahead of Solar, and at the kitchen doorway, at the line where the pale boards began, she stopped, and turned round, and waited, smiling, with her hands folded on her apron." },
       { n: "Solar had forgotten. For a second she stood in the hall and didn't know what she was being waited for, and then she did, and something in the back of her neck went tight and stayed tight, for no reason, the way it went tight in a lift when a stranger got in and stood a little too near." },
@@ -160,7 +160,7 @@
       { n: "At the end of the corridor the window looked down into the garden. From up here she could see the whole of it: the bed she'd weeded, the basket, the gardening gloves drying on the bucket with their green fingertips hanging down, the persimmon tree, and under it the round gray cap of the well, with its four pale lines at one edge, catching the low sun like scratches on a record." },
       { n: "She looked at it for longer than she meant to. When she turned round Mrs. Oka was watching her look, from the far end of the corridor, by the stairs, with her gloved hands folded on her apron and her head a little on one side." },
 
-      { place: 'Iwatodai · The Oka Boarding House', time: 'After School', bg: 'outside-daytime-neighborhood', soft: true },
+      { place: 'Iwatodai · The Oka Boarding House', time: 'After School', bg: 'eqx-oka-gate', soft: true },
       { n: "At the back step Mrs. Oka put a rice cake into her hand wrapped in a square of paper, still warm, and another one beside it, for the dog, she said, who wouldn't eat it, but you never knew, dogs changed their minds about people sometimes, given time." },
       { s: 'mrsoka', f: 'neutral', t: "Off you go, now. The light's going. They'll be counting heads at that dorm of yours, and I won't be the one who kept you." },
       { choose: [

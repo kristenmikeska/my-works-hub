@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **new fighters' Personas** (section 7: 1 concept sheet) · **the opening** (section 8: 8 backgrounds, Mrs. Oka's faces, 17 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **83 pictures plus the face sets.** More is coming later (section 13: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts.*
+**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Personaverse faces and Haenim** (section 9: 11 face sheets and her new look) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **69 pictures plus the face sets.** More is coming later (section 13: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs.*
 
 ---
 
@@ -17,124 +17,8 @@
 
 ---
 
-## 7. New fighters' Personas: concept sheets (ChatGPT)
-A first visual idea for each new fighter's Persona, to design from together. Names to come.
-
-**[ ] 7C. Hyein's Persona (name TBD)**  
-Attach: `Persona - style (Theia).png`, `Hyein.png`  
-Save as: `eq-persona-hyein-concept.png`
-```
-A landscape 3:2 Persona design concept sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), in exactly the style, glow and rendering of the FIRST attached image (a Persona from the same game: copy its finish only, not its design or colours). In the centre, large and full body, floating: a celestial weaver maiden in sheer layered robes of black and silver with rose-pink linings, a short jacket with long flowing sleeves whose ends unravel into fine threads of silver starlight; behind her head, a halo shaped like the round wooden frame of a small loom, strung with glowing silver threads; in one hand a long polished weaving shuttle held like a blade; two black-and-white magpies circling her; a delicate silver mask over her eyes shaped like a spread of tiny stars. Gentle, a little lonely, lovely. Her features faintly echo the girl in the SECOND attached image. On the right, a smaller back view of her. Along the bottom left, three small close-up detail studies: the mask, the shuttle, the loom halo. Palette: black, silver, rose pink and soft white starlight; gold at most as a tiny accent; no blue, navy, indigo, purple, lilac or green (the starlight is silver-white, never blue). Clean crisp lineart, high detail. No text, no labels, no names.
-```
-
----
-
-## 8. The opening (backgrounds in Gemini, faces and CGs in ChatGPT)
+## 8. The opening (backgrounds in Gemini, CGs in ChatGPT)
 Art for the opening, which is written and playable now. Until a picture exists the game shows a stand-in background and no CG, so nothing breaks. **Equinox's Dark Hour is red** (Kat, Nov 15): a blood-red sky and moon, darker and scarier than Solstice's, no green. Any old Solstice Dark Hour picture the game reuses is turned red by the game itself.
-
-**[ ] 8A. Background: the bottom of the Well**  
-Where the year starts. Also the backdrop of the first fights.  
-Attach: `BG - style (Tartarus).png`  
-Save as: `eqx-well-bottom.png`
-```
-A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. The bottom of a deep, round, ancient stone well, seen from inside it: a ring of wet black stone blocks around a floor of perfectly still black water, and the water reflects a night sky with a huge moon as if the sky were under your feet. Overhead the shaft rises into total darkness. Down the middle hangs a single thick braided gold rope, frayed in places, its end swaying just above the water. Drips falling, rings spreading on the water. Quiet, cold, enormous, eerie. Palette rule: blood reds, oxblood and near-black with bone-white light; gold at most as one tiny accent (the rope is the one gold thing); no pink; no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
-```
-
-**[ ] 8B. Background: halfway down the Well**  
-The climb.  
-Attach: `BG - style (Tartarus).png`  
-Save as: `eqx-well-shaft.png`
-```
-A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. The inside of a deep, round shaft of old wet stone seen from halfway down, looking along the wall: rough blocks slick with water, a few iron rungs rusted into the wall and broken off, and a thick braided gold rope running straight down the middle of the shaft into darkness. Far below, a faint glow on still water; far above, a small ring of moonlit sky. Vertigo, damp, echoing. Palette rule: blood reds, oxblood and near-black with bone-white light; gold at most as one tiny accent (the rope is the one gold thing); no pink; no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
-```
-
-**[ ] 8C. Background: the courtyard at midnight, with the Well**  
-Where the Well comes up, in the Dark Hour.  
-Attach: `BG - style (Tartarus).png`, `BG - Gekkoukan Gate (Dark Hour).png`  
-Save as: `eqx-courtyard-well-night.png`
-```
-A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. The paved courtyard of the school in the SECOND attached image, in the Dark Hour: no people, coffins standing where nobody is (optional, one or two at the edges), and in the middle of the paving, where nothing stood before, a low ring of old mossy stone, a well mouth about two metres across, opening into total darkness, with the end of a thick braided gold rope trailing over its lip. This is the Dark Hour, made horror: the sky a deep clotted blood red, a huge swollen moon the colour of an old bruise-red with a faint dark halo, everything else drowned in oxblood and near-black, shadows pooling like liquid, a fine drifting grain in the air; it should feel wrong, silent and dangerous, like something is watching from just outside the frame. Palette: blood red, oxblood and near-black with only a little bone-white light; no green anywhere, no pink, no blue, navy, indigo, purple or lilac; the rope is the one gold thing. Any signs are blank. No text.
-```
-
-**[ ] 8D. Background: the courtyard by day, with the Well**  
-School days from now on: the Well sits in the courtyard and nobody looks at it.  
-Attach: `BG - Gekkoukan Courtyard.png`  
-Save as: `eqx-courtyard-well-day.png`
-```
-A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. The same school courtyard as the attached image on a sunny spring day, cherry blossom petals falling, no people in the foreground. In the middle of the paving: a low ring of old mossy stone, a well mouth about two metres across, capped loosely with a few wooden boards and a small yellow folding sign (blank) in front of it. Everything else ordinary and bright, the stone ring just slightly wrong. Copy the attached image's painted style. Warm spring daylight with soft red-brown shadows; no pink-heavy colours beyond the blossom itself; no blue tint. No people. Any signs are blank. Any signs are blank. No text.
-```
-
-**[ ] 8E. Background: the Oka boarding house, from the gate**  
-A new place in town: the boarding house by the river.  
-Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
-Save as: `eqx-oka-gate.png`
-```
-A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image (a street in the same town): an old two-storey wooden Japanese house behind a low wooden gate on a quiet riverside street in spring, dark weathered timber, paper screens, a tiled roof, a small garden with a bare persimmon tree, and beside the tree an old stone well with a heavy round stone lid. Late-afternoon light, warm and peaceful, just a little too still. Warm spring evening light with deep red-brown shadows; gold only as a tiny accent; no pink, no blue, navy, purple or green-heavy colours (the garden's leaves muted and dark). Any signs are blank. No text.
-```
-
-**[ ] 8F. Background: the Oka boarding house kitchen**  
-Mrs. Oka's kitchen.  
-Attach: `BG - style (Tartarus).png`, `BG - Dorm Kitchen.png`  
-Save as: `eqx-oka-kitchen.png`
-```
-A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a warm, old-fashioned Japanese farmhouse kitchen with a long worn wooden counter, steam rising from a pot on an old stove, bundles of dried herbs, stacked bowls, a painted tin of rice cakes on the counter, and a window onto a garden with a bare persimmon tree and the round stone lid of an old well. Cosy and lived-in, afternoon light. Warm afternoon light, wood browns, deep red-brown shadows; gold only as a tiny accent; no pink, no blue, navy, purple or green-heavy colours. Any signs are blank. No text.
-```
-
-**[ ] 8G. Mrs. Oka: scene portraits**  
-A new character: the landlady of the boarding house.  
-Attach: `Elizabeth.png`  
-Save as: `eqx-mrsoka-portraits.png`
-```
-A 3 × 2 portrait sheet on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), clear space between cells, nothing overlapping: one new character in six head-and-shoulders portraits, same face, same size and framing in every cell, in exactly the art style, line weight and portrait framing of the attached image (a character from the same game: copy its style and framing only, not the person). The character: Mrs. Oka, a kind Japanese widow in her mid-fifties, soft round face, warm crinkled eyes, greying black hair pinned up in a loose bun with a few strands escaping, a cream cardigan over a dark red-brown blouse and a plain linen apron, thin white cotton gloves, a little dusting of flour on her cuffs. She looks like the warmest person you've ever met. Cells, in order: neutral (a gentle smile), happy, sad, serious, surprised, worried. No pink, no blue, navy, indigo, purple, lilac or green. Persona 3 Reload official art style. No text, no logos.
-```
-
-**[ ] 8H. CG: the made-up room**  
-The first night.  
-Attach: `CG - style (Solstice).png`, `BG - Dorm Hallway.png`  
-Save as: `eqx-room-light.png`
-```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). No people. The end of the dark dorm hallway from the SECOND attached image at midnight; at the end of it an empty bedroom door stands half open, and inside the room is neatly made up, bed turned down, nothing personal anywhere, and its desk lamp is on by itself, a warm circle of light. Through the room's window, the Dark Hour moon. This is the Dark Hour, made horror: the sky a deep clotted blood red, a huge swollen moon the colour of an old bruise-red with a faint dark halo, everything else drowned in oxblood and near-black, shadows pooling like liquid, a fine drifting grain in the air; it should feel wrong, silent and dangerous, like something is watching from just outside the frame. Palette: blood red, oxblood and near-black with only a little bone-white light; no green anywhere, no pink, no blue, navy, indigo, purple or lilac; the rope is the one gold thing. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 8I. CG: the ribbon in the glove**  
-The first night (one ending only).  
-Attach: `CG - style (Solstice).png`, `Akihiko.png`  
-Save as: `eqx-ribbon-glove.png`
-```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A close-up: a young man's hands (the boy in the SECOND attached image, only his hands and forearms and a little of his sleeve) holding a worn red boxing glove, and a small pink ribbon that has just fallen out of it, drifting down onto old wooden floorboards. Dark room, moonlight across the boards. Tender, uncanny. This is the Dark Hour, made horror: the sky a deep clotted blood red, a huge swollen moon the colour of an old bruise-red with a faint dark halo, everything else drowned in oxblood and near-black, shadows pooling like liquid, a fine drifting grain in the air; it should feel wrong, silent and dangerous, like something is watching from just outside the frame. Palette: blood red, oxblood and near-black with only a little bone-white light; no green anywhere, no pink, no blue, navy, indigo, purple or lilac; the rope is the one gold thing. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 8J. CG: waking at the bottom**  
-Solar wakes up somewhere new.  
-Attach: `CG - style (Solstice).png`, `Solar.png`, `BG - style (Tartarus).png`  
-Save as: `eqx-well-waking.png`
-```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Seen from straight above: Solar (the SAME girl as the attached Solar picture: same face, eyes and long black hair, worn loose and wet) in a thin black party dress and black tights with a ladder up one shin, lying on her back on a ring of wet black stone at the bottom of a deep round well, half in still black water that reflects a night sky with a huge moon, so she seems to float in the sky. Her eyes are open, looking straight up at us. Far above her face, a thick braided gold rope hangs down out of the dark, frayed, its end just out of reach. Palette rule: blood reds, oxblood and near-black with bone-white light; gold at most as one tiny accent (the rope is the one gold thing); no pink; no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 8K. CG: on the dorm steps**  
-The first night, upstairs.  
-Attach: `CG - style (Solstice).png`, `Hanni.png`, `Hyein.png`, `BG - Dorm Front at night.png`  
-Save as: `eqx-holders-wake.png`
-```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Two young women (the SECOND and THIRD attached people, same faces) sitting close together on the front steps of the dorm in the FOURTH attached image, at midnight, in sparkly party dresses with winter coats over them, snow melting on their shoulders though it isn't snowing here, holding hands tightly, looking up at the sky in shock. The building behind them dark. This is the Dark Hour, made horror: the sky a deep clotted blood red, a huge swollen moon the colour of an old bruise-red with a faint dark halo, everything else drowned in oxblood and near-black, shadows pooling like liquid, a fine drifting grain in the air; it should feel wrong, silent and dangerous, like something is watching from just outside the frame. Palette: blood red, oxblood and near-black with only a little bone-white light; no green anywhere, no pink, no blue, navy, indigo, purple or lilac; the rope is the one gold thing. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 8L. CG: the last frame**  
-The first night (one ending only).  
-Attach: `CG - style (Solstice).png`, `Minji.png`  
-Save as: `eqx-minji-frame.png`
-```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Over-the-shoulder close-up: a young woman's hands (the attached girl, only her hands, a sleeve and a strand of her hair visible) holding a small handheld camera, its flip-out screen showing a snowy city rooftop at night, and in the footage, a thin bright gold thread rising straight up out of the frame. Around the camera, out of focus, a dark street at midnight. This is the Dark Hour, made horror: the sky a deep clotted blood red, a huge swollen moon the colour of an old bruise-red with a faint dark halo, everything else drowned in oxblood and near-black, shadows pooling like liquid, a fine drifting grain in the air; it should feel wrong, silent and dangerous, like something is watching from just outside the frame. Palette: blood red, oxblood and near-black with only a little bone-white light; no green anywhere, no pink, no blue, navy, indigo, purple or lilac; the rope is the one gold thing. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
-
-**[ ] 8M. CG: "There you are."**  
-Someone climbs down.  
-Attach: `CG - style (Solstice).png`, `Haechan.png`, `Solar.png`  
-Save as: `eqx-there-you-are.png`
-```
-A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). At the bottom of a deep stone well: the young man from the SECOND attached image (same face and hair), soaked through, his dark jacket heavy with water, on one knee in black shin-deep water, looking up with a crooked tired grin, one hand held out toward the viewer. Behind him a thick frayed gold rope still swinging. We see him from Solar's point of view, her hand just entering the bottom of the frame reaching for his. Palette rule: blood reds, oxblood and near-black with bone-white light; gold at most as one tiny accent (the rope is the one gold thing); no pink; no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
-```
 
 **[ ] 8N. CG: the sun and the moon**  
 The first fight together.  

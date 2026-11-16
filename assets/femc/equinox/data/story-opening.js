@@ -77,7 +77,7 @@
   { id: 'eqx-register', date: '4/8', slot: 'morning', consumes: true, title: 'the register', place: 'Gekkoukan High · Classroom', time: 'Morning',
     cast: { solar: 'Solar', yukari: 'Yukari', junpei: 'Junpei', fuuka: 'Fuuka', aigis: 'Aigis', mitsuru: 'Mitsuru' },
     scene: [
-    { bg: 'gekkoukanhigh', music: 'school' },
+    { bg: 'eqx-courtyard-well-day', music: 'school' },
     { n: "The courtyard was full of first-years being nervous in clean uniforms, and cherry blossom coming down over all of it in the slow pink drifts that made everyone take the same photograph, and in the middle of it, where the bench and the vending machine had always been, there was a low ring of old gray stone set into the paving, mossy at the joins, with a rope of some kind coiled on its lip." },
     { n: "Nobody was looking at it. That was the thing she noticed first. A thousand students crossed that courtyard on the first morning of term and walked round the well the way you walk round a bollard, without breaking stride, without turning their heads, chatting, and the petals fell into it and didn't make a sound. She watched one go over the lip. It didn't float. It didn't land on anything. It just went on going down, turning, a little pink fleck getting smaller in the dark, until she lost it, and it was still going. Someone had put a little folding sign beside it that said, in neat characters, *Maintenance. Do not lean.*" },
     // BG: gekkoukan-courtyard-well-day — Gekkoukan's sunny courtyard in spring, cherry blossom falling, students in uniform walking past a low ring of old mossy stone set into the paving with a small folding maintenance sign beside it.
@@ -203,7 +203,7 @@
   { id: 'eqx-boarding-house', date: '4/9', slot: 'after', consumes: true, title: 'the boarding house', place: 'Iwatodai · The Oka Boarding House', time: 'After School',
     cast: { solar: 'Solar', mitsuru: 'Mitsuru', yunjin: 'Yunjin', koromaru: 'Koromaru', mrsoka: 'Mrs. Oka' },
     scene: [
-    { bg: 'outside-daytime-neighborhood', music: 'tender' },
+    { bg: 'eqx-oka-gate', music: 'tender' },
     // BG: oka-boarding-house-gate — an old two-storey wooden Japanese house behind a low gate on a quiet riverside street in spring, a persimmon tree in the garden and an old stone well with a heavy stone cap beside it.
     { n: "The Kirijo Group had found a boarding house. That was how Mitsuru said it at lunch, over the phone, in the voice she used for sentences she didn't fully believe: *the Group has found a boarding house, for the overflow,* and then, after a pause long enough that Solar checked the line was still there, *I'd like you to come and look at it with me.*" },
     { n: "Yunjin came because nobody could have stopped her. Koromaru came because Yunjin had his lead and didn't know how to say no to him, which was a thing nobody had warned her about dogs." },
@@ -229,7 +229,7 @@
     { s: 'solar', f: 'neutral', t: "By you?" },
     { s: 'mitsuru', f: 'serious', t: "By the Group. I'm told. I have a copy. I don't recognize the signature, and I've asked three people in the Group's property office, and none of them remember drafting it, and all of them, very quickly, remembered that they must have." },
     { n: "She said it calmly. She said it the way she'd said *in case* at two in the morning, and Solar looked at her profile against the old dark wood of the house and thought she had never once seen Mitsuru Kirijo arrive somewhere she hadn't arranged." },
-    { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'iwatodaidorm-kitchen', soft: true },
+    { place: 'The Oka Boarding House · Kitchen', time: 'After School', bg: 'eqx-oka-kitchen', soft: true },
     // BG: oka-boarding-house-kitchen — a warm old-fashioned Japanese farmhouse kitchen with a long wooden counter, steam from a pot, a tin of rice cakes on the counter, a window onto a garden with a persimmon tree.
     { n: "The front door was open before they reached it. Not swung open. Just open, as if it had been left that way for them, and from somewhere inside came warm air, and steam, and the smell of something sweet and toasted, rice and sugar and sesame, and a woman's voice, calling, cheerful, from a room they couldn't see." },
     { n: "It was warm inside. Very warm, the close, still warmth of a house where the windows haven't been opened in a long time, and quiet in a way that took Solar a moment to place. The river was thirty steps from the gate. In here you couldn't hear it. You couldn't hear the street, or the dry cleaner's steam press, or a single bird in the persimmon tree. Only the pot on the stove, ticking as it heated, and the floor taking their weight." },

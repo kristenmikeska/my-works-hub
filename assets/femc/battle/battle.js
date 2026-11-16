@@ -90,7 +90,7 @@
   const yen = n => `¥${Math.round(n).toLocaleString('en-US')}`;
   const SHADOW_DIR = 'assets/femc/battle/art/shadows/';
   /* Battle art version: bump when the Shadow / Persona art in assets/femc/battle/art/ is regenerated, so browsers refetch it. */
-  const ART_V = 60;
+  const ART_V = 61;
   /* Status art (tools/femc-icons.py): sticker icons for the ailments and the buff / debuff arrows, and the Tartarus map's room
      glyphs. A status chip shows its icon in place of the old name or ATK / DEF / AGI text (the name stays in its title). */
   const ICON_DIR = 'assets/femc/battle/art/icons/';
@@ -5408,7 +5408,7 @@
      A spec can add `join: [ids]` (a searcher who has just awakened is put in the party for that fight). Segment 1 of a
      two-part memory floor ends with 'interrupt' (the scene then plays the awakening) and can't be lost. ── */
   const BGP = 'assets/femc/bg/';
-  const ART_HAS_WELL = false; // flip when Kat's eqx-well-bottom.webp is in assets/femc/bg/
+  const ART_HAS_WELL = true; // Kat's eqx-well-bottom.webp (Equinox art batch 2, Nov 15)
   const TBG = i => D.blocks[Math.min(i, D.blocks.length - 1)].bg;
   const SEG1 = (at, foeHp = 0.5) => ({ protect: true, noEscape: true, interruptAt: at, interruptFoeHp: foeHp, interruptHp: 0.35 });
   // A memory floor: one boss (plus any Shadows at its side: pass an array, boss first), two segments when someone awakens

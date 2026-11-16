@@ -48,10 +48,12 @@ window.FEMC_GAME_PROLOGUE = {
           { n: "At the end of the second-floor hall there was a room they had kept made up since March. The bed square. The uniform in the closet with the ribbon folded over the hanger. Nobody had decided to keep it. It was just that nobody had decided not to, and every week somebody ran the vacuum in there and opened the window for an hour and shut it again, and nobody said who, and nobody asked." }
         ] },
         // CG: eqx-room-light — an empty, neatly made-up dorm bedroom at the end of a dark hallway, door half open, its desk lamp on by itself, dark red moonlight at the window.
+        { cg: 'eqx-room-light' },
         { n: "At midnight, its light came on." },
         { n: "Nobody touched it. The lamp on the desk clicked, and the bulb warmed from orange to white, and the light came out under the half-open door and lay down the hall in a long pale stripe like something set out on purpose for someone to walk on." },
         { n: "Then the hour came, and it was red." },
         { n: "It came the way it used to, all at once and without asking, the hum of the refrigerator cutting off mid-breath, the clock over the television stopping with its hand on the twelve, the streetlights outside going out in a line all the way down the hill, and the sky outside every window turning red. Not the green they knew. A deep, clotted red, the red under a bandage, rust and wine and something worse, around a moon that was far too big and the wrong color, dark as liver. For a year it hadn't come. When it had come, it had come green. The building remembered how to brace for the green. It didn't know what to do with this." },
+        { cg: null },
         { dark: true },
         { music: 'badfeeling' },
         { n: "In the red, the dorm made a sound it had never once made before. A long, slow creak, top floor to bottom, every board in turn, the way a house settles in a storm. Except there was no storm. It sounded like a house shifting its weight to listen." },
@@ -60,9 +62,11 @@ window.FEMC_GAME_PROLOGUE = {
           { n: "He didn't remember getting up. He was standing in the middle of his room with his hands in fists and his heart going like the last round, and the window was red, and he didn't know why. The red was wrong. He knew that much the way you know a stair is missing in the dark: the hour was over, and when it had been anything, it had been green, and it was neither. There was nothing in the room. There was nothing in the hall. He'd been dreaming about a rope, maybe, or a girl, or a girl holding a rope, and it had gone out of his head the way dreams go, all at once, like water through fingers." },
           { n: "His gloves were on the desk where he'd thrown them after practice. He picked one up without knowing why, for something to hold, and something fell out of it onto the floor." },
           // CG: eqx-ribbon-glove — a boy's hand in dark red moonlight holding a red boxing glove, a small pink ribbon fallen out of it onto the floorboards.
+          { cg: 'eqx-ribbon-glove' },
           { n: "A ribbon. Pink, narrow, the kind you'd tie the end of a braid with. It wasn't his. It wasn't anyone's he knew. He bent and picked it up and it was warm, warm like it had been in someone's hand a second ago, and the second his fingers closed on it he remembered." },
           { n: "Everything. All of it. All at once, the way you remember you've left the stove on, a year of it landing on him like the floor coming up. The tower. The girl with no surname in the room at the end of the hall. The last train. The roof. Her name." },
           { n: "He sat down on the floor because his legs had made the decision for him, and held the ribbon, and found he was breathing like he'd gone twelve rounds." },
+          { cg: null },
           { s: 'akihiko', f: 'sad-2', t: "...How did I forget you." },
           { s: 'akihiko', f: 'serious', t: "How did *we*— Solar. *Solar.*" },
           { n: "He was up and out the door before he'd finished saying it, and the light at the end of the second-floor hall was on, and the room was empty, and he stood in the doorway in the red with a ribbon in his fist and understood, the way you understand a punch after it lands, that she hadn't come back to it. Something had just told him she was gone." }
@@ -81,15 +85,17 @@ window.FEMC_GAME_PROLOGUE = {
     ] },
 
     { away: false },
-    { place: 'The Well · The Bottom', time: 'The Dark Hour', bg: 'tartarus-monad', music: 'mystery' },
+    { place: 'The Well · The Bottom', time: 'The Dark Hour', bg: 'eqx-well-bottom', music: 'mystery' },
     { dateGlitch: true }, // nobody knows what day it is: the date box can't settle until the lounge
     // BG: well-bottom — the bottom of a deep round stone shaft, a ring of wet black stone around still water that reflects a dark red night sky and a huge red moon, a frayed gold rope hanging down out of the dark above.
     // CG: eqx-well-waking — Solar lying on her back on wet stone at the bottom of a well, a reflected night sky in the water around her, a gold rope hanging far above her face.
+    { cg: 'eqx-well-waking' },
     { n: "The first thing was the cold, and she knew it." },
     { n: "That was what made her open her eyes. Not the cold itself, which came up through the stone into her shoulder blades and the backs of her knees, wet and old, the cold of a place that had never once in its life been warm. It was the knowing. She had woken up in the cold before. She had woken up on a floor in the dark with nothing in her pockets and nothing in her head, once, a year ago, or a lifetime, and she remembered it, and that was the first thing she'd ever remembered on waking that she hadn't had to be told." },
     { n: "She was lying in a ring of black stone, curved, slick, the kind of stone that's been wet so long it's forgotten how to be dry, and when she turned her head there was water an inch from her cheek, flat and still and perfectly black, and in the water there was the sky." },
     { n: "Not a reflection of a sky above her. She looked up, and above her was dark, just dark, a long shaft of it going up and up into nothing. The sky was underneath. In the water, under the stone, under her, a night sky the color of a clot, dark rust-red going black at the edges, with a moon in it far too big to be any moon she'd ever looked at, swollen and red as an eye that hasn't slept, so that lying there she had the unsteady, swimming feeling of being on the ceiling of the world, looking down into something's face." },
     { n: "Red. Her stomach turned over slowly, before she let herself think the word. The hour she knew was green. She had lived in the green for a year, fought in it, been carried home through it half-asleep on somebody's back. She had never once seen it this color. It looked like the same room with the lights changed, and the sameness was the worst part, the way a familiar face is worst when one thing about it is wrong." },
+    { cg: null },
     { n: "She sat up. Slowly. Her body suggested slowly, and she listened to it, because she knew that too, now. She knew a great many things." },
     { n: "The first one that came back wasn't her name." },
     { ifFlag: 'eqx-from-runners-haechan', then: [
@@ -181,6 +187,7 @@ window.FEMC_GAME_PROLOGUE = {
     { away: true },
     { place: 'Iwatodai Dorm · Front Steps', time: 'The Dark Hour', bg: 'iwatodaidorm-front-night', music: 'mystery' },
     // CG: eqx-holders-wake — two young women in party dresses and winter coats sitting on the front steps of a dormitory at night under a dark red sky, snow melting on their shoulders, holding hands.
+    { cg: 'eqx-holders-wake' },
     { n: "Up in the town, in the red, people who weren't coffins were waking up." },
     { n: "Everyone else was a coffin. They stood where people had been, on the pavements and at the bus stop and in the doorway of the konbini, upright and black, the way they always had in the hour. They'd only ever looked like furniture. In the red they looked wet. They shone. And every one of them, Hanni noticed, and wished she hadn't, was turned to face the same way: across the water, toward the island, toward the school, like a crowd at a door waiting for something to come out." },
     { n: "Hanni Pham woke sitting on the front steps of a dormitory she knew, with her best friend's hand in hers and snow on her shoulders that had fallen somewhere else. It melted while she watched it. Her dress was the one she'd worn to a party on the other side of an ocean, black, too thin for April, and her tights had a ladder up one shin that hadn't been there at eleven fifty-nine, and the air smelled of salt and old pennies instead of cold and champagne, and she knew exactly where she was." },
@@ -197,6 +204,7 @@ window.FEMC_GAME_PROLOGUE = {
     ] },
     { n: "Hanni turned her head and looked up at the dorm, at the second floor, at the one window that was lit, gold, in a building where every other light had gone out. She didn't say anything. She didn't have to. Hyein followed her eyes and made a small sound, the kind you make when you put your weight on an ankle you thought was fine." },
 
+    { cg: null },
     { place: 'Iwatodai · Riverside', time: 'The Dark Hour', bg: 'iwatodai-riverside-night', soft: true },
     { n: "Huh Yunjin woke on her feet by the river with her hands closed on nothing, and said, before she knew she was awake, in the low gravel voice she only used when nobody was supposed to be listening," },
     { s: 'yunjin', f: 'sad', t: "Sol." },
@@ -234,8 +242,10 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "She didn't stop it. That was the first thing she thought about, later: that she hadn't, even for a second, thought about stopping it. She turned it in her hands and looked at the screen, at the clip still running, the last thing it had seen before the red came, and played it back with her thumb, slow, frame by frame, the way she checked everything." },
     { ifFlag: 'eqx-from-runners-minji', then: [
       // CG: eqx-minji-frame — a camera's small screen held in two hands, showing a snowy rooftop at night and a thin gold thread rising straight up out of the frame.
+      { cg: 'eqx-minji-frame' },
       { n: "The roof. The snow. Her own breath fogging the corner of the lens. And going up out of the top of the frame, thin as a hair and gold, straight up, where nothing should have been, a thread. It was in every frame. It was in every frame after she was gone." },
-      { s: 'minji', f: 'serious', t: "...I've got you. I've got where you went." }
+      { s: 'minji', f: 'serious', t: "...I've got you. I've got where you went." },
+      { cg: null }
     ], else: [
       { n: "Nothing she could use. Snow, and dark, and a blur of light, and then red, all at once, as if the lens had been dipped in wine. She played it again anyway. Then again. It was something to do with her hands." }
     ] },
@@ -297,7 +307,7 @@ window.FEMC_GAME_PROLOGUE = {
       { n: "He didn't say what figured. Below him, in the car park, the coffins of the night shift stood in a loose ring round an ambulance with its doors open, and every one of them was turned toward the bay. He stood there and held the railing and watched the school, and didn't go back down, because he didn't think he could, and because somebody had to watch." }
     ] },
 
-    { place: 'The Well', time: 'The Dark Hour', bg: 'tartarus-zebul', music: 'badfeeling' },
+    { place: 'The Well', time: 'The Dark Hour', bg: 'eqx-well-shaft', music: 'badfeeling' },
     // BG: well-shaft — the inside of a deep round shaft of old wet stone seen from halfway down, a gold rope running down the middle of it into the dark, faint red light far below.
     { n: "Lee Donghyuck woke halfway down a rope." },
     { n: "Not on the ground somewhere, like a reasonable person. Not on the dorm steps, which was where, if anyone had asked him, and nobody ever did, he'd have put money on waking up. He came to with his hands burning and his knees locked round a braid of something that was warm and faintly gold in the dark and humming very slightly against his palms like a power line, and under his shoes there was nothing at all, and over his head there was nothing either, just stone going up into black and stone going down into black and him in the middle of it, hanging." },
@@ -311,11 +321,12 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "He stopped looking at the walls." },
 
     { away: false },
-    { place: 'The Well · The Bottom', time: 'The Dark Hour', bg: 'tartarus-monad', music: 'badfeeling', soft: true },
+    { place: 'The Well · The Bottom', time: 'The Dark Hour', bg: 'eqx-well-bottom', music: 'badfeeling', soft: true },
     { n: "Something came down the rope, and it was swearing." },
     { n: "She heard it before she saw it. Rough, breathless, in two languages at once, and then a long scraping slither and a grunt, and then a body dropped the last few feet out of the dark and landed in the black water beside her with a splash that broke the sky in it into a hundred red pieces." },
     { n: "He came up on one knee, soaked to the waist, hair in his eyes, both palms red and raw from the rope. He looked at the Shadows. He looked at Haenim, pink and gold and flickering over her shoulder. Then he looked at her, and his whole face did a thing she had seen it do before, in a doorway, on a rooftop, across a tower floor with no Evoker in his hands, the thing where it stopped performing anything at all." },
     // CG: eqx-there-you-are — a soaked young man on one knee in black water at the bottom of a stone well, looking up at Solar with his hand out, a frayed gold rope swinging behind him.
+    { cg: 'eqx-there-you-are' },
     { s: 'haechan', f: 'sad', t: "...There you are." },
     { n: "Her throat closed. She'd heard him say that once before, in a different hour, a green one, when she hadn't known who he was. She knew now. She knew all of him, every version, and he knew her, and it went through her like heat from a door opened in winter." },
     { ifFlag: 'eqx-from-runners-haechan', then: [
@@ -369,6 +380,7 @@ window.FEMC_GAME_PROLOGUE = {
         { s: 'haechan', f: 'serious', t: "Ask me again when we're not in a hole." }
       ] }
     ] },
+    { cg: null },
     { n: "The water bulged. Six of them now, seven, the painted mothers' faces rising out of the black in a ring, every one of them smiling, every one of them with a hand out." },
     { s: 'haechan', f: 'serious', t: "...Okay, who are *those*. Why do they look like that. Why do they look like somebody's mom." },
     { s: 'solar', f: 'serious', t: "I don't know. They want something." },
@@ -409,7 +421,7 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "She didn't look down. She knew what was down there. She could feel it, the way you can feel someone watching you leave a room." },
     { n: "Then there was air on her face that smelled of grass and salt, and red light, and a circle of sky above them, the right way up, with a moon in it." },
 
-    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'darkhour-gekkoukan-gate', music: 'mystery' },
+    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'eqx-courtyard-well-night', music: 'mystery' },
     // BG: gekkoukan-courtyard-well-night — Gekkoukan High's paved courtyard in the Dark Hour, dark red sky and huge red moon, a ring of old mossy stone set into the paving where nothing stood before, a gold rope trailing out of it over the edge.
     { n: "Sanada Akihiko got to the school at twenty-six minutes past twelve, against orders, alone, again." },
     { n: "He knew it was against orders because there hadn't been time for any. That had never once stopped them being against orders. He came over the front gate instead of through it and dropped into the yard and ran, past the shoe lockers and round the side of the building where the courtyard opened up, and stopped so hard his shoes skidded on the paving." },
@@ -425,7 +437,7 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "Her hand. Coming up out of the dark, white-knuckled on the rope, the other one locked in Haechan's grip at the wrist." },
     { n: "Akihiko reached in and took her other wrist." },
     // CG: eqx-well-mouth — two young men at the stone lip of a well in a red-lit school courtyard at night, each gripping one of Solar's wrists, pulling her up out of the dark between them.
-    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'darkhour-gekkoukan-gate', soft: true },
+    { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'eqx-courtyard-well-night', soft: true },
     { n: "She came up out of the dark with a hand on each wrist, and she knew both hands, and that was almost the worst part." },
     { n: "Two boys pulling one girl out of a well. She had a very clear thought, coming over the stone lip on her stomach with her knees scraping and her wet clothes dragging, that this was the wrong way round. That every time anyone had held on to her, it had been to keep her, and she had gone anyway, out of their hands like water. This time they were pulling, and she was coming." },
     { n: "She landed on the flagstones on her hands and knees. Nobody let go of her. Not for a long moment. She knelt there between them on the paving in the red with her hair dripping and a wrist in each of their hands and her heart going so hard she could hear it, and neither of them let go first, and she understood, slowly, that neither of them was going to." },
