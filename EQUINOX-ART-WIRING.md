@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## 15. Later
+## 16. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -148,3 +148,34 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
   - 14I `eqx-three-bowls` ← `trio.js`, comment `// CG: eqx-three-bowls`
   - 14J `eqx-callouts` ← `fuuka-chenle.js`, comment `// CG: eqx-callouts`
   - 14K `eqx-the-club` ← `hateclub.js`, comment `// CG: eqx-the-club`
+
+## 15. Act III and the third meetings
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V. Where a slug has no `eqx-` prefix the saved file gets one (e.g. `oka-hall-redhour` → `eqx-oka-hall-redhour`).
+- Item → file and comment (under `assets/femc/equinox/data/`):
+  - 15A `eqx-oka-tatami-room` ← `story-act3.js`, comment `// BG: oka-tatami-room`
+  - 15B `eqx-funeral-hall` ← `story-act3.js`, comment `// BG: eqx-funeral-hall`
+  - 15C `eqx-hydrofoil` ← `story-act3.js`, comment `// BG: eqx-hydrofoil`
+  - 15D `eqx-incheon-empty-lot` ← `story-act3.js`, comment `// BG: eqx-incheon-empty-lot`
+  - 15E `eqx-riverside-obon` ← `story-act3.js`, comment `// BG: eqx-riverside-obon`
+  - 15F `eqx-oka-hall-redhour` ← `story-act3.js`, comment `// BG: oka-hall-redhour`
+  - 15G `eqx-oka-dining-room-redhour` ← `story-act3.js`, comment `// BG: oka-dining-room-redhour`
+  - 15H `eqx-oka-dining-room-morning` ← `story-act3.js`, comment `// BG: oka-dining-room-morning`
+  - 15I `eqx-konbini-day` ← `story-act3.js`, comment `// BG: eqx-konbini-day`
+  - 15J `eqx-faculty-office` ← `story-act3.js`, comment `// BG: eqx-faculty-office`
+  - 15K `eqx-tsukimi` ← `story-act3.js`, comment `// BG: eqx-tsukimi`
+  - 15L `eqx-wheel` ← `story-act3.js`, comment `// CG: eqx-wheel`
+  - 15M `eqx-three-cards` ← `story-act3.js`, comment `// CG: eqx-three-cards`
+  - 15N `eqx-long-table-six` ← `story-act3.js`, comment `// CG: eqx-long-table-six`
+  - 15O `eqx-surname-box` ← `story-act3.js`, comment `// CG: eqx-surname-box`
+  - 15P `eqx-hanne-page` ← `story-act3.js`, comment `// CG: eqx-hanne-page`
+  - 15Q `eqx-bridge-rail` ← `story-act3.js`, comment `// CG: eqx-bridge-rail`
+  - 15R `eqx-shoes` ← `story-act3.js`, comment `// CG: eqx-shoes`
+  - 15S `eqx-walking-home` ← `story-act3.js`, comment `// CG: eqx-walking-home`
+  - 15T `eqx-glove` ← `story-act3.js`, comment `// CG: eqx-glove`
+  - 15U `eqx-there-there` ← `story-act3.js`, comment `// CG: eqx-there-there`
+  - 15V `eqx-rain-hangs` ← `links/haechan.js`, comment `// CG: eqx-rain-hangs`
+  - 15W `eqx-by-winter` ← `links/shinjiro.js`, comment `// CG: eqx-by-winter`
+  - 15X `eqx-under-the-towel` ← `links/akihiko.js`, comment `// CG: eqx-under-the-towel`
+  - 15Y `eqx-one-line` ← `links/jungwon.js`, comment `// CG: eqx-one-line`
+  - 15Z `eqx-cough-drops` ← `links/jihoon.js`, comment `// CG: eqx-cough-drops`
+  - 15AA `eqx-one-second` ← `links/minji.js`, comment `// CG: eqx-one-second`
