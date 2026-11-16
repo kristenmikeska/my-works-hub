@@ -47,3 +47,7 @@
   .g-sl-fig img.pair.p0 { translate: -12vw 0; }
   .g-sl-fig img.pair.p1 { translate: 12vw 0; }
 }
+
+/* The Go Out map: Kat's painted map is Solstice pink; in Equinox it's bled to red and darker (the pins stay on top, unfiltered). */
+.g-city.has-art .g-city-map { background: none; }
+.g-city.has-art .g-city-map::before { content: ''; position: absolute; inset: 0; background: var(--art) center / cover no-repeat; filter: hue-rotate(24deg) saturate(1.25) brightness(.78) contrast(1.08); pointer-events: none; }

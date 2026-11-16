@@ -7,7 +7,7 @@
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'mrsoka', name: 'Mrs. Oka', short: 'Mrs. Oka', arcana: 'Empress', numeral: 'III', from: 'Iwatodai', kind: 'native',
   romance: null, starts: '4/9', lodging: 'boarding',
-  home: { area: 'strip', spot: 'The Oka Boarding House', slot: 'after', days: [0, 1, 2, 3, 4, 5, 6],
+  home: { area: 'okahouse', spot: 'The Kitchen', slot: 'after', days: [0, 1, 2, 3, 4, 5, 6],
           hint: 'Afternoons at the boarding house on the river side of Iwatodai, where the kettle is always on.' },
   approach: "Down on the river side, past the shrine, there's an old wooden house behind a low gate, and a woman in an apron and white cotton gloves kneeling under the persimmon tree in the garden, who looks up as you pass as if she'd been expecting you since lunch.",
   cast: { mrsoka: 'Mrs. Oka' },

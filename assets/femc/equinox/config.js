@@ -49,6 +49,8 @@ window.FEMC_GAME_CONFIG = {
     const well = kind === 'tartarus' || /^eqx-well/.test((req && req.script) || '');
     return `assets/femc/equinox/art/loading-${well ? 'well' : 'between'}.webp?v=1`;
   },
+  // Go Out map pins for Equinox's own areas (data/places-extra.js), in % of the map art.
+  mapPins: { okahouse: { x: 24, y: 24, l: 1 } },
   titlePage: 'femc-equinox.html',
   startKey: 'kg-femc-equinox-start',
   titleScreen() {

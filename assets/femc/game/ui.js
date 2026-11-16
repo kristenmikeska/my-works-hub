@@ -1217,6 +1217,7 @@
     mall: { x: 64, y: 50, l: 1 },
     port: { x: 70.5, y: 66, l: 1 },
   };
+  Object.assign(MAP_PINS, G.CFG.mapPins || {}); // another game's extra places (Equinox: the Oka boarding house)
   const pinAt = (id, k) => MAP_PINS[id] || { x: 8 + (k % 7) * 8, y: 93 };
   // Kat's painted map (Oct 31, 1672×941 from New Adds; tools/femc-new-adds.json): the files that exist, by name (listed here so
   // a missing file never 404s). Replacing one: same name, bump MAP_ART_V. The evening map falls back to the day one, darkened;
