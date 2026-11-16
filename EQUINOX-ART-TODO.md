@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **93 pictures plus the face sets.** More is coming later (section 14: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces.*
+**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: 19 characters, a portrait plus six expressions each) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **104 pictures plus the face sets.** More is coming later (section 15: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces.*
 
 ---
 
@@ -824,7 +824,99 @@ A wide 16:9 story CG illustration in Persona 3 Reload official art style, matchi
 ```
 
 ---
-## 14. Later (no prompts yet)
+## 14. The summer arrivals (backgrounds in Gemini, CGs in ChatGPT)
+Art for the first Social Link scenes of the summer arrivals, all written and playable now. Until a picture exists the game shows a stand-in background and no CG, so nothing breaks. Every item matches a `// BG:` or `// CG:` comment in the story files. Backgrounds go to Gemini; CGs (anything with a person or a thing held) to ChatGPT. Equinox's Dark Hour is red, never green. Solar's clothes are only a suggestion.
+
+**[ ] 14A. Background: behind the shrine, on the flat stones**  
+Summer shade.  
+Attach: `BG - style (Tartarus).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-naganaki-flat-stones.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the back of a small Shinto shrine in summer, a row of wide flat stepping stones under old camphor trees with dark oxblood-red foliage, dappled shade, a stone lantern furred with moss in dull rust and brown, cicada-loud, the sky a flat dull red-white. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 14B. Background: the old house's front hall at night**  
+A lamp at the far end.  
+Attach: `BG - style (Tartarus).png`, `BG - Lee House Dining Room.png`  
+Save as: `eqx-oka-front-hall-night.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the narrow front hall of an old Japanese house at night, a row of wooden coat hooks over a low shelf, one small white saucer on the shelf, a lamp lit at the far end of the hall, a kitchen door ajar. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 14C. Background: the club's side door in summer**  
+A velvet rope and a stool.  
+Attach: `BG - style (Tartarus).png`, `BG - Paulownia Mall.png`  
+Save as: `eqx-clubescapade-door-summer.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the side entrance of a nightclub inside a shopping mall on a humid summer evening, a velvet rope on brass posts, an empty stool where a doorman sits, deep red light spilling from the doorway onto the tiled floor. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 14D. Background: the far end of the overpass at dusk**  
+One lamp lit at a gate.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-iwatodai-overpass-east-dusk.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the far end of a glass station overpass at dusk under a flat dull red-white sky, looking down over low rooftops toward a river and a narrow street lined with old houses, one lamp lit at a gate. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 14E. CG: stretching on a flat stone**  
+A cat on the next stone.  
+Attach: `CG - style (Solstice).png`, `Body - Kazuha (Equinox).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-three-floors.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A young woman (the SECOND attached person, same face and hair) in practice clothes stretching on a wide flat stone behind a shrine in summer shade (the THIRD attached image), one arm curved overhead in a ballet line, a small cat sitting on the next stone watching her, sunlight coming through dark red-brown camphor leaves. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 14F. CG: the tally book at the rope**  
+Three handwritings.  
+Attach: `CG - style (Solstice).png`, `Body - Chaewon (Equinox).png`  
+Save as: `eqx-headcount.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A young woman (the SECOND attached person, same face and hair) in a temporary staff lanyard at a nightclub's velvet rope at night, a chrome hand counter in one fist and a small open notebook in the other, its page ruled with tally marks in three visibly different handwritings, deep red light from the doorway behind her. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 14G. CG: a phone full of winters**  
+A soda can on the step.  
+Attach: `CG - style (Solstice).png`  
+Save as: `eqx-camera-roll.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). A phone screen held in two hands on a station's stone steps (hands and phone only, no faces), a grid of photos from three different winters shuffled together (a snowy college quad, a Korean school hallway with a camera on a tripod, a dance studio with a cracked mirror and an orange heater), an orange soda can sweating on the step beside it. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 14H. CG: two boys and two tambourines**  
+Singing at each other.  
+Attach: `CG - style (Solstice).png`, `Jaemin (Runners NYE).png`, `CG - Sunoo (HOAX).png`, `BG - Incheon Karaoke.png`  
+Save as: `eqx-two-suns.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Two young men (the SECOND and THIRD attached people, same faces and hair) in a karaoke booth (the FOURTH attached image) lit by a broken disco ball and a huge screen of falling rain, one standing on the couch and one on the table among plates, both with tambourines, singing at each other across the room, both laughing; the light in the booth glowing red. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 14I. CG: three bowls at the counter**  
+Towels round their necks.  
+Attach: `CG - style (Solstice).png`, `Body - Jay.png`, `Body - Niki.png`, `Body - Sunghoon.png`  
+Save as: `eqx-three-bowls.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Three young men (the SECOND, THIRD and FOURTH attached people, same faces and hair) in a row at a steaming ramen counter in summer, towels round their necks, the first (Jay) tasting broth from a little spoon with his eyes closed, the second (Niki) laughing with the old cook across the counter, the third (Sunghoon) sitting sideways on his stool with his back to the wall watching the door. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 14J. CG: one pen, two hands**  
+A hand-drawn map on every screen.  
+Attach: `CG - style (Solstice).png`, `Fuuka.png`, `Chenle.png`  
+Save as: `eqx-callouts.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Two young people (the SECOND and THIRD attached people, same faces and hair) at a desk in a dim cold room full of monitors, all screens showing the same hand-drawn ballpoint map of a small town in red and black, the girl (Fuuka) with headphones round her neck and the boy (Chenle) in a grey hoodie with his glasses pushed up into his hair both reaching for the same pen. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 14K. CG: four boys waiting at the arcade**  
+All turned toward the door.  
+Attach: `CG - style (Solstice).png`, `CG - Junkyu (HOAX).png`, `CG - Jaehyuk (HOAX).png`, `Asahi (HOAX).png`, `Hyunsuk (HOAX).png`  
+Save as: `eqx-the-club.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Four young men (the SECOND to FIFTH attached people, same faces and hair) in the back of an arcade lit by red neon, one on a dance machine, one at a fighting cabinet, one holding a plastic light gun, one standing very still in front of a crane machine full of plush toys, all four of them turned toward the arcade's entrance as if waiting for someone. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+---
+## 15. Later (no prompts yet)
 These come once the story parts that need them are written. Counts are rough.
 
 - **Story CGs:** about 40 to 50

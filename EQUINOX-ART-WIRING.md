@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## 14. Later
+## 15. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -134,3 +134,17 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
   - 13AI `eqx-yukari-strip` ← `links/yukari.js`, comment `// CG: eqx-yukari-strip`
   - 13AJ `eqx-warm-step` ← `links/jaehyun.js`, comment `// CG: eqx-warm-step`
 
+## 14. The summer arrivals' first meetings
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name (14B's scene currently uses the stand-in `eqx-oka-kitchen`); at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V.
+- Item → file and comment (all under `assets/femc/equinox/data/links/`):
+  - 14A `eqx-naganaki-flat-stones` ← `kazuha.js`, comment `// BG: naganaki-flat-stones`
+  - 14B `eqx-oka-front-hall-night` ← `kazuha.js`, comment `// BG: oka-front-hall-night`
+  - 14C `eqx-clubescapade-door-summer` ← `chaewon.js`, comment `// BG: clubescapade-door-summer`
+  - 14D `eqx-iwatodai-overpass-east-dusk` ← `danielle.js`, comment `// BG: iwatodai-overpass-east-dusk`
+  - 14E `eqx-three-floors` ← `kazuha.js`, comment `// CG: eqx-three-floors`
+  - 14F `eqx-headcount` ← `chaewon.js`, comment `// CG: eqx-headcount`
+  - 14G `eqx-camera-roll` ← `eunchae.js`, comment `// CG: eqx-camera-roll`
+  - 14H `eqx-two-suns` ← `jaemin-sunoo.js`, comment `// CG: eqx-two-suns`
+  - 14I `eqx-three-bowls` ← `trio.js`, comment `// CG: eqx-three-bowls`
+  - 14J `eqx-callouts` ← `fuuka-chenle.js`, comment `// CG: eqx-callouts`
+  - 14K `eqx-the-club` ← `hateclub.js`, comment `// CG: eqx-the-club`
