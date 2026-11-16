@@ -16,7 +16,9 @@ window.FEMC_GAME_FLAGS = {
   doors: [],
   doorScenes: {},
   counters: ['cakes', 'choose', 'asked', 'doors.R', 'doors.S', 'doors.H'],
-  choices: ['asks.solar.supper', 'asks.solar.smile', 'asks.solar.tide', 'asks.solar.vp'],
+  choices: ['asks.solar.supper', 'asks.solar.smile', 'asks.solar.tide', 'asks.solar.vp',
+    // Romance rank 3s (data/links/<id>.js): each link's own ask, 'yes' / 'no' / 'choose'.
+    'asks.akihiko', 'asks.shinjiro', 'asks.jungwon', 'asks.jihoon', 'asks.minji'],
   hooks: ['eqx-supper-stayed', 'eqx-supper-mine', 'eqx-asked-hyein', 'eqx-choose-hyein', 'eqx-hill1-smiled', 'eqx-hill1-mine',
     'eqx-door-R1', 'eqx-home-R1', 'eqx-away-R1', 'eqx-watch-R1',
     // Act II (data/story-act2.js): the owed Act I doors (S1, H1), Act II's doors (S2, R2, H2), the hills' asks, the ghost
@@ -25,8 +27,13 @@ window.FEMC_GAME_FLAGS = {
     'eqx-door-S2', 'eqx-home-S2', 'eqx-away-S2', 'eqx-watch-S2', 'eqx-door-R2', 'eqx-home-R2', 'eqx-away-R2', 'eqx-watch-R2',
     'eqx-door-H2', 'eqx-home-H2', 'eqx-away-H2', 'eqx-watch-H2',
     'eqx-hill2-sat', 'eqx-hill2-mine', 'eqx-hill3-signed', 'eqx-hill3-mine', 'eqx-asked-house', 'eqx-choose-house',
-    'eqx-ghost-junpei', 'eqx-ghost-minji', 'eqx-ghost-ken', 'eqx-bridge-name', 'eqx-shinjiro-back', 'eqx-lsrfm-here'],
+    'eqx-ghost-junpei', 'eqx-ghost-minji', 'eqx-ghost-ken', 'eqx-bridge-name', 'eqx-shinjiro-back', 'eqx-lsrfm-here',
+    // Romance rank 3s.
+    'eqx-asked-akihiko', 'eqx-hc-stayed-night'],
   cosmetic: ['eqx-flour-wiped', 'eqx-flour-shown', 'eqx-gw-ate', 'eqx-gw-left', 'eqx-gw-dog', 'eqx-tale-tiger',
-    'eqx-shin-tin', 'eqx-mark-fifth', 'eqx-wish-home', 'eqx-wish-here', 'eqx-wish-blank', 'eqx-jihoon-roof'],
+    'eqx-shin-tin', 'eqx-mark-fifth', 'eqx-wish-home', 'eqx-wish-here', 'eqx-wish-blank', 'eqx-jihoon-roof',
+    // Romance rank 3s.
+    'eqx-hc-note-kept', 'eqx-aki-gate-kiss', 'eqx-shinji-pan', 'eqx-shinji-sink-kiss', 'eqx-jw-locked-door', 'eqx-jihoon-canal-kiss',
+    'eqx-minji-on-tape', 'eqx-minji-turned'],
   endingName: () => 'here'
 };

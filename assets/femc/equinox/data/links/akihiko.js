@@ -1,7 +1,9 @@
 /* Persona 3: Equinox · Akihiko Sanada · XVII The Star. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–2 (rank 1 from 4/13, rank 2 from 4/21, both the Port Island pier after school; rank 2 branches on
-   eqx-flour and eqx-golden-week). Ranks 3–15 still to write. Rank 2 flags (nothing reads them yet): eqx-aki-strip,
+   Written: ranks 1–3 (rank 1 from 4/13, rank 2 from 4/21, both the Port Island pier after school; rank 2 branches on
+   eqx-flour and eqx-golden-week). Ranks 4–15 still to write. Rank 3 (from 6/2, the pier in the rain; branches on eqx-bridge,
+   eqx-snow-again, eqx-last-grain) records his ask: tally asks.akihiko (+ cakes / choose / asked), flags eqx-asked-akihiko,
+   eqx-aki-gate-kiss. Rank 2 flags (nothing reads them yet): eqx-aki-strip,
    eqx-aki-lamp-kiss. Speaker without a portrait: fisherman.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Solstice's ranks are shared memory here; nothing reads Solstice link standing. */
@@ -271,6 +273,121 @@
       ] },
       { n: "He walked her to the station. At the gates he took the stopwatch out of his pocket, the yellow one, and pressed it once, to zero, and put it in her blazer pocket without asking, and walked away before she could give it back." },
       { n: "On the train she put her hand in her pocket and found it there, and found that he'd stuck a strip of white tape across the back of it, and written on the tape in his square capitals, very small, not a time. A date. Tomorrow's." }
+    ] },
+    { after: '6/2', title: '3: the letter', place: 'Port Island · Pier', time: 'After School', music: 'tender', scene: [
+      { bg: 'port-island-pier' },
+      { n: "It was raining on the pier, the fine gray June rain that didn't so much fall as hang about, and he was running in it anyway, because of course he was, and he was the only thing moving on the whole three hundred and twelve meters except the gulls, who had given up and were sitting in a sulking row along the rail with their feathers puffed out." },
+      { n: "Nearly the only thing. At the far end, under a big green fishing umbrella lashed to the last bollard with twine, the old man was still there. The last one. Bucket, radio, cap. He lifted two fingers off his rod at Solar as she came through the gate, as if she were a regular now, which she supposed she was." },
+      { n: "Akihiko came in at the gate end with the rain running off his chin and stopped the yellow stopwatch with his thumb and looked at it, and then at her, and his whole face went, and he made it stop, which he'd got better at, and which she'd started to wish he wouldn't." },
+      { s: 'akihiko', f: 'happy', t: "Fifty-six. In the wet. That's two off April. Don't tell anyone, they'll want a rematch." },
+      { s: 'solar', f: 'neutral', t: "Who'd want a rematch? You're racing yourself." },
+      { s: 'akihiko', f: 'neutral', t: "Exactly. And he's a sore loser." },
+      { choose: [
+        { t: "(Hold your umbrella over him.)", notes: 3, then: [
+          { n: "She stepped in and held her umbrella over him, which meant holding it very high, because he was very tall and she was not, and he looked up at the inside of it and then down at her with an expression of complete bafflement, like a dog being offered a hat." },
+          { s: 'akihiko', f: 'blushing', t: "...I'm already wet. That's the most wet I can get. You're just making yourself wet as well." },
+          { s: 'solar', f: 'neutral', t: "I know." },
+          { n: "He didn't argue after that. He stood under it, dripping on her shoes, and let her hold it, and she felt him decide not to take it off her, which for him was a whole sentence." }
+        ] },
+        { t: "Time me. In the wet.", notes: 3, then: [
+          { s: 'akihiko', f: 'surprised', t: "In this? You'll go over on the boards." },
+          { s: 'solar', f: 'neutral', t: "Then catch me." },
+          { n: "She ran it. She didn't go over. She came in at one-oh-four, five off April, soaked to the skin, and he'd run beside her the last fifty meters without being asked, just off her shoulder, not pacing her, just there, the way he'd been there at the mouth of the Well, and he was laughing when she pulled up, the real laugh, the one from a year ago." },
+          { s: 'akihiko', f: 'happy', t: "One-oh-four! That's— that's a real time. That's a time a person could be proud of." }
+        ] }
+      ] },
+      { n: "They sat on the bench under the ticket office's overhang, which kept off about half the rain, with a towel from his bag over both their heads like a tent, and he took the roll of white tape out of his inside pocket, where he kept it dry now, and unrolled a length of it across his knee so she could read the strips." },
+      // CG: eqx-under-the-towel — a rainy gray pier, a tall silver-haired young man and a girl sitting on a bench under a ticket-office overhang with one towel over both their heads, a roll of white tape unrolled across his knee, his taped hand resting palm-up near her wrist.
+      { ifBefore: '6/18', then: [
+        { n: "Sixty-one fifteen. Sixty-one fifteen. Sixty-one sixteen. Sixty-one sixteen. A second some nights, nothing on others, in his square small capitals, one strip a night, each dated." },
+        { s: 'akihiko', f: 'neutral', t: "It's slowed down. After April. After it jumped. Some nights it's not hungry, I think. And then it is." },
+        { s: 'akihiko', f: 'serious', t: "I don't like that I said *hungry*. I don't know where that came from. It's a clock." }
+      ], else: [
+        { n: "Sixty-one forty-one. Sixty-one fifty-eight. A whole seventeen seconds in one night in June, the night of the bridge, and after it the numbers kept climbing in their small square capitals, a second here, two there, sixty-two and change, one strip a night, each dated." },
+        { n: "Under the bridge night there was a second strip. He'd taken that one off the roll and folded it over on itself, sticky side to sticky side, so it couldn't be read, and he saw her see it, and put his thumb on it." },
+        { s: 'akihiko', f: 'serious', t: "Don't. Not that one. I wrote a word under it and I'm not sure I meant it. When I'm sure, you can have it." }
+      ] },
+      { n: "He rolled it back up. His right hand was taped, the way it always was now, and he did it left-handed, which he was bad at, and she watched the right one lie on his knee while he worked, and watched its fingers, very slowly, curl." },
+      { n: "Not into a fist. Round something. Round nothing, the shape of a wrist, a little wrist, hers." },
+      { s: 'akihiko', f: 'sad', t: "...Yeah. It's doing that in the daytime now. Since last week. I'll be holding a cup and look down and it's holding something else." },
+      { ifEvent: 'eqx-bridge', then: [
+        { s: 'akihiko', f: 'neutral', t: "On the bridge. When you said her name and the music stopped. It closed on you before I'd decided anything. I'd have pulled your arm off to get you off that bridge. I'm not sorry. I'm telling you so you know what it does without me." }
+      ] },
+      { ifEvent: 'eqx-snow-again', then: [
+        { s: 'akihiko', f: 'neutral', t: "Your other one and I have an arrangement. Since the snow. If mine closes on you and I can't open it, he takes it off. One finger at a time. He's agreed." },
+        { s: 'akihiko', f: 'serious', t: "I've never hated somebody I trusted this much. It's very confusing. I'd like it to stop." }
+      ], else: [
+        { s: 'akihiko', f: 'neutral', t: "Your other one nodded at me on the stairs last night. Half eleven, on his way down to his dryer. I nodded back. That's diplomacy. We're very advanced." }
+      ] },
+      { choose: [
+        { t: "(Take the hand. Open it, one finger at a time.)", notes: 3, then: [
+          { n: "She took it in both of hers and opened it, finger by finger, the way he'd done in April on the pier, and he let her, and watched her do it with his jaw tight, and each finger went flat on her palm and stayed there, and when she'd done all four and the thumb he let out a breath like he'd been holding a plank over his head for an hour." },
+          { s: 'akihiko', f: 'blushing', t: "...You're better at that than I am." }
+        ] },
+        { t: "(Put your wrist in it. Let it close.)", notes: 3, then: [
+          { n: "She put her wrist into the curl of his fingers. They closed. Not hard. Exactly the size of it, as if they'd been measured. He stared at his own hand on her, and his face went white and then red, and he didn't let go, and she didn't make him, and they sat there under the towel with the rain coming down and his hand round her wrist like a bracelet." },
+          { s: 'akihiko', f: 'serious', t: "...Don't do that. Don't make it feel like it's right. It's not right. It's just what it wants." }
+        ] }
+      ] },
+      { n: "He took a letter out of his bag. It had been in there a while; the corners had gone soft, and there was a ring on the back from a bottle of water, and it had been opened and read and folded back into its envelope so many times that the fold had worn white." },
+      { n: "Foreign stamps. A coach's name she half recognized from a poster on the boxing club wall last year. A training program, a place held, a year abroad that should have started in April and hadn't. They'd held it. They'd hold it till next spring. They'd like to know, please, by the end of the summer, whether he was coming." },
+      { s: 'akihiko', f: 'neutral', t: "I told them I had a family thing. Which is true. It's the biggest family thing anyone's ever had. There's thirty-odd of us and a dog." },
+      { s: 'akihiko', f: 'neutral', t: "They want an answer. By the end of August. Confirm or withdraw." },
+      { s: 'solar', f: 'neutral', t: "And?" },
+      { s: 'akihiko', f: 'serious', t: "And I'm not going." },
+      { n: "He said it at once and very simply, as if he'd been saying it to himself every morning on this pier and had got it down to its fewest words. Then he turned on the bench to face her under the towel, with the rain on his eyelashes and his taped hand round her wrist, or open on her palm, either way still touching her." },
+      { s: 'akihiko', f: 'serious', t: "I let go once. At the mouth. You went down and I was at the top and I let go, because it was your call, and it was the right thing, and I've dreamed about it every night since." },
+      { s: 'akihiko', f: 'neutral', t: "I'm not doing it again. Whatever happens. Wherever you go when this is over. If there's a door, if there's a rope, I'm holding on this time. I'll write them no and I'll hold on." },
+      { s: 'akihiko', f: 'sad', t: "...I'm not asking you to do anything. I just want you to tell me that's all right. That's all. Tell me I'm allowed to hold on." },
+      { n: "The rain ticked on the overhang. Down at the far end of the pier, the old man's radio was playing the crowd from some ballgame, very small, a roar the size of a thumbnail. His hand on her was warm and heavy and would not have opened now if she'd asked it to; she could feel that. It wanted her to say one thing. It was asking her very nicely." },
+      { choose: [
+        { t: "It's all right. Hold on.", notes: 3, tally: { cakes: 1, 'asks.akihiko': 'yes' }, then: [
+          { n: "His face went, all of it, the whole year, and he didn't make it stop. He laughed, once, helplessly, and put his forehead down on her shoulder under the towel, and she felt him shaking, and it took her a second to understand that it was relief." },
+          { s: 'akihiko', f: 'blushing', t: "...Okay. Okay. Thank you. I'm writing that down. I'm not writing it down. I'm going to remember it so hard I won't need to." },
+          { n: "He kissed the inside of her wrist, where his fingers were, quickly, as if it were an accident, and sat back. His hand didn't open. He didn't seem to notice. Neither, for a long time, did she." }
+        ] },
+        { t: "Stay. Please. Write them no.", notes: 3, tally: { asked: 1, cakes: 1, 'asks.akihiko': 'yes' }, flag: 'eqx-asked-akihiko', then: [
+          { n: "He went completely still. He looked at her as if she'd hit him, and then as if she'd caught him, and both at once, and she watched it go all the way through him, from his face down, into his hand, which closed on her wrist the last quarter inch and stayed." },
+          { s: 'akihiko', f: 'surprised', t: "...You asked." },
+          { s: 'akihiko', f: 'blushing', t: "You've never. Not once. Not last year, not at the mouth. Everybody asks you and you never ask anybody, and you asked me." },
+          { n: "He kissed her. Under the towel, in the rain, with the gulls watching, hard and grateful and not careful at all, his free hand at the back of her neck, and when he stopped he was grinning so wide it looked like it hurt." },
+          { s: 'akihiko', f: 'happy', t: "No. That's what I'll write. One word. They'll think I've gone mad. I have." }
+        ] },
+        { t: "Don't hold on for me. Go next spring.", notes: 2, tally: { 'asks.akihiko': 'no' }, then: [
+          { s: 'akihiko', f: 'sad-2', t: "...Right." },
+          { n: "He let go. He did it the way he'd done it in April, one finger at a time, prying them off her himself with his left hand, and it was slower this time, and each one came off her like a strip of tape off skin, and when the last one came away he put the hand in his pocket and kept it there." },
+          { s: 'akihiko', f: 'neutral', t: "You're probably right. You usually are. I'll think about it." },
+          { s: 'akihiko', f: 'sad', t: "...That's a lie. I'm not going to think about anything else. But I'll be polite about it." }
+        ] },
+        { t: "That's yours to decide. Your letter, your hand. Where I go is mine.", notes: 2, tally: { choose: 1, 'asks.akihiko': 'choose' }, then: [
+          { n: "He didn't say anything. He looked at her for a long time under the towel, and she watched it land, and she watched him not like it, and not like that he didn't like it." },
+          { s: 'akihiko', f: 'serious', t: "...That's what I said to you. In April. On this pier. *Your call.* I hate hearing it back. It's much worse from this side." },
+          { n: "He looked down at his hand on her. Then, slowly, with his jaw set as if he were lifting something with it, he opened it himself. Not one finger at a time. All at once, the way you'd open a door you were afraid of, and it cost him, she could see it cost him, there was sweat at his temple under the rain." },
+          { s: 'akihiko', f: 'neutral', t: "Mine. Okay. Mine. I'll have to think, then. I've been trying very hard not to." }
+        ] }
+      ] },
+      { n: "He put the letter back in his bag, in the dry pocket, with the tape. The rain had eased to almost nothing, the kind you only saw against something dark, and the gulls had stood up along the rail and were shaking themselves like old men getting up from a bench." },
+      { ifEvent: 'eqx-last-grain', then: [
+        { s: 'akihiko', f: 'neutral', t: "Ken called me. That morning. Not Mitsuru. Me. In a perfectly clear voice, he said, *Akihiko-senpai, please come to the river street, please don't bring Junpei-senpai.* And I went." },
+        { s: 'akihiko', f: 'sad-3', t: "I ran there. I've never run anywhere that fast. I don't remember any of it. I don't remember the bridge or the hill. I just remember I'd have done it in the opposite direction if he'd asked." },
+        { n: "He looked at the end of the pier, where the old man sat under his green umbrella, the last one, who had said no." },
+        { s: 'akihiko', f: 'serious', t: "He's still here. Every day. He told me she's stopped asking him. He seemed a bit hurt about it." }
+      ], else: [
+        { s: 'akihiko', f: 'neutral', t: "He's still here. The fisherman. Every day. The others haven't come back to fish since May. I saw Hayashi on the strip on Sunday, he looked very well. Rosy. I said *good afternoon* and he looked at me like he couldn't place where he knew me from." },
+        { s: 'akihiko', f: 'serious', t: "...That's a coincidence too. I've got a lot of those now. I keep them in the same pocket as the tape." }
+      ] },
+      { n: "He walked her to the station. The rain had stopped by the gates, properly stopped, the way it did here in daylight, from the edges in, and the platform was full of salarymen shaking out umbrellas like a flock of something landing." },
+      { s: 'akihiko', f: 'blushing', t: "...Same time Friday. If you want. I'm not asking. I'm informing you of the existence of Friday." },
+      { choose: [
+        { t: "(Kiss him at the gates.)", notes: 3, flag: 'eqx-aki-gate-kiss', then: [
+          { n: "She kissed him at the gates, in front of every salaryman on Port Island, and he went red to the collar and kissed her back anyway like a man who'd decided long ago that if he was going to lose a fight he'd lose it standing up, and someone behind them tutted, and he laughed into her mouth." },
+          { s: 'akihiko', f: 'happy', t: "That's two personal bests in one day. I'm going to have to retire." }
+        ] },
+        { t: "Friday. Bring a dry towel this time.", notes: 2, then: [
+          { s: 'akihiko', f: 'happy', t: "I brought a dry towel this time. You got it wet. That's on the record too." }
+        ] }
+      ] },
+      { n: "On the train, she found she was rubbing the inside of her wrist with her thumb, where his fingers had been. There was no mark. She looked. There was never a mark. It just felt, for the whole ride home, as if there should have been." }
     ] }
   ]
 });

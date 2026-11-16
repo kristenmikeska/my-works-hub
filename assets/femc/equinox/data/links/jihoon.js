@@ -1,7 +1,9 @@
 /* Persona 3: Equinox · Park Jihoon · Hunger. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–2 (rank 1 from 4/13, rank 2 from 4/21, both Game Panic; rank 2 ends at the photo booth and branches on
-   eqx-tanabe and eqx-jihoon-plush). Ranks 3–15 still to write. Rank 2 flag (nothing reads it yet): eqx-jihoon-booth-kiss.
+   Written: ranks 1–3 (rank 1 from 4/13, rank 2 from 4/21, both Game Panic; rank 2 ends at the photo booth and branches on
+   eqx-tanabe and eqx-jihoon-plush). Ranks 4–15 still to write. Rank 3 (from 6/1, Game Panic, the strip, the canal; branches on
+   eqx-hate-club, eqx-last-grain, eqx-jihoon-roof) records his ask: tally asks.jihoon (+ cakes / choose), flag
+   eqx-jihoon-canal-kiss. Rank 2 flag (nothing reads it yet): eqx-jihoon-booth-kiss.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Flag: eqx-jihoon-plush (rank 1, Solar keeps the prize from the crane game). Nothing reads it yet.
    HOAX canon carries (the triangle stays open, his habits named and never shown). Solstice's ranks are shared memory. */
@@ -274,6 +276,140 @@
       { n: "He walked her to the monorail with the dog's head poking out of his jacket, and talked the whole way about what he'd name it, Nana Two, Nana Junior, Mr. Nana, and at the gates he stopped and put his hand flat on his jacket pocket, over the half of the strip, the way she'd seen him put it on the rice ball, and said goodbye to her in a voice that was almost serious." },
       { s: 'jihoon', f: 'neutral', t: "Thanks for coming. To watch me win. Nobody ever comes to watch me win. They only come when I lose." },
       { n: "At the corner he looked back, the way he always did, every time, in every world, to check she was still where he'd left her. She was. She stayed there until he'd gone, and then a while after." }
+    ] },
+    { after: '6/1', title: '3: cough drops', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'city', scene: [
+      { bg: 'gamepanic-inside' },
+      { n: "He wasn't playing anything. That was how she knew something was wrong before she'd got past the ticket counter: Park Jihoon, in an arcade, with a pocket full of coins, sitting on the bench by the crane machines with his elbows on his knees and Nana Two's head poking out of the front of his jacket, not playing anything at all, watching other people lose." },
+      { n: "He saw her and his face did the thing, the big easy grin he'd been wearing since he was six, the one that came on like a light in a fridge, and she watched it come on and watched it not quite reach, and he saw her watch it, and let it go." },
+      { s: 'jihoon', f: 'neutral', t: "Hey. Don't sit down. We're going somewhere." },
+      { s: 'solar', f: 'neutral', t: "Where?" },
+      { s: 'jihoon', f: 'neutral', t: "Pharmacy. On the strip. I need cough drops." },
+      { n: "He said it flatly, the way you'd say *I need to go to the dentist*. Then he pushed his left sleeve up a few inches with his thumb and turned the inside of his wrist toward her, the way you'd show someone a ticket." },
+      { ifBefore: '7/15', then: [
+        { n: "There was a number on it in blue ballpoint, small and neat, two digits, written that morning and already a little smudged at one edge where his watch strap had been. Under it, fainter, yesterday's, one less, half washed off. Under that, the ghost of the day before." }
+      ], else: [
+        { n: "There was a number on it in blue ballpoint, small and neat, three digits now, written that morning and already a little smudged at one edge where his watch strap had been. Under it, fainter, yesterday's, one less, half washed off. Under that, the ghost of the day before." }
+      ] },
+      { s: 'jihoon', f: 'neutral', t: "Cherry checks it at breakfast. Like a nurse. She takes my wrist and looks at it and then she lets go and passes me the jam. Every morning. She's never said one word about it." },
+      { s: 'jihoon', f: 'serious', t: "I've got a sore throat. Actually. A real one. It's the damp. And there's one pharmacy on the strip and I've walked past it every day since April, and I can't go in there by myself, and I'm not going to stop having a throat." },
+      { s: 'jihoon', f: 'neutral', t: "So you're going to come and watch me buy cough drops. That's the date. Don't say it's romantic. It's the least romantic thing I've ever asked anybody." },
+      { choose: [
+        { t: "It's a little romantic.", notes: 3, then: [
+          { s: 'jihoon', f: 'happy', t: "...It's *so* not. Shut up. Get your umbrella." },
+          { n: "He was grinning again by the escalator, and this time it went all the way up." }
+        ] },
+        { t: "(Hold out your hand for his wrist. Look at the number like Cherry does.)", notes: 3, then: [
+          { n: "She held out her hand and he put his wrist in it, after a second, and she looked at the number the way Cherry did, closely, gravely, a nurse with a chart, and then let go." },
+          { s: 'solar', f: 'neutral', t: "Pass the jam." },
+          { s: 'jihoon', f: 'happy', t: "...Oh, I hate you. That's so good. Don't ever do that in front of her, she'll think we're a team." }
+        ] },
+        { t: "(Just get up and go.)", notes: 2, then: [
+          { n: "She just got up and went, and he caught up with her at the escalator, and didn't thank her, and walked very close all the way to the station, so close their umbrellas kept knocking, and he didn't move his." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai · The Strip', time: 'Afternoon', bg: 'iwatodai-strip-rain', soft: true },
+      { n: "The strip in the rain was all shutters and puddles and the soft hiss of bicycles going by with their riders holding umbrellas one-handed, which was illegal, and which everybody did. The pharmacy was halfway down, between the bookshop and a shop that sold only socks: a narrow front with a green cross over the door and a faded poster of a woman with a cold, and in the window, a stuffed frog in a nurse's cap that had been there so long it had gone pale on the sunny side." },
+      // BG: aohigepharmacy-outside is used for the front; an inside view (a narrow aisle, an old woman at the counter with a TV) would be its own background.
+      { bg: 'aohigepharmacy-outside' },
+      { n: "He stopped across the street from it. Not on purpose; his feet did it. He stood under his umbrella on the opposite curb and looked at the green cross and the frog for a long time, with the rain running off the edge of the umbrella in a ring around him like bars." },
+      { s: 'jihoon', f: 'neutral', t: "...It's not even the kind of place. I want to say that. It's not like there's anything in there I'd want. It's an old lady and a TV and some cough drops and a frog." },
+      { s: 'jihoon', f: 'serious', t: "It's that I'd be in a pharmacy. Me. Standing in the aisle. Looking at the boxes. And some part of me would be reading them. Not for the cough drops. Just reading. The way you read a menu in a place you've already eaten." },
+      { s: 'jihoon', f: 'sad', t: "I've been that guy in a pharmacy. I don't want to find out if I still am." },
+      { choose: [
+        { t: "Then don't read anything. Look at me. I'll read the boxes.", notes: 3, then: [
+          { s: 'jihoon', f: 'surprised', t: "...You'll read the boxes." },
+          { s: 'solar', f: 'neutral', t: "I'll find the cough drops. You look at the frog." },
+          { n: "He laughed, once, as if it had been knocked out of him, and closed his umbrella, and crossed the street." }
+        ] },
+        { t: "(Close your umbrella. Step under his. Wait.)", notes: 3, then: [
+          { n: "She closed her own umbrella and stepped in under his, close, her shoulder against his chest, and didn't say anything, and didn't pull, and just stood there with him in the ring of rain until he took a breath that went all the way down." },
+          { s: 'jihoon', f: 'neutral', t: "...Okay. Okay. You're very bad at being a crowd, you know. You're just one person. That's terrible crowd technique." }
+        ] }
+      ] },
+      { n: "The bell over the door rang when they went in. The old woman behind the counter didn't look up from her television, where a man in a headband was cooking something on a hot plate and shouting about it. The shop was two aisles wide and smelled of camphor and dust and the rubber of hot-water bottles, and it was so small that from the door you could see every shelf in it at once." },
+      { n: "Jihoon stood just inside the door with his hands in his jacket pockets. She felt him look. She felt the exact second his eyes went down the left aisle, past the plasters and the eye drops, toward the back, where the boxes were plainer and the shelf was behind glass, and she felt him make them come back." },
+      { n: "She went down the right aisle and found the cough drops, honey-lemon, the yellow tin, and came back and put them in his hand, and he looked at them in his hand like he'd won them out of a machine." },
+      { s: 'jihoon', f: 'neutral', t: "...Honey-lemon. That's. Yeah. That's the right ones." },
+      { n: "He paid. His hand was shaking. Not much; just enough that the coins rang a little on the glass of the counter, and the old woman looked up from her television for the first time, at him, at his hand, at his face, and something went across her face that was old and tired and kind, and she put the tin in a little paper bag and folded the top over twice and gave him two cough drops extra, loose, from a jar by the till, without saying anything, and went back to the man with the hot plate." },
+      { n: "Outside, under the green cross, in the rain, he leaned his back against the shop window next to the frog and opened the bag and put one of the loose cough drops in his mouth and stood there with his eyes shut." },
+      { s: 'jihoon', f: 'happy-2', t: "...That's the worst thing I've ever done. I've done some bad things. That was the worst. I want a medal. I want a parade." },
+      { choose: [
+        { t: "(Clap. Three times. Like a parade.)", notes: 3, then: [
+          { n: "She clapped, three times, slowly, under the green cross, and a woman going past with a shopping bag looked at them both like they were mad, and Jihoon opened his eyes and laughed so hard he had to bend over with his hands on his knees, the real one, the one from when they were six." }
+        ] },
+        { t: "(Take his shaking hand. Hold it till it stops.)", notes: 3, then: [
+          { n: "She took his hand, the one that had rung the coins on the glass, and held it in both of hers, and it went on shaking for a while and then it didn't, and he watched it stop the way he'd watch a crane come down over a prize, very still, not daring to breathe." },
+          { s: 'jihoon', f: 'neutral', t: "...Thanks. That's. Yeah. Thanks." }
+        ] }
+      ] },
+
+      { place: 'Paulownia Mall · Canal', time: 'Evening', bg: 'paulownia-canal', soft: true },
+      // BG: paulownia-canal stands in for a canal walk at dusk after rain, the lamps just coming on.
+      { n: "The rain had stopped by the time they got back to Port Island. The canal behind the mall was full and fast and brown, and the lamps along it had just come on, one after another, in a line, and every one of them was doubled in the water and broken up by the current and put back together again, over and over, gold on brown." },
+      { n: "They sat on the low wall with their feet hanging over the water. He had Nana Two on his knee, facing the canal, as if the dog should get to see it too. He was eating the cough drops one after another, honey-lemon, like candy, and he'd given her one without asking, and they both smelled of it." },
+      { ifEvent: 'eqx-hate-club', then: [
+        { s: 'jihoon', f: 'neutral', t: "The guys asked where I was going. I said the pharmacy. You should've seen Hyunsuk's face. Like I'd said I was going to rob a bank." },
+        { s: 'jihoon', f: 'happy', t: "Then Junkyu said *bring me back some of the good tissues*, like it was normal. Like I was just a guy going to a shop. I nearly cried in front of Asahi. I'd never have lived it down." }
+      ] },
+      { ifEvent: 'eqx-last-grain', then: [
+        { n: "He took something out of his inside pocket, behind the half of the photo strip. The rice ball. Mr. Tanabe's. Still in its cling film, gone hard as a stone and gray all through now, the seaweed black. He held it on his palm and looked at it." },
+        { s: 'jihoon', f: 'sad', t: "Two now. Two people who fed me. The night manager and the guy at the end of the table who never said no." },
+        { s: 'jihoon', f: 'neutral', t: "I can't eat rice. I tried yesterday. I got it as far as my mouth. Cherry took the bowl off me and gave me toast like I was Ken." }
+      ], else: [
+        { n: "He took something out of his inside pocket, behind the half of the photo strip. The rice ball. Mr. Tanabe's. Still in its cling film, gone hard as a stone and gray at the edges. He held it on his palm and looked at it, and then put it back, carefully, as if it were still warm." },
+        { s: 'jihoon', f: 'neutral', t: "Don't. I know. I'll know when to stop carrying it. I'll know because I'll stop." }
+      ] },
+      { n: "He was quiet for a while. A boat went by, a little one, a tourist thing with its lights on and nobody in it but the man steering, and its wake slapped the wall below their feet and broke up all the lamps in the water, and they came back together, slowly." },
+      { s: 'jihoon', f: 'neutral', t: "I've been thinking about something. I've been thinking about it every day and I want to say it to you before I say it to anybody else, because you're the only one whose answer I'll actually listen to." },
+      { s: 'jihoon', f: 'neutral', t: "I could stay here. When this is over. Whatever over is. I could just not go back." },
+      { s: 'jihoon', f: 'serious', t: "Here, nobody's watching. That's what I keep coming back to. At home, if I fall, somebody's filming it. Somebody's posting it. My mom finds out from somebody else's mom in the line at the bakery. The whole school reads it with the spelling wrong. Every time I go down there's a crowd." },
+      { s: 'jihoon', f: 'sad', t: "Here I could fall all I like and nobody would ever know. I could go into that pharmacy any day I wanted and the old lady would give me two extra and go back to her show. Nobody would watch. I keep thinking that like it's good news. Like it's the best news I've ever had." },
+      { s: 'jihoon', f: 'neutral', t: "...So tell me. Tell me I can stay. If you say it, I'll stop thinking about it and just do it. That's how it works with me. You know that. You've known that since we were six." },
+      { n: "He wasn't looking at her. He was looking at the lamps in the water, broken up and put back, broken up and put back. The dog on his knee looked at them too, with its stitched face that had never done anything wrong in its life. The cough drop clicked against his teeth. He was waiting the way he waited at the crane game, with his whole body, as if the answer might come down over the pile and pick something up." },
+      // CG: eqx-cough-drops — a canal at dusk after rain, a line of lamps doubled and broken in fast water, a boy in a jacket on the low wall with a white dog plush on his knee and a little paper pharmacy bag in his hand, a girl beside him, both looking at the water.
+      { choose: [
+        { t: "Then stay. Nobody here will watch you fall.", notes: 3, tally: { cakes: 1, 'asks.jihoon': 'yes' }, then: [
+          { n: "He let out a breath that went all the way down, and his shoulders came down with it, and for a second he looked younger than she'd ever seen him, younger than the old mall, younger than six." },
+          { s: 'jihoon', f: 'happy', t: "...Okay. Okay. Yeah. Nobody's watching. Okay." },
+          { n: "He put his arm round her and pulled her into his side and kissed her temple, hard, quickly, the way you'd kiss someone for good news, and then sat there with his cheek on her hair and the dog on his knee and the lamps in the water, easy, all of him easy, and he didn't take another cough drop, and he didn't look at his wrist." }
+        ] },
+        { t: "You can't stay somewhere just because nobody can see you there.", notes: 2, tally: { 'asks.jihoon': 'no' }, then: [
+          { s: 'jihoon', f: 'sad', t: "...Yeah. I know. I asked anyway." },
+          { n: "He took another cough drop. His hand was steady this time; it was the rest of him that wasn't. He held the dog a little tighter on his knee and looked at the water and didn't say anything for a long time, and when he did his voice was perfectly normal, cheerful even, the big easy fridge-light voice, and she hated it." },
+          { s: 'jihoon', f: 'neutral', t: "You're right. You're always right. Fifty-fifty I'd have done something stupid with it anyway." }
+        ] },
+        { t: "That's yours to think about. Not mine to answer.", notes: 2, tally: { choose: 1, 'asks.jihoon': 'choose' }, then: [
+          { s: 'jihoon', f: 'serious', t: "...That's the worst thing you could have said. You know that. You know I wanted the other thing." },
+          { s: 'solar', f: 'neutral', t: "I know." },
+          { n: "He looked at her for a long time. Then he looked down at his own wrist, at the number in blue ballpoint, smudged at one edge, and pushed his sleeve back down over it, slowly, as if he were putting it away somewhere he'd have to go and get it himself." },
+          { s: 'jihoon', f: 'neutral', t: "...Okay. Mine. It's heavy. It's really heavy. I'm going to have to carry it round like the rice ball." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-jihoon-roof', then: [
+        { n: "The lamps along the canal were all lit now. He looked at them, and at her, and his mouth went sideways." },
+        { s: 'jihoon', f: 'neutral', t: "...It's not as good as the roof. The lighting. I want to be honest. I've had better." },
+        { s: 'solar', f: 'neutral', t: "Is that a complaint?" },
+        { s: 'jihoon', f: 'happy', t: "It's a review. Four stars. I'm going to kiss you anyway. I'm not asking. I'm warning you. It's a public service." }
+      ], else: [
+        { n: "The lamps along the canal were all lit now. He looked at them, and at her, and his mouth went sideways." },
+        { s: 'jihoon', f: 'neutral', t: "...You remember what I said. In the arcade. Ask me again somewhere with better lighting." },
+        { s: 'jihoon', f: 'neutral', t: "This is pretty okay lighting. It's not the best lighting. I'm still looking for the best lighting. I'm saying it's in the running." }
+      ] },
+      { choose: [
+        { t: "(Kiss him. Honey-lemon.)", notes: 3, flag: 'eqx-jihoon-canal-kiss', then: [
+          { n: "She kissed him. He tasted of honey-lemon and the rain, and he made a sound low in his throat like a man who'd been holding his breath under water, and his free hand came up to her jaw, and the other one kept hold of the dog, out of loyalty, so that she had a white plush ear against her collarbone the whole time, and he was laughing into it by the end." },
+          { s: 'jihoon', f: 'neutral', t: "...He's going to know. Your boyfriend. He always knows. He's going to look at me at breakfast tomorrow and he's going to know exactly what we did and exactly what flavor it was." },
+          { s: 'jihoon', f: 'sad', t: "And he's going to pass me the egg sandwich. He's always going to pass me the egg sandwich. I'm the scandal. I know my job." }
+        ] },
+        { t: "(Put your head on his shoulder instead.)", notes: 2, then: [
+          { n: "She put her head on his shoulder instead, and he let out a breath, and put his cheek on her hair, and the dog sat on his knee facing the water, and the three of them watched the lamps until the last boat had gone by." },
+          { s: 'jihoon', f: 'neutral', t: "...Yeah. This is good too. This is maybe better. Don't tell anyone I said that, I have a reputation." }
+        ] }
+      ] },
+      { n: "He walked her to the monorail. At the gates he took the yellow tin out of the paper bag and put it in her blazer pocket, the whole thing, and kept only the bag, folded small, and put that in his inside pocket, behind the half of the photo strip and the rice ball, where he kept the things he couldn't throw away." },
+      { s: 'jihoon', f: 'neutral', t: "For your throat. It's the damp. Everybody's getting it." },
+      { n: "At the corner he looked back, the way he always did, every time, in every world, to check she was still where he'd left her. She was. She stayed till he'd gone, and then a while after, with a tin of cough drops in her pocket like a thing she'd won." }
     ] }
   ]
 });
