@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## 16. Later
+## 17. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -179,3 +179,28 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
   - 15Y `eqx-one-line` ← `links/jungwon.js`, comment `// CG: eqx-one-line`
   - 15Z `eqx-cough-drops` ← `links/jihoon.js`, comment `// CG: eqx-cough-drops`
   - 15AA `eqx-one-second` ← `links/minji.js`, comment `// CG: eqx-one-second`
+
+## 16. The third meetings
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V. Where a slug has no `eqx-` prefix the saved file gets one. All comments are under `assets/femc/equinox/data/links/`.
+- Item → file and comment:
+  - 16A `eqx-tennis-courts-rain` ← `rio-saori.js`, comment `// BG: gekkoukan-tennis-courts-rain`
+  - 16B `eqx-bakery-inside` ← `cherry.js`, comment `// BG: iwatodai-bakery-inside`
+  - 16C `eqx-shrine-playground-summer` ← `ken-koromaru.js`, comment `// BG: naganaki-shrine-playground-summer`
+  - 16D `eqx-shrine-steps-rain` ← `jaehyun.js`, comment `// BG: naganaki-shrine-steps-rain`
+  - 16E `eqx-oka-garden-rain` ← `mrsoka.js`, comment `// BG: oka-boarding-house-garden-rain`
+  - 16F `eqx-harbor-high-tide-summer` ← `yunjin.js`, comment `// BG: port-island-harbor-high-tide-summer`
+  - 16G `eqx-forty-minutes` ← `hanni.js`, comment `// CG: eqx-forty-minutes`
+  - 16H `eqx-one-new` ← `hyein.js`, comment `// CG: eqx-one-new`
+  - 16I `eqx-ribbon` ← `hyein.js`, comment `// CG: eqx-ribbon`
+  - 16J `eqx-bread-girl` ← `cherry.js`, comment `// CG: eqx-bread-girl`
+  - 16K `eqx-census` ← `aigis.js`, comment `// CG: eqx-census`
+  - 16L `eqx-end-room` ← `mrsoka.js`, comment `// CG: eqx-end-room`
+  - 16M `eqx-next-year-if` ← `rio-saori.js`, comment `// CG: eqx-next-year-if`
+  - 16N `eqx-not-allowed` ← `elizabeth.js`, comment `// CG: eqx-not-allowed`
+  - 16O `eqx-pace` ← `jaehyun.js`, comment `// CG: eqx-pace`
+  - 16P `eqx-request-card` ← `ken-koromaru.js`, comment `// CG: eqx-request-card`
+  - 16Q `eqx-the-rounds` ← `junpei.js`, comment `// CG: eqx-the-rounds`
+  - 16R `eqx-the-term` ← `mitsuru.js`, comment `// CG: eqx-the-term`
+  - 16S `eqx-two-tables` ← `yunjin.js`, comment `// CG: eqx-two-tables`
+  - 16T `eqx-where-i-can-see` ← `yukari.js`, comment `// CG: eqx-where-i-can-see`
+- Several of these slugs repeat in a story file as an "(as rank 1)" BG line; swap those too.
