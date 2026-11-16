@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## 12. Later
+## 14. Later
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -93,3 +93,44 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
 - Kat's eight singles `Equinox/eq-haechan-<face>-portrait.png` (1254², transparent) → `assets/femc/portraits/haechan-equinox/` on an 880 × 822 canvas: one shared scale (0.702, Vision face height matched to his base neutral), each face centred on the neutral's position, his face height level with his base portraits'. Faces: neutral, smirk, happy, sad, angry (also saved as `serious`), blushing (also `flustered`), surprised, slight-surprise. `config.js faces.haechan`, scale.js 0.95, placements-data.js face centre 0.435 (place.js regenerated; it borrows his base nudge). Kat can fine-tune on the placements review page.
 - The same method (one approved portrait, then each expression as a separate edit) is how the other main characters' Equinox faces should be made.
 - **Restyled (art batch 3):** Kat redid the faces to match everyone's art style (`Equinox/haechan revamp portraits - art style edit/<face>.png`: angry, blushing, happy, neutral, sad, serious, smirk, surprised; 1254², transparent). Same canvas (880 × 822), one shared scale 0.765 (Vision face height of the new neutral matched to the old set's, 380.5 px) and one shared offset putting the new neutral's face centre where the old one's was; the other faces keep the sheet's own positions (Kat's edits share one body, so nothing jumps). `serious` is real now; `flustered` = blushing; `slight-surprise` is still the older single (no restyled one yet: it's in the older style). scale.js / placements unchanged; FEMC_PORTRAIT_V 36.
+
+## 13. Act II and the second meetings
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V.
+- Item → file and comment (all under `assets/femc/equinox/data/`):
+  - 13A `eqx-iwatodai-dorm-street-dusk` ← `links/aigis.js`, comment `// BG: iwatodai-dorm-street-dusk`
+  - 13B `eqx-iwatodai-konbini-day` ← `links/elizabeth.js`, comment `// BG: iwatodai-konbini-day`
+  - 13C `eqx-junpei-room-night` ← `links/junpei.js`, comment `// BG: junpei-room-night`
+  - 13D `eqx-oka-dining-room` ← `story-act2.js`, comment `// BG: oka-dining-room`
+  - 13E `eqx-oka-dining-room-dawn` ← `story-act2.js`, comment `// BG: oka-dining-room-dawn`
+  - 13F `eqx-paulownia-atrium-redhour` ← `story-act2.js`, comment `// BG: paulownia-atrium-redhour`
+  - 13G `eqx-port-island-harbor-red-hour` ← `links/yunjin.js`, comment `// BG: port-island-harbor-red-hour`
+  - 13H `eqx-tatsumi-bus` ← `links/ken-koromaru.js`, comment `// BG: tatsumi-bus`
+  - 13I `eqx-tatsumi-hospital-lobby` ← `links/ken-koromaru.js`, comment `// BG: tatsumi-hospital-lobby`
+  - 13J `eqx-door-s1` ← `story-act2.js`, comment `// CG: eqx-door-s1`
+  - 13K `eqx-door-h1` ← `story-act2.js`, comment `// CG: eqx-door-h1`
+  - 13L `eqx-violinist-footage` ← `story-act2.js`, comment `// CG: eqx-violinist-footage`
+  - 13M `eqx-violinist` ← `story-act2.js`, comment `// CG: eqx-violinist`
+  - 13N `eqx-second-hill` ← `story-act2.js`, comment `// CG: eqx-second-hill`
+  - 13O `eqx-door-s2` ← `story-act2.js`, comment `// CG: eqx-door-s2`
+  - 13P `eqx-stage` ← `story-act2.js`, comment `// CG: eqx-stage`
+  - 13Q `eqx-porter-cap` ← `story-act2.js`, comment `// CG: eqx-porter-cap`
+  - 13R `eqx-piano` ← `story-act2.js`, comment `// CG: eqx-piano`
+  - 13S `eqx-striped-photo` ← `story-act2.js`, comment `// CG: eqx-striped-photo`
+  - 13T `eqx-tanabata-stay` ← `story-act2.js`, comment `// CG: eqx-tanabata-stay`
+  - 13U `eqx-door-r2` ← `story-act2.js`, comment `// CG: eqx-door-r2`
+  - 13V `eqx-third-hill` ← `story-act2.js`, comment `// CG: eqx-third-hill`
+  - 13W `eqx-door-h2` ← `story-act2.js`, comment `// CG: eqx-door-h2`
+  - 13X `eqx-last-grain` ← `story-act2.js`, comment `// CG: eqx-last-grain`
+  - 13Y `eqx-twelve-seconds` ← `links/hyein.js`, comment `// CG: eqx-twelve-seconds`
+  - 13Z `eqx-two-cans` ← `links/haechan.js`, comment `// CG: eqx-two-cans`
+  - 13AA `eqx-council-window` ← `links/jungwon.js`, comment `// CG: eqx-council-window`
+  - 13AB `eqx-ken-window` ← `links/ken-koromaru.js`, comment `// CG: eqx-ken-window`
+  - 13AC `eqx-booth-strip` ← `links/jihoon.js`, comment `// CG: eqx-booth-strip`
+  - 13AD `eqx-everyone-turns` ← `links/minji.js`, comment `// CG: eqx-everyone-turns`
+  - 13AE `eqx-standing-tide-home` ← `links/yunjin.js`, comment `// CG: eqx-standing-tide-home`
+  - 13AF `eqx-three-way-mirror` ← `links/cherry.js`, comment `// CG: eqx-three-way-mirror`
+  - 13AG `eqx-darning` ← `links/mrsoka.js`, comment `// CG: eqx-darning`
+  - 13AH `eqx-1958` ← `links/rio-saori.js`, comment `// CG: eqx-1958`
+  - 13AI `eqx-yukari-strip` ← `links/yukari.js`, comment `// CG: eqx-yukari-strip`
+  - 13AJ `eqx-warm-step` ← `links/jaehyun.js`, comment `// CG: eqx-warm-step`
+
