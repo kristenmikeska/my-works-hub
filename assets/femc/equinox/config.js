@@ -46,7 +46,8 @@ window.FEMC_GAME_CONFIG = {
     'parents-hoax': [['equinox/art/bodies/hoax-dad.webp?v=1', .4, .007, .138, .41], ['equinox/art/bodies/hoax-mom.webp?v=1', .4, .003, .132, .42]]
   },
   loading(kind, req) {
-    const well = kind === 'tartarus' || /^eqx-well/.test((req && req.script) || '');
+    const id = (req && (req.script || (req.op && (req.op.id || req.op)))) || '';
+    const well = kind === 'tartarus' || /^eqx-(well|first-hill)/.test(String(id)); // the Well's own fights (5/28's First Hill is in it)
     return `assets/femc/equinox/art/loading-${well ? 'well' : 'between'}.webp?v=1`;
   },
   // Go Out map pins for Equinox's own areas (data/places-extra.js), in % of the map art.

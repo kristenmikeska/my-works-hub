@@ -5432,6 +5432,14 @@
       rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'guard'], interruptAt: 3, interruptHp: 0.5, interruptOnKill: true } }],
     'eqx-well-2': () => [{ group: ['maya', 'maya_lost', 'maya'], bg: BGP + (ART_HAS_WELL ? 'eqx-well-bottom.webp' : 'tartarus-scene.webp'), label: 'The Well', block: 'The Bottom', title: 'The Well · The Bottom',
       join: ['haechan'], rules: { protect: true, noNav: true, noEscape: true, cmds: ['attack', 'skill', 'guard', 'item'] } }],
+    // Equinox's full-moon operations (assets/femc/equinox/data/story-act1.js; calendar ops). Existing Shadows renamed in
+    // `setup` until Equinox has its own (the boss keeps its art). 4/28: a town street under the red filter; 5/28: the Well.
+    'eqx-knock': () => [{ group: ['magician@9', 'hand@8', 'hand@8'], bg: BGP + 'darkhour-iwatodai-street.webp', label: 'Full Moon', block: 'Iwatodai · The Red Hour', boss: true, music: 'boss',
+      op: { id: 'eqx-knock', name: 'The Knock', arcana: 'Full Moon · April' }, title: 'Full Moon · The Knock',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'magician' ? 'The Knock' : 'Knocking Hand'; }) } }],
+    'eqx-first-hill': () => [{ group: ['flash_shadow@14', 'maiden@11', 'maiden@11'], bg: BGP + 'eq-well-3.webp', label: 'Full Moon', block: 'The Well · The First Hill', boss: true, music: 'boss',
+      op: { id: 'eqx-first-hill', name: 'The First Hill', arcana: 'Full Moon · May' }, title: 'Full Moon · The First Hill',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'flash_shadow' ? 'The First Hill' : 'Empty Seat'; }) } }],
     // 4/9: the first fight on purpose, on the dorm roof.
     magician: () => [{ group: ['magician'], bg: BGP + 'iwatodaidorm-roof-night.webp', label: 'Full Moon', block: 'Iwatodai Dorm · Roof', boss: true, music: 'boss',
       op: { id: 'magician', name: 'The Magician', arcana: 'I · Magician' }, title: 'Full Moon · The Magician', rules: { noEscape: true } }],
