@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## Later (art list section 20)
+## Later (art list section 22)
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -286,3 +286,63 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
   - 19BO `eqx-daytime-tide` ← `yunjin.js`, comment `// CG: eqx-daytime-tide`
   - 19BP `eqx-where-nobody-dies` ← `yunjin.js`, comment `// CG: eqx-where-nobody-dies`
 - Skipped as already covered: cherry.js's two `// BG: iwatodai-bakery-inside` lines (16B `eqx-bakery-inside`) and ken-koromaru.js's rank 4 `// BG: naganaki-shrine-playground-summer` (16C `eqx-shrine-playground-summer`): swap those to the 16 pictures.
+
+## 20. Act IV
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V. Where a slug has no `eqx-` prefix the saved file gets one. All comments are in `assets/femc/equinox/data/story-act4.js`.
+- Item → file and comment:
+  - 20A `eqx-pencil` ← `story-act4.js`, comment `// CG: eqx-pencil`
+  - 20B `eqx-oka-front-room-day` ← `story-act4.js`, comment `// BG: oka-front-room-day`
+  - 20C `eqx-oka-stairs-night` ← `story-act4.js`, comment `// BG: oka-stairs-night`
+  - 20D `eqx-seventh-stair` ← `story-act4.js`, comment `// CG: eqx-seventh-stair`
+  - 20E `eqx-road-home` ← `story-act4.js`, comment `// CG: eqx-road-home`
+  - 20F `eqx-burnt-toast` ← `story-act4.js`, comment `// CG: eqx-burnt-toast`
+  - 20G `eqx-gym-festival` ← `story-act4.js`, comment `// BG: gekkoukan-gym-festival`
+  - 20H `eqx-five-girls` ← `story-act4.js`, comment `// CG: eqx-five-girls`
+  - 20I `eqx-bari` ← `story-act4.js`, comment `// CG: eqx-bari`
+  - 20J `eqx-jiknyeo` ← `story-act4.js`, comment `// CG: eqx-jiknyeo`
+  - 20K `eqx-au-co` ← `story-act4.js`, comment `// CG: eqx-au-co`
+  - 20L `eqx-hollow` ← `story-act4.js`, comment `// CG: eqx-hollow`
+  - 20M `eqx-three-mothers` ← `story-act4.js`, comment `// CG: eqx-three-mothers`
+  - 20N `eqx-oka-garden-dawn` ← `story-act4.js`, comment `// BG: oka-garden-dawn`
+  - 20O `eqx-persimmon` ← `story-act4.js`, comment `// CG: eqx-persimmon`
+  - 20P `eqx-red-moon-door` ← `story-act4.js`, comment `// CG: eqx-red-moon-door`
+  - 20Q `eqx-oka-garden-red` ← `story-act4.js`, comment `// BG: oka-garden-red`
+  - 20R `eqx-sorghum` ← `story-act4.js`, comment `// CG: eqx-sorghum`
+  - 20S `eqx-velvet-quiet` ← `story-act4.js`, comment `// CG: eqx-velvet-quiet`
+- Skipped as already covered: story-act4.js's `// BG: oka-dining-room` (13D `eqx-oka-dining-room`) and `// BG: eqx-funeral-hall` "(as Act III)" (15B `eqx-funeral-hall`): swap those to the existing pictures. `// CG: eqx-road-home` appears twice (both branches); put the CG at both.
+
+## 21. Summer arrivals and parents
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V. Where a slug has no `eqx-` prefix the saved file gets one. All comments are under `assets/femc/equinox/data/links/`, added in commit 54ff5897.
+- Item → file and comment:
+  - 21A `eqx-club-red` ← `chaewon.js`, comment `// BG: clubescapade-red`
+  - 21B `eqx-coffin-count` ← `chaewon.js`, comment `// CG: eqx-coffin-count`
+  - 21C `eqx-fishing-pier` ← `danielle.js`, comment `// BG: portisland-fishing-pier-afternoon`
+  - 21D `eqx-danielle-video` ← `danielle.js`, comment `// CG: eqx-danielle-video`
+  - 21E `eqx-station-stairwell` ← `eunchae.js`, comment `// BG: port-island-station-stairwell`
+  - 21F `eqx-last-picture` ← `eunchae.js`, comment `// CG: eqx-last-picture`
+  - 21G `eqx-blind-walk` ← `fuuka-chenle.js`, comment `// CG: eqx-blind-walk`
+  - 21H `eqx-commandroom-rain` ← `fuuka-chenle.js`, comment `// BG: iwatodaidorm-commandroom-rain`
+  - 21I `eqx-two-chairs` ← `fuuka-chenle.js`, comment `// CG: eqx-two-chairs`
+  - 21J `eqx-four-frames` ← `hateclub.js`, comment `// CG: eqx-four-frames`
+  - 21K `eqx-four-good-boys` ← `hateclub.js`, comment `// CG: eqx-four-good-boys`
+  - 21L `eqx-guesthouse-dawn` ← `jaemin-sunoo.js`, comment `// BG: kirijo-guesthouse-dawn`
+  - 21M `eqx-five-am` ← `jaemin-sunoo.js`, comment `// CG: eqx-five-am`
+  - 21N `eqx-under-the-table` ← `jaemin-sunoo.js`, comment `// CG: eqx-under-the-table`
+  - 21O `eqx-stone-barre` ← `kazuha.js`, comment `// CG: eqx-stone-barre`
+  - 21P `eqx-floured-keys` ← `mark.js`, comment `// CG: eqx-floured-keys`
+  - 21Q `eqx-oka-gate-supper` ← `sakura.js`, comment `// BG: eqx-oka-gate-supper`
+  - 21R `eqx-arcade-closed` ← `sakura.js`, comment `// BG: gamepanic-closed`
+  - 21S `eqx-on-the-record` ← `sakura.js`, comment `// CG: eqx-on-the-record`
+  - 21T `eqx-back-kitchen` ← `trio.js`, comment `// CG: eqx-back-kitchen`
+  - 21U `eqx-if-it-rings` ← `trio.js`, comment `// CG: eqx-if-it-rings`
+  - 21V `eqx-boutique-fitting-room` ← `parents-runners.js`, comment `// BG: paulownia-boutique-fitting-room`
+  - 21W `eqx-coffee-milk` ← `parents-strangers.js`, comment `// CG: eqx-coffee-milk`
+  - 21X `eqx-sento-women` ← `parents-strangers.js`, comment `// BG: eqx-sento-women`
+  - 21Y `eqx-the-scrub` ← `parents-strangers.js`, comment `// CG: eqx-the-scrub`
+  - 21Z `eqx-sento-front` ← `parents-strangers.js`, comment `// BG: eqx-sento-front`
+  - 21AA `eqx-two-eyes` ← `parents-strangers.js`, comment `// CG: eqx-two-eyes`
+  - 21AB `eqx-kim-step` ← `parents-hoax.js`, comment `// CG: eqx-kim-step`
+  - 21AC `eqx-ema-rack-night` ← `parents-hoax.js`, comment `// BG: naganaki-ema-rack-night`
+  - 21AD `eqx-turned-round` ← `parents-hoax.js`, comment `// CG: eqx-turned-round`
+- `// BG: eqx-sento-women` appears three times in parents-strangers.js (rank 2's three branches); swap all three to 21X.
+- Skipped as already covered: danielle.js's rank 3 `// BG: iwatodai-overpass-east-dusk` (14D `eqx-iwatodai-overpass-east-dusk`) and kazuha.js's rank 2 `// BG: naganaki-flat-stones` (14A `eqx-naganaki-flat-stones`): swap those to the 14 pictures.
