@@ -54,7 +54,7 @@ window.FEMC_GAME_FLAGS = {
     'eqx-red-R', 'eqx-red-S', 'eqx-red-H', 'eqx-red-stay', 'eqx-red-equinox', 'eqx-red-bad', 'eqx-red-answered',
     'eqx-hanne-fingers', 'eqx-hanne-promised', 'eqx-hanne-reported', 'eqx-aki-word', 'eqx-lease-hand', 'eqx-fathers-down', 'eqx-fathers-moved',
     'eqx-mothers-back', 'eqx-eliz-invited', 'eqx-eliz-confessed', 'eqx-edogawa-warned', 'eqx-edogawa-dead', 'eqx-girls-left',
-    'eqx-oka-revealed', 'eqx-koromaru-eye', 'eqx-theodore-dead'],
+    'eqx-oka-revealed', 'eqx-koromaru-stood', 'eqx-theodore-dead'],
   cosmetic: ['eqx-flour-wiped', 'eqx-flour-shown', 'eqx-gw-ate', 'eqx-gw-left', 'eqx-gw-dog', 'eqx-tale-tiger',
     'eqx-shin-tin', 'eqx-mark-fifth', 'eqx-wish-home', 'eqx-wish-here', 'eqx-wish-blank', 'eqx-jihoon-roof',
     // Romance rank 3s.
