@@ -1,7 +1,22 @@
 /* Persona 3: Equinox · Cherry Kim · Chariot. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
    Written: ranks 1–6 (from 4/13; her home is Wild-Duck Burger on Sunday, Monday, Wednesday, Friday and Saturday
-   afternoons, so 4/14 at the earliest). Ranks 7–10 still to write.
+   afternoons, so 4/14 at the earliest). Ranks 9–10 still to write. Written: ranks 1–8.
+   Rank 7 (after 10/27, '7: bread at six': the bakery after school, Junkyu and Asahi on the day shift → the bakery at 4 a.m.
+   → 6 a.m. opening): the wall list (five sheets) branches dead.shinjiro (his boxes empty after 10/22; Solar draws a line /
+   re-ticks the 22nd / leaves them) else a star on 10/26 (he brought his coat cut in three; Cherry told Hyein). Reads
+   eqx-seams (the mothers ticked 11/23, else dashes), ifChoice asks.cherry. The crane sacks stopped 10/27, the morning after
+   the fathers left. Mr. Bakery's postcard from Osaka ("BREAD"). A white glove-smear on the outside of the back-door glass
+   since 10/28. Sleeve beat (the wind at the back door). Jihoon first customer every day; she checks his wrist at the counter.
+   Sets eqx-cherry-first-bun (Solar makes Cherry eat the first bun herself), eqx-cherry-shift (Solar on the rota, Wednesdays
+   at four: a keep-alive for 1/20).
+   Rank 8 (after 11/28, '8: strawberries': the bakery → the station plaza): practice cake eleven, white with strawberries
+   (the real one is 12/21's, day 259; THE CLUB's envelope paid for the strawberries). A second postcard: Mr. Bakery's
+   daughter writes he's staying in Osaka "until spring" (the shop is Cherry's till then); stay/go: who opens at six. Reads ifChoice asks.cherry,
+   eqx-girls-left (five new rows; Kazuha counts with her; she once sold Edogawa a melon bread), eqx-seams (bread to the dorm
+   at 6:30; Mrs. Kim remembers the mint chocolate in the lent coat), dead.aigis (a ribbon drawn over the empty boxes; Hyein's
+   melon breads) else Aigis's "baseline". Her own ask, not the town's: "count me". Sets eqx-cherry-counted (Solar counts her
+   fingers / promises to start at the door): fair, unmarked 1/20 groundwork.
    Rank 4 (after 7/3, '4: sponge': Wild-Duck → the bakery after closing → the station plaza): reads ifChoice asks.cherry,
    ifBefore 7/15. Practice sponges for Jihoon's hundred; a crane-printed sack of warm, too-fine flour on the bakery step
    ("For the bread girl. From the house by the river… Stay sweet."); Mr. Bakery tips it in the drain (it floats) and burns
@@ -690,6 +705,257 @@
       { n: "The light changed. They crossed. Her hands stayed in her pockets the whole way, and Solar walked on her left, where Jihoon would have been, where nobody had asked her to walk, and on the far side Cherry took one hand out and, without looking, just for a second, touched Solar's sleeve, between finger and thumb, and let it go, as if checking she was still where she'd left her." },
       { s: 'cherry', f: 'neutral', t: "...Bread at six. Tomorrow. Come if you want. The first bun of the day's for whoever's there. That's a rule. I just made it." },
       { n: "She went off toward the guesthouse. She didn't look back. Cherry never looked back. Solar stood on the corner and watched her go, the whole length of the street, a small straight figure in a too-big apron under a coat, walking like somebody on her way to a door, until she'd gone round the corner, and then a while after, counting, without meaning to, without knowing what." }
+    ] },
+    { after: '10/27', title: '7: bread at six', place: 'Iwatodai Station · The Bakery', time: 'After School', music: 'tender', scene: [
+      { bg: 'iwatodai-station' },
+      { n: "The shutter was half down again, and under it, behind the glass counter, in tea-colored aprons tied twice round, were Junkyu and Asahi. Junkyu was selling a single melon bread to a salaryman with the grave, slow courtesy of a man handing over a diploma. Asahi was at the till counting change into the salaryman's palm one coin at a time, so precisely it was almost an insult." },
+      { n: "Cherry was asleep. On an upturned crate in the doorway to the back, sitting up, her head against the frame and her mouth a little open, flour to the elbows, her phone face up on her knee with the screen gone dark. She looked about twelve. She'd have killed anyone who said so." },
+      { s: 'junkyu', f: 'neutral', t: "Shh. She's been up since three. We're the day shift. Tuesdays and Thursdays it's us. Mondays it's Hyunsuk and Jaehyuk and the bread comes out weird, nobody knows why, it's the same oven." },
+      { s: 'asahi', f: 'neutral', t: "Don't wake her. When she wakes up she counts us. It takes a while." },
+      { n: "She woke anyway. The bell over the door did it when the salaryman left; her eyes came open all at once, the way a guard dog's do, and went to the counter, and she was counting before she was awake, under her breath, finger moving." },
+      { s: 'cherry', f: 'neutral', t: "...One. Two. Three. Hi. You're three. Good. Don't touch the trays." },
+      { n: "On the wall by the till, under the clock, the three sheets of lined paper had become five. Names down the side, little boxes across, one column a day all the way from the twenty-fourth of September to today, every box ticked, in pencil, in Cherry's leaning running-for-a-bus hand." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "Every row but one." },
+        { n: "*Shinjiro.* His boxes were ticked up to the twenty-second of October. After that, nothing. Not a dash. Not a line. Days of empty squares going across the paper like a row of windows with nobody behind them." },
+        { s: 'cherry', f: 'neutral', t: "He came in on the twenty-second. For flour. Mr. Bakery's, the rough one, by the kilo. He asked for it by name. He's the only person in this whole town who ever asked for the rough one. He said the fine stuff's for people who don't want to taste what they're eating." },
+        { s: 'cherry', f: 'sad', t: "A dash is for when you don't know. I know. I don't know what you put when you know." },
+        { choose: [
+          { t: "(Take the pencil. Draw one straight line through the empty boxes.)", notes: 3, then: [
+            { n: "She took the pencil off the counter and drew one line through the empty squares, straight, not fast, from the twenty-third to the edge of the paper, the way you'd draw a line under a sum. Cherry watched her do it with her arms folded tight." },
+            { s: 'cherry', f: 'sad', t: "...Okay. That's honest. A straight line. He'd like a straight line. He didn't like fuss." }
+          ] },
+          { t: "(Tick the twenty-second again, harder. Leave the rest.)", notes: 3, then: [
+            { n: "She went over the last tick, the twenty-second, pressing so hard the pencil nearly went through, until it was the darkest mark on the sheet. She left the rest empty." },
+            { s: 'cherry', f: 'neutral', t: "The last day he came in. That's the one that counts. Yeah. Yeah. That's what I'll look at." }
+          ] },
+          { t: "(Leave them empty. Say nothing.)", notes: 2, then: [
+            { s: 'cherry', f: 'sad', t: "...Yeah. Empty. Like the chair. Jihoon told me about the chair. Ken puts a plate on it." },
+            { n: "She didn't write anything. She stood beside Solar and looked at the row of empty squares with her thumb against her mouth, biting the side of the nail she'd painted over in April, and didn't notice she was doing it." }
+          ] }
+        ] }
+      ], else: [
+        { n: "Every row, every day. *Shinjiro* had a tick on the twenty-sixth of October with a tiny star drawn beside it, very small, as if she'd hoped nobody would see." },
+        { s: 'cherry', f: 'happy', t: "He came in on the twenty-sixth with his coat in a carrier bag. Yukari said he was supposed to be lying down. Cut. In three. Like ribbons. He bought two kilos of the rough flour, Mr. Bakery's, he's the only one who ever asks for the rough one, and he asked me if I knew anybody who could sew." },
+        { s: 'cherry', f: 'neutral', t: "I said Hyein. He said, she's busy. I said, she'll make time. He said, don't tell her I asked. So I told her. Obviously." },
+        { choose: [
+          { t: "You gave him a star.", notes: 2, then: [
+            { s: 'cherry', f: 'flustered', t: "I don't give stars. That's not a star. That's a smudge. Pencils smudge. Don't tell him." }
+          ] },
+          { t: "(Take the pencil. Draw a star next to Jihoon's tick for today too.)", notes: 3, then: [
+            { n: "She found Jihoon's row and today's box and drew a tiny star beside his tick. Cherry looked at it for a long second and didn't rub it out." },
+            { s: 'cherry', f: 'neutral', t: "...He's going to see that and make it his whole personality. You've ruined him. Thanks." }
+          ] }
+        ] }
+      ] },
+      { ifEvent: 'eqx-seams', then: [
+        { n: "At the top of the first sheet, the three names in their little group had ticks after them now. Three. Small, and pressed hard, all on the same day, the twenty-third of November." }
+      ], else: [
+        { n: "At the top of the first sheet, the three names in their little group still had a dash after each of them. Nothing else." }
+      ] },
+      { s: 'cherry', f: 'serious', t: "The sacks stopped. Did I tell you? The morning after the dads left the house by the river. I came in at four on the twenty-seventh and the step was empty. It's been empty every morning since." },
+      { s: 'cherry', f: 'neutral', t: "That's worse. Isn't it. Tell me that's not worse." },
+      { choose: [
+        { t: "It's worse.", notes: 3, then: [
+          { s: 'cherry', f: 'neutral', t: "...Yeah. I knew it was. I just needed one other person to say it so I'm not the only one walking round with it." }
+        ] },
+        { t: "Maybe it got tired of the bin.", notes: 2, then: [
+          { s: 'cherry', f: 'serious', t: "Nothing that leaves a sack on a step every morning for a month gets tired. That's not tired. That's somebody who's made up their mind about something." }
+        ] }
+      ] },
+      { n: "Pinned to the corkboard by the till, beside Mr. Bakery's note, there was a postcard. Osaka Castle against a too-blue sky. Cherry unpinned it and turned it over and held it out. On the back, in the old man's careful hand, three lines of katakana, and at the bottom, in English, in capitals that had clearly been copied letter by letter from somewhere, one word." },
+      { n: "*Che-ri-i. Bread at six. BREAD. — B.*" },
+      { s: 'cherry', f: 'happy', t: "He wrote in English. He doesn't know English. He found the word and copied it out for me. One word." },
+      { s: 'cherry', f: 'sad', t: "...It's the right one. Of all the words. It's exactly the right one." },
+      { s: 'cherry', f: 'neutral', t: "Come at four. Tomorrow. Not six, four. I'll show you the real thing. Not cake. Bread. The bit nobody sees." },
+
+      { place: 'Iwatodai Station · The Bakery', time: 'Early Morning', bg: 'iwatodai-station', music: 'night', soft: true },
+      // BG: iwatodai-bakery-predawn — the same tiny bakery at four in the morning: the shutter down, one bulb over a floured back counter, dough rising under cloths on wooden trays, the oven's door glowing, the small window in the back door black, frost at its edges.
+      { n: "At four in the morning the station was a black shape with no trains in it, and the plaza was frost and one vending machine humming to itself, and under the half-down shutter of the bakery there was a bar of yellow light on the paving, and inside it was warm. Warm the way a coat is warm that somebody else has just taken off. The oven ticked. Dough was rising under damp cloths on the wooden trays, a whole row of them, breathing very slowly, like animals asleep." },
+      { n: "Cherry had Mr. Bakery's radio on. It was between stations. She'd turned it on out of habit, Solar thought, and couldn't find the enka, and had left it on the static anyway, very low, and was humming over the top of it, badly, a song about a harbor." },
+      { s: 'cherry', f: 'neutral', t: "Hands. Flour on. Not like that. Like you mean it. You're not dusting a shelf, you're greeting a dog." },
+      { n: "She put her own hands over Solar's on the dough. Floured, small, hard at the palms now, a baker's palms after six weeks. She turned Solar's wrists over the way the old man had turned hers in July, so the push went from the heel of the hand, down and away, and the fold came back over from the far side." },
+      { s: 'cherry', f: 'neutral', t: "From the bottom. Like you're turning someone over in their sleep. Gently. So they don't wake up and so they don't fall off the bed." },
+      { ifChoice: { 'asks.cherry': 'yes' }, then: [
+        { s: 'cherry', f: 'happy', t: "See, this isn't duty. Bakers aren't on duty. Bakers are on shift. That's a completely different word. You retired me and I took a shift. Totally allowed." },
+        { n: "Her phone was face up on the flour bin beside the dough. Every few minutes the screen woke on its own, or she touched it with a floury knuckle without looking, and checked, and let it go dark." }
+      ] },
+      { ifChoice: { 'asks.cherry': 'choose' }, then: [
+        { s: 'cherry', f: 'neutral', t: "Today's a bread day and a door day. I decided at three. You said I'd decide on my own clock. My clock says both. My clock's very greedy." }
+      ] },
+      { ifChoice: { 'asks.cherry': 'no' }, then: [
+        { s: 'cherry', f: 'neutral', t: "On duty. Always. The oven's on duty too. It's the only other thing in this town awake at four that isn't something it shouldn't be." }
+      ] },
+      { n: "The back door was behind them. Solar had felt it there since she came in, the way you feel a window at your back in a train at night. Bolted, twice. The little square of glass in its top half black with the dark outside, the frost feathering in at the corners." },
+      { n: "On the glass, on the outside, at about the height of a hand, there was a mark. White. A long soft smear going sideways, the way a cloth leaves a mark when you wipe a window in one stroke and don't go back over it. The way a glove would." },
+      { s: 'cherry', f: 'neutral', t: "It was there on the twenty-eighth. I cleaned it. It was there on the twenty-ninth. I stopped cleaning it." },
+      { s: 'cherry', f: 'serious', t: "Mr. Bakery said don't open the back door after dark. Nobody said anything about cleaning the window. I'm not going outside in the dark with a cloth to argue with a smear. I'm not stupid." },
+      { n: "The wind came off the bay and pushed at the back door, once, so the bolts rattled in their brackets, and Cherry's hand, floury, without looking, came off the dough and found Solar's sleeve and took it between finger and thumb, and held." },
+      { s: 'cherry', f: 'neutral', t: "...Shut up. It's a door." },
+      { choose: [
+        { t: "(Turn the radio up. Find her the enka.)", notes: 3, then: [
+          { n: "She reached over with her free hand and turned the dial slowly through the static until a woman's voice came up out of it, thin and far off, singing about a harbor, the same song, or one so like it nobody could have told, and turned it up. Cherry laughed through her nose. Her hand stayed on Solar's sleeve through the whole song. The bolts didn't rattle again, or if they did, nobody heard." }
+        ] },
+        { t: "(Keep kneading. Stand between her and the door.)", notes: 3, then: [
+          { n: "She shifted half a step so she was between Cherry and the back door, her shoulder to the glass, and kept kneading, from the bottom, the way she'd been shown, and Cherry looked at where she was standing and didn't say anything and kept hold of the sleeve." }
+        ] },
+        { t: "(Count out loud with her. The trays.)", notes: 2, then: [
+          { n: "They counted the trays out loud together, the dough under the cloths, *one, two, three*, to sixteen, which was right, and then again, and on the second sixteen Cherry let go of the sleeve and wiped her hand on her apron as if she'd never been holding it." }
+        ] }
+      ] },
+      { n: "The bread went in at five. They sat on the floor in front of the oven with their backs to the counter and watched it through the glass, the way they had in July with the cake, and it rose, and went gold, and the whole shop filled with a smell so ordinary and so good that Solar's eyes stung." },
+
+      { place: 'Iwatodai Station · The Bakery', time: 'Morning', bg: 'iwatodai-station', music: 'tender', soft: true },
+      { n: "At six Cherry pushed the shutter up, and the cold came in with the gray light, and the first trains were running, and on the paving outside, in his coat, hair wet from a shower he'd clearly taken in a hurry, with Nana Two's head out of his zip, was Jihoon." },
+      { s: 'jihoon', f: 'happy', t: "First customer. Every day. It's a streak. Don't break my streak." },
+      { s: 'cherry', f: 'neutral', t: "Wrist." },
+      { n: "He held it out across the counter, inside up, the way you'd show a ticket at a gate. Cherry took it in her floury hand and looked, and let go, and that was all, and Solar understood she'd been doing it every morning since September at this counter, the two of them, a breakfast-table thing moved to a shop." },
+      { s: 'cherry', f: 'neutral', t: "The first bun of the day's for whoever's there. That's the rule. He's always there. That's not the rule working. That's him cheating." },
+      { s: 'jihoon', f: 'neutral', t: "It's called loyalty. Look it up." },
+      { s: 'cherry', f: 'serious', t: "...Today there's two of you there. I don't have a rule for two." },
+      { n: "She held the first bun out over the counter between them, on a square of paper, still too hot to hold properly, and looked at Solar, the way she looked at anybody she'd decided could make a decision." },
+      { choose: [
+        { t: "(Give it to Jihoon. Don't break his streak.)", notes: 2, then: [
+          { n: "She nodded at Jihoon. He took it, and burned his fingers, and ate it anyway in three bites standing on the paving, and said *perfect* with his mouth full, and Cherry rolled her eyes so hard it looked painful and was smiling the whole time." }
+        ] },
+        { t: "(Put it in Cherry's hand. Close her fingers round it.)", notes: 3, flag: 'eqx-cherry-first-bun', then: [
+          { n: "She took the bun off its paper and put it in Cherry's hand and closed Cherry's floury fingers round it, one at a time, the way Cherry had closed hers round the key." },
+          { s: 'cherry', f: 'surprised', t: "...The first one's for whoever's there." },
+          { s: 'solar', f: 'neutral', t: "You're there." },
+          { n: "Cherry stood behind the counter holding the bun. She looked at it. She looked at Jihoon, who had gone very quiet on the paving, and at Solar, and her mouth went tight and then went soft and then went tight again, and she ate it. Standing at the till. Looking furious. Her eyes red at the rims from the oven, she'd have said, from the oven. Jihoon clapped. Slowly. On his own, on the cold paving, like the end of a film." }
+        ] },
+        { t: "(Break it in three.)", notes: 3, then: [
+          { n: "She broke it in three, unevenly, and handed the pieces out, and they ate it in a row, one behind the counter and two on the step, steam coming off the bread in the cold, nobody saying anything, three people eating the first of something." }
+        ] }
+      ] },
+      { s: 'cherry', f: 'neutral', t: "Wednesdays. Four. If you want. You don't have to. It's cold and it's dark and I sing." },
+      { choose: [
+        { t: "Every Wednesday. Put me on the wall.", notes: 3, flag: 'eqx-cherry-shift', then: [
+          { n: "Cherry took the pencil and went to the old man's rota under the clock and, under her own row, *Che-ri-i*, in small careful letters, wrote a third row with one day filled in." },
+          { n: "*Sol (Wed. 4).*" },
+          { s: 'cherry', f: 'neutral', t: "...There. You're on a wall. It's binding. If you don't come I'll know. I'll come and get you." },
+          { n: "She said it like a threat. Solar heard what it was under the threat, and kept it." }
+        ] },
+        { t: "I'll try. I can't promise every week.", notes: 2, then: [
+          { s: 'cherry', f: 'neutral', t: "Try's fine. Try's honest. I'll leave the light on. Wednesdays. If there's a bar of yellow under the shutter, that's me, and you can come in or you can walk past." },
+          { s: 'cherry', f: 'sad', t: "...Don't walk past too many times. That's all." }
+        ] }
+      ] },
+      { n: "At seven she walked Solar to the crossing in the gray light with her apron still on under her coat. The lights changed. They crossed. On the far side Cherry stopped and turned back toward the shop, toward the shutter and the bar of light and the door, the way she always turned back toward a door." },
+      { s: 'cherry', f: 'neutral', t: "Go to school. You smell like bread. Everybody's going to be so jealous. That's my gift to you." },
+      { n: "All through first period Solar found flour under her nails, gray, rough, real, and pressed her thumbnail into it, and counted something under the desk, the trays, sixteen, and then started again." }
+    ] },
+    { after: '11/28', title: '8: strawberries', place: 'Iwatodai Station · The Bakery', time: 'After School', music: 'tender', scene: [
+      { bg: 'iwatodai-station' },
+      { n: "There was a cake on the counter under a glass dome borrowed from the cream-bun tray, and it was white. Properly white, cream piped round the top in a ring of little peaks, and on each peak, a strawberry, cut in half, shining, and in the middle of the ring, nothing yet, a smooth white circle like a field after snow." },
+      { n: "Cherry was behind it with her arms folded so tightly it looked structural, glaring at it." },
+      { s: 'cherry', f: 'serious', t: "Eleven. Practice cake number eleven. Don't touch the dome. Don't breathe on the dome. Junkyu breathed on the dome on Tuesday and I banned him for a day." },
+      { n: "Beside the till there was an envelope. Plain, white, thick with coins and folded notes, and on the front in big confident capitals, THE CLUB, and under that, smaller, in a neater hand, a calculation: the price of a box of nine December strawberries from the supermarket, multiplied by four, plus tax, divided by four boys, rounded up." },
+      { s: 'cherry', f: 'neutral', t: "Strawberries in December cost more than rent. Jaehyuk did the maths. They put in. I didn't ask. Hyunsuk wrote THE CLUB on it. No *Hate*. He's dropped the Hate. I didn't ask about that either." },
+      { s: 'cherry', f: 'neutral', t: "Junpei's having a party. Before Christmas. The twenty-first, he says, the longest night, so it's the longest party. There's going to be a banner. I've seen the banner. It's very red." },
+      { s: 'cherry', f: 'serious', t: "That's when. Two hundred and fifty-nine. I said three digits in April. I didn't say which three. I get to pick. I picked." },
+      { ifChoice: { 'asks.cherry': 'yes' }, then: [
+        { s: 'cherry', f: 'neutral', t: "And don't say I'm on duty. A cake isn't duty. A cake's the opposite of a door. You can't guard anything with a cake. I checked." }
+      ] },
+      { ifChoice: { 'asks.cherry': 'choose' }, then: [
+        { s: 'cherry', f: 'neutral', t: "Mine. My clock, my cake, my date. I decided it at four in the morning with my hands in a bowl. That's the best way to decide anything, it turns out." }
+      ] },
+      { ifChoice: { 'asks.cherry': 'no' }, then: [
+        { s: 'cherry', f: 'neutral', t: "Somebody's still got to count. I know. So I'm counting to two hundred and fifty-nine and then I'm putting a cake on it. That's still counting. It's just counting with cream." }
+      ] },
+      { s: 'cherry', f: 'neutral', t: "You're the official taster. That was July. You signed. Taste." },
+      { n: "She lifted the dome like a waiter and cut a sliver from the side with a knife held very straight, sponge and cream and half a strawberry, and put it on a square of paper, and slid it across the counter, and didn't breathe." },
+      { choose: [
+        { t: "(Taste it. Seriously. Eyes shut.)", notes: 3, then: [
+          { n: "She ate it with her eyes shut, like a judge on television, the way she had in July with the flat one. The sponge gave. It was light, and damp in the right way, and the cream wasn't too sweet, and the strawberry was sharp against it. It tasted like a birthday somebody had planned for months. She opened her eyes and Cherry was leaning over the counter with her whole body." },
+          { s: 'solar', f: 'neutral', t: "...It's good, Cherry. It's really good." },
+          { s: 'cherry', f: 'serious', t: "*Good* is what you say about a baby. Is it *good*, or is it the best cake anybody ever made for anybody." },
+          { s: 'solar', f: 'neutral', t: "It's nearly the best cake anybody ever made for anybody." },
+          { s: 'cherry', f: 'neutral', t: "...Nearly. Okay. Nearly I can work with. Nearly's three weeks." }
+        ] },
+        { t: "The middle's empty.", notes: 2, then: [
+          { s: 'cherry', f: 'neutral', t: "The middle's for the number. On the day. In chocolate. I've been practicing the two and the five on baking paper. The nine keeps coming out like a six with ambitions." },
+          { n: "She showed Solar the baking paper. Twenty-five nines, all in a row, getting better, and in the corner, very small, one that was just a heart, which she put her thumb over." }
+        ] },
+        { t: "(Taste it. Then eat the rest of the slice before she can stop you.)", notes: 3, then: [
+          { n: "She tasted it, and then ate the rest of it, fast, all of it, and licked the cream off her thumb, and Cherry watched her do it with her mouth open." },
+          { s: 'cherry', f: 'happy', t: "...That's the review. That's the best review. Nobody eats the whole practice slice. Junkyu ate one bite and said *structurally sound*." }
+        ] }
+      ] },
+      { n: "Pinned under the Osaka Castle postcard there was a second one now. A temple in the snow. Cherry didn't unpin it; she just tapped it with a floury finger, the way you'd tap a barometer." },
+      { s: 'cherry', f: 'neutral', t: "His daughter wrote that one. In English. Proper English, she's a nurse, she does it at work. She says his knees are bad in the cold and he's staying with her till spring. *Until spring.* There's another *until*. She says he talks about the shop every night at supper. She says he calls it *Cherry-chan's shop* now, like it's a joke, and then he doesn't laugh." },
+      { s: 'cherry', f: 'serious', t: "So it's mine till spring. And spring's when everybody thinks there's going to be a door. Jungwon's got a whole folder about it. Mitsuru's got a board." },
+      { s: 'cherry', f: 'sad', t: "...And I lie there at three in the morning before I get up and I think, if there's a door and I go through it, who opens at six. Who does Jihoon's wrist at the counter. Who bins the sack. It's such a stupid thing to think. It's a bakery. It's not mine. It's an old man's bakery by a station in a town that isn't even on a map at home." },
+      { s: 'cherry', f: 'serious', t: "At home I've got a door too. You know I have. Every party. Every Friday. The whole school knows my face from the top of a stairwell. If I'm not there, who's there." },
+      { n: "She said it fast, without looking up, piping a line of cream onto a scrap of baking paper to have something to do with her hands. Solar watched the line go wobbly at the end." },
+      { choose: [
+        { t: "Somebody else, maybe. For once.", notes: 3, then: [
+          { s: 'cherry', f: 'surprised', t: "...Somebody else. On my door." },
+          { s: 'cherry', f: 'neutral', t: "That's insane. That's the most insane thing you've ever said and you once told me you were from three places." },
+          { n: "But she put the piping bag down, and looked at the line of cream on the paper for a while, and didn't say no." }
+        ] },
+        { t: "You don't have to know yet.", notes: 3, then: [
+          { s: 'cherry', f: 'neutral', t: "I always know. That's my whole thing. I know the number." },
+          { s: 'cherry', f: 'sad', t: "...I don't know this one. I hate it. It's like a stair that isn't there in the dark." }
+        ] },
+        { t: "(Take the piping bag. Pipe a two, a five, a nine. Badly.)", notes: 2, then: [
+          { n: "She took the bag and piped *259* on the paper, and the nine came out like a six with ambitions, the way Cherry had said hers did, and Cherry looked at it and laughed, the real one, short, surprised, and took the bag back and fixed the nine with one flick of her wrist without even thinking about it." },
+          { s: 'cherry', f: 'neutral', t: "...See. Hopeless. You need me. Everybody needs me. That's the problem." }
+        ] }
+      ] },
+      { n: "On the wall by the till the five sheets were six now. Solar saw the new one before Cherry pointed at it." },
+      { ifEvent: 'eqx-girls-left', then: [
+        { n: "Five new rows at the bottom. *Chaewon. Sakura. Kazuha. Eunchae. Yunjin (sometimes).* Ticked every day since the ninth." },
+        { s: 'cherry', f: 'neutral', t: "The girls are at the guesthouse now. Since the teacher. Since the tree. Five more on the door. I count them twice a night. Kazuha counts with me, she doesn't sleep either. She counts in Japanese. We meet in the middle." },
+        { s: 'cherry', f: 'sad', t: "I sold him a melon bread once. The teacher. He paid in ten-yen coins and said it was for luck. I didn't know his name till the assembly." }
+      ] },
+      { ifEvent: 'eqx-seams', then: [
+        { n: "At the top, the three names had their ticks, small and hard, all on the twenty-third." },
+        { s: 'cherry', f: 'neutral', t: "I take bread up to the dorm now. Six-thirty. After Jihoon's bun. Your mom's in the armchair. She's always in the armchair. I don't think she's lain down since they carried her up." },
+        { s: 'cherry', f: 'sad', t: "I ticked them on the twenty-third. Then I stood there with the pencil for like an hour. A tick's for when somebody comes in for bread. They didn't come in. They were carried." },
+        { s: 'cherry', f: 'neutral', t: "And on Monday your mom looked at me over the bag and said, *you left a chocolate in it.* In the coat. In ninth grade. The one she lent me that night. *Mint. I hate mint. I ate it anyway.*" },
+        { n: "Cherry's voice went. Just for a second, on *anyway*, the way a radio goes between stations. She picked up a cloth and wiped the clean counter." },
+        { s: 'cherry', f: 'sad', t: "I cried in your kitchen. Into a dish towel. Miseon-ssi handed me a second dish towel without looking up from her tea. That's the whole story. Don't tell anybody that's the whole story." }
+      ] },
+      { ifFlag: 'dead.aigis', then: [
+        { n: "Halfway down the third sheet, *Aigis*. Ticked to the twenty-second of November. Then the squares were empty, and over the empty squares, very light, so light you'd only see it if you were looking, Cherry had drawn a ribbon. A little looping line, like a ribbon lying on paper." },
+        { s: 'cherry', f: 'sad', t: "Hyein came in every morning for a week and bought one melon bread for her and left it on the counter. Didn't say anything. Paid for it and left it there and went." },
+        { s: 'cherry', f: 'sad', t: "I didn't put them back in the case. I couldn't sell them. I ate them. At closing, every night, standing up. Somebody had to. It's a waste otherwise. That's all it was. It was a waste thing." }
+      ], else: [
+        { s: 'cherry', f: 'happy', t: "Aigis came in last week and bought one of everything. One of everything. She said she was *establishing a baseline*. She ate them in order, left to right, at the bench outside, and wrote something after each one. I've never been so scared of a review in my life." }
+      ] },
+      { n: "She closed at five. Solar helped. Wiped the glass, counted the till twice, because Cherry wanted it counted twice; covered the cake under its dome with a clean cloth, and Cherry tucked a napkin into the fold. *PRACTICE — NOT THE REAL ONE — STILL DON'T GET EXCITED.*" },
+      { n: "At the back door Cherry checked the bolts. Both. Then again. Then she stood with her hand flat on the door, the way she always did now, and didn't take it away, and didn't look at the little window with the white smear on its outside, gone gray and stiff with frost, like a cast." },
+      { s: 'cherry', f: 'neutral', t: "Can I ask you something. Not the town kind. Mine. I'm only going to ask once and then I'm going to pretend I didn't." },
+      { s: 'cherry', f: 'serious', t: "I count everybody. Every door, every party, every night. Eighteen at the guesthouse now. I've got six sheets on a wall. I always know the number." },
+      { s: 'cherry', f: 'sad', t: "And I always forget to count me. Every time. Twelve on the roof in August and I got to eleven and stopped, and I had to stand on the step in the dark and go, oh. Twelve. With me." },
+      { s: 'cherry', f: 'serious', t: "So if there's ever a night I'm not on the door. If it's ever me that's not there when somebody counts. You count me. You notice. You come and find me. Because nobody else is going to think to. I'm the one who counts. Who counts the one who counts." },
+      { n: "She didn't look at Solar while she said it. She looked at her own hand flat on the bolted door, floury, the nails with the white crescents under them, the one she'd bitten in April painted over now in dark red, very neat." },
+      // CG: eqx-count-me — the back room of a tiny bakery at dusk, a girl in an oversized apron with her floury hand flat on a bolted back door, its small window frosted and smeared white on the outside, a friend beside her; a white strawberry cake under a cloth on the counter behind them.
+      { choose: [
+        { t: "(Take her hand off the door. Count her fingers. Out loud. Ten.)", notes: 3, flag: 'eqx-cherry-counted', then: [
+          { n: "She took Cherry's hand off the door. It came easily, which surprised them both. She turned it palm up in the bulb light, flour in all the creases, and counted the fingers out loud, touching each one, slowly, the way you'd count for a child who'd just learned how." },
+          { n: "*One. Two. Three. Four. Five.* Then the other hand, which Cherry gave her without being asked. *Six. Seven. Eight. Nine. Ten.*" },
+          { s: 'solar', f: 'neutral', t: "All of you. Every time. I'll come and find you." },
+          { s: 'cherry', f: 'sad', t: "...Okay. Okay. That's the right number. That's all of me." },
+          { n: "She didn't take her hands back for a while. When she did, she wiped them on her apron and looked very hard at the oven." }
+        ] },
+        { t: "I'll count you. Every time. First, before anybody.", notes: 3, flag: 'eqx-cherry-counted', then: [
+          { s: 'cherry', f: 'surprised', t: "...First? I'm not first. I'm never first. I'm the last one in and the one who shuts the door." },
+          { s: 'solar', f: 'neutral', t: "Then I'll start at the door." },
+          { n: "Cherry looked at her. Then she laughed, short and cracked like the crust on a melon bread, and took her hand off the bolt, and put it on Solar's sleeve, between finger and thumb, on purpose this time, and held it, and didn't call it a habit." }
+        ] },
+        { t: "You won't go missing, Cherry.", notes: 2, then: [
+          { s: 'cherry', f: 'neutral', t: "Everybody says that. Everybody says that about everybody. That's what people say right up until the night they're wrong." },
+          { s: 'cherry', f: 'sad', t: "...Just count me. You don't have to promise. Just do it." }
+        ] }
+      ] },
+      { place: 'Iwatodai · Station Plaza', time: 'Evening', bg: 'station-concourse-evening', music: 'tender', soft: true },
+      { n: "The plaza was strung with Christmas lights now, white ones, in the bare trees, and the station played a carol through a speaker that crackled on the high notes, and everybody going home had their collars up and their breath going ahead of them in the cold." },
+      { n: "At the crossing Cherry stood with her hands in her pockets and the cake's empty dome under one arm, borrowed back for the morning. The light changed. They crossed. On the far side she stopped, and turned, the way she always did, back toward the shop, the shutter, the bar of yellow, the door." },
+      { s: 'cherry', f: 'neutral', t: "Twenty-one days. Then it's the real one. Then you can tell me if it's the best one or just nearly." },
+      { s: 'cherry', f: 'serious', t: "And Sol. I counted you. Just now. Crossing. I always count you. I'm just telling you so you know it's mutual." },
+      { n: "She went. She didn't look back; Cherry never looked back. Solar stood under the white lights in the trees with the carol crackling and watched her the whole length of the street, a small straight figure in a coat over an apron, and counted her, one, out loud, under her breath, all the way to the corner, and then a while after." }
     ] }
   ]
 });

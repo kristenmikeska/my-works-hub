@@ -1,6 +1,6 @@
 /* Persona 3: Equinox · Ken & Koromaru · XI Strength (a duo link). Link data (femc-equinox-game.html). Format: link fields
    in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–6 (from 4/13; their home is the shrine playground on Sunday, Tuesday, Thursday and Saturday after
+   Written: ranks 1–8 (from 4/13; their home is the shrine playground on Sunday, Tuesday, Thursday and Saturday after
    school, so 4/13 itself). Ranks 4–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js
    (members / cast kept; this file wins over the stub). Both members are in every rank: Koromaru doesn't talk, but he's a
    full presence (his lines are barks and what he does).
@@ -17,10 +17,19 @@
    Rank 6 (after 10/3, the eve of 10/4: the playground, the corner lot behind the Strip, the playground, the front hall;
    reads eqx-ken-asks-shinji) sets eqx-ken-for-now (Solar writes "for now" under her mothers' names in Ken's list) and
    eqx-floor-ken-koromaru (their ask floor). Koromaru is never hurt or in danger (Kat). Nothing reads the new flags yet.
-   Ranks 7–10 still to write. */
+   Ranks 7–8 written (Nov 16, round 3): rank 7 (after 11/4, Thursday: the playground with Taejoon throwing the ball, the
+   river steps at dusk, the kitchen at six, the stairs; branches hard on dead.shinjiro; reads eqx-ken-come, ifEvent
+   eqx-1122) sets eqx-ken-list-solar (Solar writes in Ken's list) or eqx-ken-list-ken (she holds it, he writes). Taejoon is
+   narration only (two words of Korean; fence kept). Rank 8 (after 12/5, Sunday: the playground in frost, the same count
+   two nights running, their ask floor in the Well in the red: a corridor of doors with a futon across each and everyone
+   asleep and smiling, Ken's mother among them, the fourteenth futon empty for Ken with Koromaru lying across it; reads
+   eqx-ken-for-now, eqx-ken-come, ifChoice asks.ken-koromaru, dead.*, ifEvent eqx-persimmon) sets one of eqx-ken-real-count,
+   eqx-ken-stopped-count (choose +1) or eqx-ken-come-used (only with eqx-ken-come), then eqx-floor-ken-koromaru-seen.
+   Koromaru is in no danger on the floor: nothing there attacks him. Cast adds shinjiro (rank 7, alive branch).
+   Ranks 9–10 still to write. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'ken-koromaru', name: 'Ken & Koromaru', short: 'Ken & Koromaru', arcana: 'Strength', numeral: 'XI', from: 'Persona 3', kind: 'group',
-  romance: null, starts: '4/8', lodging: 'dorm', members: ['ken', 'koromaru'], cast: { ken: 'Ken', koromaru: 'Koromaru', nurse: 'Nurse' },
+  romance: null, starts: '4/8', lodging: 'dorm', members: ['ken', 'koromaru'], cast: { ken: 'Ken', koromaru: 'Koromaru', nurse: 'Nurse', shinjiro: 'Shinjiro' },
   home: { area: 'shrine', spot: 'Playground', slot: 'after', days: [0, 2, 4, 6],
           hint: 'After school, or in the daytime on Sundays, at the Naganaki Shrine playground: one boy, one dog, one ball.' },
   approach: "In the little playground below Naganaki Shrine a boy in a sixth-grade uniform is throwing a tennis ball as far as he can, and a white dog is bringing it back faster than he can throw it, and neither of them has noticed yet that this isn't a fair fight.",
@@ -736,6 +745,353 @@
       { n: "And then, so quietly that she wasn't sure, afterward, that she'd heard it at all, three more. Not numbers. Three names, said slowly and carefully, the way you'd say the names of people whose own letters you didn't have, and then, after them, very firmly, the way you'd write a thing in pen:" },
       { n: "*For now.*" },
       { n: "Then the creak of the stairs going down, and the futon, and at midnight the red came up through the glass of the front door and lay across the boy asleep on the floor and the white dog awake beside him, and the dog didn't move, and didn't sleep, and in the morning, when Shinjiro came down at six to burn the toast, he found the two of them like that, and stood in the hall a long time with the bread in his good hand, and didn't wake either of them." }
+    ] },
+    // Rank 7 (Nov 16, round 3): after 11/4 (Thursday). The playground in November with Taejoon (the fathers have lived in the
+    // dorm since 10/26), the shrine's river-side steps at dusk, the dorm kitchen at six (Ken's cooking lesson night). Branches
+    // hard on dead.shinjiro (Ken cooks alone / Shinjiro teaches lying down). Reads eqx-ken-asks-shinji, eqx-ken-come,
+    // eqx-ken-for-now, ifEvent eqx-1122, dead.aigis. Sets eqx-ken-list-solar (Solar writes in Ken's list for him),
+    // eqx-ken-list-ken (she holds the notebook and he writes it himself) or neither (she closes it: not today).
+    // Taejoon speaks in narration only, a word of Korean or two (no war, no numbers: fence). Koromaru is never in danger.
+    { after: '11/4', title: '7: the onions', place: 'Naganaki Shrine · Playground', time: 'After School', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-autumn' },
+      // BG: naganaki-shrine-playground-november — the small playground below Naganaki Shrine in early November, the ginkgo over the bench nearly bare, a last few yellow leaves on it and a thick rotting gold carpet under it, the sand gray, a cold pale sky.
+      { n: "The ginkgo had let go. It had done it the way it did everything, all at once, in one night of wind at the end of October, so that the tree over the bench stood nearly bare now with a few last yellow fans hanging on at the very top like people who'd missed the announcement, and the gold was all on the ground, a thick soft carpet over the sand and the bench and the bottom of the slide, gone brown at the edges and sweet with rot. It squelched. It smelled. Koromaru loved it. He was rolling in it when Solar came down the path, on his back with all four legs in the air, twisting, the whole white length of him gone yellow-brown." },
+      { n: "And there was a man throwing the ball." },
+      { n: "Not Ken. Ken was sitting on the bench with his backpack on his knees, very upright, watching. A man in a dark gray coat that had been bought for a different winter, standing in the middle of the playground with his hands in his pockets, and then taking one out, and throwing a tennis ball the length of the shrine hill without any visible effort at all, a long flat throw that went over the swings and the climbing frame and the little fence at the bottom and landed somewhere in the trees, and putting his hand back in his pocket." },
+      { n: "Taejoon. Solar's father. One of them." },
+      { n: "Koromaru came up out of the leaves like a shot and went after it, and was gone into the trees, and came back with it, and didn't take it to Ken. He took it to Taejoon, and dropped it on his shoe, and sat, and looked up at him with enormous approval." },
+      { n: "Taejoon looked down at the dog. He looked at him for a long moment, the way he looked at most things, with his whole attention and no expression at all. Then he said, low, in Korean, *잘했다*. Good job. And took the ball, and threw it again, over everything, into the trees." },
+      { s: 'ken', f: 'neutral', t: "Solar-san. Good afternoon. Your father's here. Lee-san. The quiet one. Not your other father. He's not quiet." },
+      { s: 'ken', f: 'neutral', t: "He came on Tuesday. He walks the river path at four, and then he came up the hill instead, on Tuesday, and stood at the fence, and Koromaru took him the ball. He's been every day since. I don't know how he knows which days. I've never told him. We don't share a language." },
+      { s: 'ken', f: 'serious', t: "I've learned one word. *Jal-haet-da.* I think it means good. He says it to Koromaru. He said it to me once, on Wednesday, when I caught the ball. I've written it down phonetically." },
+      { choose: [
+        { t: "It means *well done*. He doesn't say it to many people.", notes: 3, then: [
+          { n: "Ken looked at the man in the gray coat for a long time. Then he took out his notebook and found the page and corrected something, very small, with his pencil." },
+          { s: 'ken', f: 'neutral', t: "...Well done. Not good. Well done. That's different. That's past tense. That means you did a thing." }
+        ] },
+        { t: "(Go and stand next to him. Don't say anything.)", notes: 2, then: [
+          { n: "She went and stood next to her father in the wet leaves. He didn't look at her. He took his hand out of his pocket and, without turning his head, put it on the top of her head, briefly, heavily, the whole palm, the way you'd check a child for fever, and put it back in his pocket, and threw the ball." }
+        ] },
+        { t: "Has he talked to you?", notes: 2, then: [
+          { s: 'ken', f: 'neutral', t: "No. He doesn't talk to anybody. I don't mind. I find it very restful. He throws, and Koromaru gets it, and I sit here, and nobody asks anybody anything." },
+          { s: 'ken', f: 'neutral', t: "...He brought me a can of coffee milk on Wednesday. From the machine at the bathhouse. He just put it on the bench next to me and went back to throwing. I've kept the can. It's on my shelf." }
+        ] }
+      ] },
+      { n: "Koromaru brought the ball back, and dropped it, and Taejoon looked down at it, and then, for the first time, at Ken on the bench. He didn't say anything. He bent down, and picked the ball up, and held it out, sideways, without moving his feet. To Ken." },
+      { n: "Ken stood up. He put his backpack down very carefully on the bench and walked across the leaves and took the ball out of the big hand and went back to the middle of the playground and threw it, all arm, his whole body going after it, the way he'd thrown in April, and it went about half as far as Taejoon's, over the swings and into the sand, and Koromaru went and got it anyway with exactly the same joy, and brought it back to Ken." },
+      { n: "Taejoon watched the whole thing. Then he nodded, once, the way men nodded in a house Solar had lived in once, at the bottom of the seventh stair. *잘했다.*" },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "Ken's face did something. Solar saw it go across him and saw him catch it and put it somewhere, fast, with both hands, the way you'd catch a glass going over. He went back to the bench and sat down and picked up his backpack and held it on his knees very tight." },
+        { s: 'ken', f: 'neutral', t: "...He nods like Shinjiro-san did. Exactly like that. Once. Down and up. He didn't know. He couldn't know. I just— it's the same nod." },
+        { s: 'ken', f: 'sad', t: "I think that's why I keep coming on the days he comes. I've only just worked it out. I'm going to have to think about whether that's fair to him." }
+      ], else: [
+        { s: 'ken', f: 'neutral', t: "...He nods like Shinjiro-san. Exactly the same. Once. I told Shinjiro-san. He said *great, now there's two of us*, and then he went out to the step where Lee-san sits at night and sat there with him for an hour and neither of them said anything." }
+      ] },
+
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "The man in the gray coat went home at five, down the hill, the way he'd come, with his hands in his pockets and the dog walking with him to the fence and no further. Ken and Solar sat on the bench in the brown leaves. Koromaru came back and lay on Ken's shoes." },
+        { s: 'ken', f: 'neutral', t: "It's Thursday. Not a lesson day. Lessons were Tuesdays and Fridays at six." },
+        { s: 'ken', f: 'neutral', t: "I still do them. Tuesdays and Fridays. Six o'clock. I go into the kitchen and I put on the apron, the black one, his, Junpei-san moved it to the back of the door so nobody would have to look at it on the hook, but I take it off the back of the door, and I do the onions." },
+        { s: 'ken', f: 'neutral', t: "I've made curry three times. It was all right the first time. It was worse the second time. The third time Akihiko-senpai ate two bowls standing up in the doorway and didn't say anything and went running." },
+        { s: 'ken', f: 'sad', t: "I don't know the thing with the pot. Where he didn't measure. I watched him do it twenty times and I didn't write it down, because I thought I'd have it, I thought I'd just *have* it, by doing it. I only did the onions. I was only on the onions." },
+        { n: "He took the notebook out. The small one from April, gone soft. He opened it to the page with the lists. *PEOPLE WHO WENT.* *Mom.* *Shinjiro-san*, a line through it, and next to the line, small, in the old pencil, *came back*." },
+        { n: "Nothing after it. The line, and *came back*, and then the white of the page." },
+        { s: 'ken', f: 'neutral', t: "I can't write it. I've tried every night since the twenty-fourth. I get the pencil on the paper and I can't write it under *came back*. It looks like a lie either way. It looks like a lie with it and without it." },
+        { s: 'ken', f: 'neutral', t: "He didn't *go*. Going's when you walk somewhere. He stepped in front of your father. That's not going. I don't have a heading for it. I've tried six headings. They're all on the next page, crossed out." },
+        { n: "He held the notebook out. Not to give it to her. Open, on his flat palms, across the space between them on the bench, the way he'd held the index card in June." },
+        { s: 'ken', f: 'neutral', t: "Solar-san. Would you. I'm not asking you to. I'm asking if you'd be willing to be asked." }
+      ], else: [
+        { n: "The man in the gray coat went home at five, down the hill, the way he'd come. Ken looked at his watch." },
+        { s: 'ken', f: 'neutral', t: "It's Thursday. Shinjiro-san moved the lesson. From Fridays. Because of physio. Because of the chest. It's at six. You can come. He said you could come if you did something useful. I said you could peel. He said *she can't peel*. I said you could hold things." },
+        { n: "He took the notebook out on the walk down. The small one from April, gone soft, open to the lists. *PEOPLE WHO WENT.* *Shinjiro-san*, a line through it, *came back*. And under that, newer, in the same careful pencil, a second line for him, and next to it: *nearly. 10/23.* And under that: *Lee-san (Solar-san's other father). Nearly. 10/23.*" },
+        { s: 'ken', f: 'neutral', t: "I had to make a column for nearly. It's getting quite long. I don't like that column. I like it better than the other one." },
+        { s: 'ken', f: 'neutral', t: "He's got three lines on his chest. I saw them by accident, in the bathroom, he had his shirt off and the door wasn't locked. He said if I told Yukari-san he'd put me in the curry." },
+        { n: "He held the notebook out to her, open, on his flat palms, the way he'd held the index card in June." },
+        { s: 'ken', f: 'neutral', t: "Would you write the date by Lee-san's. In your hand. It should be in a family hand. I'm not family. I'm asking if you'd be willing." }
+      ] },
+      { choose: [
+        { t: "(Take the pencil. Write it for him.)", notes: 3, flag: 'eqx-ken-list-solar', then: [
+          { ifFlag: 'dead.shinjiro', then: [
+            { n: "She took the pencil. She looked at the page for a long time, at the line through his name and the two small words beside it, *came back*, in a twelve-year-old's April hand. She didn't rub them out. She wrote under them, in her own writing, which was nothing like Ken's, small: *stayed. 10/23. In front of my father.*" },
+            { n: "Ken read it. He read it again. He didn't go over it in his own pencil, the way he'd gone over *for now* in October. He left it in hers." },
+            { s: 'ken', f: 'sad', t: "...Stayed. That's the heading. That's the one I couldn't find. He didn't go. He stayed. Exactly where he was. He didn't move." },
+            { s: 'ken', f: 'sad', t: "That's the opposite of the list. That's— I'll have to make a new list for that. With one person on it." },
+            { n: "He closed the notebook. He held it on his knees with both hands flat on the cover, the way Mitsuru did, and his chin did something difficult, and this time he let it, for a while, in the brown leaves, with the dog on his shoes and nobody else in the playground at all, and Solar put her arm round him, and he let that too." }
+          ], else: [
+            { n: "She took the pencil and wrote, next to *Lee-san (Solar-san's other father)*, in her own hand: *my father. Caught. By Shinjiro.*" },
+            { n: "Ken read it. He looked at the word *caught* for a long time." },
+            { s: 'ken', f: 'neutral', t: "...Caught. That's better than nearly. That's what happened. Nearly is what didn't." },
+            { s: 'ken', f: 'happy', t: "I'm going to move it. Into a new column. *Caught.* I like that column. I'm going to put him at the top of it, Shinjiro-san I mean, as the catcher, and everybody else under." }
+          ] }
+        ] },
+        { t: "(Hold the notebook flat for him. Give him back the pencil.)", notes: 3, flag: 'eqx-ken-list-ken', then: [
+          { n: "She took the notebook by its edges and held it flat on her knees, and turned it toward him, and held the pencil out, point toward herself, the way you hand somebody scissors." },
+          { s: 'ken', f: 'neutral', t: "...You're doing the thing. Where you give it back." },
+          { s: 'solar', f: 'neutral', t: "I'm holding it still. You write." },
+          { ifFlag: 'dead.shinjiro', then: [
+            { n: "He took the pencil. His hand shook, once, and he waited until it stopped, the way he'd waited for Koromaru to stop at the curb in April, and then he wrote, very slowly, every stroke finished, under *came back*, one word. Not a heading. A name, again. *Shinjiro-san.* And next to it, after a long time, small: *10/23. Here.*" },
+            { s: 'ken', f: 'sad', t: "Here. That's where. It's not a heading. It's a place. He's here. They said. He stays here. In this town." },
+            { n: "He gave Solar the pencil back, and she put it in his pencil case for him, and he didn't move for a long time, and neither did the dog." }
+          ], else: [
+            { n: "He took the pencil and wrote the date beside Lee-san, *10/23*, and then, after a moment, under it, small: *Ate breakfast. 10/24. Shinjiro-san made it.* And then he gave her back the pencil." },
+            { s: 'ken', f: 'neutral', t: "That's the important part. Not the steps. That he ate breakfast the next morning, at the table, with everybody. I'd like that recorded." }
+          ] }
+        ] },
+        { t: "(Close the notebook gently. Not today.)", notes: 2, then: [
+          { n: "She closed it, gently, on his palms, and put her own hand flat on top of the cover, and left it there." },
+          { s: 'ken', f: 'neutral', t: "...Not today. Yes. That's allowed. I'll put it in the calendar. *Not today.* It's a very useful entry. I've used it four times this week." }
+        ] }
+      ] },
+
+      { place: 'Naganaki Shrine · River Steps', time: 'Evening', bg: 'naganaki-shrine-night', soft: true },
+      { n: "At dusk Koromaru got up off Ken's shoes and went. The way he'd gone every evening since May: across the playground, up the stone path, past the torii and the shut hall and its unlit lanterns, to the top of the old steps on the river side of the hill, steep and green-edged, going down through the trees toward the town. He sat at the very top, square, front paws together, and looked down." },
+      { n: "They followed him up, the way they always did. The sky over the bay was the color of a bruise healing, yellow at the bottom and dark at the top, and the lamps were coming on along the river below, one by one, and the old tiled roofs had gone black, and over one wall the persimmon tree you could always find from here was heavy now, the fruit gone orange, dozens of them, small lit lanterns hanging in the bare branches, with not one bird in it." },
+      { n: "Koromaru looked down at it. And then, which he'd never done, he turned his head and looked back. Over his shoulder. At Ken. For a long second. Then down at the river again. Then back at Ken." },
+      { s: 'ken', f: 'neutral', t: "...He does that now. Since the twenty-sixth. Since the vans. Every minute or so. Down there, and then me. Down there, and then me." },
+      { s: 'ken', f: 'neutral', t: "I was at the gate when the vans went. Mitsuru-san's. With the dads' suitcases. And the lady came out and stood at her gate and watched them go, and when the van pulled away she knocked on her own gatepost. Twice. With one knuckle. Like it was a door." },
+      { s: 'ken', f: 'serious', t: "Who knocks on their own gate? From the inside? When they're already home?" },
+      { choose: [
+        { t: "Somebody who wants you to know she's still there.", notes: 3, then: [
+          { s: 'ken', f: 'neutral', t: "...Yes. That's what it sounded like. Like a doorbell. The other way round." },
+          { n: "Koromaru looked back at Ken again. Ken put his hand on the dog's back, flat, and kept it there, and Koromaru didn't look back again after that; he didn't need to. He could feel where Ken was." }
+        ] },
+        { t: "(Sit down on the step beside Koromaru. Put your arm round him.)", notes: 3, then: [
+          { n: "She sat down on the cold stone beside him and put her arm round his warm neck, and he leaned, the whole weight, the way he'd leaned in April, and kept looking down at the persimmons, and every minute he still turned his head and looked back at Ken, and Ken said, every time, very quietly, *I'm here*, and the dog turned back." }
+        ] },
+        { t: "Ken. Do you want to go home?", notes: 2, then: [
+          { s: 'ken', f: 'neutral', t: "Not yet. He hasn't finished. You don't make him come in the middle of a shift." },
+          { ifFlag: 'eqx-ken-come', then: [
+            { s: 'ken', f: 'neutral', t: "I could say *come*. He'd come. He always does, now. I don't want to use it for this. I want to save it. For something that matters." }
+          ] }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Kitchen', time: 'Evening', bg: 'iwatodaidorm-kitchen-night', soft: true },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "At six Ken went into the kitchen and took the black apron off the back of the door. It came down to his shins. He tied it twice round his waist, the way you'd tie it on a child, and stood at the counter with the onions in front of him, three, and the knife, and Solar stood in the doorway because she didn't know what else to do." },
+        { n: "Taejoon came in at five past six. He didn't say anything. He stood beside Ken at the counter, too big for it, his coat off and his sleeves rolled to the elbow, and took the second onion, and the second knife, and began to cut it, without asking, very fast, very evenly, the way somebody cuts who has cut ten thousand onions in a kitchen a long way from here with the window over the garden." },
+        { n: "Ken stopped. He looked at the man's hands. Then he looked up at him. Taejoon didn't look down. He went on cutting." },
+        { n: "Ken picked up his own knife again, and went on with his onion, slower, his eyes going sideways every few seconds to watch the big hands, how they held it, how they curled the fingers under; and his own hands, after a while, changed, and curled their fingers under too, and went faster." },
+        { n: "Neither of them said anything for the whole three onions. The kitchen filled up with the smell, sharp and sweet, and both of them were crying, steadily, without any expression at all, the boy and the man side by side at the counter with their eyes streaming, and Solar in the doorway, and Koromaru on the folded blanket by the chair at the kitchen door, on the floor, where he slept half the night now, watching all three of them." },
+        { n: "At the end Taejoon put his knife down, and wiped his face with the back of his wrist, once, and said, to the onions, in Korean, quietly, *양파 때문이야*. It's the onions." },
+        { s: 'ken', f: 'sad', t: "...What did he say?" },
+        { s: 'solar', f: 'neutral', t: "He said it's the onions." },
+        { n: "Ken looked at the onions for a long time. Then he wiped his own face with the back of his wrist, once, exactly the same, and said *I know*, to the man, in Japanese, and the man nodded once, down and up, and went to wash his hands." }
+      ], else: [
+        { n: "Shinjiro was lying on the kitchen floor." },
+        { n: "On a folded futon, flat on his back, in front of the stove, with his head on a rolled-up dish towel and his arms crossed on his chest, the way Yukari had ordered, and his eyes on the ceiling, giving instructions to it." },
+        { s: 'shinjiro', f: 'neutral', t: "Fingers under. Under, Ken. You want to keep them. I'm not explaining to Takeba why you've got eight." },
+        { s: 'ken', f: 'neutral', t: "They're under." },
+        { s: 'shinjiro', f: 'neutral', t: "I can hear they're not." },
+        { n: "Ken was at the counter in the black apron, which came down to his shins, tied twice. He had three onions. He was crying steadily, with no expression at all. Taejoon was standing beside him at the counter, too big for it, sleeves rolled, cutting the second onion very fast and very evenly without having been asked, and Shinjiro, from the floor, had apparently decided not to have a problem with that." },
+        { s: 'shinjiro', f: 'neutral', t: "You. In the door. If you're standing there you're holding something. Get the pot. The big one. Second shelf. Don't hand it to me, I'm not allowed to lift it, I've been told. Put it on the stove and stand back." },
+        { n: "She got the pot. Shinjiro watched her put it on the stove from the floor, upside down, with a look of great suffering." },
+        { s: 'shinjiro', f: 'neutral', t: "...Upside down. Two years in this kitchen. Ken, write that down. Evidence." },
+        { s: 'ken', f: 'happy', t: "I'm writing it down." },
+        { n: "He didn't write it down. He was crying too hard at the onions to see the page, and laughing, both at once, which you're allowed, and Taejoon beside him finished the second onion and took the third without a word, and Shinjiro, on the floor, closed his eyes and said *don't let it catch*, to nobody, and smiled at the ceiling, very slightly, the way you'd smile at a thing you'd decided to keep." },
+        { n: "Later, when the curry was on and Ken was stirring it, standing on a stool to see in, Shinjiro said, still on his back, without opening his eyes:" },
+        { s: 'shinjiro', f: 'neutral', t: "The thing with the pot. Where I don't measure. You've been asking with your face for a month." },
+        { s: 'shinjiro', f: 'neutral', t: "I don't know how I do it. I'll write down what I think I do. You'll have it by Christmas. It'll be wrong. You'll fix it." },
+        { n: "Ken stopped stirring. It caught. Nobody said anything about it." }
+      ] },
+
+      { place: 'Iwatodai Dorm · Stairs', time: 'Late Night', bg: 'iwatodaidorm-stairs-night', soft: true },
+      { n: "At eleven he was on the landing with his notebook, the way he always was. Solar came out for water and stopped on the step below him, the way she always did. Up on the fourth floor, through the banisters, a pair of slippers and the hem of a red dressing gown, and a voice, quiet, giving a number down the stairwell, and Ken saying it back." },
+      { s: 'ken', f: 'neutral', t: "...It's what I wanted. Did you notice? In October. On the bench. I said I want everybody behind the door. All of them, all the time, with Koromaru on it." },
+      { s: 'ken', f: 'neutral', t: "And Mitsuru-san brought the dads. And now everybody I can count is behind the door. More than ever. It's the biggest number I've ever had." },
+      { s: 'ken', f: 'serious', t: "It doesn't help. I want you to know I've checked. It's bigger, and it's still not the same twice, and I still can't sleep until I've done it, and I still lie there afterward and think, but what about the morning, what about when they go out." },
+      { ifEvent: 'eqx-1122', then: [
+        { s: 'ken', f: 'neutral', t: "And your moms are back. I moved them. In the notebook. Out of TAKEN and into a new column, under *for now*. I'll show you when I've finished the heading. And it's bigger again, and it still doesn't help." }
+      ] },
+      { s: 'ken', f: 'neutral', t: "My floor. The hallway. The one with the futons, that counts to fourteen." },
+      { s: 'ken', f: 'neutral', t: "It still says fourteen. Fuuka-san checked for me. The dorm's got more than that now. Lots more. And down there it's still counting fourteen, every night, and starting again." },
+      { s: 'ken', f: 'serious', t: "It's the old number. It doesn't know. Or it doesn't care. I'd like to find out which. Not yet. When I've got a number I like." },
+      { choose: [
+        { t: "I'll come down with you. Whatever number you've got.", notes: 3, then: [
+          { s: 'ken', f: 'neutral', t: "...Whatever number. Yes. That might be the point. I'll think about that. I'm going to be annoyed while I'm thinking." }
+        ] },
+        { t: "(Sit down on the step. Count with him. Out loud.)", notes: 2, then: [
+          { n: "She sat down on the step below him and counted with him, out loud, quietly, door by door, the way you'd say a times table, and their voices went along the corridor together and came to the end of it, and Ken wrote the number down, and it was a different number from last night, and he looked at it, and for once didn't seem to mind." }
+        ] }
+      ] },
+      { n: "He went down to the front hall. Solar heard him take his shoes off and line them up, toes to the wall, and get onto the futon. She heard the soft thump of the dog, wherever the dog was tonight, by the door or by the kitchen chair, thumping its tail twice on the boards when the boy lay down. And then, very quietly, the boy's voice, not counting." },
+      { n: "*Well done.* In Japanese, and then, carefully, phonetically, wrong, the other one. *Jal-haet-da.*" }
+    ] },
+    // Rank 8 (Nov 16, round 3): after 12/5 (Sunday, daytime; the mothers have been at the dorm since 12/1). The playground in
+    // the frost (Ken's list: the mothers move to CAME BACK (FOR NOW); the same number two nights running, rank 5's wish), then
+    // their ask floor in the Well in the red (eqx-floor-ken-koromaru: a hallway of front doors with a futon before each and
+    // Ken's voice counting to fourteen; the fourteenth futon is turned down, empty, for Ken), then the front hall.
+    // Reads eqx-ken-for-now, eqx-ken-come, eqx-ken-list-solar / -ken, dead.shinjiro, dead.aigis, ifEvent eqx-persimmon,
+    // ifChoice asks.ken-koromaru. Choice sets eqx-ken-real-count (Ken counts the real dorm out loud over the floor),
+    // eqx-ken-stopped-count (+choose: he tells the hallway "you can go when you want") or eqx-ken-come-used (needs
+    // eqx-ken-come: he spends "come" on Koromaru, who is lying across the empty futon so Ken can't). Koromaru is never in
+    // danger on the floor: nothing there attacks; he only keeps the futon. Rank 9-10 left for "stop asking the world to stay".
+    { after: '12/5', title: '8: the same one twice', place: 'Naganaki Shrine · Playground', time: 'Daytime', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-winter' },
+      // BG: naganaki-shrine-playground-frost — the small playground below Naganaki Shrine on a bright frozen December morning, white frost on the bench, the swings and the bare ginkgo, the sand gone hard and pale, long blue shadows, the torii at the top of the stone path.
+      { n: "The first hard frost came on the first Sunday of December, and the playground below the shrine had gone white overnight, every surface, the bench and the swings and the bars of the climbing frame and the bare black ginkgo, all of it furred with a fine pale fur of ice that caught the low sun and threw it back in small hard sparks. The sand had set like concrete. Every step on it crunched. The air smelled of nothing at all, the way very cold air does, clean and empty, and your breath went up in front of you and hung there like a word you hadn't finished saying." },
+      { n: "Ken was sitting on the bench in his school coat and a scarf wound three times, on a folded newspaper he'd brought to keep the frost off, with his notebook on his knee and his mittens off, writing. Koromaru was lying on his feet, the whole warm white weight of him across both shoes, which was, Ken said when Solar came down the path, a very sensible arrangement, scientifically." },
+      { s: 'ken', f: 'neutral', t: "Solar-san. Good morning. Sit on the newspaper, there's a second section. The business section. It's very dry." },
+      { s: 'ken', f: 'happy', t: "I've got something to tell you. I've been waiting since Friday. I wanted to tell you here, not on the stairs. The stairs are for counting. This is for telling." },
+      { n: "He turned the notebook round. The page with the lists. The old headings, *PEOPLE WHO WENT*, *PEOPLE WHO WERE TAKEN (NOT WENT)*, the three names in careful katakana and under them, gone over twice, in two hands, *for now*." },
+      { n: "There was a line through the three names. One neat line each, with a ruler. And a new heading beside them, to the right, in fresh pencil, the letters pressed hard and very straight." },
+      { n: "*CAME BACK (FOR NOW).*" },
+      { n: "And the three names again, under it, in the same careful katakana, the way you'd copy a name you'd learned to spell." },
+      { s: 'ken', f: 'happy', t: "I moved them. On the twenty-third. In the morning. I did it at the kitchen table at six while they were still in the ward in Tatsumi. I'd had the ruler ready since October." },
+      { ifFlag: 'eqx-ken-for-now', then: [
+        { s: 'ken', f: 'neutral', t: "You wrote *for now*. In October. Under their names. I went over it in my pencil so it'd be darker. I've been looking at it every night." },
+        { s: 'ken', f: 'happy', t: "It was correct. It was the correct heading. It was the most correct thing anybody's written in this notebook, and it wasn't even me." }
+      ], else: [
+        { s: 'ken', f: 'neutral', t: "In October I didn't put them on the other list. I told you. I wanted you to know I hadn't. I've been looking at that page every night since." },
+        { s: 'ken', f: 'happy', t: "In Featherman, taken people can be got back. There's always an episode. I said I knew it wasn't Featherman. It was a little bit Featherman." }
+      ] },
+      { choose: [
+        { t: "Ken. Thank you. For keeping the ruler ready.", notes: 3, then: [
+          { s: 'ken', f: 'neutral', t: "You're welcome. It's a good ruler. It's metal. I bought it specially." },
+          { n: "He said it very correctly. Then his chin did the thing, the difficult thing, and he let it, for a second, in the frost, and then he got hold of it and put the notebook down on his knee and looked very hard at the swings." }
+        ] },
+        { t: "(Run your finger along the new heading.)", notes: 2, then: [
+          { n: "She ran her fingertip along the new heading, across the pressed letters, and felt them under her skin like braille, *CAME BACK*, and Ken watched her finger go along it and didn't say anything, and Koromaru lifted his head off Ken's shoes and put his nose against her hand, cold, on the page, and breathed on it, and the warm breath fogged the paper for a second." }
+        ] }
+      ] },
+      { n: "He took the notebook back and turned the page. Another list, on the facing page. Shorter. Newer." },
+      { s: 'ken', f: 'neutral', t: "Mrs. Kim sleeps sitting up. In the lounge chair, by the window. She won't lie down. Mr. Kim sleeps on the floor at her feet on a cushion. I bring her tea at six. She says *thank you, Ken-ah* in Korean and something in English I don't understand and holds the cup in both hands until it's cold." },
+      { s: 'ken', f: 'neutral', t: "Your Korean mother flinches at gloves. Your American mother can't have anyone behind her. I've written them down. Not to count. So I don't make a mistake. So I never walk up behind anyone wearing gloves." },
+      { s: 'ken', f: 'sad', t: "They don't remember the story. Did you know? The sun and the moon. Mrs. Kim asked me what it was about. I told her it was about a girl who was scared of being looked at. I didn't tell her the rest. I didn't tell her the tiger." },
+      { ifFlag: 'dead.aigis', then: [
+        { n: "There was one more name on the facing page. At the bottom. Alone, with a lot of white round it, as if he'd left room for a heading and hadn't found one." },
+        { n: "*Aigis-san.*" },
+        { s: 'ken', f: 'sad', t: "She went in. After Hyein-san. Into the water. That's not *went*. Went is walking somewhere. She didn't walk. And it's not *stayed*." },
+        { ifFlag: 'dead.shinjiro', then: [
+          { s: 'ken', f: 'sad', t: "Stayed is Shinjiro-san's. Stayed is standing still in front of something. She didn't stand still. She went *in*. I don't have a heading for in." }
+        ], else: [
+          { s: 'ken', f: 'sad', t: "She went *in*. Toward it. On purpose. To throw somebody else out. I don't have a heading for in. I've left the space." }
+        ] },
+        { s: 'ken', f: 'neutral', t: "Hyein-san wears the ribbon on her wrist. I've seen her touch it. Every time she goes through a door. Every single door." }
+      ] },
+      { ifEvent: 'eqx-persimmon', then: [
+        { s: 'ken', f: 'sad', t: "And Edogawa-sensei. I didn't know him. Kazuha-san found him. In the garden. Under the tree with the persimmons in. I didn't put him on any list. I didn't know him well enough to know which list." },
+        { s: 'ken', f: 'neutral', t: "Koromaru won't go past the end of the river road at all now. Not even to the corner. He sits down at the post office and that's the end of the walk." }
+      ] },
+      { s: 'ken', f: 'neutral', t: "That wasn't the thing. That was the lists. The thing is this." },
+      { n: "He turned to the back of the notebook. The counting pages. Columns of numbers in pencil, one a night, from August, down page after page, every one different from the one above it: thirteen, nineteen, twenty-two, fourteen, thirteen, sixteen, seventeen, eighteen, twenty, all the way down, not one the same twice. And then, at the bottom of the last page, two numbers, one under the other." },
+      { n: "The same number. Written twice. One under the other, in the same careful hand, as if he'd been afraid the second one would come out different if he didn't hold the pencil exactly the same way." },
+      { n: "And next to them, very small, in the most careful pencil in the whole notebook, two dates. *12/3. 12/4.*" },
+      { s: 'ken', f: 'happy', t: "The same one. Twice. Friday and Saturday. Nobody from the guesthouse stayed over and nobody went to the guesthouse and nobody was in the ward and nobody— and it was the same." },
+      { s: 'ken', f: 'happy', t: "And one more with Koromaru. Both nights. I counted three times on Saturday to be sure. Mitsuru-san counted the fourth floor twice. She said *confirmed* down the stairwell. Like a memo." },
+      { s: 'ken', f: 'neutral', t: "In August I said I didn't mind what the number was. I'd just like it to be the same one twice. I wanted you to know it happened. I wanted to tell you in a place that wasn't for counting." },
+      { choose: [
+        { t: "(Hold up your hand. High five.)", notes: 3, then: [
+          { n: "She held up her hand. Ken looked at it, as if it were a form he hadn't been told he'd have to fill in; and then hit it, hard, with his bare cold palm, a real slap that rang off the frozen playground, and Koromaru sat up on his feet and barked, once, at the noise, delighted." },
+          { s: 'ken', f: 'happy', t: "...That was undignified. I'd like to do it again." }
+        ] },
+        { t: "Twice. Well done, Ken. Jal-haet-da.", notes: 3, then: [
+          { n: "His face opened. All at once, completely, the way it had at the hospital in April, and he didn't close it this time, or not fast; he let it stay open a while in the frost, a twelve-year-old being told well done in two languages on a bench in the cold." },
+          { s: 'ken', f: 'happy', t: "...You said it wrong. The way I say it. Lee-san laughs when I say it like that. He doesn't laugh at anything else." }
+        ] }
+      ] },
+      { s: 'ken', f: 'serious', t: "So I've got a number I like. In October I said I'd go down to the floor when I had one. The hallway. With the futons. That counts to fourteen." },
+      { s: 'ken', f: 'serious', t: "Tonight. Before it changes. Because it'll change. Somebody'll stay over at the guesthouse, or the girls will come for dinner, and it'll go up, and I'll never have the same one twice again. I want to take it down there while I've got it." },
+      { s: 'ken', f: 'neutral', t: "I asked Mitsuru-san. Directly. She said yes before I'd finished. She said *take Solar*. She said it like you're equipment." },
+      { choose: [
+        { t: "I'll bring all of them with me. Every one you counted.", notes: 3, then: [
+          { s: 'ken', f: 'neutral', t: "...You can't bring that many people down a well, Solar-san." },
+          { s: 'solar', f: 'neutral', t: "In my head. I'll count them on the way down." },
+          { s: 'ken', f: 'neutral', t: "Oh. Yes. That's allowed. I'll count them on the way down as well. We'll check each other." }
+        ] },
+        { t: "I'll be there. So will Koromaru. Wherever you go.", notes: 2, then: [
+          { n: "Koromaru, at his name, got off Ken's shoes and sat up in front of them both on the frozen sand, square, front paws together, ears up, the way he sat at the top of the river steps, and looked from one to the other with great patience, as if he'd been waiting for them to get to this part for some time." }
+        ] }
+      ] },
+
+      { place: 'The Well · A Hallway of Doors', time: 'The Red Hour', bg: 'eq-well-6', music: 'eerie' },
+      // BG: eqx-well-hallway-futons — an endless narrow apartment-building corridor deep underground in a red half-light, plain front doors in a row down both sides, all shut, and in front of every door a neatly made futon laid on the floor across the threshold, going away into darkness.
+      { n: "*It's this one,* Fuuka said in their ears, very softly. *Ken-kun. It's still counting. I'm right here. I'll turn it down if you want.* And Ken said, very correctly, *no thank you, Fuuka-san, I'd like to hear it*, and they went down the last of the steps into the red." },
+      { n: "A corridor. The plain narrow kind, in a building where people lived in apartments: a strip of worn linoleum down the middle, a skirting board, a ceiling light every few meters giving nothing, and down both sides, as far as the red went, front doors. Ordinary doors. Shut. A number on each, a little mat in front of each, a shoe-rack beside some of them with shoes in it, small, large, a pair of rain boots." },
+      { n: "And across the threshold of every door, laid neatly on the linoleum, a futon. Made. The quilt turned down at one corner, the pillow plumped, square to the door, the way Ken laid his own in the front hall every night, the way you'd lay a futon across a door if you meant nobody to come out of it without you knowing." },
+      { n: "There was somebody in each one." },
+      { n: "Solar saw it as they came level with the first door, and stopped, and Ken stopped beside her, and Koromaru stopped against Ken's leg with his head low. A shape under the quilt. Asleep. On its back, the way people lie who've been put to bed by somebody else, the quilt drawn up to the chin and folded down neatly over the edge. A face on the pillow." },
+      { n: "Junpei's. Asleep. Smiling." },
+      { n: "Not his real smile, the big stupid one with his whole face in it. Smaller. Pleased. The smile of somebody who's been told there's nothing to get up for." },
+      { n: "The next door: Fuuka, with her headphones on, on the pillow, asleep, smiling. The next: Hanni, curled on her side for once, both hands under her cheek, smiling. Then Akihiko, flat on his back with his arms at his sides, his knuckles taped, his face slack and pleased. Mitsuru. Yukari. Haechan. Aigis, her eyes shut, which they never were. Hyein. Yunjin." },
+      { n: "And Ken's voice, from everywhere, from nowhere, from the ceiling lights that gave no light, in the tone he used for reports. Very correct. Counting." },
+      { n: "*One. Two. Three. Four.*" },
+      { n: "It counted as they walked. A number for each door, as they passed it, as if it were walking with them. *Eight. Nine. Ten.* Solar heard the real Ken beside her stop breathing on *nine*, on Hyein, and start again." },
+      { ifFlag: 'dead.aigis', then: [
+        { s: 'ken', f: 'sad', t: "...Aigis-san's here. On eight. Asleep. She never sleeps. She's smiling like she's been told she can stop." }
+      ] },
+      { n: "*Eleven.*" },
+      { n: "A woman Solar had never seen. Thirty, maybe, with a tired kind face and her hair in a clip, asleep on her side with one hand under her cheek and a shopping bag folded neatly on the floor beside the pillow. Smiling." },
+      { n: "Ken's knees went. Not all the way. Solar caught his arm, and he stood, and looked, and didn't say anything for a long time, and when he did it was in the report voice, every word in its place." },
+      { s: 'ken', f: 'neutral', t: "...That's my mom. That's the clip. She had it on. She was coming home from the shops." },
+      { s: 'ken', f: 'sad', t: "It's got her as well. It's kept her. Behind a door. With a futon on it. She looks so— she looks like it never happened." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "*Twelve.* Shinjiro. On his back, in his coat, the long one, whole, not a mark on it, his right hand open on the quilt. Smiling. Ken stopped dead in front of the door. Koromaru went very still against his leg and didn't make a sound." },
+        { s: 'ken', f: 'sad', t: "...It doesn't know. It's the old number. It's the summer number. It doesn't know anything's happened." },
+        { s: 'ken', f: 'serious', t: "Or it knows. And it doesn't care. It's got him anyway. It's kept him. Down here. Asleep. He looks so—" },
+        { n: "He didn't finish. He looked at the face on the pillow for a long time, the smile on it that Shinjiro had never once worn in his life, and his own face went very hard, and very old, and he walked on." }
+      ], else: [
+        { n: "*Twelve.* Shinjiro. On his back, his arms crossed on his chest, the way Yukari made him lie in the kitchen. Smiling. Ken looked at the face and his mouth went tight." },
+        { s: 'ken', f: 'neutral', t: "...He doesn't smile like that. Ever. He smiles like he's annoyed about it. This one's not annoyed about anything." }
+      ] },
+      { n: "*Thirteen.* Solar. Her own face on the pillow. Asleep. Smiling. She looked at it and felt nothing at all for a second, a perfect blank, and then her whole body went cold from the inside, the way it hadn't since the bridge." },
+      { n: "*Fourteen.*" },
+      { n: "The last door. At the end of the corridor, where the red got thicker. The futon in front of it was smaller than the others. Shorter. The quilt turned down at the corner, the pillow plumped, square to the door. Empty." },
+      { n: "Waiting." },
+      { n: "And lying across it, sideways, the whole white length of him over the turned-down quilt from one edge to the other, his chin on his paws on the pillow, his eyes open and fixed on Ken, was Koromaru." },
+      { n: "He'd gone ahead. Solar hadn't seen him go. One moment he'd been against Ken's leg, and now he was there, at the end, across the fourteenth futon, the way he lay across the dorm door every night, keeping it. He didn't growl. He didn't move. He looked at Ken, and his tail moved once on the quilt, slowly, and stopped." },
+      // CG: eqx-fourteen — a long red-lit underground apartment corridor lined with shut front doors, a made futon across each threshold with a sleeping smiling figure in it, and at the far end a small empty futon with its quilt turned down, a white dog lying across it sideways with his chin on the pillow, watching a boy in a school coat who stands a few steps away with a small notebook in his hand.
+      { n: "*Fourteen,* said the voice again, Ken's voice, gently, the way you'd say it to somebody who'd lost their place. And then, as if it had always been part of the count: *Fourteen. Lie down, Ken. Then it'll be the same every night. Forever. Isn't that what you wanted? Everybody, all the time, behind the door. You'd never have to count again.*" },
+      { n: "Ken stood there with the notebook in his hand. Solar saw his shoulders. She saw them want it. She saw the whole small body lean, a centimeter, toward the empty futon with the turned-down quilt, the way you lean toward a warm room when you've been out in the cold all day, and she saw the dog across it, not moving, not looking away, keeping it." },
+      { s: 'ken', f: 'sad', t: "...It's right. That's the worst part. It's what I said. On the bench. I said it out loud. *Everybody, all the time, behind the door, with Koromaru on it.*" },
+      { s: 'ken', f: 'sad', t: "And here it is. Everybody. Asleep. Smiling. Nobody going out. Nobody on any list. And Koromaru on the door." },
+      { s: 'ken', f: 'serious', t: "He's not on the door, though. Look. He's on mine. He's not keeping it for me. He's keeping me *out* of it." },
+      { choose: [
+        { t: "(Take his hand. Count the real house. Out loud. Over it.)", notes: 3, flag: 'eqx-ken-real-count', then: [
+          { n: "She took his hand. Cold, bare, the pencil still in it. And she started to count. Out loud. Not the doors in front of them; the other ones. The ones at home. The second floor first, the way he did it, door by door, every name." },
+          { n: "Ken's head came round. He looked at her. Then, after a beat, his voice came in with hers, small and then less small, the report voice, very correct, and the two of them counted the dorm out loud in a corridor at the bottom of a well, the real one, the full one, the fathers on the third floor and the Kims in Mitsuru's room and Solji and Jaesang in Yukari's and Mitsuru on the couch under the terminal; every one; and the voice from the ceiling went on counting the old way under them, *five, six*, and they went on over it, *fourteen, fifteen, sixteen*, past where it stopped, past where it knew how to go, to the last door at home and the last name." },
+          { n: "They said the number together, the real one, the one that was higher than fourteen. And the voice from the ceiling said *fourteen*, and then nothing, as if it had come to the end of a page and found the next one blank." },
+          { s: 'ken', f: 'neutral', t: "...And one more. With Koromaru." },
+          { n: "And he didn't look at the futons. He looked at the dog. And the dog got up, unhurried, off the fourteenth futon, and shook himself, ears flapping, the way you'd fix your hair if you didn't have hands, and came, and sat on Ken's foot." }
+        ] },
+        { t: "You can stop, Ken. You don't have to count anyone. Whichever you choose.", notes: 3, flag: 'eqx-ken-stopped-count', tally: { choose: 1 }, then: [
+          { n: "He looked at her. Then at the corridor. All the doors, all the futons, all the smiling faces of everyone he'd ever counted, kept, asleep." },
+          { n: "He closed the notebook. He put it in his inside pocket, and buttoned the pocket, and stood for a moment with his hand flat on the outside of his coat over it." },
+          { n: "And then he said it. Not to her. To the corridor. To the doors, and the futons, and the voice in the ceiling that was his own. Quietly, the way he'd said it to the dog in the front hall in June, on his knees, with his hand on the white back." },
+          { s: 'ken', f: 'neutral', t: "...You can go when you want. I'm just saying." },
+          { n: "The voice stopped counting." },
+          { n: "Solar didn't see what happened to the futons. She was looking at Ken. When she looked back down the corridor they were empty, all of them, the quilts thrown back, the pillows dented, the way beds look in the morning when people have got up and gone to school; and the doors were still shut; and nobody was asleep in front of any of them." },
+          { n: "Koromaru got up off the fourteenth futon on his own, when he was ready, and shook himself, and came, and leaned on Ken's legs, the whole weight." }
+        ] },
+        { t: "(Don't say anything. Look at Ken. Look at the dog. Let him use the word he saved.)", ifFlag: 'eqx-ken-come', notes: 3, flag: 'eqx-ken-come-used', then: [
+          { n: "She didn't say anything. She looked at Ken, and then at the dog across the empty futon, and then back at Ken, and saw him see what she'd seen." },
+          { n: "He crouched down. In the middle of the corridor, on the worn linoleum, in his school coat, the way he'd crouched at the far fence of the playground in June. He put the notebook down beside him on the floor. He held his arms out." },
+          { s: 'ken', f: 'neutral', t: "...Koromaru. Come." },
+          { n: "Not firm. Not a command at all. Just a boy calling his dog, in a corridor full of everyone he loved asleep, the one word he'd been saving for something that mattered." },
+          { n: "And Koromaru came. Up off the fourteenth futon all at once and down the corridor like something fired, white against the red, past every door, past every sleeping face without a glance, and hit Ken in the chest and knocked him flat on his back on the linoleum, and stood on him, and Ken lay there with his arms round the dog's neck laughing so hard he couldn't get up." },
+          { n: "The voice in the ceiling had stopped. Nobody had heard it stop. When Solar looked down the corridor, the futons were empty, every one, quilts thrown back, pillows dented, the way beds look when everybody's got up and gone out; and at the end, the fourteenth, small, was still made, still turned down, still waiting, and nobody was going to lie in it." },
+          { s: 'ken', f: 'happy', t: "...Chapter three. I knew it. I knew I was saving it for something." }
+        ] }
+      ] },
+      { flag: 'eqx-floor-ken-koromaru-seen' },
+      { n: "On the way back up the stairs Ken counted. Solar heard him. Under his breath, the way he always did. But not the doors. Not the people. The steps. *Forty-one, forty-two.* And at the top, where the red was going thin, he said the last number out loud and then, very firmly, the way you'd write a thing in pen: *That's the stairs. That's all. Stairs are allowed.*" },
+
+      { place: 'Iwatodai Dorm · Front Hall', time: 'Late Night', bg: 'iwatodaidorm-livingroom-night-winter', soft: true },
+      { n: "At the dorm Koromaru went to the front door and turned round twice and lay down along the bottom of it, nose to the gap, the way he did every night. Ken's futon was there, square, the quilt turned down at the corner. He looked at it for a long time." },
+      { n: "Then he took the quilt and turned the corner back up. Flat. Unturned. And then he turned it down again himself, the other corner, the left one, which nobody had ever done for him, and got in, in his coat, and put his hand on the dog's back." },
+      { ifChoice: { 'asks.ken-koromaru': 'yes' }, then: [
+        { s: 'ken', f: 'neutral', t: "...Solar-san. The card. In June. You said you'd stay. I rubbed the numbers out." },
+        { s: 'ken', f: 'neutral', t: "I'm not taking it back. I'd like to say that. I'm not asking for it back. I'm just saying I've been thinking that you should be able to change your mind as well. If you want. Like I did. You're allowed both. I'd like you to have that. I'm saying it now so it's on record." }
+      ], else: [ { ifChoice: { 'asks.ken-koromaru': 'choose' }, then: [
+        { s: 'ken', f: 'neutral', t: "...The card's still in my pocket. From June. I took it out tonight, down there, before the corridor, and I didn't read it. I just held it." },
+        { s: 'ken', f: 'neutral', t: "I think I'm going to keep it forever. Not because it's a request. Because it's the first thing I ever asked for out loud. It should be somewhere." }
+      ], else: [
+        { s: 'ken', f: 'neutral', t: "...The maths book. The back cover. I've been counting down since June. I'm going to stop. Not because I know. Because I'd like to find out what it's like not to know a number." }
+      ] } ] },
+      { n: "At eleven Solar came out for water, and stopped on the stairs out of habit, on the step below the landing. Nobody was on it. The notebook wasn't on it. The landing between the second floor and the third was empty, a square of worn boards in the dark with the line of light under three doors along the corridor and the radio on the third floor playing something soft in English." },
+      { n: "Then, from above, slippers. Mitsuru, on the fourth-floor landing, in her red dressing gown, looking down through the banisters at the empty step where a boy usually sat. She stood there a long time. Solar, below, in the dark, saw her open her mouth to give the number down the stairwell, and stop, and look at the empty landing." },
+      { n: "And close her mouth, and not give it. And stand there anyway, a little while longer, the way you'd stand on a platform after a train has gone that you were only there to see off." },
+      { n: "Then she went back to the command room. And downstairs, in the front hall, Solar heard the boy turn over in his sleep, and the dog's tail thump twice on the boards, and nobody counting anything at all, for the first time since August, in the whole full house." }
     ] }
   ]
 });

@@ -1,7 +1,7 @@
 /* Persona 3: Equinox · Minji Kim · The Moon. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–6 (rank 1 from 4/13, rank 2 from 4/30 so it always follows Mr. Tanabe, both Seaside Park after
-   school). Ranks 7–15 still to write. Rank 3 (from 6/7, Seaside Park then the guesthouse roof; branches
+   Written: ranks 1–8 (rank 1 from 4/13, rank 2 from 4/30 so it always follows Mr. Tanabe, both Seaside Park after
+   school). Ranks 9–15 still to write. Rank 3 (from 6/7, Seaside Park then the guesthouse roof; branches
    on eqx-bridge, eqx-hunted, eqx-last-grain) records her ask: tally asks.minji (+ cakes / choose), flags eqx-minji-on-tape,
    eqx-minji-turned. Rank 2 flags (nothing reads them yet): eqx-minji-nap, eqx-minji-filmed, eqx-minji-kiss.
    Rank 4 (from 6/22, Seaside Park in the rainy season, then her room at the guesthouse, then the walk home or the dorm
@@ -18,12 +18,27 @@
    Rank 4 flags: eqx-minji-honest | eqx-minji-unsaid, eqx-minji-stayed | eqx-minji-walked. Rank 5 flags: eqx-minji-rolling |
    eqx-minji-street, eqx-minji-knob-seen, eqx-minji-breakfast | eqx-minji-slipped. Rank 6 flags: eqx-minji-camera-back,
    eqx-minji-held-it, eqx-floor-minji (hook: her ask floor in the Well, §8). No new tallies. Nothing reads them yet.
-   Speakers: jaehyun, haechan (rank 4), chenle and minji texts.
+   Rank 7 (from 10/28, Seaside Park, then the Oka boarding house (front room, kitchen from the door, stairs, the fathers'
+   upstairs room, the girls' big room), then her guesthouse room at night; reads dead.shinjiro (the funeral frame: 41 frames,
+   he never looked at the lens) / else the 10/24 pan, eqx-fathers-moved, eqx-girls-left, asks.minji): Jaesang's "every room"
+   (rank 6 seed); sixteen settings, three aprons, the fathers' three futons made and the pillows warm; playback: 14 cuts, each
+   a glove at the frame's edge, and two frames in the corridor mirror (a gray back at the top of the stairs, a pale line down
+   it); what to do with the card. Flags: eqx-minji-steady (cosmetic), eqx-minji-tape-jaesang | -mitsuru | -kept.
+   Rank 8 (from 11/28, Seaside Park in the first frost, then her ask floor on the Third Hill in the Red Hour, then the
+   guesthouse roof at dawn; reads dead.aigis (112 frames of Aigis, all looking at the lens; the chapel photo) / else Aigis
+   asking to be filmed, dead.shinjiro (the ladle locker), asks.minji): Solji held her hand on the ward; the locker floor (every
+   camera on one taped X, every screen Solar standing on it, kept, smiling; the speakers in Minji's editing voice, "Stand on
+   the mark. I'll keep you."); Solar holds the camera (mark / reverse shot / off), Minji peels up the tape; at dawn THE ROUTE
+   CHOICE ({ route } line): romance (eqx-minji-in-frame, kiss in the frame) or friend (eqx-minji-friend-frame).
+   Rank 7–8 flags: eqx-minji-floor-mark | -her | -off, eqx-minji-floor-cleared (hook: her ask floor cleared with her in the
+   party, §8), eqx-minji-in-frame | eqx-minji-friend-frame (mirror the route). No new tallies. Nothing reads them yet.
+   Left for 9–10: her stay/go (stay.minji), the file / notebook endings by asks.minji, Jaesang getting the tape.
+   Speakers: jaehyun, haechan (rank 4), chenle and minji texts; mrsoka and chaewon (rank 7).
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
    Picks up her promise in the prologue's lounge (the footage of the night Solar went). Solstice's ranks are shared memory. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'minji', name: 'Minji Kim', short: 'Minji', arcana: 'Moon', numeral: '', from: 'Runners', kind: 'searcher',
-  world: 'R', romance: 'canon', maxRank: 15, starts: '4/8', lodging: 'guesthouse', cast: { chenle: 'Chenle' },
+  world: 'R', romance: 'canon', maxRank: 15, starts: '4/8', lodging: 'guesthouse', cast: { chenle: 'Chenle', mrsoka: 'Mrs. Oka', chaewon: 'Chaewon' },
   home: { area: 'port', spot: 'Seaside Park', slot: 'after', days: [0, 2, 4, 6],
           hint: 'Afternoons at Port Island Seaside Park, with a camera, filming whatever the light is doing.' },
   ranks: [
@@ -763,6 +778,313 @@
       { s: 'minji', f: 'neutral', t: "...Okay. When we go down there, you hold the camera. Deal? And I'll hold you. And we'll see what's on it." },
       { n: "On the wall the camera rolled. On its little screen, if anybody had been looking, the two of them sitting in the red with the dark bridge behind them, very small, very still, the only things in the frame that weren't waiting for anything." },
       { n: "Neither of them looked. Solar would look in the morning. She'd look at all of it in the morning." }
+    ] },
+    { after: '10/28', title: '7: every room', place: 'Port Island · Seaside Park', time: 'After School', music: 'tender', scene: [
+      { bg: 'port-island-seaside-park' },
+      { n: "The end of October had taken the color out of Seaside Park and left the shape. The grass was flat and brown and the pines had gone dark, and the sea under a low white sky was the gray of a pencil drawing someone had started and given up on, and the wind came off it steady and cold and smelled of iron, and everybody on the boardwalk was walking a little bent, as if into a door." },
+      { n: "Minji was filming." },
+      { n: "Solar saw the strap first, wound twice round her wrist, and then the little red eye, and something in her chest that had been holding a breath since the end of September let it go. Minji was on the low wall in her coat with the camera up, filming the sea doing nothing, and she heard Solar's shoes on the boards and didn't turn round, and held out her free hand behind her, palm up, the way she had in June, and Solar took it." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { s: 'minji', f: 'neutral', t: "Hi. I know. It's out. Don't say anything nice about it, I'll cry on the camera and it isn't sealed." },
+        { s: 'minji', f: 'sad', t: "I took it out the morning after. For the hall. They needed a picture and nobody had one, and I knew I did. I had six months of the dorm on cards." },
+        { s: 'minji', f: 'sad', t: "I went through all of it at the konbini at midnight on the little screen, looking for one where he wasn't looking at the camera. Because he'd have hated that. He'd have said *don't make it a thing*." },
+        { s: 'minji', f: 'neutral', t: "...Forty-one frames of him, Sol. In six months. He never looked at it once. Not in one. He always knew where it was and he always had his back half turned. Like he was being polite to it." },
+        { n: "She said it in the editing-room voice, and her hand in Solar's didn't move, and that was how Solar knew." },
+        { s: 'minji', f: 'neutral', t: "And then I'd found a thing I was looking for, and I couldn't put it back in the bag. So. It's out." }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "Hi. I know. It's out. Don't say anything nice about it, I'll cry on the camera and it isn't sealed." },
+        { s: 'minji', f: 'happy', t: "I took it out on the twenty-fourth. Six in the morning. I came over for Jaehyun's dad and Shinjiro was at the stove with the pan in his right hand, and I didn't even think. It was just in my hands." },
+        { s: 'minji', f: 'neutral', t: "Eleven seconds. Him and the pan. He told me to get that thing out of his kitchen, and he didn't turn round, and he didn't stop me. That's the nicest thing he's ever said to me." },
+        { s: 'minji', f: 'neutral', t: "...And then I couldn't put it back in the bag. So. It's out." }
+      ] },
+      { choose: [
+        { t: "(Sit down on the wall. Let it roll.)", notes: 3, then: [
+          { n: "She sat down beside her on the cold stone and didn't say anything about the camera, and Minji let out a breath through her nose that was nearly a laugh, and leaned an inch, and their shoulders met, and the sea went on doing nothing in the little screen, very well." }
+        ] },
+        { t: "I missed the red light.", notes: 3, then: [
+          { s: 'minji', f: 'flustered', t: "Don't. I told you not to say anything nice." },
+          { s: 'minji', f: 'neutral', t: "...Me too. I missed it so much. I kept reaching for my bag in my sleep." }
+        ] },
+        { t: "Is it for you this time? Or for holding on?", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "...I don't know yet. I'm going to find out. I'm going to film till I know." },
+          { s: 'minji', f: 'serious', t: "That's a real answer. That's not me dodging. That's the most honest thing I've got." }
+        ] }
+      ] },
+      { n: "She stopped the camera after a while and turned it in her lap and looked at it, the way you'd look at a dog that had come home on its own." },
+      { s: 'minji', f: 'neutral', t: "Jaehyun's dad asked me again. At the dorm. On the couch, last night, with his tea. Every room. Before they fill it in." },
+      { ifFlag: 'eqx-fathers-moved', then: [
+        { s: 'minji', f: 'neutral', t: "He told Mrs. Oka he's going to buy it, did you hear? Jaehyun told me. The well filled in with concrete and the tree taken down. And he wants the house on a card first. So he'll remember where everything was before it's gone." }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "He wants it on a card. So he'll remember where everything was. When it's over. Whatever over is." }
+      ] },
+      { s: 'minji', f: 'serious', t: "I said yes in September. I haven't done it. I keep walking down the river street and stopping at the post office." },
+      { s: 'minji', f: 'neutral', t: "...I'm going today. Now. While it's light. Twos. Will you be my two?" },
+      { choose: [
+        { t: "I'll be your two.", notes: 3, then: [
+          { s: 'minji', f: 'happy', t: "Okay. Okay. Good. I was going to go anyway. I was going to go so much slower." }
+        ] },
+        { t: "Jaehyun asked you not to film her.", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "I know. I'm not. Rooms. Only rooms. I've got a whole plan for not filming her. It's called *I'll cut*." },
+          { s: 'minji', f: 'serious', t: "If she comes into frame I stop. I've been practising on Cherry. Cherry walks into everything." }
+        ] },
+        { t: "(Take the camera bag off her shoulder. Carry it for her.)", notes: 2, then: [
+          { n: "She lifted the bag off Minji's shoulder and put it on her own, and Minji watched her do it with a look that said she'd have fought anybody else for it, and didn't." },
+          { s: 'minji', f: 'neutral', t: "...That's the spare batteries. And the other card. And the lens cloth. If you lose the lens cloth I'll have to marry you out of spite." }
+        ] }
+      ] },
+
+      { place: 'The Oka Boarding House · Gate', time: 'After School', bg: 'eqx-oka-gate', music: 'eerie' },
+      { n: "The persimmon over the wall had gone all the way. Every fruit on it was orange now, hanging heavy from bare branches, the leaves already down and rotting in a wet brown ring on the stones under the wall, and the ones that had fallen lay split on the path with their insides showing, the color of something you weren't supposed to see. No birds. Solar looked for birds every time. There'd never been any." },
+      { n: "Minji stopped at the gate with the camera at her chest, not up. She knocked three times on the gatepost. Then she looked at her own knuckles as if they'd done it without asking her." },
+      { ifFlag: 'eqx-girls-left', then: [
+        { n: "Nobody came. The upstairs windows were dark, all of them, the big room's too, where the girls had danced all summer with the screens open. Then the front door slid back on its runner, slowly, and it was her." }
+      ], else: [
+        { n: "It was Chaewon who came. Down the path in her socks with her hair up in a towel, and she looked at the camera and then at Minji and then at Solar and seemed to count the three of them, and opened the gate." },
+        { s: 'chaewon', f: 'neutral', t: "She's in the kitchen. She's always in the kitchen. The rooms are open, nobody locks anything here." },
+        { s: 'chaewon', f: 'neutral', t: "...Don't go in the garden. That's not a rule. It's a me thing." },
+        { n: "Then the front door slid back on its runner behind her, slowly, and it was her." }
+      ] },
+      { n: "Mrs. Oka in her gray kimono and a cardigan over it, an apron, the white gloves; and the gloves had flour on them past the cuff, a little, the way they always did, though Solar could smell nothing baking. Her face lit up the way it lit up for everyone, all of it, the whole small face at once." },
+      { s: 'mrsoka', f: 'happy', t: "Oh, the Kim girl. With the camera. And Solar-chan. Come in, come in, it's cold. Mr. Lee telephoned. He said you might come and make a record. Isn't that lovely of him. Isn't that like a man, wanting a record." },
+      { s: 'mrsoka', f: 'neutral', t: "Film anything you like, dear. It's only a house. I'll keep out of your way." },
+      { s: 'minji', f: 'neutral', t: "Thank you. Just the rooms. Not you. I don't film people without asking." },
+      { s: 'mrsoka', f: 'happy', t: "Of course not me. Nobody wants a picture of an old woman. I'll be in the kitchen if you want tea. You'll want tea, after. Everybody does, after." },
+      { n: "She went back down the hall. She didn't hurry and she didn't make a sound on the boards, and Minji, beside Solar on the step, didn't lift the camera until the kitchen door had slid shut." },
+      { place: 'The Oka Boarding House · Front Room', time: 'After School', bg: 'eqx-oka-kitchen', music: 'mystery', soft: true },
+      // BG: oka-front-room-day — the front room of an old Japanese house turned into a dining room on a gray autumn afternoon, sliding screens taken out, a long low table of several tables pushed together and set with bowls and chopsticks for many people, a cold hanging lamp.
+      { n: "She did it properly. That was the thing about Minji; even here, even now, she did it the way she'd do a real job. Every room from the door first, a wide shot, slow, left to right. Then in. Then the corners. Then the details: a light switch, a crack in the plaster, the place where the boards were worn pale in front of the sink. She narrated under her breath, not for the tape, for herself, the date and the time and the room." },
+      { n: "The front room. The long table. It was set." },
+      { n: "Sixteen places. Bowls turned down on their saucers, chopsticks on their rests, a folded napkin at each, the way it had been set the evening after the bridge. The fathers were gone. Nobody had eaten at it. The napkins were pressed. The table had been dusted that morning; Solar could see the faint clean arcs of the cloth." },
+      { s: 'minji', f: 'neutral', t: "...Sixteen. I'm counting. Front room, long table, sixteen settings. Four-forty." },
+      { n: "The kitchen they did from the doorway, because she was in it. Minji framed it tight on the far wall and the hooks by the back door, and stopped when the gray sleeve came into the edge of the screen, and started again when it had gone. On the hooks, three aprons. Cream. Gray. Navy. Washed. Ironed. Hung up side by side by their neck straps, with their ties left long, as if somebody were coming down in the morning to put them on." },
+      { n: "Minji's hand didn't shake. Solar watched it not shake. It was the most frightening thing she'd seen her do." },
+      { place: 'The Oka Boarding House · Stairs', time: 'After School', bg: 'epi-s-stairs-night', soft: true },
+      // BG: oka-stairs-day — the steep wooden staircase of an old Japanese house in gray afternoon light, the treads worn pale in the middle, a small window at the turn, a long upstairs corridor of paper doors at the top with a mirror at its far end.
+      { n: "The stairs. Fourteen. Minji counted them out loud going up, the way Taejoon had sat on them, and on the seventh she stopped and filmed the tread itself, close, the wood worn into a dip in the middle by a hundred years of feet; and there was a second dip, Solar saw, beside the first, smaller, newer, where somebody had sat every night for a month with his hands on his knees." },
+      { n: "Upstairs, the corridor. Paper doors on one side. At the far end, a tall old mirror in a dark frame, and in it the two of them coming, small, and behind them the top of the stairs." },
+      { n: "The fathers' room was the second door. Minji slid it back with her foot, so her hands could stay on the camera." },
+      { n: "The futons were down." },
+      { n: "Three of them. Side by side on the tatami, made up, the quilts turned back at the corner the way you'd turn a bed back for a guest, a pillow on each. The fathers had left with the van on the twenty-sixth. Mitsuru's men had carried their suitcases. Nobody had slept here since." },
+      { n: "The pillows were dented. All three. A hollow in the middle of each, the soft round dip a head leaves." },
+      { n: "Minji went in. She knelt. She kept the camera on the pillows with her right hand and put her left hand out, flat, slowly, and laid it in the hollow of the nearest one." },
+      { s: 'minji', f: 'neutral', t: "...It's warm." },
+      { n: "She said it to the camera, in the narrating voice. The date and the time and the room. *Upstairs, second door, the fathers' room, three futons. Warm.* Then she didn't take her hand away." },
+      { choose: [
+        { t: "(Kneel beside her. Hold the camera steady with her.)", notes: 3, flag: 'eqx-minji-steady', then: [
+          { n: "She knelt beside her on the tatami and put her own hand under Minji's on the camera, under the grip, so they were both holding it, and the picture didn't move. Minji's breath went out of her, slow, all of it, and her other hand came off the pillow and found the back of Solar's coat and held a fistful of it." },
+          { s: 'minji', f: 'neutral', t: "...Okay. Okay. We've got it. That's enough of the pillows. That's a whole film." }
+        ] },
+        { t: "(Put your own hand on the second pillow.)", notes: 2, then: [
+          { n: "She put her hand on the second pillow. It was warm. Not warm the way a room is warm; warm the way a body is, from underneath, the warmth of somebody who'd got up a minute ago to answer the door. She took her hand away and it was still warm on her palm, and she put the palm on her coat and rubbed it, hard, and didn't stop." },
+          { s: 'minji', f: 'serious', t: "Don't. Don't do that. I've got it on the card. One of us touching it was enough." }
+        ] },
+        { t: "Minji. We're going. Now.", notes: 3, then: [
+          { s: 'minji', f: 'serious', t: "One more room. He asked for every room. I said every room." },
+          { s: 'solar', f: 'serious', t: "Then one more. Fast." },
+          { n: "Minji took her hand off the pillow and wiped it on her own knee, once, without looking, and stood up and backed out of the doorway still rolling, the way you'd back out of a room with a sleeping animal in it." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-girls-left', then: [
+        { n: "The big room at the end was empty. The girls' things gone, the tatami swept, a strip of white tape still on the floor in a line, and at the end of the line a sixth piece of tape, by itself. Minji filmed the tape for a long time and didn't say why." }
+      ], else: [
+        { n: "The big room at the end was the girls'. They were in it, all four, on the tatami with the screens open to the cold, stretching, and Eunchae saw the camera and sat up and said *oh, film us, film us, we've got the new bit*, and Chaewon said *five, six, seven, eight* without being asked, and for forty seconds Minji filmed four girls dancing in a room with a gap in their line where a fifth one went, and her face behind the camera was the only easy thing Solar had seen all afternoon." },
+        { s: 'chaewon', f: 'neutral', t: "...Send it to us. Not to her. If she asks for a copy, you lost the card." }
+      ] },
+      { n: "They didn't have the tea. Mrs. Oka came to the kitchen door as they went past it to the genkan and held the tray out, two cups steaming, smiling, and Minji bowed to her over the camera, low, and said *we'll be late for the monorail, I'm so sorry*, and Mrs. Oka said *of course, dear, of course, another time*, and stood in the hall holding the tray while they put their shoes on, and didn't come any closer, and didn't stop smiling." },
+      { n: "At the gate Solar looked back. She was still there. In the hall, with the tray. Her gloved hands on its edges. The tea not steaming any more." },
+
+      { place: 'Kirijo Guesthouse · Minji’s Room', time: 'Night', bg: 'kirijo-guesthouse-night', music: 'night', soft: true },
+      { n: "The fairy lights round the window frame had three out now. Minji had stopped replacing them. She said the gaps were a pattern and she was waiting to see what it spelled." },
+      { n: "They sat on the futon with the laptop on Minji's knees, the card in its side, and the guesthouse going on round them through the walls: Jihoon's television, somebody in the shower, Cherry on the phone in the hall saying *no, the green one* over and over. Minji had the heater on. She'd put her coat back on anyway. So had Solar." },
+      { s: 'minji', f: 'neutral', t: "I'm going to watch it through once. All of it. Then I'll cut it for Mr. Lee. You don't have to watch. You can look at me instead. I'd prefer that, honestly." },
+      { n: "She played it. Thirty-one minutes of an old house in gray light. The table. The aprons, in bits. The stairs, fourteen. The pillows; her hand going into the frame and lying in the hollow, and her own voice, very level, saying *warm*. Solar watched Minji's face in the blue of the screen instead of the screen, the way she'd been asked, and so she saw it change before she saw why." },
+      { n: "Minji stopped it. Went back. Played a bit again. Stopped it." },
+      { s: 'minji', f: 'serious', t: "...I cut fourteen times. Did you count? I didn't count. I've just counted. Fourteen cuts." },
+      { s: 'minji', f: 'serious', t: "Look where they are." },
+      { n: "She scrubbed through them one at a time. Every cut was the same. A room, steady, and then, at the very edge of the frame, at the very last frame before the picture jumped, something white. The tip of a glove on a doorframe. A gloved hand on the banister at the bottom of the stairs, looking up. A white cuff resting on the edge of the long table, by the sixteenth bowl. Fourteen times. A glove coming into the edge of the picture, and Minji's thumb stopping the camera one frame before the rest of it came." },
+      { s: 'minji', f: 'neutral', t: "I didn't see any of those. I didn't see her once. She was in the kitchen the whole time. I could hear her in the kitchen the whole time." },
+      { s: 'minji', f: 'sad', t: "My thumb saw her. My thumb's been doing this for nine years. It knows when somebody's coming into a shot before I do." },
+      { n: "And then the corridor upstairs. The long one. The mirror at the end. Minji had walked toward it filming and Solar had been beside her, and in the mirror there they were, coming, small. And behind them, small, at the top of the stairs, where there'd been nobody, a gray back. A woman at the top of the stairs with her back to them, looking down the stairwell, as if listening for someone coming up. An apron bow at her waist. And above the bow, from the collar of the kimono down, a pale straight line, like the seam of a dress, or a stocking, or nothing, a crease in old glass." },
+      { n: "Two frames. Then Minji's thumb, and the cut." },
+      { n: "Neither of them said anything. The heater ticked. Cherry, in the hall, had stopped talking." },
+      { s: 'minji', f: 'neutral', t: "...Jaehyun said don't film her. And I didn't. I didn't film her once. I want that on the record." },
+      { s: 'minji', f: 'sad', t: "What do I do with it, Sol? It's his. He asked for every room. I've got every room. I can't give him that. I can't give a man that and say *here's where everything was*." },
+      { choose: [
+        { t: "Cut those two frames out. Give him the house.", notes: 3, flag: 'eqx-minji-tape-jaesang', then: [
+          { n: "Minji looked at her for a long moment. Then she nodded, and pulled the laptop closer, and did it, carefully, two frames, the way she'd take a splinter out; and the corridor ran on without them to the mirror, and in the mirror, now, only two girls coming, and the empty top of the stairs." },
+          { s: 'minji', f: 'neutral', t: "...The first thing I've ever deleted. Ever. Two frames. I'm keeping the deleted folder. I'm not a monster." },
+          { s: 'minji', f: 'neutral', t: "He gets every room. And the pillows. He'll want the pillows, he'll want to know they're still made. He doesn't need to know they're warm." }
+        ] },
+        { t: "Give it to Mitsuru. All of it. Then cut him a copy.", notes: 3, flag: 'eqx-minji-tape-mitsuru', then: [
+          { s: 'minji', f: 'neutral', t: "Mitsuru's drawer. She's going to need a bigger drawer. I said that in June. I was being funny in June." },
+          { n: "She copied the card twice, and put one in an envelope and wrote on it in her small capitals, and didn't show Solar what she wrote, and Solar saw anyway: *OKA. 10/28. ROOMS. 14 CUTS + MIRROR.* And then, smaller, under it, *I didn't film her.*" }
+        ] },
+        { t: "It's yours. You keep it. You decide who sees it.", notes: 2, flag: 'eqx-minji-tape-kept', then: [
+          { s: 'minji', f: 'sad', t: "...You keep doing that. Handing me things that are mine. This is a horrible thing to have that's mine." },
+          { s: 'minji', f: 'neutral', t: "Okay. Okay. Mine. Then I'm going to sleep on it. Literally. It's going under the pillow, and in the morning I'll know." },
+          { n: "She took the card out and put it in a little plastic case and put the case under her pillow, and patted the pillow, flat, twice, the way you'd pat a dog to stay; and then looked at the pillow, the dent her hand had made in it, and took her hand away fast." }
+        ] }
+      ] },
+      { n: "She shut the laptop. In the dark the fairy lights with their three gaps did their pattern on the window, and Minji sat with her shoulder against Solar's and her coat still on, breathing, and then turned her head." },
+      { s: 'minji', f: 'neutral', t: "...I want to stop thinking for an hour. Is that allowed? Can you just. Make me." },
+      { choose: [
+        { t: "(Kiss her.)", notes: 3, then: [
+          { n: "She kissed her. Minji made a small sound into it that was half relief, and her hands, which had been so steady all afternoon, came up and were not steady at all; one in the front of Solar's coat, pulling her in by it, and the other at her jaw, shaking, the thumb under her ear. They went down onto the futon in their coats like two people in a snowdrift, and Minji laughed against her mouth at that, at the coats, and didn't stop to take them off for a long time, and then did." }
+        ] },
+        { t: "(Take her coat off her. Slowly.)", notes: 3, then: [
+          { n: "She took the coat off her shoulders, slowly, one side and then the other, the way you'd undress a child who'd fallen asleep in the car, and Minji watched her do it and didn't help, and when it was off she was shivering in the warm room and it wasn't the cold; and Solar put her hands where the coat had been, on her shoulders, her arms, and Minji closed her eyes and leaned into them until they were lying down, and stopped thinking, and so did Solar." }
+        ] }
+      ] },
+      { n: "The camera was on the sill, pointed at the street. It had been there the whole time. Neither of them turned it round, and neither of them turned it off, and the heater ticked, and the guesthouse went quiet floor by floor around them, and at some point Minji said her name into her shoulder, just her name, as if checking it was still the right one." },
+      { dark: true },
+      { music: 'mystery' },
+      { n: "They were awake for the red. Everybody was. Sitting up against the wall under the quilt, Minji's head on her shoulder, the hum in the boards. Minji had her eyes open. She was looking at the sill. At the little red eye, in the red, filming the street." },
+      { s: 'minji', f: 'neutral', t: "...I'm not going to check it in the morning. The street. I'm not. I've decided." },
+      { s: 'minji', f: 'neutral', t: "I'm going to check you. That's the new rule. In the morning I check you first, with my eyes, and then if there's time I check the street." },
+      { ifChoice: { 'asks.minji': 'yes' }, then: [
+        { n: "In the morning, before Solar was properly awake, she heard the small click. Today's second. Solar asleep, probably, with her hair in her face and Minji's coat over her. She didn't open her eyes. She let it have her." },
+        { n: "Later, at the door, Minji told her she'd looked at it, the second, the way she checked each one now, and that the autofocus had found her at once. Sharp. First try. She said it like a weather report. She said it twice." }
+      ], else: [
+        { ifChoice: { 'asks.minji': 'no' }, then: [
+          { n: "In the morning, when Solar woke, Minji was sitting at the low table in the gray light with the little black notebook, drawing. Not looking at the paper much. Looking at Solar, and then at the paper, the pencil going." },
+          { s: 'minji', f: 'neutral', t: "...Still bad. I've got your mouth right, though. Finally. Two hundred tries and I got the mouth." }
+        ], else: [
+          { n: "In the morning, when Solar woke, Minji was looking at her from twenty centimeters away with the silver camera in her hand, lens cap on, not lifted. She held it there for a long time. Then she put it down on the tatami between them, face down, and kept looking." },
+          { s: 'minji', f: 'neutral', t: "...Not today. I decided. That one's mine too. The not." }
+        ] }
+      ] },
+      { n: "When Solar left she stopped at the corner of the street and looked back at the guesthouse, at Minji's window on the second floor with its gapped fairy lights, and the camera on the sill. Pointed at the street. At her. She lifted a hand to it. Somewhere behind the glass, she knew, the hand went onto a card, one more frame in the file, and Minji would see it, and keep it." },
+      { n: "She thought about the pillows. Three of them. Made. She thought about who'd be coming up the stairs to sleep in them, and didn't finish the thought, and walked faster." }
+    ] },
+    { after: '11/28', title: '8: the reverse shot', place: 'Port Island · Seaside Park', time: 'After School', music: 'tender', scene: [
+      { bg: 'port-island-seaside-park' },
+      { n: "The first real cold had come down on the bay overnight. The sea was flat and steel and steaming a little at the edges where it was warmer than the air, and the grass on the slope had frost in the shadow of the pines at four in the afternoon that hadn't melted all day, and Solar's breath went out in front of her in front of everything she looked at, like a filter." },
+      { n: "Minji was on the wall. In a scarf Solar had never seen, a thick gray one, wound three times, up to her nose. The camera was in her lap. She wasn't filming. She was holding it the way you'd hold a hot can, both hands, for the warmth, though it didn't have any." },
+      { s: 'minji', f: 'neutral', t: "Hi. Sit close, it's freezing. Hyein made me this scarf. She makes everybody things now. She sat up three nights. She said her hands won't stop." },
+      { ifFlag: 'dead.aigis', then: [
+        { n: "She didn't say anything else about Hyein. She didn't have to. Everybody had seen the white ribbon round Hyein's wrist at breakfast, knotted with her teeth, and the coat with the square cut out of the back, which she was still wearing, which she wouldn't let anybody mend." },
+        { s: 'minji', f: 'sad', t: "Mitsuru came to the guesthouse on Thursday. For a picture. For the chapel. She said I was the only one who'd have one." },
+        { s: 'minji', f: 'sad', t: "I've got a hundred and twelve frames of Aigis. You know how many of them she's looking straight at the lens? All of them. Every single one. She's the only person I've ever filmed who always looked at it. Like she wanted to be sure I'd got her." },
+        { s: 'minji', f: 'neutral', t: "...I gave Mitsuru the one from the hall. In June. Hyein's ribbon, the first morning. She's looking right at me. She looks so pleased." }
+      ], else: [
+        { s: 'minji', f: 'neutral', t: "Aigis asked me to film her. On Tuesday. At breakfast. Just like that, over the rice. *Minji. Would you film me, please. I would like to be asked whether I'd like to be filmed, and I would like to say yes.*" },
+        { s: 'minji', f: 'happy', t: "So I asked her. And she said yes. And she stood in the kitchen doorway for one whole minute, perfectly still, looking straight at the lens, with Hyein's ribbon in. She didn't blink. I don't know if she can blink. It's the best minute I've got." }
+      ] },
+      { n: "She looked at the camera in her lap. Turned it over. Turned it back." },
+      { s: 'minji', f: 'neutral', t: "Your mom held my hand. On the ward. On Tuesday. I went with Jaehyun with the tea and she was lying on her front because of her back, and she put her hand out sideways off the bed, and I thought it was for him, and it was for me." },
+      { s: 'minji', f: 'sad', t: "She didn't say anything. She just held it. She smelled like the hospital soap. I wanted to film it so badly I could feel it in my teeth, Sol. I didn't. I held her hand instead." },
+      { choose: [
+        { t: "(Take her hands off the camera. Put them in your pockets with yours.)", notes: 3, then: [
+          { n: "She took Minji's hands off the camera, cold, both of them, and put one in each of her own coat pockets with her own hands, so they were sitting chest to chest on the wall in the frost like two people trying to start a fire, and Minji laughed through the scarf, and didn't take them back." }
+        ] },
+        { t: "She knows who you are. She's always known.", notes: 3, then: [
+          { s: 'minji', f: 'surprised', t: "...She said *Minji*. When I left. She said it into the pillow like she was making sure she had it right. *Minji. The camera.*" },
+          { s: 'minji', f: 'sad', t: "I'm the camera. To everybody's mom. That's fine. That's honestly fine. I'd rather be the camera than nothing." }
+        ] },
+        { t: "You can film the next one. If she says yes.", notes: 2, then: [
+          { s: 'minji', f: 'neutral', t: "...I'd ask her. I always ask." },
+          { s: 'minji', f: 'neutral', t: "And she'd say yes, because she's your mom, and moms say yes to cameras. And I'd stand there with it rolling and I'd be filming, and I wouldn't be holding her hand. That's the trade. That's always the trade." }
+        ] }
+      ] },
+      { s: 'minji', f: 'serious', t: "Tonight. The floor. The lockers. Chenle says it's still there, every locker open, every red light on. Hundreds." },
+      { s: 'minji', f: 'serious', t: "You said, in September, on the roof, you hold the camera and I'll hold you. You said deal. I'm cashing it." },
+      { choose: [
+        { t: "Deal.", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "Okay. Good. I'm going to be so brave about it. You won't even recognize me." }
+        ] },
+        { t: "Are you sure? It's yours. It'll want something.", notes: 3, then: [
+          { s: 'minji', f: 'neutral', t: "Everything down there wants something. That's what it's for." },
+          { s: 'minji', f: 'serious', t: "I want to see what it's pointing at. That's all. I've been pointing a camera at things my whole life. I want to know what it's like on the other side." }
+        ] }
+      ] },
+
+      { place: 'The Well · The Third Hill', time: 'The Red Hour', bg: 'eq-well-5', music: 'eerie' },
+      // BG: eqx-well-lockers — a long school corridor upside down in red light deep underground, every locker door hanging open, a small video camera in each with a lit red record light, all turned toward a single taped X on the floor at the far end under one bare bulb.
+      { n: "The Third Hill had been Hanlim's halls since July, white static and lockers and ballot boxes, and Solar had walked it enough nights now to know which floors hummed and which ones only buzzed. This one was silent. That was the first wrong thing. A corridor with no hum." },
+      { n: "Lockers down both sides, as far as the red light went. Every door open. And in every locker, on the top shelf, where you'd keep your books, a camera." },
+      { n: "All kinds. Little silver ones like Minji's. Old ones like Jaehyun's, with tape on them. Phones propped on their cases. A big shoulder camera like the ones the news brought to the SUnews steps. Every one of them on, every one with its small red eye lit; hundreds of red eyes in two rows going away into the dark like a runway, and every lens turned, a few degrees off the way the corridor ran, all to the same point. The far end." },
+      { s: 'chenle', f: 'neutral', t: "That's it. That's the one. I can hear them all running. It's like a hundred fridges. Fuuka says don't stand in front of any of them." },
+      { s: 'minji', f: 'serious', t: "...They're all on the same shot. Every one. That's not possible. You can't get two cameras on the same shot, the angles are different. They've all got the exact same shot." },
+      { n: "At the far end, under one bare bulb hanging on its wire, there was a mark on the floor. A cross. Two strips of black tape, the kind you'd put down on a stage to show an actor where to stand, worn at the edges, the way tape goes when somebody has stood on it a long time." },
+      { n: "Minji gave her the camera. Strap first. She didn't say anything. She unwound it from her own wrist and wound it round Solar's, twice, and closed Solar's fingers on the grip with her own, and then took hold of the back of Solar's coat in her fist, and held on. That was the deal." },
+      { n: "Solar lifted the camera and looked at the nearest locker's screen. The little fold-out screen on its side, lit." },
+      { n: "She was on it." },
+      { n: "On the cross. At the end of the corridor, under the bulb. Standing on the mark with her hands at her sides and her school blazer on and her hair tidy. Smiling. Not her own smile, not any of the faces; a soft, easy, kind smile, the face of a girl who has been told she can stop now. Her eyes open. Not blinking. Not moving. The clock in the corner of the screen running, and running, hours of it, and the girl on the cross smiling at nobody, perfectly still, perfectly happy, kept." },
+      { n: "Every screen. Solar looked down the row. Every little screen in every locker had the same girl on it, on the same mark, and the counters in the corners all said different things: four hours, eleven hours, three days, a number with too many digits to read." },
+      { n: "Then the speakers. All of them, very softly, at once, in a voice Solar knew better than her own. Flat. Careful. The editing-room voice." },
+      { n: "*Stand on the mark. Hold still. Then I'll always have the frame. Then I'll never miss it. Then I'll know which one was the last one, because there won't be a last one. Stand on the mark, Sol. I'll keep you.*" },
+      { n: "Minji's fist in the back of her coat closed so hard Solar felt the seam go." },
+      { s: 'minji', f: 'sad', t: "...That's me. That's my voice. That's what I said on the roof in June. That's what I meant. That's what I *meant*." },
+      // CG: eqx-every-red-light — a long upside-down school corridor in deep red light, hundreds of small cameras in open lockers with their red record lights lit, a girl holding one silver camera up with a second girl behind her gripping the back of her coat, a taped X on the floor far ahead under a single bulb.
+      { choose: [
+        { t: "(Point the camera at the mark. Show her it's empty.)", notes: 3, flag: 'eqx-minji-floor-mark', then: [
+          { n: "She pointed Minji's camera down the corridor at the mark and held it there, and on its little screen, the only screen in the whole corridor that was Minji's, the mark was empty. Two strips of tape on a floor under a bulb, and nobody on them." },
+          { s: 'solar', f: 'neutral', t: "Look. Look at yours. Not theirs. Yours." },
+          { n: "Minji looked over her shoulder at the little screen. At the empty cross. She looked at it the way she'd looked at frame two-oh-six for three hours in April, and Solar felt her understand it, through the fist in her coat: the empty mark wasn't the cut. It was the girl not being there because she was here. Holding the camera. Breathing." },
+          { s: 'minji', f: 'neutral', t: "...You're not on it. You're on this side." }
+        ] },
+        { t: "(Turn round. Point it at Minji.)", notes: 3, flag: 'eqx-minji-floor-her', then: [
+          { n: "She turned round in Minji's grip and pointed the camera at her. At Minji. The reverse shot. Minji's face on the little screen, red-lit, wet, with the scarf down round her chin and her mouth open to say *no*, and the word not coming." },
+          { s: 'solar', f: 'neutral', t: "Somebody should have a frame of you. Down here too." },
+          { n: "And down the corridor, Solar heard it: hundreds of small motors whirring, all at once, lenses hunting. Turning. Looking for the girl on the mark and not finding her in the shot, because the shot had turned round. The red eyes in the lockers flickered. Searched. Couldn't find anything to keep." }
+        ] },
+        { t: "(Turn it off.)", notes: 2, flag: 'eqx-minji-floor-off', then: [
+          { n: "She found the button by feel, the way she'd been shown in another year on a riverbank, and pressed it, and the little red eye on Minji's camera went out." },
+          { n: "The one in the nearest locker went out too. Then the next. Then the next, down both sides of the corridor, two at a time, a long double row of red going dark from her end to the far end like a fuse burning backward, until the only light left was the bulb over the empty cross, swinging a little on its wire." }
+        ] }
+      ] },
+      { n: "Minji let go of her coat. She came round in front of Solar and walked down the corridor, between the lockers, past all of them, and Solar went after her with the camera, and Minji didn't stop until she was at the end under the bulb, and stood in front of the cross, and looked down at it." },
+      { s: 'minji', f: 'serious', t: "I don't want the frame where you go." },
+      { s: 'minji', f: 'serious', t: "I don't. I thought I did. I thought if I had it I'd know, and knowing would be better than this. It isn't. I don't want the last one. I want the ones where you don't. All of them. I want so many of them that I lose count." },
+      { s: 'minji', f: 'sad', t: "...And I can't keep you. Nobody keeps anybody on a card. I keep a picture. You keep going. That's the deal. That was always the deal." },
+      { n: "She put her foot on the tape. On one arm of the cross. And peeled it up with her toe, slowly, the way you'd peel a mark off a stage after the last night, when the set's coming down and nobody will ever stand there again." },
+      { n: "Behind them, all down the corridor, the locker doors began to close. Gently. One by one. Click. Click. Like a school at the end of the day." },
+      { flag: 'eqx-minji-floor-cleared' },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "On the way back to the stairs Minji stopped at one locker that hadn't closed. Low down, at knee height. No camera in it. A ladle, hung on the hook. She looked at it, and didn't film it, and shut the door on it with two fingers, very gently, as if somebody were asleep inside." }
+      ] },
+
+      { place: 'Kirijo Guesthouse · Roof', time: 'Dawn', bg: 'kirijo-guesthouse-roof-night', music: 'tender', soft: true },
+      { n: "They didn't sleep. They went up to the guesthouse roof at five with a blanket and Jaehyun's thermos, which he'd left on the step outside Minji's door at one-thirty with three knocks and his name and no questions, and sat on the low wall facing the bay, and watched it go from black to gray to the first thin line of white along the edge of the sea, behind the bridge." },
+      { n: "Minji had her camera in her lap. Off. She'd had it in her lap since the Well, and she hadn't once turned it on, and she hadn't once let go of it." },
+      { s: 'minji', f: 'neutral', t: "...Can I tell you a thing. You don't fix it." },
+      { s: 'minji', f: 'neutral', t: "In June I said I wasn't going to ask you what this is. I said it on the sea wall in the rain. Item four. I've kept that. I've kept it so hard. I haven't asked once." },
+      { s: 'minji', f: 'serious', t: "I'm still not asking. I want that clear. This isn't me asking." },
+      { s: 'minji', f: 'serious', t: "I'm telling you what I want to film. That's different. That's my job. I'm allowed to say what the shot is." },
+      { n: "She looked at the bay. The white line along the sea had widened, a band now, gray-gold, and the bridge stood up black against it with its lamps going out one at a time as the timer found them." },
+      { s: 'minji', f: 'neutral', t: "Everything I've ever got of you, I'm on the other side of. Fourteen thousand frames. Two hundred seconds. A hand on a pillow. You, in a box on a screen, and me behind it, not in it. I'm the person who isn't there. I picked that. I was good at it." },
+      { s: 'minji', f: 'sad', t: "I want the reverse shot. That's all. I want to be in one. With you. Not behind. In it. I want somebody to look at a frame in forty years and see two people and not have to ask who was holding the camera." },
+      { n: "She held the camera out. Strap first. To Solar. Not to hold. To decide what it pointed at." },
+      { route: [
+        { t: "(Set it on the wall. Turn it on the two of you. Kiss her in the frame.)", route: 'romance', notes: 3, flag: 'eqx-minji-in-frame', then: [
+          { n: "She took the camera and set it on the low wall, on its back, so the lens looked up at the two of them and the paling sky behind their heads, and pressed the button, and the little red eye came on. Minji watched her do it with her mouth open." },
+          { n: "Then Solar kissed her. In the frame. On purpose. With the lens on them and the bay going gold behind them, and Minji made a sound like somebody who'd been holding her breath underwater for a long time and had just come up; and she kissed back with both hands in Solar's hair, and didn't look at the camera once, and didn't need to. She knew exactly where it was. She always knew where everybody was in a frame." },
+          { s: 'minji', f: 'flustered', t: "...That's. Okay. That's the shot. That's the one. I'm in it." },
+          { s: 'solar', f: 'neutral', t: "You're in it." },
+          { s: 'minji', f: 'sad', t: "I know there's other people. I know there's Haechan. I'm not stupid and I'm not new. I'm not asking you to be only mine. I'm asking you to let me be in the picture." },
+          { s: 'minji', f: 'happy', t: "...And you just did. On a roof. At dawn. With the light coming up behind you like a cheat. You're so annoying. You're the most annoying person I've ever been in love with. It's a very short list now. It's one name." },
+          { n: "She put her forehead against Solar's in front of the lens, and they stayed like that until the sun came over the bridge and the little screen whited out with it, and neither of them moved to fix the exposure." }
+        ] },
+        { t: "I want you in every picture I'm in. As my best friend. I can't give you more than that and be honest.", route: 'friend', notes: 3, flag: 'eqx-minji-friend-frame', then: [
+          { n: "Minji didn't say anything. She looked at the bay. Solar watched it go into her, all of it, and watched her take it the way she'd taken the empty cross on the floor of the Well: slowly, frame by frame, not looking away." },
+          { s: 'minji', f: 'neutral', t: "...Okay." },
+          { s: 'minji', f: 'sad', t: "No, that's. Okay. That's honest. You said you'd never lie to me about any of it and you didn't. I asked for that. I asked for that on a wet wall in June. I can't be mad at getting it." },
+          { s: 'minji', f: 'sad', t: "I'm going to be a bit sad for a while. I'm telling you so you don't have to wonder. I'll be sad on my own time, in my room, with the door shut. I'll still bring you coffee." },
+          { n: "Then she took the camera back, and set it on the wall, and turned it on the two of them anyway, and put her arm through Solar's, and leaned her head on her shoulder in the frame, and looked straight into the lens with her chin up and her eyes wet and didn't hide any of it." },
+          { s: 'minji', f: 'neutral', t: "There. The reverse shot. Two people. That's still the shot. Best friend with a camera. That was on the list too, Sol. That was always on the list. It was item five." }
+        ] }
+      ] },
+      { ifChoice: { 'asks.minji': 'yes' }, then: [
+        { n: "Later, going down the stairs with the blanket, Minji said that the file was a hundred and seventy-three seconds long now. She said she'd watched it all the night before, on the floor of her room, before the Well, and that it went by so fast it was one movement, a girl turning her head across half a year. She said she wasn't going to stop. She said, for the first time, that she didn't think she needed to keep it. She just liked it." }
+      ], else: [
+        { ifChoice: { 'asks.minji': 'no' }, then: [
+          { n: "Later, going down the stairs with the blanket, Minji said she'd filled the black notebook. Every page. A hundred and forty bad drawings of Solar and one good mouth. She said she was going to start a new one, and that the new one could have other people in it, now. She said maybe even her." }
+        ], else: [
+          { n: "Later, going down the stairs with the blanket, Minji said she'd counted. Ninety-one seconds of Solar since June, kept, and eighty-two days she'd decided not to. She said she couldn't tell any more which pile she was prouder of. She said she thought that was probably the point." }
+        ] }
+      ] },
+      { n: "At the bottom of the stairs Jaehyun's door opened a crack, and closed again, and they heard him go back to bed, satisfied, like a man who'd counted to two." },
+      { n: "Solar walked back to the dorm along the river in the low gold light with the frost going to water on the railings, past the post office, past the end of the river street where the boarding house's persimmon stood over the wall with its last fruit black on the branches. She didn't look at the gate. She looked at the river, and at her own breath, and at her hands, which were warm, for some reason, still, from the camera, which had never once been warm in her life." }
     ] }
   ]
 });

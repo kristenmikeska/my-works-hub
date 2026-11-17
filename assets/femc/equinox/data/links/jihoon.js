@@ -1,7 +1,27 @@
 /* Persona 3: Equinox · Park Jihoon · Hunger. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–6 (rank 1 from 4/13, rank 2 from 4/21, both Game Panic; rank 2 ends at the photo booth and branches on
-   eqx-tanabe and eqx-jihoon-plush). Ranks 7–15 still to write.
+   Written: ranks 1–8 (rank 1 from 4/13, rank 2 from 4/21, both Game Panic; rank 2 ends at the photo booth and branches on
+   eqx-tanabe and eqx-jihoon-plush). Ranks 9–15 still to write.
+   Rank 7 (after 11/1, '7: the shelf': Game Panic → Naganaki's side-hall offering shelf → the shrine steps): the crane is
+   unplugged and restocked all white rice-cake plush, facing out (reads eqx-jihoon-plush); day 200 fell on 10/23 (branches
+   dead.shinjiro: Shinjiro fed him once in June, "three people… all three of them dead"; else Junpei's capitals); reads
+   ifChoice asks.jihoon (wrist). The Hate Club cameo: Junkyu's hundred-yen coin for the box; Asahi: "say one for the
+   grandma at the bakery… he said yes to her" (hateclub rank 3's yes). The shelf has 22 things now; Tanabe's crossword is up there, folded by Jungwon (never said).
+   A white paper fold appears at the end of the shelf. Sets eqx-jihoon-shelf (Tanabe's rice ball left on the shelf, on top
+   of the fold or with the fold dropped in the incense burner, where it doesn't burn and then isn't there); else he keeps it.
+   Jungwon stops outside his door every night after the chain. Reads eqx-door-hoax-3, eqx-seams (else station 73, 39 to go),
+   the kiss flags (ifCount). He gives notice: next time he'll ask "what am I, here", in the right lighting.
+   Rank 8 (after 12/3, '8: the right lighting': Game Panic (the crane taken away) → the dorm lounge → (ifEvent eqx-persimmon:
+   the hill road) → Game Panic after closing → the photo booth): he visits Mrs. Kim (kim-mom) with Cherry's melon bread and
+   barley tea; "Sit there. Where I can see you." / "Does your mother know where you are." / "I'll know, then." She sleeps
+   sitting up; he doesn't touch her back; Mr. Kim, a mandarin, two pats. Reads dead.shinjiro (plate on the chair), dead.aigis
+   (Hyein's white ribbon), eqx-jihoon-vest, ifChoice asks.jihoon. He helps the attendant close on Fridays (tokens, since June).
+   A plain strip, his fist holding the curtain shut in frame four, nothing behind it. ROUTE CHOICE ({ route }): "You're the
+   one I'm watching for." (romance: the booth in the dark, his room, waking at dawn; windowsill reads eqx-jihoon-shelf;
+   Jungwon on the kitchen step with two cups of barley tea, one made twice, and an egg sandwich for Jihoon) / "You're Park
+   Jihoon. My oldest friend…" (friend: a bunny strip of worst faces, mopping, "a lifetime contract"). In the romance dawn, a
+   choice: kiss / "That's yours" (flag eqx-choose-jihoon, tally choose +1) / hidden-style "Stay. Please. Here, with me." (flag
+   eqx-asked-jihoon, tally asked +1, cakes +1; should join story-act4.js ASKED, and eqx-choose-jihoon MINE, like round 2's).
    Rank 4 (after 6/30, '4: worse lighting': Game Panic → the dark photo booth in a mall blackout → the fountain): reads
    ifChoice asks.jihoon (yes: wrist bare, Cherry writes the number on her own arm, he went into the pharmacy alone "just to
    say hi"; choose: he writes it himself; no: a second tally "days since you said no"), ifBefore 7/15. Two soft knocks on the
@@ -808,6 +828,320 @@
       { n: "At the barrier he stopped and turned round, the way he always did, every time, in every world, to check she was still where he'd left her." },
       { n: "She was under the clock. She was watching. He saw it, and lifted the paper bag at her like a toast, and went through." },
       { n: "She sat there a while after, under the second hand. The big clock ticked. The doors slid open and shut and let October in. At the far end of the concourse the small clock over the south doors said the right time, and there was nobody under it, and she watched it anyway, until the next train, and the one after that, in case anybody came looking for anybody." }
+    ] },
+    { after: '11/1', title: '7: the shelf', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'city', scene: [
+      { bg: 'gamepanic-inside' },
+      { n: "November had come into Game Panic on everybody's coats and stayed, a damp-wool smell under the warm battery of the carpet, and the bucket under the dripping vent by the dance machine had finally been taken away and had left a pale ring on the floor where it had stood all summer. The rhythm game was screaming at nobody. The fighting-game booth was full of middle-schoolers in scarves. And the crane machine by the door had a sheet of printer paper taped across its glass, OUT OF ORDER in black marker, and its plug lay on the carpet beside it, curled up like a tail." },
+      { n: "It was lit anyway. Its little lights ran round and round the frame, pink and white, and inside, over the pile, the claw hung at the top of its wire, perfectly still, the way a thing hangs when it's waiting rather than broken." },
+      { n: "Jihoon was on the step of the dance machine with Nana Two zipped into his jacket and his elbows on his knees, not playing anything, looking at it." },
+      { s: 'jihoon', f: 'neutral', t: "They restocked it. Tuesday. The attendant opened the back and tipped a whole new bag in and taped the sign back on, like feeding a fish in a tank you've stopped liking." },
+      { s: 'jihoon', f: 'serious', t: "Look at the pile. Go on. I've been looking at it for an hour, you can look at it for one second." },
+      { n: "She looked. The bears were gone, and the cartoon frogs, and the knockoff cats with the wrong number of whiskers. The pile was white. All of it. A hundred round white plush rice cakes the size of a fist, stitched smiles, stitched eyes closed in contentment, heaped against the glass with every single one of them facing out." },
+      { ifFlag: 'eqx-jihoon-plush', then: [
+        { n: "Hers was still in her bag. She knew exactly where without touching it, against the lining, against her textbooks, the way you know where a sore tooth is. The dust had gone through four books now. She'd stopped trying to brush it off." }
+      ], else: [
+        { n: "She thought of the one he'd fished out of the prize flap in April, small and warm and smiling, and where it had gone, and didn't ask." }
+      ] },
+      { s: 'jihoon', f: 'neutral', t: "Nobody plays it. Nobody's touched it since it went white. My students walk round it on the way to the drums like it's a dog that bit somebody. My whole school. Won't go near it." },
+      { s: 'jihoon', f: 'flustered', t: "Two hundred was the twenty-third, by the way. Since you're about to look at my wrist." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "He said it to the carpet. She knew what else the twenty-third had been, and so did he, and neither of them said it for a while." },
+        { s: 'jihoon', f: 'sad', t: "I wrote it on my wrist in the morning. Two, oh, oh. Cherry was going to do a thing at dinner. And then it was the night, and nobody looked at anybody's wrist for a week, and I was glad. Isn't that disgusting. I was glad nobody saw it." },
+        { s: 'jihoon', f: 'sad', t: "He fed me once. Did you know that? In June. I came to the dorm to walk Cherry home and it was pouring, and he put a plate in front of me at the end of the table and didn't say anything. Rice and some kind of fish. Just put it down. Like mail." },
+        { s: 'jihoon', f: 'neutral', t: "That's three. Three people in this town who put food in front of me without asking why I was there. All three of them dead. And I'm walking round with one of them in my pocket like a stone." }
+      ], else: [
+        { s: 'jihoon', f: 'neutral', t: "Two, oh, oh. I wrote it on my wrist in the morning. Cherry was going to do a thing at dinner. Then it was the night, and the fathers, and nobody looked at anybody's wrist for about a week, and I was glad. That's disgusting, right? I was glad nobody saw it." },
+        { s: 'jihoon', f: 'happy', t: "Your cook lived, though. The one in the long coat. Junpei put it in the group chat in capitals with eleven exclamation marks and a picture of a frying pan. I barely know the guy. I read it four times." }
+      ] },
+      { ifChoice: { 'asks.jihoon': 'yes' }, then: [
+        { n: "He pushed his sleeve up anyway, out of habit, and the inside of his wrist was bare, clean skin and blue veins. The number lived on Cherry's forearm now, in her blue ballpoint, two hundred and something, and Solar had seen her writing it bigger every week, as if she were afraid it would stop being legible from across a room." }
+      ] },
+      { ifChoice: { 'asks.jihoon': 'choose' }, then: [
+        { n: "He pushed his sleeve up anyway, out of habit. Two hundred and something, in his own hand, gone over three times, heavy as a signature on a form you're scared someone will say isn't yours." }
+      ] },
+      { ifChoice: { 'asks.jihoon': 'no' }, then: [
+        { n: "He pushed his sleeve up anyway, out of habit. The day count in blue, and under it, where the second tally had been in June, a little scribbled-out smudge where he'd stopped keeping it." }
+      ] },
+      { choose: [
+        { t: "(Look at the crane. Then at him. Only at him.)", notes: 3, then: [
+          { n: "She looked at the white pile for exactly as long as he'd asked and then turned her back on it and looked at him instead, at the tired grin, the nick under his jaw where he'd shaved badly that morning, and he saw her do it, and something in his shoulders let go about an inch." },
+          { s: 'jihoon', f: 'neutral', t: "...Yeah. Okay. Better view. I'll give you that one." }
+        ] },
+        { t: "Let's go somewhere it isn't.", notes: 3, then: [
+          { s: 'jihoon', f: 'neutral', t: "That's the plan. That's exactly the plan. I've had it since April. I've just been carrying it around." }
+        ] },
+        { t: "Two hundred. I'm glad, Jihoon. Late, but glad.", notes: 2, then: [
+          { s: 'jihoon', f: 'surprised', t: "...You said glad in an arcade again. That's twice. People are going to talk." },
+          { s: 'jihoon', f: 'sad', t: "Okay. I'll take it late. Late still goes on the wrist." }
+        ] }
+      ] },
+      { s: 'jihoon', f: 'neutral', t: "Come on. The shrine. The little shelf where people leave things. Somebody said that, once. In April. On a bench." },
+      { n: "The Hate Club came in out of the drizzle as they were getting up, all four, shaking their umbrellas over the doormat in a row like a family of wet birds, and stopped when they saw him standing. Hyunsuk opened his mouth. Jaehyuk put a hand flat over it without looking, the way he had in August, and then took it away again, because Jihoon was already talking." },
+      { s: 'jihoon', f: 'neutral', t: "Shrine. I'm going to the shrine. Don't make it a thing." },
+      { s: 'hyunsuk', f: 'surprised', t: "...Are you getting married? Is this— is she proposing? Is that what this is?" },
+      { s: 'junkyu', f: 'neutral', t: "Shut up. Here." },
+      { n: "Junkyu dug in his pocket and came out with a hundred-yen coin and held it out on his flat palm, gravely, the way you'd hand somebody the ring at a wedding. For the box, he said. For whatever. Jihoon looked at the coin a long second and took it." },
+      { s: 'asahi', f: 'neutral', t: "...Say one for the grandma at the bakery. The one with the gloves. He said yes to her. He won't tell you what." },
+      { n: "Junkyu went red and pushed Asahi into the drum game, not hard, and Asahi let himself be pushed, and the four of them went off to the back half of the arcade arguing, and didn't once look at the white pile in the crane by the door. Jihoon stood with the coin in his fist and watched them go, the way you'd watch your own family cross a road." },
+      { s: 'jihoon', f: 'sad', t: "...They came through a hole in the world for me and now they're scared of a claw machine. I did that. I brought them to a town where the claw machines are scary." },
+      { n: "She had. With his hand closed round something in his pocket. She hadn't known he'd kept it, the word, the address. She should have. He kept everything." },
+
+      { place: 'Naganaki Shrine · The Side Hall', time: 'Evening', bg: 'naganaki-shrine-autumn', music: 'tender', soft: true },
+      // BG: naganaki-shrine-offering-shelf — the side hall of a small hilltop shrine at November dusk: a narrow plank shelf under the eaves crowded with small left things (a stopped wristwatch, child's mittens, a chipped teacup, a folded crossword), a stone incense burner on the path, gold ginkgo leaves on the gravel, one lantern just lit.
+      { n: "Naganaki at dusk in November smelled of wet gravel and cold incense and the bitter green of the ginkgo by the gate, which had turned all at once that week and was dropping gold on the steps in drifts the old woman at the amulet stall swept, and swept, and gave up on. The lanterns were coming on along the path. Nobody was there. In November nobody ever was; the shrine belonged to the crows and the cold and whoever had something to put down." },
+      { n: "The shelf was under the eaves of the side hall, round the back, where the wind didn't reach. Solar had walked past it a hundred times last year without once looking. A plank of old dark wood on two iron brackets, about the height of a hand, and on it the things people left." },
+      { n: "There were more than there used to be. That was the first thing. Last year there'd been a few coins, a doll with a cracked face, a cup of sake gone to dust. Now the shelf was full end to end, a small crowd standing shoulder to shoulder in the lantern light: a man's wristwatch, stopped; a child's mittens on a string; a teacup with a chip out of the rim; a single house slipper; a rice bowl with its lid on; a photograph turned face down; a folded newspaper open to a crossword half done in pencil. A town's worth of people saying goodbye to somebody without saying who." },
+      { n: "Jihoon stood in front of it with his hands in his pockets, and she watched him count. Under his breath, lips moving, the way Cherry counted, the way he'd caught it off Cherry like a cold." },
+      { s: 'jihoon', f: 'neutral', t: "Twenty-two. There were nine in May. I came up in May, did you know that? I didn't do it. I stood here like a tourist and bought a fortune and it said *wait*, so I thought, okay. Fine. I'll wait." },
+      { n: "He reached out and touched the crossword with one finger. Soft gray pencil, a small square old man's hand, and the clue it had stopped at was fourteen across." },
+      { s: 'jihoon', f: 'sad', t: "...That's his. Tanabe-san's. From the lobby. Somebody brought it up here." },
+      { n: "He didn't ask who. He looked at the folds, which had been pressed flat, corners together, edges squared, the way exactly one person at the guesthouse folded anything at all." },
+      { s: 'jihoon', f: 'neutral', t: "Jungwon. Of course. He never said. He just walked up here on his own and put it down and never told a single person. That's so him I could scream." },
+      { n: "Then he took it out of his pocket." },
+      { n: "She'd seen it in pieces all year, a corner of cling film, a shape behind his hand, but she hadn't seen it whole since the bench outside Game Panic in April. It was gray all the way through now, hard as a pebble from a river, the seaweed gone black and papery, the cling film clouded soft at the twist where his thumb had worried it for six and a half months. It looked like nothing. It looked like something you'd find in the gutter and step over. He held it on his palm in the lantern light like it was the heaviest thing in the prefecture." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { s: 'jihoon', f: 'sad', t: "For three of them. I'm putting it down for three of them, it's all I've got. He'd hate that it's rice. He'd say it's past saving and throw it in the bin and make me a new one without looking at me." },
+        { s: 'jihoon', f: 'sad', t: "...He'd be right. He'd be so right. I'd eat it." }
+      ], else: [
+        { s: 'jihoon', f: 'neutral', t: "I said I'd know when to stop carrying it. I'd know because I'd stop. I didn't stop. So I'm doing it the other way round. I'm going to put it down and find out afterward if I knew." }
+      ] },
+      { n: "He lifted it toward the shelf. And stopped." },
+      { n: "At the far end, past the rice bowl, in a gap between the face-down photograph and the slipper where there'd been nothing a second ago, or where she just hadn't looked, there was a little paper fold. White. Square. The size of a stamp. Squared to the edge of the plank with somebody's fingertip, neat, the way the man in the white gloves had squared his on the lid of a bin in August." },
+      { n: "Jihoon saw it at the same moment she did. She felt him see it, the way you feel a step that isn't there. The rice ball stopped in the air between his hand and the wood." },
+      { n: "The lanterns hummed. Down the hill a car went by on the wet road, and then it was quiet enough to hear the ginkgo leaves coming down onto the gravel one at a time, like somebody counting." },
+      { s: 'jihoon', f: 'neutral', t: "...It's for me. It's a shelf for leaving things, and somebody left me something. That's funny. That's actually really funny." },
+      { n: "He wasn't laughing." },
+      // CG: eqx-the-shelf — a narrow wooden offering shelf under shrine eaves at dusk, crowded with small left things in lantern light; a boy's hand holding a gray, stone-hard rice ball in clouded cling film just above the plank, and at the far end of the shelf a tiny white paper fold squared neatly to the edge.
+      { choose: [
+        { t: "(Put your hand under his. Set it down together, right on top of the fold.)", notes: 3, flag: 'eqx-jihoon-shelf', then: [
+          { n: "She put her hand under his, her palm against the back of his hand, the way you'd steady a cup somebody was carrying too full, and he let her, and they set it down together. Not at the near end. At the far end. Right on top of the little white fold, so it was underneath and you couldn't see it any more: a gray stone on a white square, a paperweight on somebody's letter." },
+          { n: "He took his hand away. It was shaking, not much. He looked at it, and put it in his empty pocket, and kept it there." },
+          { s: 'jihoon', f: 'neutral', t: "...Sit on that, then. Whoever. Sit on that for a bit." }
+        ] },
+        { t: "(Take the fold. Drop it in the incense burner. Then step back and let him do it alone.)", notes: 3, flag: 'eqx-jihoon-shelf', then: [
+          { n: "She picked the fold up off the shelf without opening it, walked to the stone burner in the middle of the path and dropped it in, onto the gray ash where somebody's sticks had burned down to nothing that morning. It didn't catch. It lay on the ash, white and square and perfectly clean, and she didn't watch it. She went back and stood a step behind him, where he could feel her and not see her, and waited." },
+          { n: "He did it on his own. It took a long time. He set the rice ball at the near end, beside the crossword, and moved it a centimeter left so the two weren't touching, and took his hand away, and put it back, and took it away." },
+          { n: "When they passed the burner on the way down she looked in. Ash. Gray. Nothing white in it anywhere." }
+        ] },
+        { t: "You don't have to put it down. It's yours. Keep it.", notes: 2, then: [
+          { n: "He looked at her. Then at the rice ball in his hand, and at the little white square waiting at the end of the shelf, and his face did something grateful and ashamed at once." },
+          { s: 'jihoon', f: 'sad', t: "...Yeah. Okay. Not here. Not next to that." },
+          { n: "He put it back in his pocket and kept his hand round it there all the way down the steps, the way you'd keep a hand on your wallet in a crowd. Neither of them looked back at the shelf. Neither of them had to." }
+        ] }
+      ] },
+
+      { place: 'Naganaki Shrine · The Steps', time: 'Evening', bg: 'naganaki-shrine-night', music: 'tender', soft: true },
+      { n: "They sat on the long stone steps under the gate with the town going blue below them. The monorail went over the bay lit up like a string of beads somebody was pulling slowly through their fingers. The river was black. On the river side of town, low down, where Aigis said the count went quiet, one window was yellow, a kitchen window, square and warm, and Solar didn't look at it, and felt it not being looked at the whole time, like a hand on the back of her neck." },
+      { ifFlag: 'eqx-jihoon-shelf', then: [
+        { s: 'jihoon', f: 'neutral', t: "My pocket's so light. That's stupid. It weighed, like, eighty grams. I keep putting my hand in to check and there's nothing in there but lint and one cough drop." },
+        { s: 'jihoon', f: 'sad', t: "...I'm going to keep checking for about a year, aren't I." }
+      ], else: [
+        { s: 'jihoon', f: 'neutral', t: "Still in there. I'm going to carry it till it turns into a diamond. That's how diamonds work. Pressure and time and a guy who can't let go of anything." }
+      ] },
+      { s: 'jihoon', f: 'neutral', t: "Can I tell you a thing about your boyfriend. It's not a mean thing. I wish it was a mean thing." },
+      { s: 'jihoon', f: 'serious', t: "He checks the chain at eleven. You know that, everybody knows that. Then he walks down the hall and stops outside my door. Every night. He doesn't knock. He just stands there till he hears me move. A cough, the bed, anything. Then he goes." },
+      { s: 'jihoon', f: 'sad', t: "I lie there like a kid pretending to be asleep, and I think, he's watching for me. Him. The guy whose— the guy I've been a scandal at for two years. He stands outside my door every night like somebody's dad." },
+      { ifEvent: 'eqx-door-hoax-3', then: [
+        { s: 'jihoon', f: 'neutral', t: "And in the gym. That night. Him in the doorway not saying come back with his whole face. I said two's enough. I meant it. I just didn't know one of the two was going to be him." }
+      ] },
+      { choose: [
+        { t: "He's always watched for you. Since we were six.", notes: 3, then: [
+          { s: 'jihoon', f: 'sad', t: "...Don't. Don't make him nice. I can't fight a nice guy. I've been trying for twelve years and he keeps passing me egg sandwiches." }
+        ] },
+        { t: "Does that make it worse?", notes: 2, then: [
+          { s: 'jihoon', f: 'serious', t: "So much worse. I want him to hate me. Hate's easy. You know where you are with hate. You can stand in it like a doorway." },
+          { s: 'jihoon', f: 'sad', t: "He doesn't hate me. He stands outside my door. What am I supposed to do with that. Where am I supposed to put it." }
+        ] },
+        { t: "(Don't say anything. Lean into his shoulder.)", notes: 2, then: [
+          { n: "She leaned into his shoulder. The jacket was cold on the outside and warm an inch in, and Nana Two's ear was squashed between them, and after a second he put his cheek on top of her head and blew out a breath into her hair that went on a long time, the way you'd let air out of something that had been holding its shape too hard." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-seams', then: [
+        { s: 'jihoon', f: 'neutral', t: "Your mom's back. At the dorm. In the armchair. Cherry told me. I haven't gone. I don't know how to walk into a room she's in and not be the kid with the spoon in his pocket." },
+        { s: 'jihoon', f: 'serious', t: "I'll go. Don't make that face. I'm going. I just need to buy something to bring that isn't stupid." }
+      ], else: [
+        { s: 'jihoon', f: 'neutral', t: "Station seventy-three on Saturday. Mr. Kim doesn't come any more. I go anyway. Thirty-nine to go. Somebody should be under every clock at least once. I keep saying that like it's a plan." }
+      ] },
+      { ifCount: { of: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss', 'eqx-jihoon-dark-kiss', 'eqx-jihoon-room'], min: 1 }, then: [
+        { n: "He kissed her on the steps. Not the way he did in arcades and booths, like he was getting away with something. Slowly, and cold, his mouth cold and then not, his hand coming up to the side of her face and staying there while the lanterns hummed over them, and when she shivered he unzipped his jacket without stopping and pulled her hands inside it, flat against his ribs through his shirt, where he was warm, where his heart was going much faster than the rest of him was letting on." },
+        { s: 'jihoon', f: 'flustered', t: "...Your hands are like ice. That's assault. I'm reporting you to the shrine." },
+        { n: "He didn't let go of them. He held them there against his ribs inside his jacket with his own hands over the outside, and Nana Two looked up at the two of them from the zip with his stitched face that had never done anything wrong in his life." }
+      ], else: [
+        { n: "He took her hand off her knee and put it in his jacket pocket with his, the empty pocket or the other one, and held it there, and didn't say anything about it, which for Park Jihoon was a speech." }
+      ] },
+      { s: 'jihoon', f: 'serious', t: "Sol. Next time I'm going to ask you something. Not now. I'm telling you now so you can't say I ambushed you. I'm a gentleman. I give notice." },
+      { s: 'solar', f: 'neutral', t: "Ask me what?" },
+      { s: 'jihoon', f: 'neutral', t: "What I am. Here. I know what I am at home. I'm the scandal, I'm the thread on the forum, I'm the guy your mom checks the pockets of. I want to know what I am here. Where nobody's keeping the score." },
+      { s: 'jihoon', f: 'flustered', t: "Don't answer. I'm going to ask somewhere with the right lighting. Not better, not worse. Right. I'm still looking for it." },
+      { n: "They went down the steps together into the town. At the bottom, where the shrine road met the street, he went left toward the guesthouse and she went right toward the dorm, and she stopped at the corner and turned round, and he was already turned round, half a street away, in the lamplight, the way he always was, every time, in every world, to check she was still where he'd left her." },
+      { n: "She was. He lifted his hand, the one that had been in his pocket all year round a stone, and it was empty, or it wasn't, and she couldn't tell from there, and it didn't matter. It was up. That was the thing she kept." }
+    ] },
+    { after: '12/3', title: '8: the right lighting', place: 'Paulownia Mall · Game Panic', time: 'After School', music: 'city', scene: [
+      { bg: 'gamepanic-inside' },
+      { n: "December had put tinsel on Game Panic, one sagging silver rope along the top of the change machine and a plastic wreath on the fire door that somebody had hung upside down and nobody had fixed, and the rhythm game had a Christmas song in it now that it played at full volume to nobody, sleigh bells over a drum machine, over and over, the way a child sings the one line it knows." },
+      { n: "The crane machine was gone. There was a pale rectangle on the carpet by the door where it had stood, cleaner than the carpet round it, with four little dents at the corners." },
+      { n: "Jihoon was standing in it. In the clean rectangle, exactly, in his coat, with a paper bag from Cherry's bakery in one hand and his thermos in the other and Nana Two's head poking out of his zip, like a man waiting for a bus in a place where there used to be a stop." },
+      { s: 'jihoon', f: 'neutral', t: "They took it away on Monday. Two guys with a trolley. Normal guys. I watched the whole time. I checked their hands. Bare hands. Calluses. One of them had a wedding ring and a plaster on his thumb. I nearly hugged him." },
+      { s: 'jihoon', f: 'serious', t: "Don't take your coat off. We're going to your house." },
+      { s: 'solar', f: 'neutral', t: "The dorm?" },
+      { s: 'jihoon', f: 'neutral', t: "Your mom's house. Wherever your mom is, that's your house. That's the rule. I didn't make the rule. Every Korean mother in history made the rule." },
+      { s: 'jihoon', f: 'flustered', t: "I've got melon bread. Cherry says melon bread's neutral. Cherry says nobody ever had a fight over a melon bread. I've got barley tea. I've got a clean shirt on. I ironed it. With a pan. Jungwon showed me." },
+      { choose: [
+        { t: "You ironed a shirt with a pan.", notes: 2, then: [
+          { s: 'jihoon', f: 'serious', t: "With a *hot* pan. On the kitchen table. On a towel. He timed it. It's very scientific. Don't touch the collar, the collar's a crime scene." }
+        ] },
+        { t: "(Fix his collar.)", notes: 3, then: [
+          { n: "She reached up and fixed his collar, which had a faint brown triangle pressed into one point of it, and he stood very still with his chin up and let her, the way you'd stand for a mother at a school gate, and his ears went red from the bottom up." },
+          { s: 'jihoon', f: 'flustered', t: "...Okay. Okay. Is it bad? It's bad. Don't tell me. Tell me after." }
+        ] },
+        { t: "She'll like that you came, Jihoon.", notes: 3, then: [
+          { s: 'jihoon', f: 'neutral', t: "No she won't. She'll hate it. That's fine. That's the point. I want her to have to look at me for a whole visit." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Lounge', time: 'Afternoon', bg: 'iwatodaidorm-livingroom', music: 'tender', soft: true },
+      { n: "The lounge in December smelled of the radiator, of dust burning off the coils the way it did the first week they were on, and of soup, and of too many people having lived in one room for a week. Somebody had left a basket of folded laundry on the stairs. The TV was on low, a cooking show, a man in a headband making something on a hot plate and shouting about it, and in the armchair by the window, with a blanket over her knees and her back very straight, not touching the chair, was Mrs. Kim." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "By the kitchen door, the plain chair. Nobody sat in it. There was a plate on it, covered with cling film, chopsticks laid across the top, and Jihoon's eyes went to it and stayed there one second too long and came away." }
+      ] },
+      { ifFlag: 'dead.aigis', then: [
+        { n: "Hyein was on the stairs with a book she wasn't reading, a white ribbon round her wrist, and she looked up when the door opened, quick, the way everybody in the dorm looked up at doors now, and saw who it was, and looked down again." }
+      ] },
+      { n: "Mrs. Kim's eyes came off the television. She looked at Solar. Then past Solar, at the boy in the doorway with the paper bag." },
+      { s: 'kim-mom', f: 'neutral', t: "...Park Jihoon." },
+      { n: "She said it the way she'd said it at the long table in August, like a name read off a list of boys sent to the office. Solar felt him stop breathing beside her. Then breathe, deliberately, like a man reminding himself how." },
+      { s: 'jihoon', f: 'neutral', t: "Ma'am." },
+      { s: 'kim-mom', f: 'neutral', t: "Sit there. Where I can see you." },
+      { n: "She meant the end of the couch, across from her, in the window light. He sat. Straight-backed, knees together, the bakery bag on his lap with both hands on it, the way he must have sat in the vice principal's office at Hanlim a dozen times, except that in the vice principal's office, Solar thought, he'd have been grinning." },
+      { ifFlag: 'eqx-jihoon-vest', then: [
+        { n: "Solar thought of a navy quilted vest under a station clock in October, and the back of it, and the way it had sat on the shoulders, and put the thought somewhere she couldn't reach it, and sat down on the arm of the couch beside him." }
+      ] },
+      { n: "He held out the bag. Mrs. Kim took it and looked inside and took out the melon bread and turned it over, inspecting the bottom, the way she'd inspected every bought thing Solar had ever brought home." },
+      { s: 'kim-mom', f: 'neutral', t: "Who made this." },
+      { s: 'jihoon', f: 'neutral', t: "Cherry." },
+      { s: 'kim-mom', f: 'neutral', t: "Hm. Too much sugar on the top." },
+      { n: "She ate all of it. Slowly, in small pieces, tearing them off with her fingers, without taking her eyes off him once. He poured barley tea from the thermos into its lid and held it out with both hands, and she took it with both hands, and their fingers didn't touch, and she drank it and gave it back and he poured her another." },
+      { s: 'kim-mom', f: 'neutral', t: "He says you were under the clock. Every Tuesday. Even after." },
+      { s: 'jihoon', f: 'neutral', t: "Somebody had to finish the list, ma'am." },
+      { s: 'kim-mom', f: 'neutral', t: "Who meets under a clock. What kind of person meets under a clock." },
+      { s: 'jihoon', f: 'neutral', t: "Mr. Kim, ma'am." },
+      { n: "Something went across her face. Not a smile. The place a smile would have been, if she'd let it. She looked at him over the rim of the tea, and Solar knew the look, she'd grown up under it: the look from the kitchen sink, arms folded, back to the window, watching a boy from the next building who might, at any moment, put a spoon in his pocket." },
+      { s: 'kim-mom', f: 'neutral', t: "Your mother. Does she know where you are." },
+      { s: 'jihoon', f: 'neutral', t: "No, ma'am." },
+      { s: 'kim-mom', f: 'neutral', t: "Hm." },
+      { n: "A long pause. The man on the television shouted about his hot plate. The radiator ticked." },
+      { s: 'kim-mom', f: 'neutral', t: "I'll know, then." },
+      { n: "That was all. She went back to the television. Jihoon sat on the end of the couch with the empty bakery bag in his lap and didn't move, and Solar, on the arm beside him, watched his face do nothing at all, carefully, for a very long time, the way you'd hold a full glass across a room." },
+      { choose: [
+        { t: "(Slide down onto the couch next to him. Put your hand flat on his knee.)", notes: 3, then: [
+          { n: "She slid down off the arm into the seat beside him and put her hand flat on his knee and left it there. He didn't look at it. His hand came down over hers, after a while, and pressed, once, hard, and stayed." }
+        ] },
+        { t: "(Go and make more tea. Leave him with her.)", notes: 3, then: [
+          { n: "She got up and went into the kitchen and filled the kettle, slowly, and stood at the counter while it boiled with her back to the doorway, and listened. Nobody said anything in the lounge for four minutes. When she came back with the pot Jihoon had moved to the floor, to the side of the armchair, not at Mrs. Kim's feet, where Mr. Kim slept, but near, and he was holding the corner of her blanket so it wouldn't slip, and she was letting him." }
+        ] },
+        { t: "Mom. He bought the melon bread with his own money.", notes: 2, then: [
+          { s: 'kim-mom', f: 'neutral', t: "I know he did. It had the price on. He didn't take it off. A boy who steals takes the price off." },
+          { n: "Jihoon made a sound like he'd been hit very gently in the stomach and looked at the window for a long time." }
+        ] }
+      ] },
+      { n: "She fell asleep sitting up. In the middle of the cooking show, between one shout and the next, her chin went down an inch and her eyes closed and she stayed bolt upright in the armchair with the empty tea lid in her hands, asleep, her back not touching anything, and her mouth moved a little, as if she were telling somebody something, and no sound came out." },
+      { n: "Jihoon took the lid out of her fingers. He did it the way you'd take a cup from a sleeping child, one finger at a time. The blanket slid. He caught it, and lifted it back over her knees, and his hand went up to tuck it round her shoulders, and stopped, an inch off, and came back down. He'd heard. Everybody had heard. Nobody touched their backs." },
+      { n: "He sat back down on the floor by the chair instead, with his arms round his knees, and stayed there, watching her sleep, until Mr. Kim came in from the konbini at five with a bag of mandarins and his reading glasses on his head and stopped in the doorway and looked at the two of them." },
+      { n: "Mr. Kim didn't say anything. He came and sat down on the floor at his wife's feet, in his place, and gave Jihoon a mandarin, and patted his shoulder twice, without looking, the way you'd pat a car you trusted." },
+      { ifEvent: 'eqx-persimmon', then: [
+        { place: 'Iwatodai · The Hill Road', time: 'Evening', bg: 'outside-night', music: 'night', soft: true },
+        { n: "They walked down the hill in the early dark. Neither of them took the river road. Nobody took the river road now. Since the teacher. Since the persimmon tree, and the frost, and his glasses folded on the ground under him like he'd taken them off to sleep." },
+        { s: 'jihoon', f: 'neutral', t: "Saori told Cherry and Cherry told me. I saw him once in the strip pharmacy. The frog one. He said good afternoon to the frog. Out loud. Like a gentleman." },
+        { s: 'jihoon', f: 'sad', t: "...I liked him for that. I didn't even know his name till the assembly." }
+      ] },
+
+      { place: 'Paulownia Mall · Game Panic', time: 'Night', bg: 'gamepanic-inside', music: 'night', soft: true },
+      { n: "Game Panic closed at ten. At nine fifty-five the attendant, the slow man with the mop who was paid by the hour, saw Jihoon at the door and lifted his chin at him and went on mopping, and Jihoon took his coat off and hung it on the fire door's upside-down wreath and picked up the second mop from the corner like a man going to his own job." },
+      { s: 'jihoon', f: 'neutral', t: "Fridays, I help him close. He pays me in tokens. I've been doing it since June. Don't tell anybody, I have a reputation as a guy who's never held a mop." },
+      { n: "The attendant turned off the overheads at ten and left the cabinets running on their attract screens and went into the back to count the change with the door shut. The arcade went dark in the middle and bright at the edges, every machine glowing in its own color into the empty room like a ring of people holding candles, and the rhythm game played its sleigh bells to nobody, softer now, the volume turned down for the night." },
+      { s: 'jihoon', f: 'neutral', t: "...Okay. This is it. I've been looking all year. Better lighting, worse lighting, medium lighting. This is the right lighting." },
+      { s: 'solar', f: 'neutral', t: "It's an empty arcade at night." },
+      { s: 'jihoon', f: 'neutral', t: "It's where I'm the only thing anybody's ever looked at me for. Crane machines and dart boards. And it's empty. And you're in it." },
+      { place: 'Paulownia Mall · Photo Booth', time: 'Night', bg: 'paulownia-photo-booth', soft: true },
+      { n: "He took her to the booth. The curtain, the bench, the little screen, the ring light coming on as they sat down, hard and white and kind, taking every mistake off their faces. He fed it his tokens. He picked the frame without asking: not the bunnies. A plain one, white, no border at all." },
+      { n: "Then he reached behind them and took a fistful of the curtain where it didn't quite meet the wall, and pulled it shut, and held it. His whole hand. Knuckles white. He held it shut through all four countdowns and didn't once look away from the screen." },
+      { n: "The strip came out of the slot warm. He held it up between them in the white light." },
+      { n: "One: the two of them, not smiling, just looking. Two: him laughing at something she'd said. Three: her looking at him and not the camera. Four: the same, and at the very edge of the frame, where the curtain met the wall, a hand. His. A fist full of plastic, holding the gap shut. Nothing behind it. Nothing at all." },
+      // CG: eqx-right-lighting — inside a photo booth at night, a plain white-bordered four-frame strip held up in hard ring light; in the fourth frame a boy's fist at the edge clenched on the curtain, holding the gap shut, and nothing behind it.
+      { s: 'jihoon', f: 'neutral', t: "...There. Four. That's me in four. That's the first time I've been in four." },
+      { n: "He didn't put it in his pocket. He held it, looking at it, and the ring light hummed, and the sleigh bells came very faintly through the curtain, and he turned on the little bench until his knee was against hers and looked at her instead." },
+      { s: 'jihoon', f: 'serious', t: "I gave notice. On the steps. I'm asking now. What am I. Here. Not the scandal. Not the thread. Not the kid with the spoon. Here, where nobody's keeping the score, what am I to you." },
+      { ifChoice: { 'asks.jihoon': 'yes' }, then: [
+        { s: 'jihoon', f: 'sad', t: "You told me once nobody here would watch me fall. You were right. It turns out I don't want to fall, I want somebody to see me not fall. That's so much less cool. Answer me anyway." }
+      ] },
+      { ifChoice: { 'asks.jihoon': 'choose' }, then: [
+        { s: 'jihoon', f: 'neutral', t: "You gave me the heavy thing back on the canal and I carried it under a clock for two months. I'm not giving you this one to carry. I just want to know. Answer me anyway." }
+      ] },
+      { ifChoice: { 'asks.jihoon': 'no' }, then: [
+        { s: 'jihoon', f: 'neutral', t: "You told me no on the canal and you were the only one watching the whole time. I want to know what you were watching. Answer me anyway." }
+      ] },
+      { route: [
+        { t: "You're the one I'm watching for.", route: 'romance', notes: 3, then: [
+          { n: "He didn't move. The ring light hummed. She watched it land on him the way she'd watched it land outside the drugstore in October from fifty meters away, like a gust hitting a flag, except this time she was four inches off and could see every part of it: his mouth opening, and not saying anything, and closing; his eyes going wet and him not letting them; the hand still holding the strip coming up off his knee and not knowing where to go." },
+          { s: 'jihoon', f: 'flustered', t: "...Say it again. No. Don't. Don't say it again, I'll ruin it. I'll do a bit. I can feel a bit coming. Help me." },
+          { n: "She kissed him so he couldn't do the bit." },
+          { n: "He made a sound against her mouth like somebody setting down something heavy at the top of a lot of stairs, and the strip fell out of his hand onto the bench, and his hands came up into her hair, both of them, and he kissed her back the way he never had in an arcade, not like he was getting away with something. Like he'd been let in. The ring light clicked off on its timer and they didn't notice, and it was dark in the booth with the curtain shut and the sleigh bells coming through it, and he pulled her across his lap on the narrow bench, and Nana Two was squashed between them again, and neither of them moved him." },
+          { s: 'jihoon', f: 'neutral', t: "...Nobody's watching. Nobody in the whole world." },
+          { s: 'solar', f: 'neutral', t: "I'm watching." },
+          { s: 'jihoon', f: 'flustered', t: "Yeah. Yeah, you are. That's— okay. That's the best one. That's the best version of that sentence there's ever been." },
+          { s: 'jihoon', f: 'neutral', t: "Come home with me. Not like August. Not because I'm scared of a window. Because I want you to." },
+
+          { place: "Kirijo Guesthouse · Jihoon's Room", time: 'Early Morning', bg: 'kirijo-flat', music: 'romance', soft: true },
+          // BG: kirijo-guesthouse-room-winter-morning — the same small plain guest room on a December dawn: frost on the window glass, gray light, a single bed with the blanket pushed back, a white plush dog on the desk facing the wall, a clean windowsill with a few small kept things in a row.
+          { n: "She woke because the light had changed. Gray and thin, coming through a window with frost on it in ferns from the corners, and the room was cold everywhere except where he was, which was all along her back, his arm over her waist and his breath slow on the back of her neck, and the radiator under the window knocking, once, twice, like somebody wanting to be let in, and then settling into its ordinary tick." },
+          { n: "Nana Two was on the desk facing the wall. He'd done it again in the dark, she remembered, laughing, *he doesn't need to see this*, before the lamp went off and the laughing stopped." },
+          { ifFlag: 'eqx-jihoon-shelf', then: [
+            { n: "The windowsill had changed. The rice ball was gone from it; it was on a shelf up the hill under a lantern, where she'd helped put it. The folded pharmacy bag was still there, and his half of the April strip folded to three, and beside them, propped against the frost, last night's: four plain frames, his fist in the last one." }
+          ], else: [
+            { n: "The windowsill was the same. The gray stone of the rice ball in its clouded wrap, the pharmacy bag folded small, his half of the April strip folded to three. And propped against the frost beside them, last night's: four plain frames, his fist in the last one." }
+          ] },
+          { n: "He wasn't asleep. She felt it. He'd been awake a while, very still, the way you hold still when a bird has landed on you." },
+          { s: 'jihoon', f: 'neutral', t: "...I watched you sleep. Is that creepy. That's creepy. I was watching *for* you. There's a difference. I've decided there's a difference." },
+          { s: 'jihoon', f: 'sad', t: "I could stay. You know. When there's a door. If there's a door. I could just not go through it. Here, with you, where I'm not the thread. I'm only saying it because it's six in the morning and you can't see my face." },
+          { choose: [
+            { t: "(Turn over. Kiss him instead of answering.)", notes: 3, then: [
+              { n: "She turned over under his arm so she could see his face, which was red and creased from the pillow and absolutely unguarded, and kissed him instead of answering, slow, and he let it be the answer for now, and she felt him decide to let it, and loved him a little for that, and didn't say so." }
+            ] },
+            { t: "That's yours, Jihoon. It isn't mine to answer.", notes: 2, flag: 'eqx-choose-jihoon', tally: { choose: 1 }, then: [
+              { s: 'jihoon', f: 'sad', t: "...Yeah. I knew you'd say that. You always give me the heavy thing back. It's very annoying. It's the reason I'm still alive, probably. Don't tell anyone." }
+            ] },
+            { t: "Stay. Please. Here, with me.", notes: 3, flag: 'eqx-asked-jihoon', tally: { asked: 1, cakes: 1 }, then: [
+              { n: "He went completely still. Then he pulled her in so hard against his chest she couldn't breathe for a second, his face in her hair, and laughed into it, shaky, the laugh from the canal wall in June, easy all the way down." },
+              { s: 'jihoon', f: 'flustered', t: "...Okay. Okay. Yeah. You asked. You asked me. Nobody ever asks me to stay anywhere. They ask me to leave. Okay." },
+              { n: "The radiator knocked twice under the window, politely, and went quiet." }
+            ] }
+          ] },
+          { place: 'Kirijo Guesthouse · Kitchen Door', time: 'Early Morning', bg: 'kirijo-guesthouse-day', music: 'tender', soft: true },
+          { n: "They went down the back stairs at half past six with their shoes in their hands and out through the kitchen, and on the step outside the door, under Cherry's lace doily, in his school coat, with two cups of barley tea steaming in the cold, sat Jungwon." },
+          { n: "He didn't get up. He held one cup up to Solar without looking at her, and she took it, and it was hot all the way through, made exactly the way she drank it, and he must have been sitting there with it for a while, because he'd made it twice; the first one was on the step beside him, full and cold." },
+          { s: 'jungwon', f: 'neutral', t: "...You're cold. Drink it." },
+          { n: "He said it in Korean, the way he said things to her when he didn't want the rest of the world in the sentence. Then he reached into his coat and took out an egg sandwich in cling film and held it up behind him to Jihoon, still without turning round." },
+          { n: "Jihoon looked at the sandwich. He took it. He stood on the kitchen step with it in his hand, in his crumpled ironed shirt, and his face did about five things." },
+          { s: 'jihoon', f: 'neutral', t: "...See? Saint. I told you. I'm going to die of it." },
+          { s: 'jungwon', f: 'neutral', t: "Breakfast is at seven. You're both late for it already." },
+          { n: "He stood up and took his cold cup and went in past them through the kitchen door, and the lace swung behind him, and Solar stood on the step with the hot tea in both hands and felt every part of it at once, the warm and the cold and the boy at her shoulder and the boy who'd just gone in, and didn't know what she felt, except all of it, and drank the tea, because he'd made it, because he'd made it twice." }
+        ] },
+        { t: "You're Park Jihoon. My oldest friend. Nobody gets to be that but you.", route: 'friend', notes: 3, then: [
+          { n: "He didn't move for a second. She watched it land, the way you watch a ball go over the net and drop on the line, and she watched him decide whether it was in." },
+          { s: 'jihoon', f: 'neutral', t: "...Oldest." },
+          { s: 'jihoon', f: 'neutral', t: "Oldest friend. That's a title. You know that's a title, right? That's the one nobody can take off me. Not Jungwon. Not anybody's mom. Not even you, now. You said it out loud. In a booth. There's a witness." },
+          { n: "He looked at the strip in his hand. Then he laughed, and it came out of him a little wet and cracked down the middle and then, at the end, real, the laugh from the old mall with the broken stool, when they were six." },
+          { s: 'jihoon', f: 'flustered', t: "Okay. Okay. I'm fine. I'm actually fine. That's the weird part. I thought I'd be— I'm fine. It's a good answer. It's the true one. I can tell when you're lying and you're not." },
+          { s: 'jihoon', f: 'neutral', t: "One more strip. A stupid one. Bunnies. I want one where we're both making the worst face we've got." },
+          { n: "They did. Four frames of the worst faces either of them had, the bunnies round the edge, him cross-eyed in two, her with her tongue out in three, both of them laughing too hard to hold a face in four, and he held the curtain shut the whole time with one fist without seeming to notice he was doing it, and tore that strip in half too, along the perforation, and gave her the half with three and four." },
+          { place: 'Paulownia Mall · Game Panic', time: 'Night', bg: 'gamepanic-inside', soft: true },
+          { n: "They mopped the rest of the floor together while the cabinets glowed. He did the half by the drums and she did the half by the door, and they met in the middle at the clean rectangle where the crane had been, and he stood in it and leaned on his mop and looked at her across the dark." },
+          { s: 'jihoon', f: 'neutral', t: "I'm still going to look back. At the corner. Every time. That's not a romance thing. That was never a romance thing. That's a me thing. I've done it since before I knew what either of those were." },
+          { s: 'jihoon', f: 'sad', t: "...Just so you know what you're signing up for. Oldest friend. It's a lifetime contract. There's no door out of it." }
+        ] }
+      ] },
+      { n: "Later, she would think the walk was the part that mattered. The monorail at night or the hill road at dawn, his hands in his pockets, the strip in one of them; the corner where the street split; him going one way and her the other; and her stopping, and turning, and him already turned, half a street off, under the lamp, the way he always was, every time, in every world." },
+      { n: "She was where he'd left her. She lifted her hand. He lifted his. Nobody else was on the street, and nobody needed to be." }
     ] }
   ]
 });

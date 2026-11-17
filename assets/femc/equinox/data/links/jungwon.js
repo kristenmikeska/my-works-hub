@@ -1,7 +1,20 @@
 /* Persona 3: Equinox · Yang Jungwon · V The Hierophant. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–6 (rank 1 from 4/13, rank 2 from 4/30 so it always follows Mr. Tanabe, both the student council room
-   after school). Ranks 7–15 still to write.
+   Written: ranks 1–8 (rank 1 from 4/13, rank 2 from 4/30 so it always follows Mr. Tanabe, both the student council room
+   after school). Ranks 9–15 still to write.
+   Ranks 7–8 (Nov 16, round 3): rank 7 '7: one' from 10/27, council room, then the dorm steps / dining room / Solar's room
+   (Mr. Kim lives at the dorm since 10/26). Reads dead.shinjiro, dead.aigis, asks.jungwon (ifChoice), eqx-culture-stage,
+   eqx-seams (+ ifBefore 12/1), the kiss flags (ifCount). Sets eqx-jw-page-torn | -three | -held (a numeral 1 pressed into
+   his blank 4/13 diary page in the heavy hand), eqx-jw-stairs (yes-path: Solar gives back Hanlim's stair count, 44),
+   eqx-jw-key-his | -again (Room 6 key offered to Mr. Ueda, who refuses), eqx-jw-own-yes (Solar lets him answer Mr. Kim's
+   "stay for dinner" himself), eqx-jw-last-train (kiss: he misses the last train, wakes in her room, Taejoon on the stairs).
+   Rank 8 '8: what I am here' from 11/25, council room, then Mrs. Kim (Tatsumi ward before 12/1, dorm lounge after; her
+   "bring her home" ask to Jungwon, who answers "it's hers to come"; no tally: the HOAX parents' ask lives in their link),
+   the river street (Mr. Ueda asleep and smiling on the bench in the frost: a 1/20 kept clue), the guesthouse roof. THE ROUTE
+   CHOICE: { route } with 'romance' (flag eqx-jw-chosen; Room 4, waking up together; Jihoon at the end of the hall if
+   ifRomance jihoon, else Sunghoon) or 'friend' (flag eqx-jw-friend; nothing at home moves). Also sets eqx-jw-ueda-called.
+   Reads eqx-home-H3 / eqx-away-H3, ifRomance jihoon / haechan (+ their kiss flags). New kiss flags: eqx-jw-last-train,
+   eqx-jw-chosen (act files' KISS lists don't know them).
    Ranks 4–6 (Nov 16): rank 4 '4: the summer item' from 7/2, council room after school (reads asks.jungwon via ifChoice,
    eqx-second-hill, eqx-two-lives, eqx-last-grain; sets eqx-jw-cake-taken, eqx-jw-summer-open | -walk, eqx-jw-summer-kiss).
    Rank 5 '5: two lists' from 8/18, Kirijo Guesthouse (Room 4, then the roof), daytime, in summer break: summerHome below
@@ -25,7 +38,7 @@
   // Summer break (7/21-8/31): Gekkoukan is shut, so he's at the guesthouse by the station (rank 5 plays there).
   summerHome: { area: 'station', spot: 'Kirijo Guesthouse', slot: 'after', days: [0, 1, 2, 3, 4, 5, 6],
           hint: 'Summer break: afternoons at the Kirijo Guesthouse by the station, in Room 4 with the door shut.' },
-  cast: { jay: 'Jay' },
+  cast: { jay: 'Jay', 'kim-dad': 'Mr. Kim', 'kim-mom': 'Mrs. Kim' },
   ranks: [
     { after: '4/13', title: '1: the thirteenth', place: 'Gekkoukan High · Student Council Room', time: 'After School', music: 'tender', scene: [
       { bg: 'gekkoukan-student-council' },
@@ -817,6 +830,360 @@
       { n: "They went down together into the courtyard at half past five. The light was going early; the cherry trees were black against a sky the color of a bruise, red at the edges, and the wind had dropped, and the courtyard was empty but for the new guard at the gate with his phone and a paper cup of tea on the post beside him, untouched, going cold." },
       { n: "Jungwon walked on the side nearest the well. He always did. And at the ring of dark stone he slowed, for the first time, and stopped, and looked at the plank lid; and it had moved again. A few centimeters. The way it had in April. As if something under it had pushed, very gently, to see if anyone was still holding it down." },
       { n: "He didn't put it back. He took out the diary and wrote the time, standing, in the gateway, and under it two words in two hands, and closed it, and put his hand out without looking, palm up, and she put hers in it, and they walked home the long way, past the shrine, not the river." }
+    ] },
+    { after: '10/27', title: '7: one', place: 'Gekkoukan High · Student Council Room', time: 'After School', music: 'tender', scene: [
+      // BG: gekkoukan-student-council-autumn — the student council room on a cold November afternoon, the old radiator under the windows ticking, a box of rolled festival posters by the door, the courtyard's cherry trees bare and black outside the glass.
+      { bg: 'gekkoukan-student-council' },
+      { n: "The radiator under the council room windows had come on for the first time that week, and it ticked. It ticked the way old iron ticks when it warms, irregular, a knuckle here and a knuckle there along the length of it, so that every so often the room sounded as if somebody were tapping on it from the inside, very politely, to be let out. Outside, the cherry trees along the courtyard had dropped everything in two days of wind and stood black and bare over the paving, and the light that came in through them was thin and white and had no heat in it at all." },
+      { n: "Jungwon wasn't writing. That was the first thing, and she'd learned this year to read the first thing the way you'd read the first line of a letter. He was sitting in the chair that wasn't the president's with the black diary open in front of him and the pen capped beside it, laid parallel, and both his hands flat on the table on either side of the book, the way he'd held them in April when he'd thought it might get up." },
+      { s: 'jungwon', f: 'neutral', t: "You came. Good afternoon. Shut the door, please. Not because of anything. It's cold." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "He was still wearing the black tie. Not the suit; the guesthouse had lent them suits for Tuesday, and he'd given his back folded, with a note, because he was who he was. But the tie he'd kept, and he'd worn it every day since under his blazer instead of the school one, knotted to the collar, and nobody at Gekkoukan had said a word about it, because nobody at Gekkoukan said words to him." },
+        { s: 'jungwon', f: 'sad', t: "He was the one who told me about the flour. In July, at the dorm, at dinner, without looking up from his rice. I wasn't sure I'd heard him. I never asked him to say it again. I never thanked him for it either. I've been trying to work out how you'd thank somebody for a thing like that." },
+        { s: 'jungwon', f: 'serious', t: "The council asked me to write the card again. My handwriting. I sat here for an hour with his name at the top, and in the end I wrote *he fed people*, and nothing else, and the new president read it and cried in the corridor. I don't know if it was the right thing to write. It was the true one." },
+        { choose: [
+          { t: "He'd have hated a long card.", notes: 2, then: [
+            { s: 'jungwon', f: 'neutral', t: "I know. That's why it's three words. I had eleven drafts. They were all too long. He'd have read the first line and put it in the stove." }
+          ] },
+          { t: "(Reach over. Straighten the knot of his tie.)", notes: 3, then: [
+            { n: "She reached over and straightened it. It didn't need straightening; nothing he wore ever did. He let her anyway, his chin lifted a little, his eyes on the window, and when she took her hands away he put his own over the knot for a second, flat, as if to keep it exactly where she'd left it." }
+          ] }
+        ] }
+      ], else: [
+        { s: 'jungwon', f: 'neutral', t: "Shinjiro-sunbae made me eat twice at the dorm the Sunday after. He said I looked like a coat somebody had left on a hanger. I said thank you. He said *don't*. I've decided that was the warmest conversation I've had in this country." },
+        { n: "He said it lightly, and then didn't go on, and she knew he was thinking about the steps going down, and the shoes on them, and who had come back up on his own feet, and how close it had been, because she was thinking about it too, and had been since, every time she passed the dorm kitchen and heard a lid on a pot." }
+      ] },
+      { ifFlag: 'dead.aigis', then: [
+        { s: 'jungwon', f: 'sad', t: "I went past your classroom on Monday. Her desk's still there. Somebody's put a little vase on it. Nobody sits within two desks of it. They all go round it, like the well." }
+      ] },
+      { s: 'jungwon', f: 'serious', t: "Something's been written in my diary. I'd like you to look at it before I say anything else, so I know whether I'm the only one who can see it." },
+      { n: "He turned the book round on the table and slid it across to her with two fingers, the way you'd slide a document across to somebody who had to sign it." },
+      { n: "April. The thirteenth. She knew the page. She'd watched him leave it empty, at this table, in the spring, the date at the top in his small exact hand and nothing under it at all, a whole ruled page kept blank on purpose, the way you'd keep a chair at a table for somebody you weren't sure was coming." },
+      { n: "Nothing had been written on it. Something had been pressed into it. A single stroke near the top, under the date, in the heavy hand, dented so deep into the paper that it had nearly gone through, the sides of the groove gone shiny and pale, like the impression on his enrollment form in April. Not a word. Not Korean or Japanese or English. A numeral. *1.*" },
+      { n: "She turned the page over without thinking. On the back of it the stroke stood up out of the paper in relief, a long raised ridge, like a scar." },
+      { s: 'jungwon', f: 'neutral', t: "The twelfth is clean. I checked. The fourteenth is clean. There's no page missing; I counted the stitching. Nobody's had this book but me. It sleeps under my pillow. I'm aware how that sounds." },
+      { s: 'jungwon', f: 'serious', t: "It's a one. On the page I left empty for the day I didn't— for that day." },
+      { s: 'jungwon', f: 'neutral', t: "One line. One address. One boy. It's been asking me all year, in sentences, very nicely. This is the first time it's written the answer down for me. Like a teacher who's run out of patience and filled in the exam herself." },
+      { n: "The radiator ticked. Three knocks along the iron, quick, and then nothing. Neither of them looked at it. The dent under her eyes was the color of a fingernail, and the longer she looked at it, the more it seemed to have been made by something pressing down very slowly, for a very long time, with the whole of its weight." },
+      { choose: [
+        { t: "(Tear the page out along the stitching.)", notes: 2, flag: 'eqx-jw-page-torn', then: [
+          { n: "She took hold of it at the top and tore it out, slowly, along the stitching, the way you'd take out a splinter, and he flinched once at the sound and then didn't. The page came away clean. The binding didn't even look as if it had lost anything." },
+          { n: "She held it out to him. He looked at it for a long time, the April page with the ridge standing up on its back, and then took it and folded it in four and put it inside the back cover of the diary, under the elastic." },
+          { s: 'jungwon', f: 'neutral', t: "If I throw it away, it's somewhere else. I'd rather know where it is. Out of the year. Still in the book." }
+        ] },
+        { t: "(Uncap his pen. Write a 3 beside it.)", notes: 3, flag: 'eqx-jw-page-three', then: [
+          { n: "She uncapped his pen and wrote beside the dent, in ordinary blue ink, an ordinary three, the way she'd have written a page number, and then capped the pen and laid it back down parallel to the edge of the book, because that was where it lived." },
+          { n: "He looked at it. The one, pressed so hard it had nearly gone through, and beside it her three, sitting on the paper as lightly as anything, as if it had every right to be there." },
+          { s: 'jungwon', f: 'happy', t: "...Three. You're still doing your arithmetic." },
+          { s: 'solar', f: 'neutral', t: "It's still how I'm doing it." },
+          { s: 'jungwon', f: 'happy', t: "It's still not how it works. I've stopped minding. I'd like that on the record. I've stopped minding entirely." }
+        ] },
+        { t: "(Lay your hand flat over it.)", notes: 3, flag: 'eqx-jw-page-held', then: [
+          { n: "She laid her hand flat over the page. The dent was under her palm, a long cold groove, colder than paper had any business being, the way the stone lip of the well was cold on a hot day; and she kept her hand there anyway, and after a moment he put his own on top of hers, and they held the page shut between them, the way they'd held the diary shut in April, as if the two of them were keeping a lid on something." },
+          { s: 'jungwon', f: 'neutral', t: "...It's warmer now. Under there. Is it? Or is that you." },
+          { s: 'solar', f: 'neutral', t: "That's me." },
+          { s: 'jungwon', f: 'neutral', t: "Good. Keep doing that." }
+        ] }
+      ] },
+      { ifChoice: { 'asks.jungwon': 'yes' }, then: [
+        { s: 'jungwon', f: 'sad', t: "It's taken another thing. Since the plant. I noticed on Thursday." },
+        { s: 'jungwon', f: 'neutral', t: "The stairs at Hanlim. Up to the council room. I used to know the count without counting, the way you know your own phone number. I lay awake and climbed them in my head. I got forty-one. I know that's wrong. It's wrong in the knees. I can't find the right one." },
+        { n: "She knew it. She'd climbed them in the other life, late to every meeting, two at a time with her bag banging her hip and his voice coming down the stairwell already reading the first item without her." },
+        { choose: [
+          { t: "Forty-four. The landing makes it feel like forty.", notes: 3, flag: 'eqx-jw-stairs', then: [
+            { n: "He shut his eyes. She watched him climb them in his head, his lips moving, and stop at the landing, and go on." },
+            { s: 'jungwon', f: 'happy', t: "...Forty-four. Yes. The landing. You had it. You were keeping it for me." },
+            { s: 'solar', f: 'neutral', t: "Somebody had to." },
+            { s: 'jungwon', f: 'serious', t: "Don't keep too much of me for me. Please. You've got three of everything already. I don't want to be one more thing you're carrying up a hill." }
+          ] },
+          { t: "(Don't tell him. Wait while he finds it.)", notes: 2, then: [
+            { n: "She didn't tell him. She sat across the table and watched him climb them with his eyes shut, his lips moving, losing it at the landing and starting again from the bottom, three times, four, and on the fifth he stopped, and opened his eyes, and his hands were shaking on the table." },
+            { s: 'jungwon', f: 'neutral', t: "...Forty-four. I went down and got it. It was further down than the plant was. It cost more." },
+            { s: 'jungwon', f: 'neutral', t: "Thank you for not handing it to me. I think I'd have lost it again by Friday." }
+          ] }
+        ] }
+      ], else: [
+        { ifChoice: { 'asks.jungwon': 'no' }, then: [
+          { s: 'jungwon', f: 'neutral', t: "Both lists. Every spoon. Still there. I'm sleeping about three hours. Jay's started leaving rice balls outside my door at night, the way you'd leave milk out for a cat." },
+          { s: 'jungwon', f: 'serious', t: "I'm not putting either of them down. I wanted you to know I'm still not. That it's November, and they've got heavier, and I'm still carrying both like a fool, and I'd do it again. I'd do it again with you telling me to." }
+        ], else: [
+          { s: 'jungwon', f: 'neutral', t: "In June I wrote something on that form you've never asked about." },
+          { s: 'solar', f: 'neutral', t: "I'm still not going to." },
+          { s: 'jungwon', f: 'neutral', t: "I know. I've started to think that's the only reason it's still mine. If you asked, I'd tell you, and then it'd be ours, and it would know where to look for it." },
+          { s: 'jungwon', f: 'serious', t: "I'll tell you on the day I find out whether it was true. That's a promise. It isn't a polite one." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-culture-stage', then: [
+        { s: 'jungwon', f: 'happy', t: "Your father cried. The one with the remote. At the festival. He filmed the whole five minutes on that pawnshop camera and cried into his collar and said *encore* in Korean to the vice principal, who bowed to him. I've never been prouder of a proposal." },
+        { s: 'jungwon', f: 'neutral', t: "Yunjin reached for somebody on her left. Three times. I counted. I sat in the fourth row and I wanted to stand up and tell her who it was." },
+        { s: 'solar', f: 'neutral', t: "Who was it?" },
+        { s: 'jungwon', f: 'neutral', t: "...I'm not that good at minutes. I only know where she looked afterward, when the lights came up. You were in the third row." }
+      ], else: [
+        { n: "There was a single sheet at the far end of the table, typed, squared to the edge, with a timetable stapled to the back. *Proposal: International Exchange Dance Unit. Fifteen minutes. Main Stage.* He was getting the girls the gym. She hadn't known he was doing it. Nobody had." },
+        { s: 'jungwon', f: 'neutral', t: "I've made them sound like a trade delegation. The committee will love it. Don't tell Yunjin. She'll make it a thing." }
+      ] },
+      { n: "Out of the window, at the gate, the young guard in the gray jacket stood with his back to the well and his phone in his hand. There was a paper cup of tea on the gatepost beside him with steam coming off it. Jungwon had already been out, then. He always had, by half past four." },
+      { s: 'jungwon', f: 'neutral', t: "I went to see Mr. Ueda on Sunday. At her house. At the gate. I didn't go in." },
+      { s: 'jungwon', f: 'neutral', t: "I took him a key. To the guesthouse. Room Six. It's been empty since September. I asked the new man for it and he gave it to me without a form, which tells you how much he wants to be in bed by ten." },
+      { s: 'jungwon', f: 'serious', t: "I said, Mr. Ueda, there's a room. It's warm. It's by the station. You could come back. Just for the winter." },
+      { n: "He'd said it, she could tell, first in the minutes voice and then in the other one, the son's one, the one for old men at the top of a hill who had to be talked round to something for their own good." },
+      { s: 'jungwon', f: 'sad', t: "He laughed at me. He put the key back in my hand and closed my fingers over it. Like this. He said, *young man, I've never been so warm in my life.*" },
+      { s: 'jungwon', f: 'neutral', t: "He sleeps in the afternoons now. On the bench in her garden, by the well, in the sun. She puts a blanket over him. He said he wakes up and doesn't know how long he's been asleep, and he doesn't mind. He said that twice. *I don't mind.*" },
+      { s: 'jungwon', f: 'serious', t: "He's put on six kilos. He was smiling the whole time. And when he closed my fingers, his hand was so warm. Like an oven door you've touched by accident." },
+      { s: 'jungwon', f: 'neutral', t: "She waved at me from the kitchen window. With her glove on." },
+      { n: "He didn't say anything about the window after that, and she didn't ask. She thought of three men carrying their own suitcases out of that gate on a Tuesday evening, past a small kind woman with wet eyes, not looking back; and of a bench by a capped well in a garden in the sun, and somebody tucking a blanket in round an old man's shoulders the way you'd tuck in a child, very gently, so as not to wake him." },
+      { choose: [
+        { t: "You can't make him leave, Jungwon.", notes: 3, flag: 'eqx-jw-key-his', then: [
+          { s: 'jungwon', f: 'neutral', t: "I know. I'm learning that this year. It's the worst subject I've ever taken. I'm failing it very neatly." },
+          { s: 'jungwon', f: 'serious', t: "I gave him the choice. He chose. I don't have to like it. I wrote it down when I got back. *He chose.* It looked very small on the page." }
+        ] },
+        { t: "Then go back every Sunday. Keep holding out the key.", notes: 2, flag: 'eqx-jw-key-again', then: [
+          { s: 'jungwon', f: 'neutral', t: "Every Sunday. Yes. I'll hold it out every Sunday, and he'll close my fingers on it every Sunday." },
+          { s: 'jungwon', f: 'serious', t: "...It's a kind of asking too. Isn't it. I'm aware. I'm going to do it anyway. Somebody ought to be standing on the other side of that gate with a key." }
+        ] },
+        { t: "(Take the key off the table. Put it on his own key ring.)", notes: 3, then: [
+          { n: "It was on the table by the diary, with a cardboard tag on it in the guesthouse's printing, *6*. She picked it up and took his key ring out of his blazer pocket, where it always was, and threaded it on beside his own Room 4 and the brass one for this room, and gave the ring back to him." },
+          { s: 'jungwon', f: 'neutral', t: "...In case." },
+          { s: 'solar', f: 'neutral', t: "In case." },
+          { n: "He put the keys back in his pocket and kept his hand on them there, through the cloth, for the rest of the afternoon." }
+        ] }
+      ] },
+      { n: "The chime went at five, the long four-note one, and this time he stood when it went, the way he always had before the summer, and packed the diary and the pen and the timetable into his bag in the order he'd taken them out. At the door he waited for her and held it, and on the stairs, where nobody was, he took her hand and didn't let go of it at the shoe lockers." },
+      { n: "In the courtyard the frost hadn't lifted all day from the north side of anything. It lay in a gray fur along the bottoms of the walls and on the bench by the gate. On the well's plank lid it lay thick and white and even, all the way across, except for a circle in the middle the size of a dinner plate where there was no frost at all, only bare wet wood, dark, as if something under it had been breathing on that one place since morning." },
+      { n: "Jungwon walked between her and it. He didn't slow down." },
+      { place: 'Iwatodai Dorm · Front Steps', time: 'Evening', bg: 'iwotodaidorm-outside' },
+      { n: "Mr. Kim was on the dorm steps. He'd taken to it since the fathers moved in, the way he'd taken to the stations in October: an hour at dusk, every day, in his fleece, on the second step from the top, with a mug of barley tea going cold beside him, looking down the road toward the river the way you'd look down a platform for a train that was late." },
+      { ifEvent: 'eqx-seams', then: [
+        { ifBefore: '12/1', then: [
+          { n: "He'd just come back from the ward in Tatsumi. She could tell from his coat, still buttoned, and the plastic bag from the hospital shop with the empty juice cartons in it, and the look on his face, which was the look of a man who'd been called an idiot for six hours by somebody he'd been afraid he'd never be called anything by again." },
+          { s: 'kim-dad', f: 'happy', t: "She called me an idiot four times today. Four! She's getting better. Yesterday it was twice." }
+        ], else: [
+          { n: "Mrs. Kim was upstairs, in Mitsuru's room, in the armchair, sitting up; she'd sent him out for air the way she used to send him out to the car. He'd come out and sat on the step and got his air, obediently, and looked up at her window every few minutes to make sure it was still lit." }
+        ] }
+      ], else: [
+        { n: "He didn't go to the stations anymore. He'd said so, on the steps, to anyone who passed. *If she comes, she'll come up these. I'll be here.* Nobody had told him not to sit there. Nobody had the heart." }
+      ] },
+      { s: 'kim-dad', f: 'happy', t: "Jungwon-ah! There he is. Look at him, he's gray, he's a little gray boy. You're staying for dinner. Stay. Stay and help me eat it." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { s: 'kim-dad', f: 'neutral', t: "The boxer's cooking. Since. He burns everything and won't let anybody help, so we eat it. We eat all of it. Stay." }
+      ], else: [
+        { s: 'kim-dad', f: 'neutral', t: "The quiet one's making curry. The one with the coat. He made me taste it three times and said *it's not ready* three times. Stay." }
+      ] },
+      { n: "Solar watched the word go into him. *Stay.* Three times in a breath, from a kind man on a cold step with a mug in his hands, who meant nothing by it but supper. Jungwon didn't flinch. He went still instead, the polite stillness, for exactly as long as it took a person to hear something and decide not to show they'd heard it." },
+      { choose: [
+        { t: "(Don't answer for him. Wait.)", notes: 3, flag: 'eqx-jw-own-yes', then: [
+          { n: "She didn't say anything. She stood a step below him with her hands in her coat pockets and waited, and felt him feel her waiting, the whole weight of her not answering for him, the way you'd feel somebody hold a door and not walk through it." },
+          { s: 'jungwon', f: 'neutral', t: "...I'd like to. Not because you asked, abeonim. Because I'd like to." },
+          { s: 'kim-dad', f: 'surprised', t: "What's the difference?" },
+          { s: 'jungwon', f: 'happy', t: "I'm working on it. It's a very important difference. I'll explain it at dinner." },
+          { s: 'kim-dad', f: 'neutral', t: "Fine, fine, come in, you're letting all the heat out, you're as bad as she is. Exactly as bad. I'm surrounded." }
+        ] },
+        { t: "He's staying. I'll make sure he eats.", notes: 2, then: [
+          { s: 'jungwon', f: 'flustered', t: "...Overruled by the chair, apparently." },
+          { n: "He went up the steps. At the top he stopped beside her, close, and said it very low, in the old careful Korean, so that Mr. Kim wouldn't follow." },
+          { s: 'jungwon', f: 'neutral', t: "That's twice in one minute somebody's told me to stay. I'm staying anyway. I'd like it noted that I chose to." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm · Dining Room', time: 'Evening', bg: 'iwatodaidorm-diningroom-night', soft: true },
+      { n: "Dinner was loud. It was always loud now, with three fathers in the house, the way a house is loud when it's been quiet too long and doesn't trust it. Mr. Kim sat Jungwon at his right hand and put food on his plate without asking and interrogated him in Korean, through the food, about his mock exams, at a school in another world where none of them would sit a mock exam again, and Jungwon answered every question exactly, with his scores, to the decimal, and Mr. Kim nodded at each one as if it were very important news." },
+      { n: "Across the table Taejoon ate without speaking and watched them both. At the end, when Mr. Kim had got up for more rice, Taejoon put a piece of the good fish on Jungwon's plate. Just put it there. And went on eating. Jungwon looked down at it, and then at the man who'd put it there, and bowed his head a little, over the table, the way you'd bow to somebody at the top of a hill, and ate it, and neither of them said a word." },
+      { ifCount: { of: ['eqx-jw-council-kiss', 'eqx-jw-locked-door', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names'], min: 1 }, then: [
+        { place: 'Iwatodai Dorm · Solar\'s Room', time: 'Night', bg: 'solar-dormroom-night', soft: true },
+        { n: "He came up afterward to look at her radiator. That was what he said on the stairs, in front of Junpei, in his council voice. *Solar-san's radiator is making a noise. I said I'd look at it.* Junpei said *sure, man, the radiator*, and went into his room and shut the door and laughed through it." },
+        { n: "He did look at it. He knelt down in front of it in her room and put his hand on the pipe and listened, seriously, for nearly a minute, and then stood up and said *it's fine, it's just old*, and turned round, and she was right there, and he stopped talking." },
+        { n: "The dorm was full of fathers. One of them, two floors up, had known him since he was a boy in a school blazer at a gate in another life, and called him *ours* at breakfast. It was in both their faces, the knowledge of it, the whole length of the kiss, and it made them careful at first, and then it made them not careful at all, because nothing in this year had ever been made safer by being careful, and they both knew that too." },
+        { n: "Her back met the door. His hands were cold from the pipe and then they weren't. He said her name into the side of her neck in the old Korean and then the Hanlim Korean, and she laughed, because he was still doing it, both, even now, and he said *what* against her skin, and she said *nothing, nothing, don't stop*, and he didn't. The radiator ticked. Neither of them looked at it." },
+        { n: "At twenty to twelve there were feet on the stairs. Slippers. A man's voice, cheerful, in Korean, through the door, going past along the hall toward the bathroom. *Jungwon-ah! You still here? The last train's at eight minutes past, don't miss it, it's cold!* And the slippers going on, a tap running, a man humming." },
+        { n: "Jungwon put his forehead against her shoulder and shook with silent laughter for a long time." },
+        { s: 'jungwon', f: 'flustered', t: "...He's going to stand at the top of the stairs till I leave. I know him. He's a very thorough man. He once waited for my bus at Hanlim for forty minutes because it was raining." },
+        { choose: [
+          { t: "(Pull him back down. Let the train go.)", notes: 3, flag: 'eqx-jw-last-train', then: [
+            { n: "She took him by the loosened tie and pulled him back down onto the bed, and he went, and the slippers went back past the door the other way and up the stairs, slowly, and stopped at the top, and after a long while went on up, and a door closed, very gently, two floors above them." },
+            { n: "The last train went at eight minutes past twelve. They heard it, far off, across the river, the long falling note of it on the bridge, and he lifted his head and listened to it go, and then looked down at her, and laughed again, under his breath, the way he only laughed when there was nobody to see it." },
+            { place: 'Iwatodai Dorm · Solar\'s Room', time: 'Early Morning', bg: 'solar-dormroom-day', soft: true },
+            { n: "She woke at six with the window gray and the radiator ticking and his blazer on the back of her desk chair, folded once lengthwise so it wouldn't crease, which he must have done at some point in the night without her noticing. He was awake. He was lying on his side looking at her with the gray light on his face, and he didn't look away when she caught him." },
+            { s: 'jungwon', f: 'neutral', t: "I've been planning my route out. There are three fathers in this building. I've accounted for two." },
+            { n: "He didn't account for the third. Taejoon was on the stairs. He always was, at night; the seventh stair, here as there, sitting with his forearms on his knees in the dark. At six in the morning he was still there, or there again, and he looked up at the boy coming down past him with his blazer over his arm and his tie in his hand." },
+            { n: "He didn't say anything. He said it very loudly. Then he moved his knees aside, a little, to let him by." },
+            { n: "At breakfast Mr. Kim asked Jungwon if he'd caught his train. Jungwon said he'd caught a later one. Mr. Kim said *good, good, there's a later one?* and Taejoon, at the end of the table, behind his newspaper, turned a page." }
+          ] },
+          { t: "(Walk him to the station. Make the train.)", notes: 2, then: [
+            { n: "They made it. They ran the last two hundred meters down the hill with his bag banging against his back and her coat open and the frost loud under their shoes, and the train was in, and the doors were open, and he got on and turned round in the doorway and kissed her once across the gap, quickly, with the bell going, and the doors closed between them." },
+            { n: "He stood with his hand flat on the glass as it pulled out. She saw his mouth say something. She didn't know which language. It didn't matter, she thought, walking back up the hill with her coat still open; it wasn't the kind of thing you needed to hear to know." }
+          ] }
+        ] }
+      ], else: [
+        { n: "Afterward he played cards with Mr. Kim and Junpei in the lounge until half past eleven, a Korean game Mr. Kim taught Junpei very loudly and Junpei lost very loudly, and Jungwon kept the score on the back of a gas bill in his small upright hand and was scrupulously fair to all parties, including himself, which meant he won." },
+        { n: "She walked him to the station. The frost was loud under their shoes. On the platform, under the clock, with the train coming in, he turned to her with his hands in his coat pockets." },
+        { s: 'jungwon', f: 'neutral', t: "Thank you. For not answering for me. On the steps. I noticed. I'll notice it for a long time." },
+        { n: "The doors opened. He got on, and turned round in the doorway, and bowed, the short precise one, very seriously, and then ruined it by smiling all the way through it, and the doors closed." }
+      ] },
+      { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+      { phone: [
+        { from: 'jungwon', t: "Item one: dinner. Very good. Please tell whoever cooked." },
+        { from: 'jungwon', t: "Item two: I looked at the diary again before bed. The page is where we left it." },
+        { from: 'jungwon', t: "Item three: I wrote under today. *Chose.* In my own hand. It's very small. It's there." }
+      ], contact: 'jungwon' }
+    ] },
+    { after: '11/25', title: '8: what I am here', place: 'Gekkoukan High · Student Council Room', time: 'After School', music: 'tender', scene: [
+      { bg: 'gekkoukan-student-council' },
+      { n: "The first real frost had come in the night and stayed. It was on everything when she crossed the courtyard, the bench, the bare black branches of the cherry trees, every blade of the strip of grass by the gym, white and stiff and squeaking underfoot, and the sky over the school was the hard pale blue of a sky with nothing in it, and her breath went up in front of her face and hung there, as if it weren't sure it was allowed to leave." },
+      { n: "The well's lid was white with it. All the way across, this time. No circle. She looked, and was relieved, and then wasn't, because she couldn't think of a single reason why that should be better." },
+      { n: "Jungwon was at the council room window with his hands behind his back. Not writing. Not reading. Standing, the way he stood at the window of the other council room at home, in his blazer and his scarf, which he'd forgotten to take off, looking down at the courtyard; and when she came in he didn't turn round straight away. He finished something first, in his head. Then he turned." },
+      { s: 'jungwon', f: 'neutral', t: "You came. Good afternoon. Keep your coat on. I'm taking you somewhere, and then I'm taking you somewhere else, and then I'd like to read something into the record. It's a full agenda. I apologize." },
+      { ifFlag: 'dead.aigis', then: [
+        { s: 'jungwon', f: 'sad', t: "Before that. In May, Aigis-san asked me what the council minutes were for. I said, so that nobody has to remember things on their own. She asked for a copy. Of all of them. She said she'd like something to remember with." },
+        { s: 'jungwon', f: 'sad', t: "I finished it on Sunday. Every meeting since April. I took it to the chapel in Tatsumi and stood there with it and didn't know where to put it. Mitsuru-sunbae took it out of my hands. She held it against her chest like it weighed something." },
+        { n: "He said it in the minutes voice, perfectly level, and looked at the window afterward for a while, and she let him." }
+      ] },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "He still wore the black tie. It was a month now. Nobody at Gekkoukan had said anything." }
+      ] },
+      { ifBefore: '12/1', then: [
+        { place: 'Kirijo Group · Tatsumi Ward', time: 'After School', bg: 'hospital-room' },
+        { n: "The Kirijo ward in Tatsumi smelled of the same thing every hospital in every one of her lives smelled of, under the disinfectant, under the flowers somebody had brought and somebody else had arranged too neatly: of radiators, and of waiting. Three beds in a row by the window. Two of them had their curtains drawn. In the third, sitting up against a stack of pillows she'd clearly built herself and wouldn't let anybody touch, Mrs. Kim was doing a crossword in pen." }
+      ], else: [
+        { place: 'Iwatodai Dorm · Lounge', time: 'After School', bg: 'iwatodaidorm-livingroom-night-winter' },
+        { n: "The dorm lounge in the afternoons had become a ward without anybody deciding it should. Blankets on the arms of the couches. Three mugs on the low table that weren't anybody's in particular. A heater nobody had owned in October, ticking in the corner. And in the armchair by the window, sitting bolt upright against a stack of cushions she'd built herself and wouldn't let anybody touch, Mrs. Kim, with a crossword, in pen." }
+      ] },
+      { n: "She looked up when they came in. At Solar first, the long once-over, the one that took in her coat and her face and whether she'd eaten and whether she was lying about it, all at once, the way it had in a kitchen at home over a plate of something she was supposed to finish. Then past her. At him." },
+      { s: 'kim-mom', f: 'neutral', t: "You. Yang Jungwon." },
+      { s: 'jungwon', f: 'neutral', t: "Eommeoni. You look well." },
+      { s: 'kim-mom', f: 'neutral', t: "I look like something that was left out in the rain. Don't lie to me in my own— in whatever this is. Sit. Not there. There, where I can see you." },
+      { n: "He sat where she could see him. On the edge of the chair, back straight, hands on his knees, exactly the way he'd sat at her kitchen table in the flat by Hanlim the first time, a year and a lifetime ago, with his shoes paired by the door and his school bag at his feet and his ears red to the tips." },
+      { s: 'kim-mom', f: 'neutral', t: "He told me. My husband. That you kept his list. Every station. A hundred and twelve. That you wrote them out for him in two languages and sat with him every night with the timetables like a clerk." },
+      { s: 'jungwon', f: 'neutral', t: "He needed somewhere to put them." },
+      { s: 'kim-mom', f: 'neutral', t: "He needed a keeper. He's always needed a keeper. I've been his keeper for twenty-three years, and I go away for two months and he finds a boy to do it." },
+      { n: "She looked at him a long time. Her face did something Solar had seen it do perhaps twice in her life: it softened, all at once, at the corners, and then caught itself, and became her mother's face again, the one that didn't buy cover stories." },
+      { s: 'kim-mom', f: 'neutral', t: "So I'll ask you. Since you're the one who keeps things." },
+      { s: 'kim-mom', f: 'serious', t: "Bring her home. When it's time. Whatever this place is, whatever's down there, when it's over, you bring her home to me. She listens to you. She's never listened to me in her life." },
+      { n: "Solar felt it come into the room. Not the words. The shape of them, which she'd learned this year to hear under any voice, kind or not, the way you learn to hear a step on a stair that's one too many. *Bring her home.* A mother asking. Of course a mother was asking. And the boy on the edge of the chair, who'd been asked for things all his life by people he loved, in two houses, and had always, always given them." },
+      { choose: [
+        { t: "(Say nothing. Let him answer for himself.)", notes: 3, then: [
+          { n: "She didn't say anything. She stood by the window with her coat on and let it be his." }
+        ] },
+        { t: "Mom. Don't ask him that.", notes: 2, then: [
+          { s: 'kim-mom', f: 'neutral', t: "I'll ask who I like. I've been in a field. I'll ask the Pope." },
+          { n: "But she didn't take her eyes off him, and he didn't take his off her, and Solar understood that it had never been hers to stop." }
+        ] }
+      ] },
+      { n: "Jungwon looked down at his hands on his knees. Then up." },
+      { s: 'jungwon', f: 'neutral', t: "With respect, eommeoni. It isn't mine to bring." },
+      { s: 'jungwon', f: 'serious', t: "It's hers to come. If she comes. I'll be standing wherever she can see me when she decides. I'll carry her bags. I'll carry her, if she wants carrying. But I won't bring her. Nobody's going to bring her anywhere, this time. Not even me. Not even for you." },
+      { n: "The heater ticked. Somewhere a cart went by in a corridor, or a door shut on a floor above. Mrs. Kim looked at him for so long that Solar started counting, the way you count after lightning." },
+      { s: 'kim-mom', f: 'neutral', t: "...You've got worse. You used to agree with me about everything. It was the only thing I liked about you." },
+      { s: 'jungwon', f: 'flustered', t: "I still agree with you about most things. I'll put it in writing." },
+      { s: 'kim-mom', f: 'neutral', t: "Smart-mouthed boy." },
+      { n: "She reached out from under the blanket, slowly, with the stiff careful reach of a woman whose back wouldn't let her lean, and patted his hand on his knee, twice, the way you'd pat a dog that had done something you hadn't asked it to and had been right. Then she picked up her pen and looked at her crossword." },
+      { s: 'kim-mom', f: 'neutral', t: "Seven letters. *Something kept.* Go away, both of you. I'm tired. Come back tomorrow. Bring oranges." },
+      { n: "In the corridor Jungwon walked very fast for about twenty meters and then stopped by a window and put his hand flat on the cold glass and stood there, breathing, and Solar stood beside him and didn't say anything, and after a while he laughed, once, at the glass." },
+      { s: 'jungwon', f: 'neutral', t: "I've never said no to her. In my life. I said no to your mother. I'm going to have to move countries." },
+      { s: 'solar', f: 'neutral', t: "You didn't say no." },
+      { s: 'jungwon', f: 'neutral', t: "...No. I didn't. I said something else. I've been practicing it all year. I didn't know I was practicing it for her." },
+      { place: 'Iwatodai · River Street', time: 'Evening', bg: 'iwatodai-riverside-night' },
+      { n: "He walked her the long way. It wasn't the way to anywhere; it went along the river street past the boarding house, the way he'd gone every morning since October so that he'd know. The frost had come back down with the dark and the lamps had halos round them, and the river beside the road was black and very still and steamed a little in the cold, as if it were warmer than the air above it." },
+      { n: "The persimmon tree over Mrs. Oka's wall was bare. A few last fruit still hung on it, high up, gone dark and soft and wrinkled, the size of fists. Every window in the house was lit. In the garden, on the bench by the capped well, under a blanket, in the frost, an old man was asleep." },
+      { n: "Mr. Ueda. On his back, with his hands folded on his chest on top of the blanket and his face turned up to the sky, and he was smiling. There was frost on the blanket. There was frost on the bench all round him and on the stones under it and on the lid of the well. There was no frost on him at all. His face was pink and warm-looking and perfectly peaceful, the way a face looks when someone has been asleep for a very long time and is dreaming about somewhere he likes." },
+      // CG: eqx-garden-bench — an old man asleep and smiling on a garden bench under a blanket on a frosty night, frost white on the blanket, the bench and the stones of a capped stone well beside him but none on his face; a bare persimmon tree overhead with a few dark fruit, every window of the wooden house behind him lit.
+      { n: "Jungwon had stopped at the gate. He didn't touch it. He stood with his hands in his coat pockets, and she could see his right hand closed round something in there, through the cloth. The keys." },
+      { choose: [
+        { t: "(Call his name from the gate. Don't go in.)", notes: 3, flag: 'eqx-jw-ueda-called', then: [
+          { s: 'solar', f: 'neutral', t: "Mr. Ueda." },
+          { n: "He stirred. He didn't open his eyes. His hand came up off his chest, slow, warm, unhurried, and lifted, and waved at the sky, at nobody, at the two of them at the gate, and settled again. He smiled wider. He said something. They couldn't hear it. His lips made a shape that might have been *one more*." },
+          { n: "In the kitchen window a gloved hand moved the curtain aside a few centimeters, and let it fall." }
+        ] },
+        { t: "(Don't call. Stand with Jungwon and watch him breathe.)", notes: 2, then: [
+          { n: "She didn't call. She stood beside him at the gate and they watched the blanket rise and fall, rise and fall, slow, even, the deep breathing of a man who wasn't going to wake for anything as small as a voice from the street; and after a while Jungwon took out the diary and wrote the time, and under it, in the smaller hand, *breathing*." }
+        ] }
+      ] },
+      { n: "They walked on. Neither of them looked back until the corner. At the corner she did, and the bench was there, and the blanket, and the lit windows, and the bare tree, and she thought she'd remember it exactly like that for the rest of the year, and she was right." },
+      // BG: kirijo-guesthouse-roof-winter — the flat concrete roof of a small guesthouse on a frosty late-November night, the water tank rimed white, a propped fire door spilling yellow light, the town's lamps and a black river below, stars hard and close.
+      { place: 'Kirijo Guesthouse · Roof', time: 'Night', bg: 'kirijo-guesthouse-roof-night' },
+      { n: "The fire door at the end of the hall was still propped with the guesthouse's own extinguisher. Nobody had ever moved it back. The roof was white with frost and the water tank was furred with it, and the cold came up through the soles of her shoes the moment she stepped out, and the town lay below them in the dark the way it had in August, the river, the bridge, the station, the bay, except that now every light in it was sharp, and every star over it was sharp, and there wasn't any haze to soften anything at all." },
+      { n: "He'd brought two cans of hot coffee from the machine in the lobby. He gave her one. He held his between both hands and didn't drink it, and stood at the low parapet with his back to the town, facing her, the way he'd faced her in the council room in October, and she saw him take a breath, and let it out, white, and take another." },
+      { s: 'jungwon', f: 'neutral', t: "The last item. I've been drafting it since April. I've drafted it more times than the form. This is the version where I stop drafting." },
+      { s: 'jungwon', f: 'neutral', t: "At home I'm two things to you. At Hanlim I'm your boyfriend. Your mother knows my shoe size and doesn't approve of my handwriting. A whole school has opinions about it. In the house on the hill I'm the other thing. The one with a date on a calendar, that both of us know, that neither of us is going to say on a roof." },
+      { s: 'jungwon', f: 'serious', t: "And neither of those, Solar, did either of us get to choose all the way. One of them we chose, and then everybody else got a vote. The other one was decided at a table we weren't sitting at." },
+      { s: 'jungwon', f: 'neutral', t: "Here I don't have to be either. And it's been asking me all year to be one boy. And I've worked out that it's right about exactly one thing, and I hate that it's right, and I'm going to say it anyway, in my own voice, not in its." },
+      { s: 'jungwon', f: 'serious', t: "I'd like there to be one thing, here, that's chosen. Not by either house. Not by anyone's mother. Not by it. By you. Whatever it is. I'll write down whatever you say in the good book, and I'll never cross it out." },
+      { ifFlag: 'eqx-home-H3', then: [
+        { s: 'jungwon', f: 'neutral', t: "On the Third Hill you got into the car. In the gym. I watched you cross the court. I didn't stop you. It's the thing I'm proudest of this year, and I'd like never to have to do it again." }
+      ] },
+      { ifFlag: 'eqx-away-H3', then: [
+        { s: 'jungwon', f: 'neutral', t: "On the Third Hill you stood in the doorway between us. I'm aware whose shoulder was on your other side. I'm not pretending I didn't notice. I noticed very precisely." }
+      ] },
+      { ifRomance: 'jihoon', then: [
+        { s: 'jungwon', f: 'serious', t: "I know about Jihoon. Here. He knows I know. I'm not asking you to take anything away from him. I'm asking what I am. Not what he isn't. Those are two different motions." }
+      ], else: [
+        { ifCount: { of: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss', 'eqx-jihoon-dark-kiss', 'eqx-jihoon-room'], min: 1 }, then: [
+          { s: 'jungwon', f: 'serious', t: "I know about Jihoon. Here. He knows I know. I'm not asking you to take anything away from him. I'm asking what I am. Not what he isn't. Those are two different motions." }
+        ] }
+      ] },
+      { ifRomance: 'haechan', then: [
+        { s: 'jungwon', f: 'neutral', t: "And Donghyuck. I know. We're very polite to each other about it. We'll be polite about it until one of us dies of it." }
+      ], else: [
+        { ifCount: { of: ['eqx-hc-roof-kiss', 'eqx-hc-stayed-night'], min: 1 }, then: [
+          { s: 'jungwon', f: 'neutral', t: "And Donghyuck. I know. We're very polite to each other about it. We'll be polite about it until one of us dies of it." }
+        ] }
+      ] },
+      { s: 'jungwon', f: 'flustered', t: "So. What am I to you. Here. Now. You're allowed to say it's complicated. I'll minute that too." },
+      { n: "The cold was in everything. In the can between her hands, which had stopped being hot and was only warm, in the concrete under her feet, in his breath going up white between them and hanging there with hers. Below them the town was perfectly still. Somewhere a train went over the bridge, far off, the long falling note of it, and stopped, and she realized she'd been waiting for it to stop so she could answer, and that he'd been waiting too." },
+      // CG: eqx-roof-frost — a boy in a school blazer and scarf at the low parapet of a frosted guesthouse roof at night, a can of coffee steaming between his hands, facing a girl across a few meters of white concrete; behind him a sharp clear town, a black river, hard stars.
+      { route: [
+        { t: "You're mine. Here too. Chosen.", route: 'romance', notes: 3, flag: 'eqx-jw-chosen', then: [
+          { s: 'jungwon', f: 'surprised', t: "..." },
+          { n: "His face went still. Not the polite stillness, and not the other one, the one she'd learned meant something had landed where he kept the things that mattered. A third one. She'd never seen it in either house. It was the face of somebody who'd been holding a door shut against a wind all year and had just been told, very quietly, that he could let go of the handle." },
+          { s: 'jungwon', f: 'happy', t: "...Chosen." },
+          { s: 'solar', f: 'neutral', t: "By me. Not by anybody's table." },
+          { s: 'jungwon', f: 'happy', t: "Carried. I'm not putting it to a vote. I'm the chair. It's carried." },
+          { n: "He put the can down on the parapet. He crossed the frost to her in three steps and took her face in his cold hands and kissed her, not carefully, not at first and not after, the way you'd do a thing you'd just been told for the first time in your life you were allowed to do, and her can went somewhere, rolling, across the concrete, and neither of them looked for it." },
+          { place: 'Kirijo Guesthouse · Room 4', time: 'Night', bg: 'kirijo-guesthouse-night', soft: true },
+          { n: "The sign was still on the door. *Studying. Knock. (Not twice.)* He didn't knock. He opened it and drew her in by the hand and shut it, and the room was dark and cold, the window open a crack as it always was, and the lists were gone from the floor; he'd taken them up in October and put them in a box under the bed, and the bare boards shone faintly in the light from the street." },
+          { n: "He didn't turn the light on. He undid her coat, button by button, from the top, the way he did everything, properly, as if there were minutes being taken and he wanted them to be accurate, and she let him, and then she lost patience and did the rest herself, and he laughed into her hair and said *point of order*, and she said *overruled*, and the narrow guesthouse bed complained about both of them, and the dent in the pillow that had only ever been his wasn't anymore." },
+          { n: "Down the hall somebody's music was playing low. Out on the river a boat went by with its engine thudding, slow, and its wake slapped the embankment, once, twice, and was quiet. He said her name. Only once, tonight. Not the Hanlim way and not the house way. Just hers." },
+          { place: 'Kirijo Guesthouse · Room 4', time: 'Early Morning', bg: 'kirijo-guesthouse-day', soft: true },
+          { n: "She woke because he was writing. The sound of it, a nib on paper, small and steady in the gray, and the cold of the room on her shoulder where the blanket had slipped. He was sitting up against the wall beside her with the good book on his knees, the second one, the one he'd started in April for the minutes worth keeping, and he was writing a single line at the top of a fresh page, very slowly, in his neatest hand, and he didn't hide it when she looked." },
+          { n: "The date. And under it, one word. *Chosen.* And a full stop, pressed so lightly it barely marked the paper." },
+          { s: 'jungwon', f: 'neutral', t: "That's the minutes. That's all of them. The rest is off the record. All of it. Forever." },
+          { ifRomance: 'jihoon', then: [
+            { n: "Jihoon was at the end of the hall when she came out. At the window by the fire door, in his coat, with a cigarette he wasn't lighting turning over and over in his fingers. He'd been up all night or he'd got up very early; on Jihoon it came to the same thing. He looked at her. At the sign on the door behind her. At her coat, buttoned wrong." },
+            { s: 'jihoon', f: 'neutral', t: "...Door was shut." },
+            { s: 'solar', f: 'neutral', t: "Yeah." },
+            { n: "He looked at the cigarette. He put it back in the packet. He didn't say anything cruel, which she'd half braced for and was ashamed of having braced for, and he didn't say anything kind either. He did her top button up properly, with two fingers, as he went past her to the stairs, the way you'd straighten a picture in a house you used to live in, and went down." }
+          ], else: [
+            { n: "Sunghoon was in the hall when she came out, in a towel, with his hair wet. He looked at her, and at Room 4's door, and at her coat, buttoned wrong, and then he did a thing nobody else in either of his lives would have known to do. He went and held the stairwell door for her, the heavy fire door, and didn't say anything, and didn't smile, and nodded, once, as she went past, the way you nod to somebody who's made it across something." }
+          ] }
+        ] },
+        { t: "My best friend. Here. The rest is at home, where we left it.", route: 'friend', notes: 3, flag: 'eqx-jw-friend', then: [
+          { s: 'jungwon', f: 'neutral', t: "..." },
+          { n: "He took it the way he took everything, standing, all the way in, without letting it move his face until he'd decided what his face was going to do. She watched him decide. It took a long time. The train on the bridge had gone. Nothing else came." },
+          { s: 'jungwon', f: 'neutral', t: "...Friend. Here." },
+          { s: 'solar', f: 'neutral', t: "Here. Nothing at home moves. Nobody's deciding that on a roof." },
+          { s: 'jungwon', f: 'serious', t: "No. Nobody is. I wouldn't let them. I wouldn't let you, actually. Not here. That's what this place does. It gets you to sign things on its paper." },
+          { ifCount: { of: ['eqx-jw-council-kiss', 'eqx-jw-locked-door', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names'], min: 1 }, then: [
+            { s: 'jungwon', f: 'sad', t: "I'll remember the council room. And the summer. I'm not going to pretend I don't. I'll just keep them in the other book. The one I don't read out." }
+          ] },
+          { s: 'jungwon', f: 'happy', t: "I'll be very good at it. I'd like you to know that now, so you can prepare. I'll be the best friend you've got. I'll be insufferable. I'll remember your mother's oranges." },
+          { n: "He smiled, the real one, both dimples, the kind with something behind them; and the something behind it was so plainly what it was that she had to look at the town for a moment instead of at him. He let her. He was good at that. He'd always been good at that." },
+          { s: 'jungwon', f: 'neutral', t: "...May I still walk you home? The long way. Past the shrine. Not the river." },
+          { s: 'solar', f: 'neutral', t: "Every day." },
+          { n: "He walked her home. At the dorm gate he stopped, and bowed, the short precise one, and she went in, and from the lounge window she looked out, the way she had in August; and he was still at the gate under the lamp with his hands in his coat pockets, looking up at the lit windows, counting them, until hers came on." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+      { ifFlag: 'eqx-jw-chosen', then: [
+        { phone: [
+          { from: 'jungwon', t: "Item one: you left your can on the roof. I've kept it. It's on the windowsill. It's an empty can. I'm aware." },
+          { from: 'jungwon', t: "Item two: I've read the minutes back four times today. They're very short. They're the best I've ever taken." },
+          { from: 'jungwon', t: "Item three: the April page is still where we left it. I looked. I didn't mind it, today. That's new." }
+        ], contact: 'jungwon' }
+      ], else: [
+        { phone: [
+          { from: 'jungwon', t: "Home. Lists done. Everything still there." },
+          { from: 'jungwon', t: "I've written it down. Friend. In the good book. Underlined once. Not twice. Twice would be a lot." },
+          { from: 'jungwon', t: "Tomorrow at four. Your mother wants oranges. I'm buying the expensive ones. Don't argue, it's my job now." }
+        ], contact: 'jungwon' }
+      ] }
     ] }
   ]
 });

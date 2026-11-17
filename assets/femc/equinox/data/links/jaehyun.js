@@ -1,7 +1,24 @@
 /* Persona 3: Equinox · Jaehyun Lee · Emperor. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–6 (from 4/13; his home is the Naganaki Shrine steps on weekday and Saturday afternoons but Wednesday,
-   so 4/13 itself). Ranks 7–10 still to write.
+   Written: ranks 1–8 (from 4/13; his home is the Naganaki Shrine steps on weekday and Saturday afternoons but Wednesday,
+   so 4/13 itself). Ranks 9–10 still to write (rank 9 belongs with the parents' "stop asking" turn; not spent here).
+   Rank 7 (from 10/28, the steps in late October, then the dorm's third-floor hall at evening: his hand closed on air on
+   10/23; dead.shinjiro: he runs at the back, "where the slow guy goes" / alive: Shinjiro's price was "fix your old man's
+   chopsticks"; his father's dead watch lights up wherever asks.jaehyun put it (yes: Solar's bag / choose: his pocket / no:
+   his wrist) with a synced run he didn't do: 113 steps, 4:50 PM, avg heart rate 40; Jaesang saw it on his app: "Your heart
+   rate's never been forty in your life"). Reads eqx-jaehyun-time-solar, dead.shinjiro, asks.jaehyun, eqx-1122, dead.aigis.
+   Sets eqx-jaehyun-watch-dad (Jaesang keeps the watch in his buttoned pocket) | eqx-jaehyun-watch-unlinked ("You'll have
+   to ask me") | nothing.
+   Rank 8 (from 12/2, the steps in frost (112 since 11/22; the staircase moved down), the courtyard well with Hanni as
+   escort (Âu Cơ; "nobody turns round but me"), then his ask floor: an endless stone stair under the Road Home with his chalk
+   numbers, the 113th step warm, a worn Solji in the cream cardigan below it writing in a copy of the notebook, a seam open
+   down her back, asking him to sit; then dawn in the dorm kitchen with the real Solji ("Out early? Back by eight, I hope.")).
+   Choices: count exactly | one ahead (eqx-jaehyun-one-ahead); at the step: "Sit with her, Jae" (tally cakes +1,
+   eqx-jaehyun-floor-sat: Hanni hauls him up, he loses counting for a while) | hand on 112 | "A hundred and fourteen" |
+   (ifFlag eqx-jaehyun-thread-kept) tie the thread round his wrist. Unless he sat, he writes GOING UP and climbs miscounting on
+   purpose; the cardigan folds empty (eqx-jaehyun-floor-up). Dawn: (ifFlag eqx-jaehyun-notebook) put the notebook by her tea
+   (eqx-jaehyun-notebook-mom: she writes "Back 7:58" in it) | "He'll be back by eight" | say nothing. Reads dead.aigis,
+   dead.shinjiro, eqx-jaehyun-notebook, eqx-jaehyun-thread-kept.
    Rank 4 (from 7/12, the steps in July heat; Danielle on the top step knows his 4:40; the lady with the basket at 4:50)
    reads asks.jaehyun (the watch), eqx-owed, eqx-hunted; sets eqx-jaehyun-time-solar (Solar texts him a different time
    every morning) or nothing.
@@ -788,6 +805,354 @@
       { s: 'jaehyun', f: 'neutral', t: "...Come Thursday. To the steps. And Saturday. Not because I'm asking. Because I'll be there, and you'll know where I am. That's all. I want somebody to always know where I am." },
       { s: 'jaehyun', f: 'sad', t: "I didn't know that's what I wanted. I found out on a staircase. I find everything out on that staircase." },
       { n: "He went, walking, uneven, a little fast and then a little slow. At the corner by the post office he looked back. He'd been looking back at that corner since June. She lifted her left hand and waved it, once, solemnly, Hanni's addition, the way you'd wave at a ship; and he stood there under the lamp a second longer, and lifted his, and went home." }
+    ] },
+    { after: '10/28', title: '7: forty', place: 'Naganaki Shrine · The Steps', time: 'After School', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-autumn' },
+      { n: "The maples over the steps were bare now except for the tops, where a few red leaves hung on like the last people at a party, and the treads were brown and wet and slick with the ones that had come down, so that the whole staircase smelled of something steeping. It had rained in the morning. The sky was the color of a sink. The bell at the top rang once in the wind, by itself, and nobody looked up anymore when it did." },
+      { ifFlag: 'eqx-jaehyun-time-solar', then: [
+        { n: "She'd texted him *3:52* that morning at six-fifty, before the seven fifteens, the way she had every morning since July. She came along the road at three-fifty and he was already at the post at the bottom, hands on his hips, looking at his phone as if it might change its mind, and when she was close enough he held it up so she could see her own message on the screen, *3:52*, and then put it away without a word and touched the post with two fingers and went." }
+      ], else: [
+        { n: "He was already running when she came along the road. Not at four-forty. He hadn't run at four-forty since July; he ran now when he ran, at odd times, a quarter past three, five to five, a man going out of his way never to be where anybody expected him, and today it had been ten to four, and she knew because Hanni had told her at lunch, and Hanni knew because Minji did." }
+      ] },
+      { n: "She sat on the bottom step, on the dry patch under the overhang of the stone lantern, and watched him go up." },
+      { n: "He'd changed. Not the pace; the pace was back, the one that didn't change, the same at the bottom as at the top, chin level, breathing through his nose. It was something else. He ran the steps now the way you'd walk a hallway in a house where somebody was sleeping. He didn't look at the treads. He looked at the top. All the way up. As if the top were a person and he was keeping his eyes on them." },
+      { n: "On the fourth time down he stopped at the bottom and stood with his hands on his knees, and didn't count anything out loud, and she didn't either; and then he sat down on the step beside her, on the wet part, and didn't seem to notice it was wet." },
+      { s: 'jaehyun', f: 'neutral', t: "I ran the day after the road. I didn't know what to do with it, so I ran. I still don't know what else to do with my legs." },
+      { choose: [
+        { t: "You're sitting in a puddle, Jae.", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...I'm aware. I've been aware for some time. I've decided it's a puddle I'm sitting in." },
+          { n: "He didn't move. She moved over, off the dry patch, and sat in the wet beside him, and he looked at her doing it, and his mouth did the thing it didn't give permission for." }
+        ] },
+        { t: "How's Dad?", notes: 3, then: [
+          { s: 'jaehyun', f: 'neutral', t: "Eats. Now. Since the road. He eats whatever's put in front of him. He eats like it's a meeting he has to get through." },
+          { s: 'jaehyun', f: 'neutral', t: "He's on the third floor of your dorm two doors down from Akihiko. He thinks Akihiko's very polite. I haven't told him anything else about Akihiko." }
+        ] },
+        { t: "(Hand him the water bottle from your bag.)", notes: 3, then: [
+          { n: "She'd brought him one. She'd started bringing one in September without either of them mentioning it. He took it and drank half of it and handed it back, and she put it back in her bag, and that was the whole exchange, and it was more than either of them would have managed in that other house in a year." }
+        ] }
+      ] },
+      { n: "He sat with his forearms on his knees and his hands hanging, and looked at his own right hand, the palm, where the twelve splinters from a door frame had healed into twelve small pale dots you could only see in this light." },
+      { s: 'jaehyun', f: 'neutral', t: "I had a procedure. On the road. I'd done it in my head forty times. Rope, coat, hand. If he goes, I take the coat. Collar first, it's the strongest seam on a coat. I'd checked the coat. It was Akihiko's. I checked the stitching on Akihiko's coat in the hall closet at midnight like a lunatic." },
+      { s: 'jaehyun', f: 'serious', t: "And he went. Down the step. To her. And I did it. I did the procedure. I lunged for the collar." },
+      { s: 'jaehyun', f: 'serious', t: "And my hand closed on air." },
+      { n: "He held up the hand. He closed it, slowly, on nothing, in front of them both. Then he opened it again, finger by finger, and looked at the inside of it as if the air might still be in there." },
+      { s: 'jaehyun', f: 'neutral', t: "Ten years. Ten years of catching things. I've caught a ball in the rain in the dark with a man's helmet in my face. I caught you on the stairs at the house the night of the formal when you came down in those shoes. I don't miss. It's the only thing I've ever been good at without trying." },
+      { s: 'jaehyun', f: 'sad', t: "I missed my father." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "He didn't say the next part for a long time. The bell rang at the top, once, in the wind. Then he said it to his hand." },
+        { s: 'jaehyun', f: 'sad', t: "He didn't miss. From the back. He came down past all of us and he didn't even try for the collar, there wasn't time, he just put himself where Dad was going to be." },
+        { s: 'jaehyun', f: 'sad', t: "I went to the funeral. I sat at the back. I didn't know where to sit. I'd spoken to him maybe nine times, Solar. Nine. He told me I held my chopsticks like my father. That was the longest conversation we ever had." },
+        { s: 'jaehyun', f: 'neutral', t: "I've been running at the back. Of everybody. The old ladies come up the steps at four and I wait at the bottom till the last one's at the top and then I go. Behind them. Slow. Back's where the slow guy goes." },
+        { s: 'jaehyun', f: 'sad', t: "I don't know what that's for. I don't know what I think it pays. It doesn't pay anything. I do it anyway." }
+      ], else: [
+        { n: "He didn't say the next part for a while. Then he laughed, short, through his nose, at his hand." },
+        { s: 'jaehyun', f: 'neutral', t: "Shinjiro didn't miss. From the back. With the bad hand. He took Dad by the collar with the hand he can't hold a cup with, and he threw him up the steps, and it opened his whole coat." },
+        { s: 'jaehyun', f: 'neutral', t: "I went to say thank you. Sunday. In your kitchen. I'd prepared it. It was a good speech. I'd timed it." },
+        { s: 'jaehyun', f: 'happy', t: "He let me get eleven words in. Then he said, *fix your old man's chopsticks and we're even*. And he turned round to the stove. And that was it. That was the whole meeting." },
+        { s: 'jaehyun', f: 'neutral', t: "So I've been teaching my father to hold chopsticks. Every night. At your table. He's run a foundation and he holds them like a man holding two pens, and I sit there going *no, Dad, the bottom one doesn't move*, and he says *I'm aware the bottom one doesn't move, Jaehyun*, and he drops the fish." },
+        { s: 'jaehyun', f: 'sad', t: "It's the best hour of my day. Don't tell anybody. It's the best hour of my day and I owe it to a man with three scars who won't let me say thank you." }
+      ] },
+      { choose: [
+        { t: "You didn't miss, Jae. Nobody could have caught that.", notes: 2, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...You're looking at the right." },
+          { s: 'solar', f: 'neutral', t: "I'm not lying." },
+          { s: 'jaehyun', f: 'neutral', t: "No. You're not. You're looking at the right because you're not sure. That's different. Noted." }
+        ] },
+        { t: "(Take his open hand. Close it. On yours.)", notes: 3, then: [
+          { n: "She took his hand, the open one, with the twelve pale dots in it, and closed his fingers over hers, deliberately, one at a time, the way he'd closed them on air for her; so that this time there was something in it. He looked at their two hands. He didn't let go for a while." },
+          { s: 'jaehyun', f: 'neutral', t: "...That's not a procedure." },
+          { s: 'solar', f: 'neutral', t: "No." },
+          { s: 'jaehyun', f: 'neutral', t: "Okay. Good. I've had enough procedures this week." }
+        ] },
+        { t: "He went to her, Jae. Not away from you. Toward her.", notes: 3, then: [
+          { n: "He went very still on the wet step." },
+          { s: 'jaehyun', f: 'neutral', t: "...Yes. I know. He went down the steps with his arms open the way he does at JFK. I've never once seen him open his arms like that for anything that wasn't her. Or you." },
+          { s: 'jaehyun', f: 'sad', t: "I was behind him. I've always been behind him. I've spent my whole life watching the back of that man walk toward something, and the one time I needed to stop him I couldn't, because I've never once in my life been in front." }
+        ] }
+      ] },
+
+      { n: "He was quiet for a while. Then he said, in the voice he used for a play he'd already read and didn't like, that there was something else. A thing that wasn't a procedure. A thing he needed her to look at, because she was the only one who'd tell him if he'd gone mad." },
+      { ifChoice: { 'asks.jaehyun': 'yes' }, then: [
+        { s: 'jaehyun', f: 'neutral', t: "The watch. The one you've got. Wherever it is. I don't want to know where. I need you to look at it." },
+        { n: "It was at the bottom of her bag. Where it had been since June, under a notebook and a hair tie and the water bottle, where he couldn't find it, the way he'd asked. She hadn't looked at it in weeks. She didn't need to. She'd felt it against her hip every day like a stone." },
+        { n: "She took it out." },
+        { n: "It was lit." },
+        { n: "The heavy black face that had been dead since the eighth of April, gray, a pond with nothing in it, was lit, a soft steady green, the way it had been lit on his wrist every morning for two years at the edge of a field. She hadn't charged it. Nobody had. There wasn't a charger for it in this town. She'd have known; it had been against her hip." }
+      ] },
+      { ifChoice: { 'asks.jaehyun': 'choose' }, then: [
+        { n: "He unzipped the pocket of his running jacket, the one he'd kept his hand flat over since June, and took out his father's watch, and held it on his palm between them." },
+        { n: "It was lit." },
+        { n: "The heavy black face that had been dead since the eighth of April was lit, a soft steady green, the way it had been every morning on his wrist for two years at the edge of a field. He hadn't charged it. There wasn't a charger for it in this town. It had been zipped in his pocket against his ribs every day since June." },
+        { s: 'jaehyun', f: 'neutral', t: "I haven't decided. About it. I said I'd decide. I've been deciding for four months. I think it decided for me." }
+      ] },
+      { ifChoice: { 'asks.jaehyun': 'no' }, then: [
+        { n: "He held out his left wrist. The watch was on it, where it had been all year, buckled into the old scratches. The heavy black face that had been dead since the eighth of April." },
+        { n: "It was lit." },
+        { n: "A soft steady green, the way it had been every morning for two years at the edge of a field. There wasn't a charger for it in this town. It had been on his wrist, dead, a pond with nothing in it, every day since April, and he'd woken on the floor of his father's room on Tuesday at seven fifteen to find it glowing against his own pulse." }
+      ] },
+      { ifChoice: { 'asks.jaehyun': ['yes', 'choose', 'no'] }, then: [], else: [
+        { n: "He took his father's watch out of his jacket pocket. The heavy black one, engraved on the back, dead since the eighth of April. He held it on his palm between them." },
+        { n: "It was lit. A soft steady green. There wasn't a charger for it in this town." }
+      ] },
+      { n: "On the screen, in the little square letters the watch used for everything, a workout. The kind it logged by itself when it felt you climb." },
+      { n: "*STAIRS. 113 STEPS. 4:50 PM. AVG HEART RATE 40. SYNCED.*" },
+      // CG: eqx-forty — a young man and his sister sitting on wet stone shrine steps in late October, bare maples overhead, his open palm holding a heavy black sports watch whose face glows green with a single line of small square text, both of them staring at it.
+      { n: "She read it twice. The second time her stomach turned over, slowly, the way it turned over when the hour came, before her head had finished reading." },
+      { s: 'jaehyun', f: 'neutral', t: "Tuesday. Four fifty. A hundred and thirteen. I was in your dorm at four fifty on Tuesday. I was on the third floor watching my father not eat a pear. I've got witnesses. Akihiko gave me the pear." },
+      { s: 'jaehyun', f: 'serious', t: "And forty. Average heart rate forty. Up a hundred and thirteen stairs." },
+      { s: 'jaehyun', f: 'serious', t: "My resting heart rate is fifty-two. It was fifty-two at my last physical. Nobody on earth climbs a hundred and thirteen stairs at forty. Nothing *alive* does." },
+      { n: "*Large, warm-blooded, resting heart rate forty.* She didn't know where she'd heard it. Somewhere in April, in a flat careful voice, at a breakfast table. It came up out of the bottom of her and sat in her mouth and she didn't say it." },
+      { choose: [
+        { t: "It's the lady with the basket. Four fifty.", notes: 3, then: [
+          { n: "He didn't say anything. He looked down the road toward the bend. It was a quarter past four. Nobody was there." },
+          { s: 'jaehyun', f: 'serious', t: "...Danielle said. In July. *Change his time.* I changed my time. I've never once been here at four fifty since July." },
+          { s: 'jaehyun', f: 'serious', t: "So it came at four fifty anyway. And ran it for me. In my watch. At my time. While I was somewhere else." }
+        ] },
+        { t: "Synced. Synced where?", notes: 3, then: [
+          { s: 'jaehyun', f: 'neutral', t: "...To his account. Father's. It's always been his account. Every run I ever did went to his phone before it went anywhere." },
+          { n: "He stopped. She watched him follow it to the end, the way he read a defense, slowly, all the way to the last man, and not be able to go back." },
+          { s: 'jaehyun', f: 'serious', t: "He looks at it. Every morning. He told you. On these steps. *It was the last thing I had of you that moved.*" },
+          { s: 'jaehyun', f: 'serious', t: "It's not running for me. It's running for *him*." }
+        ] },
+        { t: "(Turn it face down on the step. Put your hand on it.)", notes: 2, then: [
+          { n: "She took it off his palm and turned it face down on the wet stone and put her own hand flat on top of it, and felt it there under her palm, small and heavy and faintly warm, the way the step had been warm in the leaves; and it was. It was warm. She took her hand off it as if she'd been burned." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Third Floor', time: 'Evening', bg: 'iwatodaidorm-hallway', music: 'tender', soft: true },
+      { n: "Their father was in the window seat at the end of the third-floor hall, with the street lamp coming up through the glass and his phone in his hand, at ten past seven, in a sweater somebody had lent him that was too young for him by twenty years." },
+      { n: "He'd taken the window seat the first night, the way he'd have taken the head of a table: by sitting in it once and then simply being where he was. From it you could see the front door, and the gate, and the road down the hill toward the river. Taejoon had the top of the stairs. Jaesang had the window. Mr. Kim had the kitchen. Between them, Hanni said, the building was the most thoroughly watched house in Japan." },
+      { ifEvent: 'eqx-1122', then: [
+        { ifFlag: 'dead.aigis', then: [
+          { n: "Above them, on the fourth floor, past the command room, there was a door nobody opened now. Jaehyun walked past the foot of those stairs every night on his way to the window seat and didn't look up them, the way you don't look at a place on a road." }
+        ] },
+        { n: "He didn't need the seven fifteen anymore. She was upstairs, or in the Tatsumi ward with her face to the wall, alive. He sat in the window at seven fifteen anyway. Jaehyun said he'd stopped calling the number. He hadn't stopped sitting there with the phone in his hand when the time came." }
+      ], else: [
+        { n: "At seven fifteen he'd call her number. He'd done it every evening since the bridge; Jaehyun had stopped pretending he didn't. He'd hold it to his ear in the window seat until it stopped, and then he'd put it face down on his knee and look out at the road for a while." }
+      ] },
+      { n: "He looked up when they came along the hall. Both of them. He looked at Jaehyun's face. And he didn't wait to be asked." },
+      { s: 'jaesang-runners', f: 'neutral', t: "You ran on Tuesday." },
+      { n: "He turned the phone round. The app. The one with the graphs, the splits, the little map. A workout at the top of the list. The shrine steps. *113.* *4:50 PM.* And the heart-rate line along the bottom, a flat straight green line all the way across, perfectly level, like a man who'd never once been out of breath in his life." },
+      { s: 'jaehyun', f: 'neutral', t: "...I didn't, Dad." },
+      { s: 'jaesang-runners', f: 'neutral', t: "I know you didn't." },
+      { n: "He said it at once. Calmly. The voice from the far end of a dinner table when somebody had brought him a number that didn't add up." },
+      { s: 'jaesang-runners', f: 'neutral', t: "Your heart rate's never been forty in your life. You were born at a hundred and sixty and you've been trying to get it down ever since. I've looked at every one of your runs for six years, Jaehyun. I'd know your heart if it walked into this hall in somebody else's coat." },
+      { n: "Then his calm went, for one second. Solar saw it go. Not his face; his hand. The hand holding the phone, which had held a running shoe all the way up a well on the night of the twenty-third and not let go of it through a fight; it moved, very slightly, the thumb along the edge of the case, as if he'd been about to press something and stopped." },
+      { s: 'jaesang-runners', f: 'neutral', t: "...I watched it for an hour on Tuesday night. Before I worked it out. I watched a hundred and thirteen steps go up and a flat line along the bottom, and for an hour I thought, he's all right. He's calm. He went up all those steps and he was calm the whole way." },
+      { s: 'jaesang-runners', f: 'sad', t: "It was very kind of it. To let me have the hour." },
+      { n: "Nobody said anything. Down the hall, Taejoon on the top step didn't turn round, but his head moved, a quarter inch, toward the window seat." },
+      { choose: [
+        { t: "(Hold out the watch to Dad.)", notes: 3, flag: 'eqx-jaehyun-watch-dad', then: [
+          { n: "She looked at Jaehyun first. He looked at the watch, and then at her, and gave the smallest nod she'd ever seen him give, the one he gave a coach across a field when he'd already decided and only wanted it witnessed." },
+          { n: "She held it out. Her father looked at it a long time before he took it. He'd chosen it. He'd had the back engraved. He turned it over in his palm and read his own word on the back, *Pace*, and his mouth did something it didn't give permission for." },
+          { s: 'jaehyun', f: 'neutral', t: "You hold it. Not me. If it runs again, you'll know. Because I'll be in the room with you. I'll be right here, at the window, wherever you are. You'll look up and I'll be there and you'll know it isn't me." },
+          { s: 'jaehyun', f: 'neutral', t: "That's a procedure. It's the only one I've got left that works." },
+          { s: 'jaesang-runners', f: 'neutral', t: "...Understood." },
+          { n: "He put the watch in the breast pocket of the borrowed sweater, over his heart, and buttoned the pocket, and kept his hand flat over it, the way his son kept his hand over things; and Solar saw her brother see it, and look away down the hall, fast." }
+        ] },
+        { t: "Take it off his account, Jae. Now. Unlink it.", notes: 2, flag: 'eqx-jaehyun-watch-unlinked', then: [
+          { n: "Jaehyun held out his hand for his father's phone. Jaesang looked at the hand. He'd never once in six years let anybody touch that app. He gave it to him." },
+          { n: "It took a minute. Settings, the device, *remove*, *are you sure*. Jaehyun stood in the hall with his thumb over the last button and his jaw set, and pressed it, and the watch's name went out of the list, and the green on its face, wherever it was, blinked once and went gray." },
+          { s: 'jaesang-runners', f: 'neutral', t: "...So I can't see your runs." },
+          { s: 'jaehyun', f: 'neutral', t: "No, Dad. You'll have to ask me." },
+          { n: "Her father looked at his son for a long time. Then he nodded, slowly, as if he'd been handed a contract in a language he'd always meant to learn." },
+          { s: 'jaesang-runners', f: 'neutral', t: "...How was your run today." },
+          { s: 'jaehyun', f: 'neutral', t: "Wet. I sat in a puddle." }
+        ] },
+        { t: "(Say nothing. It's theirs.)", notes: 3, then: [
+          { n: "She didn't say anything. She stood a half step off her brother's shoulder in the hall, the way she'd stood off her father's at a hundred dinners, and let the two of them look at each other over a phone with a flat green line on it, and decide." },
+          { n: "In the end Jaehyun sat down on the end of the window seat. Not close. Her father moved his feet, a few centimeters, to make room, which on him was a speech. They sat there together looking at the road down the hill, the gate, the lamp, the bend toward the river, and neither of them looked at the phone again, and neither of them put it away." }
+        ] }
+      ] },
+      { n: "At seven fifty Jaehyun walked her to her own door, which was thirty steps down the hall and one flight down. He did it anyway. He knocked on her door frame three times. Her name. His. The left hand, raised, solemnly, at a distance of thirty centimeters, in the hall, where the whole second floor could see him do it." },
+      { s: 'jaehyun', f: 'neutral', t: "...Call if you need anything. You won't. But the offer stands." },
+      { s: 'jaehyun', f: 'neutral', t: "And tomorrow, send me a time. A strange one. A stupid one. Something nothing on earth would think I'd pick." },
+      { ifFlag: 'eqx-jaehyun-time-solar', then: [
+        { s: 'jaehyun', f: 'neutral', t: "You've been sending them since July. I've been running at them. I thought I was getting away from it. It turns out it doesn't need my time. It's got four fifty. It's always had four fifty." },
+        { s: 'jaehyun', f: 'neutral', t: "Send one anyway. I like getting them. It's the first thing on my phone in the morning that isn't seven fifteen." }
+      ], else: [
+        { s: 'jaehyun', f: 'neutral', t: "I know. I said I didn't want one in July. I've changed my mind. I'm allowed. I learned that on a staircase." }
+      ] },
+      { n: "He went back up the stairs. She heard him on them, and then on the third floor, the window seat creaking; and then nothing for a long time, and then, very low, through the ceiling, two men's voices, one of them saying something and the other one saying *no, Dad, the bottom one doesn't move*." },
+      { n: "She lay awake till the hour came and went. It came. It went. In the morning she texted him *6:03*, which was a stupid time, which nothing on earth would think he'd pick; and at four fifty that afternoon, Hanni told her at dinner, somebody's watch upstairs had lit up green for exactly one minute, in a buttoned pocket or a drawer or the dark, and then gone out again, as if it had climbed the first step, and looked up, and found nobody at the top." }
+    ] },
+    { after: '12/2', title: '8: one more', place: 'Naganaki Shrine · The Steps', time: 'After School', music: 'tender', scene: [
+      { bg: 'naganaki-shrine-winter' },
+      { n: "The first hard frost came on the first of December and didn't leave. It sat in the cupped middles of the steps all day where the sun didn't reach, a white rime like salt on the rim of a glass, so that the staircase looked as if somebody had gone up it in the night with a bag of flour and stopped every few treads to sprinkle; and she hated that she thought that; and she thought it every time." },
+      { n: "He wasn't running. He was standing at the bottom with his hands in the pockets of his running jacket and a scarf she didn't recognize, gray, hand-knitted, badly, looking up. When she came along the road he didn't turn round." },
+      { s: 'jaehyun', f: 'neutral', t: "A hundred and twelve. Every day since the twenty-second. Up and down. I've had Minji count from the top and you count from the bottom and Hanni count from the middle. A hundred and twelve." },
+      { s: 'jaehyun', f: 'neutral', t: "It's gone. The step. It went the night they came up. I came here the next morning at five, in the dark, with a torch, and counted, and it was a hundred and twelve, and I sat down on the bottom step and laughed so hard an old lady asked if I needed a doctor." },
+      { s: 'jaehyun', f: 'serious', t: "And then Fuuka came and found me. It's not gone. It moved. It's down there now. All of it. The whole staircase. Every time she listens there's one more." },
+      { choose: [
+        { t: "Where'd you get the scarf, Jae?", notes: 3, then: [
+          { n: "He looked down at it as if he'd only just noticed it was on him. His face did the thing at the mouth." },
+          { s: 'jaehyun', f: 'neutral', t: "...Mom. She's knitting. In the lounge. She can't sit back in a chair so she sits on the front of the couch and knits. She doesn't know how. She never knew how. She's doing it anyway. The doctor said keep her hands busy." },
+          { s: 'jaehyun', f: 'neutral', t: "It's got eleven holes in it. I counted. I'm wearing it every day until it falls off me." }
+        ] },
+        { t: "Tonight?", notes: 3, then: [
+          { s: 'jaehyun', f: 'neutral', t: "Tonight. Mitsuru said yes at lunch. She said it the way you'd sign for a parcel you didn't order." }
+        ] },
+        { t: "(Stand next to him and look up the steps too.)", notes: 2, then: [
+          { n: "She stood next to him and looked up. A hundred and twelve, frost in the cups of them, the torii small and red at the top against a white sky. She found she'd counted them with her eyes before she meant to. A hundred and twelve. She didn't trust it either." }
+        ] }
+      ] },
+      { n: "He told her the rest on the walk back, at the uneven pace, a little fast and then a little slow. Mitsuru wouldn't let him down without somebody who could fight. Not Solar alone; Solar couldn't watch a staircase and a brother at the same time, Mitsuru said, and she'd been right, and Jaehyun had hated that she was right. So Hanni was coming." },
+      { s: 'jaehyun', f: 'neutral', t: "She asked to. In the kitchen. She came and stood in front of me with her hands behind her back like she was about to tell me my grades, and said, *I added the left hand. In April. I'd like to be there for the rest of the procedure.*" },
+      { s: 'jaehyun', f: 'neutral', t: "Nobody's ever asked to be there for the rest of one of my procedures. People usually leave at about step two." },
+      { ifFlag: 'dead.aigis', then: [
+        { n: "Hanni had been down there on the twenty-second. At the Tree. She'd stood in front of Hyein on the bank with her arms out, and something had come up out of the ground behind her, vast and gentle, with birds in its hair; and then the water had closed over Aigis, and Hanni had held Hyein on the bank by both arms while the metal gave and gave. She didn't talk about it. She'd started knocking on every door in the dorm before she opened it, even the bathroom, even empty rooms. Everyone had noticed. Nobody said." }
+      ], else: [
+        { n: "Hanni had been down there on the twenty-second. At the Tree. She'd stood in front of Hyein on the bank with her arms out, and something had come up out of the ground behind her, vast and gentle, with birds in its hair. She didn't talk about it. She'd started knocking on every door in the dorm before she opened it, even the bathroom, even empty rooms. Everyone had noticed. Nobody said." }
+      ] },
+      { n: "At the dorm gate he stopped. He took something out of his jacket and held it between them. The cream notebook, soft-covered, with a pencil in the spine." },
+      { ifFlag: 'eqx-jaehyun-notebook', then: [
+        { n: "He opened it to the last page that had writing on it. Under their mother's crooked last line there were his square capitals now, two months of them. *OUT AT 4. COLD. 113. HOME. ATE.* *OUT AT 3:52. 112. HOME.* *DIDN'T RUN. DAD'S ROOM. HOME.* *OUT AT 6:03. WET. HOME. ATE (TRUE).*" },
+        { s: 'jaehyun', f: 'neutral', t: "Every day. Like you said. So it's written down somewhere that I did." },
+        { s: 'jaehyun', f: 'sad', t: "She hasn't seen it. She's been in the lounge since Wednesday. Knitting. Six feet from it. She doesn't know it's hers. She looks at me in the mornings when I go out like she's trying to remember if there's something she's supposed to say." }
+      ], else: [
+        { n: "He opened it to the last page with writing on it. Their mother's crooked line. *Out early. Hungover, I could tell. Back by eight, I hope.* And then the blank pages." },
+        { s: 'jaehyun', f: 'sad', t: "She hasn't seen it. She's been in the lounge since Wednesday. Knitting. Six feet from it. She doesn't know it's hers. She looks at me in the mornings when I go out like she's trying to remember if there's something she's supposed to say." }
+      ] },
+      { s: 'jaehyun', f: 'neutral', t: "I'm taking it down with me. Don't say anything. I don't know why. I'm not a person who takes things for luck. I've never once had a lucky anything." },
+
+      { place: 'Gekkoukan High · Courtyard', time: 'Late Night', bg: 'eqx-courtyard-well-night', music: 'mystery', soft: true },
+      { n: "Hanni was at the lip of the well at a quarter to midnight in a coat buttoned to the chin and gloves, which she took off when she saw them, and put in her pocket, and didn't explain. She looked at Jaehyun, top to bottom, the way he looked at Solar in doorways." },
+      { s: 'hanni', f: 'neutral', t: "Three knocks. Your name, hers. Gate. Left hand. You remember mine?" },
+      { s: 'jaehyun', f: 'neutral', t: "The left hand. Because only I'd know you'd check which hand." },
+      { s: 'hanni', f: 'serious', t: "Good. Here's the next step. Down there, nobody turns round. Not you. Not her. Me. I walk at the back, and I walk backward, and I'll tell you what I see. If I say *don't look*, you don't look. That's the step. Say it back." },
+      { s: 'jaehyun', f: 'neutral', t: "Nobody turns round but you. If you say don't look, I don't look." },
+      { s: 'hanni', f: 'happy', t: "Clean call." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { s: 'jaehyun', f: 'neutral', t: "I'll walk at the back." },
+        { s: 'hanni', f: 'serious', t: "No. I'm at the back. You're not paying anything off tonight, Jaehyun. Not on my rope." },
+        { n: "He looked at her for a long moment. Then he nodded, the small nod he gave a coach across a field, and Solar saw something come off his shoulders that had been sitting there since a funeral, not all of it; a corner of it." }
+      ] },
+      { n: "Jaehyun stared at her. Hanni didn't smile. Then she did, very slightly, at one corner, and pulled her coat collar up, and at midnight the courtyard went red, and the well opened its stone mouth, and they went down the rope." },
+
+      { place: 'The Well · The Steps', time: 'The Red Hour', bg: 'eq-well-6', music: 'eerie' },
+      { dark: true },
+      // BG: eqx-well-steps — a long flight of worn old stone shrine steps going straight down into darkness under a red light, frost in the cupped treads, faded chalk numbers on every step, no rail, no walls, nothing at the bottom but more steps.
+      { n: "It was under the Road Home. Past the last hill, past the place where the stone steps with the shoes on them went down into the dark, Fuuka took them off the road onto a path nobody had walked, and the path became a staircase, and the staircase was his." },
+      { n: "Old stone. Worn into shallow cups in the middle by a few hundred years of feet. Frost in the cups. No rail, no walls; on either side, nothing, a red dark going away in every direction. And on every tread, in chalk, faded nearly to nothing, a number. In his handwriting. The square scoreboard capitals from April." },
+      { n: "*1.* *2.* *3.* Going down." },
+      { s: 'fuuka', f: 'sad', t: "...I can't find the bottom. Every time I count there's one more. It's not a trick of mine. I've checked. Jaehyun-kun, it's adding them while I listen." },
+      { s: 'jaehyun', f: 'neutral', t: "That's fine. We'll count it ourselves. Out loud. Like the house." },
+      { n: "So they went down, the three of them, Jaehyun on the outside where a rail would have been, Solar beside him, Hanni behind them both, walking backward, one hand trailing out to her side in the red as if she were feeling for a wall that wasn't there. And they counted." },
+      { choose: [
+        { t: "(Count with him. Exactly. Every number right.)", notes: 2, then: [
+          { n: "She counted with him. Every number right, in step, their two voices going down the stairs together in the red, *thirty, thirty-one*, and his voice steadying on hers the way a runner steadies on someone's shoulder. It was the most frightening thing she'd ever done perfectly." }
+        ] },
+        { t: "(Count one ahead of him. Every time. So you never come out the same.)", notes: 3, flag: 'eqx-jaehyun-one-ahead', then: [
+          { n: "She counted one ahead. Every step. He said *thirty* and she said *thirty-one*; he said *thirty-one* and she said *thirty-two*, and at that one his voice went, she heard it go, a crack and then a breath that was nearly a laugh; and he didn't correct her; and they went on down like that, never once coming out the same, his number and her wrong one, side by side, the way they'd come down the stairs at the house for ten years." }
+        ] }
+      ] },
+      { n: "*Fifty-seven.*" },
+      { n: "*Fifty-eight.*" },
+      { n: "*A hundred and twelve.*" },
+      { n: "On the hundred and twelfth step the chalk stopped. The next step down had no number on it. It was warm. She felt it through the sole of her shoe, the way you feel the place where somebody's just got up off a chair. And there was a fine pale dust in its cupped middle, lying very evenly." },
+      { n: "And on the step below that, sitting with her back to them, a woman." },
+      { n: "A cream cardigan. Buttoned. Hair in a tortoiseshell clip, coming loose at one side. Sitting the way you'd sit on a step at the bottom of a staircase to wait for someone, with her knees together and her feet tucked to one side, and a notebook open on her knee, small, soft-covered, cream, with a pencil, writing." },
+      { n: "Down the back of the cardigan, from the collar to the hem, there was a seam. Not a seam in the knit. A seam in what was under it. It was open a finger's width, all the way down, and inside it, in the gap, something moved, slowly, the way something moves in a sleeping bag." },
+      { s: 'hanni', f: 'serious', t: "...Don't look at her back." },
+      { n: "Jaehyun looked at the back of her head. Only the head. The clip. The loose piece of hair. Solar watched him decide to look only there, and hold it." },
+      { n: "The woman wrote something. The pencil scratched. Then she read it out, in Solji's voice, exactly, the little lift at the end of it, not turning round." },
+      { n: "*Out at midnight. Cold. No hat. Came down instead of up. Good.*" },
+      { n: "*Oh, honey. Look at you. You came down. You never come down, you always go up, all those years, always up and up and away from me with that terrible watch on. And now you've come down to me. All this way.*" },
+      { n: "*Sit with me. Just for a minute. Nobody's timing you. I've never once timed you, have I. I only wanted to know you'd come home. And you have. You're home. Sit down, sweetheart. I'll write it down. I'll write it down every day, forever. Up there she won't. Up there she doesn't even remember to ask.*" },
+      { n: "Jaehyun had stopped breathing. Solar felt it in the air beside her, the way you feel a door close somewhere in a house. His hand had gone to the pocket of his jacket, where the real notebook was. It stayed there, flat over it." },
+      // CG: eqx-one-more — an endless flight of old stone steps going down into blood-red darkness, chalk numbers on the treads; a young man in a running jacket and a badly knitted gray scarf standing on the last numbered step with his hand flat over his chest pocket, looking at the back of a woman's head below him; the woman seated on a lower step in a cream cardigan, writing in a small notebook, a dark seam open down her back.
+      { choose: [
+        { t: "Sit with her, Jae. Just a minute. You can. It's all right.", notes: 1, tally: { cakes: 1 }, flag: 'eqx-jaehyun-floor-sat', then: [
+          { n: "She heard herself say it in the voice she used in doorways, warm, exactly right, and felt the small warm thing go out from under her ribs as she said it, and a fullness come after, terrible and satisfied, like a stomach after a meal." },
+          { n: "He sat. On the warm step. Beside the cream cardigan. Not touching it. Hanni said his name, sharp, twice, and he didn't hear her. The woman didn't turn round. She put out one hand, gloved, white, and laid it on his hair, the way you'd lay a hand on a child's hair at a kitchen table; and his eyes closed." },
+          { n: "*There*, she said. *There, there.*" },
+          { s: 'hanni', f: 'serious', t: "*Âu Cơ.*" },
+          { n: "The light came up behind Hanni like a mountain coming up out of mist, and out of its open hands a cord of gold ran down the steps and went round Jaehyun's chest, and Hanni pulled. She pulled with her whole body, with her heels on the stone and her teeth set, and he came up off the warm step backward like someone pulled out of water, and the glove came off his hair and stayed in the air where his head had been, and the woman didn't turn round." },
+          { n: "She only wrote something. The pencil scratched. *Stayed a minute*, she said, in Solji's voice, fondly. *Good boy.*" },
+          { n: "They went up. Hanni walking backward, the cord still round him. Jaehyun between them with his legs working and his face blank, and Solar counting for him, out loud, all the way, because he'd stopped. He'd stopped counting. On the stairs, on his stairs, he'd stopped at thirty and his mouth went on moving and no numbers came out, as if they'd fallen off a table." }
+        ] },
+        { t: "(Take his free hand. Put it on the step above, the hundred and twelfth. Up.)", notes: 3, then: [
+          { n: "She took his free hand, the one that wasn't over the notebook, and turned it, and put it flat on the step above them, the last one with a number on it. Cold. Frost in the cup of it. Chalk under his palm, his own square *112*. Cold and wrong and his." },
+          { n: "She felt it go into him. The cold. The number. He looked down at his own hand on his own handwriting for a long moment." }
+        ] },
+        { t: "A hundred and fourteen.", notes: 3, then: [
+          { n: "She said it out loud. Wrong. On purpose. The way she'd said thirty-two on the stairs at the house for ten years so he'd have to say thirty-one, so he'd sit with her, so they'd count it together." },
+          { n: "The woman on the step stopped writing." },
+          { n: "And Jaehyun laughed. It came out of him cracked and helpless, into the red, the real laugh from the dorm step, and he put his hand over his face." },
+          { s: 'jaehyun', f: 'happy', t: "...A hundred and fourteen. You little— *a hundred and fourteen*." }
+        ] },
+        { ifFlag: 'eqx-jaehyun-thread-kept', t: "(Take the cream thread out of your coat. Tie it round his wrist.)", notes: 3, then: [
+          { n: "She'd carried it since October. In the inside pocket of her coat, against her chest, where she'd know if anything went near it. She took it out now. Long, soft, cream. She took his wrist, the bare one, where a watch had been, and tied the thread round it, twice, in a knot she pulled tight with her teeth, the way you tie something you can't afford to lose." },
+          { n: "The woman on the step lifted her head. Not round. Just lifted it, the way you lift your head when you hear your own name in another room." },
+          { n: "*That's mine*, she said, in Solji's voice, and for the first time it wasn't fond. *That's mine. Give it back.*" },
+          { s: 'solar', f: 'neutral', t: "No. It's his. You left it on his step. You don't get to ask for it." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-jaehyun-floor-sat', then: [], else: [
+        { n: "Jaehyun took the notebook out of his pocket. The real one. He opened it, there, on the hundred and twelfth step, in the red, with his back to nothing and the woman below him with hers to him, and took the pencil out of the spine." },
+        { s: 'jaehyun', f: 'neutral', t: "...You're writing the wrong thing." },
+        { n: "He said it to the back of her head. Very politely. The voice he used on officials." },
+        { s: 'jaehyun', f: 'neutral', t: "She never wrote *good* when I stayed. I've read it. Every page. Six years. She wrote *good* once. When I didn't run. When I stayed in bed. One time. Because I was sick and I'd finally listened to somebody." },
+        { s: 'jaehyun', f: 'neutral', t: "Every other page, she wrote whether I came home. That's all. *Back at seven. Ate.* She didn't want me to sit down with her. She wanted me to come back from wherever I'd been." },
+        { s: 'jaehyun', f: 'serious', t: "So here's whether I came home." },
+        { n: "He wrote. Standing on the step, in the red, with the pencil, in square capitals. She saw it over his arm. *OUT AT 12. COLD. 112. GOING UP.*" },
+        { n: "And then he turned round. Not to the woman. Away from her. He turned his back on the cream cardigan and the seam and the warm step, and faced up the staircase into the red, a hundred and twelve treads of his own handwriting going up into the dark, and he went." },
+        { n: "Walking. Not running. At the uneven pace he'd taught himself in July, a little fast and then a little slow. Counting out loud. Wrong. On purpose." },
+        { s: 'jaehyun', f: 'neutral', t: "...One. Two. Four." },
+        { n: "Solar went up beside him. *Three*, she said, so he'd have to say it again. He didn't. He said *five*. She laughed. She couldn't help it; it came up out of her into the red like something let out of a box, and he heard it, and went on miscounting, out loud, all the way, *nine, eleven, twelve*, the first time in his life he'd ever got a number wrong on purpose and let it stand." },
+        { n: "Behind them Hanni walked backward, one hand out at her side, her eyes on the step they'd left." },
+        { s: 'hanni', f: 'serious', t: "...She's not following. She's sitting there. She's writing." },
+        { n: "A long time. Thirty steps, forty. Jaehyun's voice going up through the numbers in the wrong order, and Solar's beside it, and Hanni's breathing." },
+        { s: 'hanni', f: 'neutral', t: "She's stopped writing. She's— the cardigan's lying down. On the step. It's folding. There's nothing in it." },
+        { s: 'hanni', f: 'sad', t: "...The notebook's still open on it. Don't look. It's blank. It's all blank. Every page." },
+        { flag: 'eqx-jaehyun-floor-up' },
+        { s: 'fuuka', f: 'surprised', t: "Jaehyun-kun. I've got the bottom. There's a bottom. It's a hundred and twelve. It's just a staircase. It's just a staircase now." }
+      ] },
+      { dark: false },
+
+      { place: 'Iwatodai Dorm · Kitchen', time: 'Early Morning', bg: 'iwatodaidorm-kitchen', music: 'tender', soft: true },
+      { n: "He didn't sleep. Neither did she. At ten to six she came down for water and he was in the kitchen in his running jacket and the badly knitted scarf, lacing his shoes at the table with his foot up on a chair, the way their mother had told him for ten years not to." },
+      { ifFlag: 'eqx-jaehyun-floor-sat', then: [
+        { n: "He was moving his lips while he laced them. Counting the eyelets. She watched him get to five and start again. Get to five, and start again. He saw her watching and stopped, and finished the knot without counting, and didn't look at her." },
+        { s: 'jaehyun', f: 'neutral', t: "...It'll come back. Hanni says it'll come back. She says everybody loses something small down there and gets it back in a week." },
+        { s: 'jaehyun', f: 'sad', t: "I counted the steps for ten years, Solar. I don't know how to run them if I can't count them." }
+      ] },
+      { n: "Their mother was at the table." },
+      { n: "On the front of the chair, so nothing touched her back. In a robe of Mitsuru's, dark red, too long in the sleeves. The overhead light on, though it was nearly morning; she kept every light on now. The knitting in her lap, the next scarf, gray again, a needle in each hand, not knitting; just holding them. She looked up when Jaehyun stood." },
+      { n: "She looked at him. At the jacket. At the shoes. At the scarf she'd made, with its eleven holes. Her face did something Solar had seen it do on the fourth of December, at the kitchen table, at midnight, when she'd said she kept dreaming she was telling somebody a story and couldn't remember the end: a reaching, a small frown, as if for a word in another language." },
+      { s: 'solji-runners', f: 'neutral', t: "...Out early?" },
+      { n: "Jaehyun stopped with his hand on the back of the chair." },
+      { s: 'solji-runners', f: 'neutral', t: "Back by eight, I hope." },
+      { n: "She said it lightly. Absently. The way you'd say something you'd said a thousand times without ever once hearing yourself. Then she frowned at her own needles, as if they'd said it, and went back to looking at the yarn." },
+      { n: "Jaehyun didn't move. Solar watched it go into him, from the back, the way she'd watched it go into him on a staircase in August when a man at the bottom asked if it was hard: all of it, all at once, the six years of pencil, the crooked last line, the blank pages, the thing on the step reading out the wrong word in the right voice. And this. A woman who couldn't remember a single bedtime story, who couldn't be touched on the back, saying the one line from her notebook she'd never once said to his face." },
+      { choose: [
+        { ifFlag: 'eqx-jaehyun-notebook', t: "(Take the notebook out of his jacket. Put it on the table by her tea.)", notes: 3, flag: 'eqx-jaehyun-notebook-mom', then: [
+          { n: "She took it out of his jacket pocket, where it had been all night, and put it down on the table by their mother's cup, open at the last page, his capitals, *OUT AT 12. COLD. 112. GOING UP.*" },
+          { n: "Solji looked at it. At the pencil. At the handwriting above his, crooked and slanted and small, which was hers, and which she didn't know. She turned a page back. And another. And another. Years. *Out at six. Cold. No hat.* Her lips moved on them the way you read a letter from somebody who's died." },
+          { s: 'solji-runners', f: 'sad', t: "...Did I write these?" },
+          { s: 'jaehyun', f: 'neutral', t: "Yes, Mom." },
+          { s: 'solji-runners', f: 'neutral', t: "I don't remember. I don't— I don't remember any of them." },
+          { n: "She looked at the last page a long time. Then she put her knitting down, and took the pencil out of the spine, and held it over the blank line under his, and didn't write anything. Just held it there. Waiting." },
+          { s: 'solji-runners', f: 'neutral', t: "...You'll have to tell me when you're back. So I can put it down." }
+        ] },
+        { t: "He'll be back by eight, Mom.", notes: 2, then: [
+          { n: "Their mother looked at her. Then at Jaehyun, and smiled, the real one, the small one, not the one from the bottom of the steps; it didn't go too wide; it sat right on her face." },
+          { s: 'solji-runners', f: 'happy', t: "Good. Eat first. Both of you." }
+        ] },
+        { t: "(Say nothing. It's his.)", notes: 3, then: [
+          { n: "She didn't say anything. She stood in the doorway in the cold with her empty glass and let it be his." },
+          { s: 'jaehyun', f: 'neutral', t: "...Yes, Mom. By eight." },
+          { n: "He said it to the back of the chair. Very carefully. Like setting down a cup with a crack in it." }
+        ] }
+      ] },
+      { n: "He went out. She heard the front door, and Koromaru lifting his head from the mat and putting it down again, and his feet on the frost in the yard, uneven, a little fast and then a little slow, going away down the hill toward the shrine." },
+      { n: "At seven fifty-eight she was still in the kitchen, and so was their mother, who had not knitted a single stitch. The front door went. Feet in the hall. Jaehyun in the doorway with frost in his hair and his face red from the cold and his breath coming hard, standing there, saying nothing, letting himself be looked at." },
+      { n: "Their mother looked at him for a long time, top to bottom, the way he looked at Solar in doorways, for layers. Then she picked up the pencil." },
+      { ifFlag: 'eqx-jaehyun-notebook-mom', then: [
+        { n: "She wrote in the notebook. Slowly. In the crooked slanted hand she didn't know was hers. *Back 7:58.* And then stopped, with the pencil still on the page, and looked at it, at her own hand holding it, as if it belonged to somebody she'd met once and liked very much and couldn't place." }
+      ], else: [
+        { n: "There was nothing to write in. She looked round the table for something, frowning. Then she took the paper napkin from under her cup and wrote on that, in a crooked slanted hand, *Back 7:58*, and folded it, and held it out to him across the table without a word; and he took it, and looked at it, and put it in the pocket over his heart, and buttoned the pocket, and kept his hand flat there." }
+      ] }
     ] }
   ]
 });

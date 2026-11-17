@@ -16,11 +16,11 @@
   // Kiss flags (and Haechan's stayed night) set in the romance links' ranks 2-3 and in Act II (links/*.js, story-act2.js).
   const KISS = {
     haechan: ['eqx-hc-roof-kiss', 'eqx-hc-stayed-night'],
-    jungwon: ['eqx-jw-council-kiss', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names'],
+    jungwon: ['eqx-jw-council-kiss', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names', 'eqx-jw-last-train', 'eqx-jw-chosen'],
     jihoon: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss', 'eqx-jihoon-dark-kiss', 'eqx-jihoon-room'],
     akihiko: ['eqx-aki-lamp-kiss', 'eqx-aki-gate-kiss', 'eqx-aki-shallows-kiss', 'eqx-aki-room-kiss', 'eqx-aki-woke'],
     minji: ['eqx-minji-kiss'],
-    shinjiro: ['eqx-shinji-sink-kiss', 'eqx-shinji-awning-kiss', 'eqx-shinji-stayed-night']
+    shinjiro: ['eqx-shinji-sink-kiss', 'eqx-shinji-awning-kiss', 'eqx-shinji-stayed-night', 'eqx-shinji-seed-kiss']
   };
   // Lines that play when Solar is on `id`'s romance route, or has kissed him / her this year.
   const dating = (id, then, els) => ({ ifRomance: id, then, else: KISS[id].length ? [{ ifCount: { of: KISS[id], min: 1 }, then, else: els || [] }] : (els || []) });

@@ -1,7 +1,22 @@
 /* Persona 3: Equinox · Rio & Saori · IX The Hermit (a duo link). Link data (femc-equinox-game.html). Format: link fields
    in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
    Written: ranks 1–6 (from 4/13; their home is the tennis courts on Tuesday, Thursday and Saturday after school, so 4/13
-   itself). Ranks 7–10 still to write. summerHome (Nov 16): Seaside Park, same days, for Summer Break (7/21–8/31).
+   itself). Written: ranks 1–8; ranks 9–10 still to write.
+   Rank 7 (after 10/26, '7: the cold beach': the courts → Seaside Park beach on a Saturday → the bus stop): reads dead.shinjiro
+   (Saori's three-line cutting; he once put a library chair back exactly) else no cuttings. Saori's gate dream: the password
+   worked, then on Monday the voice got it right ("I'm sitting between you… come and sit between us", in Solar's voice);
+   she woke on a chair at her own window latch. Rio sleeps on Saori's floor holding her hand shut (bruises). Sapporo's second
+   letter: answer in writing by 12/24; reads eqx-rs-snow, ifChoice asks.rio-saori (the list's "cold beach" line). The three
+   names in the sand smoothed flat above the tide line, one pair of Solar-sized footprints standing in the space after her
+   name. Sets eqx-rs-secret (Solar tells Saori something new, never written down), eqx-rs-names (names rewritten with no
+   gaps). Rank 8 (after 11/25, '8: the date stamp': the rained-off courts → the library → the post box at the gate): the
+   library's date stamp is back on 21 DEC every morning; reads dead.aigis ("returned abroad for family reasons"; no cutting),
+   eqx-persimmon (Edogawa's brown book kept on hold at the desk), eqx-rs-names, ifChoice asks.rio-saori (the list: book stall
+   41 sold, Rio bought 11). The culture festival (10/30): Saori counted six tape marks for five girls. Saori hasn't dreamed of the gate since the
+   beach. Rio's sealed, stamped reply to Sapporo (Saori won't read it); Rio asks Solar to decide. Choice: "It's yours…"
+   (flag eqx-rs-theirs, tally choose +1) / "Stay. Please. Stay here with her." (flag eqx-asked-rio-saori, tally asked +1,
+   cakes +1; should join story-act4.js ASKED) / "Go. Sapporo." (flag eqx-rs-told-go). Saori's present: she asks nothing.
+   Rio holds it in the slot at 17:12 and takes it out ("Tomorrow"); the list gains "(posted?)", unticked. summerHome (Nov 16): Seaside Park, same days, for Summer Break (7/21–8/31).
    Rank 4 (after 7/8, '4: the back of the strip': the courts): reads ifChoice asks.rio-saori (the list's Tanabata line).
    Their Tanabata strips (Saori took them down 7/8 at seven, after Mitsuru) with *stay* on the back; the rank-1 library card
    now has *stay* pressed, inkless, into the space after Solar's name. A three-person tennis game. Sets eqx-rs-card-surnames
@@ -704,6 +719,210 @@
       { s: 'saori', f: 'happy', t: "It isn't. It's never once been on your way." },
       { n: "They went off together down the hill, the two of them, not touching, and then, at the first lamp, touching, Saori's hand in the crook of Rio's arm, the way girls walk at the start of a cold season. Solar watched them to the bottom. They didn't look back, this time. They were talking. Saori's hand moving. Rio laughing at something." },
       { n: "She stood at the gate alone, in the blue, and found she was listening, as she hadn't let herself all month, for her own voice somewhere in the town, very kind, calling someone in to eat. She didn't hear it. She stood and listened anyway until the lamps were all on, and then went up the hill, and didn't once look toward the river, and at the top, without meaning to, she put her hand flat over her own mouth, the way you'd hold a door shut against wind." }
+    ] },
+    { after: '10/26', title: '7: the cold beach', place: 'Gekkoukan High · Tennis Courts', time: 'After School', music: 'tender', scene: [
+      { bg: 'gekkoukan-tennis-courts' },
+      { n: "The wind had turned. It came off the bay now instead of off the hills, cold and wet and smelling of salt, and it took the leaves off the cherry trees by the fence in handfuls and spread them over all four courts, brown on green, and the second-years were sweeping them with push brooms between drills and the wind was putting them back. Rio was on the bench in a club jacket two sizes too big for her, the captain's one, which she'd handed on in September and then borrowed back from Mori every afternoon since, calling out *feet* in a voice gone hoarse." },
+      { n: "Saori was beside her with the gray notebook open and a scarf wound round her neck three times, so only her eyes showed over it." },
+      { s: 'rio', f: 'neutral', t: "Senpai. Sit. In the middle. It's warmer in the middle. That's science." },
+      { s: 'saori', f: 'neutral', t: "It isn't. Sorry. It's just that we're on either side of it." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "There was a cutting in the notebook. New. Three lines, the way they always were. *A 19-year-old man, a former pupil of a Port Island high school, died early on the 24th following an accident near the river. There were no suspicious circumstances.*" },
+        { s: 'saori', f: 'sad', t: "He was in the library once. Last year. When it rained, in June. He sat at the back table for an hour and didn't read anything, and then he put the chair back exactly where it had been. Exactly. Nobody puts the chair back." },
+        { s: 'saori', f: 'neutral', t: "I remember people who put the chair back. Sorry. That's all I've got of him. A chair." },
+        { n: "Rio didn't say anything. She put her hand flat on the notebook, over the cutting, and kept it there, and called *feet* to the court without looking at it." }
+      ], else: [
+        { s: 'saori', f: 'neutral', t: "No cuttings this week. Sorry. I mean, I'm glad. I keep apologizing for good news. I've lost track of which kind I'm sorry about." }
+      ] },
+      { n: "Saori turned the notebook to the back, past the cuttings, to the pages in the small fast slanting hand, the ones written in the dark." },
+      { s: 'saori', f: 'neutral', t: "I remembered. Asleep. What you told me on the bench. I didn't think I would, and I did. I got to the gate and the voice said come in, and I remembered you, and I didn't do what it said straight away. I asked it something first." },
+      { s: 'saori', f: 'neutral', t: "The first night it said, come and sit by me, at the head of the table. And I thought, she's never sat at the head of anything. She sits in the middle. And I woke up. Sorry. I woke up so happy." },
+      { s: 'saori', f: 'sad', t: "...On Monday it got it right." },
+      { n: "The wind went across the courts and lifted every leaf at once and put them down again a meter further on." },
+      { s: 'saori', f: 'sad', t: "It said, I'm sitting between you. In the middle. Where I always sit. Come and sit between us. In your voice. With the little pause you do before *between*." },
+      { s: 'saori', f: 'neutral', t: "I woke up with my hand on the latch. Not out. On it. The latch of my own window, in my room. It's a sash window. I was standing on the chair." },
+      { s: 'rio', f: 'serious', t: "Since Monday I've been sleeping on her floor." },
+      { n: "Rio said it to the court. Her ears had gone red and her jaw was set, the way it had been at the fence in the quarterfinal with her hand out through the wire." },
+      { s: 'rio', f: 'serious', t: "Her mom thinks it's exam study. Her mom made us rice balls. I hold her hand. All night. On the floor next to the bed, with my arm up. On Wednesday she tried to get up at three and I didn't let go, and she pulled, and I didn't let go, and then she was awake and crying and saying sorry and I still didn't let go." },
+      { s: 'saori', f: 'flustered', t: "She's got a grip like a vice. I've got bruises. Little ones, in a row. Sorry. I'm not sorry. I look at them in the morning." },
+      { choose: [
+        { t: "(Lean over and tell Saori something only you would say. Something new. Quietly.)", notes: 3, flag: 'eqx-rs-secret', then: [
+          { n: "She leaned in under the scarf and said it into Saori's ear, low, under the wind, something she'd never said to anybody in any of her lives, a small true stupid thing, and Saori's eyes went wide over the scarf, and then wet, and she nodded, twice." },
+          { s: 'saori', f: 'neutral', t: "...I won't write it down. Then nobody can read it. Not even me. I'll just have it." },
+          { s: 'rio', f: 'flustered', t: "What did she say. What did you say. I want it. I'm the one on the floor." },
+          { s: 'saori', f: 'happy', t: "No. Sorry. No." }
+        ] },
+        { t: "Rio. Thank you.", notes: 3, then: [
+          { s: 'rio', f: 'flustered', t: "Don't thank me. It's not for you. It's not a favor. It's a— I'd do it anyway. I'd do it if you'd never come back. I'd do it if nobody knew your name." },
+          { n: "She heard herself and stopped, and went redder, and looked at the court, and Saori, beside her, took the end of her own scarf and tucked it round Rio's neck too without a word, so they were both inside it." }
+        ] },
+        { t: "(Take both their hands. Hold them on your knees.)", notes: 2, then: [
+          { n: "She took Saori's hand, cold, and Rio's, hot and calloused, and held both on her own knees in the middle of the bench, and on court two Mori served into the net and swore and nobody on the bench laughed, and nobody let go." }
+        ] }
+      ] },
+      { s: 'rio', f: 'neutral', t: "Saturday. The cold beach. It's on the list. It's cold now. It's a beach. We're doing it." },
+      { s: 'saori', f: 'neutral', t: "I've checked the tides. And the wind. And the bus. Sorry. I made a timetable." },
+
+      { place: 'Port Island · Seaside Park Beach', time: 'Daytime', bg: 'port-island-seaside-park', music: 'tender', soft: true },
+      // BG: eqx-seaside-beach-winter — the little sand beach below Seaside Park on a gray late-autumn day: an empty lifeguard chair, a long tide line of weed and shells, low pewter water, a sea wall with steps, wind flattening the dune grass, the bridge far off in haze.
+      { n: "The beach below Seaside Park in November was the color of a pencil drawing. Gray sand, gray water, gray sky with the light coming through it in one pale patch over the bay like a thumbprint, and the wind straight off the sea, so cold it made your teeth ache. The lifeguard chair stood empty at the top of the sand with its ladder chained. A long ragged tide line ran the whole length of the beach, weed and broken shells and a single child's sandal, and past it the water came in low and flat and tired and went out again." },
+      { n: "There was nobody. A man with a metal detector at the far end, very small. A vending machine on the sea wall still selling cold drinks, humming, lit." },
+      { n: "Rio took her shoes off. She took her socks off and stuffed them in her shoes and rolled her tracksuit to the knee and walked straight down the sand into the sea, ankle-deep, and stood there, and screamed. Not words. Just a scream, at the bay, long and furious and delighted, and then turned round with her face bright red and her arms out." },
+      { s: 'rio', f: 'happy', t: "IT'S SO COLD. IT'S SO COLD. I CAN'T FEEL MY LIFE." },
+      { s: 'saori', f: 'happy', t: "Writing it down. *Rio went in. Screamed.* With the time." },
+      { n: "Saori didn't go in. She found a stick of driftwood and walked up above the tide line, where the sand was dry and pale, and wrote in it in big careful letters, the way she wrote on the board at the library, three names in a row." },
+      { n: "*RIO. SOLAR. SAORI.*" },
+      { n: "With the space after Solar's name. Of course with the space. She looked at it when she'd finished, and then at Solar, and didn't fill it, and didn't apologize." },
+      { ifChoice: { 'asks.rio-saori': 'yes' }, then: [
+        { n: "In the notebook, on the list, beside *the cold beach*, she drew a tick. No brackets anywhere on the page now. Just the smudge at the top where *(if)* had been rubbed out in June, gone soft and gray with being looked at." }
+      ] },
+      { ifChoice: { 'asks.rio-saori': 'choose' }, then: [
+        { n: "In the notebook, beside *the cold beach (go anyway)*, she wrote: *(went. cold. Rio screamed.)* and looked at it, and seemed pleased." }
+      ] },
+      { ifChoice: { 'asks.rio-saori': 'no' }, then: [
+        { n: "In the notebook, beside *the cold beach*, she drew a tick and, small, *(this year)*, and pressed the pencil down a little harder than she needed to on the bracket." }
+      ] },
+      { n: "They sat on the steps of the sea wall with their backs to the vending machine, which was warm, the only warm thing on the whole beach, and ate taiyaki from the stall at the park gate out of a paper bag, the red bean so hot it burned, and Rio's bare feet were blue and she wouldn't put her socks back on because she said they'd only get sandy." },
+      { s: 'rio', f: 'neutral', t: "They wrote again. Sapporo. The coach. A second letter. She wants an answer by Christmas. By the twenty-fourth. In writing." },
+      { s: 'rio', f: 'neutral', t: "Sapporo has a beach. Did you know that? I looked it up. It's colder than this. It's got snow on it in January. Snow on sand. I didn't even know that was a thing that could happen." },
+      { ifFlag: 'eqx-rs-snow', then: [
+        { s: 'rio', f: 'flustered', t: "And I keep hearing you. *You'd be good in snow.* In the shower. On the court. On her floor at three in the morning holding her hand. I hate it so much." }
+      ] },
+      { s: 'saori', f: 'neutral', t: "It's still on the list. *Sapporo (snow).* In pencil. At the bottom. I haven't rubbed it out." },
+      { s: 'rio', f: 'serious', t: "I know you haven't. I check. I check every day like it's a mole." },
+      { choose: [
+        { t: "What do you want, Rio? Not the list. You.", notes: 3, then: [
+          { s: 'rio', f: 'serious', t: "...I want to win something. And then snow. I wrote it on a strip on a tree." },
+          { s: 'rio', f: 'sad', t: "And I want the bench. And I want her on it. And I want this, the three of us on some stupid steps, eating fish-shaped cake with no feeling in my feet. I want all of it. I want it at the same time. That's not allowed, is it. Nobody gets that." }
+        ] },
+        { t: "(Don't ask anything. Give her your scarf for her feet.)", notes: 3, then: [
+          { n: "She unwound her scarf and crouched on the step below and wrapped Rio's blue feet in it, both of them, sand and all, and tucked the end in. Rio looked down at her feet in the scarf, and at the top of Solar's head, and didn't say anything at all, which for Rio was the loudest thing she could do." }
+        ] },
+        { t: "Christmas is a long way off.", notes: 2, then: [
+          { s: 'saori', f: 'neutral', t: "It's fifty-something days. I counted. Sorry. It isn't a long way off. Nothing's a long way off this year." }
+        ] }
+      ] },
+      { n: "The light was going by four. The pale patch in the sky had slid down to the water and gone out. They gathered the paper bag and Rio's shoes and walked back along the top of the sand toward the steps, the way they'd come, past the place where Saori had written their names." },
+      { n: "The names were gone." },
+      { n: "The tide hadn't come in. It was still where it had been, low and far and tired, a long way down the gray sand. But above the tide line, where the three names had been, the sand was smooth. Not washed. Smoothed, flat and pale and even, the way you'd smooth a sheet on a bed you'd just made, a neat oblong of it, and in the middle of the oblong, a pair of footprints." },
+      { n: "Small. Close together. Standing. Not walking in from anywhere and not walking away. Just standing there, side by side, in the exact place the space after Solar's name had been, the toes pointing up the beach toward the steps where the three of them had sat all afternoon with their backs to the warm vending machine, eating cake." },
+      { n: "Saori stopped. Rio stopped with her shoes in her hand. Nobody said anything. The man with the metal detector was gone. The wind went over the smooth place and didn't lift a single grain." },
+      // CG: eqx-cold-beach — a gray winter beach at dusk, above a far-off tide a neat smoothed oblong of pale sand where three names had been written, and in its middle one pair of small bare footprints standing still, facing up the beach toward a lit vending machine on a sea wall where three girls stand frozen.
+      { choose: [
+        { t: "(Take Saori's stick. Write the names again, deeper, right beside it.)", notes: 3, flag: 'eqx-rs-names', then: [
+          { n: "She took the driftwood out of Saori's hand and walked to the edge of the smooth place, not in it, and wrote the names again in the dry sand beside it, deep, leaning her weight on the stick, the furrows a finger deep. *RIO. SOLAR. SAORI.* And no space. She wrote them close, the letters nearly touching, so there wasn't room between any of them for anybody else to stand." },
+          { s: 'rio', f: 'serious', t: "...Good. Good. That's the right way. No gaps." },
+          { n: "Saori looked at it a long time. Then she wrote in the notebook, small, standing in the wind: *no gaps.*" }
+        ] },
+        { t: "(Take Saori's hand. Walk. Don't look at it.)", notes: 3, then: [
+          { n: "She took Saori's hand and walked, and Rio, on Saori's other side, took the other one without being asked, and they went up the sand and the steps and past the humming vending machine three abreast, holding hands, nobody looking back, the way you'd walk past a dog you weren't sure of." }
+        ] },
+        { t: "(Step into the prints. Turn round, so they face the sea.)", notes: 2, then: [
+          { n: "She stepped into the smooth place before either of them could stop her, and put her feet in the prints, and they were her size. Exactly. To the toe. She stood in them and her stomach went over, slow, like a card, and she turned round in them, deliberately, so the toes pointed at the sea instead of at the steps, and stepped out backward and left them like that." },
+          { s: 'saori', f: 'sad', t: "...They were yours. They were your size. Sorry. I saw." },
+          { s: 'solar', f: 'neutral', t: "They're facing the other way now." },
+          { s: 'rio', f: 'serious', t: "Yeah. They are. Come here. Come here right now and stand on dry sand next to me." }
+        ] }
+      ] },
+      { place: 'Port Island · Bus Stop', time: 'Evening', bg: 'port-island-seaside-park-sunset', soft: true },
+      { n: "At the bus stop by the park gate they stood under the shelter's light with sand in everything. The bus came. Both of them got on; Rio didn't pretend it was on her way any more. Through the back window, as it pulled out, Solar saw them sit down side by side, and Rio take Saori's hand in her lap and fold the fingers shut, all of them, one at a time, and hold the fist closed in both of hers, and look out of the window at the dark, keeping it shut, the whole way, until the bus went round the bend and took the light with it." }
+    ] },
+    { after: '11/25', title: '8: the date stamp', place: 'Gekkoukan High · Tennis Courts', time: 'After School', music: 'tender', scene: [
+      { bg: 'gekkoukan-tennis-courts' },
+      { n: "It was raining on the courts, a thin cold steady rain with no wind in it, the kind that fell straight down and meant to go on all night, and the courts were empty, the nets down, the brown leaves pasted flat to the green in a pattern like a map of somewhere. Nobody on the bench. On the fence by the gate, in a clear plastic sleeve held on with two clothes pegs, there was a note in Saori's careful board handwriting." },
+      { n: "*LIBRARY. SORRY.*" },
+
+      { place: 'Gekkoukan High · Library', time: 'After School', bg: 'school-library', music: 'tender', soft: true },
+      { n: "The library smelled of wet coats and radiator and old paper, and the windows were running, and the big lamps over the reading tables were on at four in the afternoon, yellow, so the room looked like the inside of a lantern somebody had brought in out of the rain. There were three first-years asleep on their exam notes and a teacher reading a newspaper by the heater. Saori was behind the issue desk. Rio was sitting on it." },
+      { s: 'saori', f: 'neutral', t: "Off the desk. Sorry. Rio. Off the desk." },
+      { s: 'rio', f: 'neutral', t: "I'm decorating it. Senpai. Hi. She won't let me sit anywhere else, she says I distract the first-years. I've never distracted anybody in my life." },
+      { n: "On the desk between them, beside the returns tray and the pot of pencils, there was the date stamp. The library's old one, the rubber kind, with little wheels you turned with your thumbnail for the day and the month. Saori picked it up when she saw Solar look at it, and turned it over, and showed her the date on the rubber." },
+      { n: "*21 DEC.*" },
+      { s: 'saori', f: 'neutral', t: "Every morning. I set it to the day when I open, and every morning when I come in it's on the twenty-first of December again. I don't know who turns it. The librarian says it isn't her. The cleaner doesn't come in here." },
+      { s: 'saori', f: 'neutral', t: "So I turn it back. Every morning. Sorry. It's very small. I know it's very small. It's the smallest thing that's happened all year. I just don't like a stamp that's decided something." },
+      { n: "She turned the wheels with her thumbnail, click, click, to today, and put it down on the desk face down, and laid her hand flat on top of it, the way she laid her hand on the notebook, the way you'd keep a lid on something." },
+      { ifFlag: 'dead.aigis', then: [
+        { s: 'rio', f: 'sad', t: "They said Aigis-san transferred. At homeroom. One sentence. *Aigis has returned abroad for family reasons.* And then the register, like nothing." },
+        { s: 'saori', f: 'sad', t: "There's no cutting. I looked. Every paper. There's nothing to cut out. I'm sorry. I don't know where to keep somebody there's no cutting for." },
+        { s: 'rio', f: 'neutral', t: "She used to stand at the courts fence at five some days and watch the ball. Just watch it. Like it owed her a number. I served better when she watched. I don't know why. I never told her." }
+      ] },
+      { ifEvent: 'eqx-persimmon', then: [
+        { n: "Under Saori's other hand, on the desk, was the brown Korean book. Mr. Edogawa's. She hadn't shelved it. She hadn't put it in the returns tray. It sat by her elbow all afternoon, closed, and she touched its spine now and then without looking, the way you'd check a sleeping child was breathing." },
+        { s: 'saori', f: 'sad', t: "I'm not shelving it. The librarian asked twice. I said it's on hold. It's on hold. For him. I know. Sorry. I know." }
+      ] },
+      { n: "Saori opened the notebook on the desk, under the lamp, to the list, because she always did, because it was how she said hello now." },
+      { ifChoice: { 'asks.rio-saori': 'yes' }, then: [
+        { n: "*Next year.* No brackets. Ticks down the side like stitches: Tanabata, the tournament, the shrine fireworks instead of the river ones, the cold beach. Beside *book stall*, a tick, and *(41 sold. Rio bought 11.)*" }
+      ] },
+      { ifChoice: { 'asks.rio-saori': 'choose' }, then: [
+        { n: "*Next year (if).* The bracket still at the top, and the margins full of *(go anyway)* and *(went anyway)* in pencil like a second list running down beside the first. Beside *book stall*: *(went anyway. 41 sold. Rio bought 11.)*" }
+      ] },
+      { ifChoice: { 'asks.rio-saori': 'no' }, then: [
+        { n: "*Next year (if).* The bracket at the top, pressed dark now from being gone over. A tick beside *book stall*, and *(this year)*, and *(41 sold. Rio bought 11.)*" }
+      ] },
+      { s: 'rio', f: 'flustered', t: "I needed those books. They were very important books. One was about knots. I've never tied a knot in my life. It was very cheap." },
+      { s: 'saori', f: 'neutral', t: "We watched the dancing. At the culture festival. The five girls in the gym. Sorry, I know you were there, you were at the front. We were at the back by the doors." },
+      { s: 'saori', f: 'neutral', t: "There was a piece of tape on the floor. A mark, for where to stand. There were six. Five girls. I counted the marks before they came on, it's a habit, and there were six, and nobody stood on the sixth one the whole time, and they danced round it like it was somebody." },
+      { s: 'rio', f: 'neutral', t: "She wrote it down. Of course she wrote it down. *Six marks, five girls.* I said maybe somebody was off sick. She said, then why do they all leave room." },
+      { n: "Solar didn't say anything. She thought of the gym, and the music, and Yunjin's left side, and a space a person wide that five girls had kept open without once looking at it, the way you'd keep a place at a table for somebody late." },
+      { s: 'rio', f: 'neutral', t: "And I stopped sleeping on her floor." },
+      { s: 'saori', f: 'neutral', t: "Because I stopped going to the gate. Nine nights. Ten tonight, if. Since the beach. I don't dream about the house at all now. I dream about sand." },
+      { ifFlag: 'eqx-rs-names', then: [
+        { s: 'saori', f: 'happy', t: "Names in sand with no gaps. Every night. I'm sorry, it's very boring. It's the most wonderful boring dream I've ever had." }
+      ], else: [
+        { s: 'saori', f: 'neutral', t: "Just sand. Gray sand and the tide going out. Nobody standing on it. I check, in the dream. I've learned to check." }
+      ] },
+      { s: 'rio', f: 'serious', t: "So now I'm on my own floor. At home. And I can't sleep. I lie there with my arm up holding nothing like an idiot." },
+      { n: "She took an envelope out of the inside pocket of the borrowed captain's jacket. White, long, sealed. Addressed in pen, in her blocky upright hand, to a university in Sapporo, the women's tennis team, the coach, by name. A stamp in the corner. A real one, the right price, straight." },
+      { s: 'rio', f: 'serious', t: "I wrote it. Last night. In pen. Not in my head, on paper. It's done. It's sealed. I licked it. It tasted horrible." },
+      { s: 'saori', f: 'neutral', t: "I haven't read it. I'm not going to read it. She offered. I said no. I've read everything Rio's ever written since April, every strip, every score sheet, every text. I'm not reading this one." },
+      { s: 'rio', f: 'serious', t: "And now I can't post it. It's been in my pocket all day. I walked past the box by the gate four times. It's like the guy with the pharmacy. I keep walking past the box." },
+      { n: "She turned the envelope over in her hands. It had gone soft at the corners already, the way things went in Rio's pockets. Then she held it out, not to Saori. To Solar. Across the issue desk, under the yellow lamp, in the smell of wet coats." },
+      { s: 'rio', f: 'serious', t: "You tell me. Not her. Not the coach. You. You're not on the list, senpai. You're the reason there's a list. I'll do whatever you say. Stay or go. I'll post it or I'll tear it up right here in the library and the first-years can watch." },
+      { s: 'rio', f: 'sad', t: "...Just say it. Please. I'm so tired of holding it." },
+      { n: "Saori didn't move. She was looking at the envelope, and then at Solar, and her face was very still and very open, and her hand was flat on the face-down date stamp, pressing, as if something underneath it might turn." },
+      { n: "And Solar, holding nothing yet, standing at a library desk in the rain, heard how easy it would be. One word, either word. Rio would do it. Rio had never once, in the two years Solar had known her, not done what she said she'd do. It would be over, the whole weight of it, lifted off an eighteen-year-old girl in a borrowed jacket and put down where Solar could carry it for her, which was the kindest thing she could do, which was exactly how kind it would sound." },
+      // CG: eqx-the-letter — a school library on a rainy afternoon under yellow lamps, a tall girl in an oversized tennis jacket holding a sealed, stamped envelope out across the issue desk, a smaller girl in a scarf behind the desk with her hand pressed flat on a face-down rubber date stamp, rain running down the windows.
+      { choose: [
+        { t: "It's yours, Rio. Both of you. I'm not going to say.", notes: 3, flag: 'eqx-rs-theirs', tally: { choose: 1 }, then: [
+          { n: "Rio's hand stayed out across the desk with the envelope in it. For a long moment she didn't understand. Then she did, and her face went red, and her eyes went wet, and her jaw set, all at once, the way it did when she lost a point she'd been sure of." },
+          { s: 'rio', f: 'sad', t: "...That's the worst thing you could have said. You know that. You did the bench thing to me. In June. You've done it to me twice now." },
+          { s: 'solar', f: 'neutral', t: "I know." },
+          { s: 'rio', f: 'serious', t: "I hate it. I'm going to think about it on my own floor for a week. Again." },
+          { n: "She drew the envelope back across the desk, slowly, and held it against her chest in both hands, and didn't put it away." }
+        ] },
+        { t: "Stay. Please. Stay here with her.", notes: 3, flag: 'eqx-asked-rio-saori', tally: { asked: 1, cakes: 1 }, then: [
+          { n: "Rio's shoulders came down. All of her came down, the way a held breath comes down, and she laughed, short and wet, and put the envelope flat on the desk, and laid her forearm across it." },
+          { s: 'rio', f: 'happy', t: "...Okay. Okay. You said it. That's it, then. That's done. Somebody said it." },
+          { n: "She looked so relieved. She looked about twelve. And Saori, behind the desk, looked at the envelope under Rio's arm, and at Solar, and something went across her face that Solar would think about for a long time afterward, on her own floor, with her arm up holding nothing." }
+        ] },
+        { t: "Go. Sapporo. The snow. Post it.", notes: 2, flag: 'eqx-rs-told-go', then: [
+          { n: "Rio flinched. Not much. Just at the eyes, the way you'd flinch at a ball coming off the frame, and then she nodded, short, once, at the envelope, the way you'd nod to an umpire's call you weren't going to argue with." },
+          { s: 'rio', f: 'sad', t: "...Okay. Okay. You said go. Somebody said it. That's— okay." },
+          { n: "She didn't look at Saori. She looked very hard at the stamp in the corner of the envelope, straight, the right price, and her thumb moved over it, and over it." }
+        ] }
+      ] },
+      { s: 'saori', f: 'serious', t: "I'm not going to." },
+      { n: "They both looked at her. Saori had taken her hand off the date stamp. She was sitting very straight behind the issue desk with her scarf still wound three times round her neck and her hands folded on the gray notebook, closed, and she wasn't apologizing." },
+      { s: 'saori', f: 'serious', t: "I'm not going to ask you anything, Rio. Not stay. Not go. Nothing. I've written down every single thing you've said to me since the eighth of April. I'm not writing this one down. It isn't mine." },
+      { s: 'saori', f: 'neutral', t: "That's my present. For Christmas. For the twenty-fourth. I'm giving it to you early. I'm not asking. Sorry. That's the only thing I'm sorry about and I'm not even sorry about that." },
+      { ifFlag: 'eqx-asked-rio-saori', then: [
+        { s: 'saori', f: 'sad', t: "...Even if somebody else already did." }
+      ] },
+      { n: "Rio stood at the desk with the envelope. She looked at Saori for a long time. The first-years slept. The teacher by the heater turned a page. The rain ran down the windows and the lamps were yellow in it." },
+      { s: 'rio', f: 'flustered', t: "...You're both so annoying. You're the two most annoying people I've ever met in my life. I'm going to marry a tennis racket and move to a mountain." },
+
+      { place: 'Gekkoukan High · Front Gate', time: 'Evening', bg: 'gekkoukanhigh-winter', music: 'tender', soft: true },
+      { n: "They went out the long way, round the gym, not through the courtyard, under one umbrella and a half, Rio's broken one held over Saori and getting nobody dry. At the gate there was the red post box, square and old, with its slot like a closed mouth and the last collection time on a little enamel plate: 17:30. It was 17:12." },
+      { n: "Rio stopped in front of it. She took the envelope out of her jacket and held it at the slot. The corner went in. A centimeter. She stood there with her hand on it, in the rain, with her jaw set, and didn't let go, and didn't push." },
+      { n: "Saori stood beside her and didn't say anything. Solar stood on her other side and didn't say anything. The rain came down on the three of them and on the post box, and somewhere over the river the five-thirty chime started up from the ward office, the little tune they played every evening to send children home, thin and tinny over the wet roofs." },
+      { n: "Rio took the envelope back out of the slot. She looked at it. A wet mark on its corner where the rain had got it." },
+      { s: 'rio', f: 'neutral', t: "...Tomorrow. It's in pen now. That's enough for one day. Pen's a lot." },
+      { s: 'saori', f: 'neutral', t: "It's the twenty-fourth they want it by. In writing. You've got time. Sorry. I'm not counting. I counted once. I'm stopping." },
+      { n: "She opened the notebook under the half umbrella anyway, to the list, to the bottom, to *Sapporo (snow)* in pencil, and wrote under it, small, a new line with an empty box beside it: *(posted?)*. She didn't tick it. She didn't cross it. She closed the notebook and put it inside her coat, against her chest, where it wouldn't get wet." },
+      { n: "They went off down the hill together, the two of them, not to the bus, walking, the thirty-one minutes, Saori's hand in the crook of Rio's arm and the broken umbrella over both of them and neither of them dry. At the first lamp they stopped, and Rio took the envelope out again and looked at it in the light, and put it back. Solar watched them to the bottom of the hill." },
+      { n: "When she got back to the dorm she put her hand in her blazer pocket for her key and found a strip of paper in there she hadn't put there. Saori's handwriting, very small. It must have gone in at the desk, when she wasn't looking." },
+      { n: "*Thank you for whatever you said. I'm writing it down here so it's kept, and giving it to you so it isn't mine.*" }
     ] }
   ]
 });

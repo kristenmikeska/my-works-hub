@@ -3,7 +3,7 @@
    Written: ranks 1–2 (from 4/13; her home is the dorm roof on Sunday, Tuesday, Thursday and Saturday evenings). Rank 3 (from 6/5: the roof, then the census through
    the red from the roof; branches on eqx-aigis-exception, eqx-last-grain, Hyein's rank 3) keeps the forty unassigned (Act III's
    9/22 songpyeon owns that reading) and records her ask: tally asks.aigis (+ cakes / choose).
-   Written: ranks 1–6. Rank 4 (from 6/29, the roof; reads asks.aigis via ifChoice, eqx-stage, eqx-last-grain, Hyein's rank 3):
+   Written: ranks 1–8. Rank 4 (from 6/29, the roof; reads asks.aigis via ifChoice, eqx-stage, eqx-last-grain, Hyein's rank 3):
    her left wrist has started making the old hand's page-turning sound (wear; nobody here has her files); the boarding-house
    girls are a column she can't count; the fifth thing on her list; Hyein needs someone who isn't "the third check". Sets
    eqx-aigis-wrist (held it to her ear), eqx-aigis-float / eqx-aigis-useless / eqx-aigis-space (the fifth thing).
@@ -17,7 +17,17 @@
    in the doorway, before). Sets eqx-floor-aigis (her ask floor), and one of eqx-aigis-hyein (stand where Hyein is on full
    moons) / eqx-aigis-own-door ("yours to choose") / eqx-asked-aigis ("Stay with me. Please.": tally asked +1, cakes +1).
    Fair 11/22 groundwork throughout (water, density, doorways, Hyein's door, the left hand, the ribbon); nothing marked.
-   Ranks 7–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub).
+   Rank 7 (from 10/19, the roof, then her room under the desk lamp, the landing at 23:58; reads eqx-1023 / dead.shinjiro /
+   eqx-shinji-lived, eqx-aigis-float / -useless / -space, eqx-aigis-wrist, Hyein's ranks 3 and 5, Hanni's 5, eqx-fathers-moved,
+   eqx-1122): "Today, nothing stopped"; she opens the wrist with the kind man's screwdriver: a brass leaf wearing a bright line
+   in the joint, 409 days to wear through ("during, not after"); the STARTED / STOPPED columns, the wrist's line ruled with no
+   date (it falls in a year that isn't this one); Hyein still tells only the latch ("soon"); "Solar read this. 23:59." written
+   ahead. Sets eqx-aigis-wear (let it wear) or eqx-aigis-mend (asked her to have it mended).
+   Rank 8 (from 11/9, the roof with cocoa (Shinjiro's if he lived, an empty chipped mug if not), then the census door by door
+   and the red hour on the top step; reads the same plus eqx-aigis-lived, ifBefore 11/22): every fifth thing is put off to the
+   spring; Solar writes one night of the file in her own hand; at Hyein's door "ask you first, or let me?" (flags
+   eqx-aigis-asked-first / eqx-aigis-let-her / eqx-aigis-with-me); Solar adds "Aigis" to the count with no number, or "here"
+   (cosmetic eqx-aigis-counted). Nothing reads the new flags. Ranks 9–10 still to write (only if she lives past 11/22). Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub).
    Solstice's ranks are shared memory here (the roof at sunset, "I have been looking for someone", the butterfly, the third
    item on her list, "Solar" without the honorific); nothing reads Solstice link standing.
    Writers: her readings are a clue source. Rank 1 logs one reading from the 4/12 knocks, unassigned on purpose; keep it
@@ -781,6 +791,277 @@
       ] },
       { n: "Then the town went red, from the river up, the whole hill going out in one long breath; and the hum came up through the wall and the soles of their feet; and somewhere below them on the second floor, behind a door with a girl lying awake on either side of it, nothing happened at all." },
       { n: "Aigis counted it anyway. Every minute of the hour. Solar stood at her shoulder and listened to her say the same names over and over in the red, level, patient, as if the saying were the thing holding them there; and at the end, when the lights came back and the river came back and the cold came back into the air, Aigis turned to her and said, very quietly, that the figures had matched, and that it was the most important thing she had to report, and that she would like to report it again tomorrow." }
+    ] },
+    // Rank 7 (Nov 16): the wrist opened. Plays from 10/19, before or after 10/23 (branches on eqx-1023 / dead.shinjiro /
+    // eqx-shinji-lived, eqx-fathers-moved, eqx-1122 for a late play). Pays off rank 4's "I will tell you why when I know why",
+    // rank 5's dates things stop, rank 6's file on the landing sill. 11/22 groundwork, unmarked: the left hand, a date she won't
+    // write, Hyein's latch still told to nobody (a nudge toward Hyein's link, which is what decides 11/22).
+    { after: '10/19', title: '7: four hundred and nine', place: 'Iwatodai Dorm · Rooftop', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-roof-evening' },
+      { n: "October had stopped pretending. The wind came off the bay in the evenings now with nothing soft left in it, straight across the roof and through Solar's blazer and her shirt and whatever she thought she had on under them, and the town below had gone the clean hard colors of the cold, every roof and wire distinct, the bridge a black line ruled across water the color of a knife. The gray sock was still on the laundry line. It had frozen stiff overnight on Sunday, Junpei said, and thawed, and frozen, and nobody had taken it in, because by now taking it in would have meant something." },
+      { n: "Aigis was at the rail. She turned before the door had finished opening." },
+      { s: 'aigis', f: 'neutral', t: "Good evening, Solar. I said I would find a better thing to start with than the sunset. I have found one." },
+      { s: 'aigis', f: 'neutral', t: "Today, nothing stopped." },
+      { n: "She said it the way she'd said the sunset times all spring, flatly, a report, and then she waited, and Solar understood that it was the best news she had, and that she'd been holding it since the morning so it would still be fresh." },
+      { ifEvent: 'eqx-1023', then: [
+        { ifFlag: 'dead.shinjiro', then: [
+          { n: "Except that it wasn't the whole truth, and they both knew it, and the wind went across the roof between them for a while without either of them saying so." },
+          { s: 'aigis', f: 'sad', t: "...Today. I meant today. I have been starting with today because the other column is very short and I do not want to read it out loud." },
+          { s: 'aigis', f: 'sad', t: "On the twenty-third I counted the road home. Every step. I counted the fathers and the party, and the thing wearing her, which had no heart, and which I counted anyway, as a space. I counted Shinjiro-san. Fifty-eight, going down. He was always slow. He did not like to hurry for anybody." },
+          { s: 'aigis', f: 'sad', t: "Then he was a hundred and eighty, and then he was in Akihiko-san's arms, and then I was counting a space where he had been, and I went on counting it for some time before I understood that I was doing it. I counted it all the way up the rope." },
+          { n: "She lifted her left hand off the rail and looked at it. Then she put it back." },
+          { s: 'aigis', f: 'neutral', t: "Akihiko-san's hands do not close any more. I have checked them. He lets me. He sits on the stairs and holds them out, and I hold them, and they stay open. It is the opposite of what was wrong with them. It is worse." },
+          { choose: [
+            { t: "(Stand at the rail beside her. Don't say anything.)", notes: 3, then: [
+              { n: "She stood beside her. Close, so their sleeves touched, the way she had in April. The wind pushed at both of them and they let it, and Aigis made her faint refrigerator hum under it, and after a long time she said, to the bridge, *thank you, that is the correct distance*, very quietly, as if the distance had been in question." }
+            ] },
+            { t: "You couldn't have heard it coming.", notes: 2, then: [
+              { s: 'aigis', f: 'neutral', t: "No. I heard it coming. That is the part I cannot file." },
+              { s: 'aigis', f: 'sad', t: "I heard it the whole way down the steps. I had the number. I did not know what it meant until it was a space. Knowing a number is not the same as being in the right doorway. I am learning the difference at a rate I do not like." }
+            ] },
+            { t: "He'd hate us standing up here being sad about him.", notes: 2, then: [
+              { s: 'aigis', f: 'neutral', t: "Yes. He would tell us to go and eat something." },
+              { s: 'aigis', f: 'sad', t: "...I do not eat. I have been going to the kitchen at seven anyway. I stand by the stove. Nobody has asked me why. I think they know why." }
+            ] }
+          ] }
+        ], else: [
+          { s: 'aigis', f: 'neutral', t: "On the twenty-third I counted the road home. Every step. Shinjiro-san went to a hundred and ninety-one on the steps, when he went in front of Jaesang-san. Then he came back down. Slowly. Ninety, eighty, sixty. He did not like to hurry for anybody." },
+          { s: 'aigis', f: 'happy', t: "I have entered it in a new column. It is the first entry I have ever made for a thing not stopping. I did not have a column for that. I have made one. It has one line in it. I read it most nights." },
+          { s: 'aigis', f: 'neutral', t: "He has three lines across his chest, under the bandage. Shallow. He will not let anyone see them but Akihiko-san and me. He says I do not count. I have told him I do. He says that is what he is afraid of." }
+        ] }
+      ], else: [
+        { s: 'aigis', f: 'neutral', t: "The full moon is on the twenty-third. The fathers' hearts have been very fast for four nights. I cannot count them where they sleep. They are on the river side. But I hear them when they come up the hill to the dorm in the evenings, and they are fast in a way I have only heard once before, in men who have decided something and not told anyone." },
+        { s: 'aigis', f: 'serious', t: "I have told Mitsuru-san. She wrote it down. She did not say anything. I think she has heard it too." }
+      ] },
+      { s: 'aigis', f: 'neutral', t: "I would like to show you something. Not here. In my room. It is warmer there, for you. I am told my room is cold. I have put a heater in it. I have never switched on a heater for anyone before." },
+      { s: 'aigis', f: 'neutral', t: "In June I said I would tell you why when I knew why. I know why." },
+
+      { place: 'Iwatodai Dorm · Aigis’s Room', time: 'Evening', bg: 'solar-dormroom-night', soft: true },
+      // BG: aigis-dorm-room — a bare dormitory bedroom at night, a neatly made bed nobody sleeps in, a desk with a single lamp, a small electric heater glowing orange on the floor, a laminated list propped on the windowsill beside a jar of sand and a dried tomato stem.
+      { n: "Solar had never been in it. Nobody had, as far as she knew, except Mitsuru, and the man with the screwdriver, once, for twenty minutes in July, with the door open. It was the corner room at the end of the third floor, and it was so tidy it looked unoccupied, like a room in a showroom, or a hotel at ten in the morning: the bed made with its corners folded square, the desk clear, the chair pushed in exactly." },
+      { n: "But there were things. That was what surprised her. There were things in it, very few, set out along the windowsill in a row with a hand's width between each, the way a museum sets things out: the laminated list from the summer, propped against the glass, its back still shiny and almost blank; Junpei's frog notebook, squared to the edge; and between them, the rest." },
+      { ifFlag: 'eqx-aigis-float', then: [
+        { n: "A jam jar of sand from the beach at Seaside Park, the lid screwed on tight. A label in her square hand: *FLOATED. 8/19. HELD UP.*" }
+      ] },
+      { ifFlag: 'eqx-aigis-useless', then: [
+        { n: "A tomato stem, dried, a little green star of sepals gone brittle and gray, on a folded square of paper. A label: *RED. 7/11. 16:04 approx. EATEN BY JUNPEI-SAN.*" }
+      ] },
+      { ifFlag: 'eqx-aigis-space', then: [
+        { n: "A space. An actual space, between the notebook and the list, a hand's width of bare sill with nothing on it, which she had clearly measured, and which she had clearly dusted." }
+      ] },
+      { n: "The heater glowed on the floor by the bed, ticking as it warmed, and the room smelled of hot dust and of the cold coming in round the window frame, and Aigis stood in the middle of it with her hands folded and watched Solar look, and didn't say anything, and Solar had the feeling, very strongly, of having been let in somewhere." },
+      { s: 'aigis', f: 'neutral', t: "Sit at the desk, please. I will need you to hold the light." },
+      { n: "She sat on the edge of the bed, facing the desk, and laid her left arm out along it, palm up, under the lamp; and took out of her blazer pocket a small jeweller's screwdriver with a yellow handle, the kind that comes six to a plastic case at the hardware shop by the station." },
+      { s: 'aigis', f: 'neutral', t: "The kind man gave it to me. In July. He said, if you ever change your mind, you'll know where it goes better than I would. He was right. I have taken it out every night since and put it back without using it." },
+      { ifFlag: 'eqx-aigis-wrist', then: [
+        { s: 'aigis', f: 'neutral', t: "You held it to your ear, in June. You are the only person who has heard it from that close. I would like you to be the only person who has seen it, also." }
+      ], else: [
+        { s: 'aigis', f: 'neutral', t: "You heard it on the roof, in June. You did not ask to hear it closer. I noticed that. I have decided it means you will not mind seeing it." }
+      ] },
+      { n: "There were four screws, so small Solar could barely see the heads, in a plate on the inside of the wrist, where on anybody else the veins would be. Aigis took them out one at a time, without hurrying, and laid them on the desk in a row a finger's width apart; and lifted the plate off with her thumbnail; and turned her arm a little, toward the lamp, toward Solar, the way you'd turn a book round so somebody else could read the page." },
+      // CG: eqx-aigis-wrist-open — a girl holding a desk lamp low over the open inner wrist of a straight-backed blonde girl sitting on a neat dorm bed, a tiny yellow-handled screwdriver and four screws in a row on the desk, an orange heater glowing on the floor, deep red-black shadows round the lamplight.
+      { n: "Solar didn't know what she'd expected. Wires. Something like the inside of a watch. It was more like the inside of a watch than anything, and less: small and close and absolutely clean, layer under layer of fine pale metal fitted so exactly she couldn't see where one part ended, and somewhere in the middle of it, where the hand met the arm, a thin bright leaf of something like brass, no wider than a fingernail, lying against the curve of a joint." },
+      { s: 'aigis', f: 'neutral', t: "Watch." },
+      { n: "She closed her fingers. The joint turned under the leaf, and the leaf bent, and lifted, and dragged across its edge, and there it was. The page. Turned, in a room down a long hall. She opened her hand, and it turned back." },
+      { n: "And Solar could see now what it had done. Where the brass leaf lay, the edge of the joint was bright. A fine bright line, newer than anything round it, the way the edge of a stair goes bright where everybody puts their foot." },
+      { s: 'aigis', f: 'neutral', t: "It is wearing. I measure it with the kind man's gauge on the first of every month. I took the average. At that rate it wears through the leaf in four hundred and nine days. Then it will stop making the sound. Some time after that, the hand will stop." },
+      { s: 'aigis', f: 'neutral', t: "Four hundred and nine. I checked whether that is a good number. It is longer than the year." },
+      { n: "She said it quite calmly, looking at her own open wrist under the lamp with the same interest she gave the waves and the tomatoes and the sunsets, and Solar held the lamp very still, and the heater ticked, and something went cold and fixed under her ribs without telling her what it was for." },
+      { s: 'aigis', f: 'neutral', t: "This is why. You asked, in June. I said I would tell you." },
+      { s: 'aigis', f: 'neutral', t: "Everything else in me was made to last. A very long time. Longer than people, you said, on the beach. I would be here after. I told you I did not want to be after. I wanted to find a way to be during." },
+      { s: 'aigis', f: 'happy', t: "This is during. One thing in me has a date. People have dates. Now I do. I have a number of days, and they are going by, the way everybody's are, and I can hear them going by every time I close my hand." },
+      { s: 'aigis', f: 'neutral', t: "If it were repaired I would only be after again." },
+      { choose: [
+        { t: "(Hold the lamp still. Let her close it herself.)", notes: 3, flag: 'eqx-aigis-wear', then: [
+          { n: "She didn't say anything. She held the lamp. Aigis looked at her for a moment over the open wrist, and then fitted the plate back with her thumb and put the four screws in, one by one, in the order she'd taken them out, and turned each of them the same small amount and no further." },
+          { s: 'aigis', f: 'neutral', t: "...Thank you. Everyone else who has seen inside me wanted to do something to it." }
+        ] },
+        { t: "Let them mend it. I'd rather you were after.", notes: 2, flag: 'eqx-aigis-mend', then: [
+          { n: "Aigis went still. Not the good stillness. The other one, from the bottom of the hill under the lamp, when she'd heard herself say *can't*." },
+          { s: 'aigis', f: 'neutral', t: "...You would rather I was after." },
+          { s: 'aigis', f: 'neutral', t: "That is the first time anyone has said it to me as if it were a kindness. I believe it was one. I will think about it. I will think about it for at least four hundred and nine days." },
+          { n: "She put the plate back. She didn't use the screwdriver for the last screw; she turned it with her thumbnail, very carefully, and then sat looking at the closed wrist, and closed her hand, and the page turned, and she listened to it all the way to the end." }
+        ] },
+        { t: "Four hundred and nine's a lot of days.", notes: 2, then: [
+          { s: 'aigis', f: 'neutral', t: "It is not a lot. It is four hundred and nine." },
+          { s: 'aigis', f: 'happy', t: "That was a callback. To myself. I have started doing it. Junpei-san says it is the first sign." },
+          { n: "She closed the plate and put the screws back in, and Solar watched her do it, and didn't ask the first sign of what." }
+        ] }
+      ] },
+      { n: "She put the screwdriver away. Then she opened the frog notebook on the desk under the lamp, to a page near the back, and turned it round for Solar." },
+      { n: "Two columns. She'd ruled them with the edge of something straight. On the left, in her square hand, under STARTED: *Tomatoes, 6/9. Cicadas, 7/9. The wrist, 6/9. The lanterns, 8/16. The cold, 10/3.* On the right, under STOPPED, a shorter list. *The rain, 7/18. Cicadas, 8/31. Nozomi-san, 7/27.*" },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "*Shinjiro-san, 10/23.* The letters were the same size as all the others. Exactly the same. Solar could see how hard she'd worked at that." }
+      ] },
+      { n: "And at the bottom of the right-hand column, a line on its own, ruled ahead of time, with the date left blank: *The wrist (409).*" },
+      { s: 'aigis', f: 'neutral', t: "I did not write the date. I worked it out. It falls in a year that is not this one. I did not want to write a date in a year that is not this one. It seemed like asking for something." },
+      { n: "She closed the notebook." },
+      { s: 'aigis', f: 'neutral', t: "Hyein-san." },
+      { n: "It was how she changed the subject now, Solar had noticed. Not *I have news for the census*. Just the name, set down on the table between them, like a cup." },
+      { ifRank: { hyein: 5 }, then: [
+        { s: 'aigis', f: 'happy', t: "She went the long way round the shrine with you. I counted. Her heart is slower on the way back than on the way there. Every time. That is the only road in this town that does that to anyone." },
+        { s: 'aigis', f: 'neutral', t: "Thank you. I asked you for that in June as if it were a small thing. It was not a small thing. I am still the third check. I find I do not mind being the third check, now that there is a first." }
+      ], else: [
+        { s: 'aigis', f: 'neutral', t: "She still checks the latch twice. I still check it a third time. She has still not told anyone about it out loud. I have listened. She tells the latch." },
+        { s: 'aigis', f: 'serious', t: "I would like it to be you she tells. Soon. I do not know why I want it to be soon. I have looked for the reason and there is no reading for it. It is only that I keep thinking *soon*, every time I pass her door, and I have never thought a word like that about a door before." },
+        { ifRank: { hanni: 5 }, then: [
+          { s: 'aigis', f: 'neutral', t: "Hanni-san sleeps across it on the outside. She has started actually sleeping. She tells me it is because of you. I believe her. That is one side of the door." }
+        ] }
+      ] },
+      { ifRank: { hyein: 3 }, then: [
+        { n: "The ribbon was in her hair. Hyein's, the white one, pressed. Solar looked at the bow, and Aigis saw her look, and put her left hand up to it without thinking, the gesture she'd taken from Hyein in May, and the page turned in her wrist as her fingers closed on it, quietly, once." }
+      ] },
+      { ifEvent: 'eqx-fathers-moved', then: [
+        { s: 'aigis', f: 'neutral', t: "The fathers are on the third floor now. I can count them. I am very glad that I can count them. Mr. Kim's heart is the slowest of the three and he is the one who does not sleep. I have not told anyone that. I have decided some numbers belong to the person." }
+      ] },
+      { ifEvent: 'eqx-1122', then: [
+        { s: 'aigis', f: 'neutral', t: "And the mothers. Three new hearts in the building, uneven, weak, getting stronger. I count them first now. Before Mitsuru-san. Before the dog. I have been told that is not the correct order. I have decided it is." }
+      ] },
+      { place: 'Iwatodai Dorm · Landing', time: 'Late Night', bg: 'iwatodaidorm-stairs-night', soft: true },
+      { n: "At eleven fifty-eight the notebook was on the landing windowsill, where she'd said it would be, squared to the edge, under the cold glass. Solar picked it up and opened it, as she'd promised to, and read the night's page by the light from the stairwell: the names, the numbers, the house going round its numbers like a clock." },
+      { n: "At the bottom, under the last name, in the square hand, there was a line she hadn't seen there before. Small. Not a reading." },
+      { n: "*Solar read this. 23:59.*" },
+      { n: "Written already. Ahead of time, the way the blank line for the wrist had been ruled ahead of time, by somebody who'd been very sure she would come. Solar stood on the landing with the notebook open in her hands and the red coming up the stairwell from the river, the hum starting in the soles of her feet, and couldn't think why it should make her want to sit down on the stairs and not get up; and on the roof above her, through the ceiling, faint and level, she heard Aigis begin to count." }
+    ] },
+    // Rank 8 (Nov 16): in two places. Plays from 11/9 (always after 10/23 and 11/6; before 11/22 on a save where she can die,
+    // after it only if she lived: eqx-1122 / eqx-aigis-lived branches). Solar keeps the census with her, in her own hand.
+    // Hints, unmarked: every version of the fifth thing is put off to the spring; "asked first" (her 11/22 line to Hyein); the
+    // ribbon; Solar counts her. Choice flags eqx-aigis-asked-first / eqx-aigis-let-her / eqx-aigis-with-me; cosmetic
+    // eqx-aigis-counted. Nothing reads them.
+    { after: '11/9', title: '8: in two places', place: 'Iwatodai Dorm · Rooftop', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-roof-night' },
+      { n: "The first frost had come on a Sunday, and come again on the Monday, and again, and by the second week of November it had stopped being news. The roof in the evenings was white at the edges where the low wall kept the sun off, a fine dry fur of white along the foot of the concrete that crunched when you stepped in it and didn't melt. It was dark by five. By six the town below was all lights, and the cold had a smell, iron and smoke and the sea, and Solar's breath went out in front of her and hung there like something she'd said and couldn't take back." },
+      { n: "Aigis was by the water tank, out of the wind, with a folded blanket over one arm and a thermos in her other hand." },
+      { s: 'aigis', f: 'neutral', t: "Good evening, Solar. I am told you feel the cold. I do not. I have been told that is not a reason not to bring a blanket. I have brought a blanket." },
+      { n: "It was the yellow one off the lounge couch, the one that smelled of everybody. Solar put it round her shoulders and sat on the low wall, and Aigis sat beside her, which she did now, and unscrewed the thermos with great care, and poured, the steam going up off the cup into the dark." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { s: 'aigis', f: 'neutral', t: "Cocoa. Yukari-san made it. She stood over me while I carried it up. She said if it was cold when you got it she would know." },
+        { n: "There were two cups. Aigis filled one and gave it to Solar and then sat holding the other, empty, in her lap, both hands round it, and didn't say why, and Solar didn't ask. It was the mug from the dorm kitchen with the chip in the rim. It had hung on the hook by the stove all year. Nobody had used it since October." }
+      ], else: [
+        { s: 'aigis', f: 'neutral', t: "Cocoa. I have been asked to say Yukari-san made it." },
+        { n: "It was very good. Too good for Yukari, who burned milk on principle. Aigis watched her taste it." },
+        { s: 'aigis', f: 'neutral', t: "Shinjiro-san made it. I am telling you because it is yours. He stood at the stove with his chest taped and stirred it for nine minutes. His heart was sixty the whole time. That is the slowest I have heard it all year." }
+      ] },
+      { s: 'aigis', f: 'neutral', t: "I have a list for tonight. It is short. Two things. I wrote it on the back of the laminated one, in pencil, which comes off. I have learned that pencil comes off. I like that about it." },
+      { s: 'aigis', f: 'neutral', t: "The first thing is the fifth thing." },
+      { ifFlag: 'eqx-aigis-float', then: [
+        { s: 'aigis', f: 'neutral', t: "I would like to float again. I measured the sea on Sunday with Akihiko-san's thermometer. Fourteen degrees. You would be cold. I would not be, but you would, and I cannot float alone. That is part of how it is impossible." },
+        { s: 'aigis', f: 'happy', t: "So I have put it in the spring. When the sea is warm. I have written it on the list. *Float. In the spring.* I have never written anything on the list that was so far away. It feels like holding something out at arm's length to look at it." }
+      ] },
+      { ifFlag: 'eqx-aigis-useless', then: [
+        { s: 'aigis', f: 'neutral', t: "Fuuka-san has given me a pot. In it there is a bulb. She says it is a tulip. It looks like an onion. She says it will sleep under the soil all winter and come up in March, and I am not to dig it up to check on it, and I am not to count it." },
+        { s: 'aigis', f: 'happy', t: "It is a very good useless thing. It is changing where I cannot see. I only have to wait. I have put it on the list. *Tulip. March.* I have never written anything on the list that was so far away." }
+      ] },
+      { ifFlag: 'eqx-aigis-space', then: [
+        { s: 'aigis', f: 'neutral', t: "The space. I have decided what goes in it. I decided on the beach in August, I think, and then I did not tell anyone, including myself." },
+        { s: 'aigis', f: 'neutral', t: "I would like to be the kind of thing people wait for at the edge. Not the thing that comes back up. The thing somebody stands at the water and waits for, and knows they are waiting for." },
+        { s: 'aigis', f: 'happy', t: "I do not know how to do it. I have put it on the list anyway, with no date. *Be waited for.* I am told there are things on people's lists that never get a date. I did not believe it. I believe it now." }
+      ] },
+      { ifCount: { of: ['eqx-aigis-float', 'eqx-aigis-useless', 'eqx-aigis-space'], max: 0 }, then: [
+        { s: 'aigis', f: 'neutral', t: "I never filled it. I asked you before the rain, in June, and then the summer happened, and the space stayed a space. I have decided to leave it until the spring. I have written that on the list. *The fifth thing: spring.* It is the first time I have put something off on purpose." }
+      ] },
+      { choose: [
+        { t: "I'll be there. In the spring.", notes: 3, then: [
+          { s: 'aigis', f: 'neutral', t: "Yes. I have already written that you will be. I wrote it in pencil, so that you could rub it out." },
+          { s: 'aigis', f: 'happy', t: "You have not rubbed it out. I checked." }
+        ] },
+        { t: "Spring's a long way off.", notes: 2, then: [
+          { s: 'aigis', f: 'neutral', t: "Four months. Something over a hundred days, depending on which day you count as spring. I am told there is disagreement." },
+          { s: 'aigis', f: 'neutral', t: "...It is not a long way off. It is a number. I am trying to learn to say that things are a long way off. Junpei-san says it is how people ask for something without asking." }
+        ] },
+        { t: "(Drink the cocoa. Let her keep it on the list.)", notes: 2, then: [
+          { n: "She drank. It was hot enough to hurt the roof of her mouth and she let it. Aigis watched the steam go up between them for a while and didn't say anything, which was its own sort of approval." }
+        ] }
+      ] },
+      { s: 'aigis', f: 'neutral', t: "The second thing." },
+      { n: "She took the frog notebook out of her blazer. The cover was soft as cloth now, curled at the corners from seven months in her pocket, and there was a pencil clipped to the spine that hadn't been there before, a short yellow one, sharpened with a knife." },
+      { s: 'aigis', f: 'neutral', t: "You have read the file every night for six weeks. I check the sill at the end of every hour. It has been moved every time. One night you put it back upside down. I did not mention it. I am mentioning it now because it is the only time." },
+      { s: 'aigis', f: 'neutral', t: "Reading it is in two places. Half. I would like the other half. I would like you to count, tonight, with me. And write it down. In your hand, not mine." },
+      { s: 'aigis', f: 'neutral', t: "So that one page of it is in a hand that is not mine. So that if anybody ever needed to find it, there would be a page they could read without having to learn how I make my sevens." },
+      { n: "She held the notebook out with her left hand, the plain way, flat, and the page turned in her wrist as her fingers took the weight, and she didn't hide it." },
+      { choose: [
+        { t: "(Take the notebook and the pencil.)", notes: 3, then: [
+          { n: "Solar took it. It was warm, which surprised her, until she remembered the heater in the corner room and understood that it had been lying beside the heater, deliberately, so it would be warm when she took it." }
+        ] },
+        { t: "I can't hear hearts, Aigis.", notes: 2, then: [
+          { s: 'aigis', f: 'neutral', t: "No. You will hear doors. I will tell you the numbers. You will know which doors they belong to. That is the part I was never sure I was doing right." },
+          { n: "She put the notebook in Solar's hands, and closed Solar's fingers round it with her own, cool and heavy, and let go." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Stairs', time: 'Late Night', bg: 'iwatodaidorm-stairs-night', soft: true },
+      { n: "At eleven fifty-seven they went down. Aigis first, the way she always went first, and Solar behind her with the notebook open on her forearm and the yellow pencil, and the dorm asleep round them, or pretending, the radiators ticking and somebody's alarm clock glowing green through the gap under a door and the smell of the cocoa still on the landing." },
+      { n: "They started at the top. They stopped at every door. Aigis tipped her head, the small soft click, and said a number under her breath, and Solar wrote it beside the name in her own round hand, and it took a long time, much longer than it ever took Aigis alone, and Aigis didn't once try to hurry it." },
+      { ifEvent: 'eqx-1122', then: [
+        { n: "Six parents on the third floor now. Three doors. Aigis stopped longest outside the mothers' rooms, and the numbers she gave there were uneven, fast and then slow and then fast again, and she gave them very gently, as though the numbers might hear." }
+      ], else: [
+        { n: "Three fathers on the third floor. Three doors, three numbers, all of them fast. Mr. Kim's door was open an inch and his light was on. Aigis gave his number, and waited, and gave it again, slower, as if she'd been mistaken the first time and wanted to be fair to him." }
+      ] },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "On the second floor there was a door they didn't stop at. Aigis walked past it at exactly the same pace as all the others. Then, three steps on, she stopped, and stood with her back to it; and Solar wrote nothing, and then, after a moment, drew a line in the notebook, a short straight one, the width of a name. Aigis looked at it over her shoulder and nodded, once." }
+      ], else: [
+        { n: "On the second floor Shinjiro's door was shut and a radio was going behind it, very low, a ball game from somewhere it was still afternoon. *Fifty-six. Asleep with it on.* Solar wrote it down and underlined it, and didn't know why, and Aigis didn't ask." }
+      ] },
+      { n: "Junpei, his radio on too, a different station. Akihiko, fast even in his sleep. Mitsuru, slow and exact, a metronome. Koromaru, at the foot of the stairs, across the front door, ninety, who lifted his head when they came down and looked at the two of them and put it back on his paws." },
+      { n: "And Hyein's door." },
+      { n: "Aigis stopped there. Hanni was asleep across the outside of it, in the hall, on her side in a nest of two blankets with one arm over her eyes. There was a strip of light under the door." },
+      { s: 'aigis', f: 'neutral', t: "Hanni-san, fifty-four, asleep. Hyein-san, sixty-eight. Awake." },
+      { n: "She said it under her breath. Solar wrote it down. Then Aigis didn't move on. She stood looking at the strip of light, hands folded, head tipped, and Solar could see the bow at the back of her hair, lit from under the door." },
+      { ifRank: { hyein: 3 }, then: [
+        { n: "Hyein's ribbon. White. Retied that morning, Solar could tell; the loops were even and exact the way only Hyein made them. She'd taken to retying it every morning at breakfast, Aigis standing perfectly still by the table while she did it, both of them pretending it was nothing." }
+      ] },
+      { s: 'aigis', f: 'neutral', t: "Solar. A question. It is not on the list. It came up here." },
+      { s: 'aigis', f: 'neutral', t: "If I ever go into something. A door. Water. Somewhere without air, somewhere only I could go. Would you like me to ask you first? Or would you like to be the one who lets me?" },
+      { n: "She asked it very quietly, to the strip of light under the door, not to Solar; and in the room behind it someone turned over, and then was still." },
+      { choose: [
+        { t: "Ask me first. The way you wanted to be asked.", notes: 3, flag: 'eqx-aigis-asked-first', then: [
+          { s: 'aigis', f: 'neutral', t: "...Yes. That is fair. That is the fourth thing on my list, the other way round, again. The margin is full. I will write it on the inside of the cover." },
+          { s: 'aigis', f: 'neutral', t: "I will ask first. If there is time to ask. I would like you to know that I would like there to be time." }
+        ] },
+        { t: "If it's yours to go into, it's yours. I'll let you.", notes: 3, flag: 'eqx-aigis-let-her', then: [
+          { n: "Aigis turned her head. Away from the door, to Solar. The click, very soft." },
+          { s: 'aigis', f: 'neutral', t: "...Thank you. Everyone else who has ever let me go somewhere was sending me." },
+          { s: 'aigis', f: 'happy', t: "I would still come back up. I would like that on file. I am very heavy and very patient." }
+        ] },
+        { t: "Don't go anywhere I can't come.", notes: 2, flag: 'eqx-aigis-with-me', then: [
+          { s: 'aigis', f: 'neutral', t: "You can come almost anywhere. You have shown me that. You came to the bottom of a well." },
+          { s: 'aigis', f: 'sad', t: "There are a few places you cannot. Places without air. I will try not to go to those. I am telling you that I will try. I am not telling you that I can. I have learned the difference this autumn." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-aigis-lived', then: [
+        { s: 'aigis', f: 'happy', t: "...I have been asked once already. At the Tree, after. Whether I would like to be there. I said yes. It is on the inside cover. I read it most nights, after the census." }
+      ] },
+      { n: "They went down. The front hall. The latch. Hyein had checked it twice before bed, and Aigis checked it a third time, and this time, for the first time, Solar watched her do it: the bare left hand on the cold brass, the page turning once as it closed, once as it let go." },
+
+      { place: 'Iwatodai Dorm · Stairs', time: 'The Red Hour', bg: 'iwatodaidorm-stairs-night', soft: true },
+      { n: "At midnight the town went red." },
+      { n: "It came up the stairwell from the front door like water coming up a pipe, the whole house going out in one long breath; the clocks stopped and the radiators stopped and Junpei's radio stopped mid-word; and the hum came up through the boards, and the people in their beds were in their coffins, and the red light lay down the stairs like something spilled." },
+      { n: "They sat on the top step, the two of them, with the notebook between them, and counted it again. Every name. In the red. Aigis said the numbers and Solar said the names and wrote them, and the pencil scratched in the silence, the only sound in the house besides the hum; and at the end she had a page in her own round hand, the dorm door by door, the whole house written down, and her fingers were stiff with the cold and the red." },
+      { n: "She looked at it. Then, at the bottom, under *Koromaru, 90*, she wrote one more line. Without asking. Without deciding to." },
+      { n: "*Aigis.*" },
+      { s: 'aigis', f: 'surprised', t: "...I have no number." },
+      { s: 'solar', f: 'neutral', t: "You're on the list." },
+      // CG: eqx-aigis-count — two girls sitting close on the top step of a dormitory staircase in deep red light, one writing in a small soft-covered notebook with a short yellow pencil, the other, blonde and straight-backed with a white ribbon in her hair, looking down at the page.
+      { n: "Aigis looked at the name for a long time. In the red her face did nothing at all, and her eyes refocused on it, once, the small soft click, and refocused again, as if it were very small print." },
+      { choose: [
+        { t: "(Leave the space beside her name empty.)", notes: 3, flag: 'eqx-aigis-counted', then: [
+          { n: "She didn't write anything beside it. She left the place where the number would go, empty, and Aigis looked at the space, and then at her." },
+          { s: 'aigis', f: 'happy', t: "...A column I cannot fill, that somebody else started. That is a different thing from the space I left in June. I like this one." }
+        ] },
+        { t: "(Write: here.)", notes: 3, flag: 'eqx-aigis-counted', then: [
+          { n: "Beside the name, where the number would go, she wrote *here*." },
+          { s: 'aigis', f: 'neutral', t: "That is not a reading." },
+          { s: 'solar', f: 'neutral', t: "It's mine." },
+          { s: 'aigis', f: 'happy', t: "...Then it is in two places." }
+        ] }
+      ] },
+      { ifBefore: '11/22', then: [
+        { s: 'aigis', f: 'neutral', t: "The moon is full on the twenty-second. I will be in Hyein-san's building that night. I am always in Hyein-san's building. I am telling you so that it is in two places as well." }
+      ] },
+      { n: "The red went out of the house at the end of the hour the way it always went, all at once, the clocks starting mid-tick, the radiators knocking, Junpei's radio coming back halfway through a song, the cold back in the stairwell, someone turning over behind Hyein's door. Aigis stood. She held out her hand for the notebook, and Solar gave it to her, and she closed it on the pencil and put it in her blazer pocket, on the left side, where on anyone else the heart would be, and pressed it flat there, once." },
+      { s: 'aigis', f: 'neutral', t: "The figures matched. All of them, and the dog. And one that is not a figure." },
+      { s: 'aigis', f: 'neutral', t: "I would like to report it again tomorrow. I would like to report it again for a very long time. I am told that is a thing people say to each other on stairs. I have never had anyone to say it to." },
+      { n: "She went up. Solar sat on the step a while longer in the ticking dark with her cold fingers in the yellow blanket and the shape of the pencil still pressed into them, and listened to the footsteps go up to the corner room at the end of the third floor, light, even, exactly the same distance apart; and stop; and, faint through the ceiling, the page turn, once, as a hand closed on a door handle, and once more as it let go." }
     ] }
   ]
 });

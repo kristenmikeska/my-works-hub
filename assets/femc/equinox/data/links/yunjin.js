@@ -1,7 +1,7 @@
 /* Persona 3: Equinox · Huh Yunjin · Judgement. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–6 (from 4/13; her home is the Port Island harbor on Sunday, Monday, Wednesday and Friday afternoons,
-   so 4/14 at the earliest). Ranks 7–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
+   Written: ranks 1–8 (from 4/13; her home is the Port Island harbor on Sunday, Monday, Wednesday and Friday afternoons,
+   so 4/14 at the earliest). Ranks 9–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js.
    Solstice's Yunjin link is shared memory (the seawall, two cans of the bad coffee, "Sol", "Jin", "I'm always up", "up" at
    every low tide, the light on at night); nothing reads Solstice link standing. strangers fences hold: nothing about home
    past "since winter", no names from home, no war, no dates. Texts lowercase, contact 'yunjin 🦋' as in Solstice.
@@ -18,14 +18,25 @@
    nobody dies' (after 9/29, the harbor in the first autumn rain, after the bridge; reads the ticket flags; sets
    eqx-floor-yunjin (her ask floor: a stretch of the Second Hill where the tide stands at twelve-forty and her own voice
    reads tide times), eqx-yunjin-table-kept | -mine | -held). Her ask is named aloud in rank 6 ("stay where nobody dies");
-   no new tallies (asks.yunjin was spent at rank 3). Persona/awakening stays Act IV's 11/6. */
+   no new tallies (asks.yunjin was spent at rank 3). Persona/awakening stays Act IV's 11/6.
+   Ranks 7–8 (Nov 16, round 3; both always after her awakening, eqx-low-tide 11/6): rank 7 '7: bari' from 11/7, the harbor
+   on a north-wind afternoon (she faces the town now, wears Haechan's old jacket; every light on; Bari's tale; a ballpoint
+   tally of the dead inside her left wrist, "Bari counts"), then the Oka gate (before eqx-persimmon: Mrs. Oka's eyes on
+   Yunjin's half-raised hand, Kazuha's rice saucer) or the guesthouse lobby (after). Reads asks.yunjin, dead.shinjiro,
+   dead.aigis, the ticket flags, eqx-persimmon. Sets eqx-yunjin-ticket-back (held-path: she asks for the ticket back),
+   eqx-yunjin-tell-them | -mine | -held (telling the girls about her Persona). Rank 8 '8: the bridge part' from 11/29,
+   the harbor at dusk with ice on the mud (she carried Miseon up on 11/22 with Akihiko; Miseon counted her stitches to 104;
+   yes-path: red sweet grit in the creases of her closed hand, a 1/20 sorghum clue; the practice-room dream, blue tape on
+   her left with a name she can't read). Reads asks.yunjin, dead.aigis, eqx-persimmon, eqx-yunjin-left. Sets
+   eqx-yunjin-wifey, eqx-yunjin-bridge (Solar learns the bridge part on her left). No route (romance: null). Her stay/go
+   is deferred: "ask me in spring". */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'yunjin', name: 'Huh Yunjin', short: 'Yunjin', arcana: 'Judgement', numeral: '', from: 'strangers', kind: 'searcher',
   world: 'S', romance: null, starts: '4/8', lodging: 'dorm',
   home: { area: 'port', spot: 'Harbor', slot: 'after', days: [0, 1, 3, 5],
           hint: 'Afternoons down at the Port Island harbor, on the seawall, with two cans of vending-machine coffee.' },
   approach: "On the harbor seawall a girl in a yellow puffer is sitting with her legs hanging over the mud, two cans of vending-machine coffee beside her, singing something under her breath in a voice like gravel in a tin, and she holds one can out behind her without turning round.",
-  cast: {},
+  cast: { kazuha: 'Kazuha', mrsoka: 'Mrs. Oka' },
   ranks: [
     { after: '4/13', title: '1: till it turns', place: 'Port Island · Harbor', time: 'After School', music: 'tender', scene: [
       { bg: 'harbor' },
@@ -720,6 +731,249 @@
         { from: 'yunjin', t: "the girls are home. 1 2 3 4. i stood at the gate till their light went off. she waved at me from the kitchen window. i didn't wave back" }
       ], contact: 'yunjin 🦋' },
       { n: "She lay in the dark and listened to the rain start again, softly, on the dorm's roof, and thought about a girl standing at a gate on the river street at eleven at night with her hands in her pockets, not going in, counting to four; and about a woman in a lit kitchen window with her gloves on, waving, and waving, though there was nobody left on the street to wave at but her." }
+    ] },
+    { after: '11/7', title: '7: bari', place: 'Port Island · Harbor', time: 'After School', music: 'tender', scene: [
+      // BG: port-island-harbor-november — the Port Island seawall on a clear cold November afternoon, the tide coming in fast under a north wind, whitecaps in the harbor, gulls hanging still on the wind over the moorings, the far cranes sharp against a hard blue sky.
+      { bg: 'harbor' },
+      { n: "The wind had come round in the night and was blowing from the north now, and the harbor was all edges. Whitecaps on the incoming tide, short and hard and slapping at the foot of the seawall; the gulls hanging on the wind over the moorings without moving their wings, as if somebody had pinned them there; the cranes on the far side so sharp against the hard blue sky that you could have counted the cables. Everything smelled of salt and cold iron. It was the first afternoon of the year that felt like winter, and the whole town had noticed, and put its coat on." },
+      { n: "Yunjin was on the seawall. Same place. Two cans. But she was sitting the wrong way round, with her back to the water and her legs hanging down over the walkway side, facing the town, and she wasn't wearing the puffer. The puffer was on the dorm's laundry rack. It had been since the garden; the salt had got into it and it wouldn't go soft. She had Haechan's old jacket on instead, the brown one with the corduroy collar he'd given up on in March, zipped to the chin, the sleeves pulled down over her hands." },
+      { s: 'yunjin', f: 'happy', t: "Sol! Sit. Sit, sit. This way. I'm facing the town now. I've decided. I've looked at that water enough for a whole life." },
+      { choose: [
+        { t: "(Sit down beside her. Facing the town.)", notes: 3, then: [
+          { n: "She sat down beside her, facing the town. It was a strange thing to see from here. Roofs, and the monorail going over them on its long legs, and a balcony with a line of washing snapping in the wind, and a kid on a bike with a bag of shopping hung off each handlebar, wobbling. She'd sat on this wall since April and never once looked at the side of it with people on it." },
+          { s: 'yunjin', f: 'neutral', t: "See? It's nice. It's all just people doing stuff. I never noticed. I was too busy watching a tide like it owed me money." }
+        ] },
+        { t: "You're wearing Haechan's jacket.", notes: 2, then: [
+          { s: 'yunjin', f: 'neutral', t: "He gave it to me on the stairs the morning after. He didn't say anything. He just held it out. The way you'd hold a towel out to a dog that's been in the river." },
+          { s: 'yunjin', f: 'flustered', t: "...I'm keeping it. Don't tell him. He knows." }
+        ] },
+        { t: "How are you even sitting up?", notes: 2, then: [
+          { s: 'yunjin', f: 'serious', t: "Badly. Everything hurts. My hair hurts. Nobody told me it hurts. You all just get up in the morning after the Well and eat cereal like it doesn't hurt." },
+          { s: 'yunjin', f: 'neutral', t: "Junpei says it stops hurting after about a month. Then he said *a year, tops*. Then he said *I'm kidding*. He wasn't." }
+        ] }
+      ] },
+      { n: "She knocked her can against Solar's without looking, the dull tin clink, and drank, and made the face. Her hands round the can were scraped across the knuckles, three long pink lines on the back of the right one, the gravel of a garden on the Second Hill, and she didn't seem to have noticed them." },
+      { s: 'yunjin', f: 'happy', t: "Every light. I slept with every light on. The first night, the second night, every night. The ceiling one and the desk one and the one in the hall and my phone torch, on, on the pillow, like an idiot." },
+      { s: 'yunjin', f: 'happy', t: "Hanni came in at three on the second night to turn the ceiling one off. To save electricity. I screamed at her. Happily. She screamed back. Hyein came in and screamed because we were screaming. Koromaru barked. Mitsuru came up in her dressing gown and looked at us and went away again without saying anything. It was the best night of my life." },
+      { s: 'yunjin', f: 'serious', t: "I'm scared, Sol. All the time. Since the garden. I'm so scared." },
+      { s: 'yunjin', f: 'neutral', t: "It's the best I've felt since winter." },
+      { ifChoice: { 'asks.yunjin': 'yes' }, then: [
+        { n: "She held up her left hand, palm in, so Solar could see it. It was closed. Not tight. Just closed, the fingers folded down over the thumb, the way a hand closes in sleep." },
+        { s: 'yunjin', f: 'neutral', t: "Still does it. When I wake up. Even with every light on. Even with her in me." },
+        { s: 'yunjin', f: 'neutral', t: "I open it with the other one, like always. There's nothing in it. There's never anything in it. I don't know why I keep checking." },
+        { n: "She opened it now, with the other hand, a finger at a time, and showed Solar the empty palm, and closed it again without seeming to notice she'd closed it." }
+      ], else: [
+        { n: "She held up her left hand, palm out, fingers spread, in the wind, so Solar could see it." },
+        { s: 'yunjin', f: 'happy', t: "Open. Both mornings. Open like a hand. I lay there and looked at it like it was somebody else's baby." }
+      ] },
+      { s: 'yunjin', f: 'neutral', t: "Bari. That's her name. I knew it the second I saw her. I didn't decide it. She just was it, the way you're Sol." },
+      { s: 'yunjin', f: 'neutral', t: "Everybody at home knows Bari. The seventh daughter. The king and queen wanted a son and got a seventh girl, so they put her in a box and threw her in the river." },
+      { s: 'yunjin', f: 'neutral', t: "And then they got sick. Both of them. Dying. And the only thing that could save them was water from the land of the dead, and none of their six good daughters would go and get it." },
+      { s: 'yunjin', f: 'neutral', t: "So Bari went. The one they threw away. She walked all the way down to where the dead are, and worked for years for the man who kept the well down there, and walked all the way back up carrying the water. For them. For the two people who put her in a box." },
+      { s: 'yunjin', f: 'serious', t: "I thought she was an idiot. When I was little. I thought, why would you go back for them? Let them die. They threw you in a river." },
+      { s: 'yunjin', f: 'sad', t: "And then she came out of me. In a garden. While I was walking into the water after you." },
+      { n: "The wind dropped for a moment, the way it did out here, all at once, as if a door had shut somewhere. In the quiet Solar could hear the tide behind them coming in against the wall, slap, and slap, and the creak of the boats lifting on their ropes. Yunjin didn't turn round to look at it. She kept her eyes on the town." },
+      { choose: [
+        { t: "She went where they were.", notes: 3, then: [
+          { s: 'yunjin', f: 'surprised', t: "...Yeah." },
+          { s: 'yunjin', f: 'neutral', t: "That's what I said. In the garden. *I'm going where they are.* I said it before I knew it was her line. She's been in me the whole time, Sol. Since I was a kid hating her. Waiting for me to say her line." }
+        ] },
+        { t: "You're not an idiot. You came back for me.", notes: 3, then: [
+          { s: 'yunjin', f: 'flustered', t: "...Shut up. You were drowning. Anybody would've. Okay. Not anybody. Me. I would've. Clearly. I did." },
+          { n: "She bumped Solar's shoulder with hers, hard, and left it there, and didn't look at her for a while." }
+        ] },
+        { t: "Did it hurt? When she came?", notes: 2, then: [
+          { s: 'yunjin', f: 'serious', t: "Like a door being kicked in from the inside. Like a tooth coming out. Like— you know. Why are you asking me? You've done it a thousand times." },
+          { s: 'yunjin', f: 'neutral', t: "...It hurt. And then I could breathe underwater. Not really. You know what I mean. I could breathe in a place where you can't." }
+        ] }
+      ] },
+      { n: "She pushed back the cuff of Haechan's jacket. On the inside of her left wrist, where the sleeve had hidden it, there was a row of small blue ballpoint marks, upright, in fives, the way you'd tally anything, the way you'd count days on a wall." },
+      { s: 'yunjin', f: 'neutral', t: "Bari counts. Did you know that? That's her job afterward. After she brings the water back. She walks the dead to wherever they're going. Fuuka-sunbae found me a book in the dorm library, an old one, with pictures. She stands at the edge with a lamp and counts them across." },
+      { s: 'yunjin', f: 'serious', t: "So I'm allowed. It's not a sickness. It's not me being crazy at three in the morning. It's a job." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { s: 'yunjin', f: 'sad', t: "I put Shinjiro-sunbae on. In October. I didn't tell you. I didn't know if I was allowed to count him, he'd have hated it, he'd have said *don't make it a thing*. That's my line. He'd have stolen it." }
+      ] },
+      { ifFlag: 'dead.aigis', then: [
+        { s: 'yunjin', f: 'sad', t: "And Aigis. I was on that floor. I saw the water close. Mitsuru says she was a person. I'd have counted her anyway. She'd have wanted it done properly." }
+      ] },
+      { ifFlag: 'eqx-yunjin-ticket-held', then: [
+        { s: 'yunjin', f: 'neutral', t: "Okay. Thing. I'm asking now. Give me my ticket back." },
+        { n: "She held her hand out between them, palm up, without looking, the way she'd held out a can behind her on the first day in April. Solar had carried it since August, in her inside pocket, a small flat square over her ribs; it had gone soft at the corners, and warm, and she'd stopped noticing it was there, which was the thing that made her hesitate." },
+        { choose: [
+          { t: "(Give it back. Like you promised.)", notes: 3, flag: 'eqx-yunjin-ticket-back', then: [
+            { n: "She took it out and put it in Yunjin's palm. Yunjin closed her fingers on it, and held it, and looked at the town." }
+          ] },
+          { t: "(Give it back. Hold her hand a second longer than the ticket.)", notes: 3, flag: 'eqx-yunjin-ticket-back', then: [
+            { n: "She put it in Yunjin's palm and closed Yunjin's fingers over it with her own, one at a time, the way Yunjin had done to hers in August, and held on a second longer than a ticket needed. Yunjin let her. She didn't look round. Her ears went red, which could have been the wind." }
+          ] }
+        ] },
+        { s: 'yunjin', f: 'neutral', t: "I'm not going. Not now. I just wanted to be the one holding it. I can carry things now. I've got somebody in me who carries things up hills." }
+      ] },
+      { ifFlag: 'eqx-yunjin-ticket-kept', then: [
+        { s: 'yunjin', f: 'neutral', t: "I've still got the old one. The expired one. Sunday, the seven o'clock, the boat I didn't get on. I'm not buying another." },
+        { s: 'yunjin', f: 'happy', t: "Bari didn't need a ferry. She walked." }
+      ] },
+      { ifFlag: 'eqx-yunjin-ticket-torn', then: [
+        { s: 'yunjin', f: 'neutral', t: "The taped one's in his jacket now. The inside pocket. It fits exactly. Like he left a pocket the size of a ticket in there on purpose." }
+      ] },
+      { ifEvent: 'eqx-persimmon', then: [
+        { place: 'Kirijo Guesthouse', time: 'Evening', bg: 'kirijo-guesthouse-lobby' },
+        { n: "The girls were at the guesthouse now. Since the morning of the tree. Mitsuru had sent a van to the river street that same afternoon and nobody had argued, not even Chaewon, and now all four of them slept in a row on the guesthouse's second floor in a room with a heater that clanked, and Yunjin walked them home from practice the wrong way, away from the river, and said she loved it." },
+        { n: "In the lobby Kazuha stopped at the foot of the stairs and turned round and came back to Yunjin, and looked at her, very seriously, the way she looked at a step in a routine she hadn't learned yet." },
+        { s: 'kazuha', f: 'neutral', t: "Yunjin-san. You glow a little now. Did you know? Only a little. Like a lamp in the next room." },
+        { s: 'kazuha', f: 'happy', t: "Goodnight. One, two, three, four. I count too, now. You taught me." },
+        { n: "She went up. Yunjin stood at the bottom of the stairs with her hands in Haechan's pockets and didn't move until the fourth door shut." }
+      ], else: [
+        // BG: eqx-oka-gate-night-winter — (as eqx-oka-gate) the Oka boarding house's wooden gate on a cold November night, a lamp over it, the persimmon tree bare above the wall, the house's windows lit behind.
+        { place: 'Iwatodai · River Street', time: 'Evening', bg: 'eqx-oka-gate' },
+        { n: "They walked the girls home from practice at seven, down the river street, under the lamps. The four of them in front with their arms linked against the wind, Eunchae in the middle complaining about her calves; and Yunjin behind them with Solar, and for the first time since July she wasn't at the front of the line. She was at the back. Where you'd walk if you wanted to see the whole of it at once." },
+        { n: "Mrs. Oka was at the gate. Of course she was. She'd changed her gloves; they were wool now, gray, for the winter. She had a tray with five cups of hot barley tea on it, steaming in the cold, already poured, as if she'd heard them turn the corner by the bridge." },
+        { s: 'mrsoka', f: 'worried', t: "Yunjin-chan. Look at you. You've been in the sea, haven't you. I can smell it on you from here. You'll catch your death. Come in and get warm, child, just for a minute. There's plenty." },
+        { n: "Yunjin's right hand moved. Solar saw it. Two fingers came up out of Haechan's pocket toward her temple, halfway, on their own, the way a hand goes up to shade your eyes before you've decided the light's too bright, and stopped there, in the air, and went back down." },
+        { n: "Mrs. Oka saw it too. Her eyes went to the hand. Only for a second. The way your eyes go to a dish on a high shelf that you've been told, many times, very kindly, is not for you." },
+        { s: 'yunjin', f: 'neutral', t: "No thank you, Oka-san. I'm going home." },
+        { s: 'mrsoka', f: 'happy', t: "Of course, of course. Another night." },
+        { n: "She smiled. She took the girls in, one at a time, a gloved hand on each of their backs, Chaewon, Sakura, Eunchae; and Kazuha last, who stopped on the step, and bent, and set a white saucer down on the stone beside the door, with a pinch of rice in it, carefully, the way she'd done every night since July, and said goodnight to it, under her breath, in Japanese." },
+        { n: "Then she came back down the step to the gate, and looked at Yunjin, very seriously, the way she looked at a step in a routine she hadn't learned yet." },
+        { s: 'kazuha', f: 'neutral', t: "Yunjin-san. You glow a little now. Did you know? Only a little. Like a lamp in the next room." },
+        { s: 'kazuha', f: 'happy', t: "Goodnight. One, two, three, four. I count too, now. You taught me." },
+        { n: "She went in. The gate closed. Behind it, in the lit doorway, the saucer sat on the step with its little heap of rice, very white; and Solar knew, the way you know a step is there in the dark, that in the morning it would be upside down, and empty, and nobody in that house would ever have heard anything in the night." }
+      ] },
+      { s: 'yunjin', f: 'serious', t: "They don't know. About the garden. About her. I haven't told them." },
+      { s: 'yunjin', f: 'neutral', t: "If I tell them, they'll want to come down. Chaewon'll make a rota. Eunchae'll film it. Sakura'll read up on it overnight and know more about the Well than Mitsuru by Tuesday. And if I don't tell them they'll find out from Chenle, and they'll never forgive me, and they'll be right." },
+      { choose: [
+        { t: "Tell them. They'd want to know.", notes: 2, flag: 'eqx-yunjin-tell-them', then: [
+          { s: 'yunjin', f: 'neutral', t: "...Yeah. Yeah. Tomorrow. On the stairs, after practice. All four. I'll make them sit down first." },
+          { s: 'yunjin', f: 'sad', t: "I hate that you said it. I wanted you to say it. Both. I'm allowed both, you told me that, on the slipway." }
+        ] },
+        { t: "It's yours to tell, Jin. Whenever you've got the words.", notes: 3, flag: 'eqx-yunjin-tell-mine', then: [
+          { s: 'yunjin', f: 'neutral', t: "The light switch. Again. You and your light switches." },
+          { s: 'yunjin', f: 'neutral', t: "...Okay. Mine. I'll tell them when I've got the words. Bari took a long time to walk back up. Nobody rushed her." }
+        ] },
+        { t: "(Take her hand out of the jacket pocket. Hold it. Say nothing.)", notes: 3, flag: 'eqx-yunjin-tell-held', then: [
+          { n: "She took Yunjin's hand out of Haechan's pocket, the scraped one, and held it, and said nothing, and they walked like that the rest of the way, along the lamps, with the wind behind them now, pushing, the way a hand pushes you gently in the small of the back toward a door." },
+          { n: "At the dorm steps Yunjin stopped and looked at their hands." },
+          { s: 'yunjin', f: 'neutral', t: "...I'll tell them. When I do, you're coming. You're sitting on my left. That's non-negotiable." }
+        ] }
+      ] },
+      { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+      { n: "At eleven-fifty her phone went on her chest." },
+      { phone: [
+        { from: 'yunjin', t: "up" },
+        { from: 'yunjin', t: "every light on. still scared. still great" },
+        { from: 'yunjin', t: "1 2 3 4. 5. i counted me" }
+      ], contact: 'yunjin 🦋' },
+      { n: "Under her door, from down the hall, there was a line of light. Gold. Steady. At midnight the red came up through the house and put it out, the way it put every light in the world out; and at one, when the red went, it came back, all at once, every one of them, and stayed on." }
+    ] },
+    { after: '11/29', title: '8: the bridge part', place: 'Port Island · Harbor', time: 'After School', music: 'tender', scene: [
+      // BG: port-island-harbor-winter-dusk — the Port Island seawall at dusk in early winter, dead low tide, a thin skin of ice at the edges of the puddles on the mud, frost on the decks of the boats lying over on their keels, the sodium lamps coming on, breath-white air.
+      { bg: 'harbor' },
+      { n: "There was ice at the harbor. Not on the water. On the mud, at dead low tide, in the puddles the sea had left behind it in the ruts: a thin gray skin over every one of them, cracked at the edges where the gulls had tried it, so that the whole flat shone dull and broken under the low sun like a mirror somebody had dropped. There was frost on the decks of the boats lying over on their keels. Her breath went up in front of her and stood there." },
+      { n: "Yunjin wasn't sitting. She was standing on top of the seawall, on the flat concrete a meter wide, in Haechan's jacket with her hands out of the sleeves for once, red with cold, her feet apart, counting under her breath. She turned, and reached, and dropped, and came up, and turned again, small and careful on the meter of concrete, her sneakers squeaking, and at the end of it she stood still with her chest going and her left arm out, palm up, to nobody." },
+      { s: 'yunjin', f: 'serious', t: "Don't talk. Eight counts. I'm nearly— okay. There." },
+      { s: 'yunjin', f: 'happy', t: "I've been doing it by myself for an hour. The gulls have seen it eleven times. They hate it. They've started leaving." },
+      { choose: [
+        { t: "(Climb up. Hand her the can you brought.)", notes: 3, then: [
+          { n: "She'd brought them this time. Two cans, from the machine at the top of the steps, the sweet bad coffee, hot enough to hurt her palms through her gloves. She climbed up onto the wall and held one out, and Yunjin looked at it, and at her, and her face did something complicated, and she took it." },
+          { s: 'yunjin', f: 'flustered', t: "...You brought them. You've never brought them. That's my job. You've taken my job." },
+          { s: 'solar', f: 'neutral', t: "You were busy." },
+          { s: 'yunjin', f: 'happy', t: "I was. I was very busy. Thank you. I hate it. Thank you." }
+        ] },
+        { t: "You'll fall in. It's ice.", notes: 2, then: [
+          { s: 'yunjin', f: 'neutral', t: "Then I'll bounce. I'm very bouncy now. Ask Junpei. He threw a cushion at me in the lounge and I caught it with my face and didn't even fall over. That's Bari. That's a goddess." }
+        ] }
+      ] },
+      { n: "They sat on the wall facing the water this time, because the sun was going down over it and there was nothing else to look at that was as good, and drank the coffee, and their two breaths went up together and mixed and went. Yunjin pulled her hands back up into her sleeves and held the can inside them like something alive." },
+      { s: 'yunjin', f: 'neutral', t: "I carried your eomma. On the twenty-second. Up the road. With Akihiko-sunbae. He took the heavy end. He said he didn't. He did." },
+      { s: 'yunjin', f: 'neutral', t: "She held my hand the whole way. Off the side of the stretcher. Not hard. She kept saying something. I thought she was saying a name. I leaned down." },
+      { s: 'yunjin', f: 'sad', t: "She was counting. The stitches. Out loud, in a whisper. All the way up the road, in the red." },
+      { s: 'yunjin', f: 'sad', t: "She got to a hundred and four and then she was asleep. I kept counting for her. I didn't know what else to do. I counted the steps. I counted Akihiko-sunbae's breaths. I counted all the way to the top so she wouldn't lose her place." },
+      { n: "She said it to the ice on the mud. Plainly. The way she'd said *I slept with the light off* in April, as if it were a thing that had happened to somebody else that she happened to know about." },
+      { choose: [
+        { t: "Thank you. For carrying her.", notes: 3, then: [
+          { s: 'yunjin', f: 'neutral', t: "Don't thank me. She's— I don't know what she is to me. She put more rice in my bowl in August. That's all she ever did. That's a lot, it turns out." },
+          { s: 'yunjin', f: 'serious', t: "She's your eomma. In the house on the hill. I'd carry her up anything." }
+        ] },
+        { t: "(Put your gloved hand over hers on the can.)", notes: 3, then: [
+          { n: "She put her hand over Yunjin's on the can. Through two layers of cold wool and the sleeve of Haechan's jacket she could feel Yunjin's fingers holding on, and the heat of the coffee coming through all of it, faint, steady, the way warmth comes up through a floor from a room below." }
+        ] }
+      ] },
+      { ifFlag: 'dead.aigis', then: [
+        { s: 'yunjin', f: 'sad', t: "I was on that floor. When the water opened. I saw Aigis go in. She didn't even look at us. She just went, like it was the one thing in the whole world she was sure about." },
+        { s: 'yunjin', f: 'sad', t: "I counted her. On the wrist. Hyein sleeps in Hanni's bed now. With what's left of her coat. Hanni doesn't sleep. She sits on the end of the bed and keeps watch like a dog." }
+      ], else: [
+        { s: 'yunjin', f: 'happy', t: "Aigis asked me on the way up if I'd like to be asked first, if I ever fall into anything. I said yes. I said ask me first too. We shook on it. Like a man selling you a car. She didn't get it. She shook very seriously. She shook for like ten seconds." }
+      ] },
+      { ifEvent: 'eqx-persimmon', then: [
+        { s: 'yunjin', f: 'serious', t: "The girls are out. Since the tree. Mitsuru moved them that afternoon, all four, to the guesthouse. Chaewon cried in the van. Not about leaving. About not wanting to leave. She said it was like being pulled out of a warm bath." },
+        { s: 'yunjin', f: 'neutral', t: "I said, Chaewon, a man was hanging in the garden. She said *I know*. She said *I know, I know*, and she still didn't want to leave. That's what that house does. I don't know what it does. That's what it does." }
+      ], else: [
+        { s: 'yunjin', f: 'serious', t: "The girls are still there. In that house. I still walk them. She's started leaving the gate open for me. Every night. Just a little. Like a door left on the latch for somebody who's coming home late." },
+        { s: 'yunjin', f: 'neutral', t: "I close it on my way out. Every night. I go back and I close it, and I hear it click, and I count to four." }
+      ] },
+      { ifChoice: { 'asks.yunjin': 'yes' }, then: [
+        { n: "She took her left hand out of the sleeve and held it out over the mud, palm up, and opened it, slowly, with the other one, and held it so the last of the light fell into it." },
+        { s: 'yunjin', f: 'neutral', t: "Still shuts. Every night. And this morning when I opened it, there was this." },
+        { n: "In the creases of her palm, along the lines, deep in where they crossed, there was a fine grit. Reddish. Darker than rust, lighter than blood, the color of a broom made of something that grows in a field, the dust that comes off an old one when you knock it against a step. It had gone into the lines the way ink goes into the grain of wood." },
+        { s: 'yunjin', f: 'serious', t: "I washed it. Twice. With the nail brush. It's in the lines. Like it grew there." },
+        { s: 'yunjin', f: 'neutral', t: "It smells sweet. That's the stupid part. It smells like something somebody's baking." },
+        { n: "She closed her hand on it again, and put it back in her sleeve, and looked at the ice, and didn't say anything else about it; and Solar didn't either, because there wasn't a word for it yet that either of them wanted to be the first to say." }
+      ], else: [
+        { s: 'yunjin', f: 'happy', t: "My hand's open. Every morning now. Since the garden. I wake up and it's lying on the pillow, open, like I'm waiting for somebody to put something in it. Nobody does. That's fine. It's open." }
+      ] },
+      { n: "The sun went down behind the cranes. The lamps came on along the seawall, sodium orange, one after another from the ferry terminal outward, and the ice on the mud went from gold to copper to the color of an old penny, and the cold came down all at once the way it does in December, as if it had been waiting just over the water for the light to go." },
+      { s: 'yunjin', f: 'neutral', t: "The dream's clearer now. Since her. Since Bari. Like she's got better eyes than me." },
+      { s: 'yunjin', f: 'neutral', t: "There's a room with mirrors. A practice room. Wooden floor, the shiny kind. Tape on the floor. Marks. Little crosses in different colors for where everybody stands." },
+      { s: 'yunjin', f: 'serious', t: "And there's a cross on my left. Blue tape. And somebody's written on it. In marker. A name." },
+      { s: 'yunjin', f: 'flustered', t: "I can't read it. Every time I bend down to read it I wake up. And if you say anything about what you think it says I'm pushing you in the harbor. It's ice. You'll bounce. You'll bounce all the way to Incheon." },
+      { choose: [
+        { t: "Wifey.", notes: 3, flag: 'eqx-yunjin-wifey', then: [
+          { n: "Yunjin went still. The whole of her. The can halfway to her mouth, her breath stopped in front of her face, as if somebody had pinned her to the wind like the gulls." },
+          { s: 'yunjin', f: 'flustered', t: "...Don't. Oh my God. Don't say it back, that's cheating, that's like sending *up* back, that's—" },
+          { s: 'yunjin', f: 'sad', t: "...Say it again." },
+          { n: "Solar said it again. Yunjin put her face down into the collar of Haechan's jacket and made a sound into it that might have been a laugh and might have been the other thing, and didn't lift her head for a while, and when she did her eyes were wet and furious and enormously happy." }
+        ] },
+        { t: "Maybe you'll read it when you get there.", notes: 3, then: [
+          { s: 'yunjin', f: 'serious', t: "Get where?" },
+          { s: 'solar', f: 'neutral', t: "Wherever the tape is." },
+          { s: 'yunjin', f: 'neutral', t: "...That's a door again, Sol. You keep handing me doors." },
+          { s: 'yunjin', f: 'neutral', t: "...It's a door you walk to, though. In the daytime. On your own feet. Okay. That one I like." }
+        ] },
+        { t: "(Don't say anything. Look at the water with her.)", notes: 2, then: [
+          { n: "She didn't say anything. They looked at the water together, and Yunjin's shoulder came against hers, on her right side, Yunjin's left, and stayed there, and after a while Yunjin said, very quietly, *thank you for not guessing*, and drank her coffee." }
+        ] }
+      ] },
+      { s: 'yunjin', f: 'neutral', t: "Okay. Get up. I'm teaching you the bridge part. Don't argue. It's eight counts. You've watched me do it on this wall a hundred times. You've watched me do it on a stage. Your body's seen it. Bodies remember." },
+      { ifFlag: 'eqx-yunjin-left', then: [
+        { s: 'yunjin', f: 'neutral', t: "And you know where to stand. You stood there in July. You didn't even think about it. I saw your feet." }
+      ] },
+      { choose: [
+        { t: "(Get up on the wall. Stand on her left. Learn it.)", notes: 3, flag: 'eqx-yunjin-bridge', then: [
+          { n: "She stood up on the wall, on Yunjin's left, on the meter of concrete above the mud with the ice on it shining copper under the lamps, and Yunjin counted her in, low, the gravel voice, *five, six, seven, eight*, and showed her. A turn. A reach. A drop. Small, careful, on a wall in the cold." },
+          { n: "She got the turn wrong twice. The third time her feet did it before Yunjin showed it again, a half step back and round on the left foot and the arm going out, and she didn't know where her feet had learned it. Not in Iwatodai. Not in either of the other lives she knew about. It was as if her body had been somewhere ahead of her, in a room with mirrors and tape on the floor, and come back to tell her." },
+          { n: "Yunjin saw. She stopped counting. She looked at Solar's feet, and then at Solar's face, for a long moment, under the lamp, with her breath going up white between them; and then she started counting again, from five, as if nothing had happened, a little louder than before." },
+          { n: "On the reach Yunjin turned to her left, the way she always did, every time, her arm going out, palm up, for somebody to take. And Solar was there. Her hand was there, already, before she'd decided, the way you'd put your foot on the top stair in the dark; and Yunjin's fingers closed on it, exactly, and held." },
+          // CG: eqx-bridge-part — two girls on top of a harbor seawall at dusk in winter, under sodium lamps, mid-dance, one turning to her left with her arm out and the other's hand already in hers; breath white between them; below, ice on the low-tide mud shining copper.
+          { n: "They did it nine more times. Eleven. The gulls left. A man walking a dog along the walkway stopped and watched them for a whole eight counts and then walked on, smiling at nothing. On the twelfth time they got it right together, the turn, the reach, the drop, the hand, and came up out of the drop at the same moment, and stood on the wall breathing, and Yunjin didn't let go." },
+          { s: 'yunjin', f: 'happy', t: "...There. That's it. That's the whole bridge. You've got it. Your body had it." },
+          { s: 'yunjin', f: 'sad', t: "It's the right place, Sol. It's exactly the place. I don't know where it is yet. I know that's the place." }
+        ] },
+        { t: "(Sit on the wall. Count her in.)", notes: 2, then: [
+          { n: "She sat on the wall with the cans beside her and counted Yunjin in, *five, six, seven, eight*, in her own voice, which wasn't gravel, which was just hers. And Yunjin danced the bridge part alone on the meter of concrete above the ice, turn, reach, drop, and on the reach she turned to her left and her arm went out, palm up, to nobody." },
+          { n: "And this time she laughed at it. Out loud, in the cold. She left her arm out there a second longer than the count, palm up, in the lamplight, the way you'd leave a light on in a kitchen for somebody who was going to be late; and then brought it in, and finished, and bowed to the gulls, who had all gone." }
+        ] }
+      ] },
+      { n: "They walked back along the walkway with the lamps on and the ice ticking on the mud as the cold got into it, the small dry sound of something tightening. At the top of the steps Yunjin stopped and looked back at the harbor, the way she'd looked back every evening since April, and Solar waited for her to say the tide, the time, here and there." },
+      { s: 'yunjin', f: 'neutral', t: "...I'm not going to tell you what time it is at home. I know it. I always know it. I'm just not going to say it tonight." },
+      { s: 'yunjin', f: 'neutral', t: "Ask me in spring. What I'm doing. Where I'm going. Ask me in spring and I'll tell you, and it'll be mine, and you'll hate it, probably, a little, and you'll come and see me off or you won't." },
+      { s: 'yunjin', f: 'happy', t: "Until then I'm here. On purpose. Not because something asked. Because the girls are here and Hanni snores and your three dads argue about rice and I've got a goddess in me who walks people home. That's a lot of reasons. That's a whole wrist of reasons." },
+      { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+      { n: "At eleven-fifty her phone went on her chest." },
+      { phone: [
+        { from: 'yunjin', t: "up" },
+        { from: 'yunjin', t: "my calves hate you. the bridge part hates you. i love it" },
+        { from: 'yunjin', t: "the girls are home. 1 2 3 4. 5 me. 6 you. you're on the wrist now. the good side" }
+      ], contact: 'yunjin 🦋' }
     ] }
   ]
 });

@@ -18,11 +18,11 @@
 {
   const KISS = {
     haechan: ['eqx-hc-roof-kiss', 'eqx-hc-stayed-night'],
-    jungwon: ['eqx-jw-council-kiss', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names'],
+    jungwon: ['eqx-jw-council-kiss', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names', 'eqx-jw-last-train', 'eqx-jw-chosen'],
     jihoon: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss', 'eqx-jihoon-dark-kiss', 'eqx-jihoon-room'],
     akihiko: ['eqx-aki-lamp-kiss', 'eqx-aki-gate-kiss', 'eqx-aki-shallows-kiss', 'eqx-aki-room-kiss', 'eqx-aki-woke'],
     minji: ['eqx-minji-kiss'],
-    shinjiro: ['eqx-shinji-sink-kiss', 'eqx-shinji-awning-kiss', 'eqx-shinji-stayed-night']
+    shinjiro: ['eqx-shinji-sink-kiss', 'eqx-shinji-awning-kiss', 'eqx-shinji-stayed-night', 'eqx-shinji-seed-kiss']
   };
   const dating = (id, then, els) => ({ ifRomance: id, then, else: KISS[id].length ? [{ ifCount: { of: KISS[id], min: 1 }, then, else: els || [] }] : (els || []) });
   // A recorded answer, read into a flag (see the header): sets `flag` when choices[name] is value (core.js branch reads { ifChoice }).
@@ -35,11 +35,13 @@
   const DEAD = ['dead.shinjiro', 'dead.aigis'];
   const ASKED = ['eqx-asked-hyein', 'eqx-asked-house', 'eqx-asked-akihiko', 'eqx-asked-hanni', 'eqx-asked-jaehyun', 'eqx-asked-fathers', 'eqx-asked-aigis',
     'eqx-asked-chaewon', 'eqx-asked-sakura', 'eqx-asked-mark', 'eqx-asked-danielle', 'eqx-asked-trio', 'eqx-asked-hateclub',
-    'eqx-asked-parents-runners', 'eqx-asked-parents-hoax']; // + the summer arrivals' and parents' rank asks (Nov 16)
+    'eqx-asked-parents-runners', 'eqx-asked-parents-hoax',
+    'eqx-asked-haechan', 'eqx-asked-jihoon', 'eqx-asked-rio-saori']; // + ranks 7-8 // + the summer arrivals' and parents' rank asks (Nov 16)
   const MINE = ['eqx-supper-mine', 'eqx-hill1-mine', 'eqx-hill2-mine', 'eqx-hill3-mine', 'eqx-choose-house', 'eqx-choose-hyein',
     'eqx-choose-jaehyun', 'eqx-ferry-mine', 'eqx-moon-mine', 'eqx-oka-night-mine', 'eqx-choose-fathers', 'eqx-xmas-mine',
     'eqx-oka-plums-mine', 'eqx-oka-persimmon-mine', 'eqx-oka-spring-mine', 'eqx-aigis-own-door', // ranks 4-6 (Nov 16)
-    'eqx-choose-parents-runners', 'eqx-choose-parents-hoax'];
+    'eqx-choose-parents-runners', 'eqx-choose-parents-hoax',
+    'eqx-choose-haechan', 'eqx-choose-jihoon', 'eqx-oka-room-mine', 'eqx-oka-name-mine']; // + ranks 7-8
   // The names the three new Personas answer to (to be designed with Kat; change here only).
   const PERSONA = { yunjin: 'Bari', hanni: 'Âu Cơ', hyein: 'Jiknyeo' };
 
@@ -1123,7 +1125,7 @@
       { s: 'junpei', f: 'sad', t: "...She asked me. In April. On the roof. She said, if anybody falls into anything, I'd like to be asked first. She said it like a joke. She didn't do jokes." },
       { s: 'junpei', f: 'sad', t: "I put it in my notebook. Her name. On my grid. I tick her every morning. I've ticked her every morning since April, I've never missed one." },
       { n: "He took the frog notebook out of his jacket. He opened it. He didn't tick anything. He held the pencil over the box for a long time, and then put the notebook away without making a mark, and walked back to the dorm alone in his pajamas in the dawn." },
-      { n: "Hyein had the ribbon. The blue one. Round her own wrist, tied in a knot she'd made with her teeth on the rope. She sat on the lip of the well with Hanni's arm round her and her other hand empty in her lap, palm up, and looked at it." },
+      { n: "Hyein had the ribbon. The white one, gone gray. Round her own wrist, tied in a knot she'd made with her teeth on the rope. She sat on the lip of the well with Hanni's arm round her and her other hand empty in her lap, palm up, and looked at it." },
       { s: 'hyein', f: 'sad', t: "...It was a door. It was just a door. I knew. I knew the whole time. I knew in April. I knew it wasn't her." },
       { s: 'hanni', f: 'sad', t: "I know you did." },
       { s: 'hyein', f: 'sad', t: "I opened it anyway. She sounded so sure." },

@@ -7,8 +7,8 @@
    after-school slot, out in town; the same night's late slot is the eqx-records event, which rank 2 hands off to.
    Rank 3 is her supper at the boarding house, forced on Sunday 6/13 in the evening slot; it records her ask: tally
    asks.elizabeth (+ cakes / choose). Speaker mrsoka appears.
-   Written: ranks 1–6. Ranks 7–10 to come; a later rank needs its own `after` date and slot (avoid 11/27 late, Act IV's
-   confession, and 12/21; story-act3.js eqx-hanne-page holds 9/20 late).
+   Written: ranks 1–8. Ranks 9–10 to come; a later rank needs its own `after` date and slot (avoid 12/21, Theodore's death,
+   and Act V's dated events; she goes quiet after 12/21, plan §17).
    Rank 4: Sunday 7/4, `slot: 'after'` ('4: a line in the water'): the Port Island pier with the last fisherman (speaker
      fisherman, the same 'Old Fisherman' as akihiko.js: the one who said no; gone by 8/12, story-act3.js). She learns to
      cast and lets a small fish go; the new arrivals' threads are tied with a hook knot and taut (someone is winding:
@@ -29,9 +29,26 @@
      Room and offered to stand at Solar's door (12/21 groundwork). Branches on eqx-pencil (Hanne plays steady, fewer
      fingers), asks.elizabeth. Flags: eqx-eliz-pages-open (the mothers' pages haven't closed; told to Solar),
      eqx-eliz-fault-thing / eqx-eliz-fault-holder / eqx-eliz-fault-next (Solar's answer).
+   Rank 7: Friday 10/29, `slot: 'after'` ('7: absolutely terrifying'): the culture festival's first day (10/30 after is
+     eqx-culture-stage). A child's pinwheel in her cap; she never looks at the well. dead.shinjiro: Junpei's yakisoba with the
+     index card; she won't speak of his page ("Not today"), matching 11/27's "I didn't tell you then". Alive: Shinjiro at the
+     griddle (his coat in three pieces in a bin bag) asks her "You eat yet?" and wants nothing for it. 2-B's haunted house:
+     she screams for joy; a cardboard door knocks twice ("That's not us… since this morning"); she reads it: "Then down…
+     It's practising." [INVENTED]. At the exit curtain she can't let go. Rooftop: fright as rehearsal; every door in Iwatodai
+     is heavier ("It's learning the house"). The pinwheel goes to Theodore. The well's banner slides off by itself. Reads the
+     rank-6 eqx-eliz-fault-* flags. Flag: eqx-eliz-let-go (she let go of the curtain herself).
+   Rank 8: Sunday 12/5, `slot: 'after'` ('8: something from outside'): after the 11/27 confession, before 12/9 and 12/21.
+     A posted card (upside-down stamp). Paulownia Mall at Christmas; no book (Theodore minds it). The mothers' pages are back
+     with the same line cut from all three, near the top (the tale, plan §11; unnamed) [INVENTED]. The revolving door ("never
+     open and never shut… nobody holds it"). She buys Theodore one gift; Solar helps choose. At the blue door in the back
+     passage Theodore answers; a chair now stands facing the gold-lined door: he's practising for the 21st ("Both hands
+     flat"). Her wrist: *21st. Party. Cake. Theo holds the door.* Branches on dead.aigis (the clock shop), dead.shinjiro
+     (the griddle card), eqx-eliz-pages-open. Flags: eqx-eliz-after-arm / -angry / -carry (how Solar met her after the
+     confession); eqx-eliz-gift-scarf / -globe / -box (the gift); eqx-eliz-gift-given (given today: Theodore opens it in the
+     doorway) / eqx-eliz-gift-kept (hidden in the book for Christmas: he never opens it). Act V can find it either way.
    No ask floor flag: Elizabeth isn't a fighter, so plan §8's "clear it with that character in the party" can't apply.
    Flags this file sets: eqx-eliz-form (rank 1), eqx-eliz-door-shown (rank 2, reads eqx-aigis-log), and the rank 4–6 ones
-   above. Nothing reads any of them yet. Speaker without a portrait: fisherman. */
+   above (rank 7 reads the rank-6 fault flags; rank 8 reads eqx-eliz-pages-open). Speaker without a portrait: fisherman. */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'elizabeth', name: 'Elizabeth', short: 'Elizabeth', arcana: 'Velvet Room', numeral: '', from: 'Persona 3', kind: 'frame',
   romance: null, starts: '4/7', hidden: true,
@@ -39,7 +56,7 @@
   home: { area: 'Iwatodai Dorm', spot: 'Front', slot: 'after', days: [0, 1, 2, 3, 4, 5, 6],
           hint: 'Some Sundays, a card of blue paper under the door, and a woman in blue waiting at the gate.' },
   approach: "A woman in a blue dress and a little blue cap is standing very straight outside the dorm gate with an enormous book held against her chest, regarding the street with polite, intense interest.",
-  cast: { fisherman: 'Old Fisherman' },
+  cast: { fisherman: 'Old Fisherman', theodore: 'Theodore' },
   invite: null,
   hangouts: [],
   ranks: [
@@ -814,6 +831,293 @@
       { n: "She lifted one hand in the small formal wave, the girl at the station, and turned, and went down the steps toward the monorail with the book against her chest, very straight, and didn't look back, and at the bottom of the steps there was a door, a service door into the base of the bridge, standing open a hand's width, propped with a wedge of folded cardboard." },
       { n: "Elizabeth looked at it. Looked both ways. Bent, and took out the cardboard, and let it go, and stood beside it with her head on one side until the latch clicked. Then she went round the corner and was gone." },
       { n: "Solar stood at the top of the steps for a long time with the wind at her back. Behind her the lamps finished coming on, all the way along the bridge to the middle, where the seventh one, over the pale paving, flickered twice before it caught." }
+    ] },
+    { after: '10/29', slot: 'after', title: '7: absolutely terrifying', place: 'Gekkoukan High · Courtyard', time: 'Culture Festival', music: 'school', scene: [
+      { bg: 'gekkoukan-culture-festival' },
+      { n: "The card was under her door on Friday morning, the first day of the festival, and the copperplate had come back. Not all the way. The flourishes were there but careful, as if each one had been tried on a scrap of paper first." },
+      { n: "*I am told there is a house at your school where people pay to be frightened. I should like to be frightened by something that is only pretending. I think I need the practice. This afternoon, if you're free. I'll wait by the gate. — E.*" },
+      { n: "She was waiting by the gate. Very straight, in the blue dress, with the book against her chest and a paper pinwheel stuck through the band of her cap that somebody's little sister must have given her on the way in, turning in the wind off the bay, and the second-years taking tickets at the gate had stopped taking tickets to look at her and she was looking back at them with polite, intense interest, as if they were the exhibit." },
+      { s: 'elizabeth', f: 'happy', t: "There you are. They gave me a windmill. A child gave it to me. She said I looked like I needed one. I didn't know a person could look like they needed a windmill. I've been thinking about it for ten minutes." },
+      { choose: [
+        { t: "You do look like you need one.", notes: 2, then: [
+          { s: 'elizabeth', f: 'happy', t: "Then she was right, and I shall keep it, and it will turn, and I'll feel better. That's how windmills work, I believe. I'm nearly sure." }
+        ] },
+        { t: "(Straighten the pinwheel in her cap so it catches the wind.)", notes: 3, then: [
+          { n: "She turned the pinwheel in its band a little, into the wind, and it caught and spun, red and yellow, a tiny furious blur above Elizabeth's ear, and Elizabeth looked up at it with her eyes crossed, trying to see it, and then gave up and smiled at Solar instead, the old smile, nearly." }
+        ] }
+      ] },
+      { n: "The courtyard was full. Stalls in two rows under strings of paper lanterns not lit yet, takoyaki and chocolate bananas and yo-yo fishing in a paddling pool, the brass band from the first-years practising the same four bars somewhere behind the gym, over and over, never getting to the fifth. In the middle of it all the old well with its plank lid, and round the lid, tied in a big floppy bow like a ribbon on a present, a festival banner, red and white." },
+      { n: "Elizabeth walked past it without turning her head. She'd never once looked at a well that Solar had seen. She didn't now." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "3-F's yakisoba stall was by the bike sheds. Junpei was behind the griddle in a headband, with an index card taped to the griddle's edge in somebody else's square, careful writing, and he was tasting every batch before he served it, every single one, and his eyes were red, and he waved at Solar with the spatula and called out that it was a family recipe, and didn't come over." },
+        { n: "Elizabeth stopped. She looked at the stall, and at the card on the griddle, from a long way off, the way you'd look at a house where you knew someone had died, and her arms went tighter round the book, and stayed tight." },
+        { n: "It had been six days. Solar hadn't said his name to anyone in six days who hadn't been there. She found she was waiting for Elizabeth to say it. Elizabeth, who felt pages close. Who'd have felt that one." },
+        { choose: [
+          { t: "Elizabeth. His page.", notes: 3, then: [
+            { n: "Elizabeth didn't look at her. She looked at the stall. Her hands on the book were white at the knuckles, and the pinwheel in her cap went round and round in the wind over her head as if nothing were the matter." },
+            { s: 'elizabeth', f: 'sad', t: "...Not today. Please. I don't know how. I've been trying all week to learn how and I don't." },
+            { s: 'elizabeth', f: 'sad', t: "Today I'd like to be frightened by something that isn't true. Just for an hour. Will you let me?" }
+          ] },
+          { t: "(Don't ask. Take her arm and walk her past it.)", notes: 3, then: [
+            { n: "She took Elizabeth's arm and walked her past it, past the bike sheds and the smell of cabbage and sauce, and didn't ask, and felt Elizabeth's whole arm, under her hand, go loose with something that wasn't quite relief." },
+            { s: 'elizabeth', f: 'sad', t: "...Thank you. Not today. I'd rather be frightened by something that isn't true. Just for an hour." }
+          ] }
+        ] }
+      ], else: [
+        { n: "3-F's yakisoba stall was by the bike sheds. Shinjiro was behind it in a folding chair with his shirt buttoned to the neck over whatever was under it and a long coat that was clearly not his own, because his own was in three pieces in a bin bag in the dorm's laundry room, and Junpei was doing the standing up and the flipping and Shinjiro was doing the telling him he was doing it wrong. He saw Solar. He saw who was on her arm. His eyebrows went up about a millimetre, which for him was a shout." },
+        { s: 'shinjiro', f: 'neutral', t: "...You. The one from the bridge with the book. Velvet something." },
+        { s: 'elizabeth', f: 'happy', t: "Elizabeth. And you're the one whose page has three lines across it. I'm so glad. I'm so very glad to meet you while you're— I'm so glad to meet you." },
+        { n: "Shinjiro looked at her for a long moment. Then he put a paper plate of yakisoba together, slowly, with his right hand, with the tongs, more cabbage than you'd think, and held it out across the griddle to her." },
+        { s: 'shinjiro', f: 'neutral', t: "You eat yet?" },
+        { n: "Elizabeth stood very still with her arms round the book and looked at the plate as if it were a much bigger thing than a plate." },
+        { s: 'elizabeth', f: 'neutral', t: "...Someone asked me that once before. At a gate. By the river. Nobody ever had, and then someone did." },
+        { s: 'elizabeth', f: 'serious', t: "She wanted something for it, I think. I didn't know that at the time. Do you want something for it?" },
+        { s: 'shinjiro', f: 'neutral', t: "No. It's yakisoba. It's two hundred yen. Junpei'll pay." },
+        { s: 'junpei', f: 'surprised', t: "Hey!" },
+        { n: "Elizabeth took the plate. She held it in both hands with the book clamped under her arm, and ate it standing up by the bike sheds with the disposable chopsticks, very slowly, every strand, the way you'd read something you'd been waiting a long time to be sent; and Shinjiro watched her eat it, from his folding chair, all of it, and when she'd finished he said *good*, and she looked as if he'd given her a medal." }
+      ] },
+
+      { place: 'Gekkoukan High · 2-B', time: 'Culture Festival', bg: 'gekkoukan-classroom-evening', soft: true },
+      // BG: gekkoukan-haunted-house — a school classroom blacked out with cardboard and black bin bags for a festival haunted house, a narrow taped-off corridor, strings of konnyaku and paper ghosts hanging from the ceiling, red light from a single bulb, a hand-painted sign reading ABSOLUTELY TERRIFYING!!
+      { n: "2-B had blacked out every window with bin bags and cardboard and gaffer tape, and the sign over the door said *ABSOLUTELY TERRIFYING!!* in red paint that had been made to drip, and there was a queue, and a second-year in a sheet with eyeholes taking a hundred yen a head into a biscuit tin. Elizabeth paid for both of them with a coin she took from inside her glove and held up to the light first, as if she weren't sure it was real." },
+      { s: 'elizabeth', f: 'happy', t: "I've read about these. In a guidebook. The ghosts are students. The blood is paint. The screaming is the guests. One goes in frightened and comes out laughing. It's the most extraordinary arrangement I've ever heard of." },
+      { n: "Inside it was dark, properly dark, the dark of a room with no windows left, and it smelled of cardboard and gaffer tape and the dusty heat of a single red bulb somewhere up ahead. A corridor made of desks turned on their sides and draped in black cloth. Cold wet things on strings that brushed your face, konnyaku, she knew it was konnyaku, it didn't help. A recording of a woman sobbing on a loop, with a hiss in it where the tape had been stretched." },
+      { n: "Elizabeth screamed at the first one. A real scream, high and full and delighted, the first loud sound Solar had ever heard her make, and grabbed Solar's arm with both hands, book and all, and held on, and when the konnyaku had swung away she was laughing, breathless, astonished at herself." },
+      { s: 'elizabeth', f: 'happy', t: "*Oh.* Oh, it's dreadful. It's wonderful. My heart is going like a moth in a jar. Is that what it's supposed to do? Do it again. Can we go back and do that one again?" },
+      { choose: [
+        { t: "(Laugh. Pull her on to the next one.)", notes: 3, then: [
+          { n: "She laughed, and pulled her on, and Elizabeth came, clinging, shrieking at a hand that came out of a desk, at a girl with long wet hair in the corner who didn't move until they were right beside her, at a skeleton from the biology lab that somebody had dressed in a Gekkoukan blazer; shrieking and then laughing, every time, the whole length of the corridor, like somebody learning a song by singing it wrong." }
+        ] },
+        { t: "(Scream with her.)", notes: 3, then: [
+          { n: "So Solar screamed too. At the hand from the desk, at the girl in the corner with the wet hair, at the skeleton from the biology lab in a Gekkoukan blazer; screamed on purpose, loud and silly, the way she hadn't screamed at anything that wasn't real in a year, and Elizabeth looked at her in the red dark, astonished, and then joined in, and they went down the corridor screaming together and holding on and laughing so hard Solar's stomach hurt, and somewhere behind a desk a second-year in a sheet started laughing too and had to be shushed." }
+        ] }
+      ] },
+      { n: "At the end of the corridor there was a row of doors. Cardboard doors, painted dark brown with a sponge to look like wood, set into a wall of black cloth, five of them, each with a little paper sign on it in a child's careful hand: *DON'T OPEN. DON'T OPEN. DON'T OPEN.* The idea was obvious. One of them would burst open, somebody in a sheet would jump out, everybody would scream. The guests ahead of them had gone past the doors and screamed and gone on through the exit curtain into the light, laughing." },
+      { n: "As Solar and Elizabeth came level with the third door, it knocked." },
+      { n: "Twice. From the other side. Polite. Unhurried. *Knock. Knock.*" },
+      { n: "It wasn't loud. It didn't need to be. Solar's whole body knew that knock before she did, the way it knew the smell of the ward; it was in her spine and the backs of her knees before it was anywhere else, and she was standing still in the red dark with her hand clamped on Elizabeth's wrist and she didn't remember stopping." },
+      { n: "The second-year in the sheet came out from behind the fourth door, the one that was supposed to burst open, and pulled his sheet up off his face, and he was a boy, a thin boy with glasses, and he looked at the third door with an expression Solar recognized, from April, from a hundred faces in Iwatodai." },
+      { n: "*That's not us,* he said. *There's nobody back there. That's just the wall. It's been doing it since this morning.*" },
+      { n: "Elizabeth took her wrist out of Solar's hand. Gently. She stepped up to the third door, the cardboard one with its painted grain and its paper sign, and took off her glove, and put her bare palm flat on it, the way she'd put it on the dorm door, the café door, the bridge rail, and stood with her eyes half shut and her head on one side." },
+      { n: "The pinwheel in her cap had stopped turning. There was no wind in here." },
+      { s: 'elizabeth', f: 'serious', t: "...Cardboard. Then cloth. Then the wall of the classroom. Then the courtyard." },
+      { s: 'elizabeth', f: 'serious', t: "Then down." },
+      { n: "She took her hand away. She looked at it. She put her glove back on, slowly, finger by finger, and didn't look at the door again." },
+      { s: 'elizabeth', f: 'neutral', t: "It's only a wall. Somebody knocked on it from the other side of nothing. It isn't for us. It's practising." },
+      { s: 'elizabeth', f: 'happy', t: "...Well. That one wasn't pretending. Shall we go and find one that is?" },
+      { n: "She said it brightly. Her hand found Solar's in the dark and held it the whole way to the exit curtain, so hard her rings would have hurt if she'd worn rings." },
+      { n: "The exit was a black curtain. Light round its edges. Behind them in the corridor the next guests were coming, a little boy and his mother, the boy shrieking at the konnyaku; and Elizabeth stopped at the curtain, and lifted it, and held it up for them, the way you'd hold a door. And didn't let go." },
+      { n: "Solar watched her arm go stiff. All the way up, to the shoulder. Her other hand had come up to hold the curtain too, both hands, in the gap, the light falling through on her face, and the boy and his mother were still twenty feet back at the skeleton, and she wasn't letting go, and Solar saw on her face that she knew it." },
+      { choose: [
+        { t: "(Unhook her fingers. One at a time. Like the café, like the bridge.)", notes: 2, then: [
+          { n: "She unhooked Elizabeth's fingers from the curtain one at a time, gently, the way she had at the café in April and on the bridge three weeks ago, and the curtain fell shut behind them, and they were outside in the light, in the corridor, and Elizabeth stood blinking with her hands held up in front of her, empty." },
+          { s: 'elizabeth', f: 'sad', t: "...Again. Thank you. I'm so tired of you having to do that. I'd like, one day, to do it myself." }
+        ] },
+        { t: "(Wait. Don't touch her. Let her do it herself.)", notes: 3, flag: 'eqx-eliz-let-go', then: [
+          { n: "She didn't touch her. She stood beside her in the gap, close enough that their shoulders touched, and waited, and didn't say anything, and the boy and his mother came on up the corridor, closer, closer, and Elizabeth's arms shook." },
+          { n: "Then Elizabeth looked to her left. Then to her right. Like a child at a road." },
+          { n: "And let go." },
+          { n: "The curtain fell shut behind them. It swung, and settled. It was only a curtain. Elizabeth stood in the bright corridor outside 2-B and looked at her own two hands as if they belonged to somebody very brave she'd only heard about." },
+          { s: 'elizabeth', f: 'surprised', t: "...I did it. Did you see? Nobody had to take my fingers off. Look both ways, let go. I did it." },
+          { s: 'solar', f: 'happy', t: "I saw." },
+          { s: 'elizabeth', f: 'happy', t: "It was a curtain. I'm aware it was only a curtain. I don't care in the least." }
+        ] }
+      ] },
+
+      { place: 'Gekkoukan High · Rooftop', time: 'Evening', bg: 'gekkoukan-rooftop-night', soft: true },
+      { n: "They sat on the roof after, on the bench by the fence where Solar had eaten lunch a hundred times in another year. Below them the courtyard lanterns had come on in two lines, and the brass band had finally found its fifth bar, and somebody on the PA was reading out lost property, a blue umbrella, a pencil case shaped like a fish." },
+      { n: "Elizabeth had bought a chocolate banana and was holding it like a torch and not eating it. The pinwheel in her cap was turning again." },
+      { s: 'elizabeth', f: 'happy', t: "What an extraordinary thing. To be frightened on purpose, together, in the dark, and to come out into the light laughing. You do it for fun. You *pay* for it." },
+      { s: 'elizabeth', f: 'neutral', t: "...I think it's a sort of rehearsal. Isn't it. You practise being frightened of things that can't hurt you, all together, holding on, so that when there's something that can, your body remembers. The holding on. Not the fright. The fright it knows already." },
+      { s: 'elizabeth', f: 'sad', t: "I've been frightened since June. On my own. In a room where nobody screams. I didn't know what it was at first. I thought it was a draught." },
+      { ifFlag: 'eqx-eliz-fault-thing', then: [
+        { s: 'elizabeth', f: 'neutral', t: "I've kept what you told me on the bridge. *The thing that came through. Nobody else.* I take it out at night and look at it. It's a very good answer. It doesn't fit in my hand yet. I keep trying it." }
+      ] },
+      { ifFlag: 'eqx-eliz-fault-holder', then: [
+        { s: 'elizabeth', f: 'neutral', t: "I wrote down what you told me on the bridge. *Holding and opening. Not the same.* It's on the inside of my wrist. I read it in the night. It's starting to wear off. I'll have to write it again." }
+      ] },
+      { ifFlag: 'eqx-eliz-fault-next', then: [
+        { s: 'elizabeth', f: 'neutral', t: "I've been doing the job you gave me. On the bridge. *What they do next.* I've been doing it every night. I haven't finished. I've got as far as knowing it'll have to be done slowly. That's as far as I've got." }
+      ] },
+      { s: 'elizabeth', f: 'serious', t: "...May I tell you a frightening thing that isn't pretending? Only one. Then we'll go back to the bananas." },
+      { choose: [
+        { t: "Tell me.", notes: 3, then: [
+          { s: 'elizabeth', f: 'serious', t: "Every door in Iwatodai is a little heavier than it was in the spring. I can feel it when I touch them. Like a house where somebody's leaning on the other side of every door at once, very gently, to see which one gives." },
+          { s: 'elizabeth', f: 'serious', t: "That one in there wasn't knocking to come in. It was knocking to hear who'd answer. It's learning the house." },
+          { s: 'elizabeth', f: 'neutral', t: "...There. That's the frightening thing. Now hold on to me, the way we did in there. I'd like my body to remember it." },
+          { n: "So Solar held on to her, on the bench, an arm round her shoulders, and Elizabeth leaned into it, stiffly at first, like someone learning a dance from a diagram, and then not stiffly; and they sat like that and watched the lanterns, and the pinwheel turned over their heads." }
+        ] },
+        { t: "Not today. You said an hour. It's not been an hour.", notes: 3, then: [
+          { s: 'elizabeth', f: 'surprised', t: "...Hasn't it?" },
+          { s: 'solar', f: 'neutral', t: "Fifty minutes. You've got ten more of being frightened of things that aren't true." },
+          { n: "Elizabeth looked at her for a long time. Then she laughed, the small real one, and took a bite of the chocolate banana at last, a very large bite, and got chocolate on her glove and looked at it in horror and then, deliberately, licked it off." },
+          { s: 'elizabeth', f: 'happy', t: "Ten minutes. Then I'll tell you. Or I won't. I'll decide in ten minutes. That's mine." }
+        ] }
+      ] },
+      { n: "When the lanterns were all lit she stood up, and brushed down her dress, and held out the pinwheel to Solar, then took it back." },
+      { s: 'elizabeth', f: 'neutral', t: "No. I'll keep it. For Theodore. He's never had anything from outside. He thinks the world is a rumour I've been spreading to get out of the dusting." },
+      { s: 'elizabeth', f: 'happy', t: "He'll put it in a vase. He'll water it. You'll see." },
+      { n: "She went down the stairs very straight with the book against her chest and the pinwheel in her hand, held up like a candle, and at the bottom of the stairs she turned and lifted her other hand in the small formal wave, and was gone into the lit courtyard and the crowd." },
+      { n: "Solar stayed on the roof. Below her the festival went on, lanterns and cabbage and the band, and in the middle of it the well with its red and white bow; and as she watched, the bow came undone on its own, slowly, the banner sliding off the plank lid onto the paving like a dress dropped on a floor, and nobody in the crowd looked round, and nobody put it back." }
+    ] },
+    { after: '12/5', slot: 'after', title: '8: something from outside', place: 'Paulownia Mall', time: 'Daytime', music: 'velvet', scene: [
+      { bg: 'iwotodaidorm-outside' },
+      { n: "There was no card under her door that Sunday. There was a card in the dorm's mailbox, which had never happened, with a stamp on it, which had never happened either: a real stamp, a cherry blossom, stuck on upside down and cancelled at Iwatodai Station. Somebody had shown Elizabeth a post office." },
+      { n: "*Christmas, I'm told. People give each other things. I have never given anyone anything in my life. I'd like to start with my brother, and I'd like you to help me, if after Saturday you'd still like to be seen with me. Paulownia Mall. One o'clock. The fountain. If you don't come I shall understand, and buy him a hat. — E.*" },
+      { n: "Saturday. The Velvet Room, a week ago. A door with a gold line under it, and a girl in blue with her hands flat on the wood, and *I held the door for it.* Solar had walked home from the mall that night through the closed passage and up the hill in the cold without remembering any of the walk." },
+      { n: "She went anyway. She'd known she would before she finished reading it. She stood in the hall with the card in her hand and her coat already on." },
+      { place: 'Paulownia Mall · Fountain', time: 'Daytime', bg: 'paulownia-atrium-christmas', soft: true },
+      { n: "The mall had gone Christmas overnight, the way malls did, as if December were a switch somebody had thrown: a tree in the atrium two floors high, white lights on every railing, the same three carols playing from every shop in slightly different keys, so that walking past the doors was like walking past three radios at once. It was cold outside, a thin dry cold that made your teeth ache, and inside it was too warm, and everyone was carrying their coats over their arms and looking flushed and harassed and happy." },
+      { n: "Elizabeth was at the fountain. She was wearing a coat, a blue one, buttoned to the throat, over the dress. Solar had never seen her in a coat. She looked like somebody's idea of a girl going shopping, carefully assembled from a catalogue, and she was standing very straight with her gloved hands folded in front of her instead of round the book, and the book wasn't there." },
+      { s: 'elizabeth', f: 'neutral', t: "...You came." },
+      { s: 'elizabeth', f: 'neutral', t: "I didn't bring the book. I thought it might be— I didn't want you to have to look at it. Theodore's minding it. He was so surprised I left it that he dropped a teacup." },
+      { n: "She stood there and didn't take her arm. She didn't hold out her hand. She waited, with her gloved hands folded, the way you'd wait to be told whether you were still allowed in a house." },
+      { choose: [
+        { t: "(Hold out your arm. Like always.)", notes: 3, flag: 'eqx-eliz-after-arm', then: [
+          { n: "She crooked her elbow. Elizabeth looked at it for a long moment, and her face did something complicated and quick and was still again; then she put her hand through it, and held on, and this time she did make the little sound, the satisfied one, the key in the lock, except it came out shaky, and she pretended it hadn't." }
+        ] },
+        { t: "I'm still angry. I came anyway.", notes: 3, flag: 'eqx-eliz-after-angry', then: [
+          { s: 'elizabeth', f: 'neutral', t: "...Yes. Good. You should be. I'd think less of you if you weren't, and I don't want to think less of you, I've only just got the hang of thinking well of people." },
+          { s: 'elizabeth', f: 'sad', t: "Angry and here. I didn't know you could be both at once. I'd like to learn that too. One thing at a time." }
+        ] },
+        { t: "It's yours to carry. You don't have to carry it on your own.", notes: 3, flag: 'eqx-eliz-after-carry', then: [
+          { n: "Elizabeth stood very still by the fountain with the carols going round them in three keys. Then she looked down at her gloved hands, and pushed the left cuff back an inch, and Solar saw the writing on the inside of her wrist, *it's just closed*, faded, gone over again." },
+          { s: 'elizabeth', f: 'sad', t: "...I'm running out of room on my wrists. I may have to start on my arms. Say that again some time when I've got a pen." }
+        ] }
+      ] },
+      { n: "They walked. Elizabeth had a list, in her coat pocket, written on the back of one of her own blue cards, and she consulted it at every shop the way a general consults a map. It said, in full: *1. Something warm. 2. Something from outside. 3. Something that will still be there.*" },
+      { s: 'elizabeth', f: 'neutral', t: "Those are the things I'd want, I think, if anyone ever gave me anything. Which no one has. So I'm guessing." },
+      { ifFlag: 'eqx-eliz-pages-open', then: [
+        { n: "On the escalator, between floors, with nobody near them, she said quietly, without being asked," },
+        { s: 'elizabeth', f: 'neutral', t: "The mothers' pages. You remember, on the bridge. They've closed again. Properly. They're back on the rope." },
+        { s: 'elizabeth', f: 'serious', t: "...But there's a line gone. In each. Near the top, where the oldest things are. The same line, from all three. As if someone had taken the same sentence out of three books with a very sharp knife." },
+        { s: 'elizabeth', f: 'neutral', t: "I don't know what it said. I only know where it was. I won't say more than I know." }
+      ], else: [
+        { n: "On the escalator, between floors, with nobody near them, she said quietly, without being asked," },
+        { s: 'elizabeth', f: 'serious', t: "The three mothers. Their pages came back. I felt them. But there's a line gone, in each. Near the top, where the oldest things are. The same line from all three, as if somebody'd cut the same sentence out of three books." },
+        { s: 'elizabeth', f: 'neutral', t: "I don't know what it said. I only know where it was." }
+      ] },
+      { ifFlag: 'dead.aigis', then: [
+        { n: "On the second floor there was a shop that sold clocks. Elizabeth stopped at its window, where forty clocks were all saying the same time, tick for tick, in perfect step, and stood looking at them for a long time." },
+        { s: 'elizabeth', f: 'sad', t: "...She'd have told me the exact time. To the second. Without looking. I used to think that was the least interesting thing about her. I'd give a great deal to be told the time." }
+      ] },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "At the food court they passed a yakisoba counter, and Elizabeth slowed, and didn't stop, and said, to the counter, not to Solar," },
+        { s: 'elizabeth', f: 'sad', t: "...I never met him. Isn't that strange. I read his handwriting on a griddle at your festival. *Taste it before you serve it.* I'd have liked to be told that to my face. I think he was the sort who'd have told me." }
+      ] },
+
+      { place: 'Paulownia Mall · Entrance', time: 'Daytime', bg: 'paulownia-mall', soft: true },
+      { n: "The north entrance had a revolving door. Big, brass, four glass leaves turning slowly in a drum, the kind that went round on its own when you stepped into it. Elizabeth saw it from across the floor and stopped dead and went to it like a cat to a box." },
+      { n: "She went round once. She came out where she'd gone in, looking astonished. She went round again. And a third time, slowly, with her gloved hand flat on the glass, reading it, her face very close to the pane, while the shoppers behind her waited and then gave up and used the side door, and Solar stood by the side door with her hands in her pockets and watched a woman who had held doors for two years discover a door that didn't need holding." },
+      { s: 'elizabeth', f: 'happy', t: "*Solar.* It's never open. And it's never shut. Do you understand? There's never a moment when anything could just come through. You have to go round with it. It goes round with you. Nobody holds it at all." },
+      { s: 'elizabeth', f: 'happy', t: "Whoever thought of it should have a page of their own. In gold." },
+      { choose: [
+        { t: "(Step into the next leaf. Go round with her.)", notes: 3, then: [
+          { n: "She stepped into the next leaf of the drum and they went round together, each in her own wedge of glass, a pane between them, and Elizabeth put her gloved palm flat against the glass on her side and Solar put hers against it on the other, and they went round twice like that, hands lined up through the pane, while a mother with a pushchair waited at the side door and smiled at them as if they were children." }
+        ] },
+        { t: "You can't stay in it forever.", notes: 2, then: [
+          { s: 'elizabeth', f: 'neutral', t: "...No. I know. That's what's wrong with it, of course. It's a wonderful door and you can't stay in it." },
+          { n: "She came out. She stood on the mat and looked back at it, going round empty now, slow, brass and glass, and the carols coming through it in and out, in and out." },
+          { s: 'elizabeth', f: 'sad', t: "Everything I like turns out to be something I can't stay in. I'm told that's very human. I'd rather it were less human and more convenient." }
+        ] }
+      ] },
+
+      { place: 'Paulownia Mall · Second Floor', time: 'Daytime', bg: 'inside-mall', soft: true },
+      { n: "The shop was at the far end of the second floor, small, crowded, the kind of shop that sold everything a person might buy for another person when they didn't know what to buy: candles and teacups and gloves and music boxes and tiny jars of honey with gingham on the lids. Elizabeth went through it with the list in her hand like a detective through a house, touching everything, reading everything, and came back to three things, and lined them up on the counter in front of Solar, and stood back." },
+      { n: "A scarf, deep blue, soft, wool from somewhere cold, folded in tissue. A snow globe the size of an orange, a little wooden house inside with a red door and a lamp lit in the window, and when you turned it over the snow came down on the roof, slowly, and never got inside. A music box, plain walnut, that when you opened it played a tune Solar half knew, something with a long low note running under it." },
+      { s: 'elizabeth', f: 'neutral', t: "Something warm. Something from outside. Something that will still be there. One each. I can only afford one. The lady at the post office explained money to me and I'm afraid I understood it." },
+      { s: 'elizabeth', f: 'serious', t: "...You choose. No. Don't. Help me choose. That's different, isn't it. I've been learning the difference." },
+      { choose: [
+        { t: "The scarf. He stands by that door all night. He'll be cold.", notes: 3, flag: 'eqx-eliz-gift-scarf', then: [
+          { s: 'elizabeth', f: 'neutral', t: "...He is always cold by the door. He never says. He blows on his gloves when he thinks I'm not looking." },
+          { n: "She picked up the scarf and held it against her own cheek, the way you'd test a bath, and closed her eyes." },
+          { s: 'elizabeth', f: 'happy', t: "Warm. Yes. That one. He'll wear it in the Room, which is absurd, it's never been cold in the Room in its existence. He'll wear it anyway. He'll wear it to make me happy. He's terribly good at that." }
+        ] },
+        { t: "The snow globe. A house nothing can get into.", notes: 3, flag: 'eqx-eliz-gift-globe', then: [
+          { n: "Elizabeth turned it over. The snow went up and came down, slowly, on the little roof, on the red door, on the lamp in the window, and settled, and didn't get in." },
+          { s: 'elizabeth', f: 'serious', t: "...A house with a door nobody has to hold. Because it's all on the outside of the glass. The weather. Everything." },
+          { s: 'elizabeth', f: 'happy', t: "Yes. That one. He'll put it on the table by the tea things and turn it over every time he pours. I know exactly how he'll do it. He'll pretend he doesn't." }
+        ] },
+        { t: "The music box. It'll still be playing after we've all gone home.", notes: 3, flag: 'eqx-eliz-gift-box', then: [
+          { n: "Elizabeth opened it. The tune came out, thin and sweet, with its long low note running underneath like the Room's own hum, and she listened to the whole of it standing at the counter, and when it ran down she closed the lid very gently, as if putting someone to bed." },
+          { s: 'elizabeth', f: 'sad', t: "...Something that will still be there. Yes. When the doors are shut. When everyone's gone home and the Room's only the Room again. He'll have a tune." },
+          { s: 'elizabeth', f: 'neutral', t: "That one." }
+        ] }
+      ] },
+      { n: "The woman at the counter wrapped it in green paper with a gold ribbon, slowly, because Elizabeth was watching every fold with such attention that she began to do it more carefully, the way you do when someone's watching, and at the end she tied a bow and Elizabeth said *oh* out loud, softly, and the woman looked pleased with herself for the rest of the afternoon." },
+      { n: "Elizabeth held the parcel in both hands against her coat, where the book usually went." },
+      { s: 'elizabeth', f: 'neutral', t: "...Now. When does one give it? I've read that one gives things on the day. The twenty-fifth. I've also read that the eve is more important here. I've also read that some people can't wait, and give things the moment they've bought them, and are thought childish." },
+      { s: 'elizabeth', f: 'serious', t: "What would you do?" },
+      { choose: [
+        { t: "Give it to him today. Don't wait. You never know.", notes: 3, flag: 'eqx-eliz-gift-given', then: [
+          { s: 'elizabeth', f: 'surprised', t: "...Today? Childishly?" },
+          { s: 'solar', f: 'neutral', t: "Today. Things you mean to give people, you give them. You don't hold on to them." },
+          { n: "Elizabeth looked at her for a long time over the green paper. Then she looked down at the parcel in her arms, and Solar saw her hear it, the last two words, and turn them over, and put them somewhere careful." },
+          { s: 'elizabeth', f: 'neutral', t: "...You don't hold on to them. No. I'm learning that one the hard way, aren't I. All year." },
+          { s: 'elizabeth', f: 'happy', t: "Today, then. Childishly. Come with me to the door." }
+        ] },
+        { t: "Christmas. Wait for the day. He'll have something to open.", notes: 2, flag: 'eqx-eliz-gift-kept', then: [
+          { s: 'elizabeth', f: 'happy', t: "The day. Yes. Properly. With paper on it that he has to take off. I've never had anything to wait for. I'd like to try it." },
+          { s: 'elizabeth', f: 'neutral', t: "I'll hide it in the book. He never reads the book. He says it's my diary and it would be rude." }
+        ] },
+        { t: "It's yours to give. You decide when.", notes: 3, flag: 'eqx-eliz-gift-given', then: [
+          { n: "Elizabeth looked at her, and laughed, the small real one, and shook her head." },
+          { s: 'elizabeth', f: 'happy', t: "You always do that. Every single time. You hand it back." },
+          { s: 'elizabeth', f: 'neutral', t: "...Very well. Mine. I decide. I've been practising deciding things. I decide now. Today. This minute. I can't bear to carry it about for three weeks, I'll wear the paper through." },
+          { s: 'elizabeth', f: 'happy', t: "Come with me to the door." }
+        ] }
+      ] },
+
+      { place: 'Paulownia Mall · Back Passage', time: 'Evening', bg: 'paulownia-velvet-door', soft: true },
+      { n: "The blue door was at the end of the passage behind the mall, where the shops' back entrances were and the bins and the stacked crates and the smell of the bakery's fryer, and nobody ever came. It looked the same as always. A blue door in a gray wall with no handle on the outside, which only opened when Solar put her hand on it. The light was going; the strip lights in the passage had come on and were buzzing." },
+      { n: "Elizabeth knocked. She had never knocked on her own door before; Solar could see it in how she did it, three small raps with one knuckle, uncertain, like someone knocking on a friend's door for the first time and half hoping nobody would answer." },
+      { n: "It opened at once. Theodore was there. He'd been standing just inside, Solar thought; he must have been. He was in his blue uniform, very straight, a teacup and saucer still in one gloved hand, and he looked at his sister on the doorstep in her catalogue coat with an expression of such open relief that Solar had to look away from it." },
+      { s: 'theodore', f: 'happy', t: "Sister. You're back. You've been gone four hours and eleven minutes, I've been— I made three pots. Nobody drank them. Good evening, Solar." },
+      { s: 'theodore', f: 'surprised', t: "...You knocked. You've never knocked. Is something the matter?" },
+      { ifFlag: 'eqx-eliz-gift-given', then: [
+        { n: "Elizabeth held out the parcel. Green paper. Gold ribbon. Both arms straight out in front of her, like a child presenting something at a school prize-giving." },
+        { s: 'elizabeth', f: 'neutral', t: "This is for you. It's from outside. I chose it. Solar helped me choose, which is different. It's early. I couldn't wait. I'm told that's childish. I don't care in the least." },
+        { n: "Theodore looked at the parcel. He put the teacup down, on nothing, on the air, and it stayed there, the way things in the Room did; and he took the parcel from her in both hands and held it, and didn't open it, and his face did a thing Solar had never seen his face do, which was nothing at all for a very long time." },
+        { s: 'theodore', f: 'sad', t: "...Nobody has ever—" },
+        { s: 'theodore', f: 'happy', t: "I shall open it very slowly. Over several days. You must both go away so I can be undignified about it." },
+        { ifFlag: 'eqx-eliz-gift-scarf', then: [
+          { n: "He didn't open it over several days. He opened it there in the doorway, with great care, folding the green paper as he went, and lifted the blue scarf out of its tissue, and put it round his neck at once, over the uniform, and stood in the door of the Velvet Room in a wool scarf like a man waiting for a train in the snow." },
+          { s: 'theodore', f: 'happy', t: "It's never cold in here. I shall be cold on purpose, now, so that I can wear it. Thank you. Thank you both." }
+        ] },
+        { ifFlag: 'eqx-eliz-gift-globe', then: [
+          { n: "He didn't open it over several days. He opened it there in the doorway, with great care, folding the green paper as he went, and lifted the snow globe out and turned it over, and the snow came down on the little house with the red door, and he watched it settle with his whole face." },
+          { s: 'theodore', f: 'happy', t: "It's outside. And it can't get in. Oh, sister. That's exactly right. That's exactly what I'd have asked for, if anyone had asked." }
+        ] },
+        { ifFlag: 'eqx-eliz-gift-box', then: [
+          { n: "He didn't open it over several days. He opened it there in the doorway, with great care, folding the green paper as he went, and lifted the lid of the music box, and the tune came out into the passage between the bins, thin and sweet, with its long low note underneath, and behind him in the Room the Room's own note seemed to lean toward it, the way you lean toward someone humming a song you know." },
+          { s: 'theodore', f: 'happy', t: "It knows the Room. Listen. It's singing along. Thank you. Thank you both." }
+        ] }
+      ], else: [
+        { n: "Elizabeth had the parcel behind her back. Both hands. Very straight, like a schoolgirl with a frog." },
+        { s: 'elizabeth', f: 'happy', t: "Nothing's the matter. Nothing at all. I've been shopping. It was enormously educational. Go in, Theo, you're letting the warm out." },
+        { s: 'theodore', f: 'neutral', t: "It's never warm or cold in here, sister. You know that." },
+        { s: 'elizabeth', f: 'happy', t: "Then you're letting the neither out. *In.*" },
+        { n: "He looked at her, and at her elbows, which were sticking out behind her at an odd angle, and at Solar, who was very carefully looking at a crate of empty bottles; and something went across his long face, quick and fond, and was folded away, and he didn't ask. He was terribly good at not asking. He stepped back to let his sister in." }
+      ] },
+      { n: "Over Theodore's shoulder, through the open door, Solar could see the Room. The blue light. The velvet. The little table with the tea things, three pots on it. And at the back, the door with the line under it, gold, a finger's width, burning." },
+      { n: "There was a chair in front of that door now. A plain one, drawn up close, facing it. Solar had never seen a chair there." },
+      { s: 'theodore', f: 'neutral', t: "...Oh. That. I've been practising. For the twenty-first. My sister's showing me how to stand at it. Both hands flat. Don't lean. Don't push. Just be there, so it knows someone is." },
+      { s: 'theodore', f: 'happy', t: "I'm hopeless. She says I hold it as if it owes me money. I sit down when she isn't looking. Don't tell her." },
+      { s: 'elizabeth', f: 'neutral', t: "I can hear you." },
+      { choose: [
+        { t: "You don't have to be any good at it. Just don't stand there alone.", notes: 3, then: [
+          { s: 'theodore', f: 'neutral', t: "...Alone? No. I never am. That's rather the trouble with a door, you know. There's always somebody on the other side of it." },
+          { n: "He said it lightly, a joke, the way he made jokes, folding them as he went. Elizabeth, beside him, didn't laugh. She was looking past him at the chair." }
+        ] },
+        { t: "(Look at the chair a long time. Then at Elizabeth.)", notes: 2, then: [
+          { n: "She looked at the chair. Then at Elizabeth. Elizabeth was looking at it too. Neither of them said anything. Theodore looked from one to the other of them in the doorway, politely, waiting to be let in on it, and nobody let him in on it, and the strip lights buzzed." }
+        ] }
+      ] },
+      { n: "Elizabeth stepped over the threshold. On the other side she turned round, in the blue light, with her brother beside her, and looked at Solar in the gray passage, between the bins, in the cold." },
+      { s: 'elizabeth', f: 'neutral', t: "...Thank you. For coming. After Saturday. For the door that goes round." },
+      { s: 'elizabeth', f: 'neutral', t: "I'll see you on the twenty-first. At the party. I've written it down." },
+      { n: "She pushed back her cuff. On the inside of her wrist, under *it's just closed*, in fresh blue ink, small: *21st. Party. Cake. Theo holds the door.*" },
+      { n: "Then the door shut, gently, all by itself, and it was only a blue door in a gray wall again, with no handle on the outside. Solar stood in front of it for a while with her hands in her pockets. Somewhere behind it, very faintly, she thought she heard a music box, or a man laughing, or the Room's long note, or two polite knocks, far off, very far off, toward the river; and then the bakery's fryer came on behind her with a roar, and the strip lights buzzed, and it was December, and she went home." }
     ] }
   ]
 });
