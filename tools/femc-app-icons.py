@@ -1,6 +1,8 @@
 """Renders the installable-app icons for Persona 3: Solstice from assets/femc/title/solstice-icon.svg (2026-11-04).
 
-Run: python3 tools/femc-app-icons.py
+Run: python3 tools/femc-app-icons.py            (Solstice)
+     python3 tools/femc-app-icons.py equinox    (Persona 3: Equinox, Nov 17 2026: assets/femc/equinox/art/equinox-icon.svg ->
+     equinox/art/eq-app-icon-192|512|maskable-512.png, listed in femc-equinox.webmanifest)
 Output (assets/femc/title/): app-icon-192.png, app-icon-512.png (the SVG as drawn: rounded night square, pink edge,
 transparent corners) and app-icon-maskable-512.png (full-bleed #14070f with the icon inside the maskable safe circle),
 listed in femc-game.webmanifest; apple-touch-icon uses app-icon-192.png.
@@ -17,6 +19,10 @@ OUT = os.path.join(ROOT, 'assets/femc/title')
 CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 SIZE = 512
 NIGHT = '#14070f'
+PREFIX = 'app-icon'
+if len(sys.argv) > 1 and sys.argv[1] == 'equinox':
+    SVG = os.path.join(ROOT, 'assets/femc/equinox/art/equinox-icon.svg'); OUT = os.path.join(ROOT, 'assets/femc/equinox/art')
+    NIGHT = '#0a0304'; PREFIX = 'eq-app-icon'
 
 
 def render(html, dst):
@@ -42,13 +48,13 @@ def main():
            'svg{display:block}</style>'
     # "any": the icon as drawn, transparent outside its rounded square.
     plain = base % (SIZE, SIZE, 'transparent') + svg.replace('<svg ', f'<svg width="{SIZE}" height="{SIZE}" ', 1)
-    im = render(plain, os.path.join(OUT, 'app-icon-512.png'))
-    im.resize((192, 192), Image.LANCZOS).save(os.path.join(OUT, 'app-icon-192.png'), optimize=True)
+    im = render(plain, os.path.join(OUT, f'{PREFIX}-512.png'))
+    im.resize((192, 192), Image.LANCZOS).save(os.path.join(OUT, f'{PREFIX}-192.png'), optimize=True)
     # "maskable": full-bleed night, the icon at 76% so its pink edge sits inside the 80% safe circle's square.
     k = round(SIZE * .76)
     mask = (base % (SIZE, SIZE, NIGHT)).replace('svg{display:block}', f'svg{{display:block;position:absolute;left:{(SIZE - k) // 2}px;top:{(SIZE - k) // 2}px}}') \
         + svg.replace('<svg ', f'<svg width="{k}" height="{k}" ', 1)
-    m = render(mask, os.path.join(OUT, 'app-icon-maskable-512.png'))
+    m = render(mask, os.path.join(OUT, f'{PREFIX}-maskable-512.png'))
     for name, img in [('app-icon-512.png', im), ('app-icon-maskable-512.png', m)]:
         corner = img.getpixel((2, 2))
         print(name, img.size, 'corner', corner)
