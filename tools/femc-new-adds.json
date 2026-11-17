@@ -48816,6 +48816,546 @@
    "status": "integrated",
    "destination": "assets/femc/equinox/art/personas/haenim.webp",
    "placement": "Equinox 9L: Haenim's Equinox look (config.js art: Personas tab, Forms, battle frame, { summon })"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-aigis-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "b0902a27070ae02224ce2d94711c30abcc3401103d03c9ed17e0f45c966c480e",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/aigis-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-akihiko-competitive-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "78ab272afd2150e8c76ada7c16d66f9115f13337ca5ff1a8ef7fa36d43fb3f8b",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/akihiko-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-akihiko-earnest-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "96663f3efec700c03f2ef6832a8a23037f0b77f9d8922fda296037b63bf76e43",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/akihiko-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-akihiko-neutral-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "bbeb7080cc2685b5cadb3d71d7a9f91859c3d81bbf867962f906af8d5b1e4b21",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/akihiko-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-akihiko-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "0bb5838c8adcbb82aa037f621162c160c41bd0133c3dfc5853a6ecec98cb6263",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/akihiko-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-cherry-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "cb93a42466beac920d578781b2132b93c3e92165776872b031f77c012799d4eb",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/cherry-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-elizabeth-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8db2f05e7c1215106e5fb0e671c9237ef0776343a752118d3ef419b1135e1a4e",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/elizabeth-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-fuuka-flustered-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "7da8e8f6335008eb39506916685f34ccb5a789916bf7b995a1af31554f3d395e",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/fuuka-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-fuuka-happy-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "10fb8048e7a20f43c0a73742e351544822c1b0c13591e557a57e6b0e350cd92f",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/fuuka-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-fuuka-neutral-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "af2e16128ecc3dfa1dc30893b850dedfcc00da9bb5c5f0182dabb7836e8fcde5",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/fuuka-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-fuuka-sad-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "1d8a9b000ef42bbfd909868a5212d27bffbca1c6c2826ecdf116bc6e2a2a65d4",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/fuuka-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-fuuka-serious-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "9b2daaae968118a001dd81dc232626f9ca184dcaf7b06ddddbe9b4ece6f107e0",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/fuuka-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-fuuka-surprised-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "d2652a647bd985be70f291ee9654d6e0530c7b3dfc906e907890850b4af48808",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/fuuka-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-hanni-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7909407be6c9a8b024716c5d2e47e8fbf9eba679344a5167dfd711a3c3d445b4",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/hanni-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-hyein-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "3acf170d4fb0383ac7385d78a0109e33d0bf1e95437dc73dad903c4ccc981853",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/hyein-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jihoon-angry-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "d47f091fe27854f879330659f00c67e5049349f0d4d65edcc011f9f851f7736c",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jihoon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jihoon-flustered-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "e28d4bbe47b6d3b3b6bbee2323c78695ce74d0da7c562699769e65d28ec92d29",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jihoon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jihoon-happy-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "92c03539e64819089e245e77905d726508435fce0d1f9a8607c0f2061a035382",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jihoon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jihoon-neutral-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "45c5a399319f5814a1dbcb2af40436759a53abd4e3bf5394fc1b34016ae42669",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jihoon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jihoon-sad-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "b0366b66a4b0ab7601fc0bb72167239f1e13e90b9d3d3329841dc7cf535ce065",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jihoon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jihoon-surprised-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "dbd7bc3d5e8d37aa1c0f2c39109595b1d401a5409017e1a4e000ace252b39f74",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jihoon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-jungwon-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "3c0d2a420bb2bfe4c4243e7102c7b8d321d212949667a93cfeda225da0484541",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jungwon-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-junpei-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "7d8e4462be0e122e2aba22206e9d086cf39345a033c6aafd1002dfddc1c8c868",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/junpei-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-ken-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "d46c5219d6006cac96852ef585d33f20ddd8939271b891238b8460db42e8da95",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/ken-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-koromaru-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "3b3c8094ad277fd80f52e8bafcf0db052a095a6cfa19f88c52b14605296baffd",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/koromaru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mark-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "791084ca75e9232f7d834b580a98af86e3f082e30d791c20600929b67d6c7f03",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mark-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-minji-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8cbf7349209be3700f3a1f624b9ff68b88b52736abe76a62e4be120caf732e66",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/minji-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mitsuru-angry-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "c9410939e0c4102878bf273f690896642148041f8cd82a210e6217b62b104c48",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mitsuru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mitsuru-flustered-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "04693da4c2581ca8874a127e7c83d7f9f3da7df8ab6903b1c5ecafc5e69d2dd2",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mitsuru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mitsuru-happy-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "b36067dff7938d766a1f2042a5c1db212fcc13b24fef9566cd94b15dfab0131f",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mitsuru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mitsuru-neutral-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "3a1d3eaee58874aa4f46a36fa62ea406e7847d7a145fc339c011ade9e16afe4a",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mitsuru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mitsuru-sad-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "ba920d4b9472d45709ff49498d619e6bee6d06a3187e9ff35b4ea6cd674981dc",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mitsuru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-mitsuru-surprised-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "04090ca4f24cec64f6f86949bd82466087d31681dfa41d4f4dcc07e1fc75e1b3",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/mitsuru-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-shinjiro-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "36a80a08062561e0e922aaaf9e34778744e04076e89834a79396cb16129c5efd",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/shinjiro-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-solar-portraits-REMAKE.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "e21ef8b2e3d359e0f143da34360a476f31157e66b5fbb1a4b27ed7265b06d093",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/solar-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-theodore-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8783e9b7bfe31d22728f6737bbb5aea277ea8910183cd9f019ad18aba5e9f8e1",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/theodore/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-angry-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "9ccbf7d8ec85baabfc39dc85e5ad2cc4188c47657a58d65d4d841ab6b6832ebb",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-flustered-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "14241851c2432de7cb8fb7b47c9faf216128fa4fa3fcee11c3c75d496d812419",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-happy-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "2e7aee77faf09567a81eb75660d678aaf4332b3f325c1f8e8796aec4b6845ee1",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-neutral-portrait-2.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "f349c26d227a8cb69ffa419de052531b572d9c18d1400c0fa46008423198a5ae",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-neutral-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "d34e1b0ca6ceb0028efc9911406587ea1926fc801d1018d4fe00088df88f4773",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-sad-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "ff1ce6d1d7e2297183f72db0e7d72d4b11bec1cae9d5414931fe5431579a99f4",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yukari-surprised-portrait.png",
+   "size": [
+    1254,
+    1254
+   ],
+   "sha256": "538a3b085870eb903df31e3855f790fdbcfd46cd8295da589fe0c546f48e9bbe",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yukari-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-yunjin-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "a5672a8e827987bab57436881d035baf4627da551caabae74854c3c3bcad5d15",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/yunjin-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 165,
+   "source": "../Equinox/eq-chenle-portraits.png",
+   "size": [
+    1535,
+    1024
+   ],
+   "sha256": "a01fc724783288a46f607bb5b8bbaf7e2a7d8fbd2d6ab3179a1c3cc143db4a3c",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/chenle-equinox/",
+   "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
   }
  ],
  "batch1Validation": {

@@ -202,6 +202,9 @@ window.FEMC_PORTRAIT_SCALE = {
   // inherited) ~0.40 for the women (Solar) and ~0.43 for the men (between Solar and Haechan)
   chaewon: 1.13, sakura: 1.07, kazuha: 1.03, eunchae: 1.13, theodore: 1.08, 'elizabeth-equinox': 0.98,
   'jaesang-equinox': 0.97, 'solji-equinox': 0.96, 'taejoon-equinox': 0.98, 'miseon-equinox': 0.93, 'kimdad-equinox': 1.0, 'kimmom-equinox': 0.95,
+  // Equinox art batch 4 (Nov 16): Kat's Personaverse faces, each on its Solstice canvas at its Solstice size (Fuuka's canvas widened to 800)
+  'aigis-equinox': 1.0, 'akihiko-equinox': 1.05, 'hanni-equinox': 0.9, 'hyein-equinox': 0.95, 'jungwon-equinox': 0.98, 'ken-equinox': 1.0, 'koromaru-equinox': 1.1, 'minji-equinox': 0.9, 'shinjiro-equinox': 1.1, 'yunjin-equinox': 1.0, 'fuuka-equinox': 1.08, 'jihoon-equinox': 1.05, 'mitsuru-equinox': 0.96, 'yukari-equinox': 1.04, 'junpei-equinox': 0.97,
+  'cherry-equinox': 0.9, 'mark-equinox': 0.95, 'chenle-equinox': 1.021, // Chenle's canvas cut at his bust (837 -> 712 tall), scale lowered to keep his face size
   'solar-summer': 0.96,
   'solar-winter': 0.99,
   'akihiko-summer': 1.05,
@@ -322,4 +325,4 @@ window.FEMC_PORTRAIT_SCALE = {
 window.FEMC_PORTRAIT_DROP = { fuuka: 0.08, jaemin: 0.08, chenle: 0.14 }; // jungwon's 0.1 was for the old set (batch 51)
 
 /* Bump when portrait images change, so browsers fetch the new faces. */
-window.FEMC_PORTRAIT_V = 36; // 36: Haechan's restyled Equinox faces (same file names)
+window.FEMC_PORTRAIT_V = 37; // 37: Equinox art batch 4 (Solar's remade faces, Theodore's and Elizabeth's recuts; same file names). 36: Haechan's restyled Equinox faces

@@ -7,7 +7,10 @@ thirds, slivers of neighbours dropped, the bust carried down to the canvas botto
 Run: python3 tools/femc-skin-portraits.py SHEET.png OUT_DIR [who] [face order, comma separated; default reading order
      neutral,happy,sad,serious,surprised,flustered: check the cells by eye first]
 then python3 tools/femc-wardrobe.py portraits <skin> <who> OUT_DIR && python3 tools/femc-wardrobe.py scan
-(first used Nov 1 2026 for The Sun, sk-arcana-sun, art batch 122). Source unchanged."""
+(first used Nov 1 2026 for The Sun, sk-arcana-sun, art batch 122). Source unchanged.
+FEMC_BODY=1 (env, Nov 16 2026, Equinox art batch 4): the neutral is placed by face as usual, every other face by its BODY
+(the bust below the chin, matched to the neutral's): the faces of a remade sheet are drawn in another style than the
+fighter's own, so per-face matching made her drift up to ~30 px between expressions; the body doesn't move."""
 import sys, numpy as np, cv2
 from PIL import Image
 from pathlib import Path
@@ -16,6 +19,8 @@ NEW = Path.home() / 'Documents/UniverseHub-Images/Femc Mode Images'
 SRC = sys.argv[1] if Path(sys.argv[1]).exists() else next(str(d / sys.argv[1]) for d in (NEW / 'New Adds', NEW / 'Added to Game') if (d / sys.argv[1]).exists())
 OUT = sys.argv[2]
 WHO = sys.argv[3] if len(sys.argv) > 3 else 'solar'
+import os
+BODY = os.environ.get('FEMC_BODY') == '1'
 ORDER = sys.argv[4].split(',') if len(sys.argv) > 4 else ['neutral', 'happy', 'sad', 'serious', 'surprised', 'flustered']
 def clean_top(A):
     """Drop stray strips above the head (Nov 15 2026: a neighbour cell's bottom edge sometimes came along as a thin
@@ -75,6 +80,12 @@ for k, f in enumerate(ORDER):
     cellimg = np.where(cellmap == k, gray, 0).astype(np.uint8)
     r_ = cv2.matchTemplate(cellimg, tp, cv2.TM_CCOEFF_NORMED); _, v, _, loc = cv2.minMaxLoc(r_)
     ox, oy = loc[0] - 250 * S, loc[1] - 230 * S   # sheet coords of the canvas origin
+    if BODY and k == 0:
+        bx0, by0 = int(ox + 120 * S), int(oy + 590 * S); bx1, by1 = int(ox + 742 * S), int(min(oy + 840 * S, ycut - 4))
+        body = cellimg[by0:by1, bx0:bx1].copy(); n0 = (ox, oy, bx0, by0)
+    elif BODY:
+        r_ = cv2.matchTemplate(cellimg, body, cv2.TM_CCOEFF_NORMED); _, v, _, loc = cv2.minMaxLoc(r_)
+        ox, oy = n0[0] + loc[0] - n0[2], n0[1] + loc[1] - n0[3]
     piece = sh.copy(); piece[..., 3] *= (cellmap == k)
     # keep only this cell's connected art (drop slivers of neighbours)
     from scipy import ndimage as ndi

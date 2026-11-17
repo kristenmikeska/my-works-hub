@@ -94,6 +94,10 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
 - The same method (one approved portrait, then each expression as a separate edit) is how the other main characters' Equinox faces should be made.
 - **Restyled (art batch 3):** Kat redid the faces to match everyone's art style (`Equinox/haechan revamp portraits - art style edit/<face>.png`: angry, blushing, happy, neutral, sad, serious, smirk, surprised; 1254², transparent). Same canvas (880 × 822), one shared scale 0.765 (Vision face height of the new neutral matched to the old set's, 380.5 px) and one shared offset putting the new neutral's face centre where the old one's was; the other faces keep the sheet's own positions (Kat's edits share one body, so nothing jumps). `serious` is real now; `flustered` = blushing; `slight-surprise` is still the older single (no restyled one yet: it's in the older style). scale.js / placements unchanged; FEMC_PORTRAIT_V 36.
 
+## 12. Equinox face revamps (wired in art batch 4, Nov 16; details in EQUINOX-TECH.md "Art batch 4")
+- `python3 tools/femc-equinox-faces.py <sheet> assets/femc/portraits/<id> <out> neutral,happy,sad,serious,surprised,flustered` (singles: paste into a 3 x 2 grid of 512 cells first), WebP q90 → `portraits/<id>-equinox/`, then index.js, scale.js (the base's value), placements-data.js (the base's face centre) + `tools/femc-placements.py`, config.js `faces`. Still to come: 12P Jaehyun (`jaehyun-equinox`), 12D2 Junpei's serious (replace the copy).
+- 12T Dalnim: as Haenim's (9L) → `assets/femc/equinox/art/personas/dalnim.webp` (WebP, native size), config.js `art`: `'battle/art/personas/dalnim.webp': 'equinox/art/personas/dalnim.webp?v=1'`; bump config's ?v.
+
 ## 13. Act II and the second meetings
 - BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V.
 - Item → file and comment (all under `assets/femc/equinox/data/`):

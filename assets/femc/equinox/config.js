@@ -38,7 +38,12 @@ window.FEMC_GAME_CONFIG = {
      member ids (data/links.js; the epilogues' generic dad / mom / appa / eomma would be ambiguous with all three couples here):
      jaesang-runners, solji-runners, taesang-strangers (Taejoon), miyeon-strangers (Miseon), kim-dad, kim-mom. LE SSERAFIM and
      Theodore need no entry: their plain ids (chaewon, sakura, kazuha, eunchae, theodore) are their Equinox folders. */
+  /* faces (art batch 4, Nov 16): every S.E.E.S. member and searcher in the Personaverse look (portraits/<id>-equinox). */
   faces: { solar: 'solar-equinox', haechan: 'haechan-equinox', elizabeth: 'elizabeth-equinox',
+    aigis: 'aigis-equinox', akihiko: 'akihiko-equinox', fuuka: 'fuuka-equinox', hanni: 'hanni-equinox', hyein: 'hyein-equinox',
+    jihoon: 'jihoon-equinox', jungwon: 'jungwon-equinox', junpei: 'junpei-equinox', ken: 'ken-equinox', koromaru: 'koromaru-equinox',
+    minji: 'minji-equinox', mitsuru: 'mitsuru-equinox', shinjiro: 'shinjiro-equinox', yukari: 'yukari-equinox', yunjin: 'yunjin-equinox',
+    cherry: 'cherry-equinox', mark: 'mark-equinox', chenle: 'chenle-equinox',
     'jaesang-runners': 'jaesang-equinox', 'solji-runners': 'solji-equinox', 'taesang-strangers': 'taejoon-equinox',
     'miyeon-strangers': 'miseon-equinox', 'kim-dad': 'kimdad-equinox', 'kim-mom': 'kimmom-equinox' },
   /* art (art batch 3): Equinox's own picture for a Solstice one, keyed by the path under assets/femc/. Read by battle/data.js
@@ -56,7 +61,7 @@ window.FEMC_GAME_CONFIG = {
   },
   loading(kind, req) {
     const id = (req && (req.script || (req.op && (req.op.id || req.op)))) || '';
-    const well = kind === 'tartarus' || /^eqx-(well|first-hill|second-hill|third-hill)/.test(String(id)); // the Well's own fights (the Hills' full moons: 5/28, 6/26, 7/26)
+    const well = kind === 'tartarus' || /^eqx-(well|first-hill|second-hill|third-hill|1023|1122|1221)/.test(String(id)); // the Well's own fights (the Hills' full moons: 5/28, 6/26, 7/26; Act IV's 10/23, 11/22, 12/21)
     return `assets/femc/equinox/art/loading-${well ? 'well' : 'between'}.webp?v=1`;
   },
   /* Battle side 1 (Nov 15; EQUINOX-TECH.md "Battle side 1: party and the Well"):
@@ -78,7 +83,11 @@ window.FEMC_GAME_CONFIG = {
     { id: 'jungwon', name: 'Jungwon', joins: '4/8' },
     { id: 'jihoon', name: 'Jihoon', joins: '4/8' },
     { id: 'minji', name: 'Minji', joins: '4/8' },
-    { id: 'shinjiro', name: 'Shinjiro', joins: '5/29', flag: 'joined-shinjiro' }
+    { id: 'shinjiro', name: 'Shinjiro', joins: '5/29', flag: 'joined-shinjiro' },
+    // Act IV (data/story-act4.js): each joins on her own night, with her { join } line. The battle side has no fighter data for them yet.
+    { id: 'yunjin', name: 'Yunjin', joins: '11/6', flag: 'joined-yunjin' },
+    { id: 'hyein', name: 'Hyein', joins: '11/22', flag: 'joined-hyein' },
+    { id: 'hanni', name: 'Hanni', joins: '11/22', flag: 'joined-hanni' }
   ],
   navigators: [{ id: 'fuuka', from: '4/6' }],
   dungeon: { name: 'The Well', from: 'the Well', go: 'Go down tonight.', ask: 'Go down tonight?', enter: 'Go down the Well',
