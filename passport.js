@@ -134,7 +134,8 @@ function visibleSecrets() {
   const got = Achievements.unlocked();
   // Persona 3: Solstice stamps also show once any of them is earned (the game can be played without crossing over first).
   const solstice = Object.keys(got).some(k => k.startsWith("p3s-"));
-  return { list: Achievements.list().filter(a => !a.side || got.femc || (solstice && a.group === SOLSTICE)), got };
+  // The original FEMC mode's side stamps were retired with it (Nov 17 2026): they show only once earned.
+  return { list: Achievements.list().filter(a => !a.side || got[a.id] || (solstice && a.group === SOLSTICE)), got };
 }
 
 /* Homepage card: counts, the newest stamps, and a way in to passport.html. */

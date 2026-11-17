@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Persona 3</title>
+  <!-- The FEMC easter egg's landing page (Nov 17 2026): type "femc" anywhere on My Works Hub (femc-mode.js) to land here.
+       Two games, two sites on the same domain: Persona 3: Solstice at ../p3solstice/ and Persona 3: Equinox at ../p3equinox/.
+       The art is borrowed from the Solstice site (the hub keeps none of the games' files). Split down the middle like the
+       equinox itself: Solstice's pink day on the left, Equinox's red night on the right; phones stack them. -->
+  <meta name="theme-color" content="#0b0507">
+  <link rel="icon" href="../p3solstice/assets/femc/equinox/art/equinox-icon.svg?v=1" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sol: #ff4f9e; --sol-2: #ffb3d4; --sol-night: #14070f;
+      --eqx: #c9333f; --eqx-2: #e6d6c6; --eqx-night: #0a0304;
+      --split: 52%; --slant: 7vw;
+      color-scheme: dark;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #0b0507; color: #fff; font: 500 16px/1.4 'Barlow Semi Condensed', system-ui, sans-serif; }
+    body { overflow: hidden; }
+    .p3 { position: fixed; inset: 0; }
+    .half { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 6vw 9vh; text-decoration: none; color: inherit;
+      transition: clip-path .7s cubic-bezier(.7, 0, .2, 1); }
+    .half .art { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 1.2s ease, filter .7s ease; }
+    .half::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
+    /* Solstice: the left side, up to a slanted line. */
+    .sol { clip-path: polygon(0 0, calc(var(--split) + var(--slant)) 0, calc(var(--split) - var(--slant)) 100%, 0 100%); align-items: flex-start; }
+    .sol .art { background-image: url("../p3solstice/assets/femc/title/cover.webp?v=2"); background-position: 30% 40%; filter: saturate(.9) brightness(.82); }
+    .sol::after { background: linear-gradient(to top, rgba(20, 7, 15, .92), rgba(20, 7, 15, .15) 55%, transparent), linear-gradient(to right, rgba(20, 7, 15, .35), transparent 60%); }
+    /* Equinox: the right side. */
+    .eqx { clip-path: polygon(calc(var(--split) + var(--slant)) 0, 100% 0, 100% 100%, calc(var(--split) - var(--slant)) 100%); align-items: flex-end; text-align: right; }
+    .eqx .art { background-image: url("../p3solstice/assets/femc/equinox/art/cover-night.webp?v=1"); background-position: 62% 40%; filter: brightness(.8); }
+    .eqx::after { background: linear-gradient(to top, rgba(10, 3, 4, .94), rgba(10, 3, 4, .2) 55%, transparent), linear-gradient(to left, rgba(10, 3, 4, .4), transparent 60%); }
+    /* Hovering a side leans the split toward the other. */
+    .p3:has(.sol:hover, .sol:focus-visible) { --split: 60%; }
+    .p3:has(.eqx:hover, .eqx:focus-visible) { --split: 44%; }
+    .half:hover .art, .half:focus-visible .art { transform: scale(1.04); filter: none; }
+    /* The seam: the equinox line, a thin bone-white stroke with a pink and a red edge. */
+    .seam { position: absolute; inset: 0; pointer-events: none; transition: clip-path .7s cubic-bezier(.7, 0, .2, 1);
+      clip-path: polygon(calc(var(--split) + var(--slant) - 2px) 0, calc(var(--split) + var(--slant) + 2px) 0, calc(var(--split) - var(--slant) + 2px) 100%, calc(var(--split) - var(--slant) - 2px) 100%);
+      background: linear-gradient(to right, var(--sol), #fff 45%, #fff 55%, var(--eqx)); opacity: .9; }
+    .copy { position: relative; z-index: 1; max-width: 520px; }
+    .logo { display: block; width: min(440px, 38vw); margin: 0 0 10px; filter: drop-shadow(0 4px 18px rgba(0, 0, 0, .55)); }
+    .eqx .logo { margin-left: auto; }
+    .logo svg { width: 100%; height: auto; display: block; }
+    .tag { font: italic 800 clamp(15px, 1.5vw, 20px)/1 'Barlow Condensed', sans-serif; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 6px; }
+    .sol .tag { color: var(--sol-2); } .eqx .tag { color: var(--eqx-2); }
+    .blurb { margin: 0 0 22px; opacity: .85; max-width: 34ch; }
+    .eqx .blurb { margin-left: auto; }
+    .play { display: inline-block; padding: 12px 34px 11px; font: italic 900 clamp(18px, 1.8vw, 24px)/1 'Barlow Condensed', sans-serif; letter-spacing: .12em; text-transform: uppercase;
+      transform: skewX(-12deg); transition: transform .25s ease, box-shadow .25s ease; }
+    .play span { display: inline-block; transform: skewX(12deg); }
+    .sol .play { background: var(--sol); color: var(--sol-night); box-shadow: 5px 5px 0 #fff; }
+    .eqx .play { background: var(--eqx-2); color: var(--eqx-night); box-shadow: -5px 5px 0 var(--eqx); }
+    .half:hover .play, .half:focus-visible .play { transform: skewX(-12deg) translateY(-3px); }
+    .half:focus-visible { outline: none; }
+    .half:focus-visible .play { outline: 3px solid #fff; outline-offset: 4px; }
+    /* Top centre: the shared name; bottom centre: the way back. */
+    .head { position: absolute; top: 4vh; left: 0; right: 0; text-align: center; z-index: 2; pointer-events: none;
+      font: italic 800 clamp(13px, 1.2vw, 16px)/1 'Barlow Condensed', sans-serif; letter-spacing: .5em; text-transform: uppercase; opacity: .8; text-shadow: 0 2px 10px #000; }
+    .back { position: absolute; bottom: 2.6vh; left: 50%; transform: translateX(-50%); z-index: 3; color: #fff; opacity: .7; text-decoration: none;
+      font: italic 700 14px/1 'Barlow Condensed', sans-serif; letter-spacing: .18em; text-transform: uppercase; padding: 8px 12px; text-shadow: 0 2px 8px #000; }
+    .back:hover, .back:focus-visible { opacity: 1; }
+    /* Phones and tall windows: stacked, Solstice on top, the seam a slanted band across. */
+    @media (max-width: 760px), (max-aspect-ratio: 4/5) {
+      :root { --split: 50%; --slant: 5vh; }
+      .half { padding: 0 24px 0; justify-content: center; }
+      .sol { clip-path: polygon(0 0, 100% 0, 100% calc(var(--split) - var(--slant)), 0 calc(var(--split) + var(--slant))); justify-content: flex-start; padding-top: 11vh; }
+      .eqx { clip-path: polygon(0 calc(var(--split) + var(--slant)), 100% calc(var(--split) - var(--slant)), 100% 100%, 0 100%); justify-content: flex-end; padding-bottom: 10vh; }
+      .seam { clip-path: polygon(0 calc(var(--split) + var(--slant) - 2px), 100% calc(var(--split) - var(--slant) - 2px), 100% calc(var(--split) - var(--slant) + 2px), 0 calc(var(--split) + var(--slant) + 2px)); }
+      .p3:has(.sol:hover, .sol:focus-visible), .p3:has(.eqx:hover, .eqx:focus-visible) { --split: 50%; }
+      .logo { width: min(320px, 74vw); }
+      .blurb { display: none; }
+      .head { top: 2vh; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .half, .seam, .half .art, .play { transition: none; }
+      .p3:has(.sol:hover, .sol:focus-visible), .p3:has(.eqx:hover, .eqx:focus-visible) { --split: 52%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="p3">
+    <a class="half sol" href="../p3solstice/" aria-label="Play Persona 3: Solstice">
+      <div class="art" aria-hidden="true"></div>
+      <div class="copy">
+        <div class="logo" data-logo aria-hidden="true"></div>
+        <p class="tag">Every Universe</p>
+        <p class="blurb">One year, every world. The game the epilogues came from.</p>
+        <span class="play"><span>Play</span></span>
+      </div>
+    </a>
+    <a class="half eqx" href="../p3equinox/" aria-label="Play Persona 3: Equinox">
+      <div class="art" aria-hidden="true"></div>
+      <div class="copy">
+        <img class="logo" src="../p3solstice/assets/femc/equinox/art/test-logo.webp?v=1" alt="" aria-hidden="true">
+        <p class="tag">Day Equals Night</p>
+        <p class="blurb">The year after. Darker, stranger, and it remembers what you did.</p>
+        <span class="play"><span>Play</span></span>
+      </div>
+    </a>
+    <div class="seam" aria-hidden="true"></div>
+    <p class="head">Persona 3</p>
+    <a class="back" href="./">‹ My Works</a>
+  </main>
+  <script>
+    // Solstice's logo is an SVG with a dark-background variant (class sl-dark): inline it so the class applies.
+    fetch('../p3solstice/assets/femc/title/solstice-logo.svg').then(r => r.ok ? r.text() : '').then(svg => {
+      const box = document.querySelector('.sol [data-logo]');
+      if (!svg || !box) return;
+      box.innerHTML = svg; const el = box.querySelector('svg'); if (el) { el.classList.add('sl-dark'); el.removeAttribute('aria-labelledby'); }
+    }).catch(() => {});
+  </script>
+</body>
+</html>

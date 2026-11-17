@@ -1,5 +1,0 @@
-/* Persona 3: Equinox · the battle page inside an Equinox game (femc-battle.html swaps in the red battle stylesheets, made by
-   tools/equinox-css.py, and adds this file when its parent page is Equinox). Solstice's fights never load it.
-   Kat, Nov 15: Equinox's Dark Hour is red. Solstice's green Dark Hour / Tartarus backdrops are bled to blood red here, the
-   same filter as equinox/game.css; the Well's own art (eq-well-*) is painted red already. */
-.bt-bg[style*="/darkhour-"], .bt-bg[style*="/tartarus-"] { filter: grayscale(1) sepia(1) hue-rotate(-50deg) saturate(4) brightness(.44) contrast(1.28); }
