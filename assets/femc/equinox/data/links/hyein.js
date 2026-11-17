@@ -1,9 +1,23 @@
 /* Persona 3: Equinox · Hyein Lee (Lovers). Link data for femc-equinox-game.html; replaces her stub in ../links.js (same id).
    Format: link fields in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written so far: ranks 1-2 (rank 1 opens 4/13, a Tuesday, one of her home days; rank 2 opens 4/30, after The Knock, and
-   reads her rank-1 flags and Hanni's rank). Rank 3 (from 6/8, shop windows, atrium, dorm front hall and stairs; reads eqx-hyein-hanni-cardigan,
-   eqx-hyein-phone-kept) records her ask: tally asks.hyein (+ cakes / choose). Aigis speaks in it (the ribbon). Ranks 4-10 to come. Rank 2 flags: eqx-hyein-phone-kept,
-   eqx-hyein-hanni-cardigan. Nothing reads them yet.
+   Written: ranks 1-6. Rank 1 opens 4/13, a Tuesday, one of her home days; rank 2 opens 4/30, after The Knock, and reads
+   her rank-1 flags and Hanni's rank. Rank 3 (from 6/8, shop windows, atrium, dorm front hall and stairs; reads
+   eqx-hyein-hanni-cardigan, eqx-hyein-phone-kept) records her ask: tally asks.hyein (+ cakes / choose). Aigis speaks in
+   it (the ribbon). Rank 4 (from 7/8, the festival-season shop window, then a yukata fitting in the dorm lounge at night):
+   reads eqx-stage (the four girls' measurements), eqx-tanabata (her wish's answered back), asks.hyein (the phone: face up
+   and charged / in the drawer / face down), eqx-hunted (she knows the hum from Haechan's tape); she hums the lullaby
+   without knowing it. Rank 5 (from 8/18, summer break, the atrium rail at noon, then Solar's room at night): reads
+   eqx-festival + eqx-fireworks-girls, eqx-three-breakfasts; at 12:01 p.m. the dead phone rings with *Mom*: asks.hyein yes
+   = she answers, two seconds of her home kitchen (eqx-hyein-picked-up), no = she lets it ring, keeping her promise, choose
+   = she lets it ring by her own choice (both eqx-hyein-let-ring); she sleeps over; the phone warms at 12:01. Rank 6 (from
+   9/13; branches hard on eqx-equinox, also dead.shinjiro): her first shop window, "Are You Home?"; why she never picks up
+   (her mother always asks when she's coming home); Chenle texts that a flooded corridor with a door lying in the water has
+   opened on the Third Hill: her ask floor, flag eqx-floor-hyein. Her rank 6 (or Hanni's) by 11/22 is §14's Aigis
+   condition (story-act4.js eqx-1122 reads ifRank hyein 6 / hanni 6): rank 6 is reachable by ~10/10. Ranks 7-10 to come.
+   Rank 2 flags: eqx-hyein-phone-kept, eqx-hyein-hanni-cardigan. Rank 4 flags: eqx-hyein-yukata-navy | -red | -hers,
+   eqx-hyein-hum-asked, eqx-hyein-matching. Rank 5 flags: eqx-hyein-picked-up, eqx-hyein-let-ring, eqx-hyein-slept-over.
+   Rank 6 flags: eqx-hyein-two-person, eqx-floor-hyein (hook: her ask floor in the Well, §8). No new tallies. Nothing reads
+   the cosmetic ones yet. Chenle texts in rank 6.
    Solstice's Hyein (assets/femc/game/links/hyein.js) is shared memory here: everyone remembers that year.
    Flags this file sets: eqx-hyein-dress-keep | eqx-hyein-dress-make (rank 1: what Solar tells her to do with the dress she
    arrived in), eqx-hyein-voicemail (rank 1: Solar listens to the saved message with her). Nothing reads them yet. */
@@ -13,7 +27,7 @@
   home: { area: 'mall', spot: 'Shop Windows', slot: 'after', days: [0, 2, 4, 6],
           hint: 'Afternoons along the shop windows in Paulownia Mall, judging every mannequin out loud.' },
   approach: "Hyein is in front of a shop window in Paulownia Mall with a paper bag held against her chest in both arms, not judging the mannequin for once, just standing there, and she sees you in the glass and turns around already talking.",
-  cast: {},
+  cast: { chenle: 'Chenle' },
   ranks: [
     { after: '4/13', title: '1: what she came in', place: 'Paulownia Mall · Shop Windows', time: 'After School', music: 'city', scene: [
       { bg: 'paulownia-mall' },
@@ -384,6 +398,336 @@
       ] },
       { n: "At twelve the hall went red, and the hum came up through the floor, and down at the bottom of the stairs Koromaru lifted his head off his paws and looked at the front door, and didn't growl, and didn't put his head back down for the whole of the hour." },
       { n: "Nothing knocked. In the morning, at breakfast, Aigis came down with Hyein's white ribbon in her hair, tied in a perfect bow, and sat down in her usual place, and Junpei looked at it, and opened his mouth, and Hyein said *don't* from across the table so fast and so loud that he shut it again, and nobody mentioned the ribbon after that, and Aigis didn't take it off." }
+    ] },
+    { after: '7/8', title: '4: fitting', place: 'Paulownia Mall · Shop Windows', time: 'After School', music: 'city', scene: [
+      { bg: 'paulownia-mall' },
+      { n: "The mannequin was in a yukata. Navy, with white morning glories climbing up from the hem, a yellow obi tied in a bow so big and so stiff it looked like it could take off, and somebody had put a paper fan in its blank hand and tilted its blank head as if it were listening to something nice a long way off. The whole second floor had gone like that overnight. Summer festival season. Goldfish on the posters, lanterns in the shop windows, a display of geta by the escalator lined up in pairs like a school photo." },
+      { n: "Hyein was in front of it with her arms folded and her weight on one hip, and she wasn't talking. She was looking at the obi the way a mechanic looks at an engine." },
+      { s: 'hyein', f: 'serious', t: "It's tied wrong. Sol. The bow. They've tied it like a present. It's not a present, it's a *knot*, it has a whole history, I watched a video about it at three in the morning." },
+      { s: 'hyein', f: 'happy', t: "I love her, though. I want to be her. I want to be standing in a window being listened to by something nice a long way off." },
+      { choose: [
+        { t: "She's waiting for someone who's late.", notes: 3, then: [
+          { s: 'hyein', f: 'happy', t: "She IS. Look at the fan. That's a waiting fan. That's a fan you hold when you've been at the shrine gate for twenty minutes and you're pretending you just got there." },
+          { s: 'hyein', f: 'neutral', t: "...He's not coming. She knows. She's going to stand there being beautiful at him anyway. Iconic." }
+        ] },
+        { t: "You could tie it better.", notes: 3, then: [
+          { s: 'hyein', f: 'flustered', t: "I could tie it so much better. I could tie it with my eyes shut. I'm going to come back at night and break in and retie it." },
+          { s: 'hyein', f: 'serious', t: "Don't put that in the group chat. Mitsuru reads the group chat." }
+        ] },
+        { t: "(Tilt your head the same way as the mannequin.)", notes: 2, then: [
+          { n: "She tilted her head, the same angle, listening to the same nothing, and Hyein looked at the two of them side by side in the glass and made the kettle noise and had to hold the rail." }
+        ] }
+      ] },
+      { n: "She had her sketchbook under her arm, the big one, and a cloth tape measure round her neck like a doctor's stethoscope, the yellow one with the numbers worn off the first twenty centimeters, and Solar knew before she asked that she'd been measuring somebody." },
+      { ifEvent: 'eqx-stage', then: [
+        { s: 'hyein', f: 'neutral', t: "The girls. At the boarding house. They came through in whatever they were wearing, Sol, in four different rooms' clothes. Chaewon's in somebody's pajama top. Kazuha came through in tights and a school blazer." },
+        { s: 'hyein', f: 'serious', t: "So they come to the mall now, and I measure them, by the fountain, in public, like a crazy person. I've got four new pages. I'm making them things. Real things. Things that fit." },
+        { s: 'hyein', f: 'sad', t: "...They each wake up with three lives and not one of them came with a coat. That's the part I can't stop thinking about. Three lives and not one coat." }
+      ] },
+      { s: 'hyein', f: 'neutral', t: "Okay. Here's the thing. Don't make it weird. I want to make you a yukata. For the festival. In August. I've already bought half the fabric so you can't say no, the man at the shop on the first floor knows me now, he calls me *sensei* as a joke and I've decided it's not a joke." },
+      { choose: [
+        { t: "(The navy one, with the morning glories.)", notes: 3, flag: 'eqx-hyein-yukata-navy', then: [
+          { s: 'hyein', f: 'happy', t: "Like her. Like the girl in the window. Okay, but *better*, and tied right. You're going to look like somebody waiting at a gate who's actually going to get met." }
+        ] },
+        { t: "(The red one, with the goldfish.)", notes: 3, flag: 'eqx-hyein-yukata-red', then: [
+          { s: 'hyein', f: 'happy', t: "*Red.* Oh my God. Bold. Loud. I've raised you so well. Red with goldfish and a white obi and you're going to be the only thing anybody looks at all night." },
+          { s: 'hyein', f: 'neutral', t: "...Wait. Do you want that? Being the only thing anybody looks at? We can do navy. Navy's a hiding color." }
+        ] },
+        { t: "You choose. You always know.", notes: 3, flag: 'eqx-hyein-yukata-hers', then: [
+          { s: 'hyein', f: 'surprised', t: "...Really? Just like that?" },
+          { s: 'hyein', f: 'happy', t: "Okay. Okay, I'm going to choose something you'd never have picked and you're going to love it and you're going to have to say so in front of Hanni. It's going to be green. Don't argue." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-tanabata', then: [
+        { n: "On the way down the escalator she said it, not looking at Solar, looking at the goldfish on the posters going past." },
+        { s: 'hyein', f: 'neutral', t: "I know what mine said. On the back. At the shrine. Everybody's said it. Stay." },
+        { s: 'hyein', f: 'sad', t: "I wished for Hanni to sleep in her own bed. That's all. That's what I put on the front, in my nicest writing. And in the morning I went up the steps before school and found mine on the bamboo, and on the back someone had answered it." },
+        { s: 'hyein', f: 'serious', t: "That's what it felt like, Sol. Not a word. An answer. Like I'd asked for something and someone said, sure, sweetheart. If you stay." }
+      ] },
+
+      { place: 'Iwatodai Dorm · Lounge', time: 'Night', bg: 'iwatodaidorm-livingroom-night-summer', music: 'tender', soft: true },
+      { n: "The fitting was at nine, in the lounge, with the sewing machine on its towel on the low table and the lamp pulled over and every window open because it was July and the air in the dorm sat in the rooms like warm water. Hyein had the half-made thing pinned together on a hanger on the curtain rail. Unhemmed, the sleeves only tacked on, a ghost of a yukata in the lamplight." },
+      { n: "She put it on Solar over her T-shirt and shorts and stood back and looked, and then came in close and started pinning, and didn't talk, because her mouth was full of pins." },
+      { n: "Solar stood very still. Hyein's hands went over her the way they'd gone over the black silk in April, quick and certain, pinch, fold, pin, the cool head of a pin against her collarbone and then gone. Her hands were the steadiest thing about her. They always had been. Up close Solar could smell her shampoo and the chalk off the tailor's chalk and, under it, the faint sour edge of somebody who hadn't been sleeping." },
+      { ifChoice: { 'asks.hyein': 'yes' }, then: [
+        { n: "The phone was on the low table beside the machine. The one from home. Face up. Plugged into a fat travel adaptor Jaehyun had found her, though it couldn't charge anything that didn't want charging, and its clock still said a minute past midnight on the first of January, and the little red dot with the *1* was still in the corner." },
+        { n: "Every few pins Hyein's eyes went to it. Not long. The way you'd check a pot." },
+        { s: 'hyein', f: 'neutral', t: "In case. You said I could. If it's her, really her, in the daytime, I'm allowed. So I'm keeping it where I can get to it. That's all." }
+      ], else: [
+        { ifChoice: { 'asks.hyein': 'no' }, then: [
+          { n: "The phone wasn't on the table. Solar noticed that. For three months it had been wherever Hyein was, in a pocket, in a hand, on a pillow; tonight it wasn't anywhere." },
+          { s: 'hyein', f: 'neutral', t: "It's in my drawer. Under the sweaters. I promised. I don't even hold it at night now. I hold Hanni's old hoodie instead. It smells like her fruity candle." },
+          { s: 'hyein', f: 'sad', t: "I'm being so good. I want that on the record. I'm being *so* good." }
+        ], else: [
+          { n: "The phone was on the low table beside the machine. Face down. It had been face down, as far as Solar could tell, since the night on the stairs; Hyein turned it over to look at it sometimes, the red dot and the *1*, and turned it back." },
+          { s: 'hyein', f: 'neutral', t: "Still not playing it. Still not deciding. It's been a month. I'm the most undecided person in Japan." }
+        ] }
+      ] },
+      { n: "And then she started humming." },
+      { n: "Round the pins, through her nose, the way people hum when their hands are busy and their head's gone somewhere else. Not a song from the house speaker. Not anything from the radio. Three notes up, two down, and then a long one, held, that went on past where your breath should have run out." },
+      { n: "Solar knew it. She knew it from the bottom of the Well with the sky under her feet in April, and from Mrs. Oka's front room in May with the carp streamers hanging straight in no wind, and from somewhere further back than either, a bed, a dark room, a voice. Every hair on her arms stood up under the cotton." },
+      { n: "Hyein went on pinning. Three up. Two down. The long one." },
+      { choose: [
+        { t: "Hyein. What's that song?", notes: 2, flag: 'eqx-hyein-hum-asked', then: [
+          { s: 'hyein', f: 'neutral', t: "Mm? What song?" },
+          { s: 'solar', f: 'neutral', t: "You were humming." },
+          { s: 'hyein', f: 'surprised', t: "Was I? Oh. I don't know. It's a— my mom used to—" },
+          { n: "She stopped, with a pin halfway in. She stood with her hand on Solar's shoulder and the pin in her fingers and her eyes on nothing." },
+          { s: 'hyein', f: 'neutral', t: "...No. She didn't. My mom never sang anything. She can't sing. She sings in the car and Dad turns the radio up." },
+          { s: 'hyein', f: 'serious', t: "I don't know where that's from. Isn't that weird? It's so in my head. It's like it's been in there forever." }
+        ] },
+        { t: "(Put your hand over hers. Stop the pin.)", notes: 3, flag: 'eqx-hyein-hum-asked', then: [
+          { n: "She put her hand over Hyein's on her own shoulder, over the pin, and Hyein stopped, and the humming stopped with her hands, as if it had been coming out of them." },
+          { s: 'hyein', f: 'surprised', t: "What? Did I stick you?" },
+          { s: 'solar', f: 'neutral', t: "You were humming." },
+          { s: 'hyein', f: 'neutral', t: "...Was I? I don't hum. I'm a talker. Ask anyone. I'm a talker, not a hummer." },
+          { n: "She took her hand back and looked at it, at her own steady fingers, and put the pin in, very carefully, and didn't hum again, and Solar watched her not hum for the rest of the fitting the way you'd watch somebody not scratch a bite." }
+        ] },
+        { t: "(Don't say anything. Let her finish.)", notes: 1, then: [
+          { n: "She didn't say anything. She stood still and let Hyein pin, and the hum went on, three up, two down, the long one, round and round like a shuttle, and Solar counted it, and it went round eleven times before Hyein ran out of pins and stopped to get more and didn't start it again." },
+          { n: "She didn't seem to know she'd been doing it. She came back from the sewing box talking about sleeves." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-hunted', then: [
+        { n: "Then Hyein's face changed. All at once, like a light going out in a window. She sat down on the arm of the couch with the pincushion in her lap and her hand flat on her stomach." },
+        { s: 'hyein', f: 'sad', t: "...That's the tape. Isn't it. That's what was on Haechan's tape. Under the hum. That's the bit I couldn't— that's why I was sick." },
+        { s: 'hyein', f: 'serious', t: "How is it in my mouth, Sol? How is it in my *mouth*?" }
+      ] },
+      { n: "When it was pinned all over she turned Solar round to the black window so she could see herself, a girl in a half-made yukata in a dark pane of glass with the lamp behind her, and stood beside her in the reflection with the tape measure round her neck." },
+      { s: 'hyein', f: 'happy', t: "There. See? There you are. You're going to be so pretty I'll have to stand next to you in something ugly so nobody gets hurt." },
+      { n: "In the glass, Hyein's reflection smiled a second after Hyein did. Or Solar thought it did. She looked again, and they were together, both of them smiling, and she put it down to the lamp, and the late hour, and the pins, and didn't say anything." },
+      { choose: [
+        { t: "Thank you. I mean it.", notes: 2, then: [
+          { s: 'hyein', f: 'flustered', t: "Ew. Don't mean it at me. Say it like a normal person, with a joke on top." }
+        ] },
+        { t: "Make yourself one too. We'll match.", notes: 3, flag: 'eqx-hyein-matching', then: [
+          { s: 'hyein', f: 'surprised', t: "...Match? Like, twin outfits? Like the girls from my floor who do the matching pajamas at Christmas and I make fun of them?" },
+          { s: 'hyein', f: 'happy', t: "...Yeah. Okay. Yeah. Matching. I'll do the obis the same and the fabric different. That's the tasteful way. Hanni gets one too, she's going to cry." }
+        ] },
+        { t: "(Hug her. Mind the pins.)", notes: 3, then: [
+          { n: "She hugged her, carefully, and got stuck anyway, twice, and Hyein shrieked and laughed and pulled them out of her one by one going *hold still, hold still, you're a pincushion, this is your fault*, and Yunjin came to the door to see what the noise was and went away again shaking her head." }
+        ] }
+      ] },
+      { n: "Afterward, upstairs, Solar lay in the dark and didn't sleep, and at some point, very far off, down the river, a long way past the post office, she heard someone humming. Three up. Two down. The long one." },
+      { n: "She put the pillow over her head. When she took it off it was quiet, and she couldn't have said, by then, whether she'd heard it outside, or only in herself." }
+    ] },
+    { after: '8/18', title: '5: twelve-oh-one', place: 'Paulownia Mall · Atrium', time: 'Daytime', music: 'city', scene: [
+      { bg: 'paulownia-atrium' },
+      { n: "The mall in the middle of August had given up on air. The air conditioning ran so hard it made the glass roof drip on the inside, and the atrium smelled of chlorine from the fountain and sugar from the crêpe stand, and every bench round the water had a grandmother on it fanning a grandchild, and the grandchildren, in a line, had their feet in the fountain, and nobody was stopping them." },
+      { n: "Hyein was at the rail on the second floor. Their rail. Elbows on it, chin on her fists, watching the grandchildren's feet. She had her hair up in a clip shaped like a shark and she was wearing a top Solar had never seen, white, square-necked, with tiny goldfish embroidered along the hem in orange thread, one of them upside down." },
+      { s: 'hyein', f: 'neutral', t: "Don't look at the upside-down one. That's on purpose. That's my signature now. Every piece I make has one thing wrong in it on purpose so I know it's mine." },
+      { ifEvent: 'eqx-festival', then: [
+        { ifFlag: 'eqx-fireworks-girls', then: [
+          { s: 'hyein', f: 'happy', t: "I've been thinking about the fireworks. The step. The three of us. Hanni holding your arm like you were going to float off." },
+          { s: 'hyein', f: 'sad', t: "...It was the first night since New Year's I didn't hold my phone at all. I didn't even think about it. Isn't that crazy? Somebody had to set off five thousand fireworks for me to forget my phone." }
+        ], else: [
+          { s: 'hyein', f: 'happy', t: "I saw you at the festival. In it. My yukata. Walking around with everybody looking. I nearly cried into the takoyaki. I didn't. Hanni did, but that was the smoke." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-three-breakfasts', then: [
+        { s: 'hyein', f: 'neutral', t: "And your *mom*. Your New York mom. Here. In a cardigan. She saw me in the dorm kitchen and she said *Hyein, oh my goodness, the tall one*, like she'd been waiting all year to say it." },
+        { s: 'hyein', f: 'sad', t: "...She hugged me, Sol. Right there by the fridge. She smelled like a department store. I had to go upstairs for a minute after." }
+      ] },
+      { choose: [
+        { t: "You went upstairs and held your phone.", notes: 3, then: [
+          { s: 'hyein', f: 'neutral', t: "...I went upstairs and held my phone." },
+          { s: 'hyein', f: 'sad', t: "Not to play anything. Just to hold. It's like holding a hand that's gone to sleep. You can't feel it but you know it's yours." }
+        ] },
+        { t: "The goldfish is a good signature.", notes: 2, then: [
+          { s: 'hyein', f: 'happy', t: "Right? Right? Forty years from now there's going to be a museum of my work and every single piece has one wrong thing and the curators are going to fight about it." }
+        ] },
+        { t: "(Lean on the rail next to her. Watch the kids.)", notes: 2, then: [
+          { n: "She leaned on the rail beside her and they watched the grandchildren, the row of small feet going up and down in the water, a little boy in a bucket hat solemnly trying to catch a coin as it sank." }
+        ] }
+      ] },
+      { n: "The clock over the atrium was a big round one, white, with black hands, hung from the roof on chains above the fountain so the whole mall could see it, and it said two minutes to twelve. Noon. The middle of the day." },
+      { n: "Hyein had the phone out. She'd got it out without Solar seeing her do it; it was in her hand on the rail between them, face up, the way it used to be, the screen lit, the frozen clock in the corner of it saying what it always said. *12:01.*" },
+      { s: 'hyein', f: 'neutral', t: "Watch this. This is a thing I found. Watch the big clock." },
+      { n: "They watched. The big black minute hand went over. Twelve. And then over again." },
+      { n: "*12:01.*" },
+      { n: "For one minute, the clock over the fountain in Paulownia Mall and the clock on Hyein's dead phone said the same thing. The only minute in the whole day they could." },
+      { s: 'hyein', f: 'happy', t: "See? Twice a day it's right. Well, once. At midnight I'm not looking. But every day at lunch for one minute my phone's on time. I come and watch it. It's so stupid. It makes me so happy." },
+      { n: "The phone rang." },
+      // CG: eqx-twelve-oh-one — a crowded summer mall atrium at noon, a big white clock on chains over a fountain, a girl at a balcony rail staring at an old phone ringing in her open hand while the girl beside her reaches toward her wrist.
+      { n: "In her hand. On the rail. Loud. A ringtone neither of them had heard in eight months, the default one, the marimba, bright and silly and enormous in the atrium, so loud a grandmother on the bench below looked up. The screen had gone white. Across the top, in plain letters, the word Hyein had seen on that screen ten thousand times in her life and not once since New Year's." },
+      { n: "*Mom*" },
+      { n: "Hyein didn't move. Solar watched her not move. Her hand open on the rail with the phone ringing in it like something alive, and her face completely empty, the way faces go in the second before they decide what they're going to be." },
+      { ifChoice: { 'asks.hyein': 'yes' }, then: [
+        { n: "And then she remembered. Solar saw her remember. Daytime. Her voice. *If it's really her, pick up. She's your mom.* Solar had said it. On the stairs. It was the kindest thing Solar could think of, and she'd said it, and Hyein had gone up to bed holding the phone against her chest." },
+        { n: "Hyein's thumb went across the screen." },
+        { s: 'hyein', f: 'neutral', t: "...Mom?" },
+        { n: "Solar heard it. She was close enough. She'd leaned in the way you lean in without deciding to." },
+        { n: "Nobody spoke. But the line was open, and it was full. A tap running, a long way off, into a steel sink. A radio, low, a man reading something, in English, in the voice of morning radio anywhere. The clatter of a spoon put down on a counter. A chair scraping on a tiled floor. Somebody in a kitchen in the morning, doing three other things, the way somebody always is." },
+        { n: "Two seconds. Exactly two. And then the line went dead, and the screen went dark, and the clock in its corner said *12:01* again, and nothing in the list had changed at all." },
+        { s: 'hyein', f: 'surprised', t: "...That's our kitchen." },
+        { s: 'hyein', f: 'sad', t: "That's our kitchen, Sol. That's our tap. It does that, it knocks when you turn it off, Dad's been going to fix it for six years. That's the radio. That's her spoon. I'd know that spoon." },
+        { n: "She was smiling. That was the worst part. She was smiling with her whole face, wet, shaking, holding the dead phone against her chest in both hands as if she'd just been handed a baby, and Solar stood next to her with the atrium going on below them, the grandmothers, the feet in the fountain, and felt the cold come up through the soles of her shoes from somewhere very far down." },
+        { flag: 'eqx-hyein-picked-up' },
+        { s: 'hyein', f: 'happy', t: "She's there. She's *there*. She's just in the kitchen. She just didn't hear me." }
+      ], else: [
+        { ifChoice: { 'asks.hyein': 'no' }, then: [
+          { n: "And then she remembered. Solar saw her remember. *Not that phone. Not any voice, not any door. Promise me.* Solar had said it. On the stairs. Hyein had promised, and gone up without saying goodnight, and had been so good since. So good." },
+          { n: "She didn't move her thumb. She held the phone flat on her open hand and let it ring. It rang, and rang, the stupid marimba, over and over, and her hand began to shake under it, and then her arm, and then all of her, the whole tall body at the rail shaking like a struck wire, and she didn't close her hand." },
+          { n: "Solar put both her hands round Hyein's wrist. Not to take it. Just to be there. Hyein's pulse was going under her fingers like something trying to get out." },
+          { n: "It rang twelve times. Solar counted. Then it stopped, and the screen went dark, and the clock in its corner said *12:01* again. No voicemail. Nothing new in the list. As if it had never rung at all." },
+          { s: 'hyein', f: 'sad', t: "...I was good. Sol. I didn't. I was so good." },
+          { s: 'hyein', f: 'sad', t: "What if it was her. What if it was actually her, just once, in the daytime, and I was *good*." },
+          { flag: 'eqx-hyein-let-ring' }
+        ], else: [
+          { n: "And then she looked at Solar. Not at the phone. At Solar. One look, fast, the way you look at somebody across a room for an answer." },
+          { n: "Solar didn't give her one. She'd said on the stairs that it was Hyein's, and it was. She stood at the rail and kept her hands where they were and let Hyein see her face, which was frightened, and wasn't going to say anything, and was going to be right there either way." },
+          { n: "Hyein looked back at the phone. It rang. The marimba, bright and stupid. She looked at the word on the screen for a long time, for five rings, six, with her thumb over it." },
+          { s: 'hyein', f: 'serious', t: "...No. Not like this." },
+          { n: "She turned it face down on the rail. Under her palm. It went on ringing into the metal, muffled, a buzzing like something trapped under a cup, and she held it down." },
+          { s: 'hyein', f: 'serious', t: "If she wants me, she can call when it's not a trick. When it's not twelve-oh-one and a stopped clock and a fountain. She can call like a person. She can leave a voicemail and be annoyed in it." },
+          { n: "It stopped. She didn't lift her hand for a long time after." },
+          { flag: 'eqx-hyein-let-ring' },
+          { s: 'hyein', f: 'sad', t: "...That was mine. Right? That was me. Nobody told me." },
+          { s: 'solar', f: 'neutral', t: "That was you." }
+        ] }
+      ] },
+      { n: "Below them, the grandmother who'd looked up had gone back to her fanning. Nobody else had noticed anything. The little boy in the bucket hat had caught his coin. He held it up, dripping, to show somebody, and nobody was looking, and he held it up anyway." },
+
+      { place: 'Iwatodai Dorm · Solar’s Room', time: 'Night', bg: 'iwatodaidorm-hallway', music: 'night', soft: true },
+      { n: "Hyein knocked on her door at eleven. Not a knock. A scratch, the way Koromaru asked to be let in, and then her voice through the wood, small for Hyein, which meant almost normal for anyone else." },
+      { s: 'hyein', f: 'neutral', t: "...Can I sleep on your floor? Just tonight. Hanni's across my door and she'll do the face if I ask her to come in. I don't want the face. I want the floor." },
+      { choose: [
+        { t: "(Open the door. Throw her a pillow.)", notes: 3, flag: 'eqx-hyein-slept-over', then: [
+          { n: "She opened the door and threw a pillow at her, and Hyein caught it against her chest and came in and lay down on the floor beside the bed with the pillow and Solar's spare blanket and her phone, face down, under the pillow, and Solar lay on the edge of the bed with her hand hanging down, and at some point Hyein's hand came up and found it in the dark, and held two of her fingers, the way little kids hold on, and didn't let go." },
+          { n: "Hanni, outside in the hall, on her futon across the wrong door now, moved hers across Solar's without a sound. Solar heard her do it. She didn't say anything. Neither did Hanni." }
+        ] },
+        { t: "(Open the door. Get in the bed with her.)", notes: 3, flag: 'eqx-hyein-slept-over', then: [
+          { n: "She opened the door and went back to the bed and held the blanket up, and Hyein looked at her for a second as if she'd been offered something enormous, and then got in, the whole long length of her, and lay on her side facing the wall with her knees up and her back against Solar's, the way they'd slept on each other's beds at the house after parties, and was asleep before Solar had finished deciding whether she was." },
+          { n: "Hanni, in the hall, moved her futon across Solar's door without a sound. Solar heard her do it. She didn't say anything. Neither did Hanni." }
+        ] },
+        { t: "Go and get Hanni. We'll do it properly. All three.", notes: 3, flag: 'eqx-hyein-slept-over', then: [
+          { s: 'hyein', f: 'surprised', t: "...A sleepover? Now? In the middle of— okay. Okay, yes. Wait there." },
+          { n: "They did it properly. All three. Two futons pushed together on Solar's floor and Solar on the bed and the door open, and Hanni in the middle with an arm over each of them as if she thought one might roll away, and Hyein talking until nearly the red, about everything, about nothing, about the goldfish, and then stopping all at once, asleep, in the middle of a word." }
+        ] }
+      ] },
+      { dark: true },
+      { music: 'mystery' },
+      { n: "At twelve the red came up through the window. Hyein was asleep. Really asleep; Solar could tell, now, she'd learned the difference from Hanni's grid." },
+      { n: "At one minute past, under the pillow, the phone went warm. Solar felt it through the floor, through the edge of the mattress, through her own hand hanging down in Hyein's. Warm like a hand. For a second. And then not." },
+      { n: "Nothing rang. Nothing knocked. Hyein slept through the whole hour with her fingers round Solar's, and in the morning, when the light came, she woke and stretched and said *I slept*, in the voice of somebody saying *I won*, and Solar said *I know*, and didn't say anything about the minute past twelve." },
+      { n: "She'd tell her. She'd find the moment. There'd be a moment." }
+    ] },
+    { after: '9/13', title: '6: the door girl', place: 'Paulownia Mall · Shop Windows', time: 'After School', music: 'city', scene: [
+      { bg: 'paulownia-mall' },
+      { n: "The mannequin was gone from the window. The window was empty. Just the white board floor and the gray back wall and the little spotlights on their track pointing at nothing, and a sign taped to the glass in neat marker, *NEW DISPLAY COMING*, and on the other side of the glass, inside, on her knees on the white floor with a mouthful of pins and a staple gun, Hyein." },
+      { n: "She saw Solar in the glass and waved the staple gun." },
+      { s: 'hyein', f: 'happy', t: "*SOL.* Come in! Round the side! I'm allowed! I'm *allowed*, they *let* me!" },
+      { n: "The shop's manager, a thin woman in a black smock, had given her the window for September after Hyein had come in every day for three weeks and stood in front of it saying things about the obi in two languages until the woman had said, in English, very tiredly, *you do it, then*. Hyein had taken it as a contract. She'd been in the window since ten." },
+      { ifEvent: 'eqx-equinox', then: [
+        { n: "That was the story she told, anyway. She told it fast and loud and twice. Solar let her. Since the bridge the whole household had gone loud or gone quiet, there was no middle; Junpei had gone quiet, Mitsuru had gone quiet, Hyein had gone into a shop window and wouldn't come out." },
+        { s: 'hyein', f: 'serious', t: "If I don't do something with my hands I'll open something. That's not a joke. I'm telling you as a fact. I need my hands busy till I'm too tired to lift them." }
+      ], else: [
+        { s: 'hyein', f: 'serious', t: "My first window. My first ever. In a real shop. With a manager. Nobody's going to know whose it is and I don't care. I'll know. I'll walk past it and know." }
+      ] },
+      { n: "The display was a girl at a door. That was what she was making. A mannequin in a long autumn coat, oatmeal wool, the collar turned up, one hand raised in a fist to knock on a door Hyein had built out of plywood and painted white, with a brass knob she'd bought at the hardware store by the station. The fist was an inch from the wood. Frozen. Not knocking. About to." },
+      { s: 'hyein', f: 'neutral', t: "It's called *Are You Home?* Isn't that good? It's fall, it's a coat, she's come to see somebody. Everybody's going to think it's romantic." },
+      { choose: [
+        { t: "It's not romantic.", notes: 3, then: [
+          { s: 'hyein', f: 'neutral', t: "...No. It's not." },
+          { s: 'hyein', f: 'sad', t: "But they'll think it is. That's the trick. That's what clothes are for, Sol. You make a thing that looks like one thing and is another, and if you do it right, nobody can tell." }
+        ] },
+        { t: "Who's behind the door?", notes: 3, then: [
+          { s: 'hyein', f: 'neutral', t: "Nobody. It's plywood. There's the wall behind it." },
+          { s: 'hyein', f: 'serious', t: "...That's the point. She doesn't know that. She's about to knock, and nobody's there, and she's going to stand there with her hand up forever. I'm going to light it so her face is hopeful." }
+        ] },
+        { t: "It's beautiful. It's horrible. It's both.", notes: 2, then: [
+          { s: 'hyein', f: 'happy', t: "Thank you. That's the review I wanted. Can I put that on a card in the corner? *It's both. — a critic.*" }
+        ] }
+      ] },
+      { n: "She'd made the coat. Of course she had. It had one thing wrong in it, on purpose: the last button on the left cuff was sewn on with red thread instead of oatmeal, a small bright stitch like a cut. You'd only see it if you were the girl wearing it." },
+      { ifEvent: 'eqx-equinox', then: [
+        { n: "Solar looked at the coat for a long time. It was cream, nearly; it was nearly the color of a cardigan she'd last seen on a picnic blanket on the night of the moon, on a woman who'd said *stay, stay, after all this*, and laughed, and nodded at something Mrs. Oka bent down to say." },
+        { n: "Hyein saw her looking. She put the staple gun down." },
+        { s: 'hyein', f: 'sad', t: "...I didn't mean it to be. I didn't. I bought the wool in August. I'd already cut it. I'm so sorry. Do you want me to take it off her? I'll take it off her right now." },
+        { choose: [
+          { t: "Leave it on her.", notes: 3, then: [
+            { s: 'hyein', f: 'neutral', t: "...Okay." },
+            { n: "Hyein reached out and fixed the collar on the mannequin, very gently, turning it up a little more on one side, the way you'd fix the collar of somebody going out into the cold." }
+          ] },
+          { t: "(Take her hand. The one with the pins.)", notes: 3, then: [
+            { n: "She took Hyein's hand, pins and all, and Hyein let her, and they knelt there in the window with the white floor and the white door and the oatmeal coat, two girls holding hands in a shop window on an ordinary afternoon with the mall going past outside, and a few people looked in, and decided it was part of the display, and walked on." }
+          ] }
+        ] }
+      ] },
+
+      { place: 'Paulownia Mall · Atrium', time: 'After School', bg: 'paulownia-atrium-evening', music: 'tender', soft: true },
+      { n: "They sat on the edge of the fountain afterward, on the stone, with their backs to the water and the late light coming in long and amber through the glass roof. The grandmothers had gone home. The clock on its chains said ten past five." },
+      { ifEvent: 'eqx-equinox', then: [
+        { s: 'hyein', f: 'serious', t: "I've been thinking about the bridge. About how it did it. You heard what they were each asked. Everybody heard." },
+        { s: 'hyein', f: 'sad', t: "*Hold my hand across.* *Carry this for me.* *Wait for me.* Tiny things. Tiny, nice things. The smallest things you can ask a person. And every one of them just. Did it. Because why wouldn't you? Who says no to *wait for me*?" },
+        { s: 'hyein', f: 'serious', t: "That's how it does it, Sol. It doesn't break down doors. It asks you something tiny in a voice you'd do anything for. And you do it. And you're gone, and your shoes are in a row." },
+        { s: 'hyein', f: 'sad', t: "And it already asked me. In April. Through the door. In her voice. And I turned the latch a quarter. For nothing. For *a voice*." }
+      ], else: [
+        { s: 'hyein', f: 'serious', t: "Mrs. Oka asked me something last week. At the gate. When I walked the girls back." },
+        { s: 'hyein', f: 'neutral', t: "She's got an old kimono, her mother's, the hem's gone at the back. She asked if I'd come in one afternoon and look at it. *It's a tiny thing, dear. It'd take you an hour. You have such clever hands.*" },
+        { s: 'hyein', f: 'sad', t: "And I wanted to. So much. My hands wanted to. A real silk hem, hand-rolled, on somebody's mother's kimono. I could have done it on the step." },
+        { s: 'hyein', f: 'serious', t: "I said I'd think about it. I walked back up the river street so fast Kazuha thought I'd seen a dog. Everybody in that house gets asked for something tiny, Sol. Have you noticed? Everybody. Tiny, nice, *an hour*." }
+      ] },
+      { n: "She got the phone out. The one from home. She didn't look at it. She held it in her lap in both hands and turned it over, and over, the way she'd turned it on the stairs in June." },
+      { s: 'hyein', f: 'neutral', t: "Can I tell you why I never pick up? At home. The real why. Not the shower. I've never told anybody. Not even Hanni. Hanni thinks I'm just bad at phones." },
+      { s: 'hyein', f: 'neutral', t: "Every time she calls, every single time, she asks when I'm coming home. That's it. That's the whole call. *How are you, are you eating, when are you coming home.* Thanksgiving, Christmas, spring break, a random weekend in October. *When are you coming home, Hyein-ah.*" },
+      { s: 'hyein', f: 'sad', t: "And I never know what to say. I left first. Out of everybody in my family, I went the furthest, and I went the fastest, and I never once said why, because I don't know why. I just wanted to be somewhere where I was the one who got to decide." },
+      { s: 'hyein', f: 'sad', t: "So I let it go to voicemail. And she leaves *call me back, why do you never pick up*, and I listen to it fifty times, and I love her so much, and I don't call. Because if I call she'll ask. And one day I'm going to say *now*. I'm going to say *I'm coming home now, Mom.* Just to make her happy. Just because she asked." },
+      { s: 'hyein', f: 'serious', t: "That's what it knows, Sol. That thing at the door. That's the end of the voicemail. That's the soft part I could never catch. It's her asking. And I'm the door girl. I can't stand a knock with nobody going." },
+      // CG: eqx-door-girl — two girls sitting on the stone edge of a mall fountain in amber evening light, one tall girl turning an old phone over and over in her lap, behind them through the glass a lit shop window with a mannequin in a cream coat about to knock on a white door.
+      { ifChoice: { 'asks.hyein': 'yes' }, then: [
+        { ifFlag: 'eqx-hyein-picked-up', then: [
+          { s: 'hyein', f: 'sad', t: "I heard the kitchen. You were there. I heard our tap. And I've been waiting for it to ring again every day at lunch, at the clock, and it hasn't, and I keep thinking, next time she'll hear me. Next time I'll say it louder." }
+        ], else: [
+          { s: 'hyein', f: 'sad', t: "You said I could pick up. If it's her. I keep it charged, I keep it near me, all the time, so I'll be fast enough. I've been waiting so hard I can feel it in my teeth." }
+        ] }
+      ], else: [
+        { ifChoice: { 'asks.hyein': 'no' }, then: [
+          { s: 'hyein', f: 'sad', t: "I promised you. Not that phone. And I'll keep it. I'm so good at keeping it. I'm just telling you why it's so hard. Why it's so, so hard." }
+        ], else: [
+          { s: 'hyein', f: 'neutral', t: "It's still face down. The two seconds. Still unplayed. I keep it face down because I know exactly what's on it now. It's her asking. And I'm not ready to hear what I'd say back." }
+        ] }
+      ] },
+      { choose: [
+        { t: "Then when it knocks, wake me first. We'll stand there and not open it. Together.", notes: 3, flag: 'eqx-hyein-two-person', then: [
+          { s: 'hyein', f: 'surprised', t: "...The two-person plan. From April. You remember the two-person plan." },
+          { s: 'solar', f: 'neutral', t: "I remember all your plans." },
+          { s: 'hyein', f: 'sad', t: "...Okay. Okay. The two-person plan. I'll wake you. I'll be so annoying about it. You'll have to be right there. You'll have to be *in the building*, Sol." },
+          { n: "She said that last part lightly, and then heard it, and didn't take it back." }
+        ] },
+        { t: "You don't have to know what you'd say. You just have to not say it to that.", notes: 3, then: [
+          { s: 'hyein', f: 'neutral', t: "...To *that*. Not to her. To that." },
+          { s: 'hyein', f: 'serious', t: "Yeah. Yeah. Say it again, slower. I'm going to write it on my hand." },
+          { n: "She did. With the tailor's chalk from her pocket, on the inside of her wrist, in small white letters, *NOT TO THAT*, and looked at it for a while, and pulled her sleeve down over it." }
+        ] },
+        { t: "(Put your arm round her. Don't say anything.)", notes: 3, then: [
+          { n: "She put her arm round her on the edge of the fountain, and Hyein leaned into it, all the long length of her folding down until her head was on Solar's shoulder, and the phone went still in her lap, and they sat like that until the clock on its chains said half past and the man from the crêpe stand pulled his shutter down with a long metal rattle, and neither of them said anything at all, which for Hyein was a kind of shouting." }
+        ] }
+      ] },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "On the way out, she stopped at a shop by the escalator and bought a black ribbon, and didn't say who it was for, and tied it round the wrist with the chalk on it." }
+      ] },
+
+      { place: 'Iwatodai Dorm · Front Hall', time: 'Late Night', bg: 'iwatodaidorm-front-night', music: 'night', soft: true },
+      { n: "That night Hyein did the latch. Twice. Then she stood with her forehead nearly on the door, the way she always did, listening; and then, for the first time Solar had ever seen, she turned round and put her back against it instead. Flat. Like a girl holding a door shut in a film." },
+      { n: "Aigis came out of the kitchen and did the third check, and looked at Hyein leaning there, and at the white ribbon in her own hair in the hall mirror, and stood beside her at the door, shoulder to shoulder, and leaned on it too." },
+      { s: 'aigis', f: 'neutral', t: "Is this a new procedure?" },
+      { s: 'hyein', f: 'neutral', t: "Yeah. It's called *not tonight*." },
+      { s: 'aigis', f: 'happy', t: "I would like to be on it." },
+      { dark: true },
+      { music: 'mystery' },
+      { n: "At twelve the red came, and the hum, and at twelve-oh-one Solar's phone buzzed on the stairs where she'd been sitting watching them. Chenle, from the command room." },
+      { phone: [
+        { from: 'chenle', t: "hey. third hill. theres a corridor off the lockers we never saw before" },
+        { from: 'chenle', t: "its flooded. like an inch. still water. black" },
+        { from: 'chenle', t: "and at the end theres a door lying flat in the water. like a front door. white. latch up" },
+        { from: 'chenle', t: "fuuka says its someones. she says it sounds like hyein" },
+        { from: 'chenle', t: "she says it sounds like someone humming at it" }
+      ], contact: 'chenle' },
+      { flag: 'eqx-floor-hyein' },
+      { n: "Solar looked down the stairs at the two of them, Hyein and Aigis, standing with their backs flat against the front door in the red, shoulder to shoulder, the white ribbon and the chalk on a wrist. Neither of them had heard the phone. Neither of them moved." },
+      { n: "She put it in her pocket. She'd go down and look at it. She'd look at it first, before anybody told Hyein there was a door with her name on it lying in the water at the bottom of the world." },
+      { n: "She sat on the stairs and watched them hold the door until the hour ended, and then for a long while after, and didn't go to bed, because she'd said she'd be in the building, and she'd meant all of it." }
     ] }
   ]
 });

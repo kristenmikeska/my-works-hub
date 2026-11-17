@@ -1,12 +1,23 @@
 /* Persona 3: Equinox · Hanni Pham (Councillor). Link data for femc-equinox-game.html; replaces her stub in ../links.js (same id).
    Format: link fields in assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written so far: ranks 1-2 (rank 1 opens 4/13, her home days put it on 4/14 at the earliest; rank 2 opens 4/30, after
-   The Knock, and moves to the shrine's amulet stall and the dorm's second floor). Rank 3 (from 6/6, Chagall
-   Café then the dorm roof; branches on eqx-first-hill, eqx-snow-again, eqx-hunted and her rank-2 flags) records her ask:
-   tally asks.hanni (+ cakes / choose / asked), flags eqx-asked-hanni (hidden "Stay. Please."), eqx-hanni-slept (cosmetic).
-   Ranks 4-10 to come.
-   Rank 2 flags: eqx-hanni-two-bells, eqx-hanni-floor | eqx-hanni-split. Nothing reads them yet. Speaker without a
-   portrait: stallkeeper.
+   Written: ranks 1-6. Rank 1 opens 4/13 (her home days put it on 4/14 at the earliest); rank 2 opens 4/30, after The Knock,
+   and moves to the shrine's amulet stall and the dorm's second floor. Rank 3 (from 6/6, Chagall Café then the dorm roof;
+   branches on eqx-first-hill, eqx-snow-again, eqx-hunted and her rank-2 flags) records her ask: tally asks.hanni
+   (+ cakes / choose / asked), flags eqx-asked-hanni (hidden "Stay. Please."), eqx-hanni-slept (cosmetic).
+   Rank 4 (from 6/30, Chagall Café in the rainy season, then the dorm's second floor at night): the tenth stamp, her name
+   on a cup; lives with asks.hanni (ifChoice yes / no / else choose; eqx-asked-hanni); the four boarding-house girls
+   (ifEvent eqx-rehearsal); the back of the rota grid, bell nights vs nights Solar is in the building (the "time with
+   her matters" hint); ifEvent eqx-hunted (twos). Rank 5 (from 8/3, summer break: the mall's photo booth, the canal,
+   the dorm gate): "mō ichimai, sono mama de", the strip (eqx-home-R2's green marker), letters to her mom by asks.hanni,
+   ifEvent eqx-last-grain (she counted everyone), "I count better when I've seen you". Rank 6 (from 9/6; branches hard on
+   eqx-equinox, also eqx-pencil and dead.shinjiro): the handover notebook with no page for her, why (the picture at
+   fourteen), Solar writes her page; Chenle texts that a door has opened on the Third Hill: her ask floor, flag
+   eqx-floor-hanni. She's on §14's Aigis condition (Hanni or Hyein at rank 6 by 11/22): rank 6 is reachable by ~10/10.
+   Ranks 7-10 to come.
+   Rank 2 flags: eqx-hanni-two-bells, eqx-hanni-floor | eqx-hanni-split. Rank 4 flags: eqx-hanni-said-name, eqx-hanni-cocoa,
+   eqx-hanni-girls-rota, eqx-hanni-more-nights. Rank 5 flags: eqx-hanni-looked, eqx-hanni-strip-date | -mine | -more,
+   eqx-hanni-count-me. Rank 6 flags: eqx-hanni-page-laugh | -looked | -blank, eqx-floor-hanni (hook: her ask floor in the
+   Well, §8). No new tallies. Nothing reads the cosmetic ones yet. Speakers without a portrait: stallkeeper; chenle texts.
    Solstice's Hanni (assets/femc/game/links/hanni.js) is shared memory here: everyone remembers that year.
    Flags this file sets: eqx-hanni-slot (rank 1: Solar takes Hanni's midnight shift on the rota). Nothing reads it yet. */
 (window.FEMC_GAME_LINKS ||= []).push({
@@ -15,7 +26,7 @@
   home: { area: 'mall', spot: 'Chagall Café', slot: 'after', days: [0, 1, 3, 5],
           hint: 'Afternoons at Chagall Café in Paulownia Mall, at the window table, with two drinks already ordered.' },
   approach: "Hanni is at the window table in Chagall Café with two iced coffees in front of her, one straw in its paper, and a pencil behind her ear, and she waves at you through the glass with her whole arm, from the shoulder.",
-  cast: { stallkeeper: 'Stall Keeper' },
+  cast: { stallkeeper: 'Stall Keeper', chenle: 'Chenle' },
   ranks: [
     { after: '4/13', title: '1: same table', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
       { bg: 'chagall-cafe-inside' },
@@ -379,6 +390,364 @@
       { n: "At forty minutes past, down through the roof and the floor and the stairwell, from the second floor, small and bright and very far away, a bell rang. Once." },
       { n: "Neither of them moved. Then Hanni was up, blanket and all, and down the stairs, and Solar after her, and in the corridor the little brass bell hung on its red cord on the inside of Hyein's door, still, the cord not swinging, and behind the door Hyein was asleep. They could hear her. Deep and slow and real, the breathing of somebody actually asleep, for the first time in weeks." },
       { n: "Hanni sat down on her futon across the doorway without a word. Solar sat down next to her. They didn't talk about it. In the morning Hyein stepped over them both and said *again?* and Hanni, for once, didn't laugh." }
+    ] },
+    { after: '6/30', title: '4: ten stamps', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
+      { bg: 'chagall-cafe-inside' },
+      { n: "The rainy season had sat down on Port Island at the start of the month and showed no sign of getting up. It rained in the mornings, gray and fine, and in the afternoons it rained harder, warm, straight down, so the mall's glass roof sounded like a pan of something left on the stove, and everybody who came in through the doors stood for a second on the mat shaking themselves like dogs." },
+      { n: "Hanni had the card out already. Of course she did. Flat on the table between the two iced coffees, squared to the edge of the wood, nine little red cups in nine of the ten circles, and the tenth circle empty and very white, and Hanni sitting in front of it with her hands folded on the table like somebody waiting for exam results." },
+      { s: 'hanni', f: 'happy', t: "Nine. Sol. *Nine.* I came in yesterday and he stamped it and I nearly hugged him across the counter. I had to hold onto my own elbows." },
+      { s: 'hanni', f: 'neutral', t: "Today's ten. I haven't ordered yet. I was waiting for you. I wasn't going to fill it without a witness." },
+      { n: "She'd put the stamp card where she used to put the rota. Solar noticed that before she noticed anything else. For two months the grid had lived under Hanni's elbow at this table, gone gray with rubbing out, and today it was folded in her cardigan pocket with only a corner of it showing, and the card was in the middle of the table where everybody could see." },
+      { n: "They ordered. The owner rang it up and took the card out of Hanni's fingers before she could hold it out to him, the way he'd done since the second stamp, and pressed the tenth cup into the tenth circle very carefully, straight for once, and handed it back. Then he looked at the empty paper cup he'd taken down for her free drink, and at the black marker by the till, and back at her." },
+      { n: "He asked her name. For the cup. The way they did at the coffee places at home, which this place had never once done, not for anybody, in all the months of Hanni coming here; he'd never needed a name, there were six tables." },
+      { n: "Hanni stood at the counter with the card in both hands and didn't say anything at all." },
+      { choose: [
+        { t: "(Let her say it herself.)", notes: 3, flag: 'eqx-hanni-said-name', then: [
+          { n: "Solar didn't say anything. She stood a step behind Hanni and looked at the pastries and let the second go on, and then another one, and felt Hanni find the word somewhere down in herself and bring it up, careful, like something carried in two hands." },
+          { s: 'hanni', f: 'neutral', t: "...Hanni. Ha. Ni." },
+          { n: "He wrote it on the cup in katakana, square and slow, two characters, and showed it to her before he filled it to check he had it right, and she nodded, and he nodded, and it was the most formal thing Solar had ever seen happen over a coffee." }
+        ] },
+        { t: "(Say it for her.)", notes: 2, then: [
+          { s: 'solar', f: 'neutral', t: "Hanni. Her name's Hanni." },
+          { n: "He wrote it on the cup, square and slow. Hanni turned round and looked at Solar with her mouth open, outraged and grateful in about equal parts." },
+          { s: 'hanni', f: 'flustered', t: "I was *getting* there. I was building up to it. It was going to be a moment." }
+        ] },
+        { t: "Tell him she's a regular.", notes: 2, then: [
+          { s: 'solar', f: 'neutral', t: "She's a regular. Sunday, Monday, Wednesday, Friday." },
+          { n: "He looked at Hanni over the counter as if that were a fact he'd already filed somewhere and only now found the folder for. Then he wrote her name on the cup anyway, when she managed it, square and slow, and underlined it." }
+        ] }
+      ] },
+      { n: "She ordered hot chocolate. In June. In a rainy season so warm the windows were steamed on the inside, she ordered a hot chocolate with the skin on it, and carried it back to the window table in both hands with the name turned toward her, and sat, and didn't drink it, and looked at the two characters for a long time." },
+      { s: 'hanni', f: 'sad', t: "...I've never ordered this. Ever. In my life. At home I'm iced coffee in the day and the pink drink at night and sparkling water if it's a morning thing. I've got a whole map. Everybody knows my map." },
+      { s: 'hanni', f: 'neutral', t: "I don't even know if I like hot chocolate. Isn't that crazy? I've been alive this long and I never found out." },
+      { ifChoice: { 'asks.hanni': 'yes' }, then: [
+        { n: "She looked well. That was the first thing and the hardest one. Since the roof she'd been sleeping, properly, all night, on her futon across Hyein's door with both legs out of the blanket the way she slept at home, and the blue had gone out from under her eyes, and her dimples arrived on time." },
+        { ifFlag: 'eqx-asked-hanni', then: [
+          { s: 'hanni', f: 'happy', t: "You need me. I keep thinking it. In the shower, on the stairs. Nobody's ever said that to me out loud before, Sol. They just let me do the things." }
+        ] },
+        { s: 'hanni', f: 'happy', t: "I haven't checked anything in two weeks. Not the account, not the bar at seven. I just let it go off in my bag. Isn't that so healthy? Hyein says I'm unrecognizable." },
+        { s: 'hanni', f: 'neutral', t: "...Funny thing, though. I went to look at my phone on Sunday. The home one. Just to see the lock screen. And I couldn't get in." },
+        { s: 'hanni', f: 'neutral', t: "Six numbers. I've had the same six since I was fifteen. I put them in four times and it locked me out for an hour, and I sat on the bed and I couldn't think what they *were*, and I laughed. I laughed so hard Hyein came in." },
+        { n: "She laughed now, telling it, and it was the light one, the easy one, and Solar laughed too because it was expected, and felt something under her breastbone go very still, the way an animal goes still in long grass." }
+      ], else: [
+        { ifChoice: { 'asks.hanni': 'no' }, then: [
+          { n: "She looked like she'd been sleeping in the café again, which meant she hadn't been sleeping anywhere else. Since the roof she'd kept her word: she'd picked it back up. Every night at seven, when the bar came, she sat on the end of her futon with the phone from home and waited for the one notification it would let her see." },
+          { s: 'hanni', f: 'neutral', t: "One a night. That's all it gives me. One preview, five or six words, and then the bar goes and it's dark again. Last night was *someone check on her mom*." },
+          { s: 'hanni', f: 'sad', t: "I don't know if that's my mom. I don't know whose mom. I read it about forty times." },
+          { s: 'hanni', f: 'neutral', t: "...It's fine. You were right. We go back. I'd rather know what I'm going back to than get there and find out it was waiting for me the whole time." }
+        ], else: [
+          { n: "There was a cactus on the windowsill beside her. A small one, round, in a pot the size of an egg cup, with a white flower on the top of it that looked stuck on and wasn't. She'd bought it at the flower shop on the first floor and brought it here, and asked the owner in her careful Japanese whether it could live on his sill, and he'd said yes as if people asked him that every week." },
+          { s: 'hanni', f: 'flustered', t: "It's mine. It's my cactus. It's called Dorothy. Don't laugh. I've never had a thing that was just mine and alive at the same time." },
+          { s: 'hanni', f: 'neutral', t: "The notification's still there. I haven't opened it. I haven't deleted it. I sort of visit it. Some nights I sleep and some nights I don't, and I can't tell which nights are going to be which until I'm in them, and I think. I think that's what it's like. When things are yours." }
+        ] }
+      ] },
+      { choose: [
+        { t: "Drink it. Find out.", notes: 3, flag: 'eqx-hanni-cocoa', then: [
+          { n: "Hanni looked at the cup, and at her, and picked it up in both hands, and drank, carefully, with her eyes shut, through the skin, the way you'd take the first step into the sea." },
+          { s: 'hanni', f: 'surprised', t: "...Oh. Oh no. I love it. I *love* it. I've wasted my whole life." }
+        ] },
+        { t: "You don't have to like it. You just have to have ordered it.", notes: 3, then: [
+          { s: 'hanni', f: 'neutral', t: "...Yeah. Yeah, that's the part. The ordering." },
+          { n: "She drank some anyway, to be polite to it, and made a face, and drank some more, and by the bottom of the cup she'd stopped making the face, and didn't say anything about having stopped." }
+        ] },
+        { t: "(Swap cups with her. Take the hot one.)", notes: 2, then: [
+          { n: "Solar slid her iced coffee across and took the hot chocolate, and Hanni grabbed it back so fast the skin on top folded over like a little blanket." },
+          { s: 'hanni', f: 'serious', t: "No! No, no. It's got my name on it. Get your own name." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-rehearsal', then: [
+        { n: "She'd been at the boarding house since nine that morning. She was on it every day now: Mitsuru had given her the rota after the twenty-seventh and Hanni had given herself the house, and she sat in the doorway of the tatami room while the girls rehearsed and watched the stairs and the room and the hall all at once, and came away with her shoulders up round her ears." },
+        { s: 'hanni', f: 'serious', t: "She brought them noodles again. Cold ones. She stood in the door and watched them eat every bite. I watched her watching. Somebody has to." }
+      ], else: [
+        { s: 'hanni', f: 'neutral', t: "Can I tell you a thing that's been bugging me? The four new girls. At the boarding house." },
+        { s: 'hanni', f: 'serious', t: "Nobody's got them on a rota. Mitsuru says the house isn't ours, the Group leased it, Mrs. Oka's the landlady, it's not our business. Four girls who woke up on a stage in the red with three lives each, Sol, and nobody's business." },
+        { s: 'hanni', f: 'sad', t: "I walked past the gate on Monday. Twice. Just to look. Mrs. Oka was in the garden in her gloves and she waved at me, so nicely, and I didn't wave back. I just kept walking. And then I felt so bad I nearly went back and said sorry." },
+        { s: 'hanni', f: 'neutral', t: "...I didn't, though. I don't know why. My feet didn't want to." },
+        { choose: [
+          { t: "Then put them on the rota anyway.", notes: 3, flag: 'eqx-hanni-girls-rota', then: [
+            { s: 'hanni', f: 'happy', t: "*Thank* you. That's what I said. Out loud, to the corkboard, at two in the morning. Everybody's ours. That's the whole point of a rota." },
+            { n: "She took the grid out of her pocket and unfolded it on the table, gray and soft as cloth, and wrote four letters along the bottom in pencil, very small, *C, S, K, E*, and a little house next to them, and looked at the little house for a while." }
+          ] },
+          { t: "Your feet might know something.", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "My feet don't know anything. My feet walked me into a frat house in heels in a blizzard." },
+            { s: 'hanni', f: 'sad', t: "...But yeah. Maybe. Don't tell Mitsuru I said that. She'll make a column for it." }
+          ] },
+          { t: "(Ask her what Mrs. Oka was doing in the garden.)", notes: 2, then: [
+            { s: 'hanni', f: 'neutral', t: "Nothing. That's the thing. She was standing by the well with a watering can. Not watering anything. Just standing there with it." },
+            { s: 'hanni', f: 'neutral', t: "And then she saw me and waved, and it was the nicest wave. Like I was the one person she'd been waiting all day to see." }
+          ] }
+        ] }
+      ] },
+      { n: "The owner turned the television down without being asked. It was the horse racing again, and then it wasn't; Hanni looked up at it, and her shoulders came down, but she didn't fall asleep this time. She sat with her chin in her hand and her hot chocolate going cold and watched the rain on the glass with Solar, both of them quiet, and at some point the owner came and took the empty cups and left the one with her name on it, because she'd put her hand over it when he reached." },
+
+      { place: 'Iwatodai Dorm · Second Floor', time: 'Night', bg: 'iwatodaidorm-hallway', music: 'night', soft: true },
+      { n: "She showed Solar the other thing that night. At eleven, in the corridor, on her futon across Hyein's door, with the hall light off and the torch on and the grid open on her knees." },
+      { n: "It wasn't the grid. It was the back of the grid. Solar had never turned it over. Down the back, in two columns, in Hanni's small fast pencil, dates. Every night since the moon in April. And beside each one a tick, or a small bell drawn in a circle, and beside some of the bells, *0:40*." },
+      { s: 'hanni', f: 'neutral', t: "The bell. On her door. I've been keeping track. I'm not crazy. I'm a scientist." },
+      { s: 'hanni', f: 'serious', t: "Look at the nights it rings. Then look at the nights you were up here. On the floor with me, or on the roof with your door open, or just in the building and not in the Well." },
+      { n: "Solar looked. She didn't need long. Down the left-hand column, every night with an *S* pencilled small beside the date had a tick. Every night without one, more of them than she would've liked, had a bell in a circle." },
+      { s: 'hanni', f: 'neutral', t: "It's a coincidence. Obviously. I know it's a coincidence. It's a bell on a string. It doesn't know who's in the building." },
+      { s: 'hanni', f: 'sad', t: "...She sleeps, when you're here. Properly. I can hear the difference through the door. When you're in the Well she lies there and does the breathing where you're pretending, all night, and at forty past it rings." },
+      { ifFlag: 'eqx-hanni-two-bells', then: [
+        { n: "The bell on Hanni's own wrist moved when she turned the page, and rang, small, and she put her hand over it without looking, the way you'd hush a dog in the night." }
+      ] },
+      { choose: [
+        { t: "Then put me on more nights.", notes: 3, flag: 'eqx-hanni-more-nights', then: [
+          { s: 'hanni', f: 'serious', t: "No. Not every night. I'm not doing to you what I did to me. That was a mistake. I had a whole month of being a mistake." },
+          { n: "But she took the pencil out from behind her ear, and turned the grid over, and wrote *S* in two more boxes for next week, a Wednesday and a Saturday, and then, after a second, a third one, the Sunday, very small, as if it might not count if it was small enough." }
+        ] },
+        { t: "It's a coincidence, Hanni.", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "I know. I said that. I said it first." },
+          { s: 'hanni', f: 'sad', t: "...I wrote it down anyway. That's what you do with a coincidence. You write it down till it isn't one." }
+        ] },
+        { t: "(Take the pencil. Write your initial in tonight's box.)", notes: 3, flag: 'eqx-hanni-more-nights', then: [
+          { n: "She took the pencil out of Hanni's fingers and turned the grid over and wrote *S* beside tonight's date, small, under Hanni's *H*, the way she'd done in April at the café table, and Hanni watched her do it and didn't take the pencil back." },
+          { s: 'hanni', f: 'flustered', t: "That's tonight. You're *already* here. That's just writing down a thing that's true." },
+          { s: 'solar', f: 'neutral', t: "You're a scientist. Write down the true things." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-hunted', then: [
+        { n: "Every box had two names now. Twos. Mitsuru's rule since the night of the tape. Hanni had written them all herself, and she'd still left her own *H* in the margin beside every single night, small, the way she'd done in April, as if the rule were for everybody else and the margin were for her." }
+      ] },
+      { dark: true },
+      { music: 'mystery' },
+      { n: "The red came up through the end window at twelve, the way it always did, like something poured, and the bulbs went out together, and the hum started in the walls, and Hanni's hand found Solar's on the blanket and held it the way you'd hold a rail." },
+      { n: "At thirty-nine minutes past, Hanni stopped breathing. Solar felt her do it. Not a gasp. Just stopping, the whole of her, holding still, and waiting." },
+      { n: "Forty. The bell hung on its red cord on the inside of the door against the wood." },
+      { n: "Nothing. Forty-one. Nothing. Behind the door Hyein turned over in her sleep, and they heard her, the long rough breath of somebody actually under, and the rustle of the blanket, and then nothing again." },
+      { n: "Hanni let the breath out. All of it. She leaned sideways until her head was on Solar's shoulder, and said *see* into her sleeve, and nothing else, and was asleep before the hour ended." },
+      { n: "Solar didn't sleep. She sat with Hanni's weight on her shoulder and the little bell still on its cord in the red and did the sum Hanni had done, the one down the back of the grid in two columns, and then the other sum, the one Hanni hadn't written anywhere: all the nights to come that she'd be in the Well. All the nights she wouldn't be on this floor." },
+      { n: "She didn't finish it. She decided she'd finish it in the morning, and in the morning she didn't." }
+    ] },
+    { after: '8/3', title: '5: one more', place: 'Paulownia Mall · Photo Booth', time: 'Daytime', music: 'city', scene: [
+      { bg: 'paulownia-mall' },
+      { n: "August came in hot enough to soften the tar on the road outside the station, and the mall was full of it, of summer: kids out of school in packs with ice creams going down their wrists, a woman handing out paper fans with a phone company's name on them, the fountain in the atrium crowded with small children taking their shoes off and being told not to." },
+      { n: "Hanni was sunburnt. A thin pink stripe along the part in her hair, where she'd sat in the boarding house's doorway every morning for a week with the sun coming in over the garden wall and hadn't moved, because moving meant not watching the stairs. She'd put a little of Yunjin's aloe on it and it shone." },
+      { s: 'hanni', f: 'neutral', t: "Don't look at my head. I know. I've got a stripe. I look like a road." },
+      { s: 'hanni', f: 'serious', t: "Okay. Okay. I want to do something. It's stupid, and you have to say yes before I tell you what it is." },
+      { choose: [
+        { t: "Yes.", notes: 3, then: [
+          { s: 'hanni', f: 'happy', t: "Yes! Okay. No backsies. You've signed." }
+        ] },
+        { t: "Is it legal?", notes: 2, then: [
+          { s: 'hanni', f: 'flustered', t: "It's *so* legal. It's the most legal thing. Children do it. Say yes." },
+          { s: 'solar', f: 'neutral', t: "...Yes." }
+        ] },
+        { t: "(Hold out your hand. Let her lead.)", notes: 3, then: [
+          { n: "She held out her hand, palm up, and Hanni looked at it, and then took it with her whole face lit up and towed her across the second floor like a tugboat with a much bigger ship." }
+        ] }
+      ] },
+      { n: "It was the photo booth. The big one in the corner by the arcade, the white plastic cave with the curtain and the pink lights and the screen of cartoon frames, the one the schoolgirls queued for in fours with their skirts rolled up at the waist." },
+      { s: 'hanni', f: 'neutral', t: "I want a picture. Of us. One I picked." },
+      { s: 'hanni', f: 'sad', t: "I don't do pictures. You know I don't. Not since I was fourteen. Every picture of me at home is somebody else's, somebody else's angle, somebody else's caption, and I'm in the corner laughing with my eyes shut. I've got none that are mine." },
+      { s: 'hanni', f: 'neutral', t: "Nobody's going to see this one. Nobody. There's nobody here to see it. That's the whole point. It can just be a picture." },
+      { place: 'Paulownia Mall · Photo Booth', time: 'Daytime', bg: 'paulownia-photo-booth', soft: true },
+      { n: "Inside it was hot, and very bright, and smelled of plastic and other people's perfume, and the screen spoke to them in the bright, fast, singsong voice of a girl who'd been recorded in a studio years ago being as happy as she possibly could. Hanni picked the frame. It took her four minutes. She picked a pink one with stars and changed it and changed it back." },
+      { n: "The voice counted down. Three, two, one, a flash white enough to see through your own eyelids. Hanni flinched at the first one. Solar felt it through her shoulder, the whole small body jerking like a hand off a stove. At the second one she didn't flinch. At the third she was laughing." },
+      { choose: [
+        { t: "(Pull a stupid face for the next one.)", notes: 3, then: [
+          { n: "She crossed her eyes and pushed her nose up with one finger, and Hanni looked sideways at her at exactly the wrong moment and burst out laughing, the real one, the one that went up at the end, and the flash went." }
+        ] },
+        { t: "(Put your arm round her. Look at the camera.)", notes: 2, then: [
+          { n: "She put her arm round Hanni's shoulders and looked straight into the little black lens, the way she'd learned to look into lenses a long time ago, and then, because it was Hanni, she let the face go, and was just a girl in a hot box with her friend, and the flash went." }
+        ] },
+        { t: "(Look at Hanni instead of the camera.)", notes: 3, flag: 'eqx-hanni-looked', then: [
+          { n: "She didn't look at the camera. She looked at Hanni, at the sunburnt stripe and the dimples and the way her whole face was working at being in a picture, and the flash went while she was still looking." }
+        ] }
+      ] },
+      { n: "Then the voice said the thing it said at the end of every set, the thing it must have said ten thousand times a day to ten thousand schoolgirls, bright and fast and singsong." },
+      { n: "*Mō ichimai! Sono mama de!*" },
+      { n: "One more. Stay just like that." },
+      { n: "Hanni's Japanese was a year of Fuuka's flashcards and a café. She didn't know *sono mama*. She knew the shape of the voice, though, and she turned her head toward the screen at the last word as if somebody had said her name, and the flash went with her looking at it." },
+      { s: 'hanni', f: 'neutral', t: "...What did she say? At the end?" },
+      { choose: [
+        { t: "One more.", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "Oh. Okay. Just one more." },
+          { n: "She said it lightly. She didn't look at the screen again for the whole of the decorating part, and she wrote on the pictures with the little plastic pen pressed so hard the screen squeaked." }
+        ] },
+        { t: "Stay just like that.", notes: 2, then: [
+          { n: "Hanni didn't say anything for a second. The fan in the booth's ceiling went round. Somebody outside the curtain laughed, a long way off." },
+          { s: 'hanni', f: 'neutral', t: "...Course she did." },
+          { s: 'hanni', f: 'flustered', t: "It's a machine. It's a *machine*, Sol. It says it to everybody. It said it to the schoolgirls. Okay. I'm fine. Pass me the pen." }
+        ] },
+        { t: "(Don't translate it. Hand her the pen.)", notes: 3, then: [
+          { n: "She didn't translate it. She handed Hanni the little plastic pen, and Hanni looked at her for a moment as if she'd noticed the not-translating, and then decided she hadn't, and bent over the screen to draw stars." }
+        ] }
+      ] },
+      { n: "The strip came out of the slot warm, still damp at the edges, four frames in a column. Hanni flinching. Hanni laughing. Hanni laughing harder." },
+      { n: "And the fourth. The one more. Hanni turned toward the screen with her eyes shut, all the way shut, the soft lids and the lashes on her cheeks, exactly the way she'd said, exactly the picture she'd been afraid of since she was fourteen; and beside her, Solar, not looking at the camera at all. Looking at Hanni. The way you'd look at somebody you were counting." },
+      // CG: eqx-one-more — a narrow photo-booth strip of four frames held between two girls' fingers in a bright mall corridor, the last frame showing one girl with her eyes shut and the other turned to watch her.
+      { s: 'hanni', f: 'sad', t: "...Of course. My eyes. Even here." },
+      { s: 'hanni', f: 'neutral', t: "No, it's fine. It's actually fine. It's mine. I've got a picture of me with my eyes shut that I picked. That's completely different." },
+      { ifFlag: 'eqx-home-R2', then: [
+        { n: "She found a pen in her bag to write on the back with, and what came out was the green marker. The one Solar had put on the corkboard in July. Hanni's green one, from Syracuse, from December. She'd been carrying it since. She looked at it in her hand for a second, then uncapped it." }
+      ], else: [
+        { n: "She dug a pen out of her bag to write on the back with, a fat green one from the dorm's whiteboard that she'd taken and never put back." }
+      ] },
+      { s: 'hanni', f: 'neutral', t: "What do I write? You write. No, I'll write, you tell me. Quick, before I get sentimental and write a paragraph." },
+      { choose: [
+        { t: "Write the date. Just the date.", notes: 2, flag: 'eqx-hanni-strip-date', then: [
+          { n: "She wrote the date. Then, because she couldn't help it, a tiny sun next to it, and a tiny moon, and a heart, and Solar watched her stop herself from writing anything else by putting the cap back on with a click." }
+        ] },
+        { t: "Write *mine*.", notes: 3, flag: 'eqx-hanni-strip-mine', then: [
+          { n: "She wrote it. One word, small, in the corner of the back of the strip, in the green that had been to Syracuse and back, and then sat looking at it with the pen in her hand as if she'd signed something." }
+        ] },
+        { t: "Write *one more*.", notes: 2, flag: 'eqx-hanni-strip-more', then: [
+          { s: 'hanni', f: 'neutral', t: "Like she said? The machine?" },
+          { s: 'solar', f: 'neutral', t: "Like we'll come back and do one more." },
+          { n: "Hanni wrote it, slowly. She looked at it, and at Solar, and something in her face that had gone tight in the booth let go a notch." }
+        ] }
+      ] },
+      { n: "She tore the strip down the middle, between the second frame and the third, careful, along the perforation, and gave Solar the bottom half. The laughing-harder. The eyes shut. She kept the flinch and the first laugh for herself." },
+      { s: 'hanni', f: 'neutral', t: "You get the good ones. I'm keeping the before. I want to remember I flinched." },
+
+      { place: 'Paulownia Mall · Canal', time: 'Evening', bg: 'paulownia-canal', music: 'tender', soft: true },
+      { n: "They walked the long way home, along the canal, in the gold end of the day with the heat finally going out of the stones. The cicadas had started up in the trees along the water like a hundred tiny machines all trying to start at once. Hanni walked on the inside, nearest the water, because she always did; she said it was so that if anyone fell in it'd be her, and Solar had never been able to work out if that was a joke." },
+      { s: 'hanni', f: 'neutral', t: "I write to my mom. Did you know that? Every night. In my notebook. Not texts, they don't go anywhere. Letters. *Dear Mom, today Junpei set fire to a tea towel.*" },
+      { ifChoice: { 'asks.hanni': 'yes' }, then: [
+        { s: 'hanni', f: 'neutral', t: "...I didn't, last week. I forgot. Four nights in a row. I picked the notebook up on Saturday and the last one was Tuesday and I sat there going, what did I do Wednesday? And I couldn't remember. It was like a whole Wednesday fell in the canal." },
+        { s: 'hanni', f: 'happy', t: "Which is good, right? That's what you said. I don't have to go back to it. I'm putting things down. I'm just putting down more things than I meant to." },
+        { n: "She swung Solar's hand as they walked, the way little kids do, and laughed, and Solar laughed, and the cicadas went on, and Solar thought about a whole Wednesday sinking slowly to the bottom of the canal with the light going out of it, and held on a little harder." }
+      ], else: [
+        { ifChoice: { 'asks.hanni': 'no' }, then: [
+          { s: 'hanni', f: 'neutral', t: "I write her every single night. I've got it down to a system. What I ate, who's okay, who isn't, what the hour was, whether the bell rang. Like a ship's log." },
+          { s: 'hanni', f: 'sad', t: "So when we go back I can just hand her the notebook. So she doesn't have to ask. I don't think I could do the asking part. I'd just cry in her kitchen for a week." }
+        ], else: [
+          { s: 'hanni', f: 'neutral', t: "Some nights I write her and some nights I write me. *Dear Hanni.* Is that crazy? I've never written myself a letter in my life. I didn't even know what I like to be called." },
+          { s: 'hanni', f: 'happy', t: "I like Hanni, it turns out. On the cup. In his writing. I like that one." }
+        ] }
+      ] },
+      { s: 'hanni', f: 'serious', t: "Can I say a thing and you just let me say it? It's not about me. It's about the twenty-seventh." },
+      { ifEvent: 'eqx-last-grain', then: [
+        { s: 'hanni', f: 'sad', t: "That morning. When Ken came back with the dog and couldn't talk. I counted everybody. I went room to room in my socks with the rota and I counted, out loud, every name, like a teacher at a fire drill. I did the guesthouse on the phone. I did Shinjiro." },
+        { s: 'hanni', f: 'sad', t: "And you were in the shower, and I stood outside the bathroom door, and I couldn't count you, because I couldn't see you, and I nearly broke it down. Hyein had to pull me off the handle." },
+        { s: 'hanni', f: 'neutral', t: "...So just come by. That's all. On the days you're not in the Well. Come to the café. I count better when I've seen you." }
+      ], else: [
+        { s: 'hanni', f: 'neutral', t: "It's just. When you're down there, in the Well, I count. Everybody. The whole house, room to room, like a fire drill. And you're the only one I can't count, because you're not there to see." },
+        { s: 'hanni', f: 'neutral', t: "...So come by. On the days you're not down there. I count better when I've seen you." }
+      ] },
+      { choose: [
+        { t: "I'll come by. Count me.", notes: 3, flag: 'eqx-hanni-count-me', then: [
+          { s: 'hanni', f: 'happy', t: "One. There. Counted. Done for today." },
+          { n: "She tapped Solar once on the shoulder with two fingers, like a tag in a game, and walked on looking extremely pleased with herself, and Solar walked beside her with the place on her shoulder warm." }
+        ] },
+        { t: "Who counts you?", notes: 3, then: [
+          { s: 'hanni', f: 'surprised', t: "...Me? I don't need counting. I'm the one with the list." },
+          { s: 'hanni', f: 'neutral', t: "...Hyein does, I think. When she thinks I'm asleep. I've heard her stand in the hall and go *one* under her breath, and then go back to bed." }
+        ] },
+        { t: "(Stop walking. Hug her by the water.)", notes: 3, then: [
+          { n: "She stopped on the path and hugged her, there by the canal with the cicadas going and an old man on a bicycle ringing his bell to get past them, and Hanni hugged back so hard she lifted Solar's heels off the ground an inch, which for somebody that short should have been impossible." }
+        ] }
+      ] },
+      { n: "At the dorm gate Hanni stopped and got her half of the strip out of her bag and held it up to the porch light to look at it again, the flinch and the first laugh, and then put it inside her phone case, the home one, behind the phone, where the screen would cover it." },
+      { s: 'hanni', f: 'neutral', t: "There. Now when I go to look at the lock screen, I'll have to look at me first." },
+      { n: "Upstairs that night Solar held her own half up to the lamp. The laughing. The eyes shut. Her own face, turned, watching Hanni, and she looked at that face for a long time, because she didn't remember making it. It was a face she'd seen before on somebody else. Hanni's, in the café, in April, looking at a grid with *H: 12–1* down every margin." },
+      { n: "She put it in the back of the drawer with the PENDING stamp, and didn't look at it again, and knew exactly where it was." }
+    ] },
+    { after: '9/6', title: '6: a page for everyone', place: 'Paulownia Mall · Chagall Café', time: 'After School', music: 'tender', scene: [
+      { bg: 'chagall-cafe-inside' },
+      { ifEvent: 'eqx-equinox', then: [
+        { n: "It had turned cold all at once, the way it does by the sea, one week the windows open and the next everybody in a jacket with their hands in their sleeves. Chagall had its door shut for the first time since spring. The window table was free. It always was. Hanni was at it with a notebook and no drinks, which Solar had never once seen in two lives, and when she looked up her face did everything at once and nothing went on top of it, because she didn't have the strength to put anything on top." },
+        { ifEvent: 'eqx-pencil', then: [
+          { n: "The owner had a new habit. He looked up every time the door opened. Not long; a glance, past whoever came in, at the street behind them, and then back down at his cup. Since the Monday he'd turned his own sign to CLOSED for two soaked strangers and gone into the back for a long time. He didn't remember Solar. He looked past her at the street when she came in, all the same." }
+        ] },
+        { n: "Hanni got up without a word and went to the counter and came back with two drinks, an iced coffee for Solar out of habit, and for herself a hot chocolate, and set them down, and sat, and looked at the iced coffee, and said *no, sorry, it's cold out, I'll get you a hot one*, and didn't move." },
+        { s: 'hanni', f: 'sad', t: "...Hi. Sorry. I'm doing everything slow this week. I keep standing up and forgetting what for." },
+        { n: "She had the bell. Solar saw it when she reached for her cup. The little brass one on its red cord, the one from Hyein's door; she'd taken it off the handle at noon on the twenty-third when it rang by itself with nobody near, and put it in her pocket, and she'd had it in her pocket every day since. Her hand went to it now through the cardigan, the way it used to go to her wrist." }
+      ], else: [
+        { n: "September had come in still and gold and the summer hadn't noticed yet. School was back. The mall had changed its windows overnight from beach towels to cardigans, though nobody in Iwatodai would need a cardigan for a month, and the window table at Chagall had the late sun on it, slanting in low and warm across the wood." },
+        { n: "Hanni was at it with a notebook and no drinks, which Solar had never once seen in two lives. She was writing. Fast, small, bent so close to the page her bangs were on it, and when the door went she covered the page with her forearm before she looked up, and then saw who it was, and didn't uncover it." },
+        { s: 'hanni', f: 'flustered', t: "Hi! Sit. I'll order in a sec. I'm in the middle of a thing. I'm almost done with the thing." }
+      ] },
+      { n: "It was the yellow notebook. The one with the bear. Solar knew it from the other year, from a café across an ocean and a hundred lists; she hadn't seen it once since April. She'd assumed it was gone, *in another year*, like Akihiko's stopwatch. It wasn't. It was here, soft at the corners, the bear's face rubbed half away by a thumb." },
+      { choose: [
+        { t: "(Wait. Let her finish.)", notes: 3, then: [
+          { n: "She waited. She sat back in her chair and looked out at the mall and didn't look at the notebook, and after a minute Hanni's arm came off the page by itself, slowly, and she went on writing with Solar right there, not hiding it, as if she'd decided something." }
+        ] },
+        { t: "You still have the bear.", notes: 3, then: [
+          { s: 'hanni', f: 'surprised', t: "...You remember the bear?" },
+          { s: 'solar', f: 'neutral', t: "I remember everything about that bear." },
+          { s: 'hanni', f: 'sad', t: "It was in my coat. On the steps. New Year's. I had the bear in my pocket and I held on to you with the other hand. It's the only thing I came with that I wanted." }
+        ] },
+        { t: "What are you writing?", notes: 2, then: [
+          { s: 'hanni', f: 'neutral', t: "Nothing. Everything. You'll see. I was going to show you anyway. I just wanted it finished first, so you couldn't say it was too much while it was still too little." }
+        ] }
+      ] },
+      { n: "She turned the notebook round and pushed it across the table." },
+      { n: "It was a handover. That was the only word for it. A page for every person in the dorm, each one headed with a name in capitals and underlined twice, and under each name, in Hanni's small fast pencil, everything. *JUNPEI. Says he's fine. Isn't. Check the window latch, he won't. Eats when someone's watching.* *KEN. Ask about the dog first, then him. Never the hospital.* *AKIHIKO. Hand closes by itself at night. Don't mention it. Tape is in the drawer under the TV.* *YUNJIN. Light off = good night. Light on = go and sit.* *HAECHAN. Will say he's fine and actually be fine. Check anyway.*" },
+      { n: "And so on. The guesthouse too, at the back. Mark. The four girls, a page each, *likes the window side*, *won't eat the rice cakes, good*. Mrs. Arai on the corner, whose saucer was always empty." },
+      { ifEvent: 'eqx-equinox', then: [
+        { n: "And three new pages near the back, in a different pencil, softer, pressed harder. *MR. LEE (JAESANG). Won't eat breakfast. Will eat if Jaehyun eats first.* *MR. LEE (TAEJOON). Sits on the stairs. Bring a blanket, don't say why.* *MR. KIM. Ask him the stations. He likes being asked.*" }
+      ] },
+      { n: "*HYEIN* had four pages. Solar turned them. *Latch twice. Aigis does a third. Don't tell her you know. Eats if it's in her hand. Holds the phone when she can't sleep. Phone warm at full moon.* And then, near the end, underlined, *If she goes quiet, go and get her. Don't wait to be asked. She'll never ask.*" },
+      { s: 'hanni', f: 'neutral', t: "It's a handover. Like when you leave a job. So the next person knows where everything is." },
+      { ifChoice: { 'asks.hanni': 'yes' }, then: [
+        { s: 'hanni', f: 'neutral', t: "Not because I'm going anywhere. I'm not. I'm staying, you know I'm staying. It's just. In case. In case I'm on the floor in the hall and can't get up for a night. Somebody should know where the tape is." }
+      ], else: [
+        { ifChoice: { 'asks.hanni': 'no' }, then: [
+          { s: 'hanni', f: 'neutral', t: "For when we go back. So they've got it, so they know how to look after each other when the three of us aren't across the hall. Somebody should know where the tape is." }
+        ], else: [
+          { s: 'hanni', f: 'neutral', t: "I don't know what it's for. That's the honest answer. Staying, or going, or something else. I just knew I had to write it down before something happened that meant I couldn't." }
+        ] }
+      ] },
+      { n: "Solar turned the last page. There was nothing after it. The inside of the back cover, blank, and the bear on the outside." },
+      { n: "She turned back through it, slowly, all of it, the whole house, every name in capitals. She knew before she got to the end that she was looking for one, and that it wasn't there." },
+      { s: 'solar', f: 'neutral', t: "...There's no page for you." },
+      { n: "Hanni looked at the notebook as if it had said it, not Solar. As if she hadn't noticed. And then Solar watched her decide not to pretend she hadn't." },
+      { s: 'hanni', f: 'sad', t: "...No. I know. I started one. Three times. I wrote *HANNI* and underlined it and then I sat there." },
+      { s: 'hanni', f: 'neutral', t: "I didn't know what to put. What do you put? *Short. Fine. Does the rota.* That's not a person. That's a job description." },
+
+      { place: 'Iwatodai Dorm · Roof', time: 'Late Night', bg: 'iwatodaidorm-roof-night', music: 'night', soft: true },
+      { ifEvent: 'eqx-equinox', then: [
+        { n: "The roof at a quarter to twelve, and cold. The town below them had its lights on the same as always, the bridge strung out across the black water, and neither of them looked at the bridge. They'd both stopped looking at it the same night. Hanni sat with her back to it and the bell in her fist in her cardigan pocket." }
+      ], else: [
+        { n: "The roof at a quarter to twelve, and warm still, the concrete giving back the day's heat through the blanket. The town below them had its lights on, the bridge strung out across the black water, and down by the river the boarding house's one lit upstairs window, where it always was." }
+      ] },
+      { n: "Hanni had brought the notebook up. It was on her knees, shut, with both hands flat on the bear." },
+      { s: 'hanni', f: 'neutral', t: "Can I tell you the actual thing? Not the thing I tell people. The thing under it." },
+      { s: 'hanni', f: 'neutral', t: "When I was fourteen a picture of me went round. At school. It wasn't even a bad one. I wasn't doing anything. I was laughing. At lunch, at something my friend said, the real way, the one that goes up at the end, with my head back and my eyes shut and my mouth all the way open." },
+      { s: 'hanni', f: 'sad', t: "And everybody had something to say about it. About how I laugh. For like a month. Somebody did an impression of it in the hall every morning. A girl I didn't even know sent it to my mom." },
+      { s: 'hanni', f: 'neutral', t: "So I stopped. Laughing like that. In front of people. I got a different one, a nice one, a cute one, that fits in a picture. And I got really, really good at being the one who's useful. Because if you're the one with the list and the tea and the rota, people look at the list. Not at you." },
+      { n: "She said it quite steadily. She'd practised it, Solar thought; not out loud, but in the dark on a futon across a doorway, the way you practise a sentence in a language you've only half learned." },
+      { s: 'hanni', f: 'sad', t: "Here, nobody's looking. I can laugh how I want. I fell asleep in a café. And I made myself everybody's job so hard I forgot to be anybody. I'm in the corner of every page in that book. I'm just not *on* one." },
+      { s: 'hanni', f: 'neutral', t: "That's why I don't want to go back to it, Sol. Not because of the account. Because over there, if I'm not useful, I'm *the short one, always with her*. *The two.* And here I could just be. And I don't know how. I don't know how to be anyone that isn't a list." },
+      // CG: eqx-a-page — two girls on a dorm rooftop at night under one blanket, one holding a worn yellow notebook with a cartoon bear on the cover open on her knees to a blank page, the other holding a pencil out to her, the town's lights and a long bridge behind them.
+      { n: "She opened the notebook. To the back. To the blank inside of the cover. And held the pencil out." },
+      { s: 'hanni', f: 'neutral', t: "You do it. You write mine. You know me better than I do. I'll read it later. Not now. I'll cry on the roof and Mitsuru will hear it through the ceiling." },
+      { choose: [
+        { t: "(Write: *HANNI. Laughs the real way. Make her.*)", notes: 3, flag: 'eqx-hanni-page-laugh', then: [
+          { n: "She wrote it in capitals, the name, and underlined it twice, the way Hanni did every name; and under it, small, *Laughs the real way. Head back, eyes shut. Make her. Don't take a picture.* And then, because there was room, *Gets there first. Let somebody else, sometimes.*" },
+          { n: "Hanni didn't read it. She'd said she wouldn't. She took the notebook back and shut it with her hand flat on the bear and held it against her chest, and sat like that, and Solar saw her lips move, once, without a sound, the way they'd move on a word she was trying out." }
+        ] },
+        { t: "(Write: *HANNI. Let somebody look after her.*)", notes: 3, flag: 'eqx-hanni-page-looked', then: [
+          { n: "She wrote the name in capitals and underlined it twice, and under it, *Let somebody look after her. She'll say no. Do it anyway. Tea, the blanket, the floor. She'll pretend she's asleep so she doesn't have to say thank you. Let her.*" },
+          { n: "Hanni didn't read it. She took the notebook back and shut it and held it against her chest with both arms like something warm, and leaned her shoulder on Solar's, and after a while, without any warning, her eyes shut, and she was asleep, sitting up, on the roof, before the red." }
+        ] },
+        { t: "(Write only her name. Give the pencil back.)", notes: 3, flag: 'eqx-hanni-page-blank', then: [
+          { n: "She wrote *HANNI* in capitals and underlined it twice, and nothing under it, and put the pencil back in Hanni's hand, and closed Hanni's fingers on it." },
+          { s: 'solar', f: 'neutral', t: "You start it. I'll add things. As long as it takes." },
+          { n: "Hanni looked down at her own name with nothing under it for a long time. Then, very slowly, she wrote one word. Solar didn't look. She heard the pencil go, five letters, and stop, and the notebook close." }
+        ] }
+      ] },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "There was a page in the book with nobody in the house to give it to. Solar had seen it in the café and turned past it fast. *SHINJIRO. Says he isn't hungry. Is. Leave it by his door.* Hanni hadn't crossed it out. She wasn't going to." }
+      ] },
+      { dark: true },
+      { music: 'mystery' },
+      { n: "At twelve the red came over the town from the river up, the lights going out in a single breath, and the hum came up through the concrete, and Solar's phone buzzed once in her lap with its screen gone the color of something left too long." },
+      { n: "Chenle. From the command room, where he sat beside Fuuka every night with his hand-drawn map of the Well and a can of melon soda going warm." },
+      { phone: [
+        { from: 'chenle', t: "sol r u up" },
+        { from: 'chenle', t: "something new on the third hill. off the main stairs. wasnt there yesterday" },
+        { from: 'chenle', t: "its a door. like a dorm room door. whiteboard on it" },
+        { from: 'chenle', t: "it says HANNI. KNOCK FIRST" },
+        { from: 'chenle', t: "behind it its just people talking. like a hundred people. all at once. about her" },
+        { from: 'chenle', t: "fuuka says dont tell her yet. im telling u" }
+      ], contact: 'chenle' },
+      { flag: 'eqx-floor-hanni' },
+      { n: "Hanni was asleep against her shoulder, or pretending, with the notebook against her chest and her name inside the back cover. Solar turned the phone face down on the blanket." },
+      { n: "She didn't wake her. She sat in the red with Hanni's weight on her and thought about a door with a whiteboard on it at the bottom of a well, and a hundred people behind it talking, and that she'd have to go down and knock on it, and that when she did she wanted Hanni there beside her. Not behind her. For once not the one who got there first." },
+      { n: "She'd ask her in the morning. She'd find the right way to say it in the morning." }
     ] }
   ]
 });

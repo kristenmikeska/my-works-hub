@@ -1,20 +1,35 @@
 /* Persona 3: Equinox · Junpei Iori · I The Magician. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–3 (from 4/13; his home is the lounge couch on Sunday, Tuesday, Thursday and Saturday evenings). Ranks
-   4–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub).
+   Written: ranks 1–6 (from 4/13; his home is the lounge couch on Sunday, Tuesday, Thursday and Saturday evenings). Ranks
+   7–10 still to write. Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub).
    Solstice's ranks are shared memory here (consommé chips, the April ball, the highlight reel, "I didn't get a later");
    nothing reads Solstice link standing. What happened to him last November stays his: he never names her.
    Flags this file sets: eqx-junpei-latch (rank 1: Solar gets him to latch his window in the red). Nothing reads it yet.
    Rank 2 (after 5/1, after his three quiet days): reads eqx-junpei-latch. Sets nothing.
    Rank 3 (after 6/6, the lounge and the dorm street at dusk; branches on eqx-last-grain, eqx-hunted, eqx-aigis-arai)
-   records his ask: tally asks.junpei (+ cakes / choose). Sets nothing else. */
+   records his ask: tally asks.junpei (+ cakes / choose). Sets nothing else.
+   Written Nov 16 (ranks 4–6). Speaker without a portrait: mriori (his father; Solstice's `dad`, renamed so it can't clash).
+     Rank 4 (after 7/4, 'rain delay'; the lounge in a storm, the power out): the house's card game, his ask's aftermath
+       (ifChoice asks.junpei: yes = he does the grid twice a night; no = quieter; choose = a THEIRS column in other people's
+       hands, Akihiko's entry reads asks.akihiko), the landline ringing in the dark (rain, nobody), the Ioris not on the grid.
+       Sets eqx-junpei-dad (Solar gets his father put on the grid; two options set it).
+     Rank 5 (after 8/3, 'three hundred and twenty'; the lounge, the riverside ball park, the walk home): throwing with his
+       father again, who doesn't remember Solar (townspeople forget Solstice); Mrs. Oka's crane tin on the bench and her
+       supper invitation. Reads eqx-junpei-dad, eqx-last-grain (always played by then). Sets one of eqx-junpei-dad-oka
+       (Solar said go) / eqx-junpei-dad-dorm (invited him to the dorm instead) / eqx-junpei-dad-his (his to decide).
+     Rank 6 (after 10/3, 'under the clock'; the lounge, the green line with Mr. Kim, the dorm roof in the red): the grid with
+       the three mothers' empty boxes and the bridge's three names; riding with Solar's HOAX father to check a station clock
+       (Act IV 10/2); his window on the Doorstep (his ask floor: flag eqx-floor-junpei, always set). Branches on eqx-1122
+       (mothers back), eqx-1023 + dead.shinjiro (the ninth bowl), ifBefore 10/26 (where the fathers live). Sets
+       eqx-junpei-window-mark (Solar writes the floor in his book), eqx-junpei-told-garden (she tells him what she saw in
+       Mrs. Oka's garden on 10/2; only offered before eqx-1122). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'junpei', name: 'Junpei Iori', short: 'Junpei', arcana: 'Magician', numeral: 'I', from: 'Persona 3', kind: 'sees',
   romance: null, starts: '4/8', lodging: 'dorm',
   home: { area: 'dorm', spot: 'Lounge', slot: 'evening', days: [0, 2, 4, 6],
           hint: 'Evenings on Sunday, Tuesday, Thursday and Saturday, on the lounge couch nearest the TV.' },
   approach: "Junpei has claimed the couch nearest the TV with the full length of his body, a bag of chips balanced on his chest, a spiral notebook open on his knee and a baseball game on with the sound down, and he's yelling at it anyway.",
-  cast: {},
+  cast: { mriori: 'Mr. Iori' },
   ranks: [
     { after: '4/13', title: '1: volume two', place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'dorm', scene: [
       { bg: 'iwatodaidorm-livingroom-night-spring' },
@@ -348,6 +363,394 @@
       { n: "She went up the stairs. On the landing she stopped and looked back down over the banister, the way you'd look back at a house from the end of a street, and he was still there on the couch with both books shut, holding them closed on his knee with both hands, the way you'd hold a door shut against wind." },
       { n: "In the morning, coming down early, she passed the kitchen and saw him at the table at seven sharp with his pen, and heard it, under the clink of Shinjiro's pan: tick, tick, tick, tick. All the way down. Every name. And then a pause, a long one, in which she didn't hear the pen at all." },
       { n: "And then, very softly, the last one." }
+    ] },
+    { after: '7/4', title: '4: rain delay', place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'dorm', scene: [
+      { bg: 'iwatodaidorm-livingroom-night-rain' },
+      { n: "The Giants were rained out. The TV said so with a long shot of a tarp over an infield, black and shining, men in raincoats standing around the edges of it with their hands in their pockets like mourners, and the announcers filling the time with the voices of men who'd been told to keep talking until somebody stopped them. Outside it was raining on Iwatodai the same way, hard, straight down, the kind of July rain that hit the street so hard it bounced, and the gutters along the dorm's front step were running like little rivers, and the whole lounge smelled of wet umbrellas and the consommé chips open on the coffee table." },
+      { n: "Junpei had a deck of cards. He'd cleared the coffee table for it, magazines on the floor, remote on the arm of the couch, and he was dealing, with a flourish he'd clearly practiced in a mirror, to Ken, who was sitting cross-legged on the rug with tremendous seriousness, and to Koromaru, who was lying beside Ken with his chin on the rug and was getting dealt in out of courtesy." },
+      { s: 'junpei', f: 'happy', t: "Sol! Pull up a rug. Blackjack. Iori rules. Chips are chips. Like, the actual chips. One chip, one bet. You eat what you win." },
+      { s: 'junpei', f: 'neutral', t: "Ken's up four. Koromaru's down six, but he's got heart." },
+      { n: "She sat down on the rug. He dealt her in. He dealt Ken, and Koromaru, and her, and then turned up his own card and played the house, hit on sixteen, stood on seventeen, paid out in consommé chips from the bag with the flat professional calm of a man at a real table in a real city, and she watched him do it for three hands before she noticed he never once played a hand of his own." },
+      { choose: [
+        { t: "Deal yourself in.", notes: 3, then: [
+          { s: 'junpei', f: 'neutral', t: "Can't. I'm the house." },
+          { s: 'solar', f: 'neutral', t: "The house plays every hand." },
+          { s: 'junpei', f: 'flustered', t: "The house plays *for* the house. That's different. The house doesn't have, like, hopes. The house just pays out." },
+          { n: "He said it lightly, and shuffled, and the cards made the sound cards make in the hands of somebody who'd grown up around them, and she watched his face not do anything at all." }
+        ] },
+        { t: "(Bet the whole pile on one hand.)", notes: 2, then: [
+          { s: 'junpei', f: 'surprised', t: "Whoa. *Whoa.* Sol. That's twenty-two chips. That's a whole economy." },
+          { n: "She won. He paid out the twenty-two chips one at a time, counting them out loud onto her knee, and then sat back and looked at her with something on his face that wasn't quite admiration and wasn't quite fear." },
+          { s: 'junpei', f: 'neutral', t: "...Don't do that again. I mean it's fine. It's chips. Just. Don't be the kind of person who does that. I've seen that guy. He's not fun at the end." }
+        ] },
+        { t: "(Feed Koromaru his winnings.)", notes: 2, then: [
+          { s: 'junpei', f: 'happy', t: "He's down six! You can't feed a guy who's down six! That's enabling!" },
+          { n: "Koromaru ate the chip. Ken looked scandalized. Junpei laughed so hard he dropped the deck, and it went everywhere, under the couch, under the coffee table, a jack of spades face up on Koromaru's back, and for a minute nobody did anything but laugh." }
+        ] }
+      ] },
+      { ifChoice: { 'asks.junpei': 'yes' }, then: [
+        { n: "He looked tired. It came and went, under the jokes, the way the TV picture came and went in the storm. There were blue shadows under his eyes she hadn't seen in April." },
+        { s: 'junpei', f: 'neutral', t: "I do the grid twice now. That's all. Seven in the morning and then again after the red. Just to be sure. Mitsuru-senpai does two a.m., I do one-oh-five. Like a— like an encore." },
+        { s: 'junpei', f: 'happy', t: "Sleep's overrated. You said hold on to all of it. I'm holding on to all of it. It's the plan, baby. It's on the record." },
+        { n: "He grinned. The arrow he'd drawn off the edge of the betting book in June was still on the coffee table under the cards, faint blue, a line going nowhere, past the end of the paper. Somebody had tried to scrub it off with a wet cloth. It had only spread." }
+      ], else: [
+        { ifChoice: { 'asks.junpei': 'no' }, then: [
+          { n: "He hadn't put his feet in her lap since June. She noticed it the way you notice a clock that's stopped, a while after it stopped. He sat at his end of the couch and dealt and was funny and didn't, and she didn't know how to ask for it back." },
+          { s: 'junpei', f: 'neutral', t: "You were right, by the way. About not holding on to everybody. You can't. I checked." },
+          { s: 'junpei', f: 'neutral', t: "I'm doing it anyway. Quieter. I don't tick out loud anymore. That's my compromise. It's a pretty good compromise, honestly. Nobody's complained." }
+        ], else: [
+          { n: "The betting book was open on the arm of the couch at the back pages, and the grid had grown a new column. Down the right-hand side, past the last date, he'd ruled off a strip and written at the top of it in his big careless capitals *THEIRS*." },
+          { n: "And in the column, beside every name, in every different hand, people had written something. Hanni, in tiny furious letters: *obviously not, idiot. (maybe.)* Ken: *I'd like to decide later, please.* Mitsuru, in fountain pen: *Pending.* Koromaru's line had a paw print in what she hoped was mud. Haechan had drawn a small moon. Shinjiro's box was blank, except that someone had very clearly pressed a pen into it hard enough to dent the page, and then not written anything." },
+          { s: 'junpei', f: 'neutral', t: "I asked 'em. *You staying?* Like you said. Theirs to say. So I made 'em say it. In their own writing. So it's not me deciding what they meant." },
+          { s: 'junpei', f: 'sad', t: "...It's so much worse, Sol. It's so much worse than ticks. Ticks you just do. This, you gotta read." },
+          { n: "She found Akihiko's line." },
+          { ifChoice: { 'asks.akihiko': 'choose' }, then: [
+            { n: "*Mine. Thinking.* In his blunt square capitals, pressed hard." },
+            { s: 'junpei', f: 'neutral', t: "That's the only one that made me feel better. Don't ask me why." }
+          ], else: [
+            { n: "*Wherever she is.* In his blunt square capitals, pressed so hard the pen had gone through." },
+            { s: 'junpei', f: 'serious', t: "That's the only one I don't like. I don't know why. It's the nicest one. I just don't like it." }
+          ] }
+        ] }
+      ] },
+      { s: 'junpei', f: 'neutral', t: "Speaking of Aki-senpai. Off the record." },
+      { n: "He picked a jar off the floor by the couch and held it up. A big glass jar of pickled plums from the kitchen, the lid screwed down so hard the metal had dented." },
+      { s: 'junpei', f: 'happy', t: "I've been practicing. Opening stuff. Jars. Bottles. Stuck windows. Shinji-senpai thinks I've lost it. I can get this one open in four seconds now. Watch." },
+      { n: "He got it open in four seconds. It made a sound like a gasp. Ken applauded. Junpei bowed from the waist, sitting down, and screwed the lid back on as tight as it would go, and set it on the floor beside the couch where it had been, for later." },
+      { s: 'junpei', f: 'neutral', t: "His hand's getting worse. You know that. Banister, railing, the strap on the monorail last week. One of these days it's gonna close on something big. I just wanna be, like. In shape." },
+      { n: "As if he'd been called, the front door banged open and Akihiko came in out of the storm, soaked to the skin from a run nobody had been able to talk him out of, water running off his chin and pooling round his shoes on the hall tiles. He stood in the lounge doorway breathing hard with his gym bag over his shoulder, and his right hand was closed on the strap of it. Not holding it. Closed on it. The knuckles white, the tape gray and sodden." },
+      { s: 'akihiko', f: 'neutral', t: "Don't. I know. It's fine. It does this when it's cold." },
+      { s: 'junpei', f: 'neutral', t: "It's July, senpai." },
+      { s: 'akihiko', f: 'serious', t: "It does this when it's July, then." },
+      { n: "He tried to shrug the bag off his shoulder and couldn't, because his hand wouldn't let go of the strap, and stood there in the doorway attached to his own luggage with an expression of enormous dignity, dripping on the floor. Ken looked at the ceiling. Koromaru looked at Akihiko with his head on one side." },
+      { n: "Junpei got up. He didn't make a big thing of it. He went over in his socks with the hole at the big toe and took Akihiko's wrist in one hand like he was taking a pulse, and started on the little finger with the other, talking the whole time, loudly, about the Giants' bullpen, about the rain delay, about how the tarp guys deserved a raise, and the little finger came up off the strap, and then the next, and Akihiko stood and let him and stared at a point on the far wall with his jaw set, and nobody in the room said anything about it, and the bag hit the floor." },
+      { s: 'akihiko', f: 'neutral', t: "...If you tell anyone I'll put you through the wall." },
+      { s: 'junpei', f: 'happy', t: "You said that last time. The wall's still there, senpai. I'm starting to think you're all talk." },
+      { n: "Akihiko looked at him for a long moment. Then he picked up his bag with his left hand and went upstairs to change, and on the third stair he stopped, without turning round, and said *thanks, Iori* to the banister, very quietly, and went on up." },
+      { s: 'junpei', f: 'neutral', t: "Five seconds. I was going for four. The cold slows me down." },
+      { n: "The lights went out." },
+      { n: "Not the red. It was half past nine. Just the ordinary dark of a power line down somewhere in the storm: the TV snapping off in the middle of an announcer's word, the lamp, the kitchen, the hum of the fridge stopping so that you heard, for the first time, that it had always been humming. The rain got louder in the dark. Ken said *oh* in a small voice. Koromaru stood up." },
+      { s: 'junpei', f: 'neutral', t: "It's fine. It's fine. It's just the storm. There's a flashlight in the— somewhere. In the drawer. Under the menus. Everything's under the menus." },
+      { n: "He'd found it, and was clicking it, and it wasn't working, when the phone rang." },
+      { n: "The landline. In the hall, on its little table by the stairs. The old phone with the cord, that nobody used except Mitsuru and the Group and, once in a while, somebody's mother. It rang the old way, an actual bell inside it, loud in the dark house with nothing else making a sound but the rain, and it went on ringing." },
+      { n: "In the dark house with the rain coming down it sounded like something from another year. Nobody called the hall phone at half past nine. It rang again, and again, and Junpei got up." },
+      { choose: [
+        { t: "(Get there first. Pick it up yourself.)", notes: 2, then: [
+          { n: "She got there first. She didn't know why she ran. She picked it up in the dark and put it to her ear and didn't say anything." },
+          { n: "Rain. That was all. Rain, on the other end, very close, the sound of rain hitting something hollow, an umbrella or a car roof or the top of a head, and under it, behind it, somebody breathing very slowly through their nose, the way you breathe when you're standing still in the rain and trying not to be heard." },
+          { n: "Junpei was behind her. He took the phone out of her hand. Gently, but he took it." },
+          { s: 'junpei', f: 'serious', t: "...Hello? Iori. This is— hello?" }
+        ] },
+        { t: "(Let him get it.)", notes: 2, then: [
+          { n: "He went into the hall with the dead flashlight in his hand and picked it up on the sixth ring. She stood in the lounge doorway with Ken's hand in hers and Koromaru pressed against her shins, very stiff, his ears flat." },
+          { s: 'junpei', f: 'neutral', t: "Iwatodai dorm, Iori speaking. Hello?" }
+        ] }
+      ] },
+      { n: "Nobody answered. She could hear it from where she stood. Rain on the line, very close, and under it a long patience, like somebody standing on a step." },
+      { s: 'junpei', f: 'serious', t: "...Dad?" },
+      { n: "He said it so quietly. He said it like a question he hadn't meant to ask out loud, the way you'd say a name you'd been told never to say in the red, and then he heard himself, and his face in the dark of the hall went very still." },
+      { n: "There was a click. The rain stopped, on the line. Then the ordinary dead hum of a phone with nobody on it." },
+      { n: "Junpei put the receiver back in its cradle very carefully. Then he picked it up again and dialed, by feel, in the dark, a number his fingers knew without him, eleven digits; and she stood in the doorway and listened to it ring, very small, across town, in a room she'd never seen. It rang eleven times. Nobody picked up. He put it down." },
+      { s: 'junpei', f: 'neutral', t: "...Probably the Group. Checking the lines. Mitsuru-senpai's always got somebody checking something." },
+      { s: 'junpei', f: 'neutral', t: "He goes to meetings Thursday nights. He wouldn't be home. That's fine. That's good, actually." },
+      { n: "The flashlight came on in his hand. He looked at it, surprised, as if it had decided something without him." },
+      { place: 'Iwatodai Dorm · Lounge', time: 'Night', bg: 'iwatodaidorm-livingroom-night-rain', soft: true },
+      { n: "Ken went up to bed with a candle, under protest, carrying it like a relay torch, Koromaru at his heels. Junpei and Solar sat on the couch in the dark with the flashlight standing on its end on the coffee table, pointing at the ceiling, a white circle up there with the shadows of the cards on the table thrown huge across it." },
+      { n: "He had the betting book open on his knee. The grid. In the flashlight it was all shadows, every crooked line, every tick. She read the names down the side the way you'd read the names on a memorial: the dorm, the guesthouse, the girls, the town on its own page in the frog book. Tanabe-san with his line through him. Everybody." },
+      { n: "There was no Iori on it." },
+      { n: "She'd seen the grid a dozen times, and it was only now, in the dark, with the phone still ringing in her ears, that she saw who wasn't there. Junpei's own name was at the bottom where she'd made him put it in April. Nobody else of his. Not one." },
+      { s: 'solar', f: 'neutral', t: "Your dad's not on it." },
+      { s: 'junpei', f: 'neutral', t: "...Nah." },
+      { n: "He didn't say anything for a while. The rain came down. He turned the flashlight with one finger, slowly, so the circle on the ceiling went round like a searchlight looking for something it had lost." },
+      { s: 'junpei', f: 'neutral', t: "He's doing good. He's still going. To the meetings. Last fall he called me, like, out of nowhere, and we threw a ball in the park. You remember. You were on the bench." },
+      { s: 'junpei', f: 'sad', t: "He doesn't, though. I went over in April. Once. After all this. And I said, hey, remember my leader, the girl on the bench, last fall? And he looked at me like I'd said something in another language. He said *what girl, Junpei.* Not mean. Just. What girl." },
+      { s: 'junpei', f: 'sad', t: "Everybody in town's like that. The konbini guy. Hagakure. They know me. They don't know you. They don't know the whole year happened with you in it. It's like somebody went through it with an eraser and only did your parts." },
+      { s: 'junpei', f: 'serious', t: "So I didn't put him on. 'Cause if he's on, I gotta tick him. And to tick him I gotta see him. And if I go and see him and he's— if he's had a drink. Or if he looks at me like he looked at me about you. I don't wanna have to put a line through my own dad, Sol. I just don't. So he's not on." },
+      { n: "The flashlight went round. The cards on the table threw their shadows up and round and up. Somewhere a gutter overflowed with a sound like a tap left running." },
+      { choose: [
+        { t: "Put him on.", notes: 3, flag: 'eqx-junpei-dad', then: [
+          { s: 'junpei', f: 'surprised', t: "...Huh?" },
+          { s: 'solar', f: 'neutral', t: "You put everybody on. That's the rule. You see someone twice, they're on. You've seen him more than twice." },
+          { n: "He looked at her for a long time in the flashlight. Then he found the pen, by feel, and wrote, at the very bottom of the page, under his own name, very small, *IORI (DAD)*. He didn't tick it. He drew the box and left it empty, and then, after a second, put a tiny question mark in the corner of it, the way you'd write a note to yourself to call somebody back." }
+        ] },
+        { t: "(Take the pen. Write *IORI* at the bottom yourself, in pencil, so it can come off.)", notes: 3, flag: 'eqx-junpei-dad', then: [
+          { n: "She took the pencil out of the spiral, not the pen, and wrote it herself, at the very bottom, under his name: *IORI*. Light. So it could come off. She held the book so he could see it was pencil." },
+          { n: "He looked at it for a long time. He didn't rub it out. He took the pencil out of her fingers and, under her letters, very small, in his own hand, wrote *(DAD)*." },
+          { s: 'junpei', f: 'sad', t: "...Cheater. That's insider trading. You know my rules too good." }
+        ] },
+        { t: "That's yours to decide.", notes: 2, then: [
+          { s: 'junpei', f: 'neutral', t: "Yeah. Yeah, I know. Everything's mine to decide lately. I'm so tired of things being mine." },
+          { n: "He closed the book. He didn't write anything. But he left the pen lying on top of it, uncapped, pointing at the bottom of the cover, and when she came down in the morning it was still there, and the cap was still off, and the ink had dried at the tip." }
+        ] }
+      ] },
+      { n: "The lights came back on at a quarter to eleven, all at once, the fridge first, then the lamp, then the TV in the middle of a word, an announcer saying *—postponed until tomorrow*, the tarp, the infield, the men standing round it in the rain." },
+      { n: "Junpei looked at the TV for a long time with the book closed on his knee." },
+      { s: 'junpei', f: 'neutral', t: "Postponed till tomorrow. Rain delay. That's what they call it. You don't lose the game. You just play it some other day." },
+      { s: 'junpei', f: 'happy', t: "...That's a good rule. Baseball's got good rules. I've always said that. Nobody listens." },
+      { n: "Before bed he wrote in the reel. He tipped it so she could read it, which was the same as asking." },
+      { n: "*July. Rained out. Power out. Phone rang. Nobody. Maybe somebody. Ken's up nine chips. Koromaru's down seven. Sol's on the bench.*" },
+      { n: "And under that, after a long pause in which the pen didn't move, smaller:" },
+      { n: "*Rain delay. Not a loss.*" }
+    ] },
+    { after: '8/3', title: '5: three hundred and twenty', place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'dorm', scene: [
+      { bg: 'iwatodaidorm-livingroom-night-summer' },
+      { n: "It was still light at seven. That was August: the light hung on and on over the river in long sticky bands of orange, as if it didn't know how to leave either, and the heat lay in the dorm like a dog that wouldn't get off the couch, and nobody had been able to eat much since the wake. Shinjiro had made cold noodles three nights running. Ken had eaten them. Nobody else had managed more than half." },
+      { n: "Junpei was in the lounge doorway with his jacket on. A thin summer jacket, in this heat, as if it were armor, and under his arm a brown leather glove gone soft and dark at the pocket, and she knew it before he said anything. She'd seen him stand in a doorway exactly like this before, in October, in another year, with that glove." },
+      { s: 'junpei', f: 'neutral', t: "Hey. You busy? You're not busy. You're on the couch. You're, like, the opposite of busy." },
+      { s: 'junpei', f: 'neutral', t: "...You wanna be bench guy? Again? It's fine if you don't. It's fine. It's just. Nobody alone after dark. Mitsuru-senpai's rule. Two's legal." },
+      { ifFlag: 'eqx-junpei-dad', then: [
+        { s: 'junpei', f: 'sad', t: "He's on the grid now. You put him on. And every morning I go tick, tick, tick, and I get to the bottom, and there's his box with a question mark in it, and I tick it without seeing him. Every day. That's cheating. That's the one thing the grid can't be." },
+        { s: 'junpei', f: 'neutral', t: "So I called him. Yesterday. From the hall. He picked up on the second ring. I said, wanna throw? And he went real quiet, and then he said, *yeah, Junpei. Yeah.*" }
+      ], else: [
+        { s: 'junpei', f: 'neutral', t: "He called. My old man. Yesterday. On the hall phone. A real call, with a person on it this time. He asked did I wanna throw." },
+        { s: 'junpei', f: 'sad', t: "And I keep thinking about Suemitsu. How you think you got all the time in the world, and then somebody's sitting at a table, and. So I said yes. And then I panicked and came and found you." }
+      ] },
+      { choose: [
+        { t: "I'll be on the bench.", notes: 3, then: [
+          { s: 'junpei', f: 'happy', t: "Bench guy. Okay. Bench guy." },
+          { n: "He said it twice more under his breath on the way out of the door, *bench guy, bench guy*, like a charm. He'd done that last year too. He didn't know he had." }
+        ] },
+        { t: "What if he's been drinking?", notes: 2, then: [
+          { s: 'junpei', f: 'neutral', t: "Then we leave. You and me. That's why you're coming. I didn't wanna have to decide that by myself." },
+          { n: "He'd said that last year too, word for word. He didn't know that either. She didn't tell him." }
+        ] },
+        { t: "(Get up and get your shoes.)", notes: 3, then: [
+          { n: "She got up and got her shoes. He watched her tie them on the step with an expression like a man watching a lifeboat get lowered, and when she stood up he didn't say anything, just bumped her shoulder with his on the way out of the door, once, the thank-you he still couldn't get his mouth round." }
+        ] }
+      ] },
+      { place: 'Iwatodai · Riverside Ball Park', time: 'Evening', bg: 'iwatodai-riverside-night', music: 'tender', soft: true },
+      // BG: eqx-riverside-ballpark — a small scrubby park at the end of a river path at summer dusk: a chain-link backstop, a patch of worn dirt, one tall light on a pole just coming on with moths round it, the river and the far bank's apartment lights beyond.
+      { n: "The park at the end of the river path was exactly as small and scrubby as she remembered: a backstop, a patch of worn dirt, one tall light on a pole that buzzed when it came on. It had been October last time, cold, leaves in the gutters. Now the dirt was baked pale and cracked, and the grass round it had gone to seed and stood up to her knees, and the light came on at half past seven with a sound like a held breath and a cloud of moths already waiting for it." },
+      { n: "His father was under the light. Thinner. A windbreaker in August, the same one, washed even more. The same glove tucked under the same arm. He was standing exactly where he'd stood last fall, and when he saw them coming he took his hands out of his pockets the same way, like a man who'd been caught at something and didn't know where to put them, and Solar's whole body remembered it before she did: the cold bench, the bad first pitch, the buzz of this light." },
+      { s: 'mriori', t: "Junpei." },
+      { s: 'junpei', f: 'neutral', t: "Hey, Dad." },
+      { n: "His father looked past him at her. He looked at her politely and kindly and with no recognition in his face at all, and she watched Junpei watch him do it." },
+      { s: 'mriori', t: "And this is— I'm sorry. Have we met? You look like somebody." },
+      { s: 'junpei', f: 'neutral', t: "...This is Solar. From the dorm. She's, uh. She's my leader." },
+      { s: 'mriori', t: "Your leader. Of what?" },
+      { s: 'junpei', f: 'happy', t: "Of me, basically. She's the boss of me." },
+      { n: "He'd said that last year too. His father laughed this time, which he hadn't last year, a short surprised laugh, and bowed to her, a little too deep, the way people bow when they're sober and very aware of it. She bowed back. She sat on the bench by the backstop, which was warm now instead of cold, warm right through her skirt from the whole day of sun, and became furniture as hard as she could." },
+      { n: "They threw. His father walked out to the bald patch that served as a mound and wound up, slowly, his whole body remembering something halfway, and threw, and it was a better pitch than last year's first one. Junpei caught it barehanded, out of habit, and shook his hand out and swore and grinned, and threw it back, easy, and that was something." },
+      { s: 'mriori', t: "Three hundred and twenty. Today. Days. Since I— you know." },
+      { s: 'junpei', f: 'neutral', t: "...Yeah? Three twenty?" },
+      { s: 'mriori', t: "The group gives you a coin at a year. I've got forty-five days to go. I've got it written on the calendar by the fridge. I cross them off with a red pen like a kid waiting for summer." },
+      { s: 'junpei', f: 'happy', t: "That's my move. The crossing-off thing. You stole my move." },
+      { s: 'mriori', t: "Who do you think you got it from?" },
+      { n: "Junpei didn't answer that. He threw the ball back a little too hard, and his father caught it, a little clumsily, and they both laughed, and the light buzzed, and the moths went round." },
+      { n: "On the far end of the bench, beside his father's jacket, there was a tin. Solar had sat down next to it without seeing it, and then she saw it, and couldn't stop seeing it." },
+      { n: "A flat round tin. Painted cranes on the lid, white on a faded red. A dent in the side." },
+      { n: "When they stopped to drink from the fountain by the gate, his father came and sat down on the bench beside it, mopping his face with a handkerchief, and saw her looking." },
+      { s: 'mriori', t: "Oh, those. You want one? Go on. They're very good. I don't eat sweets much." },
+      { s: 'mriori', t: "A lady brought them. To the hall where we have the meetings. Thursday. Stood at the door with them, didn't come in. Runs a boarding house by the river, she said. Does suppers. She said she'd heard there were some men in that church basement drinking bad tea every week and she thought somebody ought to feed them properly." },
+      { s: 'mriori', t: "Nice woman. Gloves on, in this heat. Asked would I not rather come and sit at a proper table one of these Thursdays instead of a folding chair. Said she'd keep a place. Said one night off wouldn't hurt." },
+      { n: "Junpei had come back from the fountain. He was standing behind his father with the ball in his hand. He'd gone white under the sunburn. He didn't say anything. She'd never seen him not say anything so loudly." },
+      { s: 'mriori', t: "I said maybe. I said next week, maybe. I'm not much company. But she's right, you know, it's bad tea." },
+      { choose: [
+        { t: "You should go. She's very kind.", notes: 2, flag: 'eqx-junpei-dad-oka', then: [
+          { s: 'mriori', t: "She is, isn't she? That's what I thought. Very kind. Kind's hard to come by." },
+          { n: "He smiled at her. It was a nice smile, tired, Junpei's chin under it. Behind him Junpei closed his hand round the ball so hard she heard the leather creak, and looked at her, once, a look she didn't have a name for, and then looked at the ground." }
+        ] },
+        { t: "Come to the dorm instead. Shinjiro cooks on Sundays. He'd feed you till you can't move.", notes: 3, flag: 'eqx-junpei-dad-dorm', then: [
+          { s: 'mriori', t: "Oh, I couldn't. A dormitory? I'd be in the way." },
+          { s: 'junpei', f: 'neutral', t: "You wouldn't be in the way. Everybody's in the way. It's like thirty people and a dog. One more guy, nobody's even gonna notice." },
+          { s: 'junpei', f: 'flustered', t: "...I mean, I'd notice. Shinji-senpai makes this curry. You'd— it's good. It's real good. You don't have to." },
+          { n: "His father looked at him for a long moment, in the buzzing light, and something went over his face and settled there." },
+          { s: 'mriori', t: "...Sunday. Maybe. If you're sure." },
+          { s: 'junpei', f: 'happy', t: "I'm sure. I'm, like, so sure. I'll put it in the book." }
+        ] },
+        { t: "That's yours to decide, Mr. Iori.", notes: 2, flag: 'eqx-junpei-dad-his', then: [
+          { s: 'mriori', t: "...Yes. I suppose it is." },
+          { n: "He said it with a kind of surprise, as if it hadn't occurred to him that it was. Junpei, behind him, opened his mouth. She watched him open it, and close it, and open it again, everything in him wanting to say *don't, Dad, don't go there*, and she watched him hear her, and swallow it, the whole thing, like a stone." },
+          { s: 'junpei', f: 'sad', t: "...Yeah. It's yours, Dad. Just. The tea's not that bad. I'm just saying. I've had worse tea." }
+        ] }
+      ] },
+      { n: "They threw till the light was gone from the sky and there was only the light on the pole. Then his father checked his watch, and said he had a thing, and said it plainly, like a man who'd decided a long time ago not to be ashamed of where he was going. He shook Junpei's hand. He stood there holding it, like last year, like he didn't know how to give it back. Then he pulled him in by the back of the neck for one second, hard, and let go." },
+      { s: 'mriori', t: "It was nice to meet you, Solar. Look after him. He talks a lot, but he doesn't say much. His mother was the same." },
+      { n: "He picked up his jacket. He left the tin. He'd forgotten it, or he'd left it for them; she couldn't tell. He walked off up the river path with his glove under his arm, and didn't look back, and Junpei watched him all the way to the bend." },
+      { n: "Then Junpei picked up the tin, and held it, and didn't open it." },
+      { s: 'junpei', f: 'serious', t: "...She was at the meeting hall. She found him at the *meeting hall*, Sol. That's the one place. That's the one room in this whole town where everybody's already said no to something every week." },
+      { s: 'junpei', f: 'sad', t: "Suemitsu said yes to supper every night since April. Every single night. I sat behind him in class. I watched him get happier. I thought it was nice." },
+      { n: "He walked to the gate with the tin. There was a public bin there, green, with a swing lid. He stood over it for a long time. Then he took the roll of electrical tape out of his jacket pocket, the one he used for the knob on his window, and taped the tin's lid down, round and round, until you couldn't see the cranes, and put it in the bin, and let the lid swing shut on it, and stood there with his hand flat on the lid of the bin, holding it closed." },
+      { n: "Something in the long grass behind the backstop moved. Just the grass. Just a breath of air off the river, finally, after the whole hot day. It went through the seed heads in a long slow line, all the way along, as if something low had walked the length of the park and stopped at the gate." },
+      { n: "Junpei didn't turn round. He took his hand off the bin and put it in his pocket." },
+      { s: 'junpei', f: 'neutral', t: "Let's go home. Long way. Past Arai-san's. I didn't do the rounds today." },
+      { place: 'Iwatodai · The Dorm Street', time: 'Night', bg: 'outside-daytime-neighborhood', music: 'mystery', soft: true },
+      // BG: iwatodai-dorm-street-night — the same quiet residential slope at night in summer, small tiled-roof houses, potted plants on steps, streetlights with moths, a blue-roofed house near the bottom with a lamp on behind a lace curtain.
+      { n: "The long way home went up the river path and back along the dorm street from the bottom, past the blue roof. The street was warm and dark and smelled of somebody's mosquito coil and of the geraniums on every step, and Junpei looked at every house the way he'd looked at them in June, quick glances, like checking a clock, and every house was there." },
+      { n: "Mrs. Arai was on her step. That had never happened, Junpei said under his breath; she was always behind the curtain, at night. She was sitting on the top step in a cotton summer robe with a paper fan, among her pots, in the light from her own front door, and when she saw Junpei at the gate her whole face lit up like a girl's." },
+      { n: "There was no saucer on the step. Solar looked for it. Among the geraniums, by the tomato plant tied to its chopstick. Nothing. Just a ring on the stone where it had stood every night since spring, a pale clean circle in the dust." },
+      { n: "Mrs. Arai told them. She told them all at once, in a rush, holding Junpei's hand over the gate in both of hers. Her son had come home. Last week. Late, the way he always came home, late, after she'd gone up. She'd heard him in the kitchen. Heard him eat, everything, the rice cake and the rice and the pickles she'd left out, every scrap, and the chair scrape, and the tap run. She hadn't gone down. He'd never liked to be looked at when he ate, not since he was small. In the morning the plate was clean and the chair was pushed back in." },
+      { n: "He'd be back, she said. He'd come every night now. The lady by the river had been right. If you leave something out, they know they're expected." },
+      { n: "Junpei said that was great. He said it was the best news he'd heard all week. He said it in his biggest, warmest voice, the one for old ladies and Ken, and squeezed her hands, and she went in happy, and the lamp went off behind the lace curtain, and he stood at the gate and didn't move." },
+      { s: 'junpei', f: 'serious', t: "...She didn't see him. She heard him eat. She didn't go down." },
+      { s: 'junpei', f: 'sad', t: "And now there's no saucer. 'Cause he's coming. She's gonna leave the whole table out now. Every night. Supper for two." },
+      { choose: [
+        { t: "(Stand at the gate with him. Don't say anything.)", notes: 3, then: [
+          { n: "She stood with him. The moths went round the streetlight. Somewhere up the hill a TV laughed. After a long time he took the frog notebook out of his back pocket and found the page and ticked Mrs. Arai's box, carefully, against the gatepost, and then, under her name, in pencil, very small, wrote *+ 1 (?)* and didn't tick that." }
+        ] },
+        { t: "We could tell her. Not to leave it out.", notes: 2, then: [
+          { s: 'junpei', f: 'sad', t: "Aigis told her. You told her. In the spring. She thanked everybody real nice." },
+          { s: 'junpei', f: 'neutral', t: "She's happy, Sol. She hasn't been happy since I started doing this street. You wanna be the one who tells her he's not her kid? 'Cause I can't. I'm not built for it." },
+          { n: "He ticked her box in the frog book, against the gatepost, and under it wrote *+ 1 (?)*, and didn't tick that." }
+        ] }
+      ] },
+      { n: "They walked up the hill. At the top, by the dorm gate, he stopped and looked back down the street, all of it, every lit window and every dark one, the way you'd look back at a field from the end of a game." },
+      { s: 'junpei', f: 'neutral', t: "I'm putting the meeting hall on the rounds. Thursdays. I'll go and stand outside it at like nine and see who comes out. I don't care if it's weird." },
+      { place: 'Iwatodai Dorm · Lounge', time: 'Night', bg: 'iwatodaidorm-livingroom-night-summer', music: 'dorm', soft: true },
+      { n: "The lounge was dark except for the TV, a late game from somewhere with the sound off, a pitcher shaking off sign after sign. Junpei sat down on the couch and put his feet in her lap, and she let him, and he got the betting book out from the drawer and opened it to the grid." },
+      { ifFlag: 'eqx-junpei-dad', then: [
+        { n: "He found the bottom of the page. *IORI (DAD)*, and the box with the question mark in its corner. He rubbed the question mark out with the end of the pencil, carefully. Then he ticked it. A real tick, a hard one, and beside it, small, *in person*." }
+      ], else: [
+        { n: "He found the bottom of the page, his own name, the line under it. He sat looking at the empty space below it for a long time, the pen over it. Then he wrote, very small, *DAD — 320*, and didn't draw a box, and didn't tick anything, and left it, a number with nowhere to go." }
+      ] },
+      { s: 'junpei', f: 'neutral', t: "Forty-five days. He gets a coin. Mid-September. I'm gonna go. I'm gonna go and sit in the folding chairs and drink the bad tea and clap. He doesn't know that yet. I'm gonna surprise him." },
+      { s: 'junpei', f: 'sad', t: "...If he's still going. On Thursdays. To the bad-tea place. If he doesn't decide one week that one night off won't hurt." },
+      { n: "He wasn't really asking her anything. He said it to the TV, where the pitcher had finally taken a sign and wound up and thrown, and the batter let it go by, and it was a strike, and nobody in the stadium seemed to care." },
+      { s: 'junpei', f: 'neutral', t: "Thanks for being bench guy. That's twice now. Two years in a row. I'm gonna need you for, like. A lot more innings." },
+      { s: 'junpei', f: 'flustered', t: "...That's not, like, an ask. That's a scheduling note. Don't make it a thing." },
+      { n: "Before bed he wrote in the reel. *August. Threw with Dad. 320. He doesn't remember Sol. Sol was on the bench anyway. Tin's in the bin.*" },
+      { n: "And then, after a while, under it, so small she had to lean in to read it in the light from the TV:" },
+      { n: "*Note to self. Bins are doors too, probably.*" }
+    ] },
+    { after: '10/3', title: '6: under the clock', place: 'Iwatodai Dorm · Lounge', time: 'Evening', music: 'dorm', scene: [
+      { bg: 'iwatodaidorm-livingroom-night-autumn' },
+      { n: "The lounge had gone cold for the first time that week, properly cold, the kind of October evening where somebody gets up and finds a blanket and then everybody's under it, and the windows had a skin of damp on them, and outside the persimmons on the trees down the street had gone orange all at once, overnight, like lamps." },
+      { n: "Junpei was at the dining table, not the couch. That was the first thing. He had the betting book open in front of him and the frog notebook beside it and a third notebook she'd never seen, a train-company timetable booklet with its pages folded back, and he was ruling a new grid into the back of it with a ruler that kept slipping, and swearing at the ruler under his breath, gently, the way you'd swear at a dog you loved." },
+      { s: 'junpei', f: 'happy', t: "Sol. Sit. I need a witness. I need a— you know. You know the drill." },
+      { n: "She sat down across from him and looked at the betting book, because it was open, and because she always did." },
+      { ifEvent: 'eqx-1122', then: [
+        { n: "The grid had three names near the top of the parents' rows, in his big careless capitals, gone over more than once: *SOLJI-SAN*, *EOMMA (MISEON-SAN)*, *MRS. KIM*. Under each one, a run of empty boxes from the twenty-third of September all the way through October and into November, two months of white squares he'd ruled every morning and left empty. And then, from the twenty-third of November, ticks again. Small ones. Careful. As if he were afraid of pressing too hard on anything with those names on it now." }
+      ], else: [
+        { n: "The grid had three new names near the top, in the parents' rows, in his big careless capitals, gone over more than once: *SOLJI-SAN*, *EOMMA (MISEON-SAN)*, *MRS. KIM*. Under each one, a run of empty boxes from the twenty-third of September to today. White squares. He'd ruled every one of them fresh each morning, she could see; the lines were new, the pencil dark. He hadn't drawn a line through any of them. He hadn't left them out either." }
+      ] },
+      { n: "And at the very bottom, under everybody, under his own name and under his dad's, in pen, three more. *SAKAI.* And two names she didn't know, written carefully, the characters looked up and copied, she could tell, from somewhere official." },
+      { s: 'junpei', f: 'serious', t: "I asked Mitsuru-senpai. For the other two. She didn't wanna give 'em to me. She said why. I said 'cause they were walking people home. 'Cause that's a guy who should be on somebody's list. She wrote 'em on a sticky note and gave it to me and went in her room and shut the door." },
+      { s: 'junpei', f: 'sad', t: "I'm not putting a line through those. Not the mothers either. I did Tanabe-san with a line. I'm not doing lines anymore. They just stay on. Empty's not the same as gone. Empty's just— empty for now." },
+      { ifFlag: 'dead.shinjiro', then: [
+        { n: "Shinjiro's row was still there, between Mitsuru and Yukari, in the fat capitals Junpei had given him in June, the frying pan drawn by the first tick. After the twenty-third of October the boxes were empty. Not crossed. Empty. And in the margin beside the first empty one, in pencil, very small: *9 bowls. Did 9 anyway.*" }
+      ] },
+      { choose: [
+        { t: "(Put your hand flat over the empty boxes.)", notes: 3, then: [
+          { n: "She put her hand flat on the page, over the white squares, the way she'd put it over the ticks in April. Junpei looked at her hand there and didn't say anything for a long time." },
+          { s: 'junpei', f: 'sad', t: "...Yeah. Yeah. They're still on. That's all I'm saying. They're still on." }
+        ] },
+        { t: "Empty for now.", notes: 3, then: [
+          { s: 'junpei', f: 'neutral', t: "Empty for now. Yeah. That's the rule. That's the new rule. I'm writing it at the top." },
+          { n: "He wrote it at the top of the page, over the dates, small: *EMPTY ≠ GONE.* And underlined it. And then, because he was Junpei, drew a tiny baseball beside it." }
+        ] },
+        { t: "What's the third notebook?", notes: 2, then: [
+          { s: 'junpei', f: 'happy', t: "That's the new book. That's the station book. You're gonna love it. It's the worst one yet." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-1122', then: [
+        { n: "The timetable booklet was Mr. Kim's. A grid of stations down the side, green line, a hundred and twelve of them in Jungwon's careful katakana with Junpei's capitals beside them, and dates across the top, and in the boxes, ticks, dozens of them, through October and into November, every evening. And then, across the whole of one page, diagonally, in red pen, in a hand that wasn't Junpei's, a single word in Korean she knew without reading it." },
+        { s: 'junpei', f: 'neutral', t: "*Found.* That's what it says. Mr. Kim wrote that. The day after. He came down to breakfast and took my pen and wrote it right across the stations, and gave me the pen back, and went upstairs to sit with her." },
+        { s: 'junpei', f: 'sad', t: "He wants to ride the line one more time. The green one. All the little ones. To say thanks to the clocks, he said. He says she'd want somebody to tell them. He asked me to come. He asked if you'd come." },
+        { place: 'Iwatodai Station · Green Line', time: 'Evening', bg: 'train-car-inside', music: 'tender', soft: true },
+        { n: "They rode it with him to the end of the line and back, in a nearly empty carriage, Mr. Kim in his fleece in the middle seat with Junpei on one side and Solar on the other, and at every little station with a clock over the exit Mr. Kim lifted his hand to the window, just a little, a wave to the clock, the way you'd wave to a neighbor from a car." },
+        { s: 'kim-dad', f: 'happy', t: "She says I took too long. She says a hundred and twelve stations, yeobo, honestly. She says she was never at a station, she doesn't know why I thought a station." },
+        { s: 'kim-dad', f: 'sad', t: "She doesn't remember where she was. That's all right. I know where I was. I was under the clocks." },
+        { n: "He took Solar's hand on the seat between them and held it the whole way back, and didn't say anything else, and on his other side Junpei ticked every station as it went by, out of habit, and then stopped ticking, and just watched them go." }
+      ], else: [
+        { n: "The timetable booklet was Mr. Kim's. The green line, the one that stopped at all the little stations, a hundred and twelve of them down the side of a grid Junpei had ruled himself, in Jungwon's careful katakana with Junpei's capitals beside them. Dates across the top. Ticks in the boxes. Not many yet. A long column of them still to go." },
+        { s: 'junpei', f: 'neutral', t: "Jungwon does weekends. I do weeknights. After school, after dinner, before it gets dark. We ride out, we get off, he stands under the clock at the exit, we wait for one train each way, we ride back. I tick it." },
+        { s: 'junpei', f: 'happy', t: "He made me make odds. On the stations. Which one she'd pick. *Study the form,* he said. Like I taught him. He's got a theory. He says she'd pick one with a bakery near the exit. So the bakery ones are short odds." },
+        { n: "He said it in his joke voice. His hand on the ruler had stopped." },
+        { s: 'junpei', f: 'sad', t: "...He laughs, Sol. Every station. Under every clock. He says *yeobo, you picked a big country,* and he laughs. I don't know what to do with that. I just tick the box." },
+        { n: "Solar didn't say anything. She was thinking about a garden. About a washing line strung between a persimmon tree and a post, and a woman with her back to the house folding sheets against her chest, a navy vest, an apron tied in a hard double knot on a line that went straight down her back. She'd seen it on a Saturday from a low table covered in timetables, with her father's back to the garden, drawing a circle round a station that had a little clock on the map." },
+        { n: "Her father. That was the thing that kept arriving, every time, as if for the first time. Mr. Kim was her father. In a life she remembered as well as she remembered this one, he'd taught her to play crane games at the old mall, and moved the car seat back for her mother, and never said anything, because that was his whole job. And Junpei, who didn't know any of what was in the garden, was riding the green line with him every night with a ruler and a frog notebook, ticking clocks." },
+        { s: 'junpei', f: 'neutral', t: "He's waiting on the step. You wanna come? It's a short one tonight. Bakery station. Short odds." },
+        { ifBefore: '10/26', then: [
+          { place: 'The Oka Boarding House · Gate', time: 'Evening', bg: 'eqx-oka-gate', music: 'eerie', soft: true },
+          { n: "Mr. Kim was on the boarding house step in his fleece with the timetable folded in his breast pocket and the car keys in his left hand, turning them over. Behind him, down the long hall, a lamp was on in the kitchen and someone was moving about in it, humming. He didn't look round. Solar did, and then didn't, and then looked at her father's face instead, which was the safest thing in the street." }
+        ], else: [
+          { place: 'Iwatodai Dorm · Front Step', time: 'Evening', bg: 'iwatodaidorm-front-night', music: 'tender', soft: true },
+          { n: "Mr. Kim was on the dorm's front step in his fleece with the timetable folded in his breast pocket and the car keys in his left hand, turning them over. Koromaru lay across the doorway behind him with his chin on his paws, the way he lay every night now, and lifted his head when they came out, and put it down again." }
+        ] },
+        { s: 'kim-dad', f: 'happy', t: "The funny boy with the hat! And my— sweetheart. You came. Good. Three's better odds. More eyes." },
+        { s: 'kim-dad', f: 'neutral', t: "Tonight it's the one with the bakery. Junpei says short odds. I say she hates that bakery, it's a chain, she'd never. But we have to check. You check them all. That's the rule." },
+        { place: 'A Station on the Green Line · Exit', time: 'Evening', bg: 'station-concourse-evening', music: 'tender', soft: true },
+        // BG: eqx-station-clock — the exit of a small suburban station at dusk, a round white clock over the ticket gates, a bakery's lit window beside the exit, a few commuters, one man in a fleece standing alone under the clock looking out.
+        { n: "The station was four stops down the green line, a small one, two platforms and a footbridge and one exit with a round white clock over it, and a bakery beside the exit with its lights on and its shelves nearly empty, the end of the day. A few commuters came through the gates and went past them into the dusk with their bags of bread." },
+        { n: "Mr. Kim went and stood under the clock. Exactly under it. He put his hands in his fleece pockets and looked out at the street, at the bakery, at the bus stop, at the people coming and going, with an expression of polite, patient, enormous attention, the expression of a man meeting a plane." },
+        { n: "Junpei stood at the gate with the timetable open on his forearm and his pen out. Solar stood beside him. A train came in behind them on the up line, and doors opened, and people came through the gates, and none of them was anybody. The doors closed. The train went." },
+        { choose: [
+          { t: "(Go and stand under the clock beside your father.)", notes: 3, then: [
+            { n: "She went and stood beside him. He didn't look at her. He took one hand out of his pocket and found hers without looking, and held it, and went on watching the street, and his hand was warm and dry and absolutely steady, and hers wasn't." },
+            { s: 'kim-dad', f: 'neutral', t: "She'd like you being here. She'd say, you see, at least *one* of you has some sense. She'd say, at least my daughter came to find me." },
+            { n: "Solar said nothing. She stood under the clock with her father and held his hand and looked at the bakery, because the bakery was the safest thing in the street." }
+          ] },
+          { t: "(Stay at the gate with Junpei. Watch him tick.)", notes: 3, then: [
+            { n: "She stayed with Junpei. He didn't tick anything yet. He stood with the pen over the box and watched Mr. Kim's back under the clock, and she watched Junpei watch him, and saw that he was doing the thing he'd done on the dorm street in June, looking at every face that came out of the gates the way you'd glance at a clock: checking. For somebody he'd never met, who wasn't going to come out of any gate in this prefecture, for a man he'd known six weeks." },
+            { s: 'junpei', f: 'neutral', t: "...He's so sure, man. Every time. He's so sure she's gonna be the next one." }
+          ] },
+          { t: "(Look away. Read the timetable on the wall instead.)", notes: 2, then: [
+            { n: "She read the timetable on the wall. Every train. The express, the local. The minutes. She read it twice, because she always read things twice, and she didn't take in a single number, and the second train came in, on the down line, and its doors opened, and people came through the gates, and none of them was anybody." }
+          ] }
+        ] },
+        { n: "The second train went. Mr. Kim stood a moment longer under the clock, then turned round with his face perfectly cheerful and lifted both hands, empty." },
+        { s: 'kim-dad', f: 'happy', t: "Not this one! I told you. A chain bakery. She'd never." },
+        { n: "Junpei ticked the box. Hard. One clean tick. Then he wrote beside it, small, the time on the clock, and *bakery: no*, the way you'd write a result in a scorebook, and closed the booklet, and held it shut for a second against his chest with both hands, the way you'd hold a door shut against wind." }
+      ] },
+      { place: 'Iwatodai Dorm · Roof', time: 'The Red Hour', bg: 'iwatodaidorm-roof-night', music: 'night', soft: true },
+      { n: "The rota had *J + S* in it for that night. He'd written it himself, in the box, in pencil, and then looked at her across the breakfast table to see if that was all right, and she'd nodded, and he'd gone over the pencil in pen." },
+      { n: "They sat on the roof with their backs to the water tank and one blanket, the way the rota said, two names, and the red came at twelve. It came up over the parapet and filled the sky, the color of the inside of an eyelid, and the town went still under it, and the persimmons on the trees down the street went the color of coals." },
+      { n: "He didn't make a joke when it came. He'd stopped making jokes at twelve. He sat with the betting book on his knees, shut, and his hands flat on the cover, and looked at the water tower on the next building over, and then he said it, all at once, in the voice he used for things he'd practiced in the shower." },
+      { s: 'junpei', f: 'serious', t: "There's a window in the Well." },
+      { s: 'junpei', f: 'serious', t: "On the Doorstep. The upside-down floors. The street on the ceiling. Way down. Past the post office, that's upside down too, there's this street, and it's this street. Ours. The dorm. Upside down, with the roof at the bottom and the front step up in the air." },
+      { s: 'junpei', f: 'sad', t: "And the third floor, there's my window. On the end. The sash. I'd know it anywhere, the paint's coming off it in the exact same place. And somebody's sitting on the sill." },
+      { n: "He didn't look at her. He looked at the water tower." },
+      { s: 'junpei', f: 'sad', t: "Drawing. Just sitting there with her legs hanging down, upside down, toward the ceiling, which is the floor. Swinging her feet. Drawing in a book. She never looks at me. I've stood under it, like, five times now. At the end of a night, when you guys have gone up the rope. She never looks. She just draws." },
+      { s: 'junpei', f: 'serious', t: "And I know. I *know*, okay. It's the thing. It's the thing that wants the grid full. It went and found the one window. It's not her. She'd never sit still that long. She'd have looked." },
+      { s: 'junpei', f: 'neutral', t: "I haven't gone up to it. I just wanted somebody to know where it is. In case." },
+      { flag: 'eqx-floor-junpei' },
+      { choose: [
+        { t: "(Take the pen. Write the floor in his book yourself.)", notes: 3, flag: 'eqx-junpei-window-mark', then: [
+          { n: "She took the pen out of his fingers and opened the betting book on his knee, to the inside of the back cover, where nothing was written, and wrote it there in the red light. *Doorstep. Our street. Third floor, the end window.* And under it, because it was his book, his rules: a small box. Empty." },
+          { s: 'junpei', f: 'surprised', t: "...You gave it a box." },
+          { s: 'solar', f: 'neutral', t: "Empty for now." },
+          { n: "He looked at it for a long time. Then he laughed, a short cracked laugh, and put his hand flat over it, the box, and kept it there." }
+        ] },
+        { t: "If you ever go up to it, that's yours. But I'll know where to look.", notes: 3, then: [
+          { s: 'junpei', f: 'neutral', t: "Yeah. Yeah. That's— okay. That's fair." },
+          { s: 'junpei', f: 'serious', t: "If I go up to it, it's 'cause I wanted to. Not 'cause it asked. Remember I said that. If you ever gotta tell anybody. Tell 'em I said that." }
+        ] },
+        { t: "That's not her, Junpei.", notes: 2, then: [
+          { s: 'junpei', f: 'sad', t: "I know. I said. I know." },
+          { s: 'junpei', f: 'sad', t: "...That's what makes it so bad. If it was her I'd know what to do." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-1122', else: [
+        { n: "She thought about the garden again. About telling him. About the woman with her back to the house, and a seam, and a man under a clock with his hands in his fleece pockets who laughed. Junpei, who was riding the green line every night, who'd made odds on bakeries, who didn't know." },
+        { choose: [
+          { t: "(Tell him what you saw in the garden.)", notes: 2, flag: 'eqx-junpei-told-garden', then: [
+            { n: "She told him. Not everything. The washing line. The sheets. The apron knot on a seam. The way the woman had said something to a sheet that Solar had heard from the top of the stairs every Saturday of one of her lives." },
+            { n: "He listened without moving. When she'd finished he sat for a long time with his hands flat on the betting book, and the red sky over them, and his face very still, the way it had gone still in the hall in July with the phone in his hand." },
+            { s: 'junpei', f: 'sad', t: "...And he's under the clocks." },
+            { s: 'junpei', f: 'serious', t: "Okay. Okay. I'm still going. Tomorrow. The next one on the line. I'm still gonna tick it." },
+            { s: 'junpei', f: 'sad', t: "'Cause what else is he gonna do, Sol. Sit at her table and eat? I'd rather he was under a clock. I'd rather he was under every clock in the country than at that table." }
+          ] },
+          { t: "(Don't. Let him keep his clocks.)", notes: 2, then: [
+            { n: "She didn't. She sat with it in her chest, the garden, the washing, the knot, a stone she'd been carrying for days, and let Junpei have his station book and his bakery odds and his one clean tick a night. It was the only thing either of them could give her father. It would have to be enough." }
+          ] }
+        ] }
+      ] },
+      { n: "The red went on. Long. Longer than the summer's. He didn't have a stopwatch; that was Akihiko's. He counted on his fingers on the cover of the book, under his breath, in sets of sixty, the way you'd count pitches." },
+      { s: 'junpei', f: 'neutral', t: "Hey. Speaking of Aki-senpai. On the bridge, with your dad. It took me ten minutes to get his hand off. Ten minutes. Finger by finger. And the whole time he kept saying sorry. Not to me. To your dad. *Sorry, sorry, sir, sorry, it won't, I'm sorry.*" },
+      { s: 'junpei', f: 'serious', t: "Nobody's ever told that guy it's okay to let go. You know that? Like, nobody, ever, his whole life. Everybody's always told him hold on, be strong, don't drop it." },
+      { s: 'junpei', f: 'neutral', t: "I'm just saying. I've got the loudest voice in this dorm. I've been practicing on jars." },
+      { n: "He didn't explain it. She didn't ask him to. They sat with it under the red sky, and after a while he bumped her knee with his, once." },
+      { s: 'junpei', f: 'neutral', t: "And hey. If I'm ever not on the couch. Like, one night, if you come down and the couch is just a couch." },
+      { s: 'junpei', f: 'happy', t: "Check the window floor first. I'm kidding." },
+      { s: 'junpei', f: 'sad', t: "...Kinda. Check it anyway." },
+      { n: "The lights came back on over the town at last, street by street from the bay inward, the way they always did, and the persimmons went back to being orange, and somewhere down the street a dog barked once at nothing and stopped." },
+      { n: "Junpei opened the betting book on his knee. He turned to the grid, and found the date, and ticked her name, there on the roof, under the streetlight's glow coming up over the parapet. Then his own." },
+      { ifEvent: 'eqx-1122', then: [
+        { n: "Then, after a pause, the three names in the parents' rows. He ticked them very lightly, each one, barely a mark, as if the pen might hurt them." }
+      ], else: [
+        { n: "Then, after a pause, the three empty boxes in the parents' rows: he touched each one with the tip of the pen, without making a mark. Just touched them. Like checking a pulse." }
+      ] },
+      { n: "Then he closed it, and held it shut on his knees with both hands." }
     ] }
   ]
 });

@@ -18,11 +18,11 @@
 {
   const KISS = {
     haechan: ['eqx-hc-roof-kiss', 'eqx-hc-stayed-night'],
-    jungwon: ['eqx-jw-council-kiss'],
-    jihoon: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss'],
-    akihiko: ['eqx-aki-lamp-kiss', 'eqx-aki-gate-kiss'],
+    jungwon: ['eqx-jw-council-kiss', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names'],
+    jihoon: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss', 'eqx-jihoon-dark-kiss', 'eqx-jihoon-room'],
+    akihiko: ['eqx-aki-lamp-kiss', 'eqx-aki-gate-kiss', 'eqx-aki-shallows-kiss', 'eqx-aki-room-kiss', 'eqx-aki-woke'],
     minji: ['eqx-minji-kiss'],
-    shinjiro: ['eqx-shinji-sink-kiss']
+    shinjiro: ['eqx-shinji-sink-kiss', 'eqx-shinji-awning-kiss', 'eqx-shinji-stayed-night']
   };
   const dating = (id, then, els) => ({ ifRomance: id, then, else: KISS[id].length ? [{ ifCount: { of: KISS[id], min: 1 }, then, else: els || [] }] : (els || []) });
   // A recorded answer, read into a flag (see the header): sets `flag` when choices[name] is value (core.js branch reads { ifChoice }).
@@ -33,9 +33,10 @@
   const all = (conds, then) => conds.reduceRight((inner, c) => [Object.assign({}, c, { then: inner, else: [] })], then)[0];
   // The year's route deaths (Act IV's two) and the flags that mean somebody said "Stay. Please."
   const DEAD = ['dead.shinjiro', 'dead.aigis'];
-  const ASKED = ['eqx-asked-hyein', 'eqx-asked-house', 'eqx-asked-akihiko', 'eqx-asked-hanni', 'eqx-asked-jaehyun', 'eqx-asked-fathers'];
+  const ASKED = ['eqx-asked-hyein', 'eqx-asked-house', 'eqx-asked-akihiko', 'eqx-asked-hanni', 'eqx-asked-jaehyun', 'eqx-asked-fathers', 'eqx-asked-aigis'];
   const MINE = ['eqx-supper-mine', 'eqx-hill1-mine', 'eqx-hill2-mine', 'eqx-hill3-mine', 'eqx-choose-house', 'eqx-choose-hyein',
-    'eqx-choose-jaehyun', 'eqx-ferry-mine', 'eqx-moon-mine', 'eqx-oka-night-mine', 'eqx-choose-fathers', 'eqx-xmas-mine'];
+    'eqx-choose-jaehyun', 'eqx-ferry-mine', 'eqx-moon-mine', 'eqx-oka-night-mine', 'eqx-choose-fathers', 'eqx-xmas-mine',
+    'eqx-oka-plums-mine', 'eqx-oka-persimmon-mine', 'eqx-oka-spring-mine', 'eqx-aigis-own-door']; // ranks 4-6 (Nov 16)
   // The names the three new Personas answer to (to be designed with Kat; change here only).
   const PERSONA = { yunjin: 'Bari', hanni: 'Âu Cơ', hyein: 'Jiknyeo' };
 
@@ -764,7 +765,7 @@
     { s: 'yunjin', f: 'neutral', t: "Chenle says there's a door on the Second Hill. Since Tuesday. On the mud. He says it goes to a garden." },
     { n: "She didn't look round. She didn't have to say whose garden. Solar knew from her shoulders." },
     { s: 'yunjin', f: 'serious', t: "I want to go down tonight. With you. I know where the tide is. I'm the only one who knows where the tide is. Mitsuru said yes if you say yes. Say yes, Sol." },
-    { n: "She hadn't asked for anything since April. Not once. Not when the girls came, not when they moved into the boarding house, not when Mrs. Oka asked them to stay together and she was the only one who didn't say *we will*. Solar looked at the back of her neck, at her hair scraped up, at her hands in the pockets of Haechan's old jacket, and said yes." },
+    { n: "She hadn't asked for anything for herself since April. Not really. Not once that she hadn't turned into a joke before it landed. Not when the girls came, not when they moved into the boarding house, not when Mrs. Oka asked them to stay together and she was the only one who didn't say *we will*. Solar looked at the back of her neck, at her hair scraped up, at her hands in the pockets of Haechan's old jacket, and said yes." },
     { place: 'The Well · The Second Hill', time: 'The Red Hour', bg: 'eq-well-4', music: 'eerie' },
     { dark: true },
     { n: "The Second Hill was the tide. It always would be. The mud going away forever under the red moon, ribbed and shining, the boats lying on their sides in it with their ropes slack, and on either side of the long road across it, a long way off, the sea standing up in two walls. Still. Glass. Red-lit from inside. And in the walls, far in, things hanging in the water that breathed." },
@@ -984,7 +985,7 @@
       { n: "And then the sound." },
       { n: "It came up through the water and through the soles of their feet. Metal. Giving. Not breaking; giving, slowly, the long low groan of steel being folded the wrong way by something very patient, and then a shriek, high, like a car door torn off its hinges, and then the groan again. It went on for a long time. It went on so long that Yukari would have put her hands over her ears, if Yukari had been there. Akihiko did. Haechan had Solar by the arm and she didn't remember him taking it. The metal gave and gave under the black water, and somewhere in it, once, very faintly, Aigis's voice, perfectly level, said something none of them could hear." },
       { n: "Then it stopped." },
-      { n: "Things came up through the glass. Slowly. Floating up, the way things float up from a wreck. A ribbon. A blue one. It came up through the surface without breaking it and lay on top of the black glass, wet, limp, in a curl." },
+      { n: "Things came up through the glass. Slowly. Floating up, the way things float up from a wreck. A ribbon. A white one, gone gray with the water, hemmed so fine you couldn't see the stitches. It came up through the surface without breaking it and lay on top of the black glass, wet, limp, in a curl." },
       { n: "And a hand. Her left hand. Floating up palm first. Torn off at the wrist, the metal of the wrist folded and twisted into the shape of a fist, wires trailing out of it like roots; and the fingers of it still closed, locked, clenched white-knuckled on a fistful of dark wet cloth. A piece of Hyein's coat. The back of it, torn away. Still held." },
       { n: "And round it, coming up through the water and spreading on the surface of the glass, dark, slow, something that wasn't oil. It smelled of copper. It was warm." },
       { flag: ['dead.aigis', 'eqx-true-closed'] },
@@ -1075,7 +1076,7 @@
     { n: "They carried them up." },
     { n: "Hyein's stretchers held. Double-stitched at every seam. Hanni at one end and Haechan at the other with Solji between them on her front because she couldn't lie on her back; Akihiko and Yunjin with Miseon; Solar and Mitsuru with Mrs. Kim, who complained the whole way up the Road Home that they were jolting her and that the stretcher was badly made and that she could walk, she could perfectly well walk, and didn't try to." },
     { ifFlag: 'dead.aigis', then: [
-      { n: "Hyein carried nothing. She walked beside Solji's stretcher with Aigis's hand held against her chest in both of hers, still locked in its fistful of her coat, and the blue ribbon wound round her own wrist, and she didn't speak the whole way up, and nobody asked her to." }
+      { n: "Hyein carried nothing. She walked beside Solji's stretcher with Aigis's hand held against her chest in both of hers, still locked in its fistful of her coat, and the white ribbon wound round her own wrist, and she didn't speak the whole way up, and nobody asked her to." }
     ], else: [
       { n: "Aigis carried the head of Mrs. Kim's stretcher on the rope, alone, climbing with one hand, because she didn't need to breathe and didn't get tired, and Mrs. Kim looked up at her the whole way, at her calm face in the red, and at the top said *thank you, dear* in Korean, and Aigis said *you're very welcome* in Korean back, perfectly, and Mrs. Kim said *oh, your accent is wonderful*." }
     ] },

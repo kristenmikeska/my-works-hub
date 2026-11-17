@@ -16,11 +16,11 @@
   // Kiss flags (and Haechan's stayed night) set in the romance links' ranks 2-3 and in Act II (links/*.js, story-act2.js).
   const KISS = {
     haechan: ['eqx-hc-roof-kiss', 'eqx-hc-stayed-night'],
-    jungwon: ['eqx-jw-council-kiss'],
-    jihoon: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss'],
-    akihiko: ['eqx-aki-lamp-kiss', 'eqx-aki-gate-kiss'],
+    jungwon: ['eqx-jw-council-kiss', 'eqx-jw-summer-kiss', 'eqx-jw-room-four', 'eqx-jw-both-names'],
+    jihoon: ['eqx-jihoon-roof', 'eqx-jihoon-booth-kiss', 'eqx-jihoon-canal-kiss', 'eqx-jihoon-dark-kiss', 'eqx-jihoon-room'],
+    akihiko: ['eqx-aki-lamp-kiss', 'eqx-aki-gate-kiss', 'eqx-aki-shallows-kiss', 'eqx-aki-room-kiss', 'eqx-aki-woke'],
     minji: ['eqx-minji-kiss'],
-    shinjiro: ['eqx-shinji-sink-kiss']
+    shinjiro: ['eqx-shinji-sink-kiss', 'eqx-shinji-awning-kiss', 'eqx-shinji-stayed-night']
   };
   // Lines that play when Solar is on `id`'s romance route, or has kissed him / her this year.
   const dating = (id, then, els) => ({ ifRomance: id, then, else: KISS[id].length ? [{ ifCount: { of: KISS[id], min: 1 }, then, else: els || [] }] : (els || []) });
@@ -373,7 +373,7 @@
     { n: "Danielle was outside the torii. Not at the festival: outside it, on the street, leaning on a lamppost with her phone in her hand, watching people come and go through the gate the way she'd watched people come and go through the guesthouse door in a different life, with a ledger. She lifted two fingers at Solar without smiling. She didn't come in. Her phone screen, when Solar passed close enough to see, was a list. Names, and times, and an arrow by some of them. The arrows all pointed the same way." },
     { s: 'danielle', f: 'neutral', t: "Don't. I'm working. You're not on it. Yet." },
     { place: 'Naganaki Shrine · Amulet Stall', time: 'Evening', bg: 'naganaki-amulet-stall', music: 'mystery', soft: true },
-    { n: "The amulet stall had a sign on it in marker. SOLD OUT: HOUSE CHARMS. SOLD OUT: DOOR BELLS. SORRY. The old man behind it was the same one who'd sold Hanni the bell on the red cord in April. He looked at Solar over his glasses and seemed to remember her, which nobody in this town did." },
+    { n: "The amulet stall had a sign on it in marker. SOLD OUT: HOUSE CHARMS. SOLD OUT: DOOR BELLS. SORRY. The old woman behind it was the same one who'd sold Hanni the bell on the red cord in April. She looked at Solar over her glasses and seemed to remember her, which nobody in this town did." },
     { s: 'stallkeeper', f: 'neutral', t: "Three times this month. Sold out three times. All the river side. They come up the steps in the morning, the old ones, with their purses, and they want something for the door." },
     { s: 'stallkeeper', f: 'neutral', t: "I tell them what I told your friend. A bell tells you somebody's come in. A charm tells whoever's coming that you'd rather they didn't. Neither one of them stops you opening it." },
     { s: 'stallkeeper', f: 'neutral', t: "And they all say, *oh, but I wouldn't open it, not to a stranger*. And I say, *no. Not to a stranger.*" },

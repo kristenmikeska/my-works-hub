@@ -1,18 +1,44 @@
 /* Persona 3: Equinox · Shinjiro Aragaki · XVIII The Moon. Link data (femc-equinox-game.html). Format: link fields in
    assets/femc/game/core.js ("Links" header), scene lines in assets/femc/game/scene.js.
-   Written: ranks 1–3 (rank 1 from 4/13, rank 2 from 4/18, both Tatsumi Memorial Hospital after school; rank 2 branches
-   on eqx-knock and Mrs. Oka's rank). Ranks 4–15 still to write. Rank 3 (from 6/2, outpatient therapy at the hospital, then the dorm
-   kitchen; branches on eqx-second-hill, eqx-last-grain, eqx-shinji-egg) records his ask: tally asks.shinjiro (+ cakes /
-   choose), flags eqx-shinji-pan, eqx-shinji-sink-kiss. Rank 2 flag (nothing reads it yet): eqx-shinji-egg.
+   Written: ranks 1–6. Ranks 7–15 still to write (ranks 7–8 must fit before 10/23: story-act4.js reads ifRank shinjiro 8).
+   Rank 1 from 4/13, rank 2 from 4/18, both Tatsumi Memorial Hospital after school; rank 2 branches on eqx-knock and Mrs.
+   Oka's rank. Rank 3 (from 6/2, outpatient therapy at the hospital, then the dorm kitchen; branches on eqx-second-hill,
+   eqx-last-grain, eqx-shinji-egg) records his ask: tally asks.shinjiro (+ cakes / choose), flags eqx-shinji-pan,
+   eqx-shinji-sink-kiss. Rank 2 flag (nothing reads it yet): eqx-shinji-egg.
+   Home: the hospital ward until 5/29, then `homes` → the dorm kitchen, evenings (Nov 16).
+   Rank 4 (from 6/16, '4: nineteen'): dorm kitchen → the supermarket on the strip → an ironmonger's window → a bakery
+     awning in the rain → the dorm kitchen (curry for nineteen) → Solar's room, 1 a.m. Branches on asks.shinjiro (ifChoice),
+     eqx-second-hill, eqx-shinji-sink-kiss, eqx-last-grain, its own eqx-shinji-iron-pan. Speaker kuroda (Mr. Kuroda, the
+     old man from the ward corridor in rank 2, no portrait) now eats at the boarding house every night [INVENTED].
+     Flags: eqx-shinji-kuroda-warned (Solar told him to eat at home), eqx-shinji-iron-pan (she bought him the cast pan),
+     eqx-shinji-awning-kiss (kiss flag).
+   Rank 5 (from 7/14, '5: what grows'): the dorm roof garden (tomato, shiso, onions he planted the week he got out), the
+     red hour on the roof (his right hand works perfectly in the red and goes back at one: "lent" [INVENTED]; a low light
+     at the river bend in the red), then dawn on the roof if she stays. Branches on eqx-tanabata, eqx-last-grain.
+     Flag: eqx-shinji-roof-dawn (they fall asleep on the roof; Akihiko finds them at 5:30; romance beat, no kiss flag).
+   Rank 6 (from 8/17, '6: by summer'): the dorm kitchen at night: he reads the first goal sheet (*hold a pan*) and holds a
+     full pan ten seconds with the right hand while Solar counts (the iron pan if eqx-shinji-iron-pan), cooks the "something
+     real" he promised on the prologue phone, then names what the hour asks of him: not *stay* but *want nothing, let
+     somebody else want it for you* (his ask, landed). Sets eqx-floor-shinjiro (his ask floor, plan §8). Branches on
+     ifBefore 9/1 (still summer / late), eqx-equinox (the mothers gone; his pot to the fathers comes back full),
+     eqx-shinji-iron-pan, eqx-shinji-roof-dawn, eqx-lanterns, asks.shinjiro (yes: he's living off her sheet; no / choose).
+     Flag: eqx-shinji-stayed-night (a night in his room, cut away; Junpei's betting-book page under the door). The first
+     sheet now lives in his left pocket; the winter sheet (choose path) is still unread: ranks 7–8 can spend it.
+   Romance: no route is set in ranks 1–6. Kiss flags: eqx-shinji-sink-kiss (rank 3), eqx-shinji-awning-kiss (rank 4),
+     eqx-shinji-stayed-night (rank 6). story-act3.js KISS only lists eqx-shinji-sink-kiss.
    Shape: the stub fields from assets/femc/equinox/data/links.js (this file wins over the stub, core.js indexLinks).
-   Picks up the 4/11 visiting-hours event (story-opening.js eqx-shinjiro). Speakers without portraits: nurse, therapist.
+   Picks up the 4/11 visiting-hours event (story-opening.js eqx-shinjiro). Speakers without portraits: nurse, therapist, kuroda.
    Solstice's ranks are shared memory (he woke on 2/27; the year before that is what he remembers, and the coma isn't). */
 (window.FEMC_GAME_LINKS ||= []).push({
   id: 'shinjiro', name: 'Shinjiro Aragaki', short: 'Shinjiro', arcana: 'Moon', numeral: 'XVIII', from: 'Persona 3', kind: 'sees',
   romance: 'canon', maxRank: 15, starts: '4/11', lodging: 'dorm',
-  cast: { nurse: 'Nurse', therapist: 'Therapist' },
+  cast: { nurse: 'Nurse', therapist: 'Therapist', kuroda: 'Mr. Kuroda' },
   home: { area: 'hospital', spot: 'Ward', slot: 'after', days: [0, 1, 2, 3, 4, 5, 6],
           hint: 'Afternoons at Tatsumi Memorial Hospital, on the ward. For now.' },
+  // Out of hospital on 5/29 (story-act2.js eqx-discharge): the dorm kitchen, evenings. Rank 3 (outpatient therapy) and every
+  // rank after it are met here; their scenes move where they need to.
+  homes: [{ from: '5/29', home: { area: 'dorm', spot: 'Kitchen', slot: 'evening', days: [0, 1, 2, 3, 4, 5, 6],
+          hint: 'Evenings in the dorm kitchen, at the stove or in the chair by the door. Late on hot nights, the roof.' } }],
   ranks: [
     { after: '4/13', title: '1: the next bed', place: 'Tatsumi Memorial Hospital · Ward', time: 'After School', music: 'tender', scene: [
       { bg: 'hospital-room' },
@@ -409,6 +435,507 @@
         { from: 'shinjiro', t: "you ate" }
       ], contact: 'Shinjiro Aragaki' },
       { n: "No question mark. For once it wasn't a question at all. She'd eaten. He'd watched her do it. He was just telling her, at one in the morning, in case she'd forgotten, the way you'd tell someone the door was locked." }
+    ] },
+    { after: '6/16', title: '4: nineteen', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-kitchen' },
+      { n: "The rain had been coming down for nine days. Not hard. Just steadily, the way it did in June, a gray fine rain that didn't so much fall as hang, so that the kitchen window was never quite wet and never quite dry and the whole dorm smelled of towels that wouldn't finish drying on the radiators. Somebody's sneakers were stuffed with newspaper by the back door. The rice cooker had fogged up its own lid." },
+      { n: "He was at the table by the door, in his chair, with a pencil in his right hand and the back of a takeout menu flat under his left, writing a list. Slowly. She could see the letters from the doorway, big and leaning and gone over twice where the pencil had skidded, a column of them running down the white side of the menu and turning the corner onto the printed side, over the photographs of the set lunches." },
+      { s: 'shinjiro', f: 'neutral', t: "Nineteen people. Twenty-one on a Sunday, the guesthouse lot come up. Every one of 'em eats like they've been locked in a cupboard." },
+      { s: 'shinjiro', f: 'neutral', t: "...Supermarket closes at ten. Need hands. Two of 'em. Working ones." },
+      { n: "He didn't look up when he said it. He said it to the list, the way he'd said *bring an egg* to the bay, and pressed so hard on the last word that the pencil lead snapped, and he looked at the broken end with the expression of a man who'd been personally insulted by graphite." },
+      { choose: [
+        { t: "I've got two. Let's go.", notes: 3, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah. Get a coat. The good umbrella's Aki's. Take it, he won't notice till Thursday." }
+        ] },
+        { t: "You asked. Out loud. I want that noted.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Don't. You sound like Aki." },
+          { s: 'shinjiro', f: 'neutral', t: "...It's groceries. It's not asking. It's logistics." }
+        ] },
+        { t: "(Sharpen the pencil for him while he gets his coat.)", notes: 3, then: [
+          { n: "She took the pencil out of his hand and sharpened it over the bin with the little plastic sharpener from the drawer, which had been Fuuka's last year and was everybody's now, and gave it back with a point on it you could have stitched with. He looked at the point. He looked at her." },
+          { s: 'shinjiro', f: 'neutral', t: "...You do that for everybody?" },
+          { s: 'solar', f: 'neutral', t: "Just people with lists." }
+        ] }
+      ] },
+      { ifChoice: { 'asks.shinjiro': 'yes' }, then: [
+        { n: "He got up. On the way past the counter he patted the pocket of his coat, the right one, where the winter sheet lived, folded in four with her handwriting on the inside of it, and he did it without looking, the way you'd pat for your keys." },
+        { s: 'shinjiro', f: 'happy', t: "Sheet says I'm here next summer. So I gotta feed you lot till then. Easy." },
+        { n: "He said it lightly. He'd said everything lightly since that night. He'd gone up and down the stairs lightly and carried Ken's schoolbag lightly and stood at the stove at six in the morning lightly, and Solar watched him go out into the hall to get his boots on, and thought that she'd never in two years seen him move like a man with nothing in his pockets, and that she didn't like it as much as she'd have guessed." }
+      ] },
+      { ifChoice: { 'asks.shinjiro': 'no' }, then: [
+        { n: "He got up. On the way past the counter he picked up a mug from the drying rack with his right hand, a full one, somebody's cold tea, and held it out level in front of him for three seconds without spilling, and put it down again, and didn't look at her while he did it." },
+        { s: 'shinjiro', f: 'neutral', t: "*Hold a cup.* Handed it in Friday. She gave me a gold star. An actual sticker. I'm nineteen." },
+        { n: "He said it flat, like a weather report. It had been a week. Neither of them had said anything about the kitchen since, and the mug sat on the counter between them being a mug, and he went out to find his boots." }
+      ] },
+      { ifChoice: { 'asks.shinjiro': 'choose' }, then: [
+        { n: "He got up. On the way past the counter his hand went to the right pocket of his coat, the one with the winter sheet in it, folded small, still face in, the twenty minutes of it, and stopped there for a second, flat, the way you'd put a hand over somebody's mouth who was about to say something in company." },
+        { n: "He didn't say anything about it. He hadn't since. She didn't know what was on it, and he didn't know she didn't mind, and they went out to the hall to find their shoes like two people carrying something between them they'd agreed not to look down at." }
+      ] },
+
+      { place: 'Iwatodai · Supermarket', time: 'Evening', bg: 'iwatodai-supermarket', soft: true },
+      { n: "The supermarket on the strip at eight at night in the rain was a box of white light with the windows steamed, and the doors sighed open for them and let out a breath of cold air and frying oil from the deli counter, and the music overhead was the same song it had been playing last year, a cheerful jingle about tofu that nobody had ever heard all the way through." },
+      { n: "He knew it the way he knew a kitchen. He went round it without a basket, she carried the basket, and he took things off the shelves without seeming to look at them and put them in it without asking: onions, a whole net, potatoes, carrots, the cheap pork, the good soy sauce and not the other one. He turned tomatoes over in his bad hand, testing them with the three fingers that listened, and put two back, and she didn't know what he'd felt in them that she couldn't see, and didn't ask." },
+      { n: "At the rice he stopped. Ten-kilo sacks, stacked on a pallet. He looked at them the way Akihiko looked at a heavy bag on a day the doctor had said no." },
+      { s: 'shinjiro', f: 'neutral', t: "...Used to carry two of those. One each shoulder. From here to the dorm without putting 'em down. Mitsuru timed me once. Don't remember why." },
+      { choose: [
+        { t: "(Take one off the stack before he can try.)", notes: 2, then: [
+          { n: "She hauled one off the top and dropped it into the cart with a thud that made the whole cart roll a foot, and he watched it go, and his jaw did the thing it did, and then he let out a breath through his nose that might, in a better light, have been a laugh." },
+          { s: 'shinjiro', f: 'neutral', t: "...Left shoulder on the way back. I'm not having you carry rice up the hill. Ken'll never let me hear the end of it." }
+        ] },
+        { t: "Try the left. Just the left.", notes: 3, then: [
+          { n: "He looked at her. Then he bent and got his left arm under a sack and stood up with it in one movement, onto his shoulder, easy, and held it there, and for one second he was the boy from the alley last year again, big and sure and leaning on nothing, and she saw him feel it, and saw him not let his face say so." },
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah. That one still works." }
+        ] }
+      ] },
+
+      { n: "At the end of the tea aisle there was an old man with a cane." },
+      { n: "She didn't know him. Shinjiro did; she felt him know him, a hitch in his stride beside her. A small man in a cardigan buttoned wrong, a hospital bracelet still on his wrist that nobody had cut off, a basket on his arm with a single box of green tea in it. The old man with the hip, from the ward in April, who'd sat in a wheelchair in the corridor for six hours sooner than sleep in the bed by the window. He was standing up now. He looked well. He looked, if anything, a little too well, pink in the cheeks, his cardigan tight over a stomach that she didn't remember." },
+      { s: 'shinjiro', f: 'neutral', t: "...Kuroda-san." },
+      { n: "The old man looked at him for a moment as if he couldn't place him, and then could, and smiled, wide, the smile of a man who'd been somewhere nice." },
+      { s: 'kuroda', t: "The big lad from the window bed! On your feet. Look at that. They said you'd never." },
+      { s: 'kuroda', t: "I'm only in for tea. Don't need much else these days. There's a widow on the river side does supper for anybody who turns up, you'll have heard. Lovely house. Old. She took one look at me in the rain on Tuesday and said, *stay till the rain stops, grandfather*. And it's June, isn't it. It hasn't stopped." },
+      { n: "He laughed. It was a good laugh, a warm one, the laugh of a man who'd been fed. Shinjiro didn't laugh. He'd gone still beside her, the cart handle in his left hand, the way he'd gone still in the kitchen on the day of the discharge with a rice cake between two fingers." },
+      { s: 'kuroda', t: "I've been every night since. Wouldn't miss it. She keeps a cup for me. You know the way they do, for a guest. Upside down by the plate, so the dust won't get in." },
+      // CG: eqx-tea-aisle — a brightly lit Japanese supermarket aisle at night in the rain, a small old man in a wrongly buttoned cardigan smiling with a single box of tea in his basket, a tall young man in a long coat gone very still behind a cart with a rice sack in it.
+      { choose: [
+        { t: "Kuroda-san. Eat at home tonight.", notes: 3, flag: 'eqx-shinji-kuroda-warned', then: [
+          { s: 'kuroda', t: "Home? Ha. It's not a home, love, it's a room. A room with a kettle in it and a picture of my wife. She doesn't cook." },
+          { s: 'kuroda', t: "...You're a kind girl. Both of you are kind. Don't look like that. I'm only having my supper." },
+          { n: "He patted her arm, twice, and went off toward the tills with his tea, leaning on the cane, not hurrying. At the door he stopped and looked out at the rain and smiled at it, as if it were doing him a favor." }
+        ] },
+        { t: "Is the food good?", notes: 1, then: [
+          { s: 'kuroda', t: "Good? It's the best I've had in my life. And I was married forty years to a woman who could cook." },
+          { s: 'kuroda', t: "...Funny. I can't say what any of it was. I go home and I couldn't tell you. Just that it was good, and there was more." },
+          { n: "He went off toward the tills with his tea, leaning on the cane, humming something under his breath, a slow tune, three notes going down and two coming back, that Solar knew from somewhere and couldn't place, and didn't want to." }
+        ] },
+        { t: "(Look at Shinjiro.)", notes: 2, then: [
+          { n: "She looked at him. He wasn't looking at the old man. He was looking at the box of tea in the basket, at the bracelet on the thin wrist, at the cardigan buttoned wrong, the way he'd looked at the made-up bed on the ward for seven weeks, and he said, very quietly, not to her," },
+          { s: 'shinjiro', f: 'neutral', t: "...Eat at home, old man." },
+          { s: 'kuroda', t: "Eh? Speak up, lad, I'm deaf on that side." },
+          { s: 'shinjiro', f: 'neutral', t: "Nothing. Mind the step out. It's wet." }
+        ] }
+      ] },
+      { n: "When he'd gone Shinjiro stood in the aisle for a long moment with the cart. Then he took a second box of the same tea off the shelf, the same brand, and looked at it, and put it back, very precisely, so the label faced front like the others." },
+      { s: 'shinjiro', f: 'neutral', t: "...He wouldn't take the bed. In April. Sat in a corridor six hours sooner than lie down by that window. Smartest man on the ward." },
+      { s: 'shinjiro', f: 'sad', t: "And now he's walking to her house every night in the rain. Because she asked nice." },
+
+      { place: 'Iwatodai Strip · Ironmonger', time: 'Evening', bg: 'iwatodai-strip-rain', soft: true },
+      { n: "They came out with four bags and the rice. The strip was all wet light, the neon from the ramen place and the pharmacy lying in long smeared colors on the pavement, umbrellas going past at the height of her eyes. Three doors down from the supermarket there was an ironmonger's she'd never once been into, a narrow shop with a shutter half down and the window still lit, pots and kettles and garden shears and a single cast-iron frying pan on a stand at the front, black, heavy, with a wooden handle gone dark from somebody's hand before it was ever on sale." },
+      { n: "He stopped in front of it. He had the rice on his left shoulder and two of the bags in his left hand, and the right in his coat pocket, and he stood in the rain in front of the lit window and looked at the pan the way she'd seen people look at a boat, or a car, or a house on a hill, not like they wanted it, exactly. Like they were checking it was still there." },
+      { s: 'shinjiro', f: 'neutral', t: "...That's a good pan. Cast. Old stock. You season one of those right, it'll outlive you." },
+      { n: "He didn't go in. He didn't move. The price was on a little card at its foot in a careful hand, and it was a lot, more than a week of his clinic money, and the pan was heavier than anything his right hand had lifted since February, and he knew both of those things, and stood there anyway, with the rain running off the edge of the awning onto his shoulder." },
+      { choose: [
+        { t: "(Go in and buy it. Don't ask.)", notes: 3, flag: 'eqx-shinji-iron-pan', then: [
+          { n: "She put her bags down at his feet, in the dry, and went in under the shutter before he could say anything, and he said something anyway, her name, sharp, and she pretended she was deaf on that side. The old woman behind the counter wrapped the pan in newspaper and string with the slowness of somebody who'd been wrapping pans in that shop since before the war, and Solar paid, and came out, and held it out to him in both hands, wrapped, like a baby somebody was handing over at a door." },
+          { s: 'shinjiro', f: 'neutral', t: "...That's money. That's a lot of money. That's not yours to spend on—" },
+          { s: 'solar', f: 'neutral', t: "It's mine. I spent it." },
+          { n: "He looked at the pan for a long time, in its newspaper. He didn't take it. He couldn't have, with the rice and the bags; he had no hand free but the bad one. So she put it in the crook of his left arm on top of the bags, where it lay heavy against his chest, and he stood there holding all of it, and the corner of his mouth went, and came back, and went." },
+          { s: 'shinjiro', f: 'neutral', t: "...Can't lift it. You know that. Can't lift it with the right." },
+          { s: 'solar', f: 'neutral', t: "Not yet." },
+          { n: "He didn't answer that. He just stood with it against his chest in the rain, the way he'd held Ken's head against his coat on the riverbank, as if something might try to take it off him." }
+        ] },
+        { t: "You want it.", notes: 3, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Wanting's not the same as anything. You can want a lot of stuff. Doesn't mean you get to have it." },
+          { s: 'solar', f: 'neutral', t: "That's not what I said. I said you want it." },
+          { n: "He looked at her sideways, under the wet edge of his hair. For a second she thought he'd tell her to drop it. Then he looked back at the pan." },
+          { s: 'shinjiro', f: 'sad', t: "...Yeah. Okay. I want it. There. Happy." },
+          { s: 'shinjiro', f: 'neutral', t: "Felt stupid saying it. Felt stupid all the way down. Don't know how you lot do it every day." }
+        ] },
+        { t: "(Pretend you didn't see him stop.)", notes: 1, then: [
+          { n: "She walked on a few steps, slowly, looking at the rain, and let him stand there, and after a minute she heard his boots behind her on the wet pavement, and he caught her up, and didn't look back at the shop, and didn't say anything about it, and neither did she, and the pan stayed in the window, black and heavy and lit, all the way down the strip behind them." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Strip · Under an Awning', time: 'Evening', bg: 'iwatodai-strip-rain', soft: true },
+      { n: "Halfway back the rain stopped hanging and came down properly, all at once, the way it did in June when it got bored of being polite, and they ran the last twenty meters to the awning of a shuttered bakery and stood under it with the bags at their feet, the water coming off the edge of the canvas in a sheet a hand's width from their faces, loud as applause." },
+      { n: "She knew it before she'd thought it. Not this awning; another one. A year ago, more, the back alley behind the station, a man in a long coat who'd stood under an awning in the rain with her and not said anything for most of an hour, because he didn't know how to say the thing he'd come out to say, which was, it turned out, *thanks*. She looked at him. He was looking at the rain coming off the edge of the canvas, and she watched him find it too, the same afternoon, from the other side." },
+      { s: 'shinjiro', f: 'neutral', t: "...Always rains on us. You notice that?" },
+      { ifEvent: 'eqx-second-hill', then: [
+        { n: "He shifted the rice on his shoulder. His right hand had come out of his pocket and was holding the strap of one of the bags at his feet, and opening, and closing round it, the way he did when he was thinking about something he'd rather not." },
+        { s: 'shinjiro', f: 'neutral', t: "On the rope. The full moon. Went twice. I told you. I said it out loud." },
+        { s: 'shinjiro', f: 'serious', t: "...What I didn't tell you is what I was thinking, the second time. Hanging there by the left, with the kid under me. I was thinking, *if it goes again I'll let go first*. So I don't take him down with me. Worked it all out. Which way to fall. How to kick off the wall so I'd miss him." },
+        { s: 'shinjiro', f: 'neutral', t: "Like it was nothing. Like doing the sums for a recipe." }
+      ], else: [
+        { n: "He shifted the rice on his shoulder. His right hand had come out of his pocket and was holding the strap of one of the bags at his feet, and opening, and closing round it, the way he did when he was thinking about something he'd rather not." },
+        { s: 'shinjiro', f: 'neutral', t: "Mitsuru's got me on the rope next full moon. I practise. Nights. Putty in the dark, two hundred squeezes, then the bed rail, hanging off it by the bad hand till it gives." },
+        { s: 'shinjiro', f: 'serious', t: "...Worked out which way I'd fall. If it went. Which wall to kick off so I'd miss whoever's under me. Did the sums in my head lying there. Like it was nothing. Like a recipe." }
+      ] },
+      { choose: [
+        { t: "Don't do the sums for letting go. Do the sums for holding on.", notes: 3, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Those don't add up the same." },
+          { s: 'solar', f: 'neutral', t: "Then do them till they do." },
+          { n: "He looked at her for a long moment in the noise of the rain. Then he looked down at his right hand on the bag strap, and closed it, and kept it closed, the knuckles going pale, as if trying out the shape of something." }
+        ] },
+        { t: "(Take his right hand off the strap and hold it.)", notes: 3, then: [
+          { n: "She took it. The fingers were cold from the bag and the rain, and they didn't close on hers at once; they lay there, and then, one by one, the slow ones last, they did, the whole hand, round hers, and held on. Not hard. Steady. Steadier than on the roof in April. She could feel the difference in her own bones." },
+          { s: 'shinjiro', f: 'neutral', t: "...Better, right? It's better." },
+          { s: 'solar', f: 'neutral', t: "It's a lot better." },
+          { s: 'shinjiro', f: 'sad', t: "Still not enough to hold a person. Not a whole person. Not yet." }
+        ] },
+        { t: "You'd have let go to save him. That's the problem. You'd do it without thinking.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Yeah. Done it before." },
+          { n: "He said it simply, the way you'd say you'd been to a place. She knew which place. So did he. Neither of them said the name of the night, or the street, or what he'd stepped in front of, a year and a world ago, with his coat open." },
+          { s: 'shinjiro', f: 'neutral', t: "...Didn't think about it then either. Turned out all right. For the kid." }
+        ] }
+      ] },
+      { ifFlag: 'eqx-shinji-sink-kiss', then: [
+        { n: "The rain came down. A man ran past with a newspaper over his head and didn't look at them. Shinjiro turned his head and looked at her, close, under the awning, the way he'd looked at her by the sink with the ladle in his hand, as if she'd done something to his stove, and she saw him remember it, and saw his ears start to go." }
+      ] },
+      { choose: [
+        { t: "(Kiss him. Properly this time.)", notes: 3, flag: 'eqx-shinji-awning-kiss', then: [
+          { n: "She went up on her toes and kissed him, and it wasn't the corner of his mouth this time, and it wasn't quick. He went absolutely still. Then the rice sack slid off his shoulder and landed on the bags with a thump that must have flattened the bread, and he didn't look down at it, and his left hand came up and held the back of her head, carefully, the way he'd hold an egg, and his right came up too, slower, and found her waist through her wet blazer, and held on there with all four fingers and the thumb, and didn't shake." },
+          { n: "It went on for a while. The rain didn't care. When he pulled back his forehead stayed against hers, and he breathed out, long, as if he'd been underwater, and his hair was dripping onto her face." },
+          { s: 'shinjiro', f: 'flustered', t: "...Flattened the bread." },
+          { s: 'solar', f: 'happy', t: "I'll buy more bread." },
+          { s: 'shinjiro', f: 'neutral', t: "Don't spend money on me. I mean it. Don't." },
+          { n: "He didn't let go of her waist while he said it. She noticed. He noticed her noticing, and went redder, and bent and picked up the rice with his left arm, and looked out at the rain with the expression of a man who'd lost an argument with himself and wasn't sorry." }
+        ] },
+        { t: "(Lean on his good side and wait out the rain.)", notes: 2, then: [
+          { n: "She leaned on his left side, her shoulder against his arm, and he let her, and after a while he shifted the rice to the other shoulder, the bad one, so she could lean properly, and held it there with his jaw set the whole time, and she knew it hurt, and he didn't let her move, and they stood like that till the rain went back to hanging." }
+        ] },
+        { t: "(Hold the bag handles up so his bad hand can grip something.)", notes: 2, then: [
+          { n: "She picked up the bag he'd been holding and held the handles out to him, and he looked at them, and at her, and took them in his right hand, and they stood there in the noise with him holding the shopping and her holding the other side of the same handles, like two people carrying a stretcher, and neither of them let go of it till the rain eased." }
+        ] }
+      ] },
+
+      { place: 'Iwatodai Dorm · Kitchen', time: 'Evening', bg: 'iwatodaidorm-kitchen-night', soft: true },
+      { n: "He made curry. For nineteen, in the big pot, the one that took two people to lift full, and he let her do the onions, which was the job he'd taught her last year, and stood at her shoulder while she did them, close, not touching, watching her hands." },
+      { s: 'shinjiro', f: 'neutral', t: "Thinner. Thinner than that. Long. Let 'em go gold, not brown. Brown's bitter. You want the sweet out of 'em, you have to wait for it. That's the whole trick. Nobody waits." },
+      { n: "He told her everything. That was the strange thing. He'd never told anybody anything about how he cooked, he'd stood at a stove for two years with his back to the room like the room had no business knowing. Now he told her when to put the meat in and why, and how much water by the second knuckle, and the apple, grated, a whole one, and the square of dark chocolate at the end that nobody would ever guess, and the spoon of instant coffee, and how long to leave it off the heat before anyone was allowed near it." },
+      { s: 'shinjiro', f: 'neutral', t: "Write it down. The chocolate and the coffee. You'll forget the coffee." },
+      { s: 'solar', f: 'neutral', t: "Why do I need it written down? You make it." },
+      { s: 'shinjiro', f: 'neutral', t: "...If I'm not around. Somebody should know how it goes. Nineteen people. Somebody's got to." },
+      { n: "He said it to the pot. He said it the way he'd said *I'm not being sad, I'm counting*, in April, on the ward, and stirred, and didn't look up, and the curry went round and round in the big pot, dark and slow." },
+      { choose: [
+        { t: "You'll be around.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Sure. Write it down anyway." },
+          { n: "She wrote it down. On the back of his list, under the onions and the pork and the tea he hadn't bought, in her neat print, *coffee*, underlined. He watched her underline it. He didn't say anything else." }
+        ] },
+        { t: "(Write it down. Then write *ask Shinjiro* under it.)", notes: 3, then: [
+          { n: "She wrote it on the back of his list, the whole thing, in her neat print, and at the bottom, under *one spoon instant coffee*, she wrote *if in doubt, ask Shinjiro*, and turned it round so he could read it." },
+          { n: "He read it. He read it again. Then he took the pencil out of her hand, the one she'd sharpened, and with his right hand, slowly, leaning, he crossed out *if in doubt* and left the rest." },
+          { s: 'shinjiro', f: 'neutral', t: "...There. Ask either way." }
+        ] },
+        { t: "Then teach me slower. So it takes years.", notes: 3, then: [
+          { n: "He stopped stirring. For a second the spoon just stood in the pot. Then the corner of his mouth went, and stayed, and he started stirring again, slower, much slower, so slow it was nearly a joke." },
+          { s: 'shinjiro', f: 'happy', t: "...Smart. You're getting smart. I don't like it." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-last-grain', then: [
+        { n: "Ken came down at the smell, the way everyone did. He looked in the pot, carefully, and Shinjiro, without turning round, said *it's got chunks, it's not soft, you can have it*, and Ken let out a breath and sat at the table, and Shinjiro put a plate of black toast beside his curry anyway, in case, and Ken ate both, and nobody said anything about that either." }
+      ], else: [
+        { n: "Ken came down at the smell, the way everyone did, and stood at Shinjiro's elbow looking into the pot with such naked longing that Shinjiro gave him the spoon to taste without being asked, and Ken burned his tongue and said it was the best thing he'd ever had, and Shinjiro said he said that every time, and Ken said it was true every time." }
+      ] },
+      { n: "The tin was on the counter by the rice cooker. Cranes, the dent in the lid. He took the lid off without looking, the way you'd check the gas, and counted, and put it back." },
+      { s: 'shinjiro', f: 'neutral', t: "Nine. Was twelve Friday. Somebody likes 'em." },
+      { n: "He didn't say who. He didn't say anything about the old man in the tea aisle, or the cup upside down by the plate. He stood with his hand flat on the lid of the tin a second longer than he needed to, and then took his hand off it and wiped it on his apron, and called up the stairs that it was ready, and nineteen people came down at once like water." },
+      { place: 'Iwatodai Dorm', time: 'Late Night', bg: 'solar-dormroom-night', soft: true },
+      { n: "At twelve, a dot. At one, after the red, with the rain still going on the window, which it had done all hour without touching the glass, hanging there in the air like beads on threads, the phone buzzed again on her chest." },
+      { ifFlag: 'eqx-shinji-iron-pan', then: [
+        { phone: [
+          { from: 'shinjiro', t: "seasoned it" },
+          { from: 'shinjiro', t: "three coats. oil and the oven. dont touch it for a week" },
+          { from: 'shinjiro', t: "its heavy" }
+        ], contact: 'Shinjiro Aragaki' },
+        { n: "She lay in the dark and read it four times. *It's heavy.* No question mark, no anything. Just a fact, sent at one in the morning by a man who'd been standing in a dark kitchen with an oven on, holding something he couldn't lift yet, to find out exactly how far off he was." }
+      ], else: [
+        { phone: [
+          { from: 'shinjiro', t: "you ate" },
+          { from: 'shinjiro', t: "old man wasnt at the window bed. he was at hers" }
+        ], contact: 'Shinjiro Aragaki' },
+        { n: "She read it four times in the dark. She didn't answer. She didn't know what you'd answer to that. She put the phone face down on her chest and lay listening to the rain hang outside the glass, not falling, and thought about a cup by a plate, turned down, so the dust wouldn't get in." }
+      ] }
+    ] },
+    { after: '7/14', title: '5: what grows', place: 'Iwatodai Dorm · Rooftop', time: 'Night', music: 'night', scene: [
+      { bg: 'iwatodaidorm-roof-planters' },
+      { n: "July came in like someone opening an oven. The rain stopped all at once one Tuesday, as if it had been switched off at the wall, and the next morning the cicadas started up in the trees along the dorm's street at five, every one of them at once, and the heat came up off the pavement before breakfast, and by the middle of the month the dorm had stopped pretending it had air-conditioning on any floor but Mitsuru's." },
+      { n: "She found him on the roof. Hanni's rota said ROOF in the box beside his initial, every night that week, in Hanni's small fast hand, and under it, in Akihiko's square capitals, *HE SLEEPS UP THERE NOW. DON'T ASK. — A.*" },
+      { n: "The roof garden had been hers, last year, mostly. The long wooden planters along the parapet, the watering can with the cracked rose, the pots someone had abandoned and someone else had filled. She hadn't been up since April. She stopped at the top of the stairs with her hand on the door." },
+      { n: "There were things growing in them. In the long planter on the left, a row of something low and frilled and dark purple-green, shiso, she thought, from the smell, which came up warm off the leaves in the evening heat like something being cooked. Spring onions in a pot, gone tall and hollow. And in the corner, staked to a broom handle with strips of what had once been a dish towel, a tomato plant as tall as her shoulder, its stems furred, its leaves curling in the heat, and on it, low down, hanging, three tomatoes the size of walnuts, hard and green." },
+      { n: "He was kneeling in front of it with the watering can held in his left hand and his right hand underneath the spout, not holding it, just under it, in case, and he was watering the base of the plant very slowly, the way you'd give water to someone too weak to lift their head, and he hadn't heard the door." },
+      { choose: [
+        { t: "(Watch him for a minute before you say anything.)", notes: 3, then: [
+          { n: "She watched. He finished the tomato and moved on to the shiso, shuffling along the planter on his knees, and pinched off a leaf that had gone yellow with two fingers of the bad hand, carefully, and looked at it, and put it in his pocket instead of over the parapet, as if even that were worth keeping. The sun was going down behind the city in a long red smear. He was talking. Not to her. Under his breath, to the plants, the way Koromaru got talked to, low, gruff, *come on, drink it, don't be stupid*." },
+          { n: "When he saw her he stopped talking so fast he nearly bit his tongue." }
+        ] },
+        { t: "You grew tomatoes.", notes: 2, then: [
+          { n: "He jumped. Not much. Enough to slop water over his boot." },
+          { s: 'shinjiro', f: 'flustered', t: "...They're not grown. They're growing. There's a difference. Don't jinx it." }
+        ] },
+        { t: "(Go and kneel beside him in the dirt.)", notes: 3, then: [
+          { n: "She went and knelt down beside him on the warm concrete, close, in her school skirt, and didn't say anything, and he looked at her knees in the dust and opened his mouth to tell her she'd ruin them and then didn't, and handed her the can, and moved her hand on it so the water went to the root and not the leaves." },
+          { s: 'shinjiro', f: 'neutral', t: "Root. Always the root. Wet leaves in this sun, they burn." }
+        ] }
+      ] },
+      { s: 'shinjiro', f: 'neutral', t: "Put 'em in the week I got out. Seeds from the hundred-yen shop. Tomato, shiso, the onions. Didn't think about it. Had dirt under my nails before I'd thought about it." },
+      { s: 'shinjiro', f: 'neutral', t: "...Tomato takes eight weeks. Little over. From seed. I read the packet after." },
+      { n: "He looked at the three green walnuts hanging low on the plant. He looked at them the way he'd looked at the pan in the ironmonger's window, in the rain, like he was checking they were still there." },
+      { s: 'shinjiro', f: 'sad', t: "Eight weeks. I never planned anything for eight weeks in my life. Never planned anything for next week. And I put these in without thinking, and now every night I come up here and look at 'em and think, *you'd better be around in August, idiot. You started something.*" },
+      { choose: [
+        { t: "So be around in August.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah. Simple, when you say it." },
+          { s: 'shinjiro', f: 'neutral', t: "Everything's simple when you say it. That's your trick. Don't think I haven't noticed." }
+        ] },
+        { t: "You planted something that takes longer than a week. That's the most hopeful thing I've ever seen you do.", notes: 3, then: [
+          { n: "He went red. Not his ears. All of him, up from the collar, in the last of the sun." },
+          { s: 'shinjiro', f: 'flustered', t: "...It's a tomato." },
+          { s: 'solar', f: 'neutral', t: "It's a tomato in August." },
+          { s: 'shinjiro', f: 'neutral', t: "Stop. I mean it. I'll throw it off the roof." },
+          { n: "He didn't throw it off the roof. He moved the watering can a little further from the edge, in case, and she saw him do it." }
+        ] },
+        { t: "(Touch one of the green ones. Gently.)", notes: 3, then: [
+          { n: "She put one finger under the lowest tomato and felt its weight, hard and warm from the sun, more than it looked. He watched her finger the way he'd watched the surgeon's hands, the one time, through the glass." },
+          { s: 'shinjiro', f: 'neutral', t: "Careful. Stem's weak there. Everything's weak there till it isn't." }
+        ] }
+      ] },
+      { ifEvent: 'eqx-tanabata', then: [
+        { n: "There was a strip of paper tied to the broom handle, among the dish-towel strips. Green paper, the kind they'd handed out at Naganaki on the seventh, faded now, curling. She knew what was on the back before she turned it over, because every strip in town had had the same thing on the back the morning after; but she turned it over anyway." },
+        { n: "The front was blank. He'd hung a blank one. And on the back, in the heavy pressed hand that wasn't his, that wasn't anybody's, one word." },
+        { s: 'shinjiro', f: 'neutral', t: "...Didn't write anything. Couldn't think what. Hung it anyway, so the kid would stop looking at me." },
+        { s: 'shinjiro', f: 'serious', t: "Didn't matter. It wrote on mine too. Didn't even need me to want something first. Just wrote what it wanted, on the back of nothing." },
+        { n: "He'd tied it to the tomato's stake. She didn't ask why. She thought she knew, and didn't like knowing: so he'd see it, every night, while he watered, and remember that something in this town didn't need his permission to write on him." }
+      ] },
+      { ifEvent: 'eqx-last-grain', then: [
+        { n: "He sat back on his heels and wiped his face with the back of his wrist. Below them, through the open window of the kitchen, they could hear Ken at the sink, washing up on his own, the plate and the knife and the toast rack, which he did every night now without being asked, carefully, the way you do a thing so you won't have to think about another one." },
+        { s: 'shinjiro', f: 'neutral', t: "Kid's eating burnt toast. Since the river street. I keep burning it. Can't get it black enough for him some mornings." },
+        { s: 'shinjiro', f: 'sad', t: "...He found him. You know that. Nobody says it. He was out with the dog at half five and he found him at her table, and he came back up the street with his face like a sheet of paper and asked Aki not to bring Junpei. Eleven. Twelve. Whatever he is. Thinking about Junpei." }
+      ] },
+
+      { n: "The light went. The sky over the bay turned that deep thin blue it only turned in July, and then indigo, and the city came on below them window by window, and he unrolled a thin futon from the corner by the water tank, where it had been rolled with his coat and a pillow with no case on it, and sat down on it with his back against the warm concrete of the tank housing, and after a moment, without asking, she sat down beside him." },
+      { s: 'shinjiro', f: 'neutral', t: "Too hot inside. And I don't sleep in it. The red. Not since the ward. Up here, at least, if something comes, it comes up the stairs. One door. I can see the one door." },
+      { s: 'shinjiro', f: 'neutral', t: "Don't tell Aki I said that. He thinks it's the heat." },
+      { s: 'solar', f: 'neutral', t: "Akihiko wrote *don't ask* on the rota." },
+      { s: 'shinjiro', f: 'neutral', t: "...Yeah. He knows. He's polite. It's disgusting." },
+      { n: "She stayed. Midnight came the way it came now, and she'd come to know the feel of it the way you know a step on a stair in the dark." },
+      { dark: true },
+      { music: 'darkhour' },
+      { n: "It came from the river. The city's lights went out in a wave from the water inland, street by street, block by block, and where they'd been the red came up, slowly, through everything, the way dye comes up through cloth: the sky first, then the roofs, then the dark mass of the trees along the street, until the whole of Iwatodai lay under them the color of the inside of a closed eyelid in the sun. The cicadas stopped mid-note. The wind stopped. The heat didn't; that was the thing she'd never get used to. The red hour in summer was a held breath in a hot room." },
+      { n: "Below them, on the street, the bicycle that had been going past was standing up by itself with nobody on it. And in the windows across the way, in the beds, there were coffins." },
+      { n: "He didn't look at the city. He was looking at his right hand. He'd held it up in front of his face, in the red, and was opening and closing it, slowly. All five. All at once. The way a hand opens and closes when there's nothing wrong with it." },
+      { s: 'shinjiro', f: 'serious', t: "...Watch." },
+      { n: "He picked up the watering can, the full one, with his right hand, and held it out straight at arm's length, level, and it didn't shake. Not at all. Not the long fine tremor she'd watched in the ward with the cup, not the drop at thirty seconds. Nothing. It hung there in the red at the end of his arm as steady as the bicycle in the street." },
+      { s: 'shinjiro', f: 'serious', t: "Every night. In here. It works. Like it never happened." },
+      { s: 'shinjiro', f: 'neutral', t: "...And then one o'clock comes and it goes back. Like somebody lending you something and taking it back at the door." },
+      // CG: eqx-steady-hand — a rooftop garden in the red hour, everything lit blood red and black, a tomato plant staked with dish-towel strips, a tall young man sitting on a thin futon holding a full watering can perfectly level at arm's length with his right hand, staring at it, a girl beside him watching his face.
+      { choose: [
+        { t: "That's a good thing. Isn't it?", notes: 1, then: [
+          { s: 'shinjiro', f: 'neutral', t: "That's what it wants me to think." },
+          { n: "He put the can down. Carefully. As if it might go off." },
+          { s: 'shinjiro', f: 'serious', t: "Nothing in here gives you anything for free. I know what free looks like. I took pills for two years that gave me everything I wanted for free. This feels like that. Like the first one. *Here. Look what you can do. You could stay like this.*" }
+        ] },
+        { t: "(Put your hand on his arm. Feel it not shake.)", notes: 3, then: [
+          { n: "She put her hand on his forearm, below the rolled sleeve, where the tendons were. Under her palm it was still. Dead still. Warm, and still, and it was the stillness that frightened her, not the red, because she'd held that arm in the rain three weeks ago and felt it trying, every muscle in it trying, and there was no trying in it now at all. It wasn't his. It was lent." },
+          { s: 'shinjiro', f: 'neutral', t: "...Yeah. You feel it. Wrong, right? Too good. Like the rice cakes." }
+        ] },
+        { t: "Don't use it. Not for anything.", notes: 3, then: [
+          { s: 'shinjiro', f: 'neutral', t: "Don't. I tried once. First week. Cooked an egg up here on the camping stove at quarter past twelve. Perfect. Rolled it in one go. Like I was fifteen." },
+          { s: 'shinjiro', f: 'serious', t: "...Couldn't eat it. Threw it off the roof. Something about it. Like eating at somebody's house you don't know." }
+        ] }
+      ] },
+      { n: "They sat. Down on the river, a long way off, where the river bent round behind the old houses, there was a light. Small and low and yellow, by the water, where nothing should have been lit, because nothing was lit in the red, nothing, not a streetlamp, not a phone, not a match. It sat there at the bend like a lamp left on in a window for somebody coming home late." },
+      { n: "She looked at it for a long time. It could have been the moon on the water. The moon was the wrong color for that. She didn't say anything, and he didn't, and she knew he'd seen it, because his right hand, the lent one, had closed on the edge of the futon and was holding on." },
+      { s: 'shinjiro', f: 'neutral', t: "...Every night. Same place. Don't look at it too long." },
+      { dark: false },
+      { music: 'night' },
+      { n: "The hour went on longer than an hour. It always did now. Akihiko had a number for it, on a roll of tape. And then it was over, all at once, the cicadas starting again mid-note as if they'd never stopped, the wind coming back hot off the bay, the bicycle down in the street finishing its turn at the corner with its rider on it, whistling, and the city's lights coming back in a wave toward the river." },
+      { n: "He held his right hand up in front of his face. It was shaking. A long fine tremor, like a wire in wind. He looked at it for a long time, and then let out a breath she hadn't known he was holding, and let the hand drop into his lap, and she understood that he was glad. That he'd rather have it back, shaking, his." },
+      { s: 'shinjiro', f: 'neutral', t: "...There it is. Useless thing." },
+      { n: "He said it the way you'd say it to a dog that had come home." },
+      { choose: [
+        { t: "(Don't go down. Sit with him till it's light.)", notes: 3, flag: 'eqx-shinji-roof-dawn', then: [
+          { n: "She didn't go down. He didn't tell her to. He didn't tell her anything; he just moved over on the thin futon, a few inches, and held the edge of his coat up off the concrete so she could get under the side of it, though it was much too hot for a coat, and she got under the side of it, and lay with her head on the pillow with no case and her back against his side, and looked at the sky going from black to a kind of bruised navy, and listened to his breathing, which was trying to be even and wasn't." },
+          { n: "At some point his right hand came and lay on her hip, over the coat. Shaking. She could feel it shake through the cloth, all the small trying muscles of it. She put her hand over it. It stopped shaking, the way it had stopped in April on the tray table under her palm, and stayed stopped, and was his." },
+          { n: "She didn't remember falling asleep. She remembered the cicadas, and his breath on the back of her neck going slow, and the smell of shiso coming warm off the planter, and then light." },
+          { place: 'Iwatodai Dorm · Rooftop', time: 'Early Morning', bg: 'iwatodaidorm-roof-planters', soft: true },
+          { n: "Dawn. Pink and hot already, the bay flat as a plate. She woke with his coat over her to the chin and his arm under her head where the pillow had been, and his face in her hair, and her own hand still over his on her hip, and for one second she didn't know which life she was in, and then she did, and didn't move." },
+          { n: "The roof door opened. Akihiko stood in it, in his running clothes, with a towel round his neck and a bottle of water in his hand, at half past five. He looked at the futon. He looked at the tomato plant. He looked at the futon again." },
+          { s: 'akihiko', f: 'neutral', t: "...Morning." },
+          { n: "He set the bottle of water down on the top step, very precisely, the way you'd leave something on a doorstep, and closed the door again, quietly, and they heard him go down the stairs two at a time, and then, from the floor below, a long way off, Junpei's voice, sleepy and outraged, *who's running at FIVE THIRTY*, and Akihiko's, flat, *nobody, go back to sleep*." },
+          { n: "Shinjiro hadn't opened his eyes. He'd been awake, she knew, the whole time. His arm under her head had gone stiff as a plank." },
+          { s: 'shinjiro', f: 'flustered', t: "...He's gonna say something. Not today. In about a month. When I'm not expecting it. He'll just say it over breakfast. *The tomatoes looked good.*" },
+          { s: 'solar', f: 'happy', t: "They do look good." },
+          { s: 'shinjiro', f: 'flustered', t: "Don't. Go to bed. Your own bed. Before Junpei's up and puts it in the book." },
+          { n: "He didn't take his arm out from under her head. She lay there a while longer, and so did he, and the sun came up over the bay and found the three green tomatoes on the plant in the corner, and they looked, she thought, a very little bit less green." }
+        ] },
+        { t: "(Go down to bed. Leave him the door to watch.)", notes: 2, then: [
+          { n: "She got up. He nodded at her, once, from the futon, his back against the tank, his right hand in his lap, shaking, his. At the door she looked back. He'd turned to face it. To face her, in it, and past her, the stairs going down into the dark building; the one door. He'd watch it till it was light. She knew that the way she knew where he kept the mirin." },
+          { s: 'shinjiro', f: 'neutral', t: "...Go on. Sleep. You ate?" },
+          { s: 'solar', f: 'neutral', t: "Curry. Yours." },
+          { s: 'shinjiro', f: 'neutral', t: "Good." },
+          { n: "She went down. On the landing below, in the dark, she stopped and listened, and heard, very faint, through the roof door, his voice, low, gruff, talking to the tomatoes again. She couldn't hear what. It sounded like a promise. It sounded like he didn't know how to make one and was practicing on something that couldn't answer back." }
+        ] }
+      ] }
+    ] },
+    { after: '8/17', title: '6: by summer', place: 'Iwatodai Dorm · Kitchen', time: 'Evening', music: 'tender', scene: [
+      { bg: 'iwatodaidorm-kitchen-night' },
+      { ifBefore: '9/1', then: [
+        { n: "The end of August came down on Iwatodai like a lid on a pot. The cicadas had changed key: the big loud ones of July had gone and the thin high ones of late summer had come, the ones that sounded like somebody sharpening a knife a long way off, all evening, without stopping. The kitchen window was open as far as it went. Nothing came in through it but heat and the smell of somebody's mosquito coil." }
+      ], else: [
+        { n: "Summer had gone without anybody seeing it go. The cicadas had stopped one night and not started again, and the heat had stayed on anyway, stubborn, sitting in the kitchen in the evenings like a guest who hadn't noticed the others leaving. The kitchen window was open as far as it went. What came in through it smelled of the river, and of leaves just starting to turn, and of nothing else." }
+      ] },
+      { ifEvent: 'eqx-equinox', then: [
+        { n: "The dorm was quieter than it had ever been. The three fathers ate at the boarding house still, most nights, because they wouldn't leave it, because it was where their wives had last been; and the dorm ate early and quickly and went upstairs, and nobody talked about the empty places at the other table, down by the river. Shinjiro sent a pot down the river road every evening anyway, wrapped in a towel, with Ken or Akihiko, for the three men who wouldn't come up the hill. Every morning it came back. Full. Still warm, somehow, though it had sat all night on Mrs. Oka's step. He scraped it into the bin without a word and washed the pot and filled it again." }
+      ] },
+      { n: "He was at the stove. Not cooking. Standing in front of it with his hands at his sides, looking at it the way he'd looked at the rope the night before his first operation back, and on the counter beside the stove, unfolded, flattened, weighted at the corners with the salt and the soy sauce and two of the eggs, was a sheet of paper with a hospital's crest at the top." },
+      { n: "She knew it before she could read it. The first one. *What do you want to be able to do by summer?* Creased into sixteen squares from four months in a coat pocket, soft as cloth at the folds, a ring on it from a water jug in April. The box at the bottom faced up. He'd turned it face up." },
+      { n: "Two words, in the box. Huge and leaning, gone over and over, the pencil pressed so hard that it had torn through at the corner of one letter. A child's crayon hand. His." },
+      { n: "*hold a pan*" },
+      { s: 'shinjiro', f: 'neutral', t: "...Don't say anything yet." },
+      { s: 'shinjiro', f: 'neutral', t: "Read it this morning. First time. Took it out on the roof at six and opened it before I could think about it. Like pulling a tooth." },
+      { s: 'shinjiro', f: 'sad', t: "Felt stupid. Four months, carrying it round like it was something. And it's two words. I knew what they were. I wrote 'em." },
+      { choose: [
+        { t: "It's not stupid.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "It's a bit stupid." },
+          { s: 'solar', f: 'neutral', t: "It's the least stupid thing anybody's ever written on a hospital form." }
+        ] },
+        { t: "You said it to someone. The first night. On the phone.", notes: 3, then: [
+          { n: "He looked at her. For a second he didn't know what she meant; then he did, and something went across his face that she'd only seen on it twice." },
+          { s: 'shinjiro', f: 'neutral', t: "...On the roof. Six floors up. In the red. Somebody put a phone to my ear and I could hear the lounge, all of you, and I said the first thing I could think of. Didn't even know who I was saying it to." },
+          { s: 'shinjiro', f: 'neutral', t: "Then the therapist put a sheet in front of me a week later, and it was the only thing in my head." }
+        ] },
+        { t: "(Read it twice. Don't say anything.)", notes: 3, then: [
+          { n: "She read it twice and didn't say anything, and he watched her not say anything, and something in his shoulders went down about an inch, the way it had in April when she hadn't looked at the sheet on the tray table." }
+        ] }
+      ] },
+      { ifBefore: '9/1', then: [
+        { s: 'shinjiro', f: 'neutral', t: "*By summer.* Summer's got till the end of the month. I counted on the calendar in the lounge. Got a few days. Thought I'd better do it before I lost my nerve." }
+      ], else: [
+        { s: 'shinjiro', f: 'neutral', t: "*By summer.* Missed it. Summer went while I wasn't looking. Doesn't matter. I'm doing it anyway. Late counts. Late's all I've ever been." }
+      ] },
+      { s: 'shinjiro', f: 'neutral', t: "...Need somebody to count. Somebody who won't cheat at thirty." },
+      { n: "He'd asked. She heard it go past. She didn't say so. She came and stood beside him at the stove." },
+      { ifFlag: 'eqx-shinji-iron-pan', then: [
+        { n: "The pan was on the back burner. The cast one, from the ironmonger's in the rain, black now, properly black, seasoned to a shine like a beetle's back from two months of oil and oven and him standing over it at one in the morning. He'd filled it. Rice, cooked, packed in hard, and on top of the rice, so it wouldn't be cheating, the big stone mortar from the bottom cupboard. It must have weighed as much as a baby." },
+        { s: 'shinjiro', f: 'neutral', t: "It's yours. You bought it. So you count." }
+      ], else: [
+        { n: "The dorm's big pan was on the back burner, the steel one with the long handle that took two hands on a good day, and he'd filled it. Rice, cooked, packed in hard, and on top of the rice, so it wouldn't be cheating, the big stone mortar from the bottom cupboard. It must have weighed as much as a baby." }
+      ] },
+      { n: "He wiped his right hand on his apron. Twice. Looked at it. Wiped it again. Then he put it on the handle of the pan, and closed it, one finger at a time, the slow ones last, until all four were round the wood and the thumb was over them, and she watched the tendons come up in his wrist one by one, like strings being tightened on an instrument." },
+      { s: 'shinjiro', f: 'serious', t: "...Go." },
+      { n: "He lifted it." },
+      { n: "It came up off the burner an inch, and tipped, and he caught the tip with his wrist, his whole forearm in it, and held it level, and lifted it another inch, and another, until it was clear of the stove and hanging in the air in front of him at the height of his belt, full, with the mortar sitting on the rice in it like a stone in a nest." },
+      { n: "His arm began to shake at once. Not the fine tremor. The big one, from the shoulder, the whole limb going like a branch in wind." },
+      // CG: eqx-hold-a-pan — a dorm kitchen at night, a tall young man in an apron holding a heavy black frying pan full of rice with a stone mortar on top level at his waist with his right hand, his whole arm shaking, jaw set, a girl beside him counting on her fingers, a creased hospital form weighted flat on the counter.
+      { choose: [
+        { t: "(Count out loud. Slowly. Don't cheat.)", notes: 3, then: [
+          { n: "She counted. *One.* Out loud, and not fast, and not slow either, the honest speed, the speed the therapist used. *Two.* The pan dipped and came back. *Three. Four.* Sweat had come out on his temple and was running down his jaw and he didn't wipe it. *Five.* His lips had gone white. *Six. Seven.* The rice shifted and the mortar slid an inch toward the rim and he tilted his wrist without looking and it slid back. *Eight.* His breath was coming through his teeth. *Nine.*" },
+          { n: "*Ten.*" },
+          { n: "He didn't put it down on ten. He held it a breath past, two, a count of his own, the way he'd let go of her wrist on the tray table in April, a good second after, on purpose, because he'd decided to. Then he set it back on the burner, slowly, with a clank, and let go of the handle, and stood with both hands flat on the edge of the stove, his head down, breathing like he'd carried it up the hill." }
+        ] },
+        { t: "(Count, and hold your hand under the pan. Not touching. Just there.)", notes: 3, then: [
+          { n: "She put her hand flat under the pan, a finger's width below it, not touching, so the heat of it came down onto her palm, and counted. He saw her do it. His jaw went. He didn't tell her to move. *One. Two. Three.* The pan dipped toward her hand and stopped a hair from it and came back up. *Four. Five. Six.* She didn't move her hand. He didn't let the pan touch it. *Seven. Eight. Nine.* It was the hardest thing she'd ever watched anybody do. *Ten.*" },
+          { n: "He held it past ten. A breath. Two. Then he set it down, with a clank, and stood with both hands on the stove and his head down, breathing hard, and said, to the burner," },
+          { s: 'shinjiro', f: 'sad', t: "...Didn't need your hand. Knew it was there. Didn't need it." },
+          { s: 'shinjiro', f: 'neutral', t: "...Leave it there next time anyway." }
+        ] }
+      ] },
+      { n: "For a long moment neither of them said anything. The thin cicadas went on outside, sharpening their knives. Somewhere upstairs Junpei was laughing at something on the television. Shinjiro straightened up, slowly, and looked at his right hand, which was shaking so hard now he couldn't have held a pencil, and turned it over, and looked at the palm, where the handle had pressed a long red line." },
+      { s: 'shinjiro', f: 'neutral', t: "...Done." },
+      { s: 'shinjiro', f: 'neutral', t: "That's the first time I ever did a thing I said I'd do by a date. Ever. In my life." },
+      { n: "He picked up the sheet off the counter, the salt and the soy sauce and the eggs going over, and folded it, carefully, along the old soft creases, into sixteen, and put it back in his coat on the back of the chair. Not the right pocket. The left. The pocket that was his, without anything in it from anybody else." },
+      { s: 'shinjiro', f: 'neutral', t: "Now sit down. I said I'd make you something real when I could hold a pan. So." },
+
+      { n: "He made ginger pork. In the pan, once he'd tipped the rice out of it into the big bowl for tomorrow's breakfast, the thin slices hissing as they went in, the ginger grated so fine it was nearly water, the sauce going dark and sticky at the edges. Rice. Miso, with tofu cut in cubes so small and so square she didn't know how he'd done it with that hand. Pickles he'd made himself, in a jar at the back of the fridge, cucumbers from the roof." },
+      { ifFlag: 'eqx-shinji-roof-dawn', then: [
+        { n: "And on a small saucer at the edge of her tray, on its own, cut in four, a tomato. Red. Properly red, all the way through, the skin split a little at the top from too much sun. He put it down without a word." },
+        { s: 'shinjiro', f: 'neutral', t: "First one. Don't make a thing of it." }
+      ], else: [
+        { n: "And on a small saucer at the edge of her tray, on its own, cut in four, a tomato. Red. Properly red, the skin split a little at the top from too much sun. He put it down without a word, and she knew where it was from, and that it was the first, and that he'd waited for her to eat it." }
+      ] },
+      { n: "He watched her eat. He leaned on the counter with his arms folded and his bad hand tucked under his good arm, still shaking, and watched her eat all of it, and when she ate the tomato he looked away at the window, and his jaw did the complicated thing, and when the tray was empty he let out a breath through his nose and said *good*, very quietly, the way he'd said it at the fireworks over a rice ball." },
+      { choose: [
+        { t: "It's the best thing you've ever made me.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "It's ginger pork. I made it better last year. Pork was cheaper." },
+          { s: 'solar', f: 'neutral', t: "Last year you could hold a pan." },
+          { s: 'shinjiro', f: 'happy', t: "...Hah. Yeah. Fine. It's the best thing I ever made you. Write it on a form." }
+        ] },
+        { t: "(Get up and wash the pan for him.)", notes: 3, then: [
+          { n: "She got up and took the pan to the sink before he could, and he started forward to stop her and then didn't, and stood at her shoulder while she washed it, and told her not to use soap on it, and she'd known that, and let him tell her anyway. His hand came and rested on the counter by hers while she dried it, not touching. Then touching. The side of his little finger against the side of hers, on the wet counter, shaking, and then not." }
+        ] }
+      ] },
+
+      { n: "He sat down across from her at last, in his chair, the one by the door that he'd moved a place in, toward hers, in June, and put his elbows on the table and looked at her across it, and it took him a long time to say the next thing. She could see it take him. She didn't help." },
+      { s: 'shinjiro', f: 'serious', t: "...You know what I figured out. Up on the roof. In the red, with the hand working." },
+      { s: 'shinjiro', f: 'serious', t: "It doesn't want me to stay. Not like the old guy. It doesn't care if I eat at her table. It's not after that." },
+      { s: 'shinjiro', f: 'serious', t: "It wants me not to want anything. That's all. Let somebody else want it for me. Hold the pan in the red, where it doesn't cost. Write whatever on the sheet, doesn't matter, somebody'll fill it in. Never ask for a thing. Then nothing can get taken, 'cause you never had it." },
+      { s: 'shinjiro', f: 'sad', t: "...And that's me. That's just me. That's how I've lived since I was fifteen. It doesn't even have to ask me for anything. I already said yes to that years ago." },
+      { n: "He said it to the table. He said it the way he'd said *like a glove*, in April, looking for the word and not liking any of them. And she understood, sitting across from him with the empty tray between them, that she knew now what it was asking him, the thing in the hour, the thing at the bend in the river: not *stay*. It had never needed to ask him to stay. It was asking him to keep wanting nothing, quietly, the way he always had, until there was nothing left of him to hold on with." },
+      { flag: 'eqx-floor-shinjiro' },
+      { ifChoice: { 'asks.shinjiro': 'yes' }, then: [
+        { n: "His hand went to his coat on the back of the chair. The right pocket. The winter sheet, in her print. *Be here next summer.* He patted it, the way he'd been patting it since June, the way you'd pat for keys, and stopped, and left his hand there." },
+        { s: 'shinjiro', f: 'neutral', t: "...That one's yours, though. You wrote it. I'm just doing what it says. Easiest thing I ever did. Somebody else wanted it. I just have to show up." },
+        { n: "He said it lightly. He meant it as a kindness. He meant it as thanks. And she sat across from him and felt the kitchen go cold around her in the August heat, because he'd just told her what the thing in the hour wanted, and then, in the same breath, without seeing it, told her that she'd already given it to him." }
+      ] },
+      { ifChoice: { 'asks.shinjiro': 'no' }, then: [
+        { s: 'shinjiro', f: 'neutral', t: "...That's why I was mad. In June. When you wouldn't write it. You were right. Didn't want you to be. It would've been so easy, you writing it." },
+        { s: 'shinjiro', f: 'neutral', t: "*Hold a cup* was a cop-out. I know. I'll write a real one. For winter. Myself. Some time." }
+      ] },
+      { ifChoice: { 'asks.shinjiro': 'choose' }, then: [
+        { n: "His hand went to his coat on the back of the chair. The right pocket. The winter sheet, the twenty minutes, still face in. He didn't take it out. He put his hand flat over the pocket, outside the cloth." },
+        { s: 'shinjiro', f: 'neutral', t: "...That one's mine. I wrote it. Not reading it to you. Not yet. Not 'cause I don't want to." },
+        { s: 'shinjiro', f: 'sad', t: "'Cause if I say it out loud and then I don't get there. That's all. That's the whole reason. Stupid." }
+      ] },
+      { choose: [
+        { t: "You asked me to count tonight. You wanted it, and you asked. That's not nothing.", notes: 3, then: [
+          { n: "He looked up. He hadn't noticed. She watched him go back over the evening and find it, *need somebody to count*, and turn it over, the way he'd turned the tomatoes in the supermarket with the three fingers that listened." },
+          { s: 'shinjiro', f: 'flustered', t: "...Huh." },
+          { s: 'shinjiro', f: 'neutral', t: "Didn't even feel it go. That's worse. That's way worse. Now I'll be thinking about it." }
+        ] },
+        { t: "Then want something. Right now. Anything. Out loud.", notes: 2, then: [
+          { s: 'shinjiro', f: 'neutral', t: "...That's you asking me something." },
+          { s: 'solar', f: 'neutral', t: "No. I'm just sitting here. You can say it or not." },
+          { n: "He was quiet for a long time. The cicadas sharpened their knives. Then he said, to the table, low, rough, as if it were being pulled out of him on a string," },
+          { s: 'shinjiro', f: 'sad', t: "...Next summer. The tomatoes. I want to see 'em come up again. From seed. On that roof." },
+          { s: 'shinjiro', f: 'neutral', t: "There. That's mine. Don't touch it." }
+        ] },
+        { t: "(Reach across the table and put your hand over his right one.)", notes: 3, then: [
+          { n: "She reached across and put her hand over his. The right one, on the table, still shaking from the pan, a long tremor running up from the wrist. It didn't stop shaking under her palm this time. It went on, small and stubborn, every muscle in it trying, and she held it while it tried, and he let her, and looked at their two hands on the table for a long time." },
+          { s: 'shinjiro', f: 'neutral', t: "...Doesn't stop for you anymore. You notice?" },
+          { s: 'solar', f: 'neutral', t: "I noticed." },
+          { s: 'shinjiro', f: 'neutral', t: "Good. It shouldn't have to. Should be able to shake. It's mine." }
+        ] }
+      ] },
+
+      { n: "It was late. The thin cicadas had stopped. Upstairs the television had gone off and Junpei's door had banged and the dorm had gone to the sounds of a dorm going to bed, a tap, a toilet, Yukari telling somebody to turn off the hall light. The red was an hour off. He got up and turned off the kitchen lamp, and they stood in the dark kitchen with the window open and the street light coming in orange across the floor." },
+      { ifEvent: 'eqx-lanterns', then: [
+        { s: 'shinjiro', f: 'neutral', t: "...Sent Hata home. On the river. Wrote his name with this hand. Took me an hour." },
+        { s: 'shinjiro', f: 'serious', t: "And she took him out of the water. Like picking up a fork somebody dropped. Blew him out." },
+        { n: "He didn't say anything else about it. He didn't need to. He stood in the dark by the window, looking down the street toward the river, the way he'd looked at the one door from the futon on the roof." }
+      ] },
+      { choose: [
+        { t: "(Go up with him. Not to your room.)", notes: 3, flag: 'eqx-shinji-stayed-night', then: [
+          { place: 'Iwatodai Dorm · Shinjiro’s Room', time: 'Late Night', bg: 'green-bedroom', soft: true },
+          // BG: eqx-shinjiro-room — a sparse dorm bedroom at night, a futon on the floor, a long coat on a hook, a cast-iron pan on the desk instead of books, a jar of seed packets on the windowsill, streetlight through the blind.
+          { n: "His room was the barest room in the dorm. She'd never been in it. A futon on the floor, made, square, the corners tight as a hospital bed. His coat on the hook. A desk with no books on it, only a jar of seed packets from the hundred-yen shop, a sharpened pencil, and, folded small on its own in the middle of the desk, a paper napkin with a grease stain on it from a rice ball, kept." },
+          { n: "He stood just inside the door with his back against it, the way he'd stood with his back to the tank on the roof, facing the one door, except that he was the door now, and she was on the inside." },
+          { s: 'shinjiro', f: 'flustered', t: "...You sure. I'm not asking. I'm just. You sure." },
+          { n: "She didn't answer. She crossed the room and kissed him against the door, and he made a sound into her mouth she'd never heard him make, low, half a laugh and half nothing like a laugh, and his hands came up, both of them, the steady one and the trying one, and took her face, and held on." },
+          { n: "He kissed like he cooked. Slowly. Like he'd read the packet after and decided to do it properly anyway. His right hand shook against her jaw and then against her neck and then at the small of her back, under her shirt, flat, warm, every finger trying, and she felt him notice it shaking and decide not to care, and that was the thing that undid her, more than his mouth, more than the door at her back when he turned them round. That he let it shake." },
+          { n: "The red came at midnight. Neither of them got up to look at it." },
+          { place: 'Iwatodai Dorm · Shinjiro’s Room', time: 'Early Morning', bg: 'green-bedroom', soft: true },
+          { n: "She woke on the square futon with the light coming gray through the blind, and the sheet tangled round her knees, and his arm over her, heavy, the right one, lying across her waist with the hand open and still, asleep, the first time she'd ever seen it still that wasn't the red and wasn't her palm. Just asleep. Just a hand." },
+          { n: "He was awake. Of course he was. He was lying on his side watching her, his hair all over his face, with an expression she'd have given a great deal to have a word for, and when he saw her see it he didn't put it away." },
+          { s: 'shinjiro', f: 'neutral', t: "...You eat yet?" },
+          { s: 'solar', f: 'happy', t: "It's five in the morning." },
+          { s: 'shinjiro', f: 'neutral', t: "That's not a no." },
+          { n: "Somebody walked past in the hall. Stopped. Walked on, very quietly, and then, after a moment, came back, and something slid under the door: a single sheet torn from a small notebook. Shinjiro looked at it from the futon with total dread." },
+          { n: "She got up in his shirt and picked it up. It was a page from Junpei's book. It said, in Junpei's big round hand, *WHO GETS CAUGHT FIRST: SEASON TWO*, and under that a column of names with odds, crossed out, rewritten, crossed out again, and at the very bottom, newly added, underlined three times, in pen: *Shinjiro-senpai. NO BET. I'M NOT STUPID. (congrats tho)*" },
+          { s: 'shinjiro', f: 'flustered', t: "...I'm gonna kill him." },
+          { s: 'solar', f: 'happy', t: "You're going to make him breakfast." },
+          { s: 'shinjiro', f: 'flustered', t: "I'm gonna make him breakfast and *then* I'm gonna kill him." },
+          { n: "He didn't get up. He lay back on the futon with his arm over his eyes and the right hand, his, lying open on the sheet beside him, and after a while it moved, and found her ankle where she stood, and held on to it, loosely, the way you'd hold a rope at the top of a well just to know it was there." }
+        ] },
+        { t: "(Kiss him at the foot of the stairs and go up alone.)", notes: 2, then: [
+          { n: "She kissed him at the foot of the stairs, in the orange street light from the kitchen door, his back against the banister and his good hand on the rail, and he kissed her back like a man who'd decided something, and then he let go first. That was the thing she took up the stairs with her. That he let go first, gently, on purpose, and stood at the bottom and watched her go up." },
+          { s: 'shinjiro', f: 'neutral', t: "...Night. Text you at twelve." },
+          { n: "At twelve, a dot. At one, after the red, the phone buzzed on her chest." },
+          { phone: [
+            { from: 'shinjiro', t: "held it ten" },
+            { from: 'shinjiro', t: "twelve. i counted the extra" }
+          ], contact: 'Shinjiro Aragaki' },
+          { n: "She lay in the dark with the phone on her chest and her hand over it and didn't sleep for a long time, thinking about the left pocket of a coat on the back of a chair downstairs, with one folded sheet in it, and nothing in it from anybody else." }
+        ] }
+      ] }
     ] }
   ]
 });
