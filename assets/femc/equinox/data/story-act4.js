@@ -33,10 +33,13 @@
   const all = (conds, then) => conds.reduceRight((inner, c) => [Object.assign({}, c, { then: inner, else: [] })], then)[0];
   // The year's route deaths (Act IV's two) and the flags that mean somebody said "Stay. Please."
   const DEAD = ['dead.shinjiro', 'dead.aigis'];
-  const ASKED = ['eqx-asked-hyein', 'eqx-asked-house', 'eqx-asked-akihiko', 'eqx-asked-hanni', 'eqx-asked-jaehyun', 'eqx-asked-fathers', 'eqx-asked-aigis'];
+  const ASKED = ['eqx-asked-hyein', 'eqx-asked-house', 'eqx-asked-akihiko', 'eqx-asked-hanni', 'eqx-asked-jaehyun', 'eqx-asked-fathers', 'eqx-asked-aigis',
+    'eqx-asked-chaewon', 'eqx-asked-sakura', 'eqx-asked-mark', 'eqx-asked-danielle', 'eqx-asked-trio', 'eqx-asked-hateclub',
+    'eqx-asked-parents-runners', 'eqx-asked-parents-hoax']; // + the summer arrivals' and parents' rank asks (Nov 16)
   const MINE = ['eqx-supper-mine', 'eqx-hill1-mine', 'eqx-hill2-mine', 'eqx-hill3-mine', 'eqx-choose-house', 'eqx-choose-hyein',
     'eqx-choose-jaehyun', 'eqx-ferry-mine', 'eqx-moon-mine', 'eqx-oka-night-mine', 'eqx-choose-fathers', 'eqx-xmas-mine',
-    'eqx-oka-plums-mine', 'eqx-oka-persimmon-mine', 'eqx-oka-spring-mine', 'eqx-aigis-own-door']; // ranks 4-6 (Nov 16)
+    'eqx-oka-plums-mine', 'eqx-oka-persimmon-mine', 'eqx-oka-spring-mine', 'eqx-aigis-own-door', // ranks 4-6 (Nov 16)
+    'eqx-choose-parents-runners', 'eqx-choose-parents-hoax'];
   // The names the three new Personas answer to (to be designed with Kat; change here only).
   const PERSONA = { yunjin: 'Bari', hanni: 'Âu Cơ', hyein: 'Jiknyeo' };
 
@@ -441,7 +444,7 @@
     { n: "Empty. These ones were empty." },
     { s: 'kim-dad', f: 'surprised', t: "Those are hers. Those are— they're from home. They're from by our door. The pink ones. She's had them six years, I keep buying her new ones and she keeps putting the new ones in the cupboard. That's the hole. That's the hole in the toe. How are they— they're at home. They're by our door at home—" },
     { n: "And further down, on the next step, a pair of rubber garden clogs, green, with dried mud on the heels. Taejoon looked at them and didn't say anything at all, and his hand closed on the rope until the fibers creaked." },
-    { n: "And further down, a pair of white running shoes, expensive ones, the laces tucked in, the way you'd leave them by the back door of a house on Seventy-Fourth Street after an early run in the park." },
+    { n: "And further down, a pair of white running shoes, expensive ones, the laces tucked in, the way you'd leave them by the back door of a house on Seventy-Second Street after an early run in the park." },
     { n: "Jaesang went down past Mitsuru on the rope. He didn't run. He walked, very fast, down three steps, and picked up the left running shoe, and held it, and turned it over, and looked at the sole." },
     { s: 'jaesang-runners', f: 'sad', t: "...Her shoes from home. From our doors. All three. She left them for us." },
     { s: 'mitsuru', f: 'serious', t: "Mr. Lee. Back on the rope. Now." },
