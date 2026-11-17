@@ -485,7 +485,11 @@ window.FemcGame = (() => {
   /* ── Bond perks, the life sim's side (build.js PERKS: type 'daily'). A link's rank earns them; a reversed link pauses them.
      perkOn(key) → the earned daily perks with that fx key ([] when none); weekly(key) → true the first time this week (and uses it). ── */
   const BLD = () => W.FemcBuild || null;
-  const bondRank = id => { const p = S.links[id]; return p && !p.reversed ? (p.rank || 0) : 0; };
+  /* Lost for good (Equinox's route deaths, story-act4.js { flag: 'dead.<id>' }): a link or fighter whose `dead.<id>` flag is set is
+     gone from then on: no hangouts, invites or Who's free rows, no bond perks, out of the party, its Social Link card face down
+     (menu.js). Solstice never sets these flags, so nothing there changes. */
+  const deadLink = id => !!(S.flags && S.flags[`dead.${id}`]);
+  const bondRank = id => { const p = S.links[id]; return p && !p.reversed && !deadLink(id) ? (p.rank || 0) : 0; };
   const dailyPerks = () => (BLD() ? BLD().PERKS.filter(p => p.type === 'daily' && !p.stub && bondRank(p.link) >= p.rank) : []);
   function perkOn(key) { const l = dailyPerks().filter(p => p.fx[key] != null); return l.length ? l : null; }
   const perkVal = key => (perkOn(key) || []).map(p => p.fx[key]);
@@ -698,6 +702,7 @@ window.FemcGame = (() => {
     const p = progress(l.id);
     if (l.hidden || l.status === 'stub' || !l.ranks?.[0]?.scene) return { ok: false, reason: 'unwritten' };
     if (l.secret && !flag(l.secret.flag)) return { ok: false, reason: 'unwritten' };
+    if (deadLink(l.id)) return { ok: false, reason: 'dead' };
     if (afterGap(l, d)) {
       // After rank 10 (MAX, or waiting on rank 11+): afterMax scenes with the person, unless they've left (then they're
       // traces, see tracesAt). A link with a stretch is hidden while its next rank isn't open (no "busy" row for it).
@@ -2490,7 +2495,7 @@ window.FemcGame = (() => {
   }
   const homeSlot = (l, d = S.day) => (homeOf(l, d).slot === 'evening' ? 'evening' : 'after');
   const lifePick = (arr, n) => (arr && arr.length ? arr[Math.floor(seeded(n) * arr.length) % arr.length] : '');
-  const goneLink = (l, d = S.day) => !!((l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) || (progress(l.id).rank >= 10 && leavesAtMax(l) && l.closes && d > dayOf(l.closes)));
+  const goneLink = (l, d = S.day) => !!(deadLink(l.id) || (l.closes && d >= dayOf(l.closes) && !stretchOn(l, d)) || (progress(l.id).rank >= 10 && leavesAtMax(l) && l.closes && d > dayOf(l.closes)));
   // A story beat today (a dated story event, a full-moon operation, or a link's story rank on its date): no ordinary invites.
   function storyDay(d = S.day) {
     const md = mdOf(d);
@@ -2505,6 +2510,7 @@ window.FemcGame = (() => {
   function rankHint(l, d = S.day) {
     if (!l || !isMet(l.id)) return null;
     const p = progress(l.id), r = p.rank || 0, next = l.ranks?.[r];
+    if (deadLink(l.id)) return { key: 'lost', label: 'Lost', note: 'The card has turned face down.' };
     if (isMaxed(l, p) || (r >= 10 && !next?.scene)) return { key: 'max', label: 'MAX', note: 'Your bond is at its fullest.' };
     if (goneLink(l, d)) return { key: 'gone', label: 'Gone', note: 'They’ve gone for now.' };
     if (p.reversed) return { key: 'reversed', label: 'Reversed', note: 'Time together can mend it.' };
@@ -2836,7 +2842,7 @@ window.FemcGame = (() => {
      a config roster, Junpei needs no { join } line like everyone else; Solstice (unset) is unchanged. */
   const partyDef = () => CFG.party || D.stats.party;
   function available(d = S.day) {
-    return partyDef().filter(m => d >= dayOf(m.joins) && (!m.leaves || d <= dayOf(m.leaves)) && (m.leader || S.joined.includes(m.id) || (!m.flag && (CFG.party || m.id !== 'junpei')) || (m.flag && flag(m.flag)))).map(m => m.id);
+    return partyDef().filter(m => !deadLink(m.id) && d >= dayOf(m.joins) && (!m.leaves || d <= dayOf(m.leaves)) && (m.leader || S.joined.includes(m.id) || (!m.flag && (CFG.party || m.id !== 'junpei')) || (m.flag && flag(m.flag)))).map(m => m.id);
   }
   // The dungeon is open at night: an { unlock: 'tartarus' } line, or (another game's dungeon, CFG.dungeon) once the calendar's
   // floorCaps open its first floors (Equinox's Well).
@@ -3122,7 +3128,7 @@ window.FemcGame = (() => {
     dailyLife, finishDailyLife, dueEvent, markEvent, hasBattle, unlockMet, doorDue, markDoor, endingDue, jumpToEnd, endingName, recordClear, newGamePlus,
     classQuestion, answerClass, examQuestions, answerExam, examResult, postExam,
     deliverTexts, sendText, replyText, textById, answerInvite, gift, bond, outfitLineDue, seeOutfitLine,
-    rankHint, whoFree, goneLinks, contactCard, noteGift, giftItem, giftShop, giftBag, addGift, giftTier, giftFans, canGift, giftPoints, giveGift, keepsakes, GIFT_TIERS, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
+    rankHint, deadLink, whoFree, goneLinks, contactCard, noteGift, giftItem, giftShop, giftBag, addGift, giftTier, giftFans, canGift, giftPoints, giveGift, keepsakes, GIFT_TIERS, phoneReach, phoneCall, finishPhoneCall, phoneTopics, phoneMessage, dayInvitePending, answerDayInvite, bookedDue, clearBooked, commuteDue, pickCommute, storyDay,
     holidayInvites, sendHolidayInvites, holidayDue, acceptHoliday, finishHoliday, declineHolidays,
     lateNightDue, finishLateNight, tripPlan, finishTrip, unread, markAllRead, isGroupThread, freeSlotSpent, nextSlot, sleep,
     available, navigator, tartarusOk, dungeonOpen, floorCap, makeHandoff, readHandoff, clearHandoff, finishHandoff, simulate, applyResult,

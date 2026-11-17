@@ -139,6 +139,17 @@ Sources: `~/Documents/UniverseHub-Images/Femc Mode Images/Equinox/` (left in pla
 - Attachment `Style - Equinox portrait (Solar).png` is now the remake's neutral (old in `Old/`); `Junpei (Equinox) - portraits.png` added for 12D2.
 - Checked in the built-in pane (1440 × 900, muted, test keys removed after): all 20 speakers beside Solar in a test scene; all load, and faces sit at the cast's size. HTML: config v14, portraits index v165, scale v182, place v16 (both game pages).
 
+## Lost links (Nov 16 2026)
+
+A route death's `dead.<id>` flag (story-act4.js) now means "gone for good" everywhere (core.js `deadLink`, exported): the
+fighter leaves `available()` (so every party and story fight), the link's `linkStatus` is `{ reason: 'dead' }`, `goneLink`
+counts it (Who's free, invites, the commute, Contacts' "Not around anymore"), `bondRank` 0 (no bond perks), `rankHint`
+`lost` ("Lost · The card has turned face down."). menu.js Links screen: the card `.lost` (dark, "Lost" tag), the tarot
+`.down` (its back drawn in equinox/game.css: oxblood, a stopped-clock ring), the figure `.lost` (a grey ghost). Solstice
+never sets `dead.*`, so nothing changes there. Pane-checked (muted, 1440 × 900): Aigis lost on 11/24: out of the party,
+"Lost" in the list and detail, card face down; Solstice's page loads. HTML: core v105, menu v55 (both pages), equinox
+game.css v8.
+
 ## Battle side 1: party and the Well (Nov 15 2026)
 
 - **Party (`config.js` `party` / `navigators`):** core.js `available()` and `navigator()` read `FEMC_GAME_CONFIG.party` / `.navigators` before stats.js's (same shape). Equinox's roster: everyone S.E.E.S. fought with on 4/8 plus Haechan, Jungwon, Jihoon and Minji from 4/8; Shinjiro from 5/29 once his `{ join: 'shinjiro' }` line plays (story-act2.js `eqx-discharge`, the only story edit); Fuuka navigates. With a config roster Junpei needs no join line (Solstice's special case stays when unset). The new fighters and the second navigator aren't in yet.

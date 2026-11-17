@@ -51,3 +51,19 @@
 /* The Go Out map: Kat's painted map is Solstice pink; in Equinox it's bled to red and darker (the pins stay on top, unfiltered). */
 .g-city.has-art .g-city-map { background: none; }
 .g-city.has-art .g-city-map::before { content: ''; position: absolute; inset: 0; background: var(--art) center / cover no-repeat; filter: hue-rotate(24deg) saturate(1.25) brightness(.78) contrast(1.08); pointer-events: none; }
+
+/* Lost links (core.js deadLink, a route death's `dead.<id>` flag): the card in the list goes dark, the tarot lies face down
+   (its back: oxblood with a stopped clock ring), the figure fades to a grey ghost. Nov 16 2026. */
+.g-sl-card.lost { filter: grayscale(1) brightness(.55); box-shadow: inset 4px 0 0 #6b0f17; }
+.g-sl-card.lost .rv { color: #c9333f; }
+.g-sl-tarot.down img, .g-sl-tarot.down span { visibility: hidden; }
+.g-sl-tarot.down::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 22%, rgba(214, 196, 180, .5) 22.5% 23.5%, transparent 24% 31%, rgba(214, 196, 180, .28) 31.5% 32%, transparent 32.5%),
+    linear-gradient(90deg, transparent 49.4%, rgba(214, 196, 180, .55) 49.4% 50.6%, transparent 50.6%) 50% 26% / 100% 26% no-repeat,
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, .25) 0 6px, transparent 6px 12px),
+    linear-gradient(160deg, #3b070d, #14050a 70%);
+  border: 2px solid rgba(214, 196, 180, .55); box-shadow: inset 0 0 0 6px #14050a, inset 0 0 0 7px rgba(201, 51, 63, .6);
+}
+.g-sl-art.lost .g-sl-fig { filter: grayscale(1) brightness(.6) contrast(.9); opacity: .55; }

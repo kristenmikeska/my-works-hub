@@ -832,7 +832,7 @@ window.FemcMenu = (() => {
   const linkGone = l => !!(l.closes && S().day > G.dayOf(l.closes) && !G.stretchOn(l));
   function linkInfo(l, B, ctx) {
     const p = G.progress(l.id), max = G.maxOf(l), n = B ? B.perksOf(l.id).filter(x => ['own', 'party', 'assist'].includes(B.perkState(x, ctx))).length : 0;
-    const where = G.isMaxed(l) ? 'MAX' : linkGone(l) ? 'Gone' : G.homeOf(l).hint || '';
+    const where = G.deadLink?.(l.id) ? 'Lost' : G.isMaxed(l) ? 'MAX' : linkGone(l) ? 'Gone' : G.homeOf(l).hint || '';
     return { p, max, n, has: !!(B && B.perksOf(l.id).length), where };
   }
   function linkDetail(l, B, ctx) {
@@ -857,9 +857,9 @@ window.FemcMenu = (() => {
     const zig = i => Math.round(Math.abs(Math.sin(i * .42)) * 50);
     const cards = met.map((l, i) => {
       const x = linkInfo(l, B, ctx), num = l.numeral || '✦', on = l === at;
-      return `<li style="--i:${Math.min(i, 12)};--x:${zig(i)}px"${on ? ' class="sel"' : ''}><button type="button" class="g-st-link g-sl-card${x.p.reversed ? ' rev' : ''}${linkGone(l) ? ' gone' : ''}${cur === l ? ' on' : ''}" data-link="${l.id}" tabindex="${on ? 0 : -1}" aria-pressed="${cur === l}">
+      return `<li style="--i:${Math.min(i, 12)};--x:${zig(i)}px"${on ? ' class="sel"' : ''}><button type="button" class="g-st-link g-sl-card${x.p.reversed ? ' rev' : ''}${linkGone(l) ? ' gone' : ''}${G.deadLink?.(l.id) ? ' lost' : ''}${cur === l ? ' on' : ''}" data-link="${l.id}" tabindex="${on ? 0 : -1}" aria-pressed="${cur === l}">
         <i class="g-sl-cslash" aria-hidden="true"></i><span class="g-sl-num" style="--nfs:${num.length > 3 ? 15 : num.length > 2 ? 18 : 22}px">${esc(num)}</span>
-        <span class="g-sl-mid"><b class="g-sl-ar">${esc(l.arcana)}</b><span class="g-sl-who">${esc(l.short)}${x.p.reversed ? '<small class="rv">Reversed</small>' : linkGone(l) ? '<small class="rv">Gone</small>' : ''}${x.has ? `<small class="g-perkn">${x.n} perk${x.n === 1 ? '' : 's'}</small>` : ''}</span></span>
+        <span class="g-sl-mid"><b class="g-sl-ar">${esc(l.arcana)}</b><span class="g-sl-who">${esc(l.short)}${G.deadLink?.(l.id) ? '<small class="rv">Lost</small>' : x.p.reversed ? '<small class="rv">Reversed</small>' : linkGone(l) ? '<small class="rv">Gone</small>' : ''}${x.has ? `<small class="g-perkn">${x.n} perk${x.n === 1 ? '' : 's'}</small>` : ''}</span></span>
         <span class="g-sl-rk">${G.isMaxed(l) ? '<b class="max">MAX</b>' : `RANK<b>${x.p.rank}</b>`}</span>
         <span class="g-pips${x.max > 10 ? ' long' : ''}" role="img" aria-label="Rank ${x.p.rank} of ${x.max}">${Array.from({ length: x.max }, (_, k) => `<i class="${k < x.p.rank ? 'on' : ''}${k >= 10 ? ' ext' : ''}"></i>`).join('')}</span>
         <small class="g-hint">${esc(x.where)}</small></button></li>`;
@@ -869,8 +869,8 @@ window.FemcMenu = (() => {
     return `<div class="g-sl${dark ? ' dark' : ''}${enter ? ' enter' : ''}${met.length ? '' : ' none'}">
       <div class="g-sl-bg" aria-hidden="true"></div>
       <div class="g-sl-ghost" aria-hidden="true">Commu</div>
-      <div class="g-sl-art" aria-hidden="true"><div class="g-sl-fig">${at ? linkFigure(at) : ''}</div></div>
-      ${at ? `<div class="g-sl-tarot" aria-hidden="true">${art ? `<img src="${art}" alt="">` : `<span>${esc(at.numeral || '✦')}</span>`}</div>` : ''}
+      <div class="g-sl-art${at && G.deadLink?.(at.id) ? ' lost' : ''}" aria-hidden="true"><div class="g-sl-fig">${at ? linkFigure(at) : ''}</div></div>
+      ${at ? `<div class="g-sl-tarot${G.deadLink?.(at.id) ? ' down' : ''}" aria-hidden="true">${art ? `<img src="${art}" alt="">` : `<span>${esc(at.numeral || '✦')}</span>`}</div>` : ''}
       <div class="g-sl-head"><h2>Links</h2><p>Bonds · ${met.length} of ${all} met</p>${met.length && BLD() ? '<button type="button" class="g-sl-bonds" data-sl-bonds>Bond perks ›</button>' : ''}</div>
       ${met.length ? `<ul class="g-st-links g-sl-cards" aria-label="Social links">${cards}</ul>` : '<p class="g-note g-sl-empty">No bonds yet. Go out after school and meet people.</p>'}
       ${at ? `<div class="g-sl-detail" aria-live="polite">${linkDetail(at, B, ctx)}</div>` : ''}
@@ -891,7 +891,8 @@ window.FemcMenu = (() => {
     if (same) return;
     const fig = root.querySelector('.g-sl-fig'), tc = root.querySelector('.g-sl-tarot'), art = G.tarot(l);
     fig.innerHTML = linkFigure(l);
-    if (tc) tc.innerHTML = art ? `<img src="${art}" alt="">` : `<span>${esc(l.numeral || '✦')}</span>`;
+    if (tc) { tc.innerHTML = art ? `<img src="${art}" alt="">` : `<span>${esc(l.numeral || '✦')}</span>`; tc.classList.toggle('down', !!G.deadLink?.(l.id)); }
+    root.querySelector('.g-sl-art')?.classList.toggle('lost', !!G.deadLink?.(l.id));
     root.querySelector('.g-sl-detail').innerHTML = linkDetail(l, B, ctx);
     root.querySelector('.g-sl-guide .g1').textContent = linkGuide(l);
     [root.querySelector('.g-sl-art'), tc].forEach(e => { if (!e) return; e.classList.remove('swap'); void e.offsetWidth; e.classList.add('swap'); });
