@@ -550,6 +550,7 @@ window.FemcGame = (() => {
        starts: 'M/D' (first possible day); closes: 'M/D'; needs: { knowledge|courage|proficiency|charm|kindness: rank } to begin (stats.js; an old id like academics still works)
        gate: { R|S|H: n } memory fragments needed before they appear; hidden: true keeps them off the map
        home: { area (id or name from data/places.js), spot, slot: 'after' | 'evening', days: [0-6], hint }
+       homes: [{ from: 'M/D', home: { …as home } }]  where they can be found from a date on (the latest that has come wins over home)
        approach: one line shown on the map before you've met; invite: { ask, ok, no } texts, or null
        hangouts: [[lines], ...] story-free time that fills the bond meter between ranks
        ranks: 10 entries (maxRank of them), each { after: 'M/D', title: '1: rookie', place, time, music, scene: [lines] } or { todo: '…' }
@@ -665,7 +666,10 @@ window.FemcGame = (() => {
     const brk = D.cal.breaks.find(b => inRange(d, b.from, b.to));
     if (brk?.id === 'summer' && l.summerHome) return l.summerHome;
     if (brk?.id === 'winter' && l.winterHome) return l.winterHome;
-    return l.home || {};
+    // homes: [{ from: 'M/D', home }] (Nov 16, Equinox): someone who moves during the year (Shinjiro out of hospital); the
+    // latest entry whose `from` has come wins over `home`. Breaks and the stretch still come first.
+    const moved = (l.homes || []).filter(h => d >= dayOf(h.from)).pop();
+    return (moved && moved.home) || l.home || {};
   }
   /* Ranks past 10 (maxRank, see the header). maxOf: the link's top rank. isMaxed: at it. stretchOn: a closing link's
      comeback (stretch) is on today. afterList: the afterMax entries this save can play (flags / noFlags). afterGap: at rank
