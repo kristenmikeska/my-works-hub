@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the opening** (section 8: 1 background, 2 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: one face for Junpei) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **Act III and the third meetings** (section 15: 11 backgrounds, 16 CGs) · **the newest third meetings** (section 16: 6 backgrounds, 14 CGs) · **the new fighters' battle art** (section 17: 8 pieces each for Hanni, Yunjin and Hyein) · **165 pictures plus Junpei's face.** More is coming later (section 18: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces. Done Nov 16 (art batch 4): Solar's remade faces, Theodore's and Elizabeth's new sheets, and section 12's faces for Akihiko, Mitsuru, Yukari, Junpei, Shinjiro, Aigis, Fuuka, Ken, Koromaru, Jungwon, Jihoon, Minji, Hanni, Hyein, Yunjin, Cherry, Mark and Chenle. Done Nov 16 (art batch 5): the opening's next 9 CGs and the garden, Jaehyun's faces, Dalnim's new look, and Equinox's own Velvet Room and Gekkoukan in the Dark Hour.*
+**To make (Nov 15):** **the opening** (section 8: 1 background, 2 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **Act III and the third meetings** (section 15: 11 backgrounds, 16 CGs) · **the newest third meetings** (section 16: 6 backgrounds, 14 CGs) · **the new fighters' battle art** (section 17: 8 pieces each for Hanni, Yunjin and Hyein) · **165 pictures.** More is coming later (section 18: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces. Done Nov 16 (art batch 4): Solar's remade faces, Theodore's and Elizabeth's new sheets, and section 12's faces for Akihiko, Mitsuru, Yukari, Junpei, Shinjiro, Aigis, Fuuka, Ken, Koromaru, Jungwon, Jihoon, Minji, Hanni, Hyein, Yunjin, Cherry, Mark and Chenle. Done Nov 16 (art batch 5): the opening's next 9 CGs and the garden, Jaehyun's faces, Dalnim's new look, and Equinox's own Velvet Room and Gekkoukan in the Dark Hour.*
 
 ---
 
@@ -298,14 +298,6 @@ Edit the attached image. Change ONLY the facial expression to: [EXPRESSION]. Kee
 ```
 
 **Expressions** (put one in the brackets; each item adds how that person shows them): neutral · happy · sad · serious · surprised · flustered.
-
-**[ ] 12D2. Junpei · one more face (serious)**  
-His sheet came with five faces; serious borrows his neutral for now.  
-Attach: `Junpei (Equinox) - portraits.png`  
-Save as: `eq-junpei-serious-portrait.png`
-```
-Edit the attached image: take ONLY the top-left portrait and change ONLY the facial expression to: serious (brows down, jaw set, no grin; he means it this time). Keep everything else exactly the same: the face shape, eyes, brows, nose, lips, every mark, the cap, the hair, the clothes, the art style, the framing and the size. One single portrait, square 1:1, on a fully transparent background.
-```
 
 ---
 
