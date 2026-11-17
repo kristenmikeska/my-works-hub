@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: Jaehyun's faces, one face for Junpei, and Dalnim's new look) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **Act III and the third meetings** (section 15: 11 backgrounds, 16 CGs) · **the newest third meetings** (section 16: 6 backgrounds, 14 CGs) · **151 pictures plus the face sets.** More is coming later (section 17: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces. Done Nov 16 (art batch 4): Solar's remade faces, Theodore's and Elizabeth's new sheets, and section 12's faces for Akihiko, Mitsuru, Yukari, Junpei, Shinjiro, Aigis, Fuuka, Ken, Koromaru, Jungwon, Jihoon, Minji, Hanni, Hyein, Yunjin, Cherry, Mark and Chenle.*
+**To make (Nov 15):** **the opening** (section 8: 2 backgrounds, 11 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Equinox face revamps** (section 12: Jaehyun's faces, one face for Junpei, and Dalnim's new look) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **Act III and the third meetings** (section 15: 11 backgrounds, 16 CGs) · **the newest third meetings** (section 16: 6 backgrounds, 14 CGs) · **the new fighters' battle art** (section 17: 8 pieces each for Hanni, Yunjin and Hyein) · **175 pictures plus the face sets.** More is coming later (section 18: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces. Done Nov 16 (art batch 4): Solar's remade faces, Theodore's and Elizabeth's new sheets, and section 12's faces for Akihiko, Mitsuru, Yukari, Junpei, Shinjiro, Aigis, Fuuka, Ken, Koromaru, Jungwon, Jihoon, Minji, Hanni, Hyein, Yunjin, Cherry, Mark and Chenle.*
 
 ---
 
@@ -1172,7 +1172,210 @@ A wide 16:9 story CG illustration in Persona 3 Reload official art style, matchi
 ```
 
 ---
-## 17. Later (no prompts yet)
+## 17. The new fighters' battle art (ChatGPT)
+Hanni, Yunjin and Hyein join the fight in Act IV. Their faces are in; this is the rest of the usual fighter set. Their **Persona pictures come from your concept sheets** (Claude cuts the front figure out), so no Persona art is needed here. Outfits, weapons and elements are starting ideas: change anything. Each fighter's pieces are in order: make the pose sheet first; the later pieces attach it.
+
+### Hanni · Persona Âu Cơ · Wind
+
+**[ ] 17A1. Hanni · pose sheet**  
+Her battle poses: the figure on the battlefield.  
+Attach: `Hanni (Equinox).png`, `Solar (Equinox) - pose sheet.png`  
+Save as: `eq-hanni-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), with clear empty space between every pose. The SAME person as the FIRST attached image in all six cells, full body, same face, same size, nothing overlapping. Copy the figure size, framing, camera angle and art style of the SECOND attached image exactly (another fighter's sheet from the same game), with the feet on the same baseline in every cell. Her look: a cropped black leather jacket with blood-red panels and silver buckles over a white lace-trimmed top, layered thin silver necklaces, silver hoop earrings, a black pleated mini skirt, black thigh-high socks and black platform boots; her long black hair in a high half-ponytail tied with a red ribbon; a red S.E.E.S. armband on her left arm. Her weapon: a pair of curved short swords with blood-red tassels on the pommels. Cell 1: battle-ready stance, weapon ready. Cell 2: raising a silver Evoker pistol to her temple. Cell 3: attacking: a spinning double slash with both swords, the red tassels whipping around. Cell 4: using a skill: a gust of white-and-red feathers spiralling up around her raised hand. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Persona 3 Reload official art style. No text, no logos.
+```
+
+**[ ] 17A2. Hanni · second pose sheet**  
+Support, guard, dodge, down, badly hurt and dash poses.  
+Attach: `eq-hanni-posesheet.png`, `Hanni (Equinox).png`  
+Save as: `eq-hanni-posesheet-2.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. Keep the red S.E.E.S. armband on the left arm. No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused. Cell 2: guarding: braced low, both curved swords crossed low in front of her, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still holding her weapon. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, a determined look. Cell 6: dashing in: a full-speed run toward the same side the first sheet's attack pose faces, body low and leaning forward, hair and clothes streaming back. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 17A3. Hanni · Theurgy cut-in**  
+Her ultimate attack: Hanni with Âu Cơ behind her.  
+Attach: `Template - Theurgy cut-in (Haechan).png`, `eq-hanni-posesheet.png`, `Hanni (Equinox).png`, `Persona - Au Co (concept).png`  
+Save as: `eq-hanni-theurgy.png`
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in with the same composition energy, bold diagonal layout, speed lines and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. The character is the person in the SECOND and THIRD attached images, in the outfit and with the weapon of the SECOND (same face as the THIRD), in a dramatic attacking pose in the foreground, her face clearly visible. Behind her, huge and towering, her Persona: the front figure of the FOURTH attached image, keeping its exact design. Background: a dark, wind-torn sky over a red-black sea, white feathers streaming, broken by speed lines, with pale feathers, a pearl-white glow and blood-red ribbons of wind streaking through. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no letters, no logos.
+```
+
+**[ ] 17A4. Hanni · Theurgy strike sheet**  
+The hit effect when her Theurgy lands.  
+Attach: `Template - Theurgy strike sheet (Haechan).png` (format and spacing only)  
+Save as: `eq-hanni-strikesheet.png`
+```
+A sprite sheet of one video-game attack effect in exactly the format, grid and spacing of the attached image (copy its layout only, not its colours or shapes), on a fully transparent background (a PNG with real transparency). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty transparent margin on every side. The effect: a heavy Wind strike made of pale feathers, a pearl-white glow and blood-red ribbons of wind: it gathers, bursts at its peak with a white-hot core, then scatters and fades. Style: Persona 3 Reload battle VFX: sharp, graphic shapes with clean hard edges, high contrast, readable at small size. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Pure light and energy only: no characters, no ground, no frame borders, no grid lines, no text.
+```
+
+**[ ] 17A5. Hanni · "1 MORE!" eye strip**  
+Her eyes in the strip that flashes when she knocks an enemy down.  
+Attach: `Template - 1 MORE strip (Haechan).png`, `Hanni (Equinox).png`  
+Save as: `eq-hanni-onemore.png`
+```
+A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in the same format and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. An extreme close-up of the SAME person as the SECOND attached image, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right, calm, warm and unshakeable. Her hair exactly as in the second image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in blood red, oxblood and near-black with bone-white light, a few pale feathers, a pearl-white glow and blood-red ribbons of wind scattered in the stripes. No text, no letters, no logos, no border.
+```
+
+**[ ] 17A6. Hanni · entrance card**  
+The splash when a fight starts with her in the lead.  
+Attach: `Template - entrance card (Haechan).png`, `eq-hanni-posesheet.png`, `Hanni (Equinox).png`  
+Save as: `eq-hanni-entrance.png`
+```
+Create a NEW 16:9 battle-start splash card in the same layout and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows, a bold slanted layout); a different character. The person in the SECOND and THIRD attached images, in the outfit and with the weapon of the SECOND (same face as the THIRD), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, weapon ready, hair and clothes whipping back, looking straight at the viewer, calm, warm and unshakeable. Background: a dark, wind-torn sky over a red-black sea, white feathers streaming, broken into flat graphic shards splitting apart diagonally, a scatter of pale feathers, a pearl-white glow and blood-red ribbons of wind. The character fills the right two thirds; the left third is clean graphic shapes. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no letters, no logos.
+```
+
+**[ ] 17A7. Hanni · finish card**  
+The card after an All-Out Attack she finishes.  
+Attach: `Template - finish card (Haechan).png`, `eq-hanni-posesheet.png`, `Hanni (Equinox).png`  
+Save as: `eq-hanni-finish.png`
+```
+Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style (Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows); a different character. The person in the SECOND and THIRD attached images, in the outfit of the SECOND (same face as the THIRD), in the same place, size and crop as the first image's character, turned toward the viewer with a confident finishing pose; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines. Background: a dark, wind-torn sky over a red-black sea, white feathers streaming, as flat graphic shapes, pale feathers, a pearl-white glow and blood-red ribbons of wind drifting across. The words are bone white with a blood-red outline and read exactly: AND THAT'S THAT. No other text, no logos, no watermark. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green.
+```
+
+**[ ] 17A8. Hanni · Evoker close-up**  
+The close-up when she summons her Persona.  
+Attach: `Template - Evoker close-up (Haechan).png`, `Hanni (Equinox).png`  
+Save as: `eq-hanni-evoker.png`
+```
+Create a NEW 16:9 close-up in the same framing, lighting and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. The SAME person as the SECOND attached image, head and shoulders, pressing a silver Evoker pistol to her temple, steady, eyes half-closed, almost peaceful; a red S.E.E.S. armband just visible. Her hair and clothes exactly as in the second image, lifted slightly by a rising wind. Dark background of a dark, wind-torn sky over a red-black sea, white feathers streaming, with a faint blood-red glow behind her. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no logos.
+```
+
+### Yunjin · Persona Bari · Fire
+
+**[ ] 17B1. Yunjin · pose sheet**  
+Her battle poses: the figure on the battlefield.  
+Attach: `Yunjin (Equinox).png`, `Solar (Equinox) - pose sheet.png`  
+Save as: `eq-yunjin-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), with clear empty space between every pose. The SAME person as the FIRST attached image in all six cells, full body, same face, same size, nothing overlapping. Copy the figure size, framing, camera angle and art style of the SECOND attached image exactly (another fighter's sheet from the same game), with the feet on the same baseline in every cell. Her look: a black leather biker jacket with silver buckles over a black top, black leather trousers and heeled black boots, silver drop earrings; her long, wavy blood-red hair loose; a red S.E.E.S. armband on her left arm. Her weapon: a long chain whip that ends in a cluster of small brass shaman bells. Cell 1: battle-ready stance, weapon ready. Cell 2: raising a silver Evoker pistol to her temple. Cell 3: attacking: a wide cracking lash of the bell chain, the bells flying out in an arc. Cell 4: using a skill: a ring of red flame and ringing brass bells circling her. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Persona 3 Reload official art style. No text, no logos.
+```
+
+**[ ] 17B2. Yunjin · second pose sheet**  
+Support, guard, dodge, down, badly hurt and dash poses.  
+Attach: `eq-yunjin-posesheet.png`, `Yunjin (Equinox).png`  
+Save as: `eq-yunjin-posesheet-2.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. Keep the red S.E.E.S. armband on the left arm. No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused. Cell 2: guarding: braced low, the chain wrapped twice around her forearm as a shield, bells hanging still, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still holding her weapon. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, a determined look. Cell 6: dashing in: a full-speed run toward the same side the first sheet's attack pose faces, body low and leaning forward, hair and clothes streaming back. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 17B3. Yunjin · Theurgy cut-in**  
+Her ultimate attack: Yunjin with Bari behind her.  
+Attach: `Template - Theurgy cut-in (Haechan).png`, `eq-yunjin-posesheet.png`, `Yunjin (Equinox).png`, `Persona - Bari (concept).png`  
+Save as: `eq-yunjin-theurgy.png`
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in with the same composition energy, bold diagonal layout, speed lines and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. The character is the person in the SECOND and THIRD attached images, in the outfit and with the weapon of the SECOND (same face as the THIRD), in a dramatic attacking pose in the foreground, her face clearly visible. Behind her, huge and towering, her Persona: the front figure of the FOURTH attached image, keeping its exact design. Background: a dark riverbank between worlds, red lanterns floating on black water, broken by speed lines, with ringing brass bells, red funeral ribbons and embers streaking through. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no letters, no logos.
+```
+
+**[ ] 17B4. Yunjin · Theurgy strike sheet**  
+The hit effect when her Theurgy lands.  
+Attach: `Template - Theurgy strike sheet (Haechan).png` (format and spacing only)  
+Save as: `eq-yunjin-strikesheet.png`
+```
+A sprite sheet of one video-game attack effect in exactly the format, grid and spacing of the attached image (copy its layout only, not its colours or shapes), on a fully transparent background (a PNG with real transparency). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty transparent margin on every side. The effect: a heavy Fire strike made of ringing brass bells, red funeral ribbons and embers: it gathers, bursts at its peak with a white-hot core, then scatters and fades. Style: Persona 3 Reload battle VFX: sharp, graphic shapes with clean hard edges, high contrast, readable at small size. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Pure light and energy only: no characters, no ground, no frame borders, no grid lines, no text.
+```
+
+**[ ] 17B5. Yunjin · "1 MORE!" eye strip**  
+Her eyes in the strip that flashes when she knocks an enemy down.  
+Attach: `Template - 1 MORE strip (Haechan).png`, `Yunjin (Equinox).png`  
+Save as: `eq-yunjin-onemore.png`
+```
+A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in the same format and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. An extreme close-up of the SAME person as the SECOND attached image, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right, confident, teasing, a little dangerous. Her hair exactly as in the second image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in blood red, oxblood and near-black with bone-white light, a few ringing brass bells, red funeral ribbons and embers scattered in the stripes. No text, no letters, no logos, no border.
+```
+
+**[ ] 17B6. Yunjin · entrance card**  
+The splash when a fight starts with her in the lead.  
+Attach: `Template - entrance card (Haechan).png`, `eq-yunjin-posesheet.png`, `Yunjin (Equinox).png`  
+Save as: `eq-yunjin-entrance.png`
+```
+Create a NEW 16:9 battle-start splash card in the same layout and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows, a bold slanted layout); a different character. The person in the SECOND and THIRD attached images, in the outfit and with the weapon of the SECOND (same face as the THIRD), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, weapon ready, hair and clothes whipping back, looking straight at the viewer, confident, teasing, a little dangerous. Background: a dark riverbank between worlds, red lanterns floating on black water, broken into flat graphic shards splitting apart diagonally, a scatter of ringing brass bells, red funeral ribbons and embers. The character fills the right two thirds; the left third is clean graphic shapes. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no letters, no logos.
+```
+
+**[ ] 17B7. Yunjin · finish card**  
+The card after an All-Out Attack she finishes.  
+Attach: `Template - finish card (Haechan).png`, `eq-yunjin-posesheet.png`, `Yunjin (Equinox).png`  
+Save as: `eq-yunjin-finish.png`
+```
+Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style (Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows); a different character. The person in the SECOND and THIRD attached images, in the outfit of the SECOND (same face as the THIRD), in the same place, size and crop as the first image's character, turned toward the viewer with a confident finishing pose; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines. Background: a dark riverbank between worlds, red lanterns floating on black water, as flat graphic shapes, ringing brass bells, red funeral ribbons and embers drifting across. The words are bone white with a blood-red outline and read exactly: TAKE A BOW. No other text, no logos, no watermark. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green.
+```
+
+**[ ] 17B8. Yunjin · Evoker close-up**  
+The close-up when she summons her Persona.  
+Attach: `Template - Evoker close-up (Haechan).png`, `Yunjin (Equinox).png`  
+Save as: `eq-yunjin-evoker.png`
+```
+Create a NEW 16:9 close-up in the same framing, lighting and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. The SAME person as the SECOND attached image, head and shoulders, pressing a silver Evoker pistol to her temple, chin up, a half-smile, daring it; a red S.E.E.S. armband just visible. Her hair and clothes exactly as in the second image, lifted slightly by a rising wind. Dark background of a dark riverbank between worlds, red lanterns floating on black water, with a faint blood-red glow behind her. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no logos.
+```
+
+### Hyein · Persona Jiknyeo · Ice
+
+**[ ] 17C1. Hyein · pose sheet**  
+Her battle poses: the figure on the battlefield.  
+Attach: `Hyein (Equinox).png`, `Solar (Equinox) - pose sheet.png`  
+Save as: `eq-hyein-posesheet.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency: no white, black or any other colour behind it), with clear empty space between every pose. The SAME person as the FIRST attached image in all six cells, full body, same face, same size, nothing overlapping. Copy the figure size, framing, camera angle and art style of the SECOND attached image exactly (another fighter's sheet from the same game), with the feet on the same baseline in every cell. Her look: a fitted black blazer with blood-red piping over a white shirt and a loose red tie, a black pleated skirt, black tights and black loafers, a small silver star pin on the lapel; her long dark-brown wavy hair loose; a red S.E.E.S. armband on her left arm. Her weapon: two silver weaver's-shuttle blades tied to her wrists by fine glinting threads, thrown and pulled back. Cell 1: battle-ready stance, weapon ready. Cell 2: raising a silver Evoker pistol to her temple. Cell 3: attacking: both shuttle blades flung forward on their threads, the threads glinting in long straight lines. Cell 4: using a skill: a web of glittering frost threads and tiny stars spreading from her open hand. Cell 5: hurt, recoiling from a hit. Cell 6: victory pose. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Persona 3 Reload official art style. No text, no logos.
+```
+
+**[ ] 17C2. Hyein · second pose sheet**  
+Support, guard, dodge, down, badly hurt and dash poses.  
+Attach: `eq-hyein-posesheet.png`, `Hyein (Equinox).png`  
+Save as: `eq-hyein-posesheet-2.png`
+```
+Character pose sheet: 3 columns × 2 rows on a fully transparent background (a PNG with real transparency), with clear empty space between every pose. The SAME person as the attached images in all six cells, full body, same face, same outfit, same hair, same weapon, same size, nothing overlapping. This is the SECOND pose sheet for the FIRST attached image: match its figure size, framing, camera angle, facing direction and art style exactly, with the feet on the same baseline in every cell. Keep the red S.E.E.S. armband on the left arm. No skill effects anywhere: no glows, no magic, no sparkles, no motion lines, no ground shadows. Cell 1: casting a healing or support skill: standing tall, one open hand raised palm-up at chest height, calm and focused. Cell 2: guarding: braced low, the two shuttle blades held up in a cross, the threads pulled taut between her hands like a web, eyes on the enemy. Cell 3: dodging: a quick sidestep leaning away, weight on one foot, her hair and clothes swinging with the motion. Cell 4: knocked down: fallen to one knee with one hand on the ground, head low, still holding her weapon. Cell 5: badly hurt: standing but hunched, one hand pressed to her side, breathing hard, a determined look. Cell 6: dashing in: a full-speed run toward the same side the first sheet's attack pose faces, body low and leaning forward, hair and clothes streaming back. Persona 3 Reload official art style. No text.
+```
+
+**[ ] 17C3. Hyein · Theurgy cut-in**  
+Her ultimate attack: Hyein with Jiknyeo behind her.  
+Attach: `Template - Theurgy cut-in (Haechan).png`, `eq-hyein-posesheet.png`, `Hyein (Equinox).png`, `Persona - Jiknyeo (concept).png`  
+Save as: `eq-hyein-theurgy.png`
+```
+Create a NEW full-screen 16:9 ultimate-attack cut-in with the same composition energy, bold diagonal layout, speed lines and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. The character is the person in the SECOND and THIRD attached images, in the outfit and with the weapon of the SECOND (same face as the THIRD), in a dramatic attacking pose in the foreground, her face clearly visible. Behind her, huge and towering, her Persona: the front figure of the FOURTH attached image, keeping its exact design. Background: a frozen starry night over a broken bridge, magpies wheeling overhead, broken by speed lines, with silver threads, frost-white stars and black magpie feathers streaking through. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no letters, no logos.
+```
+
+**[ ] 17C4. Hyein · Theurgy strike sheet**  
+The hit effect when her Theurgy lands.  
+Attach: `Template - Theurgy strike sheet (Haechan).png` (format and spacing only)  
+Save as: `eq-hyein-strikesheet.png`
+```
+A sprite sheet of one video-game attack effect in exactly the format, grid and spacing of the attached image (copy its layout only, not its colours or shapes), on a fully transparent background (a PNG with real transparency). Every frame shows the SAME effect at a later moment, centred at the same point and the same scale, with a wide empty transparent margin on every side. The effect: a heavy Ice strike made of silver threads, frost-white stars and black magpie feathers: it gathers, bursts at its peak with a white-hot core, then scatters and fades. Style: Persona 3 Reload battle VFX: sharp, graphic shapes with clean hard edges, high contrast, readable at small size. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Pure light and energy only: no characters, no ground, no frame borders, no grid lines, no text.
+```
+
+**[ ] 17C5. Hyein · "1 MORE!" eye strip**  
+Her eyes in the strip that flashes when she knocks an enemy down.  
+Attach: `Template - 1 MORE strip (Haechan).png`, `Hyein (Equinox).png`  
+Save as: `eq-hyein-onemore.png`
+```
+A very wide, very short 6:1 banner image for a video-game "One More!" cut-in, in the same format and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. An extreme close-up of the SAME person as the SECOND attached image, cropped to just the eyes and eyebrows across the whole width (forehead and nose tip cut off by the top and bottom edges), looking sharply to the right, bright and sharp, a little mischievous. Her hair exactly as in the second image, strands falling across the frame. Behind the face: bold flat diagonal stripes and speed lines in blood red, oxblood and near-black with bone-white light, a few silver threads, frost-white stars and black magpie feathers scattered in the stripes. No text, no letters, no logos, no border.
+```
+
+**[ ] 17C6. Hyein · entrance card**  
+The splash when a fight starts with her in the lead.  
+Attach: `Template - entrance card (Haechan).png`, `eq-hyein-posesheet.png`, `Hyein (Equinox).png`  
+Save as: `eq-hyein-entrance.png`
+```
+Create a NEW 16:9 battle-start splash card in the same layout and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows, a bold slanted layout); a different character. The person in the SECOND and THIRD attached images, in the outfit and with the weapon of the SECOND (same face as the THIRD), shown from the knees up in a dynamic entrance pose: stepping forward out of a diagonal tear in the background, weapon ready, hair and clothes whipping back, looking straight at the viewer, bright and sharp, a little mischievous. Background: a frozen starry night over a broken bridge, magpies wheeling overhead, broken into flat graphic shards splitting apart diagonally, a scatter of silver threads, frost-white stars and black magpie feathers. The character fills the right two thirds; the left third is clean graphic shapes. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no letters, no logos.
+```
+
+**[ ] 17C7. Hyein · finish card**  
+The card after an All-Out Attack she finishes.  
+Attach: `Template - finish card (Haechan).png`, `eq-hyein-posesheet.png`, `Hyein (Equinox).png`  
+Save as: `eq-hyein-finish.png`
+```
+Create a NEW 16:9 All-Out Attack finish card in exactly the FIRST attached image's layout and art style (Persona 3 Reload official art, clean anime lineart, flat cel shading with hard shadows); a different character. The person in the SECOND and THIRD attached images, in the outfit of the SECOND (same face as the THIRD), in the same place, size and crop as the first image's character, turned toward the viewer with a confident finishing pose; huge bold slanted words where the first image has its words; flat graphic background shapes and thin lines. Background: a frozen starry night over a broken bridge, magpies wheeling overhead, as flat graphic shapes, silver threads, frost-white stars and black magpie feathers drifting across. The words are bone white with a blood-red outline and read exactly: ALL STITCHED UP. No other text, no logos, no watermark. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green.
+```
+
+**[ ] 17C8. Hyein · Evoker close-up**  
+The close-up when she summons her Persona.  
+Attach: `Template - Evoker close-up (Haechan).png`, `Hyein (Equinox).png`  
+Save as: `eq-hyein-evoker.png`
+```
+Create a NEW 16:9 close-up in the same framing, lighting and Persona 3 Reload official art style as the FIRST attached image (clean anime lineart, flat cel shading with hard shadows); a different character. The SAME person as the SECOND attached image, head and shoulders, pressing a silver Evoker pistol to her temple, eyes wide open, focused, not afraid; a red S.E.E.S. armband just visible. Her hair and clothes exactly as in the second image, lifted slightly by a rising wind. Dark background of a frozen starry night over a broken bridge, magpies wheeling overhead, with a faint blood-red glow behind her. Equinox's palette: blood red, oxblood and near-black with bone-white light; the character's own colours can stay. No pink-heavy colours, no blue, navy, indigo, purple, lilac or green. No text, no logos.
+```
+
+---
+
+## 18. Later (no prompts yet)
 These come once the story parts that need them are written. Counts are rough.
 
 - **Story CGs:** about 40 to 50
@@ -1182,7 +1385,6 @@ These come once the story parts that need them are written. Counts are rough.
 - **Regular Shadows:** about 24 (pose sheets, as before)
 - **Haenim:** 1 new form
 - **Duo attack:** 1 cut-in
-- **Battle art for the new fighters:** the usual set each (pose sheets, entrance, "1 MORE!", Theurgy, finish)
 - **New characters:** 2 face sets and 2 full-body pictures
 - **Tarot cards:** 2 to 3
 - **New town places:** about 6 backgrounds

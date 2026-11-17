@@ -208,3 +208,8 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
   - 16S `eqx-two-tables` ← `yunjin.js`, comment `// CG: eqx-two-tables`
   - 16T `eqx-where-i-can-see` ← `yukari.js`, comment `// CG: eqx-where-i-can-see`
 - Several of these slugs repeat in a story file as an "(as rank 1)" BG line; swap those too.
+
+## 17. The new fighters' battle art (Hanni, Yunjin, Hyein; prompts Nov 16)
+- Not built yet: battle data for the three waits for this art (no placeholder fighters). When it comes: fighter entries in an Equinox-only battle file loaded beside well.js (so data.js / Solstice stay unchanged), Personas Âu Cơ (Hanni), Bari (Yunjin), Jiknyeo (Hyein) with art cut from the front figure of `Equinox/eq-persona-<id>-concept.png` → `equinox/art/personas/`, and their ptrees.
+- Pieces → the base fighters' homes: pose sheets with `tools/femc-wardrobe.py` own sheets (`battle/art/poses/<id>-pose-0..5`, `-pose2-0..5`; FIGHTER_POSES / FIGHTER_POSES2 / FIGHTER_HAND2), Theurgy `battle/art/theurgy/<id>.webp` + strike sheet (`sheet3('<id>-strike')`), `game/art/onemore/<id>.webp`, `game/art/entrance/<id>.webp`, `battle/art/finish/<id>.webp`, `battle/art/summon/<id>-evoker.webp` (data.js `evoker.shot`).
+- The battle frame still shows Solstice faces for everyone (battle.js `pimg` reads `portraits/<id>`): map it through the parent's config `faces` when these go in (the Equinox faces sit at their base positions, so data.js faceFocus still fits).
