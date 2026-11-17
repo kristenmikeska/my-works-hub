@@ -30,7 +30,7 @@ assets/femc/portraits/solar-equinox/        Solar's Equinox faces (Solar's canva
 - 7A / 7B / 7C wired as reference: `equinox/art/personas/hanni-concept.webp`, `yunjin-concept.webp`, `hyein-concept.webp` (7C in art batch 2; no game use).
 - The game's Persona art comes later as a single 2:3 figure on black like `Personas/Theia.png` → `battle/art/personas/<name>.webp`. Visual sources: the private plan §10's candidate myths; never name the myth or the Persona in Kat's list until she picks.
 
-## 17. Later
+## Later (art list section 20)
 Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and the picked direction; plot-bearing pieces (CGs, bosses, guardians, the two new characters, Haenim's new form, the duo cut-in) must be written visual-only, checked against `DO-NOT-OPEN-equinox-plot.md` for what not to show.
 
 ## 8. The opening (Nov 15, build batch 2)
@@ -213,3 +213,76 @@ Counts from EQUINOX-PLAN.md's art section. Prompts wait for the story parts and 
 - Not built yet: battle data for the three waits for this art (no placeholder fighters). When it comes: fighter entries in an Equinox-only battle file loaded beside well.js (so data.js / Solstice stay unchanged), Personas Âu Cơ (Hanni), Bari (Yunjin), Jiknyeo (Hyein) with art cut from the front figure of `Equinox/eq-persona-<id>-concept.png` → `equinox/art/personas/`, and their ptrees.
 - Pieces → the base fighters' homes: pose sheets with `tools/femc-wardrobe.py` own sheets (`battle/art/poses/<id>-pose-0..5`, `-pose2-0..5`; FIGHTER_POSES / FIGHTER_POSES2 / FIGHTER_HAND2), Theurgy `battle/art/theurgy/<id>.webp` + strike sheet (`sheet3('<id>-strike')`), `game/art/onemore/<id>.webp`, `game/art/entrance/<id>.webp`, `battle/art/finish/<id>.webp`, `battle/art/summon/<id>-evoker.webp` (data.js `evoker.shot`).
 - The battle frame still shows Solstice faces for everyone (battle.js `pimg` reads `portraits/<id>`): map it through the parent's config `faces` when these go in (the Equinox faces sit at their base positions, so data.js faceFocus still fits).
+
+## 19. Ranks 4–6
+- BGs → `assets/femc/bg/<save name>.webp` (q86, native size); CGs → `assets/femc/cg/<save name>.webp`. At each `// BG: <slug>` comment swap that line's `bg` to the new name; at each `// CG: eqx-<slug>` comment put `{ cg: 'eqx-<slug>' }` and `{ cg: null }` where the moment ends. Bump ART_V. All comments are under `assets/femc/equinox/data/links/`, added in commit 6d9564a0.
+- Item → file and comment:
+  - 19A `eqx-seaside-beach-dusk` ← `aigis.js`, comment `// BG: eqx-seaside-beach-dusk`
+  - 19B `eqx-seaside-shallows` ← `akihiko.js`, comment `// BG: eqx-seaside-shallows`
+  - 19C `eqx-station-postbox` ← `akihiko.js`, comment `// BG: eqx-station-postbox`
+  - 19D `eqx-laundry-booth` ← `haechan.js`, comment `// BG: eqx-laundry-booth`
+  - 19E `eqx-shrine-steps-autumn` ← `jaehyun.js`, comment `// BG: naganaki-shrine-steps-autumn`
+  - 19F `eqx-mall-alley-dusk` ← `jihoon.js`, comment `// BG: paulownia-service-alley-dusk`
+  - 19G `eqx-guesthouse-room-night` ← `jihoon.js`, comment `// BG: kirijo-guesthouse-room-night`
+  - 19H `eqx-station-concourse-clock` ← `jihoon.js`, comment `// BG: portisland-station-clock`
+  - 19I `eqx-council-room-summer` ← `jungwon.js`, comment `// BG: gekkoukan-student-council-summer`
+  - 19J `eqx-guesthouse-roof-summer` ← `jungwon.js`, comment `// BG: kirijo-guesthouse-roof-summer`
+  - 19K `eqx-riverside-ballpark` ← `junpei.js`, comment `// BG: eqx-riverside-ballpark`
+  - 19L `eqx-dorm-street-night` ← `junpei.js`, comment `// BG: iwatodai-dorm-street-night`
+  - 19M `eqx-station-clock` ← `junpei.js`, comment `// BG: eqx-station-clock`
+  - 19N `eqx-seaside-beach-august` ← `ken-koromaru.js`, comment `// BG: eqx-seaside-beach-august`
+  - 19O `eqx-shrine-playground-autumn` ← `ken-koromaru.js`, comment `// BG: naganaki-shrine-playground-autumn`
+  - 19P `eqx-iwatodai-corner-lot` ← `ken-koromaru.js`, comment `// BG: eqx-iwatodai-corner-lot`
+  - 19Q `eqx-guesthouse-minji-room` ← `minji.js`, comment `// BG: kirijo-guesthouse-minji-room`
+  - 19R `eqx-cafe-terrace-july` ← `mitsuru.js`, comment `// BG: portisland-cafe-terrace-evening` (one of its three "(as rank 1)" lines: the rank 4 hot July one; rank 1–3 lines keep `eqx-cafe-terrace-evening`)
+  - 19S `eqx-kirijo-lot-evening` ← `mitsuru.js`, comment `// BG: port-island-kirijo-lot-evening`
+  - 19T `eqx-cafe-terrace-august` ← `mitsuru.js`, comment `// BG: portisland-cafe-terrace-evening` (one of its three "(as rank 1)" lines: the rank 5 end-of-August one; rank 1–3 lines keep `eqx-cafe-terrace-evening`)
+  - 19U `eqx-cafe-terrace-autumn` ← `mitsuru.js`, comment `// BG: portisland-cafe-terrace-evening` (one of its three "(as rank 1)" lines: the rank 6 first-cold-evening one; rank 1–3 lines keep `eqx-cafe-terrace-evening`)
+  - 19V `eqx-oka-back-yard` ← `mrsoka.js`, comment `// BG: oka-boarding-house-back`
+  - 19W `eqx-oka-veranda-autumn` ← `mrsoka.js`, comment `// BG: oka-boarding-house-veranda-autumn`
+  - 19X `eqx-municipal-courts` ← `rio-saori.js`, comment `// BG: eqx-municipal-courts`
+  - 19Y `eqx-shinjiro-room` ← `shinjiro.js`, comment `// BG: eqx-shinjiro-room`
+  - 19Z `eqx-archery-range-rain` ← `yukari.js`, comment `// BG: gekkoukan-archery-range-rain`
+  - 19AA `eqx-temple-cemetery-obon` ← `yukari.js`, comment `// BG: eqx-temple-cemetery-obon`
+  - 19AB `eqx-archery-range-autumn` ← `yukari.js`, comment `// BG: gekkoukan-archery-range-autumn`
+  - 19AC `eqx-harbor-autumn-rain` ← `yunjin.js`, comment `// BG: port-island-harbor-autumn-rain`
+  - 19AD `eqx-aigis-wrist` ← `aigis.js`, comment `// CG: eqx-aigis-wrist`
+  - 19AE `eqx-aigis-float` ← `aigis.js`, comment `// CG: eqx-aigis-float`
+  - 19AF `eqx-aigis-gate` ← `aigis.js`, comment `// CG: eqx-aigis-gate`
+  - 19AG `eqx-crane-sack` ← `cherry.js`, comment `// CG: eqx-crane-sack`
+  - 19AH `eqx-twelve` ← `cherry.js`, comment `// CG: eqx-twelve`
+  - 19AI `eqx-small-fish` ← `elizabeth.js`, comment `// CG: eqx-small-fish`
+  - 19AJ `eqx-page-stopped` ← `elizabeth.js`, comment `// CG: eqx-page-stopped`
+  - 19AK `eqx-where-they-stood` ← `elizabeth.js`, comment `// CG: eqx-where-they-stood`
+  - 19AL `eqx-the-favor` ← `haechan.js`, comment `// CG: eqx-the-favor`
+  - 19AM `eqx-take-one` ← `haechan.js`, comment `// CG: eqx-take-one`
+  - 19AN `eqx-whose-voice` ← `haechan.js`, comment `// CG: eqx-whose-voice`
+  - 19AO `eqx-one-more` ← `hanni.js`, comment `// CG: eqx-one-more`
+  - 19AP `eqx-a-page` ← `hanni.js`, comment `// CG: eqx-a-page`
+  - 19AQ `eqx-twelve-oh-one` ← `hyein.js`, comment `// CG: eqx-twelve-oh-one`
+  - 19AR `eqx-door-girl` ← `hyein.js`, comment `// CG: eqx-door-girl`
+  - 19AS `eqx-no-splits` ← `jaehyun.js`, comment `// CG: eqx-no-splits`
+  - 19AT `eqx-a-hundred-and-thirteen` ← `jaehyun.js`, comment `// CG: eqx-a-hundred-and-thirteen`
+  - 19AU `eqx-a-guy` ← `jihoon.js`, comment `// CG: eqx-a-guy`
+  - 19AV `eqx-under-the-clock` ← `jihoon.js`, comment `// CG: eqx-under-the-clock`
+  - 19AW `eqx-handkerchief` ← `jungwon.js`, comment `// CG: eqx-handkerchief`
+  - 19AX `eqx-room-four-door` ← `jungwon.js`, comment `// CG: eqx-room-four-door`
+  - 19AY `eqx-koromaru-steps` ← `ken-koromaru.js`, comment `// CG: eqx-koromaru-steps`
+  - 19AZ `eqx-ken-ginkgo` ← `ken-koromaru.js`, comment `// CG: eqx-ken-ginkgo`
+  - 19BA `eqx-lens-cap` ← `minji.js`, comment `// CG: eqx-lens-cap`
+  - 19BB `eqx-mitsuru-passenger` ← `mitsuru.js`, comment `// CG: eqx-mitsuru-passenger`
+  - 19BC `eqx-mitsuru-heater` ← `mitsuru.js`, comment `// CG: eqx-mitsuru-heater`
+  - 19BD `eqx-oka-shiso` ← `mrsoka.js`, comment `// CG: eqx-oka-shiso`
+  - 19BE `eqx-oka-trays` ← `mrsoka.js`, comment `// CG: eqx-oka-trays`
+  - 19BF `eqx-oka-hoshigaki` ← `mrsoka.js`, comment `// CG: eqx-oka-hoshigaki`
+  - 19BG `eqx-pressed-word` ← `rio-saori.js`, comment `// CG: eqx-pressed-word`
+  - 19BH `eqx-at-the-gate` ← `rio-saori.js`, comment `// CG: eqx-at-the-gate`
+  - 19BI `eqx-tea-aisle` ← `shinjiro.js`, comment `// CG: eqx-tea-aisle`
+  - 19BJ `eqx-steady-hand` ← `shinjiro.js`, comment `// CG: eqx-steady-hand`
+  - 19BK `eqx-hold-a-pan` ← `shinjiro.js`, comment `// CG: eqx-hold-a-pan`
+  - 19BL `eqx-obon-fire` ← `yukari.js`, comment `// CG: eqx-obon-fire`
+  - 19BM `eqx-yukari-gate` ← `yukari.js`, comment `// CG: eqx-yukari-gate`
+  - 19BN `eqx-left-side` ← `yunjin.js`, comment `// CG: eqx-left-side`
+  - 19BO `eqx-daytime-tide` ← `yunjin.js`, comment `// CG: eqx-daytime-tide`
+  - 19BP `eqx-where-nobody-dies` ← `yunjin.js`, comment `// CG: eqx-where-nobody-dies`
+- Skipped as already covered: cherry.js's two `// BG: iwatodai-bakery-inside` lines (16B `eqx-bakery-inside`) and ken-koromaru.js's rank 4 `// BG: naganaki-shrine-playground-summer` (16C `eqx-shrine-playground-summer`): swap those to the 16 pictures.

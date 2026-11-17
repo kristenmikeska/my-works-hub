@@ -2,7 +2,7 @@
 
 *Persona 3: Equinox · started Nov 15 2026. The look is picked: **Equilux** (`mockups/equinox-ui/equilux.html`): Solstice's font and shapes, a clock as the signature, in shades of blood red and black.*
 
-**To make (Nov 15):** **the opening** (section 8: 1 background, 2 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **Act III and the third meetings** (section 15: 11 backgrounds, 16 CGs) · **the newest third meetings** (section 16: 6 backgrounds, 14 CGs) · **the new fighters' battle art** (section 17: 8 pieces each for Hanni, Yunjin and Hyein) · **Solar's flip phone** (section 18: 2) · **167 pictures.** More is coming later (section 19: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces. Done Nov 16 (art batch 4): Solar's remade faces, Theodore's and Elizabeth's new sheets, and section 12's faces for Akihiko, Mitsuru, Yukari, Junpei, Shinjiro, Aigis, Fuuka, Ken, Koromaru, Jungwon, Jihoon, Minji, Hanni, Hyein, Yunjin, Cherry, Mark and Chenle. Done Nov 16 (art batch 5): the opening's next 9 CGs and the garden, Jaehyun's faces, Dalnim's new look, and Equinox's own Velvet Room and Gekkoukan in the Dark Hour.*
+**To make (Nov 15):** **the opening** (section 8: 1 background, 2 CGs) · **Solar's home-screen poses** (section 10: 17) · **Act I and the first meetings** (section 11: 10 backgrounds, 17 CGs) · **Act II and the second meetings** (section 13: 9 backgrounds, 27 CGs) · **the summer arrivals' first meetings** (section 14: 4 backgrounds, 7 CGs) · **Act III and the third meetings** (section 15: 11 backgrounds, 16 CGs) · **the newest third meetings** (section 16: 6 backgrounds, 14 CGs) · **the new fighters' battle art** (section 17: 8 pieces each for Hanni, Yunjin and Hyein) · **Solar's flip phone** (section 18: 2) · **ranks 4 to 6** (section 19: 29 backgrounds, 39 CGs) · **235 pictures.** More is coming later (section 20: counts only, no prompts yet). *Done Nov 15 (art batch 1): the look tests, the title and UI pictures, Solar's Equinox look, the Well's 8 blocks, LE SSERAFIM and the parents' full bodies, and Hanni's and Yunjin's Persona concepts. Done Nov 15 (art batch 2): Hyein's Persona concept, the opening's first 6 backgrounds, Mrs. Oka's faces and the opening's first 6 CGs. Done Nov 15 (art batch 3): Haechan's restyled faces, all of section 9 (LE SSERAFIM's, the parents' and Theodore's faces, and Haenim's new look), plus Elizabeth's Equinox faces. Done Nov 16 (art batch 4): Solar's remade faces, Theodore's and Elizabeth's new sheets, and section 12's faces for Akihiko, Mitsuru, Yukari, Junpei, Shinjiro, Aigis, Fuuka, Ken, Koromaru, Jungwon, Jihoon, Minji, Hanni, Hyein, Yunjin, Cherry, Mark and Chenle. Done Nov 16 (art batch 5): the opening's next 9 CGs and the garden, Jaehyun's faces, Dalnim's new look, and Equinox's own Velvet Room and Gekkoukan in the Dark Hour.*
 
 ---
 
@@ -1292,7 +1292,556 @@ The SAME phone as the attached image, now folded shut and seen from the front at
 
 ---
 
-## 19. Later (no prompts yet)
+## 19. Ranks 4–6 (backgrounds in Gemini, CGs in ChatGPT)
+Art for Social Link ranks 4 to 6 (Aigis, Akihiko, Cherry, Elizabeth, Haechan, Hanni, Hyein, Jaehyun, Jihoon, Jungwon, Junpei, Ken and Koromaru, Minji, Mitsuru, Mrs. Oka, Rio and Saori, Shinjiro, Yukari and Yunjin), all written and playable now. Until a picture exists the game shows a stand-in background and no CG, so nothing breaks. Every item matches a `// BG:` or `// CG:` comment in the story files. Backgrounds go to Gemini; CGs (anything with a person or a thing held) to ChatGPT. Equinox's Dark Hour is red, never green. Solar's clothes are only a suggestion. People use their Equinox faces (`<Name> (Equinox).png`).
+
+**[ ] 19A. Background: the island beach at sunset**  
+Aigis's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-seaside-beach-dusk.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small city beach on a man-made island at summer sunset, warm flat water glowing rose-red and amber, an empty lifeguard chair, the long bridge and the lit mainland across the bay, the sand nearly empty. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19B. Background: the strip of sand below the seaside park**  
+Akihiko's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-seaside-shallows.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a narrow strip of coarse grey sand below a seaside park at sunset, between two concrete groynes, an empty lifeguard chair, a faded warning sign, warm clear water going red-gold toward an island skyline. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19C. Background: a post box outside the island station**  
+Akihiko's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Station Platform.png`  
+Save as: `eqx-station-postbox.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a red cylindrical Japanese post box on a hot white pavement outside a modern island station, heat shimmer, a vending machine and a bicycle rack, the monorail track overhead. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19D. Background: the laundry room as a recording booth**  
+Haechan's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Dorm Laundry Room at night.png`  
+Save as: `eqx-laundry-booth.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the dorm laundry room turned into a makeshift recording booth at night: blankets and futon quilts hung over the machines and pinned to the walls, a single microphone on a stand in the middle, a small silver recorder on the cold dryer, one bare bulb. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19E. Background: the shrine steps in October**  
+Jaehyun's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-shrine-steps-autumn.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the long stone stairs up to a hilltop shrine in October, red and yellow leaves drifted in the cupped middles of the treads, the trees half bare overhead, a cold white sky, the red torii small at the top. Nobody on them. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19F. Background: the alley behind the mall at dusk**  
+Jihoon's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Paulownia Mall.png`  
+Save as: `eqx-mall-alley-dusk.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the narrow service alley behind a shopping mall at a hot summer dusk: bins, stacked crates, a dripping air-conditioning unit, a fire door propped open with a brick, a strip of orange sky at the far end where the alley meets the street. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19G. Background: a small guest room at night**  
+Jihoon's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Minji's Room (Honors Dorm).png`  
+Save as: `eqx-guesthouse-room-night.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small plain guest room at night: a single bed against the wall, a window with the curtain half drawn on a hot summer street, a desk lamp, a white plush dog on the pillow, a photo strip tucked into the mirror frame. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19H. Background: the station concourse in autumn**  
+Jihoon's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Station Platform.png`  
+Save as: `eqx-station-concourse-clock.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a big station concourse on an autumn afternoon, a tall old-fashioned clock on a post in the middle of the floor, a low bench beneath it, the crowds only as faint blurred shapes in long coats, light slanting through high windows. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19I. Background: the student council room in July**  
+Jungwon's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Hanlim Council Room.png`  
+Save as: `eqx-council-room-summer.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a school student council room on a hot July afternoon, every window propped open, a standing fan turning on the long table, cardboard archive boxes stacked by the door, heavy summer trees outside the windows. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19J. Background: a guesthouse roof in late August**  
+Jungwon's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Dorm Rooftop.png`  
+Save as: `eqx-guesthouse-roof-summer.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the flat concrete roof of a small two-storey guesthouse on a late-August evening, a water tank throwing a long shadow, a propped fire door, a low parapet, the town and a river below in amber haze. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19K. Background: a scrubby ballpark by the river**  
+Junpei's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-riverside-ballpark.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small scrubby park at the end of a river path at summer dusk: a chain-link backstop, a patch of worn dirt, one tall light on a pole just coming on with moths round it, the river and the far bank's apartment lights beyond. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19L. Background: the street below the dorm at night**  
+Junpei's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-dorm-street-night.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a quiet residential slope at night in summer, small tiled-roof houses, potted plants on steps, streetlights with moths, a house near the bottom with a dull slate-blue roof and a lamp on behind a lace curtain. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19M. Background: a small station exit at dusk**  
+Junpei's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Station Platform.png`  
+Save as: `eqx-station-clock.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No faces. In the painted style of the SECOND attached image: the exit of a small suburban station at dusk, a round white clock over the ticket gates, a bakery's lit window beside the exit, a few commuters as small silhouettes, and one small silhouette of a man in a fleece standing alone under the clock looking out. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19N. Background: the island beach in late August**  
+Ken and Koromaru's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-seaside-beach-august.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the small sandy beach below a seaside park on a man-made island in late August, almost empty, a few closed umbrellas, the bay flat and glittering, a long concrete seawall behind, the bridge far off in haze. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19O. Background: the shrine playground in October**  
+Ken and Koromaru's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-shrine-playground-autumn.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the small playground below a hilltop shrine on a clear cold October morning, the ginkgo over the bench gone bright yellow and dropping its fan-shaped leaves in a gold carpet over the sand and the bench, the swings still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19P. Background: a corner car park in the morning**  
+Ken and Koromaru's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-iwatodai-corner-lot.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a quiet back corner of a Japanese town on a bright autumn morning: a small fenced car park where a building used to stand, a utility pole, a vending machine, a few faded bunches of flowers tied to the fence, newer apartment blocks behind. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19Q. Background: a tatami guest room at night**  
+Minji's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Minji's Room (Honors Dorm).png`  
+Save as: `eqx-guesthouse-minji-room.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small plain tatami room in a company guesthouse at night, a futon on the floor, a camera on a mini tripod on the windowsill aimed at the street, film reels and memory cards in a shoebox, a strip of warm fairy lights. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19R. Background: the station café terrace in July**  
+Mitsuru's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-cafe-terrace-july.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small café terrace beside a busy station on a hot July evening, a few metal tables, the awning rolled back, one tall patio heater standing dark, the sky still light over the elevated monorail track. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19S. Background: an empty waterfront lot at dusk**  
+Mitsuru's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Incheon Harbor by Day (strangers).png`  
+Save as: `eqx-kirijo-lot-evening.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a wide empty concrete lot behind a pale warehouse on a bay waterfront at summer dusk, painted parking lines faded nearly to nothing, two tall floodlights coming on, stacked shipping containers at one edge and the water at the other. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19T. Background: the station café terrace at the end of August**  
+Mitsuru's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-cafe-terrace-august.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small café terrace beside a busy station at the very end of August, a few metal tables, the light going orange early, a few dry leaves blown in against the railing, one tall patio heater standing dark, the monorail track overhead. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19U. Background: the station café terrace on a cold evening**  
+Mitsuru's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-cafe-terrace-autumn.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small café terrace beside a busy station on the first cold evening of autumn, the metal tables empty, dry leaves under them, the one tall patio heater lit orange again, the monorail lit up overhead. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19V. Background: the boarding house back yard**  
+Mrs. Oka's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-oka-back-yard.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the narrow back yard of an old wooden Japanese house in summer shade: deep eaves, a row of brown glazed crocks with wooden lids and a round river stone on each, an old stone hand mill under a tarp, a back door, a high wall. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19W. Background: the boarding house veranda in autumn**  
+Mrs. Oka's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-oka-veranda-autumn.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: the long wooden veranda of an old Japanese house in thin autumn afternoon light, rows and rows of peeled orange persimmons hanging on strings from the eaves like a bead curtain, a basket of whole fruit and a pile of curled peel on the boards, the persimmon tree heavy with fruit beyond. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19X. Background: the public tennis courts by the bay**  
+Rio and Saori's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Gekkoukan Courtyard.png`  
+Save as: `eqx-municipal-courts.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a public tennis complex by the bay in high summer: eight hard courts in a row, a small concrete grandstand with a shade roof on one side, blank tournament banners on the fences, heat shimmering off the surface, the sea glinting past the far fence. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19Y. Background: a sparse dorm room at night**  
+Shinjiro's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Minji's Room (Honors Dorm).png`  
+Save as: `eqx-shinjiro-room.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a sparse dorm bedroom at night, a futon on the floor, a long coat on a hook, a cast-iron pan on the desk instead of books, a jar of seed packets on the windowsill, streetlight through the blind. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19Z. Background: the archery range in June rain**  
+Yukari's fourth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Gekkoukan Courtyard.png`  
+Save as: `eqx-archery-range-rain.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a school archery range in heavy June rain seen from under the roofed wooden shooting line, the grass between the line and the targets drowned and shining, rain hanging in sheets off the roof edge, one bow rack along the back wall. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19AA. Background: a hillside temple cemetery in midsummer**  
+Yukari's fifth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-temple-cemetery-obon.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a small hillside temple cemetery in midsummer, rows of grey stone family graves on stepped terraces, wooden memorial tablets standing behind them, tall cedars, fresh flowers and rising incense smoke, the bay visible far below between the trees. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19AB. Background: the archery range in October**  
+Yukari's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Gekkoukan Courtyard.png`  
+Save as: `eqx-archery-range-autumn.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a school archery range on a clear cold October afternoon, the cherry trees by the fence turned rust and yellow, dry leaves blown across the gravel and the grass, long low sun across the targets, an empty bench behind the shooting line. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19AC. Background: the seawall in autumn rain**  
+Yunjin's sixth meeting.  
+Attach: `BG - style (Tartarus).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-harbor-autumn-rain.png`
+```
+A wide 16:9 video game background in the painted anime style of the FIRST attached image (copy its style, detail and lighting quality only, not its colours or architecture). No people. In the painted style of the SECOND attached image: a harbor seawall in a cold late-September rain, the tide out, the mud grey and pocked with rain, boats lying on their keels, gulls hunched on the rail, the far cranes lost in cloud. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows, something faintly wrong about how quiet it is; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Any signs are blank. No text.
+```
+
+**[ ] 19AD. CG: a hand held to an ear on the roof**  
+Aigis's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Aigis (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Rooftop.png`  
+Save as: `eqx-aigis-wrist.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a damp dormitory rooftop at dusk (the FOURTH attached image's roof), Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) holding the left hand of Aigis (the SECOND attached person, same face, blonde hair and straight back) cupped against her own ear like a shell, both of them very still, one red tomato among hard pale unripe ones on a stake behind them. Still and close. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AE. CG: floating in the evening sea**  
+Aigis's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Aigis (Equinox).png`, `Solar (Equinox).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-aigis-float.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). warm evening sea glowing rose-red and amber off a small city beach (loosely the FOURTH attached image's water), Aigis (the SECOND attached person, same face and blonde hair, wet) lying back on the water, held at the surface by Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) standing chest-deep with her arms braced under Aigis's shoulders, both looking up, the long bridge a dark line behind them. Quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AF. CG: at the boarding house gate at dusk**  
+Aigis's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Aigis (Equinox).png`, `Mrs. Oka (Equinox).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-aigis-gate.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). dusk at a low wooden gate on a quiet street (the FOURTH attached image's neighbourhood), a persimmon tree heavy with orange fruit bending over the wall, rows of peeled persimmons hanging on strings under the eaves of an old house, Mrs. Oka (the THIRD attached person, same face, greying black hair in a loose bun, cream cardigan, linen apron, thin white cotton gloves) small on the lit threshold with a paring knife and a curl of peel, Aigis (the SECOND attached person, same face, blonde hair and straight back) outside the gate with her head tipped, listening. Hushed. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AG. CG: a flour sack in the bakery yard**  
+Cherry's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Cherry (Equinox).png`, `Solar (Equinox).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-crane-sack.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). dusk in a tiny wet back yard behind a bakery (loosely the FOURTH attached image's town), geraniums in pots, a brown paper flour sack printed with faded red cranes sitting on a step, Cherry (the SECOND attached person, same face and hair, a bakery apron) and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) crouched over it, Cherry's hand buried to the wrist in flour so fine it looks like smoke. Quiet and close. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AH. CG: a reflection in the roof door**  
+Cherry's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Asahi (HOAX).png`, `BG - Dorm Rooftop at night.png`  
+Save as: `eqx-twelve.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). the dark little window of a roof door at night holding the reflection of a rooftop party under fairy lights (loosely the THIRD attached image's roof); in the glass, on a bench by a water tank, Asahi (the SECOND attached person, same face and hair) at one end with a can, and at the other end, only in the reflection, a very upright woman with white-gloved hands folded in her lap, watching the dancing, her face soft and unclear. Eerie and quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AI. CG: a small fish at the end of the pier**  
+Elizabeth's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Elizabeth (Equinox).png`, `BG - Incheon Harbor by Day (strangers).png`  
+Save as: `eqx-small-fish.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). the end of a long concrete pier on a bright hazy summer afternoon (loosely the THIRD attached image's harbor), Elizabeth (the SECOND attached person, same face and hair, blue dress and little blue cap, gloves) holding a tiny silver fish cupped in her gloved hands over the rail above deep clear water, an open book lying at her feet, an old fisherman on a stool looking up at her. Bright and odd. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AJ. CG: an open book on a velvet table**  
+Elizabeth's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `BG - Velvet Room.png`  
+Save as: `eqx-page-stopped.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). an old blue-bound book lying open on a small velvet-covered table in a velvet-hung room (loosely the attached image's room), one page of careful handwriting (abstract marks, nothing readable) that stops halfway across a line, a fine pale dust of flour gathered in the fold of the spine, a gloved hand resting beside it and a cold cup of tea. No face. Still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AK. CG: crouched on the bridge walkway**  
+Elizabeth's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Elizabeth (Equinox).png`, `Solar (Equinox).png`, `BG - Moonlight Bridge at night.png`  
+Save as: `eqx-where-they-stood.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). the middle of a long white bridge over a glittering bay on a bright cold autumn day (loosely the FOURTH attached image's bridge, by day), Elizabeth (the SECOND attached person, same face and hair, blue dress and a little crooked blue cap) crouched on the walkway with her bare palm flat on a pale scrubbed patch of paving, an old book against her knees, Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) standing behind her holding the rail. Quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AL. CG: two futons on the roof in the red hour**  
+Haechan's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Haechan (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Rooftop at night.png`  
+Save as: `eqx-the-favor.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a dorm roof in the red Dark Hour (the FOURTH attached image's roof), fans frozen mid-turn and a thread of smoke standing still over a saucer; Haechan (the SECOND attached person, same face and hair, in a T-shirt) on a futon turned toward Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) on the next one, a crumpled strip of staff paper in his fist, his mouth just open on a word he isn't saying. Everything lit blood red and black (the red Dark Hour), never green. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AM. CG: a recorder in the red hour**  
+Haechan's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Haechan (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Laundry Room at night.png`  
+Save as: `eqx-take-one.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a laundry room hung with blankets in the red Dark Hour (loosely the FOURTH attached image's room), a microphone on a stand in the middle; Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) in headphones and Haechan (the SECOND attached person, same face and hair) at the dryer sharing one headphone cord, both of them frozen, staring at a small silver recorder whose red light is still on. Everything lit blood red and black (the red Dark Hour), never green. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AN. CG: on the laundry room floor in October**  
+Haechan's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Haechan (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Laundry Room at night.png`  
+Save as: `eqx-whose-voice.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a dorm laundry room at night in October (the FOURTH attached image's room), Haechan (the SECOND attached person, same face and hair, in a hoodie) and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) sitting on the concrete floor against a running dryer, his face turned toward the chained back door with its small black window, her hand flat on his chest as if holding something in. Close and uneasy. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AO. CG: a photo-booth strip**  
+Hanni's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Hanni (Equinox).png`, `Solar (Equinox).png`, `BG - Paulownia Mall.png`  
+Save as: `eqx-one-more.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a narrow photo-booth strip of four frames held between two girls' fingers in a bright mall corridor (the FOURTH attached image's mall), the frames showing Hanni (the SECOND attached person, same face and hair) flinching, laughing, laughing harder, and in the last frame Hanni with her eyes shut and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) turned to watch her. Soft and warm. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AP. CG: a blank page on the roof at night**  
+Hanni's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Hanni (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Rooftop at night.png`  
+Save as: `eqx-a-page.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). two girls on a dorm rooftop at night under one blanket (the FOURTH attached image's roof), Hanni (the SECOND attached person, same face and hair) holding a worn yellow notebook with a cartoon bear on the cover open on her knees to a blank page, Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) holding a pencil out to her, the town's lights and a long bridge behind them. Quiet and close. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AQ. CG: a phone ringing in the atrium at noon**  
+Hyein's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Hyein (Equinox).png`, `Solar (Equinox).png`, `BG - Paulownia Mall.png`  
+Save as: `eqx-twelve-oh-one.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a crowded summer mall atrium at noon (the FOURTH attached image's mall), a big white clock on chains over a fountain, Hyein (the SECOND attached person, same face and hair) at a balcony rail staring at an old phone ringing in her open hand while Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) beside her reaches toward her wrist. Bright and wrong. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AR. CG: on the fountain edge at evening**  
+Hyein's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Hyein (Equinox).png`, `Solar (Equinox).png`, `BG - Paulownia Mall.png`  
+Save as: `eqx-door-girl.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Hyein (the SECOND attached person, same face and hair, tall) and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) sitting on the stone edge of a mall fountain in amber evening light (the FOURTH attached image's mall), Hyein turning an old phone over and over in her lap, behind them through the glass a lit shop window with a mannequin in a cream coat about to knock on a white door. Quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AS. CG: father and son on the shrine stairs**  
+Jaehyun's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Jaehyun (Equinox).png`, `Jaesang (Equinox).png`, `Solar (Equinox).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-no-splits.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). the foot of old stone shrine stairs in late-summer evening light (the FIFTH attached image's shrine), Jaehyun (the SECOND attached person, same face and hair, in a soaked T-shirt) standing three steps up with one hand on the rail, Jaesang (the THIRD attached person, same face and hair, in rolled shirtsleeves) at the bottom with his hands in his pockets looking up at him, Solar (the FOURTH attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) a half step off Jaesang's shoulder; bars of gold-amber light across the steps. Tense and quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AT. CG: a thread on the shrine steps**  
+Jaehyun's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Jaehyun (Equinox).png`, `Solar (Equinox).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-a-hundred-and-thirteen.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). an old stone shrine staircase in October, red leaves in the worn treads (the FOURTH attached image's shrine); Jaehyun (the SECOND attached person, same face and hair, in a running jacket) crouched on one step with his palm lifted off a dusting of pale flour, a long cream wool thread held up between his fingers, Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) crouched beside him looking not at the thread but at his face. Hushed. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AU. CG: a man in the alley**  
+Jihoon's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Jihoon (Equinox).png`, `Solar (Equinox).png`, `BG - Paulownia Mall.png`  
+Save as: `eqx-a-guy.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a hot dusk service alley behind a mall (loosely the FOURTH attached image's mall), a neat man in a white short-sleeved shirt and thin white cotton gloves holding out a tiny folded paper on his flat palm, his face in shadow against an orange street, Jihoon (the SECOND attached person, same face and hair) against the wall and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) half in front of him. Tense. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AV. CG: under the station clock**  
+Jihoon's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Jihoon (Equinox).png`, `BG - Station Platform.png`  
+Save as: `eqx-under-the-clock.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a busy station concourse in autumn (loosely the THIRD attached image's station) seen from a bench beneath a tall old clock: Jihoon (the SECOND attached person, same face and hair) with a thermos looking the other way, and far across the crowd under a second, smaller clock, the back of a short woman in a dark quilted vest, standing perfectly still while everyone flows past her. Uneasy. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AW. CG: a rice cake on a handkerchief**  
+Jungwon's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `BG - Hanlim Council Room.png`  
+Save as: `eqx-handkerchief.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a long council-room table in summer light (loosely the attached image's room), a white rice cake on an unfolded handkerchief, fine pale powder on the cotton around it; through the open window behind, far off, a man on a folding stool by a stone well, eating from a lunch box. No faces close up. Still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AX. CG: a door at the end of the corridor**  
+Jungwon's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `BG - Hanlim Hallway.png`  
+Save as: `eqx-room-four-door.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a dim school corridor in red light (loosely the attached image's hallway) running out into dark mud, and at the very end, alone, a plain guesthouse door with a brass number plate pressed deep with the figure 4, a single blank paper sign hanging on its handle. No people. Everything lit blood red and black (the red Dark Hour), never green. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AY. CG: a dog at the top of the shrine steps**  
+Ken and Koromaru's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Koromaru (Equinox).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-koromaru-steps.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Koromaru (the SECOND attached, the white Shiba-like dog) sitting alone at the top of steep old stone steps at a hilltop shrine at dusk (the THIRD attached image's shrine), his back to the viewer, looking down through dark trees toward the roofs of a riverside town and a river catching the last red light; a torii gate behind him. Lonely and still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19AZ. CG: a bench under the yellow ginkgo**  
+Ken and Koromaru's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Ken (Equinox).png`, `Koromaru (Equinox).png`, `Solar (Equinox).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-ken-ginkgo.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a small shrine playground carpeted in bright yellow ginkgo leaves (the FIFTH attached image's shrine), Ken (the SECOND attached person, same face and hair, in a school blazer) on a bench with a small worn notebook open on his knee, Solar (the FOURTH attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) beside him, Koromaru (the THIRD, the white Shiba-like dog) resting his chin on their stacked hands, the empty cellophane from a bunch of white chrysanthemums folded on the bench. Gentle. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BA. CG: on the sea wall in the wind**  
+Minji's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Minji (Equinox).png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-lens-cap.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Minji (the SECOND attached person, same face and hair) sitting on a sea wall in the cold wind with both arms wrapped tight round a canvas bag on her knees, the outline of a camera inside it, her hair across her face, a grey choppy bay and a lit ferry behind her (loosely the THIRD attached image's waterside). Lonely. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BB. CG: a red motorcycle on the floodlit lot**  
+Mitsuru's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Mitsuru (Equinox).png`, `Solar (Equinox).png`, `BG - Incheon Harbor at Night (strangers).png`  
+Save as: `eqx-mitsuru-passenger.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a red motorcycle on a wide floodlit lot by a dark bay at night (loosely the FOURTH attached image's waterfront), Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) driving with her visor up and her eyes on the road, Mitsuru (the SECOND attached person, same face and red hair) riding behind her for once, both hands on Solar's waist, her helmet tipped forward against Solar's back, the lights of a town across the water. Fast and close. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BC. CG: alone under the patio heater**  
+Mitsuru's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Mitsuru (Equinox).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-mitsuru-heater.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Mitsuru (the SECOND attached person, same face and red hair, in a grey suit) alone at a small metal café table under a glowing orange patio heater on a cold autumn evening, one hand flat on top of a creased brown paper bag, dry leaves under the table, a long lit bridge far off across the dark bay behind her (loosely the THIRD attached image's town). Lonely. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BD. CG: red-stained gloves and shiso leaves**  
+Mrs. Oka's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-oka-shiso.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). close on two hands in white cotton gloves, the fingertips stained bright red, squeezing a dark fistful of red-black shiso leaves over an earthenware bowl, red liquid running between the fingers, in the shade of old eaves (loosely the attached image's old houses). No face. Still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BE. CG: plums drying in the garden**  
+Mrs. Oka's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Mrs. Oka (Equinox).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-oka-trays.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a summer garden in hard afternoon light (loosely the THIRD attached image's neighbourhood), rows of round bamboo trays on sawhorses covered in drying red plums crusted with salt, a heavy dark persimmon tree over an old capped well, Mrs. Oka (the SECOND attached person, same face, greying black hair, a wide straw hat and white gloves) bent over the trays, no insects, no birds, nothing moving. Hot and too still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BF. CG: persimmons on the veranda**  
+Mrs. Oka's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Mrs. Oka (Equinox).png`, `BG - Iwatodai Neighborhood.png`  
+Save as: `eqx-oka-hoshigaki.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). an old wooden veranda curtained with rows of peeled orange persimmons hanging on strings from the eaves (loosely the THIRD attached image's old houses), Mrs. Oka (the SECOND attached person, same face, greying black hair in a loose bun, a white apron and white cotton gloves) reaching up to squeeze one gently between finger and thumb, thin autumn light, a heavy persimmon tree behind. Quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BG. CG: a library card against the sky**  
+Rio and Saori's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `BG - Gekkoukan Courtyard.png`  
+Save as: `eqx-pressed-word.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a worn buff library card held up against a white summer sky between a girl's fingers, above a school's tennis courts (loosely the attached image's school), a first name in faded ink (abstract marks, nothing readable) and a long blank space after it, and in the blank, visible only where the light comes through, a short word pressed hard into the card with no ink, a blind groove, its shape not readable. Only the hand and sleeve. Still. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BH. CG: a dream of a riverside gate**  
+Rio and Saori's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Saori.png`, `BG - Iwatodai Riverside.png`  
+Save as: `eqx-at-the-gate.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a dream: a riverside gate at dusk (loosely the THIRD attached image's river) with a lamp lit in a long low room beyond it and a persimmon tree over the wall, and at the gate, seen from behind, Saori (the SECOND attached person, same hair, in her school uniform) with a grey notebook held to her chest, one hand lifted toward the latch. Soft edges, dreamlike, faintly wrong. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BI. CG: a supermarket aisle at night**  
+Shinjiro's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Shinjiro (Equinox).png`, `BG - Iwatodai Strip at night.png`  
+Save as: `eqx-tea-aisle.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a brightly lit Japanese supermarket aisle at night in the rain (rain on the front windows, the town of the THIRD attached image outside), a small old man in a wrongly buttoned cardigan smiling with a single box of tea in his basket, Shinjiro (the SECOND attached person, same face and hair, in a long coat) gone very still behind a cart with a rice sack in it. Quiet and sad. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BJ. CG: a watering can held level in the red hour**  
+Shinjiro's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Shinjiro (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Rooftop at night.png`  
+Save as: `eqx-steady-hand.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a rooftop garden in the red Dark Hour (the FOURTH attached image's roof), a tomato plant staked with dish-towel strips, Shinjiro (the SECOND attached person, same face and hair) sitting on a thin futon holding a full watering can perfectly level at arm's length with his right hand, staring at it, Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) beside him watching his face. Everything lit blood red and black (the red Dark Hour), never green. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BK. CG: a frying pan held level in the kitchen**  
+Shinjiro's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Shinjiro (Equinox).png`, `Solar (Equinox).png`, `BG - Dorm Kitchen at night.png`  
+Save as: `eqx-hold-a-pan.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a dorm kitchen at night (the FOURTH attached image's kitchen), Shinjiro (the SECOND attached person, same face and hair, in an apron) holding a heavy black frying pan full of rice with a stone mortar on top level at his waist with his right hand, his whole arm shaking, jaw set, Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) beside him counting on her fingers, a creased hospital form weighted flat on the counter (blank, nothing readable). Tense. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BL. CG: a small fire at a grave at Obon**  
+Yukari's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Yukari (Equinox).png`, `Solar (Equinox).png`, `BG - Naganaki Shrine.png`  
+Save as: `eqx-obon-fire.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). a hillside temple cemetery at Obon in late afternoon heat (loosely the FOURTH attached image's shrine trees), Yukari (the SECOND attached person, same face and hair, in a dark summer dress) crouched before a family grave lighting a tiny fire of pale hemp stalks, her mother (a slight woman with a soft face and light brown hair, in a cream dress) crouched beside her, Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) standing a few steps back watching, incense smoke rising straight up from every grave on the terrace. Quiet. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BM. CG: on the edge of the shooting platform**  
+Yukari's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Yukari (Equinox).png`, `Solar (Equinox).png`, `BG - Gekkoukan Courtyard.png`  
+Save as: `eqx-yukari-gate.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). an empty school archery range at dusk in autumn (loosely the FOURTH attached image's school), Yukari (the SECOND attached person, same face and hair, in white archery dress with a bow across her knees) and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) sitting side by side on the edge of the wooden shooting platform with their feet over the grass, Yukari holding Solar's sleeve between two fingers, dry leaves on the gravel, the targets dark against a red sky. Close. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BN. CG: dancing on the seawall**  
+Yunjin's fourth meeting.  
+Attach: `CG - style (Solstice).png`, `Yunjin (Equinox).png`, `BG - Incheon Harbor by Day (strangers).png`  
+Save as: `eqx-left-side.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Yunjin (the SECOND attached person, same face and hair, in a yellow puffer) dancing on top of a harbor seawall under a heavy grey sky (loosely the THIRD attached image's harbor), mid-turn, her left arm held out, palm up, to the empty air beside her; four girls sitting on the slipway steps below, small, looking up. Odd and bright. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BO. CG: in the water at the end of the pier**  
+Yunjin's fifth meeting.  
+Attach: `CG - style (Solstice).png`, `Yunjin (Equinox).png`, `Solar (Equinox).png`, `BG - Incheon Harbor by Day (strangers).png`  
+Save as: `eqx-daytime-tide.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Yunjin (the SECOND attached person, same face and hair) and Solar (the THIRD attached person: her Equinox face and ponytail with temple braids and clock-face hairpin) in the clear bright water at the end of a pier on a hot August day (loosely the FOURTH attached image's harbor), holding on to an iron ring at the base of a bollard, their hair wet, laughing; above them on the bollard's top, small and white against a pale hot sky, an upside-down saucer. Happy. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+**[ ] 19BP. CG: on the seawall in the rain**  
+Yunjin's sixth meeting.  
+Attach: `CG - style (Solstice).png`, `Yunjin (Equinox).png`, `BG - Incheon Harbor by Day (strangers).png`  
+Save as: `eqx-where-nobody-dies.png`
+```
+A wide 16:9 story CG illustration in Persona 3 Reload official art style, matching the finish and detail of the FIRST attached image (a CG from the same game: copy its style only, not its colours, setting or figures). Yunjin (the SECOND attached person, same face and hair, in a soaked yellow puffer with her hood up) on a seawall in cold autumn rain, her arms round her knees, looking out at a harbor at dead low tide where the mud shines grey under the rain (loosely the THIRD attached image's harbor); a closed umbrella and two coffee cans on the wet concrete beside her. Lonely. Warm but gloomy light in amber, red-brown and bone white with deep oxblood shadows; gold only as a tiny accent; no pink-heavy colours, no blue, navy, indigo, purple, lilac or green. Clean crisp lineart, flat cel shading with hard-edged shadows, high detail on faces and hair. No text, no letters, no logos, no watermark.
+```
+
+---
+
+## 20. Later (no prompts yet)
 These come once the story parts that need them are written. Counts are rough.
 
 - **Story CGs:** about 40 to 50
