@@ -942,6 +942,10 @@ window.FemcGame = (() => {
     else if (line.ifTaken) ok = takenBy(line.ifTaken);
     else if (line.ifGlow) ok = glowIs(line.ifGlow);
     else if (line.ifCount) ok = countOk(line.ifCount);
+    // A recorded answer ({ tally: { name: 'value' } } → S.route.choices): { ifChoice: { name: 'value' | ['a', 'b'] } } (all must match);
+    // a counter ({ tally: { name: n } } → S.route.tally): { ifTally: { name: min | { min, max } } }. (Equinox's asks; Nov 16 2026.)
+    else if (line.ifChoice) ok = Object.entries(line.ifChoice).every(([k, v]) => [].concat(v).includes(S.route.choices[k]));
+    else if (line.ifTally) ok = Object.entries(line.ifTally).every(([k, v]) => { const n = S.route.tally[k] || 0, o = typeof v === 'number' ? { min: v } : v; return n >= (o.min ?? -Infinity) && n <= (o.max ?? Infinity); });
     // Dates: ifAfter is "on or after" (like a rank's `after`), ifBefore is "strictly before"; they're each other's else.
     else if (line.ifAfter) ok = S.day >= dayOf(line.ifAfter);
     else if (line.ifBefore) ok = S.day < dayOf(line.ifBefore);

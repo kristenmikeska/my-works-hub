@@ -2,8 +2,8 @@
    Saved with the game, never shown. What they mean is in the private plan, not here.
    - counters: numbers scene choices add to with { tally: { name: n } }.
    - choices: one-off answers recorded with { tally: { name: 'value' } }.
-   - hooks / cosmetic: flags reserved for later scenes (set with { flag: 'id' }). Act I (data/story-act1.js), Act II (story-act2.js) and Act III
-     (story-act3.js) set the ones listed; nothing reads them yet (Act III reads a few of its own and the romance ranks' kiss flags).
+   - hooks / cosmetic: flags reserved for later scenes (set with { flag: 'id' }). Act I (data/story-act1.js), Act II (story-act2.js), Act III
+     (story-act3.js) and Act IV (story-act4.js) set the ones listed; nothing reads them yet (Act III reads a few of its own and the romance ranks' kiss flags).
    endingName(flags): the name written into Equinox's clears list ('kg-femc-equinox-clears') at the end; core.js calls it in
    place of Solstice's route-* names. */
 window.FEMC_GAME_FLAGS = {
@@ -24,7 +24,9 @@ window.FEMC_GAME_FLAGS = {
     // Non-romance rank 3s (links/junpei, ken-koromaru, yunjin, jaehyun, cherry, rio-saori): each link's own ask.
     'asks.junpei', 'asks.ken-koromaru', 'asks.yunjin', 'asks.jaehyun', 'asks.cherry', 'asks.rio-saori',
     // Rank 3s (links/mrsoka, hanni, hyein, elizabeth, mitsuru, yukari, aigis): Mrs. Oka's is Solar's own ask (asks.solar.*).
-    'asks.solar.night', 'asks.hanni', 'asks.hyein', 'asks.elizabeth', 'asks.mitsuru', 'asks.yukari', 'asks.aigis'],
+    'asks.solar.night', 'asks.hanni', 'asks.hyein', 'asks.elizabeth', 'asks.mitsuru', 'asks.yukari', 'asks.aigis',
+    // Act IV (data/story-act4.js): Solar's own asks (the fathers, 10/22; Christmas, 12/18) and the 12/21 answer ('R' / 'S' / 'H' / 'stay' / 'equinox' / 'bad').
+    'asks.solar.fathers', 'asks.solar.christmas', 'red'],
   hooks: ['eqx-supper-stayed', 'eqx-supper-mine', 'eqx-asked-hyein', 'eqx-choose-hyein', 'eqx-hill1-smiled', 'eqx-hill1-mine',
     'eqx-door-R1', 'eqx-home-R1', 'eqx-away-R1', 'eqx-watch-R1',
     // Act II (data/story-act2.js): the owed Act I doors (S1, H1), Act II's doors (S2, R2, H2), the hills' asks, the ghost
@@ -41,7 +43,18 @@ window.FEMC_GAME_FLAGS = {
     'eqx-hanne-told', 'eqx-parents-here', 'eqx-moon-stayed', 'eqx-moon-mine', 'eqx-aigis-forty', 'eqx-mothers-taken', 'eqx-saw-face',
     'eqx-face-told', 'eqx-face-kept', 'eqx-hanne-hand',
     // Rank 3s (Mrs. Oka, Hanni).
-    'eqx-oka-night-stayed', 'eqx-oka-night-mine', 'eqx-asked-hanni'],
+    'eqx-oka-night-stayed', 'eqx-oka-night-mine', 'eqx-asked-hanni',
+    // Act IV (data/story-act4.js): route deaths (dead.<id>) and the closed true route; the doors R3 / S3 / H3; the 12/21 answer and
+    // the eligibility it computes; Solar's own asks; story beats later scenes may read.
+    'dead.shinjiro', 'dead.aigis', 'eqx-true-closed', 'eqx-shinji-falls', 'eqx-shinji-lived', 'eqx-water-door', 'eqx-aigis-lived', 'eqx-aigis-hand',
+    'eqx-door-R3', 'eqx-home-R3', 'eqx-away-R3', 'eqx-watch-R3', 'eqx-door-S3', 'eqx-home-S3', 'eqx-away-S3', 'eqx-watch-S3',
+    'eqx-door-H3', 'eqx-home-H3', 'eqx-away-H3', 'eqx-watch-H3',
+    'eqx-asked-fathers', 'eqx-choose-fathers', 'eqx-xmas-oka', 'eqx-xmas-mine',
+    'eqx-red-anchor-R', 'eqx-red-anchor-S', 'eqx-red-anchor-H', 'eqx-red-sees', 'eqx-red-open-R', 'eqx-red-open-S', 'eqx-red-open-H', 'eqx-red-open-E',
+    'eqx-red-R', 'eqx-red-S', 'eqx-red-H', 'eqx-red-stay', 'eqx-red-equinox', 'eqx-red-bad', 'eqx-red-answered',
+    'eqx-hanne-fingers', 'eqx-hanne-promised', 'eqx-hanne-reported', 'eqx-aki-word', 'eqx-lease-hand', 'eqx-fathers-down', 'eqx-fathers-moved',
+    'eqx-mothers-back', 'eqx-eliz-invited', 'eqx-eliz-confessed', 'eqx-edogawa-warned', 'eqx-edogawa-dead', 'eqx-girls-left',
+    'eqx-oka-revealed', 'eqx-koromaru-eye', 'eqx-theodore-dead'],
   cosmetic: ['eqx-flour-wiped', 'eqx-flour-shown', 'eqx-gw-ate', 'eqx-gw-left', 'eqx-gw-dog', 'eqx-tale-tiger',
     'eqx-shin-tin', 'eqx-mark-fifth', 'eqx-wish-home', 'eqx-wish-here', 'eqx-wish-blank', 'eqx-jihoon-roof',
     // Romance rank 3s.
@@ -54,6 +67,8 @@ window.FEMC_GAME_FLAGS = {
     // Non-romance rank 3s.
     'eqx-yunjin-dark',
     // Rank 3s (Mrs. Oka, Hanni).
-    'eqx-oka-ate-own', 'eqx-hanni-slept'],
+    'eqx-oka-ate-own', 'eqx-hanni-slept',
+    // Act IV.
+    'eqx-looked-kitchen', 'eqx-culture-stage', 'eqx-hc-what-us', 'eqx-hc-what-lean', 'eqx-hc-what-receipts'],
   endingName: () => 'here'
 };

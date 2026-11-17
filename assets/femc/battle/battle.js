@@ -5460,6 +5460,18 @@
     'eqx-equinox': () => [{ group: ['justice@33', 'effigy@30', 'effigy@30', 'effigy@30'], bg: BGP + 'darkhour-moonlight-bridge.webp', label: 'Full Moon', block: 'Moonlight Bridge · The Red Hour', boss: true, music: 'boss',
       op: { id: 'eqx-equinox', name: 'The Equinox', arcana: 'Full Moon · September' }, title: 'Full Moon · The Equinox',
       rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'justice' ? 'The Equinox' : 'Worn Detail'; }) } }],
+    // Act IV (assets/femc/equinox/data/story-act4.js): the Well's reserved full moons (well.js opens the next block when each is
+    // beaten). Levels step up from 9/23 (~33): 10/23 ~37 (the Road Home), 11/22 ~42 (the Tree; the Hanged Man calls its own
+    // effigies), 12/21 ~47 (the Sorghum Field). What happens after each fight is in the scene lines, never here.
+    'eqx-1023': () => [{ group: ['strength@37', 'effigy@34', 'effigy@34', 'effigy@34'], bg: BGP + 'eq-well-6.webp', label: 'Full Moon', block: 'The Well · The Road Home', boss: true, music: 'boss',
+      op: { id: 'eqx-1023', name: 'The Fathers\u2019 Hill', arcana: 'Full Moon · October' }, title: 'Full Moon · The Fathers\u2019 Hill',
+      rules: { noEscape: true, setup: b => { const worn = ['Cream Cardigan', 'House Cardigan', 'Quilted Vest']; let i = 0; b.foes().forEach(f => { f.name = f.kind === 'strength' ? 'The Fathers\u2019 Hill' : worn[i++ % 3]; }); } } }],
+    'eqx-1122': () => [{ group: ['hanged@42'], bg: BGP + 'eq-well-7.webp', label: 'Full Moon', block: 'The Well · The Tree', boss: true, music: 'boss',
+      op: { id: 'eqx-1122', name: 'The Tree by the Well', arcana: 'Full Moon · November' }, title: 'Full Moon · The Tree by the Well',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'hanged' ? 'The Tree by the Well' : 'Windfall'; }) } }],
+    'eqx-1221': () => [{ group: ['sx_black_sun@47', 'tower@44', 'tower@44'], bg: BGP + 'eq-well-8.webp', label: 'Full Moon', block: 'The Well · The Sorghum Field', boss: true, music: 'boss',
+      op: { id: 'eqx-1221', name: 'Red Moon', arcana: 'Full Moon · December' }, title: 'Full Moon · Red Moon',
+      rules: { noEscape: true, setup: b => b.foes().forEach(f => { f.name = f.kind === 'sx_black_sun' ? 'Red Moon' : 'Red Sorghum'; }) } }],
     // 4/9: the first fight on purpose, on the dorm roof.
     magician: () => [{ group: ['magician'], bg: BGP + 'iwatodaidorm-roof-night.webp', label: 'Full Moon', block: 'Iwatodai Dorm · Roof', boss: true, music: 'boss',
       op: { id: 'magician', name: 'The Magician', arcana: 'I · Magician' }, title: 'Full Moon · The Magician', rules: { noEscape: true } }],

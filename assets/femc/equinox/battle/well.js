@@ -130,9 +130,9 @@
     op('eqx-first-hill', 'The First Hill', 'Full Moon · May', 'The Well', 3, ['flash_shadow@14', 'maiden@11', 'maiden@11'], 14),
     op('eqx-second-hill', 'The Second Hill', 'Full Moon · June', 'The Well', 4, ['tide_shadow@19', 'pesce@17', 'pesce@17'], 19),
     op('eqx-third-hill', 'The Third Hill', 'Full Moon · July', 'The Well', 5, ['ballot_box@24', 'group_chat@21', 'group_chat@21'], 24),
-    op('eqx-1023', 'Full Moon · October', 'Full Moon · October', 'The Well', 6, ['giant@33', 'wn_pilgrim@31'], 33),
-    op('eqx-1122', 'Full Moon · November', 'Full Moon · November', 'The Well', 7, ['pot@39', 'wn_fruit@37'], 39),
-    op('eqx-1221', 'Full Moon · December', 'Full Moon · December', 'The Well', 8, ['seeker@45', 'wn_harvester@43'], 45),
+    op('eqx-1023', 'The Fathers\u2019 Hill', 'Full Moon · October', 'The Well', 6, ['strength@37', 'effigy@34', 'effigy@34', 'effigy@34'], 37),
+    op('eqx-1122', 'The Tree by the Well', 'Full Moon · November', 'The Well', 7, ['hanged@42'], 42),
+    op('eqx-1221', 'Red Moon', 'Full Moon · December', 'The Well', 8, ['sx_black_sun@47', 'tower@44', 'tower@44'], 47),
     op('eqx-0218', 'Full Moon · February', 'Full Moon · February', 'The Well', 8, ['seeker@52', 'wn_harvester@50'], 52));
 
   /* ── Fuuka, from the top of the rope ── */

@@ -15,7 +15,7 @@
    - `end`: in the first week of March 2011 and must stay well before 3/11/2011 (the Tohoku earthquake and tsunami: never in
      range, never mentioned). The end date, graduation and the final stretch may move once the plot writer decides (the
      private plot file decides; this file doesn't read it).
-   - `ops`: the full-moon operations written so far (Act I: 4/28, 5/28; Act II: 6/26, 7/26; Act III: 8/25, 9/23, both in town). `trips`, `ngpFloorCaps`: empty until the story
+   - `ops`: the full-moon operations written so far (Act I: 4/28, 5/28; Act II: 6/26, 7/26; Act III: 8/25, 9/23, both in town; Act IV: 10/23, 11/22, 12/21, the Well's reserved ids). `trips`, `ngpFloorCaps`: empty until the story
      batches. `floorCaps`: the Well's (battle side 1). */
 window.FEMC_GAME_CALENDAR = {
   // `year` + `start` are day 0 for core.js's date maths; a month before April is in the next year (2011).
@@ -72,7 +72,11 @@ window.FEMC_GAME_CALENDAR = {
     { date: '7/26', op: 'eqx-third-hill', name: 'The Third Hill', kind: 'operation', scripted: true },
     // Act III: data/story-act3.js. Town operations (no Well block opens with them).
     { date: '8/25', op: 'eqx-table-op', name: 'The Long Table', kind: 'operation', scripted: true },
-    { date: '9/23', op: 'eqx-equinox', name: 'The Equinox', kind: 'operation', scripted: true }
+    { date: '9/23', op: 'eqx-equinox', name: 'The Equinox', kind: 'operation', scripted: true },
+    // Act IV: data/story-act4.js. The Well (blocks 5-7; well.js opens the next block when each is beaten).
+    { date: '10/23', op: 'eqx-1023', name: 'The Fathers’ Hill', kind: 'operation', scripted: true },
+    { date: '11/22', op: 'eqx-1122', name: 'The Tree by the Well', kind: 'operation', scripted: true },
+    { date: '12/21', op: 'eqx-1221', name: 'Red Moon', kind: 'operation', scripted: true }
   ],
   // The Well (battle side 1; assets/femc/equinox/battle/well.js): the deepest floor open from each date (a block opens when the
   // cap reaches its last floor; going below a block also needs its full moon). The first date opens the Well at night at all.
@@ -85,7 +89,10 @@ window.FEMC_GAME_CALENDAR = {
     // Act III (story-act3.js).
     '7/28': 'clear', '7/31': 'cloudy', '8/6': 'clear', '8/9': 'clear', '8/10': 'clear', '8/11': 'clear', '8/12': 'clear', '8/14': 'clear',
     '8/16': 'clear', '8/25': 'clear', '8/26': 'clear', '8/28': 'clear', '9/1': 'clear', '9/11': 'clear', '9/20': 'clear', '9/22': 'clear',
-    '9/23': 'clear', '9/24': 'cloudy' },
+    '9/23': 'clear', '9/24': 'cloudy',
+    // Act IV (story-act4.js).
+    '9/25': 'clear', '9/27': 'rain', '10/2': 'clear', '10/22': 'clear', '10/23': 'clear', '10/26': 'cloudy', '10/30': 'clear',
+    '11/6': 'clear', '11/22': 'clear', '11/23': 'clear', '12/4': 'cloudy', '12/9': 'clear', '12/18': 'cloudy', '12/19': 'snow', '12/21': 'clear' },
   weatherLevels: {},
   // Chance of each weather by month (the rest is clear), as Solstice's.
   climate: {
