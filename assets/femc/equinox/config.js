@@ -43,12 +43,15 @@ window.FEMC_GAME_CONFIG = {
     aigis: 'aigis-equinox', akihiko: 'akihiko-equinox', fuuka: 'fuuka-equinox', hanni: 'hanni-equinox', hyein: 'hyein-equinox',
     jihoon: 'jihoon-equinox', jungwon: 'jungwon-equinox', junpei: 'junpei-equinox', ken: 'ken-equinox', koromaru: 'koromaru-equinox',
     minji: 'minji-equinox', mitsuru: 'mitsuru-equinox', shinjiro: 'shinjiro-equinox', yukari: 'yukari-equinox', yunjin: 'yunjin-equinox',
-    cherry: 'cherry-equinox', mark: 'mark-equinox', chenle: 'chenle-equinox',
+    cherry: 'cherry-equinox', jaehyun: 'jaehyun-equinox', mark: 'mark-equinox', chenle: 'chenle-equinox',
     'jaesang-runners': 'jaesang-equinox', 'solji-runners': 'solji-equinox', 'taesang-strangers': 'taejoon-equinox',
     'miyeon-strangers': 'miseon-equinox', 'kim-dad': 'kimdad-equinox', 'kim-mom': 'kimmom-equinox' },
   /* art (art batch 3): Equinox's own picture for a Solstice one, keyed by the path under assets/femc/. Read by battle/data.js
      (the Personas' art: the menu's Personas tab and Forms, the battle frame's cards) and scene.js { summon } lines. */
-  art: { 'battle/art/personas/haenim.webp': 'equinox/art/personas/haenim.webp?v=1' },
+  art: { 'battle/art/personas/haenim.webp': 'equinox/art/personas/haenim.webp?v=1', 'battle/art/personas/dalnim.webp': 'equinox/art/personas/dalnim.webp?v=1' },
+  /* bgs (art batch 5, Nov 16): Equinox's own picture for a shared background slug (core.js gameBg, read by background()):
+     every scene, place rule or { bg } line naming the Solstice slug shows Kat's Equinox one instead. */
+  bgs: { 'velvetroom-1': 'eqx-velvetroom', 'darkhour-gekkoukan-gate': 'eqx-darkhour-gekkoukan-gate' },
   homeFig: { src: 'assets/femc/equinox/art/solar/arms-crossed.webp?v=1', ar: .424, ht: .02, hf: .14, hx: .47 },
   linkFig: {
     chaewon: ['equinox/art/bodies/chaewon.webp?v=1', .4, .033, .1, .41],

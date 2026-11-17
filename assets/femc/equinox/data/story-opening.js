@@ -6,10 +6,12 @@
     scene: [
     { bg: 'iwatodaidorm-diningroom', music: 'joy' },
     // CG: eqx-breakfast — a long dormitory dining table at seven in the morning, crammed elbow to elbow with fourteen young people in school uniforms and pajamas, plates everywhere, a dog under the table, a whiteboard on the fridge behind them.
+    { cg: 'eqx-breakfast' },
     { n: "The dining table in the dorm seated eight, if they were friendly. On the morning of the eighth of April it seated fourteen, because nobody would agree to eat in shifts, and the dog was under it." },
     { n: "Somebody had brought the chairs down from the third-floor study room, and somebody else had brought the stool from the laundry, and Ken was on an upturned rice-cooker box that Aigis had tested for load, and the whole thing ran on the particular logic of a crowd that has decided to be in one room at any cost: elbows in, plates overlapping, every conversation running over the top of three others. It smelled of rice and burnt toast and miso and the specific coffee Mitsuru bought, which was too good for the mugs it was in." },
     { n: "Fuuka had made rice for six. It had gone in four minutes. Hanni was making more, at the counter, in a borrowed apron, with the expression of a woman running a field hospital. Yunjin was eating standing up behind Solar's chair with one hand on the back of it, as if the chair might try something." },
     { n: "Solar sat in the middle of it in a uniform that fit like it had been waiting, and ate, because every time she stopped someone put something else in front of her." },
+    { cg: null },
     { s: 'hyein', f: 'happy', t: "I got you the one with the egg and the one without the egg because I didn't know which one you'd be today. Like, as a person." },
     { s: 'haechan', f: 'neutral', t: "She's an egg person. She's always been an egg person. In every—" },
     { n: "He stopped, with his chopsticks halfway to his mouth, because Jihoon had looked up from across the table with real interest." },
@@ -24,12 +26,14 @@
     { s: 'junpei', f: 'happy', t: "—by *popular demand*, the book is back." },
     { n: "He held it up. A spiral notebook with a cracked blue cover, softened at the corners from a year in a drawer, and on the front in black marker, in letters that had been gone over several times for emphasis, *WHO GETS CAUGHT FIRST*. Under it, freshly added, still shiny: *SEASON TWO*." },
     // CG: eqx-betting-book — a grinning boy in a baseball cap standing on a dining chair, holding up a battered spiral notebook with a hand-lettered title on its cover, a crowded breakfast table below him.
+    { cg: 'eqx-betting-book' },
     { s: 'mitsuru', f: 'serious', t: "Iori. Off the chair." },
     { s: 'junpei', f: 'happy', t: "In a second, senpai. Okay, so, the rules haven't changed. Caught means caught. Coming out of somebody's room. Going into somebody's room. On the roof after curfew, two people, one jacket. Odds are on the inside cover. Ken's not allowed to bet, he's in elementary school." },
     { s: 'ken', f: 'serious', t: "Sixth grade. That's basically middle school." },
     { s: 'junpei', f: 'neutral', t: "*Basically* isn't *actually*, Ken." },
     { n: "He opened it to the first clean page and wrote something with a flourish, and turned it round so the table could see. It was a list of names. It was a long list. It had more names on it than the dorm had rooms, and some of the names had little arrows drawn between them, and some of the arrows had question marks on them, and one arrow, near the top, had three question marks and the word *(AGAIN??)*." },
     { n: "Several people at the table suddenly found their breakfast very interesting. Akihiko, at the end, had gone a dull red to the ears and was looking at the window. Haechan was looking at the ceiling. Jihoon was reading the page upside down with enormous interest, and then, as he got further down, with slightly less." },
+    { cg: null },
     { choose: [
       { t: "(Take the pen and put a bet down.)", then: [
         { n: "She held her hand out for the pen. Junpei gave it to her with the face of a man who'd just been handed a winning lottery ticket by a stranger. She wrote something on the inside cover, shielding it with her arm, and closed the book, and gave it back, and went on eating her egg." },
@@ -91,6 +95,7 @@
     { n: "*...Solar?*" },
     { n: "No surname. She could see it from where she sat, upside down, through the back of the folder where the light came through: a row with her first name written in, and the box for a family name beside it, empty. And in the column for her class, not a number. A small, neat question mark. And at the end of the row, in red, the stamp they used for students who'd never turned up: *absent*." },
     // CG: eqx-register — a teacher's open class register held on an arm, one row showing only the first name Solar, an empty surname box, a small question mark for a class number and a red absent stamp.
+    { cg: 'eqx-register' },
     { choose: [
       { t: "Here.", then: [
         { n: "She said it the way everyone else had said it. *Here.* The teacher looked at her a moment longer, then took the red pen from behind his ear and drew a small careful line through the stamp, and wrote something beside it, and moved on. Nobody else in the room had noticed anything. Except Yukari, who didn't turn round, and whose shoulders went very still." }
@@ -104,6 +109,7 @@
         { n: "He took the red pen from behind his ear, drew a line through the stamp, and moved on without an answer, which was, she supposed, an answer." }
       ] }
     ] },
+    { cg: null },
     { s: 'junpei', f: 'neutral', t: "...Sol. Psst. Why's there a question mark. I can see it from here. Why are you a *question mark*." },
     { s: 'yukari', f: 'serious', t: "Junpei, turn around." },
     { s: 'junpei', f: 'sad', t: "I'm just saying. I'm a 3-F. Yuka-tan's a 3-F. She's a question mark. That's not a class. That's a vibe." },
@@ -236,9 +242,11 @@
     { s: 'mrsoka', f: 'neutral', t: "In the kitchen, children! Shoes off, slippers on the step. I'd come and get you but my hands are all over flour." },
     { n: "The kitchen was at the back, long and low, with a wooden counter worn pale in the middle from a hundred years of hands and a window full of persimmon tree and garden and green April light. There was a pot on the stove. There was a tray of something cooling. And there was a woman at the counter with her sleeves rolled to the elbow, kneading." },
     // CG: eqx-mrs-oka — a kind-faced woman in her fifties in an apron and cotton work gloves standing at a long wooden kitchen counter, kneading dough, smiling over her shoulder, a tin of rice cakes beside her.
+    { cg: 'eqx-mrs-oka' },
     { n: "She was somewhere in her fifties, round-faced and soft-shouldered, with her gray-black hair pinned up in a knot and a dusting of flour on one cheek, and an apron with a faded pattern of little pine trees, and she was wearing gloves. White cotton gloves, the thin kind, the kind for gardening or for good silver. She was kneading dough in them. They were floured to the wrist." },
     { n: "She looked round over her shoulder and smiled at them, and it was a good smile. That was the trouble with it. It was the best smile Solar had been given in Iwatodai by anyone over twenty, warm all the way through, the smile of someone who had been waiting for you to come home and had made too much food on purpose." },
     { n: "On the counter, already, there were four cups. Already poured, already steaming, set out in a row on a tray. Mitsuru had telephoned to say she was coming. She hadn't said who with." },
+    { cg: null },
     { s: 'mrsoka', f: 'neutral', t: "Oh, look at you. Look at the three of you. Kirijo-san, isn't it? You telephoned. And you've brought your friends. Good. Sit, sit, there's tea in the pot, I've only just made it." },
     { s: 'mitsuru', f: 'neutral', t: "Thank you. You're Mrs. Oka?" },
     { s: 'mrsoka', f: 'neutral', t: "I'm Mrs. Oka. I've been Mrs. Oka for so long I sometimes forget there was ever anything else to call me." },

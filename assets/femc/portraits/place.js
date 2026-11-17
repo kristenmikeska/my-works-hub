@@ -124,6 +124,7 @@ window.FEMC_PORTRAIT_PLACE = {
   "jaehyuk-hoax": [0.512, 0, 3.5, 1.14, 0],
   "jaehyuk-hoax-school": [0.508, -0.5, 5, 1.14, 0],
   "jaehyun": [0.457, 0, 2, 1.04, 1],
+  "jaehyun-equinox": [0.457, 0, 2, 1.04, 1],
   "jaehyun-runners": [0.594, 0, 0, 1.26, 0],
   "jaehyun-runners-holiday": [0.546, 0, 0.5, 1.06, 0],
   "jaemin": [0.428, 0.5, 3, 1.04, 1],

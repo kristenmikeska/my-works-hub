@@ -17,7 +17,7 @@
   cast: { mrsoka: 'Mrs. Oka', hayashi: 'Mr. Hayashi' },
   ranks: [
     { after: '4/13', title: '1: loose thread', place: 'Iwatodai · The Oka Boarding House', time: 'After School', music: 'tender', scene: [
-      { bg: 'eqx-oka-gate' },
+      { bg: 'eqx-oka-garden' },
       // BG: oka-boarding-house-garden — the garden of an old wooden Japanese house in spring afternoon light, a persimmon tree in new leaf, an old stone well beside it with a heavy round stone cap furred with moss, a low wooden gate.
       { n: "She hadn't meant to go back. She'd come out of the school gates meaning the long way round to the dorm, along the river, because the river was in the sun at that hour, and she'd turned left past the shrine instead of right, and walked the street with the dry cleaner on it, and stopped at a low wooden gate, and stood there with her bag on her shoulder, and only then thought, *oh*." },
       { n: "The persimmon tree had more leaves than on Friday, small and new and so green they looked wet. Under it, on a folded cushion on the grass, there was a woman on her knees, pulling weeds out of the bed round its roots and dropping them into a basket, and humming to herself without any particular tune, the way you hum when you've been alone in a garden long enough to forget anyone might hear." },

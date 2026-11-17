@@ -387,8 +387,10 @@ window.FEMC_GAME_PROLOGUE = {
     { s: 'haechan', f: 'neutral', t: "Yeah, well. Get in line." },
     { n: "He got up off his knee. He rolled his shoulders, once, like a boy at the edge of a stage, and the air behind him went cold and pale, and something rose out of it that she knew: a slender shape in white with a moon where its face should have been, the light coming off it thin and silver and cool as a hand on a fever. No Evoker for him either. It came anyway." },
     // CG: eqx-sun-and-moon — Solar and Haechan back to back at the bottom of a stone well, Haenim in pink and gold behind her and a pale moon-faced Persona behind him, sun and moon light meeting on the water.
+    { cg: 'eqx-sun-and-moon' },
     { n: "For one breath, the sun and the moon were in the same hole in the ground. Gold on one side of the water and silver on the other, and where the two lights met on the black skin of it, the sky underneath went, very briefly, the color of morning." },
     { n: "She felt Haenim steady. The wobble went out of her chest like a hand had closed around the candle flame, and the veil, lifted its finger's width, stirred, as if something behind it had turned to look." },
+    { cg: null },
     { "battle": { "id": "eqx-well-2", "kind": "scripted", "script": "eqx-well-2", "segment": 2, "title": "The Well · The Bottom", "desc": "The sun and the moon in one hole in the ground. Clear the water and get to the rope." } },
     { music: 'tender' },
     { n: "When it was over the water was flat again, black and still, the sky in it whole, and the ash of the painted faces lay on the surface in a gray skin that turned slowly, slowly, and sank." },
@@ -416,10 +418,12 @@ window.FEMC_GAME_PROLOGUE = {
     { s: 'haechan', f: 'neutral', t: "I like it even less." },
     { n: "He went up first. Of course he did. He wrapped the rope once round his forearm and hauled, and got his feet on it, and reached back down for her without looking, the way you reach for a railing you know is there, and his hand found her wrist and closed." },
     // CG: eqx-rope-climb — a young man climbing a frayed gold rope up a dark stone shaft, looking down, one hand gripping the wrist of the girl climbing below him.
+    { cg: 'eqx-rope-climb' },
     { n: "They climbed." },
     { n: "It took a long time. It took so long she lost count, which she never did. Hand over hand, the gold humming warm under her palms and the stone sliding past cold on every side, his hand letting go of her wrist only to take the rope and then coming back to it, every time, every few feet, as if checking she was still on the end of it. Twice the rope went thin under her hands, frayed, the strands loose and bristling, and twice she felt it hold anyway. Once she passed the clumsy mended knot and put her fingers on it without meaning to, and it was warm, warmer than the rest, like it had been tied by hands that had only just let go." },
     { n: "She didn't look down. She knew what was down there. She could feel it, the way you can feel someone watching you leave a room." },
     { n: "Then there was air on her face that smelled of grass and salt, and red light, and a circle of sky above them, the right way up, with a moon in it." },
+    { cg: null },
 
     { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'eqx-courtyard-well-night', music: 'mystery' },
     // BG: gekkoukan-courtyard-well-night — Gekkoukan High's paved courtyard in the Dark Hour, dark red sky and huge red moon, a ring of old mossy stone set into the paving where nothing stood before, a gold rope trailing out of it over the edge.
@@ -438,9 +442,11 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "Akihiko reached in and took her other wrist." },
     // CG: eqx-well-mouth — two young men at the stone lip of a well in a red-lit school courtyard at night, each gripping one of Solar's wrists, pulling her up out of the dark between them.
     { place: 'Gekkoukan High · Courtyard', time: 'The Dark Hour', bg: 'eqx-courtyard-well-night', soft: true },
+    { cg: 'eqx-well-mouth' },
     { n: "She came up out of the dark with a hand on each wrist, and she knew both hands, and that was almost the worst part." },
     { n: "Two boys pulling one girl out of a well. She had a very clear thought, coming over the stone lip on her stomach with her knees scraping and her wet clothes dragging, that this was the wrong way round. That every time anyone had held on to her, it had been to keep her, and she had gone anyway, out of their hands like water. This time they were pulling, and she was coming." },
     { n: "She landed on the flagstones on her hands and knees. Nobody let go of her. Not for a long moment. She knelt there between them on the paving in the red with her hair dripping and a wrist in each of their hands and her heart going so hard she could hear it, and neither of them let go first, and she understood, slowly, that neither of them was going to." },
+    { cg: null },
     { ifFlag: 'eqx-from-stay-akihiko', then: [
       { s: 'akihiko', f: 'sad-2', t: "...I didn't let go." },
       { s: 'akihiko', f: 'serious', t: "I want that on record. I didn't let go. You went anyway. I didn't let go." }
@@ -475,6 +481,7 @@ window.FEMC_GAME_PROLOGUE = {
     { place: 'Iwatodai Dorm · Lounge', time: 'Late Night', bg: 'iwatodaidorm-livingroom-night-spring', music: 'tender', date: '4/7' },
     { dark: false },
     // CG: eqx-lounge-full — a crowded dormitory lounge at two in the morning, every couch and armrest and bit of floor taken by young people in pajamas, party clothes and coats, a dog in the middle, Solar in a towel at the center of it.
+    { cg: 'eqx-lounge-full' },
     { dateGlitch: false }, // the date box settles: someone said what day it is
     { n: "At two in the morning on the seventh of April, the lounge of the dormitory in Iwatodai had more people in it than it had been built for, and every single one of them was looking at her." },
     { n: "She had a towel round her shoulders that Fuuka had brought and a second towel on her head that Hyein had brought and a third one in her lap that nobody would admit to, and a mug of something hot in her hands that Yukari had made and then stood over her until she drank, and she was sitting in the middle of the big couch because that was where they'd put her, the way you'd put a vase you'd just glued back together in the middle of a table, where you could see it from everywhere." },
@@ -483,6 +490,7 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "They were on every surface. Hanni and Hyein on either side of her, so close she could feel them breathing, still in their party dresses with dorm blankets over them. Yunjin on the floor with her back against Solar's shins, which she had not asked permission for and was not going to. Junpei on the arm of the couch. Ken cross-legged on the rug with Koromaru's head in his lap, and Koromaru's eyes on her, unblinking, his tail going slow and steady against the floorboards. Aigis standing by the window, the way she always stood by the window. Jihoon draped across the armchair like he'd been shot in it, and Cherry on the arm of it with her feet on his stomach. Minji on the stairs with her camera in her lap, lens cap on. Jaehyun by the door with his coat still open. Jungwon in the one straight-backed chair from the dining table, which he'd carried in himself, sitting very upright, with his hands on his knees and his watch where he could see it." },
     { n: "Haechan on the floor at the far end of the coffee table, with his back to the television and his raw hands wrapped in a dish towel, not looking at her. He'd been not looking at her for forty minutes. He was very good at it. She could feel exactly where he was in the room the whole time, the way you can feel a heater." },
     { n: "Akihiko leaning on the wall by the stairs with his arms folded, still in his tracksuit, grass on his knees. He was looking at her enough for both of them." },
+    { cg: null },
     { ifFlag: 'eqx-from-true', then: [
       { n: "Nobody in S.E.E.S. had said much since the courtyard. They'd come round the corner of the school at a run, all of them, with Koromaru out ahead, and seen her on her knees on the flagstones between two boys, and stopped, every one of them, as if they'd run into glass." },
       { n: "And then remembered. She'd watched it happen. All of them at once, a year landing on them in the time it took to breathe in, and Junpei had sat down on the paving where he stood, and Yukari had put both hands over her mouth, and Ken had started crying without any sound, and Mitsuru had gone so white that Aigis had put a hand under her elbow." },
@@ -640,6 +648,7 @@ window.FEMC_GAME_PROLOGUE = {
     { s: 'elizabeth', f: 'neutral', t: "I've brought your page. I thought you'd want to see it. I've been looking at it all night. I couldn't put it down." },
     { n: "She opened the book. The pages went past under her gloved fingers with that sound like cards shuffled by someone very good at it, faces and names and small careful paragraphs, and she found the one she wanted and turned it round." },
     // CG: eqx-page-stay — an old blue-bound book held open in gloved hands, one page crowded edge to edge with three different handwritings, and across the bottom in a heavy pressed hand a single word repeated over and over.
+    { cg: 'eqx-page-stay' },
     { n: "A year ago it had been blank. Blank on purpose, like a face with nothing in it." },
     { n: "It wasn't blank now. It was full. Edge to edge, margin to margin, in three hands she knew from a year ago: one quick and slanting, one careful and upright with every stroke finished, one round and fast and full of crossings-out. Three people who'd looked for her. Three lives, writing her down. The ink went right into the border and over it in places, as if the page hadn't been big enough for what they'd had to say." },
     { n: "And under all of that, at the bottom of the page, there was a fourth." },
@@ -647,6 +656,7 @@ window.FEMC_GAME_PROLOGUE = {
     { n: "*stay*" },
     { n: "*stay* *stay* *stay* *stay* *stay*" },
     { n: "In places it had been written so hard the nib had gone through. Little tears in the paper, and through the tears she could see the page underneath, the next page, which should have been someone else's. It wasn't. It was the same word, in the same hand, going down." },
+    { cg: null },
     { n: "Her hand came off the page by itself." },
     { choose: [
       { t: "Whose is that?", then: [

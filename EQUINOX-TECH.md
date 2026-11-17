@@ -139,6 +139,16 @@ Sources: `~/Documents/UniverseHub-Images/Femc Mode Images/Equinox/` (left in pla
 - Attachment `Style - Equinox portrait (Solar).png` is now the remake's neutral (old in `Old/`); `Junpei (Equinox) - portraits.png` added for 12D2.
 - Checked in the built-in pane (1440 × 900, muted, test keys removed after): all 20 speakers beside Solar in a test scene; all load, and faces sit at the cast's size. HTML: config v14, portraits index v165, scale v182, place v16 (both game pages).
 
+## Art batch 5: the opening's next CGs, Jaehyun, Dalnim, Equinox's own Velvet Room and Gekkoukan (Nov 16 2026, manifest batch 166)
+
+Sources: `Femc Mode Images/Equinox/` (14 files, left in place).
+- **CGs (EQUINOX-ART-TODO 8N-8V):** `cg/eqx-sun-and-moon`, `-rope-climb`, `-well-mouth`, `-lounge-full`, `-page-stay` (prologue.js) and `eqx-breakfast`, `-betting-book`, `-register`, `-mrs-oka` (story-opening.js), each a `{ cg }` / `{ cg: null }` pair at its `// CG:` comment, ending where its moment ends (before the next fight, place change, choice or first spoken line as fits). WebP q86, native size. No cgFocus (centre).
+- **Background 8W:** `bg/eqx-oka-garden` on Mrs. Oka's rank 1 (links/mrsoka.js, at its `// BG: oka-boarding-house-garden` comment). Act IV's December garden scenes keep their stand-ins (spring light wouldn't fit).
+- **Equinox-only backgrounds (new config `bgs`, core.js `gameBg` inside `seasonal()`):** `velvetroom-1` → `bg/eqx-velvetroom` (red), `darkhour-gekkoukan-gate` → `bg/eqx-darkhour-gekkoukan-gate` (red; the `eqx-` name keeps game.css's green-to-red drain off it). Every rule, `{ bg }` line and override naming the Solstice slug shows Equinox's picture; Solstice unchanged (no `bgs`). The Wardrobe's Velvet Room wallpaper still uses Solstice's.
+- **Jaehyun (12P):** `portraits/jaehyun-equinox` via `tools/femc-equinox-faces.py` (cast-standard size, M_TARGET .385, on his Solstice canvas), config `faces.jaehyun`, scale 1.0, placement = his base's.
+- **Dalnim (12T):** `equinox/art/personas/dalnim.webp` (1024 × 1536, transparent), config `art` (Personas tab, Forms, battle frame, `{ summon }`). His Theurgy cut-in layer (`theurgy/haechan-persona.webp`) still shows the old Dalnim.
+- Pane-checked (muted, 1440 × 900): every new file loads, the red gate (no double filter) and the red Velvet Room through their Solstice slugs, the breakfast CG in a scene, Dalnim's art in battle data, Jaehyun's face. HTML: core v106 (both pages), config v15, prologue v6, story-opening v5, mrsoka v6, portraits index v166 / scale v183 / place v17.
+
 ## Lost links (Nov 16 2026)
 
 A route death's `dead.<id>` flag (story-act4.js) now means "gone for good" everywhere (core.js `deadLink`, exported): the

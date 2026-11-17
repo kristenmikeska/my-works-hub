@@ -1079,7 +1079,11 @@ window.FemcGame = (() => {
     return have.includes(k) ? `${base}assets/femc/tarot/${k}.webp` : null;
   }
   // places.js seasons: the plain day art that has a version per season (the shrine). Then today's art (dressed).
+  /* Another game's own picture for a shared background (FEMC_GAME_CONFIG.bgs = { solstice slug: its slug }; Equinox art
+     batch 5: the red Velvet Room and Gekkoukan in the Dark Hour). Unset (Solstice): nothing changes. */
+  const gameBg = img => (CFG.bgs && CFG.bgs[img]) || img;
   function seasonal(img) {
+    img = gameBg(img);
     const list = D.places.seasons?.[img];
     if (!list) return dressed(img);
     const m = dateOf(S?.day || 0).getMonth() + 1;

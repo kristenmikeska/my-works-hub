@@ -49356,6 +49356,174 @@
    "status": "integrated",
    "destination": "assets/femc/portraits/chenle-equinox/",
    "placement": "Equinox art batch 4: Personaverse faces (config.js faces; EQUINOX-TECH.md 'Art batch 4')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eq-dalnim.png",
+   "size": [
+    1024,
+    1536
+   ],
+   "sha256": "4d4018ce2ea9aed3bf4acb77ba31b91eef889e1c0397f3555d69ca21958969ca",
+   "status": "integrated",
+   "destination": "assets/femc/equinox/art/personas/dalnim.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eq-gekkoukan-darkhour-red.png",
+   "size": [
+    1679,
+    937
+   ],
+   "sha256": "f9b4242b094f2710c632519b37ab718daeb9679adbc37989c93b81b6f1889e8e",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-darkhour-gekkoukan-gate.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eq-jaehyun-portraits.png",
+   "size": [
+    1536,
+    1024
+   ],
+   "sha256": "8a21dda25fa9a11ceb9c8bc2ffbadbe8c1c3c50399eae3e989322996f808ef2c",
+   "status": "integrated",
+   "destination": "assets/femc/portraits/jaehyun-equinox/",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eq-velvet-room.png",
+   "size": [
+    1673,
+    940
+   ],
+   "sha256": "2ee92c21f22c3d187c20e39851547862ae6e81400a5fd6aed23095fdf64571d1",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-velvetroom.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-oka-garden.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "d5013a2a04103971d6f3bddf91a854b42e1ae58c30d33ccdad1169abbf31706e",
+   "status": "integrated",
+   "destination": "assets/femc/bg/eqx-oka-garden.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-sun-and-moon.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7632155b3dedbc9350404835303b9f593dc761a25752e8702d707446058a24ee",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-sun-and-moon.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-rope-climb.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7e744ce7321cdb58934e143f482b374ad282843a4fdbd8ec407b7849f272a97b",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-rope-climb.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-well-mouth.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "041c5e8cbe37c3d027d935319d249775fe46a1050dcd293899dfb7bb76c298ad",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-well-mouth.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-lounge-full.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "969cd847f60f26f21202747e7bb0719858b435b9c5e2ebf50c20cf5d6a81eabf",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-lounge-full.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-page-stay.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "c7b9e4a487973f71adacf79affabbcaeae293637a6d95b85be6239911ef64fc1",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-page-stay.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-breakfast.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "7ee1cf483af6213debf48e5190183279f37c2f76f770ae39af185c8c13466220",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-breakfast.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-betting-book.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "2c5881371b59d948422570ce2cb0485239662afa80f1dee5043c2ce52840b475",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-betting-book.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-register.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "4b26f20ce490232a958ca791d73254ae58f6af6597ab629724cd3ca80ea2900d",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-register.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
+  },
+  {
+   "batch": 166,
+   "source": "../Equinox/eqx-mrs-oka.png",
+   "size": [
+    1672,
+    941
+   ],
+   "sha256": "abea21941b9328ce08b74cff0a91f7a03f88383a7b050897194355447d4b6e83",
+   "status": "integrated",
+   "destination": "assets/femc/cg/eqx-mrs-oka.webp",
+   "placement": "Equinox art batch 5 (EQUINOX-TECH.md 'Art batch 5')"
   }
  ],
  "batch1Validation": {
